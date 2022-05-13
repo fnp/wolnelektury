@@ -93,6 +93,14 @@
       </button>
     </form>
 
+    {% if schedule.get_payment_method.cancellable %}
+      <br>
+      <form class="wlform" method='post' action="{% url 'club_cancel' schedule.key %}">
+        {% csrf_token %}
+	<button type="submit" class="submit" style="font-size: .9em">Zrezygnuj z kolejnych płatności</button>
+      </form>
+    {% endif %}
+
 
  {% else %}
   {% if not schedule.payed_at %}

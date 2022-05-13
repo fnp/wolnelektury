@@ -12,9 +12,14 @@
     <h1>{% trans "Supporting Wolne Lektury" %}</h1>
 
     <p>
-      {% blocktrans with amount=schedule.amount %}
-        You are setting up a monthly payment in the amount of {{ amount }} PLN. Thank you!
-      {% endblocktrans %}
+      {% if schedule.payed_at %}
+        Aktualizujesz dane swojej comiesięcznej darowizny w kwocie {{ amount }} PLN. Dziękujemy!</p><p>
+        Jeśli chcesz zrezygnować z dalszego wsparcia Wolnych Lektur, możesz to zrobić na <a href="{{ schedule.get_absolute_url }}">stronie swojej darowizny</a>.
+      {% else %}
+        {% blocktrans with amount=schedule.amount %}
+          You are setting up a monthly payment in the amount of {{ amount }} PLN. Thank you!
+        {% endblocktrans %}
+      {% endif %}
     </p>
 
     <form id="theform" method='POST'>
