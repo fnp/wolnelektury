@@ -1,4 +1,5 @@
 import csv
+from datetime import datetime
 from io import StringIO
 from django.conf import settings
 from django.http import HttpResponse
@@ -26,7 +27,27 @@ def bank_export(modeladmin, request, queryset):
     return response
 
 
+def parse_payment_feedback(f):
+    lines = csv.reader(StringIO(f.read().decode('cp1250')))
+    for line in lines:
+        print(line)
+        assert line[0] in ('1', '2')
+        if line[0] == '1':
+            # Totals line.
+            continue
+        booking_date = line[3]
+        booking_date = datetime.strptime(booking_date, '%Y%m%d')
+        payment_id = line[7]
+        is_dd = line[16] == 'DD'
+        realised = line[17] == '1'
+        reject_code = line[18]
+        yield payment_id, booking_date, is_dd, realised, reject_code
+
+            
+
+
 def parse_export_feedback(f):
+    # The AU file.
     lines = csv.reader(StringIO(f.read().decode('cp1250')))
     for line in lines:
         payment_id = line[0]
@@ -34,6 +55,8 @@ def parse_export_feedback(f):
         comment = line[9]
         yield payment_id, status, comment
 
+
+        
 
 def bank_order(date, sent_at, queryset):
     response = HttpResponse(content_type='application/octet-stream')

@@ -54,6 +54,9 @@ class BankExportFeedbackLineInline(admin.TabularInline):
     model = models.BankExportFeedbackLine
     extra = 0
 
+class BankPaymentInline(admin.TabularInline):
+    model = models.Payment
+    extra = 0
 
 @admin.register(models.DirectDebit)
 class DirectDebitAdmin(admin.ModelAdmin):
@@ -121,7 +124,7 @@ class DirectDebitAdmin(admin.ModelAdmin):
         })
     ]
     readonly_fields = ['agree_contact', 'iban_valid', 'iban_warning', 'latest_status']
-    inlines = [BankExportFeedbackLineInline]
+    inlines = [BankExportFeedbackLineInline, BankPaymentInline]
 
     def set_bank_submission(m, r, q):
         q.update(bank_submission_date=now())
@@ -155,7 +158,7 @@ class DirectDebitAdmin(admin.ModelAdmin):
 
 @admin.register(models.BankExportFeedback)
 class BankExportFeedbackAdmin(admin.ModelAdmin):
-    inlines = [BankExportFeedbackLineInline]
+    inlines = [BankExportFeedbackLineInline, BankPaymentInline]
 
 
 

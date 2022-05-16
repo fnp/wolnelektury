@@ -2,7 +2,7 @@ import re
 from django.db import models
 from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
-from .bank import parse_export_feedback
+from .bank import parse_export_feedback, parse_payment_feedback
 
 
 class Campaign(models.Model):
@@ -139,6 +139,31 @@ class BankExportFeedback(models.Model):
 
     def save(self, **kwargs):
         super().save(**kwargs)
+        try:
+            self.save_payment_items()
+        except AssertionError:
+            self.save_export_feedback_items()
+
+    def save_payment_items(self):
+        for payment_id, booking_date, is_dd, realised, reject_code in parse_payment_feedback(self.csv):
+            debit = DirectDebit.objects.get(payment_id = payment_id)
+            b, created = self.payment_set.get_or_create(
+                debit=debit,
+                defaults={
+                    'booking_date': booking_date,
+                    'is_dd': is_dd,
+                    'realised': realised,
+                    'reject_code': reject_code,
+                }
+            )
+            if not created:
+                b.booking_date = booking_date
+                b.is_dd = is_dd
+                b.realised = realised
+                b.reject_code = reject_code
+                b.save()
+        
+    def save_export_feedback_items(self):
         for payment_id, status, comment in parse_export_feedback(self.csv):
             debit = DirectDebit.objects.get(payment_id = payment_id)
             b, created = self.bankexportfeedbackline_set.get_or_create(
@@ -164,6 +189,15 @@ class BankExportFeedbackLine(models.Model):
     comment = models.CharField(max_length=255)
 
 
+class Payment(models.Model):
+    feedback = models.ForeignKey(BankExportFeedback, models.CASCADE)
+    debit = models.ForeignKey(DirectDebit, models.CASCADE)
+    booking_date = models.DateField()
+    is_dd = models.BooleanField()
+    realised = models.BooleanField()
+    reject_code = models.CharField(max_length=128, blank=True)
+
+    
 
 class BankOrder(models.Model):
     payment_date = models.DateField(null=True, blank=True)
