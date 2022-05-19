@@ -145,7 +145,7 @@ class BankExportFeedback(models.Model):
             self.save_export_feedback_items()
 
     def save_payment_items(self):
-        for payment_id, booking_date, is_dd, realised, reject_code in parse_payment_feedback(self.csv):
+        for payment_id, booking_date, is_dd, realised, reject_code in parse_payment_feedback(self.csv.open()):
             debit = DirectDebit.objects.get(payment_id = payment_id)
             b, created = self.payment_set.get_or_create(
                 debit=debit,
@@ -164,7 +164,7 @@ class BankExportFeedback(models.Model):
                 b.save()
         
     def save_export_feedback_items(self):
-        for payment_id, status, comment in parse_export_feedback(self.csv):
+        for payment_id, status, comment in parse_export_feedback(self.csv.open()):
             debit = DirectDebit.objects.get(payment_id = payment_id)
             b, created = self.bankexportfeedbackline_set.get_or_create(
                 debit=debit,
@@ -179,7 +179,7 @@ class BankExportFeedback(models.Model):
                 b.save()
             if status == 1 and not debit.bank_acceptance_date:
                 debit.bank_acceptance_date = now().date()
-                debit.save()
+            debit.save()
 
 
 class BankExportFeedbackLine(models.Model):
