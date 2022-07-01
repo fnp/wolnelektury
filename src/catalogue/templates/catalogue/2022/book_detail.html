@@ -1,65 +1,12 @@
-<!doctype html>
-{% load pipeline %}
+{% extends '2022/base_real.html' %}
+
 {% load static %}
 {% load choose_cites from social_tags %}
-{% load choose_fragment license_icon from catalogue_tags %}
 {% load catalogue_tags %}
 {% load likes_book from social_tags %}
-{% load piwik_tags %}
 
 
-<html class="no-js">
-  <head>
-    <meta charset="utf-8">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>WolneLektury.pl</title>
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-
-    {% stylesheet '2022' %}
-      <script src="scripts/modernizr.js"></script>
-
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
-
-      {% tracking_code %}
-  </head>
-  <body>
-
-    <nav class="l-navigation">
-      <div class="l-change-pop">
-        <h3>Zmieniamy się!</h3>
-        <p>
-          Jeżeli to czytasz jesteś jedną z osób, której prezentujemy nowy wygląd strony książki.
-          Będziemy bardzo! wdzięczni za Twoją opinię – <a href='/formularz/ux-strona-ksiazki-T1/' target="_blank">możesz nam ją przesłać tutaj</a>.
-          Jeżeli wolisz klasyczny wygląd - wystarczy, że <a class="quit-experiment" href="#">klikniesz tutaj</a>
-        </p>
-        <!-- button class="l-change-pop__close">
-             <i class="icon icon-close"></i>
-             </button -->
-      </div>
-      <div class="l-container">
-        <a href="/" class="l-navigation__logo">
-          <img src="{% static "2022/images/logo.png" %}" alt="WolneLektury.pl">
-        </a>
-        <div class="l-naviagion__search">
-          <form action="/szukaj/">
-            <input id="search" name="q" type="text" placeholder="szukaj tytułu, autora, motywów…" autocomplete="off" data-source="/szukaj/hint/?max=10">
-          </form>
-        </div>
-        <div class="l-navigation__actions">
-          <a href="/ludzie/polka/"><i class="icon icon-liked"></i></a>
-          <!-- button class="l-navigation__button js-menu" aria-label="Menu">
-               <span class="c-hamburger">
-               <span class="bar"></span>
-               </span>
-               </button-->
-        </div>
-      </div>
-    </nav>
-
-
+{% block content %}
     <div class="l-container">
       <div class="l-breadcrumb">
         <a href="/"><span>Strona główna</span></a>
@@ -338,8 +285,10 @@
                 {{ book.abstract|safe }}
 
                 {% if book.toc %}
-                  <h4>Spis treści:</h4>
-                  {{ book.toc|safe }}
+                  <div class="toc">
+                    <h4>Spis treści:</h4>
+                    {{ book.toc|safe }}
+                  </div>
                 {% endif %}
               </div>
               <button class="l-article__read-more" aria-label="Kliknij aby rozwinąć" data-label="Czytaj więcej" data-action="Zwiń tekst">Czytaj więcej</button>
@@ -492,50 +441,5 @@
       </div>
     </section>
 
-    <div class="l-footer">
-      <div class="l-container">
-        <div class="l-footer__row">
-          <a href="#"><img src="{% static '2022/images/FNP-logo.png' %}" alt="FUNDACJA Nowoczesna Polska"></a>
-          <ul>
-            <li>ul. Marszałkowska 84/92 lok. 125</li>
-            <li>00-514 Warszawa</li>
-          </ul>
-          <ul class="teal">
-            <li>tel. <a href="#">(22) 621 30 17</a></li>
-            <li>email <a href="#">fundacja@nowoczesnapolska.org.pl</a></li>
-          </ul>
-        </div>
-        <div class="l-footer__row">
-          <div>
-            Wolne Lektury to projekt prowadzony przez fundację <a href="#">Nowoczesna Polska</a>. <br>
-            Hosting: <a href="#">ICM</a>.
-          </div>
-          <div>
-            <a href="#"><img src="{% static '2022/images/MKiDN.png' %}" alt="MKiDN"></a>
-          </div>
-          <div>
-            Strona biblioteki Wolne Lektury powstała dzięki dofinansowaniu ze środków Ministra <a href="#">Kultury i Dziedzictwa Narodowego</a>
-            pochodzących z <a href="#">Funduszu Promocji Kultury</a> – państwowego funduszu celowego.
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <script src="{% static '2022/scripts/vendor.js' %}"></script>
-    <script src="{% static '2021/scripts/main.js' %}"></script>
-
-    {% javascript '2022' %}
-      {% javascript '2022_player' %}
-        <!-- Hotjar Tracking Code for https://wolnelektury.pl/ -->
-        <script>
-         (function(h,o,t,j,a,r){
-             h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-             h._hjSettings={hjid:2661024,hjsv:6};
-             a=o.getElementsByTagName('head')[0];
-             r=o.createElement('script');r.async=1;
-             r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-             a.appendChild(r);
-         })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-        </script>
-  </body>
-</html>
+{% endblock %}

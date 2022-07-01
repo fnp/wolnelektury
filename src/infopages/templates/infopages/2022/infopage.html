@@ -1,0 +1,29 @@
+{% extends '2022/base.html' %}
+
+
+{% block content %}
+  <div class="l-container">
+    <div class="l-breadcrumb">
+      <a href="/"><span>Strona główna</span></a>
+      <a href="{{ page.get_absolute_url }}">{{ page.title }}</a>
+    </div>
+  </div>
+
+
+  <main class="l-main">
+    <div class="l-article__title">
+      <h1>{{ page.title }}</h1>
+    </div>
+    <article class="l-article">
+      <div class="l-article__cols">
+        <div class="left-column">
+          {{ left_column }}
+        </div>
+        <div class="right-column">
+          {{ right_column }}
+        </div>
+      </div>
+    </article>
+  </main>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+<!doctype html>
+{% load pipeline %}
+{% load static %}
+{% load piwik_tags %}
+
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>WolneLektury.pl</title>
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    {% stylesheet '2022' %}
+      <script src="scripts/modernizr.js"></script>
+
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+
+      {% tracking_code %}
+  </head>
+  <body>
+    {% include '2022/header.html' %}
+
+    {% block content %}{% endblock %}
+
+    {% include '2022/footer.html' %}
+
+    <script src="{% static '2022/scripts/vendor.js' %}"></script>
+    <script src="{% static '2021/scripts/main.js' %}"></script>
+
+    {% javascript '2022' %}
+    {% javascript '2022_player' %}
+    {% include '2022/hotjar.html' %}
+  </body>
+</html>

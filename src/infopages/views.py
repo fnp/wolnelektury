@@ -9,6 +9,9 @@ from infopages.models import InfoPage
 
 def infopage(request, slug):
     page = get_object_or_404(InfoPage, slug=slug)
+
+    new_layout = request.EXPERIMENTS['layout']
+    
     rc = RequestContext(request)
     try:
         left_column = Template(page.left_column).render(rc)
@@ -20,9 +23,13 @@ def infopage(request, slug):
     except TemplateSyntaxError:
         right_column = ''
 
-    return render(request, 'infopages/infopage.html', {
-        'page': page,
-        'left_column': left_column,
-        'right_column': right_column,
-        'active_menu_item': f'info:{slug}',
-    })
+    return render(
+        request,
+        'infopages/2022/infopage.html' if new_layout.value else 'infopages/infopage.html',
+        {
+            'page': page,
+            'left_column': left_column,
+            'right_column': right_column,
+            'active_menu_item': f'info:{slug}',
+        }
+    )

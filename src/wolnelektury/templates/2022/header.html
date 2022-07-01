@@ -1,0 +1,33 @@
+{% load static %}
+
+<nav class="l-navigation">
+  <div class="l-change-pop">
+    <h3>Zmieniamy się!</h3>
+    <p>
+      Jeżeli to czytasz jesteś jedną z osób, której prezentujemy nowy wygląd części stron.
+      Będziemy bardzo! wdzięczni za Twoją opinię – <a href='/formularz/ux-strona-ksiazki-T1/' target="_blank">możesz nam ją przesłać tutaj</a>.
+      Jeżeli wolisz klasyczny wygląd - wystarczy, że <a class="quit-experiment" href="#">klikniesz tutaj</a>
+    </p>
+    <!-- button class="l-change-pop__close">
+         <i class="icon icon-close"></i>
+         </button -->
+  </div>
+  <div class="l-container">
+    <a href="/" class="l-navigation__logo">
+      <img src="{% static "2022/images/logo.svg" %}" alt="WolneLektury.pl">
+    </a>
+    <div class="l-naviagion__search">
+      <form action="/szukaj/">
+        <input id="search" name="q" type="text" placeholder="szukaj tytułu, autora, motywów…" autocomplete="off" data-source="/szukaj/hint/?max=10">
+      </form>
+    </div>
+    <div class="l-navigation__actions">
+      <a href="/ludzie/polka/"><i class="icon icon-liked"></i></a>
+      <!-- button class="l-navigation__button js-menu" aria-label="Menu">
+           <span class="c-hamburger">
+           <span class="bar"></span>
+           </span>
+           </button-->
+    </div>
+  </div>
+</nav>
