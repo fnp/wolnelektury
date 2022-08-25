@@ -1,0 +1,65 @@
+.c-lang {
+  position: absolute;
+  top: 23px;
+  margin-right: 217px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 350ms $ease-out;
+  z-index: $master-layer + 1;
+
+  &.is-open {
+    .c-lang__button {
+      .icon-arrow-down {
+        transform: rotate(-180deg);
+      }
+    }
+    .c-lang__list {
+      transform: none;
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+}
+
+.c-lang__button {
+  display: flex;
+  align-items: center;
+  color: $color-white;
+  cursor: pointer;
+
+  .icon-lang {
+    color: #92BD39;
+    @include font-size(26px);
+    margin-right: 8px;
+  }
+
+  .icon-arrow-down {
+    margin-left: 8px;
+    transition: transform 350ms $ease-out;
+  }
+}
+
+.c-lang__list {
+  margin-top: 10px;
+  border-radius: 10px;
+  background-color: #F7BA00;
+  overflow: hidden;
+  transform: translateY(-10px);
+  opacity: 0;
+  transition: all 350ms $ease-out;
+  pointer-events: none;
+  a {
+    display: block;
+    padding: 9px 20px;
+    color: #474747;
+
+    &:hover {
+      background-color: #EDAA00;
+    }
+
+    &.is-active {
+      font-weight: $semibold;
+      background-color: #EDAA00;
+    }
+  }
+}

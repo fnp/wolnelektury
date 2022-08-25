@@ -5,26 +5,36 @@
 $icomoon-font-family: "wl" !default;
 $icomoon-font-path:   "../fonts" !default;
 
-$icon-liked: "\e900";
-$icon-audio: "\e903";
-$icon-book: "\e904";
-$icon-eye: "\e905";
-$icon-prev: "\e901";
-$icon-next: "\e902";
-$icon-play: "\e906";
-$icon-pause: "\e907";
-$icon-volume: "\e908";
-$icon-mute: "\e909";
-$icon-quote: "\e90a";
-$icon-search: "\e90b";
-$icon-acc-1: "\e90c";
-$icon-acc-2: "\e90d";
-$icon-acc-3: "\e90e";
-$icon-all: "\e90f";
-$icon-arrow-right: "\e910";
-$icon-arrow-up: "\e911";
-$icon-arrow-down: "\e912";
-$icon-close: "\e913";
+$icon-lang: "\e900";
+$icon-tt: "\e901";
+$icon-yt: "\e902";
+$icon-ig: "\e903";
+$icon-fb: "\e904";
+$icon-filter: "\e905";
+$icon-like: "\e906";
+$icon-liked: "\e907";
+$icon-prev: "\e908";
+$icon-next: "\e909";
+$icon-audio: "\e90a";
+$icon-picture: "\e90b";
+$icon-book: "\e90c";
+$icon-book-alt: "\e90d";
+$icon-eye: "\e90e";
+$icon-play: "\e90f";
+$icon-pause: "\e910";
+$icon-volume: "\e911";
+$icon-mute: "\e912";
+$icon-quote: "\e913";
+$icon-search: "\e914";
+$icon-acc-1: "\e915";
+$icon-acc-2: "\e916";
+$icon-acc-3: "\e917";
+$icon-all: "\e918";
+$icon-arrow-left: "\e919";
+$icon-arrow-right: "\e91a";
+$icon-arrow-up: "\e91b";
+$icon-arrow-down: "\e91c";
+$icon-close: "\e91d";
 
 @font-face {
   font-family: '#{$icomoon-font-family}';
@@ -52,24 +62,44 @@ $icon-close: "\e913";
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-lang {
+  &:before {
+    content: $icon-lang;
+  }
+}
+.icon-tt {
+  &:before {
+    content: $icon-tt;
+  }
+}
+.icon-yt {
+  &:before {
+    content: $icon-yt;
+  }
+}
+.icon-ig {
+  &:before {
+    content: $icon-ig;
+  }
+}
+.icon-fb {
+  &:before {
+    content: $icon-fb;
+  }
+}
+.icon-filter {
+  &:before {
+    content: $icon-filter;
+  }
+}
+.icon-like {
+  &:before {
+    content: $icon-like;
+  }
+}
 .icon-liked {
   &:before {
     content: $icon-liked;
-  }
-}
-.icon-audio {
-  &:before {
-    content: $icon-audio;
-  }
-}
-.icon-book {
-  &:before {
-    content: $icon-book;
-  }
-}
-.icon-eye {
-  &:before {
-    content: $icon-eye;
   }
 }
 .icon-prev {
@@ -82,12 +112,36 @@ $icon-close: "\e913";
     content: $icon-next;
   }
 }
+.icon-audio {
+  &:before {
+    content: $icon-audio;
+  }
+}
+.icon-picture {
+  &:before {
+    content: $icon-picture;
+  }
+}
+.icon-book {
+  &:before {
+    content: $icon-book;
+  }
+}
+.icon-book-alt {
+  &:before {
+    content: $icon-book-alt;
+  }
+}
+.icon-eye {
+  &:before {
+    content: $icon-eye;
+  }
+}
 .icon-play {
   &:before {
     content: $icon-play;
   }
 }
-.jp-state-playing .icon-play,
 .icon-pause {
   &:before {
     content: $icon-pause;
@@ -98,7 +152,6 @@ $icon-close: "\e913";
     content: $icon-volume;
   }
 }
-.jp-state-muted .icon-volume,
 .icon-mute {
   &:before {
     content: $icon-mute;
@@ -132,6 +185,11 @@ $icon-close: "\e913";
 .icon-all {
   &:before {
     content: $icon-all;
+  }
+}
+.icon-arrow-left {
+  &:before {
+    content: $icon-arrow-left;
   }
 }
 .icon-arrow-right {

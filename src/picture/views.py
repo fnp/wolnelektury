@@ -95,7 +95,7 @@ def import_picture(request):
             exception = pprint.pformat(info[1])
             tb = '\n'.join(traceback.format_tb(info[2]))
             return HttpResponse(_("An error occurred: %(exception)s\n\n%(tb)s") %
-                                {'exception': exception, 'tb': tb}, mimetype='text/plain')
+                                {'exception': exception, 'tb': tb}, content_type='text/plain')
         return HttpResponse(_("Picture imported successfully"))
     else:
         return HttpResponse(_("Error importing file: %r") % import_form.errors)

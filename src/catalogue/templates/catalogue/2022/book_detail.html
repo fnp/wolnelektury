@@ -309,40 +309,15 @@
       {% for author in book.authors %}
         <section class="l-section">
           <div class="l-author">
-            <div class="row">
-              <h2>O autorze</h2>
-              <div>
-                {% if author.photo %}
-                  <figure class="l-author__photo">
-                    <img src="{{ author.photo.url }}" alt="{{ author.name }}" style="width: 238px;">
-                    <figcaption>
-                      {{ author.photo_attribution|safe }}
-                    </figcaption>
-                  </figure>
-                {% endif %}
-                <article class="l-author__info">
-                  <h3><a href="{{ author.get_absolute_url }}">{{ author.name }}</a></h3>
-                  <div class="l-article__overlay" data-max-height="327">
-                    {{ author.description|safe }}
-                  </div>
-                  <button class="l-article__read-more" aria-label="Kliknij aby rozwinąć" data-label="Czytaj więcej" data-action="Zwiń tekst">Czytaj więcej</button>
-                </article>
-              </div>
-            </div>
+              {% include 'catalogue/2022/author_box.html' %}
 
-            {% choose_cites book 3 as cites %}
+            {% choose_cites 3 book=book as cites %}
             {% if cites %}
               <div class="row">
                 <div class="l-author__quotes">
                   <div class="l-author__quotes__slider">
                     {% for fragment in cites %}
-                      <a class="l-author__quotes__slider__item" href="{{ fragment.get_absolute_url }}">
-
-                        <em>
-                          {{ fragment.short_text|safe }}
-                        </em>
-                        <p>{{ fragment.book.pretty_title }}</p>
-                      </a>
+                      {% include "catalogue/2022/fragment_box.html" %}
                     {% endfor %}
                   </div>
                 </div>

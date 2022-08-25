@@ -142,9 +142,16 @@ def object_list(request, objects, fragments=None, related_tags=None, tags=None,
     }
     if extra:
         result.update(extra)
+
+    is_author = len(tags) == 1 and tags[0].category == 'author'
+    new_layout = request.EXPERIMENTS['layout']
+    if is_author and new_layout.value:
+        template = 'catalogue/2022/author_detail.html'
+    else:
+        template = 'catalogue/tagged_object_list.html'
+        
     return render(
-        request,
-        'catalogue/tagged_object_list.html', result,
+        request, template, result,
     )
 
 

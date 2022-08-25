@@ -139,6 +139,8 @@ class Book(models.Model):
 
     SORT_KEY_SEP = '$'
 
+    is_book = True
+
     class AlreadyExists(Exception):
         pass
 

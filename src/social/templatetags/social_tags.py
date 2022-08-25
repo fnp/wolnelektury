@@ -5,7 +5,7 @@ import re
 from django import template
 from django.utils.functional import lazy
 from django.utils.cache import add_never_cache_headers
-from catalogue.models import Book
+from catalogue.models import Book, Fragment
 from social.utils import likes, get_or_choose_cite, choose_cite as cs
 from ..models import Carousel, Cite
 
@@ -25,8 +25,11 @@ def choose_cite(context, book_id=None, tag_ids=None):
 
 
 @register.simple_tag
-def choose_cites(book, number):
-    return  book.choose_fragments(number) # todo: cites?
+def choose_cites(number, book=None, author=None):
+    if book is not None:
+        return book.choose_fragments(number) # todo: cites?
+    elif author is not None:
+        return Fragment.tagged.with_all([author]).order_by('?')[:number]
 
 
 @register.simple_tag(takes_context=True)

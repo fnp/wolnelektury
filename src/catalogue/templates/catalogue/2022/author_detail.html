@@ -1,0 +1,76 @@
+{% extends '2022/base_real.html' %}
+
+{% load choose_cites from social_tags %}
+
+{% block content %}
+  <div class="l-container">
+    <div class="l-breadcrumb">
+      <a href="/"><span>Strona główna</span></a>
+      <a href="/katalog/"><span>Katalog</span></a>
+      <a href="/katalog/autor/"><span>Autor</span></a>
+    </div>
+  </div>
+
+  <main class="l-main">
+
+    <div class="l-section">
+      <div class="l-author__header">
+        {% if tags.0.photo %}
+          <figure>
+            <img src="{{ tags.0.photo.url }}" alt="{{ tags.0.name }}">
+          </figure>
+        {% endif %}
+        <h1>{{ tags.0.name }}</h1>
+      </div>
+    </div>
+
+    <div class="l-section">
+      <div class="l-books__header">
+        <div class="l-books__input">
+          <i class="icon icon-filter"></i>
+          <input type="text" placeholder="filtry, tytuł" class="quick-filter" data-for="book-list">
+        </div>
+        <div class="l-books__sorting">
+             <span>Sortuj:</span>
+             <div>
+             <button data-order="data-pop">najpopularniejsze</button>
+             <button class="is-active">alfabetycznie</button>
+             <!--button>chronologicznie</button-->
+             </div>
+             </div>
+      </div>
+    </div>
+
+    <div class="l-section l-section--col">
+      <div class="l-books__grid" id="book-list">
+        {% for book in object_list %}
+          {% include "catalogue/2022/book_box.html" %}
+        {% endfor %}
+      </div>
+    </div>
+
+    <section class="l-section">
+      <div class="l-author">
+        {% with author=tags.0 %}
+          {% include 'catalogue/2022/author_box.html' %}
+        {% endwith %}
+        {% choose_cites 3 author=tags.0 as cites %}
+        {% if cites %}
+        <div class="row">
+          <div class="l-author__quotes">
+            <div class="l-author__quotes__slider">
+
+              {% for fragment in cites %}
+                <div class="l-author__quotes__slider__item">
+                  {% include "catalogue/2022/fragment_box.html" %}
+                </div>
+              {% endfor %}
+
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </section>
+  </main>
+{% endblock %}

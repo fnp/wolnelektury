@@ -1,0 +1,54 @@
+/* ------------------------------
+    Component: Checkbox
+------------------------------ */
+
+.c-checkbox {
+    display: flex;
+    margin-bottom: 14px;
+
+    input {
+    	opacity: 0;
+    	width: 0; height: 0;
+    	position: absolute;
+    	visibility: hidden;
+    }
+
+    input + label {
+    	&:before {
+    		content: '';
+    		margin-top: 2px;
+    		vertical-align: middle;
+    		width: 20px;
+    		min-width: 20px;
+    		height: 20px;
+    		margin-right: 20px;
+    		text-align: center;
+    		display: block;
+        background: #E1F1F2;
+        border: 2px solid #083F4D;
+        box-sizing: border-box;
+        border-radius: 3px;
+    	}
+    }
+
+    input:checked + label {
+    	&:before {
+        background: #083F4D url(../images/check.svg) center no-repeat;
+        background-size: 12px;
+    	}
+    }
+
+    label {
+    	display: flex;
+    	cursor: pointer;
+
+    	p {
+    		margin-top: 0;
+        color: #083F4D;
+    		@include font-size(15px);
+        line-height: 150%;
+        span {color: #FF4C54; margin-left: -10px;}
+    	}
+    }
+}
+

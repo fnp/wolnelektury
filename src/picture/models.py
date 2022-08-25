@@ -101,6 +101,8 @@ class Picture(models.Model):
 
     short_html_url_name = 'picture_short'
 
+    is_picture = True
+
     class AlreadyExists(Exception):
         pass
 

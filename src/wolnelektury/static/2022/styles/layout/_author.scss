@@ -180,3 +180,42 @@
   max-width: 336px;
   outline: 0;
 }
+
+
+.l-author__header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid #D9D9D9;
+  padding-bottom: 22px;
+
+  figure {
+    padding: 0;
+    font-size: 0;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 0 12px 0 0;
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  h1 {
+    font-weight: $bold;
+    font-size: 37px;
+    line-height: 130%;
+    letter-spacing: -0.01em;
+    color: #083F4D;
+    margin: 0;
+
+    span {
+      font-weight: $regular;
+    }
+  }
+}

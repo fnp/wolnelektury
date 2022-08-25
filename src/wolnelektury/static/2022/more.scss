@@ -1,3 +1,21 @@
+.l-books {
+    margin-right: -17px;
+}
+.l-books__grid {
+    margin-right: -17px;
+}
+
 .l-books__item {
     width: 212px;
+
+    margin-right: 17px !important; // reverse the 5n+5 rule.
+
+    transition: opacity .1s, all cubic-bezier(0.25, 1, 0.5, 1) 350ms;
+}
+
+
+.by-popularity {
+    .l-books__item {
+        order: attr(data-pop);
+    }
 }

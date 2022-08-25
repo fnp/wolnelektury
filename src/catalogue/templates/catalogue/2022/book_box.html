@@ -1,0 +1,37 @@
+{% load sorl_thumbnail %}
+
+<article class="l-books__item" data-pop="{{ book.popularity.count }}">
+  <figure class="l-books__item__img">
+    <a href="{{ book.get_absolute_url }}">
+      {% if book.is_picture %}
+        {% if book.image_file %}
+          {% thumbnail book.image_file "170x170" as im %}
+          <img style="float: left; margin:{{ im|margin:"170x170" }}" src="{{ im.url }}" width="{{ im.x }}" height="{{ im.y }}" />
+          {% endthumbnail %}
+        {% endif %}
+      {% else %}
+        {% if book.cover_clean %}
+          <img src="{{ book.cover_clean.url }}" alt="{{ book.title }}">
+        {% endif %}
+      {% endif %}
+    </a>
+  </figure>
+  <div class="l-books__item__actions">
+    {% if book.is_book %}
+      <span class="icon icon-book-alt" title="książka"></span>
+    {% endif %}
+    {% if book.has_mp3 %}
+      <span class="icon icon-audio" title="audiobook"></span>
+    {% endif %}
+    {% if book.is_picture %}
+      <span class="icon icon-picture" title="obraz"></span>
+    {% endif %}
+    <!-- a href="#" class="icon icon-like"></a -->
+  </div>
+  <h3>
+    {% for author in book.authors %}
+      <a href="{{ author.get_absolute_url }}">{{ author }}</a>{% if not forloop.last %}, {% endif %}
+    {% endfor %}
+  </h3>
+  <h2><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></h2>
+</article>
