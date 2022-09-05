@@ -4,6 +4,7 @@
 from django.conf import settings
 from django.core.cache import cache
 from django.db import models
+from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -42,3 +43,6 @@ class Attachment(models.Model):
 
     def __str__(self):
         return self.key
+
+    def get_absolute_url(self):
+        return reverse('chunks_attachment', args=[self.key, self.attachment.name.rsplit('.', 1)[-1]])

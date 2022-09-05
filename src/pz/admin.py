@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.contrib.admin.filters import FieldListFilter
+from django.contrib.admin.filters import FieldListFilter, SimpleListFilter
 from django.contrib import messages
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect
@@ -50,6 +50,23 @@ class EmptyFieldListFilter(FieldListFilter):
             }
 
 
+class PayedListFilter(SimpleListFilter):
+    title = 'pobrane'
+    parameter_name = 'payed'
+    def lookups(self, request, model_admin):
+        return (
+                ('yes', 'tak'),
+                ('no', 'nie'),
+                )
+
+    def queryset(self, request, queryset):
+        if self.value() == 'yes':
+            return queryset.filter(payment__is_dd=True, payment__realised=True).distinct()
+        if self.value() == 'no':
+            return queryset.exclude(payment__is_dd=True, payment__realised=True).distinct()
+
+
+
 class BankExportFeedbackLineInline(admin.TabularInline):
     model = models.BankExportFeedbackLine
     extra = 0
@@ -90,6 +107,7 @@ class DirectDebitAdmin(admin.ModelAdmin):
         'is_consumer',
         ('fundraiser_commission', EmptyFieldListFilter),
         ('fundraiser_bonus', EmptyFieldListFilter),
+        PayedListFilter,
     ]
     fieldsets = [
         (None, {

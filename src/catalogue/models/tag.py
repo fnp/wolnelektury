@@ -192,7 +192,7 @@ class Tag(models.Model):
                     # For instance, Pictures do not have 'genre' field.
                     continue
             for tag_name in tag_names:
-                lang = getattr(tag_name, 'lang', settings.LANGUAGE_CODE)
+                lang = getattr(tag_name, 'lang', None) or settings.LANGUAGE_CODE
                 tag_sort_key = tag_name
                 if category == 'author':
                     tag_sort_key = ' '.join((tag_name.last_name,) + tag_name.first_names)
