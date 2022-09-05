@@ -1,0 +1,52 @@
+.l-pagination {
+  display: flex;
+  align-content: center;
+  margin: 40px auto 40px auto;
+
+  ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    align-content: center;
+    list-style: none;
+
+    li {
+      margin: 0 5px;
+      font-weight: $regular;
+      @include font-size(18px);
+      line-height: 150%;
+      text-align: center;
+      color: #474747;
+
+      &.is-active {
+        a {
+          color: #ffffff;
+          background-color: #083F4D;
+          border-radius: 50%;
+        }
+      }
+
+      a {
+        text-align: center;
+        line-height: 35px;
+        display: block;
+        width: 35px;
+        height: 35px;
+      }
+    }
+  }
+}
+
+.l-pagination__arrow {
+  display: flex;
+  align-content: center;
+  @include font-size(10px);
+  margin: 0 20px;
+
+  .icon {
+    display: flex;
+    align-content: center;
+    line-height: 35px;
+  }
+}
+

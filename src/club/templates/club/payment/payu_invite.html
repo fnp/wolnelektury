@@ -1,0 +1,5 @@
+{% load static %}
+<a href="{% url 'club_payu_payment' schedule.key %}">
+	<h3>Przejdź do płatności &rarr;</h3>
+  <img src="{% static 'club/payu/banki.png' %}" style="width: 100%">
+</a>

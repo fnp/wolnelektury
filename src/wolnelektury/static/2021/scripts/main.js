@@ -148,28 +148,10 @@
 
 })();
 
-//Switch
 (function() {
-  let $switchOnce = $('#switch-once');
-  let $switchMonthly = $('#switch-monthly');
-
-  $switchMonthly.on('click', function() {
-      $('.payments-once').hide();
-      $('.payments-recurring').show();
-  });
-
-  $switchOnce.on('click', function() {
-      $('.payments-recurring').hide();
-      $('.payments-once').show();
-  });
-})();
-
-
-(function() {
-
     $('.l-checkout__payments__box button').on('click', function() {
         let container = $(this).closest('.l-checkout__payments');
-        $('input', container).val($(this).attr('data-amount'));
+        $('input', container).val($(this).val());
         $('.is-active', container).removeClass('is-active');
         $(this).closest('.l-checkout__payments__box').addClass('is-active');
         $('#kwota').val('');

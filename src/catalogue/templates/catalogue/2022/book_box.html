@@ -1,12 +1,12 @@
 {% load sorl_thumbnail %}
 
 <article class="l-books__item" data-pop="{{ book.popularity.count }}">
-  <figure class="l-books__item__img">
+  <figure class="l-books__item__img" style="height:240px">
     <a href="{{ book.get_absolute_url }}">
       {% if book.is_picture %}
         {% if book.image_file %}
-          {% thumbnail book.image_file "170x170" as im %}
-          <img style="float: left; margin:{{ im|margin:"170x170" }}" src="{{ im.url }}" width="{{ im.x }}" height="{{ im.y }}" />
+          {% thumbnail book.image_file "170x240" crop="center" as im %}
+          <img style="float: left; margin:{{ im|margin:"170x240" }}" src="{{ im.url }}" width="{{ im.x }}" height="{{ im.y }}" />
           {% endthumbnail %}
         {% endif %}
       {% else %}

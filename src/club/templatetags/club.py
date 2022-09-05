@@ -78,3 +78,8 @@ def club_monthly_since(start):
 def club_monthly_missing_since(start, target):
     return target - Schedule.objects.filter(
         monthly=True, payed_at__gte=start).count()
+
+
+@register.simple_tag
+def invite_payment(payment_method, schedule):
+    return payment_method.invite_widget(schedule)

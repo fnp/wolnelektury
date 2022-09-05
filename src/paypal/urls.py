@@ -9,6 +9,7 @@ urlpatterns = (
     path('form/', RedirectView.as_view(url='/pomagam/')),
     path('app-form/', RedirectView.as_view(url='/pomagam/?pk_campaign=aplikacja')),
 
+    path('init/<key>/', views.paypal_init, name='paypal_init'),
     path('return/<key>/', views.paypal_return, name='paypal_return'),
     path('app-return/<key>/', views.paypal_return, kwargs={'app': True}, name='paypal_app_return'),
     path('cancel/', views.paypal_cancel, name='paypal_cancel'),

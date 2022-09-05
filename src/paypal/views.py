@@ -6,7 +6,7 @@ from decimal import Decimal
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
 from django.http.response import HttpResponseRedirect, HttpResponseForbidden
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 
 from api.utils import HttpResponseAppRedirect
 from club.models import Schedule
@@ -30,6 +30,14 @@ def paypal_form(request, app=False):
     else:
         form = PaypalSubscriptionForm()
     return render(request, 'paypal/form.html', {'form': form})
+
+
+def paypal_init(request, key):
+    schedule = get_object_or_404(Schedule, key=key)
+    schedule.method = 'paypal'
+    schedule.save(update_fields=['method'])
+    app = request.GET.get('app')
+    return redirect(agreement_approval_url(schedule.amount, schedule.key, app=app))
 
 
 @login_required

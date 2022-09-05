@@ -14,7 +14,20 @@ from wolnelektury.utils import YesNoFilter
 from . import models
 
 
-admin.site.register(models.Club)
+class SingleAmountInline(admin.TabularInline):
+    model = models.SingleAmount
+
+
+class MonthlyAmountInline(admin.TabularInline):
+    model = models.MonthlyAmount
+
+
+@admin.register(models.Club)
+class ClubAdmin(admin.ModelAdmin):
+    inlines = [
+        SingleAmountInline,
+        MonthlyAmountInline
+    ]
 
 
 class PayUOrderInline(admin.TabularInline):

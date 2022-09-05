@@ -28,8 +28,8 @@
 <h3>2. {% trans "Choose the amount" %}</h3>
 
 <div class="plan" id="plan-single" style="display:none;" data-monthly="False" data-min-for-year="{{ club.min_for_year }}" data-amount="{{ club.default_single_amount }}">
-  {% for amount in club.proposed_single_amounts %}
-    <span class="button kwota{% if amount == club.default_single_amount %} active{% endif %}{% if amount >= club.min_for_year %} yearly{% endif %}">{{ amount }}</span>
+  {% for amount in club.singleamount_set.all %}
+    <span class="button kwota{% if amount.amount == club.default_single_amount %} active{% endif %}{% if amount.amount >= club.min_for_year %} yearly{% endif %}">{{ amount.amount }}</span>
   {% endfor %}
 
   <span class="inna">
@@ -41,8 +41,8 @@
 
 
 <div class="plan" id="plan-monthly" data-monthly="True" data-amount="{{ club.default_monthly_amount }}">
-  {% for amount in club.proposed_monthly_amounts %}
-    <span class="button kwota{% if amount == club.default_monthly_amount %} active{% endif %}">{{ amount }}</span>
+  {% for amount in club.monthlyamount_set.all %}
+    <span class="button kwota{% if amount.amount == club.default_monthly_amount %} active{% endif %}">{{ amount.amount }}</span>
   {% endfor %}
 
   <span class="inna">

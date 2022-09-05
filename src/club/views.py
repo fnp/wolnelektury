@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.db.models import Sum
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
+from django.urls import reverse
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
 from django.views.generic import FormView, CreateView, TemplateView, DetailView, UpdateView
@@ -13,6 +14,7 @@ from django.views import View
 from .payu import POSS
 from .payu import views as payu_views
 from .forms import ScheduleForm, PayUCardTokenForm
+from . import forms
 from . import models
 from .helpers import get_active_schedule
 from .payment_methods import recurring_payment_method
@@ -27,15 +29,54 @@ class ClubView(TemplateView):
         return ctx
 
 
-class JoinView(CreateView):
-    form_class = ScheduleForm
-    template_name = 'club/membership_form.html'
 
+class DonationStep1(UpdateView):
+    queryset = models.Schedule.objects.filter(payed_at=None)
+    form_class = forms.DonationStep1Form
+    slug_field = slug_url_kwarg = 'key'
+    template_name = 'club/2022/donation_step1.html'
+    step = 1
+
+    def get_context_data(self, **kwargs):
+        c = super().get_context_data(**kwargs)
+        c['club'] = models.Club.objects.first()
+        return c
+
+    def get_success_url(self):
+        return reverse('donation_step2', args=[self.object.key])
+
+
+class DonationStep2(UpdateView):
+    queryset = models.Schedule.objects.filter(payed_at=None)
+    form_class = forms.DonationStep2Form
+    slug_field = slug_url_kwarg = 'key'
+    template_name = 'club/2022/donation_step2.html'
+    step = 2
+
+
+class JoinView(CreateView):
+    @property
+    def club(self):
+        return models.Club.objects.first()
+
+    @property
+    def new_layout(self):
+        return self.request.EXPERIMENTS['layout'].value
+    
+    def get_template_names(self):
+        if self.new_layout:
+            return 'club/2022/donation_step1.html'
+        return 'club/membership_form.html'
+
+    def get_form_class(self):
+        if self.new_layout:
+            return forms.DonationStep1Form
+        return ScheduleForm
+    
     def is_app(self):
         return self.request.GET.get('app')
 
     def get(self, request):
-        # TODO: configure as app-allowed hosts.
         if settings.CLUB_APP_HOST and self.is_app() and request.META['HTTP_HOST'] != settings.CLUB_APP_HOST:
             return HttpResponseRedirect("https://" + settings.CLUB_APP_HOST + request.get_full_path())
 
@@ -43,7 +84,8 @@ class JoinView(CreateView):
             request.session['from_app'] = True
         elif request.session and 'from_app' in request.session:
             del request.session['from_app']
-        return super(JoinView, self).get(request)
+
+        return super().get(request)
 
     def get_context_data(self, **kwargs):
         c = super(JoinView, self).get_context_data(**kwargs)
@@ -57,12 +99,13 @@ class JoinView(CreateView):
     def get_initial(self):
         if self.request.user.is_authenticated and self.request.user.email:
             return {
-                'email': self.request.user.email,
+                'email': self.request.user.email
             }
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
-        kwargs['referer'] = self.request.META.get('HTTP_REFERER', '')
+        if not self.new_layout:
+            kwargs['referer'] = self.request.META.get('HTTP_REFERER', '')
         return kwargs
 
     def form_valid(self, form):
@@ -73,15 +116,24 @@ class JoinView(CreateView):
         return retval
 
     def get_success_url(self):
+        if self.new_layout:
+            return reverse('donation_step2', args=[self.object.key])
         return self.object.initiate_payment(self.request)
 
 
 @method_decorator(never_cache, name='dispatch')
 class ScheduleView(DetailView):
-    model = models.Schedule
+    queryset = models.Schedule.objects.exclude(email='')
     slug_field = slug_url_kwarg = 'key'
     template_name = 'club/schedule.html'
-
+    step = 3
+    
+    def get_template_names(self):
+        if self.request.EXPERIMENTS['layout'].value:
+            if not self.object.payed_at:
+                return 'club/2022/donation_step3.html'
+        return 'club/schedule.html'
+        
     def get_context_data(self, *args, **kwargs):
         ctx = super().get_context_data(*args, **kwargs)
         ctx['active_menu_item'] = 'club'
@@ -118,6 +170,7 @@ class DummyPaymentView(TemplateView):
     def post(self, request, key):
         schedule = models.Schedule.objects.get(key=key)
         schedule.create_payment()
+
         return HttpResponseRedirect(schedule.get_absolute_url())
 
 
@@ -127,6 +180,8 @@ class PayUPayment(DetailView):
 
     def get(self, request, key):
         schedule = self.get_object()
+        schedule.method = 'payu'
+        schedule.save(update_fields=['method'])
         return HttpResponseRedirect(schedule.initiate_payment(request))
 
 
@@ -142,7 +197,10 @@ class PayURecPayment(payu_views.RecPayment):
         return POSS[pos_id]
 
     def get_success_url(self):
-        return self.get_schedule().pay(self.request)
+        schedule = self.get_schedule()
+        schedule.method = 'payu-re'
+        schedule.save(update_fields=['method'])
+        return schedule.pay(self.request)
 
 
 class PayUNotifyView(payu_views.NotifyView):
@@ -152,8 +210,13 @@ class PayUNotifyView(payu_views.NotifyView):
 class ScheduleThanksView(DetailView):
     model = models.Schedule
     slug_field = slug_url_kwarg = 'key'
-    template_name = 'club/thanks.html'
+    step = 4
 
+    def get_template_names(self):
+        if self.request.EXPERIMENTS['layout'].value:
+            return 'club/2022/donation_step4.html'
+        return 'club/thanks.html'
+    
     def get_context_data(self, *args, **kwargs):
         ctx = super().get_context_data(*args, **kwargs)
         ctx['active_menu_item'] = 'club'

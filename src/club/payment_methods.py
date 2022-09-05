@@ -1,10 +1,14 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
+from hashlib import sha256
 from django.conf import settings
 from django.urls import reverse
 from django.utils.timezone import now
+from django.utils.translation import get_language
 from paypal.rest import agreement_approval_url
+from django.template.loader import render_to_string
+from .payu import POSS
 
 
 class PaymentMethod(object):
@@ -27,6 +31,14 @@ class PayU(PaymentMethod):
 
     def __init__(self, pos_id):
         self.pos_id = pos_id
+
+    def invite_widget(self, schedule):
+        return render_to_string(
+            'club/payment/payu_invite.html',
+            {
+                'schedule': schedule,
+            }
+        )
 
     def initiate(self, request, schedule):
         # Create Order at once.
@@ -54,6 +66,36 @@ class PayURe(PaymentMethod):
     def initiate(self, request, schedule):
         return reverse('club_payu_rec_payment', args=[schedule.key])
 
+    def invite_widget(self, schedule):
+        from . import forms
+        pos = POSS[self.pos_id]
+        widget_args = {
+            'merchant-pos-id': pos.pos_id,
+            'shop-name': "SHOW NAME",
+            'total-amount': str(int(schedule.amount * 100)),
+            'currency-code': pos.currency_code,
+            'customer-language': get_language(), # filter to pos.languages
+            'customer-email': schedule.email,
+            'store-card': 'true',
+            'recurring-payment': 'true',
+        }
+        widget_sig = sha256(
+            (
+                "".join(v for (k, v) in sorted(widget_args.items())) +
+                pos.secondary_key
+            ).encode('utf-8')
+        ).hexdigest()
+        
+        return render_to_string(
+            'payu/rec_widget.html',
+            {
+                'form': forms.PayUCardTokenForm(),
+                'pos': POSS[self.pos_id],
+                'widget_args': widget_args,
+                'widget_sig': widget_sig,
+            }
+        )
+    
     def pay(self, request, schedule):
         # Create order, put it and see what happens next.
         from .models import PayUOrder
@@ -104,6 +146,14 @@ class PayPal(PaymentMethod):
     is_recurring = True
     is_onetime = False
 
+    def invite_widget(self, schedule):
+        return render_to_string(
+            'club/payment/paypal_invite.html',
+            {
+                'schedule': schedule,
+            }
+        )
+    
     def initiate(self, request, schedule):
         app = request.GET.get('app')
         return agreement_approval_url(schedule.amount, schedule.key, app=app)

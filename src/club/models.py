@@ -26,9 +26,7 @@ from . import utils
 class Club(models.Model):
     min_amount = models.IntegerField(_('minimum amount'))
     min_for_year = models.IntegerField(_('minimum amount for year'))
-    single_amounts = models.CharField(_('proposed amounts for single payment'), max_length=255)
     default_single_amount = models.IntegerField(_('default single amount'))
-    monthly_amounts = models.CharField(_('proposed amounts for monthly payments'), max_length=255)
     default_monthly_amount = models.IntegerField(_('default monthly amount'))
 
     class Meta:
@@ -37,12 +35,23 @@ class Club(models.Model):
     
     def __str__(self):
         return 'Klub'
-    
-    def proposed_single_amounts(self):
-        return [int(x) for x in self.single_amounts.split(',')]
 
-    def proposed_monthly_amounts(self):
-        return [int(x) for x in self.monthly_amounts.split(',')]
+
+class SingleAmount(models.Model):
+    club = models.ForeignKey(Club, models.CASCADE)
+    amount = models.IntegerField()
+    description = models.TextField(blank=True)
+
+    class Meta:
+        ordering = ['amount']
+
+class MonthlyAmount(models.Model):
+    club = models.ForeignKey(Club, models.CASCADE)
+    amount = models.IntegerField()
+    description = models.TextField(blank=True)
+
+    class Meta:
+        ordering = ['amount']
 
 
 class Consent(models.Model):
@@ -115,6 +124,13 @@ class Schedule(models.Model):
 
     def get_payment_method(self):
         return [m for m in methods if m.slug == self.method][0]
+
+    def get_payment_methods(self):
+        for method in methods:
+            if (self.monthly or self.yearly) and method.is_recurring:
+                yield method
+            elif not (self.monthly or self.yearly) and method.is_onetime:
+                yield method
 
     def is_expired(self):
         return self.expires_at is not None and self.expires_at <= now()

@@ -19,3 +19,82 @@
         order: attr(data-pop);
     }
 }
+
+
+
+.toggle-input {
+    left: calc(50% - 77px/2);
+    opacity: 0;
+    position: absolute;
+    //top: 0;
+    height: 26px;
+    width: 77px;
+    z-index: 2;
+
+    &:checked {
+        z-index: 0;
+    }
+}
+
+
+.l-checkout__payments {
+    display: none;
+}
+.toggle-input{
+    &#switch-once:checked {
+        ~.l-switch__wrapper {
+            label {
+                &:nth-of-type(1) { color: #003C3C; }
+                &:nth-of-type(2) { color: #74BDC2; }
+            }
+            .toggle {
+                left: 5px;
+            }
+        }
+        ~.payments-once {
+            display: flex;
+        }
+    }
+    &#switch-monthly:checked {
+        ~.l-switch__wrapper {
+            label {
+                &:nth-of-type(1) { color: #74BDC2; }
+                &:nth-of-type(2) { color: #003C3C; }
+            }
+            .toggle {
+                left: 39px;
+            }
+        }
+        ~.payments-recurring {
+            display: flex;
+        }
+    }
+}
+
+
+
+.l-checkout__form__row {
+    .iframe {
+        margin-bottom: 16px;
+    }
+}
+
+
+
+.l-books__item__content {
+    width: 100%;
+   
+    .fragment-text {
+        max-width: 390px;
+        margin-top: 20px;
+        font-weight: 400;
+        font-size: 18px;
+        font-size: 1.125rem;
+        line-height: 150%;
+        color: #474747;
+        
+        h1, h2, h3, h4 {
+            font-size: 1em;
+        }
+    }
+}

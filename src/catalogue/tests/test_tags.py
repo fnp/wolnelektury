@@ -291,4 +291,4 @@ class BookTagsTests(WLTestCase):
         self.assertEqual([t.slug for t in book.tags.filter(category='kind')],
                          ['kind'])
         self.assertEqual([(tag.name, tag.count) for tag in related_themes],
-                         [('ChildTheme', 1), ('ParentTheme', 1), ('Theme', 2)])
+                         [('Theme', 2), ('ChildTheme', 1), ('ParentTheme', 1)])

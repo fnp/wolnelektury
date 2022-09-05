@@ -1,0 +1,98 @@
+{% extends '2022/base_real.html' %}
+{% load pagination_tags %}
+
+{% block content %}
+  <div class="l-container">
+    <div class="l-breadcrumb">
+      <a href="/"><span>Strona główna</span></a>
+      <a href="/katalog/"><span>Katalog</span></a>
+      <a href="/katalog/motyw/"><span>Motyw</span></a>
+      <span>{{ tags.0.name }}</span>
+    </div>
+  </div>
+
+  <main class="l-main">
+
+    <div class="l-section">
+      <div class="l-author__header">
+        <h1><span>Motyw:</span> {{ tags.0.name }}</h1>
+      </div>
+    </div>
+
+    <!-- div class="l-section">
+         <div class="l-books__header">
+         <div class="l-books__input">
+         <i class="icon icon-filter"></i>
+         <input type="text" placeholder="filtry, tytuł">
+         </div>
+         <div class="l-books__sorting">
+         <span>Sortuj:</span>
+         <div>
+         <button>autorzy</button>
+         <button>epoki</button>
+         <button>gatunki</button>
+         <button>rodzaje</button>
+         <button class="is-active">motywy</button>
+         </div>
+         </div>
+         </div>
+         </div -->
+
+    {% autopaginate object_list 10 %}
+
+    <div class="l-section l-section--col">
+      <div class="l-theme">
+        <div class="l-theme__col">
+          <div class="l-books__col">
+
+            {% for fragment in object_list %}
+              <article class="l-books__item">
+                <figure class="l-books__item__img">
+                  <a href="{{ fragment.get_absolute_url }}">
+                    {% if fragment.book.cover_clean %}
+                      <img src="{{ fragment.book.cover_clean.url }}" alt="{{ fragment.book.title }}">
+                    {% endif %}
+                  </a>
+                </figure>
+                <div class="l-books__item__content">
+                  <div class="l-books__item__actions">
+                    <a href="#" class="icon icon-book-alt"></a>
+                    {% if fragment.book.has_mp3 %}
+                      <a href="#" class="icon icon-audio"></a>
+                    {% endif %}
+                  </div>
+                  <h3>
+                    {% for author in fragment.book.authors %}
+                      <a href="{{ author.get_absolute_url }}">{{ author }}</a>{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                  </h3>
+                  <h2><a href="{{ fragment.book.get_absolute_url }}">{{ fragment.book.title }}</a></h2>
+                  <div class="fragment-text">
+                    {{ fragment.short_text|safe }}
+                  </div>
+                  <a href="{{ fragment.get_absolute_url }}">Czytaj więcej</a>
+                </div>
+              </article>
+            {% endfor %}
+            {% paginate using '2022/paginate.html' %}
+          </div>
+        </div>
+        <div class="l-theme__col">
+          <div class="l-theme__info">
+            <h3>Motyw: {{ tags.0.name }}</h3>
+            {{ tags.0.description|safe }}
+            <!--
+                 <h3>Motyw w sztuce <i class="icon icon-arrow-left"></i> <i class="icon icon-arrow-right"></i></h3>
+                 <div class="l-theme__info__slider">
+                 <img src="images/motyw.jpg" alt="">
+                 <img src="images/motyw.jpg" alt="">
+                 <img src="images/motyw.jpg" alt="">
+                 </div>
+            -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+{% endblock %}
