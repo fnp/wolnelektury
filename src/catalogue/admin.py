@@ -38,6 +38,7 @@ class BookAdmin(admin.ModelAdmin):
     list_filter = [
             'print_on_demand',
             ('wiki_link', BlankFieldListFilter),
+            ('parent', EmptyFieldListFilter),
             ]
     search_fields = ('title',)
     ordering = ('title',)
