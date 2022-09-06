@@ -143,7 +143,7 @@ class DonationStep1Form(forms.ModelForm):
         state['amount'] = \
             self.cleaned_data[f'{which}_amount'] or \
             self.cleaned_data['custom_amount'] or \
-            self.cleaned_data[f'{monthly}_amount_selected']
+            self.cleaned_data[f'{which}_amount_selected']
 
         return state
 

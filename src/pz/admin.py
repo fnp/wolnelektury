@@ -18,6 +18,8 @@ admin.site.register(models.Campaign)
 
 # Backport from Django 3.1.
 class EmptyFieldListFilter(FieldListFilter):
+    with_empty_str = False
+
     def __init__(self, field, request, params, model, model_admin, field_path):
         self.lookup_kwarg = '%s__isempty' % field_path
         self.lookup_val = params.get(self.lookup_kwarg)
@@ -30,6 +32,8 @@ class EmptyFieldListFilter(FieldListFilter):
             raise IncorrectLookupParameters
 
         lookup_condition = Q(**{'%s__isnull' % self.field_path: True})
+        if self.with_empty_str:
+            lookup_condition |= Q(**{self.field_path: ''})
         if self.lookup_val == '1':
             return queryset.filter(lookup_condition)
         return queryset.exclude(lookup_condition)

@@ -3,6 +3,11 @@
 #
 from django.contrib import admin
 from catalogue.models import Tag, Book, Fragment, BookMedia, Collection, Source
+from pz.admin import EmptyFieldListFilter
+
+
+class BlankFieldListFilter(EmptyFieldListFilter):
+    with_empty_str = True
 
 
 class TagAdmin(admin.ModelAdmin):
@@ -30,7 +35,10 @@ class BookAdmin(admin.ModelAdmin):
     list_display = (
         'title', 'slug', 'created_at', 'has_epub_file', 'has_html_file', 'has_description',
     )
-    list_filter = ['print_on_demand']
+    list_filter = [
+            'print_on_demand',
+            ('wiki_link', BlankFieldListFilter),
+            ]
     search_fields = ('title',)
     ordering = ('title',)
 
