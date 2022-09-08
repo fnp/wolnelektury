@@ -1,0 +1,13 @@
+{% for item in menu.menuitem_set.all %}
+  <li>
+    {% if item.has_link %}
+      <a href="{{ item.final_link }}" tabindex="-1">
+    {% endif %}
+    {% if item.highlight %}
+    {% endif %}
+    {{ item.final_name }}
+    {% if item.has_link %}
+      </a>
+    {% endif %}
+  </li>
+{% endfor %}

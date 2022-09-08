@@ -84,9 +84,11 @@
 
     <section class="infopages-box">
       <h1>{% trans "News" %}</h1>
-      {% cache 1800 latest_blog_posts %}
-        {% latest_blog_posts %}
-      {% endcache %}
+      <ol>
+        {% cache 1800 latest_blog_posts %}
+          {% latest_blog_posts %}
+        {% endcache %}
+      </ol>
     </section>
 
     <section class="infopages-box">

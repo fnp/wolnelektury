@@ -5,6 +5,7 @@ from django.conf import settings
 from django.core.cache import cache
 from django.db import models
 from django.urls import reverse
+from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -46,3 +47,43 @@ class Attachment(models.Model):
 
     def get_absolute_url(self):
         return reverse('chunks_attachment', args=[self.key, self.attachment.name.rsplit('.', 1)[-1]])
+
+
+class Menu(models.Model):
+    identifier = models.CharField(max_length=255, unique=True)
+
+    def __str__(self):
+        return self.identifier
+
+
+class MenuItem(models.Model):
+    menu = models.ForeignKey(Menu, models.CASCADE)
+    order = models.SmallIntegerField()
+    highlight = models.BooleanField()
+    infopage = models.ForeignKey(
+        'infopages.InfoPage', models.PROTECT, null=True, blank=True)
+    url = models.CharField(max_length=255, blank=True)
+    name = models.CharField(max_length=255, blank=True)
+
+    class Meta:
+        ordering = ('order',)
+
+    @property
+    def final_name(self):
+        if self.name == '-':
+            return mark_safe('<hr>')
+        if self.name:
+            return self.name
+        if self.infopage:
+            return self.infopage.title
+        return ''
+
+    @property
+    def final_link(self):
+        if self.infopage:
+            return self.infopage.get_absolute_url()
+        return self.url
+
+    @property
+    def has_link(self):
+        return self.url or self.infopage

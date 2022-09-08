@@ -1,17 +1,10 @@
+{% load cache %}
 {% load static %}
+{% load menu %}
+{% load latest_blog_posts from blog %}
+{% load preview_ad from catalogue_tags %}
 
 <nav class="l-navigation">
-  <div class="l-change-pop">
-    <h3>Zmieniamy się!</h3>
-    <p>
-      Jeżeli to czytasz jesteś jedną z osób, której prezentujemy nowy wygląd części stron.
-      Będziemy bardzo! wdzięczni za Twoją opinię – <a href='/formularz/ux-strona-ksiazki-T1/' target="_blank">możesz nam ją przesłać tutaj</a>.
-      Jeżeli wolisz klasyczny wygląd - wystarczy, że <a class="quit-experiment" href="#">klikniesz tutaj</a>
-    </p>
-    <!-- button class="l-change-pop__close">
-         <i class="icon icon-close"></i>
-         </button -->
-  </div>
   <div class="l-container">
     <a href="/" class="l-navigation__logo">
       <img src="{% static "2022/images/logo.svg" %}" alt="WolneLektury.pl">
@@ -22,12 +15,106 @@
       </form>
     </div>
     <div class="l-navigation__actions">
-      <a href="/ludzie/polka/"><i class="icon icon-liked"></i></a>
-      <!-- button class="l-navigation__button js-menu" aria-label="Menu">
-           <span class="c-hamburger">
-           <span class="bar"></span>
-           </span>
-           </button-->
+      {% if request.user.is_authenticated %}
+        <a href="/ludzie/polka/"><i class="icon icon-liked"></i></a>
+        <a href="{% url 'user_settings' %}" class="user">
+          {% if request.user.is_staff %}
+            <img src="{% static '2022/images/icons/user-staff.svg' %}">
+          {% elif request.user %}
+            <img src="{% static '2022/images/icons/user-vip.svg' %}">
+          {% else %}
+            <img src="{% static '2022/images/icons/user.svg' %}">
+          {% endif %}
+        </a>
+      {% else %}
+        <div class="l-navigation__login">
+          <a href='...'>Zaloguj się</a>
+          /
+          <a href='...'>Załóż konto</a>
+        </div>
+      {% endif %}
+      <button class="l-navigation__button js-menu" aria-label="Menu">
+        <span class="c-hamburger">
+          <span class="bar"></span>
+        </span>
+      </button>
+    </div>
+    <div class="l-navigation__menu">
+      <div class="l-container">
+        <div class="l-navigation__menu__links">
+          <ul>
+            <li><strong>Katalog</strong></li>
+            {% menu 'Katalog' %}
+          </ul>
+          <ul>
+            <li><strong>Włącz się</strong></li>
+            {% menu 'Włącz się' %}
+          </ul>
+          <ul>
+            <li><strong>Aktualności</strong></li>
+            {% cache 1800 latest_blog_posts %}
+              {% latest_blog_posts %}
+            {% endcache %}
+            {% menu 'Aktualności' %}
+          </ul>
+          <ul>
+            <li><strong>Narzędzia</strong></li>
+            {% menu 'Narzędzia' %}
+          </ul>
+          <ul>
+            <li><strong>O nas</strong></li>
+            {% menu 'O nas' %}
+          </ul>
+        </div>
+
+        <div class="l-navigation__menu__info">
+
+          <div class="l-navigation__menu__book">
+            {% preview_ad %}
+          </div>
+
+          <div class="l-navigation__menu__social">
+            <ul>
+              <li>
+                <a href="https://www.facebook.com/wolnelektury/"
+                   title="Facebook" tabindex="-1" target="_blank">
+                  <i class="icon icon-fb" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/c/WolneLekturyYT/"
+                   title="YouTube" tabindex="-1" target="_blank">
+                  <i class="icon icon-yt" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/wolnelektury/"
+                   title="Instagram" tabindex="-1" target="_blank">
+                  <i class="icon icon-ig" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/wolnelektury"
+                   title="Twitter" tabindex="-1" target="_blank">
+                  <i class="icon icon-tt" aria-hidden="true"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </nav>
+
+<div class="l-container l-change-pop">
+  <h3>Zmieniamy się!</h3>
+  <p>
+    Jeżeli to czytasz jesteś jedną z osób, której prezentujemy nowy wygląd części stron.
+    Będziemy bardzo! wdzięczni za Twoją opinię – <a href='/formularz/ux-strona-ksiazki-T1/' target="_blank">możesz nam ją przesłać tutaj</a>.
+    Jeżeli wolisz klasyczny wygląd - wystarczy, że <a class="quit-experiment" href="#">klikniesz tutaj</a>
+  </p>
+  <!-- button class="l-change-pop__close">
+       <i class="icon icon-close"></i>
+       </button -->
+</div>

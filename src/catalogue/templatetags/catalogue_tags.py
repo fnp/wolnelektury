@@ -528,3 +528,10 @@ def content_warning(book):
     return {
         "warnings": warnings
     }
+
+
+@register.inclusion_tag('catalogue/preview_ad.html')
+def preview_ad():
+    return {
+        'book': Book.objects.filter(preview=True).first()
+    }

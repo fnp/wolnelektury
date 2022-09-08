@@ -1,3 +1,45 @@
+.is-open {
+    height: 100%;
+    overflow-y: hidden;
+}
+
+.l-change-pop {
+    margin-top: 18px;
+}
+.is-open .l-change-pop {
+    height: auto;
+    margin-top: 18px;
+    padding: 10px 50px;
+}
+
+.l-navigation {
+    //opacity: .5;
+}
+
+.l-navigation__menu {
+    overflow-y: scroll;
+}
+.l-navigation__menu__book__info {
+    img {
+        width: 42px;
+        height: 60px;
+    }
+}
+.l-navigation__login {
+    color: #74BDC2;
+    margin-right: 20px;
+    
+    a {
+        color: white;
+    }
+}
+.l-navigation__actions {
+    .user {
+        margin-right: 25px;
+    }
+}
+
+
 .l-books {
     margin-right: -17px;
 }

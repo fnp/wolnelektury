@@ -2,19 +2,30 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.contrib import admin
-
-from chunks.models import Chunk, Attachment
+from django import forms
+from chunks import models
+from modeltranslation.admin import TranslationStackedInline
 
 
 class ChunkAdmin(admin.ModelAdmin):
     list_display = ('key', 'description',)
     search_fields = ('key', 'content',)
 
-admin.site.register(Chunk, ChunkAdmin)
+admin.site.register(models.Chunk, ChunkAdmin)
 
 
 class AttachmentAdmin(admin.ModelAdmin):
     list_display = ('key',)
     search_fields = ('key',)
 
-admin.site.register(Attachment, AttachmentAdmin)
+admin.site.register(models.Attachment, AttachmentAdmin)
+
+
+class MenuItemInline(TranslationStackedInline):
+    model = models.MenuItem
+    extra = 1
+
+
+@admin.register(models.Menu)
+class MenuAdmin(admin.ModelAdmin):
+    inlines = [MenuItemInline]

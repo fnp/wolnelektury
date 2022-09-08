@@ -1,0 +1,24 @@
+{% if book %}
+  <p>
+    <strong>Prapremiera!</strong>
+    Dziękujemy za wsparcie – przeczytaj w prezencie już dzisiaj!
+  </p>
+  <div class="l-navigation__menu__book__info">
+    <a href="{{ book.get_absolute_url }}" tabindex="-1">
+      <img src="{{ book.cover_clean.url }}" alt="{{ book.pretty_title }}">
+    </a>
+    <h3>
+      <a href="{{ book.get_absolute_url }}" tabindex="-1">
+        {% for author in book.authors %}
+          {{ author }}
+        {% endfor %}
+        <strong>
+          {{ book.title }}
+        </strong>
+      </a>
+    </h3>
+    <div>
+      {{ book.description|truncatewords_html:20|safe }}
+    </div>
+  </div>
+{% endif %}
