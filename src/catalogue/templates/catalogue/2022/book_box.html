@@ -1,6 +1,6 @@
 {% load sorl_thumbnail %}
 
-<article class="l-books__item" data-pop="{{ book.popularity.count }}">
+<article class="l-books__item" data-pop="-{{ book.popularity.count }}">
   <figure class="l-books__item__img" style="height:240px">
     <a href="{{ book.get_absolute_url }}">
       {% if book.is_picture %}

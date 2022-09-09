@@ -33,16 +33,5 @@
             }, 200);
         }, 200);
     });
-    $("#sort-popular").on('click', function() {
-        $(".l-books__item").each(function() {
-            $(this).css('order', $(this).attr('data-pop'));
-        });
-    });
-    $("#sort-popular").on('click', function() {
-        $(".l-books__item").each(function() {
-            $(this).css('order', $(this).attr('data-pop'));
-        });
-    });
-    
     
 })(jQuery);
