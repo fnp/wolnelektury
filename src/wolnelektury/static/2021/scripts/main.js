@@ -8,13 +8,13 @@
     if(!$(this).hasClass('is-active')) {
       $(this).addClass('is-active');
       menu.addClass('is-open');
-	    $('body').addClass('is-open');
+      $('body').addClass('is-open');
       button.find('.bar').addClass('animate');
       menuLinks.attr('tabindex', 0);
     } else {
       $(this).removeClass('is-active');
       menu.removeClass('is-open');
-	    $('body').removeClass('is-open');
+      $('body').removeClass('is-open');
       button.find('.bar').removeClass('animate');
       menuLinks.attr('tabindex', -1);
     }
@@ -24,11 +24,42 @@
     if (e.keyCode === 27) {
       button.removeClass('is-active');
       menu.removeClass('is-open');
-	    $('body').removeClass('is-open');
+      $('body').removeClass('is-open');
       button.find('.bar').removeClass('animate');
       menuLinks.attr('tabindex', -1);
     }
   });
+})();
+
+// User menu.
+(function() {
+    let button = $('.l-navigation__actions .user');
+    let menu = $('#user-menu');
+    let menuLinks = menu.find('a');
+
+    button.on('click', function() {
+        if (!menu.hasClass('is-open')) {
+            menu.addClass('is-open');
+            menuLinks.attr('tabindex', 0);
+        } else {
+            menu.removeClass('is-open');
+            menuLinks.attr('tabindex', -1)
+        }
+        return false;
+    });
+
+    $(document).keyup(function(e) {
+        if (e.keyCode === 27) {
+            menu.removeClass('is-open');
+            menuLinks.attr('tabindex', -1);
+        }
+    });
+
+    $(document).click(function() {
+      menu.removeClass('is-open');
+      menuLinks.attr('tabindex', -1);
+    });
+
 })();
 
 /// Ebook/Audiobook Btns

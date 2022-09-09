@@ -1,4 +1,4 @@
-.is-open {
+body.is-open {
     height: 100%;
     overflow-y: hidden;
 }
@@ -14,6 +14,10 @@
 
 .l-navigation {
     //opacity: .5;
+}
+
+.l-navigation__logo {
+    height: 44px;
 }
 
 .l-navigation__menu {
@@ -34,6 +38,9 @@
     }
 }
 .l-navigation__actions {
+    position: relative;
+    height: 44px;
+
     .user {
         margin-right: 25px;
     }
@@ -137,6 +144,60 @@
         
         h1, h2, h3, h4 {
             font-size: 1em;
+        }
+    }
+}
+
+
+
+#user-menu {
+    //display: none;
+
+    position:absolute;
+    top: 60px;
+    z-index: 1;
+
+    position: absolute;
+    width: 186px;
+    top: 48px;
+    right: 45px;
+
+    /* yellow 900 */
+    background: #F7BA00;
+    box-shadow: 0px 0px 20px rgba(1, 129, 137, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+
+    opacity:0;
+    pointer-events: none;
+    transition: 200ms opacity;
+    
+    &.is-open {
+        //display: block;
+        pointer-events: all;
+        opacity: 100%;
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        li {
+            a {
+                color: #474747;
+                display: block;
+                line-height: 27px;
+                padding: 8px 21px;
+                &:hover {
+                    color: #474747;
+                    background: #EDAA00;
+                }
+
+                strong {
+                    font-weight: 600;
+                }
+            }
         }
     }
 }
