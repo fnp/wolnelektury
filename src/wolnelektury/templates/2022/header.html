@@ -28,6 +28,7 @@
             </li>
             {% if request.user.is_staff %}
               <li><a href="{% url 'admin:index' %}" tabindex="-1">Administracja</a></li>
+              <li><a class='edit-links-toggle' href="#" tabindex="-1">Edycja</a></li>
             {% endif %}
             <li><a href="{% url 'logout' %}?next={% block logout %}{{ request.get_full_path }}{% endblock %}" tabindex="-1">Wyloguj się</a></li>
           </ul>
@@ -55,69 +56,69 @@
       </button>
     </div>
     <div class="l-navigation__menu">
-      <div class="l-container">
-        <div class="l-navigation__menu__links">
-          {% cache 30 menu LANGUAGE_CODE %}
-            <ul>
-              <li><strong>Katalog</strong></li>
-              {% menu 'Katalog' %}
-            </ul>
-            <ul>
-              <li><strong>Włącz się</strong></li>
-              {% menu 'Włącz się' %}
-            </ul>
-            <ul>
-              <li><strong>Aktualności</strong></li>
-              {% latest_blog_posts %}
-              {% menu 'Aktualności' %}
-            </ul>
-            <ul>
-              <li><strong>Narzędzia</strong></li>
-              {% menu 'Narzędzia' %}
-            </ul>
-            <ul>
-              <li><strong>O nas</strong></li>
-              {% menu 'O nas' %}
-            </ul>
-          {% endcache %}
-        </div>
-
-        <div class="l-navigation__menu__info">
-
-          <div class="l-navigation__menu__book">
-            {% cache 300 preview_ad LANGUAGE_CODE %}
-              {% preview_ad %}
+      <div class="scrollable">
+        <div class="l-container">
+          <div class="l-navigation__menu__links">
+            {% cache 30 menu LANGUAGE_CODE %}
+              <ul>
+                <li><strong>Katalog</strong></li>
+                {% menu 'Katalog' %}
+              </ul>
+              <ul>
+                <li><strong>Włącz się</strong></li>
+                {% menu 'Włącz się' %}
+              </ul>
+              <ul>
+                <li><strong>Aktualności</strong></li>
+                {% latest_blog_posts %}
+                {% menu 'Aktualności' %}
+              </ul>
+              <ul>
+                <li><strong>Narzędzia</strong></li>
+                {% menu 'Narzędzia' %}
+              </ul>
+              <ul>
+                <li><strong>O nas</strong></li>
+                {% menu 'O nas' %}
+              </ul>
             {% endcache %}
           </div>
 
-          <div class="l-navigation__menu__social">
-            <ul>
-              <li>
-                <a href="https://www.facebook.com/wolnelektury/"
-                   title="Facebook" tabindex="-1" target="_blank">
-                  <i class="icon icon-fb" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li>
-                <a href="https://www.youtube.com/c/WolneLekturyYT/"
-                   title="YouTube" tabindex="-1" target="_blank">
-                  <i class="icon icon-yt" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li>
-                <a href="https://www.instagram.com/wolnelektury/"
-                   title="Instagram" tabindex="-1" target="_blank">
-                  <i class="icon icon-ig" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li>
-                <a href="https://twitter.com/wolnelektury"
-                   title="Twitter" tabindex="-1" target="_blank">
-                  <i class="icon icon-tt" aria-hidden="true"></i>
-                </a>
+          <div class="l-navigation__menu__info">
+
+            <div class="l-navigation__menu__book">
+              {% preview_ad %}
+            </div>
+
+            <div class="l-navigation__menu__social">
+              <ul>
+                <li>
+                  <a href="https://www.facebook.com/wolnelektury/"
+                     title="Facebook" tabindex="-1" target="_blank">
+                    <i class="icon icon-fb" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.youtube.com/c/WolneLekturyYT/"
+                     title="YouTube" tabindex="-1" target="_blank">
+                    <i class="icon icon-yt" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.instagram.com/wolnelektury/"
+                     title="Instagram" tabindex="-1" target="_blank">
+                    <i class="icon icon-ig" aria-hidden="true"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://twitter.com/wolnelektury"
+                     title="Twitter" tabindex="-1" target="_blank">
+                    <i class="icon icon-tt" aria-hidden="true"></i>
+                  </a>
               </li>
             </ul>
           </div>
+        </div>
         </div>
       </div>
     </div>

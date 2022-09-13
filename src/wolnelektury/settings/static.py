@@ -27,6 +27,7 @@ PIPELINE = {
                 'contrib/jquery-ui-1.13.1.custom/jquery-ui.css',
                 '2022/styles/main.scss',
                 '2022/more.scss',
+                'chunks/edit.scss',
             ],
             'output_filename': 'css/compressed/2022.css',
         },
@@ -141,6 +142,7 @@ PIPELINE = {
                 'js/search.js',
                 'js/2022.js',
                 '2022/book/filter.js',
+                'chunks/edit.js',
             ],
             'output_filename': 'js/2022.min.js'
         },

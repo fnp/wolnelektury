@@ -1,4 +1,5 @@
 {% extends '2022/base.html' %}
+{% load chunks %}
 {% load club %}
 {% load static %}
 
@@ -84,9 +85,7 @@
           <h3>Transparentność jest dla nas bardzo ważna.</h3>
           <div>
             <div class="l-article__overlay" data-max-height="91">
-              <p>
-                O tym, jak wydajemy pozyskane pieniądze, dowiesz się ze sprawozdań finansowych i merytorycznych, które znajdziesz na naszej stronie lub w bazie Narodowego Instytutu Wolności, wpisując nr KRS 0000070056.
-              </p>
+              {% chunk 'donation-transparency' %}
             </div>
           </div>
         </div>
@@ -94,18 +93,7 @@
           <h3>Informacja o przetwarzaniu danych osobowych</h3>
           <div>
             <div class="l-article__overlay" data-max-height="91">
-              <p>
-                W każdej chwili możesz zrezygnować z subskrypcji. <a href="#">Więcej informacji. Polityka prywatności.</a>
-                Administratorem Twoich danych osobowych jest Fundacja Nowoczesna Polska z siedzibą w Warszawie, przy ul. Marszałkowskiej 84/92 lok. 125, 00-514 Warszawa (dalej: Fundacja).
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias consequatur deserunt doloribus facilis, ipsum nisi nulla quam rem totam!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias consequatur deserunt doloribus facilis, ipsum nisi nulla quam rem totam!
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias consequatur deserunt doloribus facilis, ipsum nisi nulla quam rem totam!
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias consequatur deserunt doloribus facilis, ipsum nisi nulla quam rem totam!
-              </p>
+              {% chunk 'donation-data-processing' %}
             </div>
             <button class="l-article__read-more" aria-label="Kliknij aby rozwinąć" data-label="Więcej" data-action="Mniej">Więcej</button>
           </div>
@@ -114,10 +102,7 @@
           <h3>FAQ</h3>
           <div>
             <div class="l-article__overlay" data-max-height="91">
-              <p>
-                Chcesz zmienić wysokość darowizny, anulować przyszłe płatności lub masz inne pytania? Tu znajdziesz odpowiedzi na nie:
-                <a href="#">Pytania i odpowiedzi dotyczące płatności</a>.
-              </p>
+              {% chunk 'donation-faq' %}
             </div>
           </div>
         </div>

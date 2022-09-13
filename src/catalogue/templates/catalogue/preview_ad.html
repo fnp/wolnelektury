@@ -1,8 +1,18 @@
 {% if book %}
-  <p>
-    <strong>Prapremiera!</strong>
-    Dziękujemy za wsparcie – przeczytaj w prezencie już dzisiaj!
-  </p>
+  <div class="l-navigation__menu__book__header">
+    {% if accessible %}
+      <p class='korona'>
+        <strong>Prapremiera!</strong>
+        Dziękujemy za wsparcie – przeczytaj w prezencie już dzisiaj!
+      </p>
+    {% else %}
+      <p>
+        <strong>Prapremiera!</strong>
+        Dorzuć się, aby przeczytać.
+      </p>
+      <a class="button" href="{% url 'club_join' %}?pk_campaign=menu-preview">Dorzuć się</a>
+    {% endif %}
+  </div>
   <div class="l-navigation__menu__book__info">
     <a href="{{ book.get_absolute_url }}" tabindex="-1">
       <img src="{{ book.cover_clean.url }}" alt="{{ book.pretty_title }}">

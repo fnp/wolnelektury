@@ -11,8 +11,8 @@ from ..models import Chunk, Attachment
 register = template.Library()
 
 
-@register.simple_tag
-def chunk(key, cache_time=0):
+@register.simple_tag(takes_context=True)
+def chunk(context, key, cache_time=0):
     try:
         cache_key = 'chunk:%s:%s' % (key, get_language())
         c = cache.get(cache_key)
@@ -23,7 +23,11 @@ def chunk(key, cache_time=0):
     except Chunk.DoesNotExist:
         n = Chunk(key=key)
         n.save()
-        return ''
+        content = ''
+
+    if context['request'].user.is_staff:
+        content = f'<span data-edit="chunks/chunk/{key}"></span>' + content
+
     return mark_safe(content)
 
 

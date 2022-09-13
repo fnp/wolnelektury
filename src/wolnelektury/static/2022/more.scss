@@ -12,22 +12,70 @@ body.is-open {
     padding: 10px 50px;
 }
 
-.l-navigation {
-    //opacity: .5;
-}
-
 .l-navigation__logo {
     height: 44px;
 }
 
 .l-navigation__menu {
-    overflow-y: scroll;
+    .scrollable {
+        height: 100%;
+        overflow-y: scroll;
+        padding-bottom: 30px;
+    }
+}
+
+.l-navigation__menu__book__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    p {
+        margin: 0;
+
+        &.korona {
+            &:before {
+                content: url('images/korona.svg');
+                width: 21px;
+                margin-right: -21px;
+                position: relative;
+                top: -10px;
+                left: -3px;
+            }
+        }
+    }
+}
+.l-navigation__menu__book {
+    .button {
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 700;
+        padding: 0 20px;
+        min-width: 212px;
+        line-height: 38px;
+        text-align: center;
+
+        /* green 700 */
+        background: #92BD39;
+        color: #083F4D;
+        border-radius: 6px;
+
+        transition: background-color 150ms;
+
+        &:hover {
+            background-color: #FBC40F;
+        }
+    }
 }
 .l-navigation__menu__book__info {
     img {
         width: 42px;
         height: 60px;
     }
+}
+.l-navigation__menu__links ul li a em {
+    font-style: normal;
+    color: #FFA500;
+    font-weight: 600;
 }
 .l-navigation__login {
     color: #74BDC2;
@@ -85,6 +133,9 @@ body.is-open {
     }
 }
 
+.l-checkout__box {
+    position: relative;
+}
 
 .l-checkout__payments {
     display: none;

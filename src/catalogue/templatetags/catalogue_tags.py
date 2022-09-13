@@ -530,8 +530,10 @@ def content_warning(book):
     }
 
 
-@register.inclusion_tag('catalogue/preview_ad.html')
-def preview_ad():
+@register.inclusion_tag('catalogue/preview_ad.html', takes_context=True)
+def preview_ad(context):
+    book = Book.objects.filter(preview=True).first()
     return {
-        'book': Book.objects.filter(preview=True).first()
+        'accessible': book.is_accessible_to(context['request'].user),
+        'book': book,
     }

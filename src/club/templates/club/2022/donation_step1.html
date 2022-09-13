@@ -10,6 +10,9 @@
     <input type="radio" name="switch" id="switch-once" value="single" class="toggle-input" {% if schedule and not schedule.monthly %}checked{% endif %}>
     <input type="radio" name="switch" id="switch-monthly" value="monthly" class="toggle-input" {% if not schedule or schedule.monthly %}checked{% endif %}>
     <div class="l-switch__wrapper">
+      {% if user.is_staff %}
+        <span data-edit="club/club/{{ club.pk }}"></span>
+      {% endif %}
 
       <div class="l-switch white">
         <label class='toggle-for' for="switch-once">Jednorazowo</label>
