@@ -97,5 +97,7 @@
 
         $("#reference-link").text(ref.label);
         $("#reference-link").attr('href', ref.wikipedia_link);
+
+        _paq.push(['trackEvent', 'html', 'reference']);
     });
 })})(jQuery);
