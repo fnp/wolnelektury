@@ -1,0 +1,19 @@
+.admin-link {
+    position: absolute;
+    background: #083F4D;
+    color: white;
+    border-radius: 100%;
+    font-size: 26px;
+    line-height: 32px;
+    width: 32px;
+    text-align: center;
+    box-shadow: 0 0 10px #083F4D;
+
+    transition: color, background 150ms;
+    z-index: 9999;
+
+    &:hover {
+        color: black;
+        background: #FBC40F;
+    }
+}
