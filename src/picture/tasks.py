@@ -4,12 +4,12 @@
 import json
 from traceback import print_exc
 
-from celery.task import task
+from celery import shared_task
 from django.core.files.base import ContentFile
 from django.template.loader import render_to_string
 
 
-@task
+@shared_task
 def generate_picture_html(picture_id):
     import picture.models
     pic = picture.models.Picture.objects.get(pk=picture_id)
@@ -22,7 +22,7 @@ def generate_picture_html(picture_id):
     pic.html_file.save("%s.html" % pic.slug, ContentFile(html_text))
 
 
-@task
+@shared_task
 def index_picture(picture_id, picture_info=None, **kwargs):
     from picture.models import Picture
     try:

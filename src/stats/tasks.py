@@ -1,7 +1,7 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from celery.task import task
+from celery import shared_task
 from django.conf import settings
 import logging
 from urllib.parse import urlsplit
@@ -21,6 +21,6 @@ except AttributeError:
     _host = None
 
 
-@task(ignore_result=True)
+@shared_task(ignore_result=True)
 def track_request(piwik_args):
     urlopen("%s%s%s" % (settings.PIWIK_URL, "piwik.php?", piwik_args))

@@ -1,6 +1,6 @@
 from datetime import datetime
 import json
-from celery.task import task
+from celery import shared_task
 from django.conf import settings
 import requests
 import yaml
@@ -171,7 +171,7 @@ civicrm = CiviCRM(
     settings.CIVICRM_KEY,
 )
 
-@task(ignore_result=True)
+@shared_task(ignore_result=True)
 def report_activity(*args, **kwargs):
     civicrm.report_activity(*args, **kwargs)
 

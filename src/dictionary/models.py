@@ -2,7 +2,7 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.db import models, transaction
-from celery.task import task
+from celery import shared_task
 from sortify import sortify
 from celery.utils.log import get_task_logger
 
@@ -44,7 +44,7 @@ class NoteSource(models.Model):
         ordering = ['book']
 
 
-@task(ignore_result=True)
+@shared_task(ignore_result=True)
 def build_notes(book):
     if not book.findable:
         return

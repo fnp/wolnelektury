@@ -2,7 +2,7 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from traceback import print_exc
-from celery.task import task
+from celery import shared_task
 from celery.utils.log import get_task_logger
 from django.conf import settings
 from django.utils import timezone
@@ -22,7 +22,7 @@ def touch_tag(tag):
     type(tag).objects.filter(pk=tag.pk).update(**update_dict)
 
 
-@task
+@shared_task
 def index_book(book_id, book_info=None, **kwargs):
     from catalogue.models import Book
     try:
@@ -33,7 +33,7 @@ def index_book(book_id, book_info=None, **kwargs):
         raise e
 
 
-@task(ignore_result=True, rate_limit=settings.CATALOGUE_CUSTOMPDF_RATE_LIMIT)
+@shared_task(ignore_result=True, rate_limit=settings.CATALOGUE_CUSTOMPDF_RATE_LIMIT)
 def build_custom_pdf(book_id, customizations, file_name, waiter_id=None):
     """Builds a custom PDF file."""
     try:
@@ -61,13 +61,13 @@ def build_custom_pdf(book_id, customizations, file_name, waiter_id=None):
             WaitedFile.objects.filter(pk=waiter_id).delete()
 
 
-@task(ignore_result=True)
+@shared_task(ignore_result=True)
 def update_counters():
     from .helpers import update_counters
     update_counters()
 
 
-@task(ignore_result=True)
+@shared_task(ignore_result=True)
 def update_references(book_id):
     from catalogue.models import Book
     Book.objects.get(id=book_id).update_references()

@@ -10,7 +10,7 @@ from django.db.models.fields.files import FieldFile
 from catalogue import app_settings
 from catalogue.constants import LANGUAGES_3TO2, EBOOK_FORMATS_WITH_CHILDREN, EBOOK_FORMATS_WITHOUT_CHILDREN
 from catalogue.utils import absolute_url, remove_zip, truncate_html_words, gallery_path, gallery_url
-from celery.task import Task, task
+from celery import Task, shared_task
 from celery.utils.log import get_task_logger
 from waiter.utils import clear_cache
 
@@ -178,11 +178,11 @@ class BuildEbook(Task):
         if fieldfile.field.format_name in app_settings.FORMAT_ZIPS:
             remove_zip(app_settings.FORMAT_ZIPS[fieldfile.field.format_name])
 # Don't decorate BuildEbook, because we want to subclass it.
-BuildEbookTask = task(BuildEbook, ignore_result=True)
+BuildEbookTask = shared_task(BuildEbook, ignore_result=True)
 
 
 @BuildEbook.register('txt')
-@task(ignore_result=True)
+@shared_task(ignore_result=True)
 class BuildTxt(BuildEbook):
     @staticmethod
     def transform(wldoc, fieldfile):
@@ -190,7 +190,7 @@ class BuildTxt(BuildEbook):
 
 
 @BuildEbook.register('pdf')
-@task(ignore_result=True)
+@shared_task(ignore_result=True)
 class BuildPdf(BuildEbook):
     @staticmethod
     def transform(wldoc, fieldfile):
@@ -204,7 +204,7 @@ class BuildPdf(BuildEbook):
 
 
 @BuildEbook.register('epub')
-@task(ignore_result=True)
+@shared_task(ignore_result=True)
 class BuildEpub(BuildEbook):
     librarian2_api = True
 
@@ -218,7 +218,7 @@ class BuildEpub(BuildEbook):
 
 
 @BuildEbook.register('mobi')
-@task(ignore_result=True)
+@shared_task(ignore_result=True)
 class BuildMobi(BuildEbook):
     librarian2_api = True
 
@@ -232,7 +232,7 @@ class BuildMobi(BuildEbook):
 
 
 @BuildEbook.register('html')
-@task(ignore_result=True)
+@shared_task(ignore_result=True)
 class BuildHtml(BuildEbook):
     def build(self, fieldfile):
         from django.core.files.base import ContentFile
@@ -343,7 +343,7 @@ class BuildCover(BuildEbook):
 
 
 @BuildEbook.register('cover_clean')
-@task(ignore_result=True)
+@shared_task(ignore_result=True)
 class BuildCoverClean(BuildCover):
     @classmethod
     def transform(cls, wldoc, fieldfile):
@@ -355,7 +355,7 @@ class BuildCoverClean(BuildCover):
 
 
 @BuildEbook.register('cover_thumb')
-@task(ignore_result=True)
+@shared_task(ignore_result=True)
 class BuildCoverThumb(BuildCover):
     @classmethod
     def transform(cls, wldoc, fieldfile):
@@ -364,7 +364,7 @@ class BuildCoverThumb(BuildCover):
 
 
 @BuildEbook.register('cover_api_thumb')
-@task(ignore_result=True)
+@shared_task(ignore_result=True)
 class BuildCoverApiThumb(BuildCover):
     @classmethod
     def transform(cls, wldoc, fieldfile):
@@ -373,7 +373,7 @@ class BuildCoverApiThumb(BuildCover):
 
 
 @BuildEbook.register('simple_cover')
-@task(ignore_result=True)
+@shared_task(ignore_result=True)
 class BuildSimpleCover(BuildCover):
     @classmethod
     def transform(cls, wldoc, fieldfile):
@@ -382,7 +382,7 @@ class BuildSimpleCover(BuildCover):
 
 
 @BuildEbook.register('cover_ebookpoint')
-@task(ignore_result=True)
+@shared_task(ignore_result=True)
 class BuildCoverEbookpoint(BuildCover):
     @classmethod
     def transform(cls, wldoc, fieldfile):
