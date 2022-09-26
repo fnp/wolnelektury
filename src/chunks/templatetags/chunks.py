@@ -25,7 +25,7 @@ def chunk(context, key, cache_time=0):
         n.save()
         content = ''
 
-    if context['request'].user.is_staff:
+    if 'request' in context and context['request'].user.is_staff:
         content = f'<span data-edit="chunks/chunk/{key}"></span>' + content
 
     return mark_safe(content)
