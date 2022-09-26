@@ -14,6 +14,7 @@ from django import template
 from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _, ungettext, ugettext, get_language
 from django_countries.fields import CountryField
+from pytz import utc
 from catalogue.utils import get_random_hash
 from messaging.states import Level
 from reporting.utils import render_to_pdf
@@ -240,7 +241,7 @@ class Membership(models.Model):
 
         Contact = apps.get_model('messaging', 'Contact')
         if self.manual:
-            Contact.update(email, Level.MANUAL_MEMBER, self.updated_at)
+            Contact.update(email, Level.MANUAL_MEMBER, datetime.combine(self.updated_at, datetime.min.time(), utc))
         else:
             Contact.reset(email)
 
