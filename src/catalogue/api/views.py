@@ -289,14 +289,24 @@ class TagCategoryView(ListAPIView):
 
 
 class TagView(RetrieveAPIView):
+    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
     serializer_class = serializers.TagDetailSerializer
-
+    queryset = Tag.objects.all()
+    
     def get_object(self):
         return get_object_or_404(
             Tag,
             category=self.kwargs['category'],
             slug=self.kwargs['slug']
         )
+
+    def post(self, request, **kwargs):
+        data = json.loads(request.POST.get('data'))
+        desc = data['description_pl']
+        obj = self.get_object()
+        obj.description_pl = desc
+        obj.save(update_fields=['description_pl'], quick=True)
+        return Response({})
 
 
 @vary_on_auth  # Because of 'liked'.

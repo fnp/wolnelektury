@@ -101,10 +101,10 @@ class Tag(models.Model):
         unique_together = (("slug", "category"),)
         app_label = 'catalogue'
 
-    def save(self, *args, **kwargs):
+    def save(self, *args, quick=False, **kwargs):
         existing = self.pk and self.category != 'set'
         ret = super(Tag, self).save(*args, **kwargs)
-        if existing:
+        if existing and not quick:
             self.after_change.send(sender=type(self), instance=self)
         return ret
 
