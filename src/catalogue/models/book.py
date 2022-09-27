@@ -403,6 +403,9 @@ class Book(models.Model):
     def get_daisy(self):
         return self.get_media("daisy")
 
+    def get_audio_epub(self):
+        return self.get_media("audio.epub")
+
     def media_url(self, format_):
         media = self.get_media(format_)
         if media:
@@ -454,10 +457,17 @@ class Book(models.Model):
     has_daisy_file.short_description = 'DAISY'
     has_daisy_file.boolean = True
 
+    def has_audio_epub_file(self):
+        return self.has_media("audio.epub")
+
     @property
     def media_daisy(self):
         return self.get_media('daisy')
     
+    @property
+    def media_audio_epub(self):
+        return self.get_media('audio.epub')
+
     def get_audiobooks(self):
         ogg_files = {}
         for m in self.media.filter(type='ogg').order_by().iterator():

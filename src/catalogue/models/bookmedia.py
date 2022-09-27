@@ -30,6 +30,7 @@ class BookMedia(models.Model):
         ('mp3', FileFormat(name='MP3', ext='mp3')),
         ('ogg', FileFormat(name='Ogg Vorbis', ext='ogg')),
         ('daisy', FileFormat(name='DAISY', ext='daisy.zip')),
+        ('audio.epub', FileFormat(name='EPUB+audio', ext='audio.epub')),
     ])
     format_choices = [(k, _('%s file' % t.name)) for k, t in formats.items()]
 

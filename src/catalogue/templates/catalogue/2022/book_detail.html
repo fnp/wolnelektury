@@ -261,14 +261,16 @@
                             </div>
                           </div>
                         {% endif %}
-                        {% if book.has_synchro_file %}
+                        {% if book.has_audio_epub_file %}
                           <div class="c-media__popup__box__item">
                             <div>
-                              <h3>synchrobook</h3>
+                              <h3>EPUB + audiobook</h3>
                               <p>Książka elektroniczna i audiobook w jednym. Wymaga aplikacji obsługującej format.</p>
                             </div>
                             <div>
-                              <a href="#" class="l-button l-button--media l-button--media--full">synchrobook</a>
+                              {% for epub in book.media_audio_epub %}
+                                <a href="{{ epub.file.url }}" class="l-button l-button--media l-button--media--full">EPUB+audio</a>
+                              {% endfor %}
                             </div>
                           </div>
                         {% endif %}

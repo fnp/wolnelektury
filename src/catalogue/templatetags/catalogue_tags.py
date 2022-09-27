@@ -424,6 +424,9 @@ def download_audio(book, daisy=True, mp3=True):
     if daisy and book.has_media('daisy'):
         for dsy in book.get_media('daisy'):
             links.append("<a href='%s'>%s</a>" % (dsy.file.url, BookMedia.formats['daisy'].name))
+    if daisy and book.has_media('audio.epub'):
+        for dsy in book.get_media('audio.epub'):
+            links.append("<a href='%s'>%s</a>" % (dsy.file.url, BookMedia.formats['audio.epub'].name))
     return mark_safe("".join(links))
 
 
