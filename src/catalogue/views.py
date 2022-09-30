@@ -408,12 +408,12 @@ def embargo_link(request, key, format_, slug):
     return HttpResponse(media_file, content_type=constants.EBOOK_CONTENT_TYPES[format_])
 
 
-def download_zip(request, format, slug=None):
-    if format in Book.ebook_formats:
-        url = Book.zip_format(format)
-    elif format in ('mp3', 'ogg') and slug is not None:
+def download_zip(request, file_format=None, media_format=None, slug=None):
+    if file_format:
+        url = Book.zip_format(file_format)
+    elif media_format and slug is not None:
         book = get_object_or_404(Book, slug=slug)
-        url = book.zip_audiobooks(format)
+        url = book.zip_audiobooks(media_format)
     else:
         raise Http404('No format specified for zip package')
     return HttpResponseRedirect(urlquote_plus(settings.MEDIA_URL + url, safe='/?='))

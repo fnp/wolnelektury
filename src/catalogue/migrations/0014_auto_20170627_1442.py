@@ -2,7 +2,7 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.db import migrations, models
-import catalogue.fields
+import fnpdjango.storage
 import catalogue.models.bookmedia
 
 
@@ -16,6 +16,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='bookmedia',
             name='file',
-            field=models.FileField(storage=catalogue.fields.OverwriteStorage(), upload_to=catalogue.models.bookmedia._file_upload_to, max_length=600, verbose_name='file'),
+            field=models.FileField(storage=fnpdjango.storage.BofhFileSystemStorage(), upload_to=catalogue.models.bookmedia._file_upload_to, max_length=600, verbose_name='file'),
         ),
     ]

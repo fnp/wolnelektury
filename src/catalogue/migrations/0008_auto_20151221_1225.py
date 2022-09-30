@@ -69,7 +69,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='bookmedia',
             name='file',
-            field=catalogue.fields.OverwritingFileField(upload_to=catalogue.models.bookmedia._file_upload_to, max_length=600, verbose_name='file'),
+            field=models.FileField(upload_to=catalogue.models.bookmedia._file_upload_to, max_length=600, verbose_name='file'),
         ),
         migrations.AlterField(
             model_name='collection',

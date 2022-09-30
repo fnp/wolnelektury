@@ -3,7 +3,6 @@
 #
 from django.db import migrations, models
 import catalogue.fields
-import catalogue.models.book
 
 
 class Migration(migrations.Migration):
@@ -16,6 +15,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='book',
             name='cover_api_thumb',
-            field=catalogue.fields.EbookField('cover_api_thumb', max_length=255, upload_to=catalogue.models.book.UploadToPath('book/cover_api_thumb/%s.jpg'), null=True, verbose_name='cover thumbnail for API', blank=True),
+            field=catalogue.fields.EbookField('cover_api_thumb', max_length=255, upload_to=catalogue.fields.UploadToPath('book/cover_api_thumb/%s.jpg'), null=True, verbose_name='cover thumbnail for API', blank=True),
         ),
     ]

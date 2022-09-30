@@ -4,22 +4,29 @@
 import os
 from django.conf import settings
 from django.core.files import File
-from django.core.files.storage import FileSystemStorage
 from django.db import models
 from django.db.models.fields.files import FieldFile
-from catalogue import app_settings
+from django.utils.deconstruct import deconstructible
+from django.utils.translation import gettext_lazy as _
 from catalogue.constants import LANGUAGES_3TO2, EBOOK_FORMATS_WITH_CHILDREN, EBOOK_FORMATS_WITHOUT_CHILDREN
 from catalogue.utils import absolute_url, remove_zip, truncate_html_words, gallery_path, gallery_url
-#from celery import Task, shared_task
-from celery.task import Task, task
-from celery.utils.log import get_task_logger
 from waiter.utils import clear_cache
-
-task_logger = get_task_logger(__name__)
 
 ETAG_SCHEDULED_SUFFIX = '-scheduled'
 EBOOK_BUILD_PRIORITY = 0
 EBOOK_REBUILD_PRIORITY = 9
+
+
+@deconstructible
+class UploadToPath(object):
+    def __init__(self, path):
+        self.path = path
+
+    def __call__(self, instance, filename):
+        return self.path % instance.slug
+
+    def __eq__(self, other):
+        return isinstance(other, type(self)) and other.path == self.path
 
 
 class EbookFieldFile(FieldFile):
@@ -27,20 +34,22 @@ class EbookFieldFile(FieldFile):
 
     def build(self):
         """Build the ebook immediately."""
-        return self.field.builder.build(self)
+        etag = self.field.get_current_etag()
+        self.field.build(self)
+        self.update_etag(etag)
+        self.instance.clear_cache()
 
     def build_delay(self, priority=EBOOK_BUILD_PRIORITY):
         """Builds the ebook in a delayed task."""
+        from .tasks import build_field
+
         self.update_etag(
             "".join([self.field.get_current_etag(), ETAG_SCHEDULED_SUFFIX])
         )
-        return self.field.builder.apply_async(
-            [self.instance, self.field.attname],
+        return build_field.apply_async(
+            [self.instance.pk, self.field.attname],
             priority=priority
         )
-
-    def get_url(self):
-        return self.instance.media_url(self.field.attname.split('_')[0])
 
     def set_readable(self, readable):
         import os
@@ -56,26 +65,59 @@ class EbookFieldFile(FieldFile):
 class EbookField(models.FileField):
     """Represents an ebook file field, attachable to a model."""
     attr_class = EbookFieldFile
-    registry = []
+    ext = None
+    librarian2_api = False
+    ZIP = None
 
-    def __init__(self, format_name, *args, **kwargs):
-        super(EbookField, self).__init__(*args, **kwargs)
-        self.format_name = format_name
+    def __init__(self, verbose_name_=None, with_etag=True, **kwargs):
+        # This is just for compatibility with older migrations,
+        # where first argument was for ebook format.
+        # Can be scrapped if old migrations are updated/removed.
+        verbose_name = verbose_name_ or _("%s file") % self.ext
+        kwargs.setdefault('verbose_name', verbose_name_ )
+
+        self.with_etag = with_etag
+        kwargs.setdefault('max_length', 255)
+        kwargs.setdefault('blank', True)
+        kwargs.setdefault('default', '')
+        kwargs.setdefault('upload_to', self.get_upload_to(self.ext))
+
+        super().__init__(**kwargs)
 
     def deconstruct(self):
-        name, path, args, kwargs = super(EbookField, self).deconstruct()
-        args.insert(0, self.format_name)
+        name, path, args, kwargs = super().deconstruct()
+        if kwargs.get('max_length') == 255:
+            del kwargs['max_length']
+        if kwargs.get('blank') is True:
+            del kwargs['blank']
+        if kwargs.get('default') == '':
+            del kwargs['default']
+        if self.get_upload_to(self.ext) == kwargs.get('upload_to'):
+            del kwargs['upload_to']
+        if not self.with_etag:
+            kwargs['with_etag'] = self.with_etag
+        # Compatibility
+        verbose_name = kwargs.get('verbose_name')
+        if verbose_name:
+            del kwargs['verbose_name']
+            if verbose_name != _("%s file") % self.ext:
+                args = [verbose_name] + args
         return name, path, args, kwargs
 
-    @property
-    def builder(self):
-        """Finds a celery task suitable for the format of the field."""
-        return BuildEbook.for_format(self.format_name)
+
+    @classmethod
+    def get_upload_to(cls, directory):
+        directory = getattr(cls, 'directory', cls.ext)
+        upload_template = f'book/{directory}/%s.{cls.ext}'
+        return UploadToPath(upload_template)
 
     def contribute_to_class(self, cls, name):
         super(EbookField, self).contribute_to_class(cls, name)
 
         self.etag_field_name = f'{name}_etag'
+        if self.with_etag:
+            self.etag_field = models.CharField(max_length=255, editable=False, default='', db_index=True)
+            self.etag_field.contribute_to_class(cls, f'{name}_etag')
 
         def has(model_instance):
             return bool(getattr(model_instance, self.attname, None))
@@ -83,8 +125,6 @@ class EbookField(models.FileField):
         has.__name__ = str("has_%s" % self.attname)
         has.short_description = self.name
         has.boolean = True
-
-        self.registry.append(self)
 
         setattr(cls, 'has_%s' % self.attname, has)
 
@@ -96,7 +136,7 @@ class EbookField(models.FileField):
     def schedule_stale(self, queryset=None):
         """Schedule building this format for all the books where etag is stale."""
         # If there is not ETag field, bail. That's true for xml file field.
-        if not hasattr(self.model, f'{self.attname}_etag'):
+        if not self.with_etag:
             return
 
         etag = self.get_current_etag()
@@ -117,51 +157,17 @@ class EbookField(models.FileField):
             fieldfile.build_delay(priority=priority)
 
     @classmethod
-    def schedule_all_stale(cls):
+    def schedule_all_stale(cls, model):
         """Schedules all stale ebooks of all formats to rebuild."""
-        for field in cls.registry:
-            field.schedule_stale()
-
-
-
-class BuildEbook(Task):
-    librarian2_api = False
-
-    formats = {}
-
-    @classmethod
-    def register(cls, format_name):
-        """A decorator for registering subclasses for particular formats."""
-        def wrapper(builder):
-            cls.formats[format_name] = builder
-            return builder
-        return wrapper
-
-    @classmethod
-    def for_format(cls, format_name):
-        """Returns a celery task suitable for specified format."""
-        return cls.formats.get(format_name, BuildEbookTask)
+        for field in model._meta.fields:
+            if isinstance(field, cls):
+                field.schedule_stale()
 
     @staticmethod
-    def transform(wldoc, fieldfile):
+    def transform(wldoc):
         """Transforms an librarian.WLDocument into an librarian.OutputFile.
-
-        By default, it just calls relevant wldoc.as_??? method.
-
         """
-        return getattr(wldoc, "as_%s" % fieldfile.field.format_name)()
-
-    def run(self, obj, field_name):
-        """Just run `build` on FieldFile, can't pass it directly to Celery."""
-        fieldfile = getattr(obj, field_name)
-
-        # Get etag value before actually building the file.
-        etag = fieldfile.field.get_current_etag()
-        task_logger.info("%s -> %s@%s" % (obj.slug, field_name, etag))
-        ret = self.build(getattr(obj, field_name))
-        fieldfile.update_etag(etag)
-        obj.clear_cache()
-        return ret
+        raise NotImplemented()
 
     def set_file_permissions(self, fieldfile):
         if fieldfile.instance.preview:
@@ -171,30 +177,45 @@ class BuildEbook(Task):
         book = fieldfile.instance
         out = self.transform(
             book.wldocument2() if self.librarian2_api else book.wldocument(),
-            fieldfile)
+        )
         fieldfile.save(None, File(open(out.get_filename(), 'rb')), save=False)
         self.set_file_permissions(fieldfile)
         if book.pk is not None:
-            book.save(update_fields=[fieldfile.field.attname])
-        if fieldfile.field.format_name in app_settings.FORMAT_ZIPS:
-            remove_zip(app_settings.FORMAT_ZIPS[fieldfile.field.format_name])
-# Don't decorate BuildEbook, because we want to subclass it.
-BuildEbookTask = task(BuildEbook, ignore_result=True)
+            book.save(update_fields=[self.attname])
+        if self.ZIP:
+            remove_zip(self.ZIP)
 
 
-@BuildEbook.register('txt')
-@task(ignore_result=True)
-class BuildTxt(BuildEbook):
+class XmlField(EbookField):
+    ext = 'xml'
+
+    def build(self, fieldfile):
+        pass
+
+
+class TxtField(EbookField):
+    ext = 'txt'
+
     @staticmethod
-    def transform(wldoc, fieldfile):
+    def transform(wldoc):
         return wldoc.as_text()
 
 
-@BuildEbook.register('pdf')
-@task(ignore_result=True)
-class BuildPdf(BuildEbook):
+class Fb2Field(EbookField):
+    ext = 'fb2'
+    ZIP = 'wolnelektury_pl_fb2'
+
     @staticmethod
-    def transform(wldoc, fieldfile):
+    def transform(wldoc):
+        return wldoc.as_fb2()
+
+
+class PdfField(EbookField):
+    ext = 'pdf'
+    ZIP = 'wolnelektury_pl_pdf'
+
+    @staticmethod
+    def transform(wldoc):
         return wldoc.as_pdf(
             morefloats=settings.LIBRARIAN_PDF_MOREFLOATS, cover=True,
             base_url=absolute_url(gallery_url(wldoc.book_info.url.slug)), customizations=['notoc'])
@@ -204,13 +225,13 @@ class BuildPdf(BuildEbook):
         clear_cache(fieldfile.instance.slug)
 
 
-@BuildEbook.register('epub')
-@task(ignore_result=True)
-class BuildEpub(BuildEbook):
+class EpubField(EbookField):
+    ext = 'epub'
     librarian2_api = True
+    ZIP = 'wolnelektury_pl_epub'
 
     @staticmethod
-    def transform(wldoc, fieldfile):
+    def transform(wldoc):
         from librarian.builders import EpubBuilder
         return EpubBuilder(
                 base_url='file://' + os.path.abspath(gallery_path(wldoc.meta.url.slug)) + '/',
@@ -218,13 +239,13 @@ class BuildEpub(BuildEbook):
             ).build(wldoc)
 
 
-@BuildEbook.register('mobi')
-@task(ignore_result=True)
-class BuildMobi(BuildEbook):
+class MobiField(EbookField):
+    ext = 'mobi'
     librarian2_api = True
+    ZIP = 'wolnelektury_pl_mobi'
 
     @staticmethod
-    def transform(wldoc, fieldfile):
+    def transform(wldoc):
         from librarian.builders import MobiBuilder
         return MobiBuilder(
                 base_url='file://' + os.path.abspath(gallery_path(wldoc.meta.url.slug)) + '/',
@@ -232,9 +253,9 @@ class BuildMobi(BuildEbook):
             ).build(wldoc)
 
 
-@BuildEbook.register('html')
-@task(ignore_result=True)
-class BuildHtml(BuildEbook):
+class HtmlField(EbookField):
+    ext = 'html'
+
     def build(self, fieldfile):
         from django.core.files.base import ContentFile
         from slugify import slugify
@@ -244,7 +265,7 @@ class BuildHtml(BuildEbook):
 
         book = fieldfile.instance
 
-        html_output = self.transform(book.wldocument(parse_dublincore=False), fieldfile)
+        html_output = self.transform(book.wldocument(parse_dublincore=False))
 
         # Delete old fragments, create from scratch if necessary.
         book.fragments.all().delete()
@@ -324,7 +345,7 @@ class BuildHtml(BuildEbook):
         return False
 
     @staticmethod
-    def transform(wldoc, fieldfile):
+    def transform(wldoc):
         # ugly, but we can't use wldoc.book_info here
         from librarian import DCNS
         url_elem = wldoc.edoc.getroot().find('.//' + DCNS('identifier.url'))
@@ -338,16 +359,19 @@ class BuildHtml(BuildEbook):
         return wldoc.as_html(gallery_path=gal_path, gallery_url=gal_url, base_url=absolute_url(gal_url))
 
 
-class BuildCover(BuildEbook):
+class CoverField(EbookField):
+    ext = 'jpg'
+    directory = 'cover'
+
     def set_file_permissions(self, fieldfile):
         pass
 
 
-@BuildEbook.register('cover_clean')
-@task(ignore_result=True)
-class BuildCoverClean(BuildCover):
-    @classmethod
-    def transform(cls, wldoc, fieldfile):
+class CoverCleanField(CoverField):
+    directory = 'cover_clean'
+
+    @staticmethod
+    def transform(wldoc):
         if wldoc.book_info.cover_box_position == 'none':
             from librarian.cover import WLCover
             return WLCover(wldoc.book_info, width=240).output_file()
@@ -355,62 +379,37 @@ class BuildCoverClean(BuildCover):
         return MarquiseCover(wldoc.book_info, width=240).output_file()
 
 
-@BuildEbook.register('cover_thumb')
-@task(ignore_result=True)
-class BuildCoverThumb(BuildCover):
-    @classmethod
-    def transform(cls, wldoc, fieldfile):
+class CoverThumbField(CoverField):
+    directory = 'cover_thumb'
+
+    @staticmethod
+    def transform(wldoc):
         from librarian.cover import WLCover
         return WLCover(wldoc.book_info, height=193).output_file()
 
 
-@BuildEbook.register('cover_api_thumb')
-@task(ignore_result=True)
-class BuildCoverApiThumb(BuildCover):
-    @classmethod
-    def transform(cls, wldoc, fieldfile):
+class CoverApiThumbField(CoverField):
+    directory = 'cover_api_thumb'
+
+    @staticmethod
+    def transform(wldoc):
         from librarian.cover import WLNoBoxCover
         return WLNoBoxCover(wldoc.book_info, height=500).output_file()
 
 
-@BuildEbook.register('simple_cover')
-@task(ignore_result=True)
-class BuildSimpleCover(BuildCover):
-    @classmethod
-    def transform(cls, wldoc, fieldfile):
+class SimpleCoverField(CoverField):
+    directory = 'cover_simple'
+
+    @staticmethod
+    def transform(wldoc):
         from librarian.cover import WLNoBoxCover
         return WLNoBoxCover(wldoc.book_info, height=1000).output_file()
 
 
-@BuildEbook.register('cover_ebookpoint')
-@task(ignore_result=True)
-class BuildCoverEbookpoint(BuildCover):
-    @classmethod
-    def transform(cls, wldoc, fieldfile):
+class CoverEbookpointField(CoverField):
+    directory = 'cover_ebookpoint'
+
+    @staticmethod
+    def transform(wldoc):
         from librarian.cover import EbookpointCover
         return EbookpointCover(wldoc.book_info).output_file()
-
-
-# not used, but needed for migrations
-class OverwritingFieldFile(FieldFile):
-    """
-        Deletes the old file before saving the new one.
-    """
-
-    def save(self, name, content, *args, **kwargs):
-        leave = kwargs.pop('leave', None)
-        # delete if there's a file already and there's a new one coming
-        if not leave and self and (not hasattr(content, 'path') or content.path != self.path):
-            self.delete(save=False)
-        return super(OverwritingFieldFile, self).save(name, content, *args, **kwargs)
-
-
-class OverwritingFileField(models.FileField):
-    attr_class = OverwritingFieldFile
-
-
-class OverwriteStorage(FileSystemStorage):
-
-    def get_available_name(self, name, max_length=None):
-        self.delete(name)
-        return name

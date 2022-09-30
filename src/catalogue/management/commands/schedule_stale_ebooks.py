@@ -5,10 +5,11 @@ from django.conf import settings
 from django.core.management.base import BaseCommand
 
 from catalogue.fields import EbookField
+from catalogue.models import Book
 
 
 class Command(BaseCommand):
     help = 'Schedule regenerating stale ebook files.'
 
     def handle(self, **options):
-        EbookField.schedule_all_stale()
+        EbookField.schedule_all_stale(Book)

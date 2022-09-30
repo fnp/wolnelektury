@@ -16,43 +16,20 @@ from django.contrib.contenttypes.fields import GenericRelation
 from django.template.loader import render_to_string
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _, get_language
-from django.utils.deconstruct import deconstructible
 from fnpdjango.storage import BofhFileSystemStorage
 from lxml import html
 from librarian.cover import WLCover
 from librarian.html import transform_abstrakt
 from newtagging import managers
 from catalogue import constants
-from catalogue.fields import EbookField
+from catalogue import fields
 from catalogue.models import Tag, Fragment, BookMedia
 from catalogue.utils import create_zip, gallery_url, gallery_path, split_tags, get_random_hash
 from catalogue.models.tag import prefetched_relations
 from catalogue import app_settings
-from catalogue import tasks
 from wolnelektury.utils import makedirs, cached_render, clear_cached_renders
 
 bofh_storage = BofhFileSystemStorage()
-
-
-@deconstructible
-class UploadToPath(object):
-    def __init__(self, path):
-        self.path = path
-
-    def __call__(self, instance, filename):
-        return self.path % instance.slug
-
-
-_cover_upload_to = UploadToPath('book/cover/%s.jpg')
-_cover_clean_upload_to = UploadToPath('book/cover_clean/%s.jpg')
-_cover_thumb_upload_to = UploadToPath('book/cover_thumb/%s.jpg')
-_cover_api_thumb_upload_to = UploadToPath('book/cover_api_thumb/%s.jpg')
-_simple_cover_upload_to = UploadToPath('book/cover_simple/%s.jpg')
-_cover_ebookpoint_upload_to = UploadToPath('book/cover_ebookpoint/%s.jpg')
-
-
-def _ebook_upload_to(upload_path):
-    return UploadToPath(upload_path)
 
 
 class Book(models.Model):
@@ -82,44 +59,24 @@ class Book(models.Model):
     findable = models.BooleanField(_('findable'), default=True, db_index=True)
 
     # files generated during publication
-    cover = EbookField(
-        'cover', _('cover'),
-        null=True, blank=True,
-        upload_to=_cover_upload_to,
-        storage=bofh_storage, max_length=255)
-    cover_etag = models.CharField(max_length=255, editable=False, default='', db_index=True)
+    xml_file = fields.XmlField(storage=bofh_storage, with_etag=False)
+    html_file = fields.HtmlField(storage=bofh_storage)
+    fb2_file = fields.Fb2Field(storage=bofh_storage)
+    txt_file = fields.TxtField(storage=bofh_storage)
+    epub_file = fields.EpubField(storage=bofh_storage)
+    mobi_file = fields.MobiField(storage=bofh_storage)
+    pdf_file = fields.PdfField(storage=bofh_storage)
+
+    cover = fields.CoverField(_('cover'), storage=bofh_storage)
     # Cleaner version of cover for thumbs
-    cover_clean = EbookField(
-        'cover_clean', _('clean cover'),
-        null=True, blank=True,
-        upload_to=_cover_clean_upload_to,
-        max_length=255
-    )
-    cover_clean_etag = models.CharField(max_length=255, editable=False, default='', db_index=True)
-    cover_thumb = EbookField(
-        'cover_thumb', _('cover thumbnail'),
-        null=True, blank=True,
-        upload_to=_cover_thumb_upload_to,
-        max_length=255)
-    cover_thumb_etag = models.CharField(max_length=255, editable=False, default='', db_index=True)
-    cover_api_thumb = EbookField(
-        'cover_api_thumb', _('cover thumbnail for mobile app'),
-        null=True, blank=True,
-        upload_to=_cover_api_thumb_upload_to,
-        max_length=255)
-    cover_api_thumb_etag = models.CharField(max_length=255, editable=False, default='', db_index=True)
-    simple_cover = EbookField(
-        'simple_cover', _('cover for mobile app'),
-        null=True, blank=True,
-        upload_to=_simple_cover_upload_to,
-        max_length=255)
-    simple_cover_etag = models.CharField(max_length=255, editable=False, default='', db_index=True)
-    cover_ebookpoint = EbookField(
-        'cover_ebookpoint', _('cover for Ebookpoint'),
-        null=True, blank=True,
-        upload_to=_cover_ebookpoint_upload_to,
-        max_length=255)
-    cover_ebookpoint_etag = models.CharField(max_length=255, editable=False, default='', db_index=True)
+    cover_clean = fields.CoverCleanField(_('clean cover'))
+    cover_thumb = fields.CoverThumbField(_('cover thumbnail'))
+    cover_api_thumb = fields.CoverApiThumbField(
+        _('cover thumbnail for mobile app'))
+    simple_cover = fields.SimpleCoverField(_('cover for mobile app'))
+    cover_ebookpoint = fields.CoverEbookpointField(
+        _('cover for Ebookpoint'))
+
     ebook_formats = constants.EBOOK_FORMATS
     formats = ebook_formats + ['html', 'xml']
 
@@ -295,7 +252,7 @@ class Book(models.Model):
 
         if self.parent.html_file:
             return self.parent
-        
+
         return self.parent.get_prev_text()
 
     def get_next_text(self, inside=True):
@@ -329,7 +286,7 @@ class Book(models.Model):
 
     def get_children(self):
         return self.children.all().order_by('parent_number')
-    
+
     @property
     def name(self):
         return self.title
@@ -463,7 +420,7 @@ class Book(models.Model):
     @property
     def media_daisy(self):
         return self.get_media('daisy')
-    
+
     @property
     def media_audio_epub(self):
         return self.get_media('audio.epub')
@@ -536,9 +493,10 @@ class Book(models.Model):
                 format_)
 
         field_name = "%s_file" % format_
+        field = getattr(Book, field_name)
         books = Book.objects.filter(parent=None).exclude(**{field_name: ""}).exclude(preview=True).exclude(findable=False)
         paths = [(pretty_file_name(b), getattr(b, field_name).path) for b in books.iterator()]
-        return create_zip(paths, app_settings.FORMAT_ZIPS[format_])
+        return create_zip(paths, field.ZIP)
 
     def zip_audiobooks(self, format_):
         bm = BookMedia.objects.filter(book=self, type=format_)
@@ -610,7 +568,7 @@ class Book(models.Model):
                 a.attrib['href'] = html_link + a.attrib['href']
             self.toc = html.tostring(toc, encoding='unicode')
             # div#toc
-            
+
     @classmethod
     def from_xml_file(cls, xml_file, **kwargs):
         from django.core.files import File
@@ -630,6 +588,8 @@ class Book(models.Model):
     @classmethod
     def from_text_and_meta(cls, raw_file, book_info, overwrite=False, dont_build=None, search_index=True,
                            search_index_tags=True, remote_gallery_url=None, days=0, findable=True):
+        from catalogue import tasks
+
         if dont_build is None:
             dont_build = set()
         dont_build = set.union(set(dont_build), set(app_settings.DONT_BUILD))
@@ -762,7 +722,7 @@ class Book(models.Model):
         for master in root.iter():
             if master.tag in master_tags:
                 return master
-    
+
     def update_references(self):
         from references.models import Entity, Reference
         master = self.get_master()
@@ -786,7 +746,7 @@ class Book(models.Model):
                 entity.populate()
                 entity.save()
         Reference.objects.filter(book=self).exclude(entity__uri__in=found).delete()
-    
+
     @property
     def references(self):
         return self.reference_set.all().select_related('entity')
@@ -832,7 +792,7 @@ class Book(models.Model):
             yield self.parent
         else:
             return []
-                    
+
     def clear_cache(self):
         clear_cached_renders(self.mini_box)
         clear_cached_renders(self.mini_box_nolink)
@@ -1003,7 +963,7 @@ class Book(models.Model):
             return fragments[0]
         else:
             return None
-        
+
     def fragment_data(self):
         fragment = self.choose_fragment()
         if fragment:
@@ -1055,28 +1015,6 @@ class Book(models.Model):
             'book': self,
             'no_link': True,
         }
-
-def add_file_fields():
-    for format_ in Book.formats:
-        field_name = "%s_file" % format_
-        # This weird globals() assignment makes Django migrations comfortable.
-        _upload_to = _ebook_upload_to('book/%s/%%s.%s' % (format_, format_))
-        _upload_to.__name__ = '_%s_upload_to' % format_
-        globals()[_upload_to.__name__] = _upload_to
-
-        EbookField(
-            format_, _("%s file" % format_.upper()),
-            upload_to=_upload_to,
-            storage=bofh_storage,
-            max_length=255,
-            blank=True,
-            default=''
-        ).contribute_to_class(Book, field_name)
-        if format_ != 'xml':
-            models.CharField(max_length=255, editable=False, default='', db_index=True).contribute_to_class(Book, f'{field_name}_etag')
-
-
-add_file_fields()
 
 
 class BookPopularity(models.Model):

@@ -7,6 +7,7 @@ from celery.utils.log import get_task_logger
 from django.conf import settings
 from django.utils import timezone
 
+from catalogue.models import Book
 from catalogue.utils import absolute_url, gallery_url
 from waiter.models import WaitedFile
 
@@ -22,9 +23,16 @@ def touch_tag(tag):
     type(tag).objects.filter(pk=tag.pk).update(**update_dict)
 
 
+@shared_task(ignore_result=True)
+def build_field(pk, field_name):
+    book = Book.objects.get(pk=pk)
+    task_logger.info("build %s.%s" % (book.slug, field_name))
+    field_file = getattr(book, field_name)
+    field_file.build()
+
+
 @shared_task
 def index_book(book_id, book_info=None, **kwargs):
-    from catalogue.models import Book
     try:
         return Book.objects.get(id=book_id).search_index(book_info, **kwargs)
     except Exception as e:
@@ -39,7 +47,6 @@ def build_custom_pdf(book_id, customizations, file_name, waiter_id=None):
     try:
         from django.core.files import File
         from django.core.files.storage import DefaultStorage
-        from catalogue.models import Book
 
         task_logger.info(DefaultStorage().path(file_name))
         if not DefaultStorage().exists(file_name):
@@ -69,6 +76,5 @@ def update_counters():
 
 @shared_task(ignore_result=True)
 def update_references(book_id):
-    from catalogue.models import Book
     Book.objects.get(id=book_id).update_references()
 
