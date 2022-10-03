@@ -69,14 +69,20 @@ class EbookField(models.FileField):
     librarian2_api = False
     ZIP = None
 
-    def __init__(self, verbose_name_=None, with_etag=True, **kwargs):
+    def __init__(self, verbose_name_=None, with_etag=True, etag_field_name=None, **kwargs):
         # This is just for compatibility with older migrations,
         # where first argument was for ebook format.
         # Can be scrapped if old migrations are updated/removed.
         verbose_name = verbose_name_ or _("%s file") % self.ext
         kwargs.setdefault('verbose_name', verbose_name_ )
 
+        # Another compatibility fix:
+        # old migrations use EbookField directly, creating etag fields.
+        if type(self) is EbookField:
+            with_etag = False
+
         self.with_etag = with_etag
+        self.etag_field_name = etag_field_name
         kwargs.setdefault('max_length', 255)
         kwargs.setdefault('blank', True)
         kwargs.setdefault('default', '')
@@ -94,8 +100,14 @@ class EbookField(models.FileField):
             del kwargs['default']
         if self.get_upload_to(self.ext) == kwargs.get('upload_to'):
             del kwargs['upload_to']
-        if not self.with_etag:
+        # with_etag creates a second field, which then deconstructs to manage
+        # its own migrations. So for migrations, etag_field_name is explicitly
+        # set to avoid double creation of the etag field.
+        if self.with_etag:
+            kwargs['etag_field_name'] = self.etag_field_name
+        else:
             kwargs['with_etag'] = self.with_etag
+
         # Compatibility
         verbose_name = kwargs.get('verbose_name')
         if verbose_name:
@@ -114,8 +126,8 @@ class EbookField(models.FileField):
     def contribute_to_class(self, cls, name):
         super(EbookField, self).contribute_to_class(cls, name)
 
-        self.etag_field_name = f'{name}_etag'
-        if self.with_etag:
+        if self.with_etag and not self.etag_field_name:
+            self.etag_field_name = f'{name}_etag'
             self.etag_field = models.CharField(max_length=255, editable=False, default='', db_index=True)
             self.etag_field.contribute_to_class(cls, f'{name}_etag')
 
@@ -221,7 +233,7 @@ class PdfField(EbookField):
             base_url=absolute_url(gallery_url(wldoc.book_info.url.slug)), customizations=['notoc'])
 
     def build(self, fieldfile):
-        BuildEbook.build(self, fieldfile)
+        super().build(fieldfile)
         clear_cache(fieldfile.instance.slug)
 
 
