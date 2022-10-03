@@ -15,6 +15,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='book',
             name='cover_api_thumb',
-            field=catalogue.fields.EbookField('cover_api_thumb', max_length=255, upload_to=catalogue.fields.UploadToPath('book/cover_api_thumb/%s.jpg'), null=True, verbose_name='cover thumbnail for API', blank=True),
+            field=models.FileField(max_length=255, upload_to=catalogue.fields.UploadToPath('book/cover_api_thumb/%s.jpg'), null=True, verbose_name='cover thumbnail for API', blank=True),
         ),
     ]

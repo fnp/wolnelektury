@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='book',
             name='cover_clean',
-            field=catalogue.fields.EbookField('cover_clean', blank=True, max_length=255, null=True, upload_to=catalogue.fields.UploadToPath('book/cover_clean/%s.jpg'), verbose_name='clean cover'),
+            field=models.FileField(blank=True, max_length=255, null=True, upload_to=catalogue.fields.UploadToPath('book/cover_clean/%s.jpg'), verbose_name='clean cover'),
         ),
         migrations.AddField(
             model_name='book',

@@ -69,18 +69,8 @@ class EbookField(models.FileField):
     librarian2_api = False
     ZIP = None
 
-    def __init__(self, verbose_name_=None, with_etag=True, etag_field_name=None, **kwargs):
-        # This is just for compatibility with older migrations,
-        # where first argument was for ebook format.
-        # Can be scrapped if old migrations are updated/removed.
-        verbose_name = verbose_name_ or _("%s file") % self.ext
-        kwargs.setdefault('verbose_name', verbose_name_ )
-
-        # Another compatibility fix:
-        # old migrations use EbookField directly, creating etag fields.
-        if type(self) is EbookField:
-            with_etag = False
-
+    def __init__(self, verbose_name=None, with_etag=True, etag_field_name=None, **kwargs):
+        kwargs.setdefault('verbose_name', verbose_name)
         self.with_etag = with_etag
         self.etag_field_name = etag_field_name
         kwargs.setdefault('max_length', 255)
@@ -108,14 +98,7 @@ class EbookField(models.FileField):
         else:
             kwargs['with_etag'] = self.with_etag
 
-        # Compatibility
-        verbose_name = kwargs.get('verbose_name')
-        if verbose_name:
-            del kwargs['verbose_name']
-            if verbose_name != _("%s file") % self.ext:
-                args = [verbose_name] + args
         return name, path, args, kwargs
-
 
     @classmethod
     def get_upload_to(cls, directory):
