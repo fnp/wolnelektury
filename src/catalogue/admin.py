@@ -40,6 +40,7 @@ class BookAdmin(admin.ModelAdmin):
             ('wiki_link', BlankFieldListFilter),
             ('parent', EmptyFieldListFilter),
             ]
+    date_hierarchy = 'created_at'
     search_fields = ('title',)
     ordering = ('title',)
 
