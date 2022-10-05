@@ -7,9 +7,13 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _, ugettext, get_language
 
 from newsletter.forms import NewsletterForm
+from club.payment_methods import PayU
 from .models import Funding
 from .widgets import PerksAmountWidget
 from . import app_settings
+
+
+payment_method = PayU(app_settings.PAYU_POS)
 
 
 class FundingForm(NewsletterForm):
@@ -32,6 +36,7 @@ adres e-mail zostanie wykorzystany także w celu przesyłania newslettera Wolnyc
     def __init__(self, request, offer, *args, **kwargs):
         self.offer = offer
         self.user = request.user if request.user.is_authenticated else None
+        self.client_ip = request.META['REMOTE_ADDR']
         super(FundingForm, self).__init__(*args, **kwargs)
         self.fields['amount'].widget.form_instance = self
 
@@ -59,6 +64,8 @@ adres e-mail zostanie wykorzystany także w celu przesyłania newslettera Wolnyc
             amount=self.cleaned_data['amount'],
             language_code=get_language(),
             user=self.user,
+            pos_id=payment_method.pos_id,
+            customer_ip=self.client_ip,
         )
         funding.perks.set(funding.offer.get_perks(funding.amount))
         return funding

@@ -6,7 +6,6 @@ from django.template.loader import render_to_string
 from django.core.paginator import Paginator, InvalidPage
 
 from ..models import Offer
-from ..utils import sanitize_payment_title
 
 
 register = template.Library()
@@ -16,9 +15,6 @@ register = template.Library()
 def funding_top_bar():
     offer = Offer.current()
     return offer.top_bar() if offer is not None else ''
-
-
-register.filter(sanitize_payment_title)
 
 
 @register.simple_tag(takes_context=True)

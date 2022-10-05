@@ -12,8 +12,6 @@ MIGRATION_MODULES = {
     'getpaid': 'wolnelektury.migrations.getpaid',
 }
 
-GETPAID_ORDER_DESCRIPTION = "{% load funding_tags %}{{ order|sanitize_payment_title }}"
-
 GETPAID_BACKENDS = (
     'getpaid.backends.payu',
 )

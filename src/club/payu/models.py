@@ -77,6 +77,9 @@ class Order(models.Model):
     def get_notify_url(self):
         raise NotImplementedError
 
+    def get_thanks_url(self):
+        raise NotImplementedError
+
     def status_updated(self):
         pass
 
@@ -84,6 +87,11 @@ class Order(models.Model):
     
     def get_pos(self):
         return POSS[self.pos_id]
+
+    def get_continue_url(self):
+        return "https://{}{}".format(
+            Site.objects.get_current().domain,
+            self.get_thanks_url())
 
     def get_representation(self, token=None):
         rep = {
@@ -141,7 +149,7 @@ class Order(models.Model):
             self.order_id = response['orderId']
             self.save()
 
-        return response.get('redirectUri', self.schedule.get_thanks_url())
+        return response.get('redirectUri', self.get_thanks_url())
 
 
 class Notification(models.Model):

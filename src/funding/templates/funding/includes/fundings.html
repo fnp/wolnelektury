@@ -5,7 +5,7 @@
   <table class="wlfund">
     {% for funding in fundings %}
       <tr class="funding-plus">
-        <td class="oneline">{{ funding.payed_at.date }}</td>
+        <td class="oneline">{{ funding.completed_at.date }}</td>
         <td>
           {% if funding.name %}
             {{ funding.name }}

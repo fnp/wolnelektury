@@ -20,5 +20,5 @@ urlpatterns = [
     path('wylacz_email/', banner_exempt(views.DisableNotifications.as_view()), name='funding_disable_notifications'),
     path('przylacz/<key>/', banner_exempt(views.claim), name='funding_claim'),
 
-    path('getpaid/', include('getpaid.urls')),
+    path('notify/<int:pk>/', views.PayUNotifyView.as_view(), name='funding_payu_notify'),
 ]

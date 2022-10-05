@@ -13,12 +13,13 @@ from django.urls import reverse
 from django.utils.html import mark_safe
 from django.utils.timezone import utc
 from django.utils.translation import ugettext_lazy as _, override
-import getpaid
 from catalogue.models import Book
 from catalogue.utils import get_random_hash
 from polls.models import Poll
+import club.payu.models
 from wolnelektury.utils import cached_render, clear_cached_renders
 from . import app_settings
+from . import utils
 
 
 class Offer(models.Model):
@@ -62,6 +63,9 @@ class Offer(models.Model):
         if published_now:
             self.notify_published()
         return retval
+
+    def get_payu_payment_title(self):
+        return utils.sanitize_payment_title(str(self))
 
     def clear_cache(self):
         clear_cached_renders(self.top_bar)
@@ -134,7 +138,7 @@ class Offer(models.Model):
         return Funding.payed().filter(offer=self)
 
     def funders(self):
-        return self.funding_payed().order_by('-amount', 'payed_at')
+        return self.funding_payed().order_by('-amount', 'completed_at')
 
     def sum(self):
         """ The money gathered. """
@@ -261,18 +265,19 @@ class Perk(models.Model):
         return "%s (%s%s)" % (self.name, self.price, " for %s" % self.offer if self.offer else "")
 
 
-class Funding(models.Model):
+class Funding(club.payu.models.Order):
     """ A person paying in a fundraiser.
 
-    The payment was completed if and only if payed_at is set.
+    The payment was completed if and only if completed_at is set.
 
     """
     offer = models.ForeignKey(Offer, models.PROTECT, verbose_name=_('offer'))
+    customer_ip = models.GenericIPAddressField(_('customer IP'), null=True)
+    
     name = models.CharField(_('name'), max_length=127, blank=True)
     email = models.EmailField(_('email'), blank=True, db_index=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, models.SET_NULL, blank=True, null=True)
     amount = models.DecimalField(_('amount'), decimal_places=2, max_digits=10)
-    payed_at = models.DateTimeField(_('payed at'), null=True, blank=True, db_index=True)
     perks = models.ManyToManyField(Perk, verbose_name=_('perks'), blank=True)
     language_code = models.CharField(max_length=2, null=True, blank=True)
     notifications = models.BooleanField(_('notifications'), default=True, db_index=True)
@@ -281,18 +286,43 @@ class Funding(models.Model):
     class Meta:
         verbose_name = _('funding')
         verbose_name_plural = _('fundings')
-        ordering = ['-payed_at', 'pk']
+        ordering = ['-completed_at', 'pk']
 
     @classmethod
     def payed(cls):
         """ QuerySet for all completed payments. """
-        return cls.objects.exclude(payed_at=None)
+        return cls.objects.exclude(completed_at=None)
 
     def __str__(self):
         return str(self.offer)
 
-    def get_absolute_url(self):
-        return reverse('funding_funding', args=[self.pk])
+    def get_amount(self):
+        return self.amount
+
+    def get_buyer(self):
+        return {
+            "email": self.email,
+            "language": self.language_code,
+        }
+
+    def get_description(self):
+        return self.offer.get_payu_payment_title()
+
+    def get_thanks_url(self):
+        return reverse('funding_thanks')
+
+    def status_updated(self):
+        if self.status == 'COMPLETED':
+            if self.email:
+                self.notify(
+                    _('Thank you for your support!'),
+                    'funding/email/thanks.txt'
+                )
+
+    def get_notify_url(self):
+        return "https://{}{}".format(
+            Site.objects.get_current().domain,
+            reverse('funding_payu_notify', args=[self.pk]))
 
     def perk_names(self):
         return ", ".join(perk.name for perk in self.perks.all())
@@ -319,7 +349,7 @@ class Funding(models.Model):
     def notify_funders(cls, subject, template_name, extra_context=None, query_filter=None, payed_only=True):
         funders = cls.objects.exclude(email="").filter(notifications=True)
         if payed_only:
-            funders = funders.exclude(payed_at=None)
+            funders = funders.exclude(completed_at=None)
         if query_filter is not None:
             funders = funders.filter(query_filter)
         emails = set()
@@ -346,8 +376,8 @@ class Funding(models.Model):
         type(self).objects.filter(email=self.email).update(notifications=False)
 
 
-# Register the Funding model with django-getpaid for payments.
-getpaid.register_to_payment(Funding, unique=False, related_name='payment')
+class PayUNotification(club.payu.models.Notification):
+    order = models.ForeignKey(Funding, models.CASCADE, related_name='notification_set')
 
 
 class Spent(models.Model):
@@ -364,28 +394,3 @@ class Spent(models.Model):
     def __str__(self):
         return "Spent: %s" % str(self.book)
 
-
-@receiver(getpaid.signals.new_payment_query)
-def new_payment_query_listener(sender, order=None, payment=None, **kwargs):
-    """ Set payment details for getpaid. """
-    payment.amount = order.amount
-    payment.currency = 'PLN'
-
-
-@receiver(getpaid.signals.user_data_query)
-def user_data_query_listener(sender, order, user_data, **kwargs):
-    """ Set user data for payment. """
-    user_data['email'] = order.email
-
-
-@receiver(getpaid.signals.payment_status_changed)
-def payment_status_changed_listener(sender, instance, old_status, new_status, **kwargs):
-    """ React to status changes from getpaid. """
-    if old_status != 'paid' and new_status == 'paid':
-        instance.order.payed_at = datetime.utcnow().replace(tzinfo=utc)
-        instance.order.save()
-        if instance.order.email:
-            instance.order.notify(
-                _('Thank you for your support!'),
-                'funding/email/thanks.txt'
-            )

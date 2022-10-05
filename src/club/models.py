@@ -310,11 +310,6 @@ class PayUOrder(payu_models.Order):
             "language": get_language(),
         }
 
-    def get_continue_url(self):
-        return "https://{}{}".format(
-            Site.objects.get_current().domain,
-            self.schedule.get_thanks_url())
-
     def get_description(self):
         return 'Wolne Lektury'
 
@@ -328,6 +323,9 @@ class PayUOrder(payu_models.Order):
         return "https://{}{}".format(
             Site.objects.get_current().domain,
             reverse('club_payu_notify', args=[self.pk]))
+
+    def get_thanks_url(self):
+        return self.schedule.get_thanks_url()
 
     def status_updated(self):
         if self.status == 'COMPLETED':
@@ -380,8 +378,8 @@ class PayUOrder(payu_models.Order):
         except Contact.DoesNotExist:
             funding = Funding.objects.filter(
                 email=email,
-                payed_at__year=year,
-                notifications=True).order_by('payed_at').first()
+                completed_at__year=year,
+                notifications=True).order_by('completed_at').first()
             if funding is None:
                 print('no notifications')
                 return
@@ -404,11 +402,11 @@ class PayUOrder(payu_models.Order):
 
         fundings = Funding.objects.filter(
             email=email,
-            payed_at__year=year
-        ).order_by('payed_at')
+            completed_at__year=year
+        ).order_by('completed_at')
         for funding in fundings:
             payments.append({
-                'timestamp': funding.payed_at,
+                'timestamp': funding.completed_at,
                 'amount': funding.amount,
             })
 

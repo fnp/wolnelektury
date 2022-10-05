@@ -39,7 +39,7 @@ class Command(BaseCommand):
         )
         emails.update(
             Funding.objects.exclude(email='').filter(
-                payed_at__year=year
+                completed_at__year=year
             ).order_by('email').values_list(
                 'email', flat=True
             ).distinct()

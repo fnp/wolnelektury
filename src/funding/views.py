@@ -7,7 +7,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView, FormView, ListView
-from getpaid.models import Payment
+import club.payu.views
 from . import app_settings
 from .forms import FundingForm
 from .models import Offer, Spent, Funding
@@ -72,7 +72,6 @@ class WLFundView(TemplateView):
 class OfferDetailView(FormView):
     form_class = FundingForm
     template_name = "funding/offer_detail.html"
-    backend = 'getpaid.backends.payu'
 
     @csrf_exempt
     def dispatch(self, request, slug=None):
@@ -106,11 +105,7 @@ class OfferDetailView(FormView):
 
     def form_valid(self, form):
         funding = form.save()
-        # Skip getpaid.forms.PaymentMethodForm, go directly to the broker.
-        payment = Payment.create(funding, self.backend)
-        gateway_url_tuple = payment.get_processor()(payment).get_gateway_url(self.request)
-        payment.change_status('in_progress')
-        return redirect(gateway_url_tuple[0])
+        return redirect(funding.put())
 
 
 class CurrentView(OfferDetailView):
@@ -170,4 +165,8 @@ def claim(request, key):
         funding.offer.book.get_absolute_url() if funding.offer.book is not None
         else funding.offer.get_absolute_url()
     )
+
+
+class PayUNotifyView(club.payu.views.NotifyView):
+    order_model = Funding
 

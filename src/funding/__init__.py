@@ -11,6 +11,7 @@ class Settings(AppSettings):
     DEFAULT_AMOUNT = 20
     MIN_AMOUNT = 1
     DAYS_NEAR = 2
+    PAYU_POS = '300746'
 
 
 app_settings = Settings('FUNDING')
