@@ -1,7 +1,7 @@
 -i https://py.mdrn.pl/simple/
 
 # django
-Django==2.2.28
+Django==3.2.16
 fnpdjango==0.6
 docutils==0.16
 
@@ -12,14 +12,14 @@ jsmin==3.0.1
 fnp-django-pagination==2.2.5
 django-modeltranslation==0.18.2
 django-allauth==0.51
-django-extensions==3.1.1
+django-extensions==3.1.5
 djangorestframework==3.13.1
 djangorestframework-xml==2.0.0
 django-admin-ordering==0.14.0
 django-machina==1.1.6
 django-countries==7.3.2
 
-# A version compatible with Django 2.2, with long help text and editable max_length.
+# A version compatible with Django 2.2+, with long help text and editable max_length.
 -e git+https://github.com/rczajka/django-forms-builder@6bdb2345cfc02ebf7e0fb049e43e4e0a38b52940#egg=django-forms-builder
 
 
@@ -41,7 +41,7 @@ Feedparser==6.0.10
 
 Pillow==9.2.0
 mutagen==1.45.1
-sorl-thumbnail==12.7.0
+sorl-thumbnail==12.8.0
 
 # home-brewed & dependencies
 librarian==2.4.1

@@ -1,7 +1,7 @@
 import re
 from django.db import models
 from django.utils.timezone import now
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from .bank import parse_export_feedback, parse_payment_feedback
 
 
@@ -44,7 +44,7 @@ class DirectDebit(models.Model):
     phone = models.CharField(_('phone'), max_length=255, blank=True)
     email = models.CharField(_('e-mail'), max_length=255, blank=True)
     iban = models.CharField(_('IBAN'), max_length=255, blank=True)
-    iban_valid = models.NullBooleanField(_('IBAN valid'), default=False)
+    iban_valid = models.BooleanField(_('IBAN valid'), default=False, null=True)
     is_consumer = models.BooleanField(_('is a consumer'), default=True)
     payment_id = models.CharField(_('payment identifier'), max_length=255, blank=True, unique=True)
     agree_fundraising = models.BooleanField(_('agree fundraising'), default=False)

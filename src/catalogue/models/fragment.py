@@ -5,7 +5,7 @@ from django.conf import settings
 from django.contrib.contenttypes.fields import GenericRelation
 from django.urls import reverse
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from newtagging import managers
 from catalogue.models import Tag
 from wolnelektury.utils import cached_render, clear_cached_renders

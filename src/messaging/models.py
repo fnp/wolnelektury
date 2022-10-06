@@ -6,7 +6,7 @@ from django.db import models
 from django.template import Template, Context
 from django.urls import reverse
 from django.utils.timezone import now, get_current_timezone
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from sentry_sdk import capture_exception
 from catalogue.utils import get_random_hash
 from .states import Level, states

@@ -11,7 +11,7 @@ from django.db import models
 from django.db.models.query import Prefetch
 from django.dispatch import Signal
 from django.urls import reverse
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from newtagging.models import TagManager, TaggedItemManager
 
@@ -73,7 +73,7 @@ class Tag(models.Model):
     created_at = models.DateTimeField(_('creation date'), auto_now_add=True, db_index=True)
     changed_at = models.DateTimeField(_('creation date'), auto_now=True, db_index=True)
 
-    after_change = Signal(providing_args=['instance'])
+    after_change = Signal()
 
     intermediary_table_model = TagRelation
     objects = TagManager()

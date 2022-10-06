@@ -11,7 +11,7 @@ from django.template import Node, Variable, Template, Context
 from django.urls import reverse
 from django.utils.cache import add_never_cache_headers
 from django.utils.safestring import mark_safe
-from django.utils.translation import ugettext as _
+from django.utils.translation import gettext as _
 
 from catalogue.helpers import get_audiobook_tags
 from catalogue.models import Book, BookMedia, Fragment, Tag, Source

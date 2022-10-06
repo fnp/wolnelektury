@@ -6,7 +6,7 @@ import time
 from io import BytesIO
 from django.core.cache import cache
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.template.loader import render_to_string
 from PIL import Image
 

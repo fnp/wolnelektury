@@ -7,8 +7,8 @@ from django.core.exceptions import ValidationError
 from django.core.mail import send_mail, mail_managers
 from django.core.validators import validate_email
 from django.urls import reverse
-from django.utils.translation import ugettext_lazy as _
-from django.utils.translation import ugettext
+from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext
 
 from newsletter.forms import NewsletterForm
 from suggest.models import PublishingSuggestion, Suggestion
@@ -55,8 +55,8 @@ Kontakt: %(contact)s
             pass
         else:
             send_noreply_mail(
-                ugettext('Thank you for your suggestion.'),
-                ugettext("""\
+                gettext('Thank you for your suggestion.'),
+                gettext("""\
 Thank you for your comment on WolneLektury.pl.
 The suggestion has been referred to the project coordinator."""),
                 [contact], fail_silently=True)
@@ -73,7 +73,7 @@ class PublishingSuggestForm(NewsletterForm):
 
     def clean(self):
         if not self.cleaned_data['ebook'] and not self.cleaned_data['audiobook']:
-            msg = ugettext("One of these options is required.")
+            msg = gettext("One of these options is required.")
             self._errors['ebook'] = self.error_class([msg])
             self._errors['audiobook'] = self.error_class([msg])
         return super(PublishingSuggestForm, self).clean()
@@ -119,8 +119,8 @@ class PublishingSuggestForm(NewsletterForm):
                 pass
             else:
                 send_noreply_mail(
-                    ugettext('Thank you for your suggestion.'),
-                    ugettext("""\
+                    gettext('Thank you for your suggestion.'),
+                    gettext("""\
 Thank you for your comment on WolneLektury.pl.
 The suggestion has been referred to the project coordinator."""),
                     [contact], fail_silently=True)

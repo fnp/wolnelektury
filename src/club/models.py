@@ -12,7 +12,7 @@ from django.urls import reverse
 from django.db import models
 from django import template
 from django.utils.timezone import now
-from django.utils.translation import ugettext_lazy as _, ungettext, ugettext, get_language
+from django.utils.translation import gettext_lazy as _, ngettext, gettext, get_language
 from django_countries.fields import CountryField
 from pytz import utc
 from catalogue.utils import get_random_hash

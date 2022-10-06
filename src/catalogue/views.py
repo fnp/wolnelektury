@@ -14,7 +14,7 @@ from django.db.models import Q, QuerySet
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.utils.http import urlquote_plus
 from django.utils import translation
-from django.utils.translation import ugettext as _, ugettext_lazy
+from django.utils.translation import gettext as _, gettext_lazy
 from django.views.decorators.cache import never_cache
 
 from ajaxable.utils import AjaxableFormView
@@ -421,8 +421,8 @@ def download_zip(request, file_format=None, media_format=None, slug=None):
 
 class CustomPDFFormView(AjaxableFormView):
     form_class = forms.CustomPDFForm
-    title = ugettext_lazy('Download custom PDF')
-    submit = ugettext_lazy('Download')
+    title = gettext_lazy('Download custom PDF')
+    submit = gettext_lazy('Download')
     template = 'catalogue/custom_pdf_form.html'
     honeypot = True
 

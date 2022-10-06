@@ -3,7 +3,7 @@
 #
 from decimal import Decimal
 from django import forms
-from django.utils.translation import ugettext as _
+from django.utils.translation import gettext as _
 from newsletter.forms import NewsletterForm
 from . import models, payment_methods
 from .payu.forms import CardTokenForm

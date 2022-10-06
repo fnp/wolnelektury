@@ -4,7 +4,7 @@
 from django import forms
 from django.utils import formats
 from django.utils.safestring import mark_safe
-from django.utils.translation import ugettext_lazy as _, ugettext, get_language
+from django.utils.translation import gettext_lazy as _, gettext, get_language
 
 from newsletter.forms import NewsletterForm
 from club.payment_methods import PayU
@@ -46,13 +46,13 @@ adres e-mail zostanie wykorzystany także w celu przesyłania newslettera Wolnyc
             if isinstance(min_amount, float):
                 min_amount = formats.number_format(min_amount, 2)
             raise forms.ValidationError(
-                ugettext("The minimum amount is %(amount)s PLN.") % {
+                gettext("The minimum amount is %(amount)s PLN.") % {
                     'amount': min_amount})
         return self.cleaned_data['amount']
 
     def clean(self):
         if not self.offer.is_current():
-            raise forms.ValidationError(ugettext("This offer is out of date."))
+            raise forms.ValidationError(gettext("This offer is out of date."))
         return self.cleaned_data
 
     def save(self):

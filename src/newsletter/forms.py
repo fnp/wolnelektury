@@ -6,7 +6,7 @@ from django.core.validators import validate_email
 from django.forms import Form, BooleanField
 from django.forms.fields import EmailField
 from django.utils.safestring import mark_safe
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from newsletter.subscribe import subscribe
 from .models import Newsletter
 

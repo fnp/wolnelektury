@@ -25,6 +25,8 @@ DATABASES = {
     }
 }
 
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
 SOLR_TEST = "http://localhost:8983/solr/wl_test/"
 SOLR_STOPWORDS = "/path/to/solr/data/conf/lang/stopwords_pl.txt"
 

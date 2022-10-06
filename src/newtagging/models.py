@@ -12,7 +12,7 @@ from django.dispatch import Signal
 
 qn = connection.ops.quote_name
 
-tags_updated = Signal(providing_args=["affected_tags"])
+tags_updated = Signal()
 
 
 def get_queryset_and_model(queryset_or_model):

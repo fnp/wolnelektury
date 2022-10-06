@@ -9,7 +9,7 @@ from django.shortcuts import render
 from django.utils.encoding import force_text
 from django.utils.functional import Promise
 from django.utils.http import urlquote_plus
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.views.decorators.vary import vary_on_headers
 from honeypot.decorators import verify_honeypot_value
 

@@ -4,7 +4,7 @@
 from django.contrib import admin
 from django.forms import ModelForm
 from django.forms.widgets import TextInput
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from admin_ordering.admin import OrderableAdmin
 from social.models import Cite, BannerGroup, Carousel, CarouselItem
 

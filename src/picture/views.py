@@ -81,7 +81,7 @@ def import_picture(request):
     """docstring for import_book"""
     from django.http import HttpResponse
     from picture.forms import PictureImportForm
-    from django.utils.translation import ugettext as _
+    from django.utils.translation import gettext as _
 
     import_form = PictureImportForm(request.POST, request.FILES)
     if import_form.is_valid():

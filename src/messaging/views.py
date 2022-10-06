@@ -2,7 +2,7 @@ import json
 from django.http import JsonResponse
 from django.urls import reverse
 from django.shortcuts import render
-from django.utils.translation import ugettext as _
+from django.utils.translation import gettext as _
 from django.views.decorators import cache
 from django.views.generic import DetailView, UpdateView
 from . import models

@@ -6,7 +6,7 @@ import json
 from urllib.request import urlopen
 
 from django import forms
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from slugify import slugify
 
 from isbn.management.commands.import_onix import UNKNOWN

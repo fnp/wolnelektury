@@ -15,7 +15,7 @@ import django.dispatch
 from django.contrib.contenttypes.fields import GenericRelation
 from django.template.loader import render_to_string
 from django.urls import reverse
-from django.utils.translation import ugettext_lazy as _, get_language
+from django.utils.translation import gettext_lazy as _, get_language
 from fnpdjango.storage import BofhFileSystemStorage
 from lxml import html
 from librarian.cover import WLCover
