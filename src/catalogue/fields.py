@@ -358,6 +358,10 @@ class CoverField(EbookField):
     ext = 'jpg'
     directory = 'cover'
 
+    @staticmethod
+    def transform(wldoc):
+        return wldoc.as_cover()
+
     def set_file_permissions(self, fieldfile):
         pass
 
