@@ -147,12 +147,13 @@ class CollectionListSerializer(serializers.ModelSerializer):
 
 
 class CollectionSerializer(serializers.ModelSerializer):
-    books = BookSerializer(many=True, source='get_books')
+    books = BookSerializer(many=True, source='get_books', read_only=True)
+    book_slugs = serializers.CharField(write_only=True)
     url = AbsoluteURLField()
 
     class Meta:
         model = Collection
-        fields = ['url', 'books', 'description', 'title']
+        fields = ['url', 'books', 'description', 'title', 'book_slugs']
 
 
 class FragmentSerializer(serializers.ModelSerializer):

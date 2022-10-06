@@ -7,7 +7,8 @@ from django.conf import settings
 from django.http import Http404, HttpResponse
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
-from rest_framework.generics import ListAPIView, RetrieveAPIView, get_object_or_404
+from rest_framework.generics import (ListAPIView, RetrieveAPIView,
+                                     RetrieveUpdateAPIView, get_object_or_404)
 from rest_framework.permissions import DjangoModelPermissionsOrAnonReadOnly
 from rest_framework.response import Response
 from rest_framework import status
@@ -26,13 +27,31 @@ from . import serializers
 book_tag_categories = ['author', 'epoch', 'kind', 'genre']
 
 
+class CreateOnPutMixin:
+    '''
+    Creates a new model instance when PUTting a nonexistent resource.
+    '''
+    def get_object(self):
+        try:
+            return super().get_object()
+        except Http404:
+            if self.request.method == 'PUT':
+                lookup_url_kwarg = self.lookup_url_kwarg or self.lookup_field
+                return self.get_queryset().model(**{
+                    self.lookup_field: self.kwargs[lookup_url_kwarg]
+                })
+            else:
+                raise
+
+
 class CollectionList(ListAPIView):
     queryset = Collection.objects.filter(listed=True)
     serializer_class = serializers.CollectionListSerializer
 
 
 @vary_on_auth  # Because of 'liked'.
-class CollectionDetail(RetrieveAPIView):
+class CollectionDetail(CreateOnPutMixin, RetrieveUpdateAPIView):
+    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
     queryset = Collection.objects.all()
     lookup_field = 'slug'
     serializer_class = serializers.CollectionSerializer
