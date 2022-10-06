@@ -20,7 +20,7 @@ django-machina==1.1.6
 django-countries==7.3.2
 
 # A version compatible with Django 2.2, with long help text and editable max_length.
--e git+https://github.com/rczajka/django-forms-builder@8ec4022f2a185658b4b23c3d020e0d5c3cb88774#egg=django-forms-builder
+-e git+https://github.com/rczajka/django-forms-builder@6bdb2345cfc02ebf7e0fb049e43e4e0a38b52940#egg=django-forms-builder
 
 
 oauthlib>=3.0.1,<3.1
@@ -47,16 +47,12 @@ sorl-thumbnail==12.7.0
 librarian==2.4.1
 
 # celery tasks
-celery[redis]==4.4.7
+celery[redis]==5.2.7
 
 # OAI-PMH
 pyoai==2.5.0
 
 scorched==0.13
-
-django-getpaid==1.8.0
-deprecated
-
 httplib2
 
 sentry-sdk==0.10.2

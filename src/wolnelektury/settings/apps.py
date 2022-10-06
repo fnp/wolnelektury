@@ -61,8 +61,6 @@ INSTALLED_APPS_CONTRIB = [
     'sorl.thumbnail',
     'honeypot',
     'fnpdjango',
-    'getpaid',
-    'getpaid.backends.payu',
     'django_extensions',
     'forms_builder.forms',
     'django_countries',

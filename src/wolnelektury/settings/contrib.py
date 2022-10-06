@@ -8,14 +8,6 @@ THUMBNAIL_QUALITY = 95
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'pl'
 MODELTRANSLATION_PREPOPULATE_LANGUAGE = 'pl'
 
-MIGRATION_MODULES = {
-    'getpaid': 'wolnelektury.migrations.getpaid',
-}
-
-GETPAID_BACKENDS = (
-    'getpaid.backends.payu',
-)
-
 PIWIK_URL = ''
 PIWIK_SITE_ID = 0
 PIWIK_TOKEN = ''
