@@ -28,4 +28,5 @@ class Subscription(models.Model):
 class Newsletter(models.Model):
     slug = models.SlugField(blank=True)
     page_title = models.CharField(max_length=255, blank=True)
-    phplist_id = models.IntegerField()
+    phplist_id = models.IntegerField(null=True, blank=True)
+    crm_id = models.IntegerField(null=True, blank=True)

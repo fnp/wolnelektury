@@ -27,11 +27,11 @@ class CiviCRM:
         d = response.json()
         return d
 
-    def create_or_update_contact(self, email, key):
+    def create_or_update_contact(self, email, key=None):
         contact_id = self.get_contact_id(email)
         if contact_id is None:
             contact_id = self.create_contact(email, key)
-        else:
+        elif key:
             self.update_contact(contact_id, key)
         return contact_id
 
@@ -49,29 +49,26 @@ class CiviCRM:
         if result:
             return result[0]['id']
 
-    def create_contact(self, email, key):
-        result = self.request(
-            'Contact',
-            'create',
-            {
-                'values': {
-                    'WL.TPWL_key': key,
-                },
-                'chain': {
-                    'email': [
-                        'Email',
-                        'create',
-                        {
-                            'values': {
-                                'email': email,
-                                'contact_id': '$id'
-                            }
+    def create_contact(self, email, key=None):
+        data = {
+            'values': {},
+            'chain': {
+                'email': [
+                    'Email',
+                    'create',
+                    {
+                        'values': {
+                            'email': email,
+                            'contact_id': '$id'
                         }
-                    ]
-                }
+                    }
+                ]
             }
-        )
-        return result[0]['id']
+        }
+        if key:
+            data['values']['WL.TPWL_key'] =  key
+        result = self.request('Contact', 'create', data)
+        return result['values'][0]['id']
     
     def update_contact(self, contact_id, key):
         return self.request(
@@ -163,7 +160,21 @@ class CiviCRM:
             }
         )
     
-    #do we create a civicontribution?
+    def add_email_to_group(self, email, group_id):
+        contact_id = self.create_or_update_contact(email)
+        self.add_contact_to_group(contact_id, group_id)
+
+    def add_contact_to_group(self, contact_id, group_id):
+        self.request(
+            'GroupContact',
+            'create',
+            {
+                "values": {
+                    "group_id": group_id,
+                    "contact_id": contact_id,
+                }
+            }
+        )
 
 
 civicrm = CiviCRM(

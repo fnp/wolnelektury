@@ -3,10 +3,19 @@
 #
 import requests
 from django.conf import settings
+from club.civicrm import civicrm
 
 
 def subscribe(email, newsletter):
-    list_id = newsletter.phplist_id
+    if newsletter.crm_id:
+        subscribe_crm(email, newsletter.crm_id)
+    if newsletter.phplist_id:
+        subscribe_phplist(email, newsletter.phplist_id)
+
+def subscribe_crm(email, group_id):
+    civicrm.add_email_to_group(email, group_id)
+
+def subscribe_phplist(email, list_id):
     data = {
         "email": email,
         "emailconfirm": email,
@@ -25,4 +34,3 @@ def subscribe(email, newsletter):
             "NEWSLETTER_PHPLIST_SUBSCRIBE_URL not set. "
             f"Trying to subscribe email: {email} to newsletter: {list_id}."
         )
-
