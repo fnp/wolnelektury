@@ -7,9 +7,6 @@ from django.utils.module_loading import import_string
 from catalogue.utils import AppSettings
 
 
-default_app_config = 'catalogue.apps.CatalogueConfig'
-
-
 class Settings(AppSettings):
     """Default settings for catalogue app."""
     DEFAULT_LANGUAGE = 'pol'

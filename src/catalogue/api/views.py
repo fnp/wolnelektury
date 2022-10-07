@@ -313,11 +313,20 @@ class TagView(RetrieveAPIView):
     queryset = Tag.objects.all()
     
     def get_object(self):
-        return get_object_or_404(
-            Tag,
-            category=self.kwargs['category'],
-            slug=self.kwargs['slug']
-        )
+        try:
+            return get_object_or_404(
+                Tag,
+                category=self.kwargs['category'],
+                slug=self.kwargs['slug']
+            )
+        except Http404:
+            if self.method == 'PUT':
+                return Tag(
+                    category=self.kwargs['category'],
+                    slug=self.kwargs['slug']
+                )
+            else:
+                raise
 
     def post(self, request, **kwargs):
         data = json.loads(request.POST.get('data'))
