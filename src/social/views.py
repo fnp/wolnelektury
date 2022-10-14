@@ -10,6 +10,7 @@ from ajaxable.utils import AjaxableFormView
 
 from catalogue.models import Book
 from social import forms
+from wolnelektury.utils import is_ajax
 
 
 # ====================
@@ -25,7 +26,7 @@ def like_book(request, slug):
 
     book.like(request.user)
 
-    if request.is_ajax():
+    if is_ajax(request):
         return JsonResponse({"success": True, "msg": "ok", "like": True})
     else:
         return redirect(book)
@@ -39,7 +40,7 @@ def unlike_book(request, slug):
 
     book.unlike(request.user)
 
-    if request.is_ajax():
+    if is_ajax(request):
         return JsonResponse({"success": True, "msg": "ok", "like": False})
     else:
         return redirect(book)

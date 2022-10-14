@@ -4,6 +4,7 @@
 from collections import OrderedDict
 import random
 import re
+from urllib.parse import quote_plus
 
 from django.conf import settings
 from django.template.loader import render_to_string
@@ -12,7 +13,6 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404, HttpRespons
 from django.urls import reverse
 from django.db.models import Q, QuerySet
 from django.contrib.auth.decorators import login_required, user_passes_test
-from django.utils.http import urlquote_plus
 from django.utils import translation
 from django.utils.translation import gettext as _, gettext_lazy
 from django.views.decorators.cache import never_cache
@@ -416,7 +416,7 @@ def download_zip(request, file_format=None, media_format=None, slug=None):
         url = book.zip_audiobooks(media_format)
     else:
         raise Http404('No format specified for zip package')
-    return HttpResponseRedirect(urlquote_plus(settings.MEDIA_URL + url, safe='/?='))
+    return HttpResponseRedirect(quote_plus(settings.MEDIA_URL + url, safe='/?='))
 
 
 class CustomPDFFormView(AjaxableFormView):

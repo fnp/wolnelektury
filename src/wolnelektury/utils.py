@@ -8,7 +8,6 @@ from inspect import getargspec
 from io import BytesIO
 import json
 import os
-import pytz
 import re
 
 from django.conf import settings
@@ -17,20 +16,10 @@ from django.core.cache import cache
 from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.template.loader import render_to_string
-from django.utils import timezone
 from django.utils.translation import get_language
 from django.conf import settings
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext as _
-
-
-tz = pytz.timezone(settings.TIME_ZONE)
-
-
-def localtime_to_utc(localtime):
-    return timezone.utc.normalize(
-        tz.localize(localtime)
-    )
 
 
 def utc_for_js(dt):
@@ -211,3 +200,7 @@ class YesNoFilter(admin.SimpleListFilter):
             return queryset.filter(self.q)
         elif self.value() == 'no':
             return queryset.exclude(self.q)
+
+
+def is_ajax(request):
+    return request.headers.get('x-requested-with') == 'XMLHttpRequest'

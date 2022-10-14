@@ -159,9 +159,8 @@ class PayPal(PaymentMethod):
         return agreement_approval_url(schedule.amount, schedule.key, app=app)
 
     def pay(self, request, schedule):
-        from datetime import date, timedelta, datetime
-        from pytz import utc
-        tomorrow = datetime(*(date.today() + timedelta(2)).timetuple()[:3], tzinfo=utc)
+        from datetime import date, timedelta, datetime, timezone
+        tomorrow = datetime(*(date.today() + timedelta(2)).timetuple()[:3], tzinfo=timezone.utc)
         any_active = False
         for ba in schedule.billingagreement_set.all():
             active = ba.check_agreement()

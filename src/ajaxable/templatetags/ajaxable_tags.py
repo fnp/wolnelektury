@@ -2,7 +2,7 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django import template
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 from django.utils.safestring import mark_safe
 from ajaxable.utils import placeholdized
 
@@ -32,8 +32,8 @@ def pretty_field(field, template=None):
     return mark_safe(template % {
         'errors': field.errors,
         'input': field,
-        'label': ('*' if field.field.required else '') + force_text(field.label),
-        'helptext': force_text(field.help_text),
+        'label': ('*' if field.field.required else '') + force_str(field.label),
+        'helptext': force_str(field.help_text),
     })
 
 

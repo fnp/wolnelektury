@@ -2,6 +2,7 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from datetime import date, datetime
+from urllib.parse import quote_plus
 import feedparser
 from allauth.socialaccount.views import SignupView
 
@@ -12,7 +13,6 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.core.cache import cache
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
-from django.utils.http import urlquote_plus
 from django.utils.translation import gettext_lazy as _
 from django.views.decorators.cache import never_cache
 
@@ -131,7 +131,7 @@ class LoginRegisterFormView(LoginFormView):
 @never_cache
 def logout_then_redirect(request):
     auth.logout(request)
-    return HttpResponseRedirect(urlquote_plus(request.GET.get('next', '/'), safe='/?='))
+    return HttpResponseRedirect(quote_plus(request.GET.get('next', '/'), safe='/?='))
 
 
 @never_cache

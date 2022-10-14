@@ -7,6 +7,7 @@ from waiter.settings import WAITER_URL
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.views.decorators.cache import never_cache
+from wolnelektury.utils import is_ajax
 
 
 @never_cache
@@ -18,7 +19,7 @@ def wait(request, path):
         file_url = None
         waiting = get_object_or_404(WaitedFile, path=path)
 
-    if request.is_ajax():
+    if is_ajax(request):
         return HttpResponse(file_url)
     else:
         return render(request, "waiter/wait.html", {

@@ -3,7 +3,7 @@
 #
 from django import forms
 from django.forms.utils import flatatt
-from django.utils.encoding import smart_text
+from django.utils.encoding import smart_str
 from django.utils.safestring import mark_safe
 from json import dumps
 
@@ -20,7 +20,7 @@ class JQueryAutoCompleteWidget(forms.TextInput):
         final_attrs = self.build_attrs(self.attrs, attrs)
         final_attrs["name"] = name
         if value:
-            final_attrs['value'] = smart_text(value)
+            final_attrs['value'] = smart_str(value)
 
         if 'id' not in self.attrs:
             final_attrs['id'] = 'id_%s' % name

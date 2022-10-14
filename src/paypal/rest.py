@@ -4,7 +4,6 @@
 from datetime import date, datetime, timedelta
 from decimal import Decimal
 import paypalrestsdk
-import pytz
 from django.contrib.sites.models import Site
 from django.urls import reverse
 from django.utils import timezone
@@ -70,7 +69,7 @@ def create_agreement(amount, key, app=False):
         plan_id = create_plan(amount)
     else:
         plan_id = plan.plan_id
-    start = (timezone.now() + timedelta(0, 3600*24)).astimezone(pytz.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
+    start = (timezone.now() + timedelta(0, 3600*24)).astimezone(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
     billing_agreement = paypalrestsdk.BillingAgreement({
         "name": "Subskrypcja klubu WL",
         "description": "Stałe wsparcie Wolnych Lektur kwotą %s złotych" % amount,

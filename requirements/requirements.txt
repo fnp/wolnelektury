@@ -1,7 +1,7 @@
 -i https://py.mdrn.pl/simple/
 
 # django
-Django==3.2.16
+Django==4.0.8
 fnpdjango==0.6
 docutils==0.16
 
@@ -15,7 +15,7 @@ django-allauth==0.51
 django-extensions==3.2.1
 djangorestframework==3.13.1
 djangorestframework-xml==2.0.0
-django-admin-ordering==0.14.0
+django-admin-ordering==0.16
 django-countries==7.3.2
 
 # A version compatible with Django 2.2+, with long help text and editable max_length.
@@ -29,9 +29,7 @@ pyyaml==5.4.1
 
 polib==1.1.1
 
-pytz==2022.2.1
-
-django-honeypot==1.0.2
+django-honeypot==1.0.3
 
 python-fb==0.2
 

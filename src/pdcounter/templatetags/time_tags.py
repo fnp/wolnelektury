@@ -2,7 +2,6 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 import datetime
-import pytz
 from django.conf import settings
 from django import template
 from django.utils import timezone
@@ -20,10 +19,9 @@ def date_to_utc(date, day_end=False):
     """
     if day_end:
         date += datetime.timedelta(1)
-    localtime = datetime.datetime.combine(date, datetime.time(0, 0))
-    return timezone.utc.normalize(
-        pytz.timezone(settings.TIME_ZONE).localize(localtime)
-    )
+
+    localtime = datetime.datetime.combine(date, datetime.time(0, 0), timezone.get_current_timezone())
+    return timezone.localtime(localtime, timezone.utc)
 
 
 @register.filter

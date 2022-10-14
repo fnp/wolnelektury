@@ -11,10 +11,9 @@ from django.core.mail import send_mail, EmailMessage
 from django.urls import reverse
 from django.db import models
 from django import template
-from django.utils.timezone import now
+from django.utils.timezone import now, utc
 from django.utils.translation import gettext_lazy as _, ngettext, gettext, get_language
 from django_countries.fields import CountryField
-from pytz import utc
 from catalogue.utils import get_random_hash
 from messaging.states import Level
 from reporting.utils import render_to_pdf

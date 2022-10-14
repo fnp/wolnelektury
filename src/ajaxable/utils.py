@@ -3,21 +3,22 @@
 #
 from functools import wraps
 import json
+from urllib.parse import quote_plus
 
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden
 from django.shortcuts import render
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 from django.utils.functional import Promise
-from django.utils.http import urlquote_plus
 from django.utils.translation import gettext_lazy as _
 from django.views.decorators.vary import vary_on_headers
 from honeypot.decorators import verify_honeypot_value
+from wolnelektury.utils import is_ajax
 
 
 class LazyEncoder(json.JSONEncoder):
     def default(self, o):
         if isinstance(o, Promise):
-            return force_text(o)
+            return force_str(o)
         return o
 
 
@@ -38,7 +39,7 @@ def method_decorator(function_decorator):
 
 def require_login(request):
     """Return 403 if request is AJAX. Redirect to login page if not."""
-    if request.is_ajax():
+    if is_ajax(request):
         return HttpResponseForbidden('Not logged in')
     return HttpResponseRedirect('/uzytkownicy/zaloguj')  # next?=request.build_full_path())
 
@@ -104,10 +105,10 @@ class AjaxableFormView:
                     }
                 if add_args:
                     response_data.update(add_args)
-                if not request.is_ajax() and response_data['redirect']:
-                    return HttpResponseRedirect(urlquote_plus(
+                if not is_ajax(request) and response_data['redirect']:
+                    return HttpResponseRedirect(quote_plus(
                         response_data['redirect'], safe='/?=&'))
-            elif request.is_ajax():
+            elif is_ajax(request):
                 # Form was sent with errors. Send them back.
                 if self.form_prefix:
                     errors = {}
@@ -118,17 +119,17 @@ class AjaxableFormView:
                 response_data = {'success': False, 'errors': errors}
             else:
                 response_data = None
-            if request.is_ajax():
+            if is_ajax(request):
                 return HttpResponse(LazyEncoder(ensure_ascii=False).encode(response_data))
         else:
-            if self.POST_login and not request.user.is_authenticated and not request.is_ajax():
+            if self.POST_login and not request.user.is_authenticated and not is_ajax(request):
                 return require_login(request)
 
             form = self.form_class(*form_args, **form_kwargs)
             response_data = None
 
         title = self.title
-        if request.is_ajax():
+        if is_ajax(request):
             template = self.template
         else:
             template = self.full_template
@@ -157,7 +158,7 @@ class AjaxableFormView:
 
     def redirect_or_refresh(self, request, path, message=None):
         """If the form is AJAX, refresh the page. If not, go to `path`."""
-        if request.is_ajax():
+        if is_ajax(request):
             output = "<script>window.location.reload()</script>"
             if message:
                 output = "<div class='normal-text'>" + message + "</div>" + output
