@@ -23,6 +23,7 @@ class CiteAdmin(admin.ModelAdmin):
     list_filter = ['group']
     readonly_fields = ['created_at']
     autocomplete_fields = ['book']
+    search_fields = ['text', 'link', 'picture_alt', 'picture_author', 'picture_link', 'image_title', 'image_author', 'image_link']
     fieldsets = (
         (None, {'fields': ('group', 'sticky', 'created_at', 'book')}),
         (_('Content'), {'fields': ('link', 'vip', 'text', 'small')}),
@@ -69,6 +70,7 @@ admin.site.register(BannerGroup, BannerGroupAdmin)
 class CarouselItemInline(OrderableAdmin, admin.TabularInline):
     model = CarouselItem
     ordering_field = 'order'
+    autocomplete_fields = ['banner']
 
 
 class CarouselAdmin(admin.ModelAdmin):

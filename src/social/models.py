@@ -146,14 +146,13 @@ class Carousel(models.Model):
 
 
 class CarouselItem(models.Model):
-    order = models.PositiveSmallIntegerField(_('order'), unique=True)
+    order = models.PositiveSmallIntegerField(_('order'))
     carousel = models.ForeignKey(Carousel, models.CASCADE, verbose_name=_('carousel'))
     banner = models.ForeignKey(Cite, models.CASCADE, null=True, blank=True, verbose_name=_('banner'))
     banner_group = models.ForeignKey(BannerGroup, models.CASCADE, null=True, blank=True, verbose_name=_('banner group'))
 
     class Meta:
         ordering = ('order',)
-        unique_together = [('carousel', 'order')]
         verbose_name = _('carousel item')
         verbose_name_plural = _('carousel items')
 
