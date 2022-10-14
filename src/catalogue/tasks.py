@@ -62,7 +62,8 @@ def build_custom_pdf(book_id, customizations, file_name, waiter_id=None):
                 morefloats=settings.LIBRARIAN_PDF_MOREFLOATS,
                 base_url=absolute_url(gallery_url(wldoc.book_info.url.slug)),
                 **kwargs)
-            DefaultStorage().save(file_name, File(open(pdf.get_filename(), 'rb')))
+            with open(pdf.get_filename(), 'rb') as f:
+                DefaultStorage().save(file_name, File(f))
     finally:
         if waiter_id is not None:
             WaitedFile.objects.filter(pk=waiter_id).delete()

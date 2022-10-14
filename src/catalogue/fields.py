@@ -173,7 +173,8 @@ class EbookField(models.FileField):
         out = self.transform(
             book.wldocument2() if self.librarian2_api else book.wldocument(),
         )
-        fieldfile.save(None, File(open(out.get_filename(), 'rb')), save=False)
+        with open(out.get_filename(), 'rb') as f:
+            fieldfile.save(None, File(f), save=False)
         self.set_file_permissions(fieldfile)
         if book.pk is not None:
             book.save(update_fields=[self.attname])

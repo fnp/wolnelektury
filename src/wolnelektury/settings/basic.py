@@ -2,7 +2,6 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from os import path
-from machina import MACHINA_MAIN_TEMPLATE_DIR
 from .paths import PROJECT_DIR
 
 DEBUG = True
@@ -14,6 +13,8 @@ ADMINS = [
 MANAGERS = ADMINS
 
 CONTACT_EMAIL = 'fundacja@nowoczesnapolska.org.pl'
+
+CACHE_MIDDLEWARE_SECONDS = 24 * 60 * 60
 
 DATABASES = {
     'default': {
@@ -43,10 +44,6 @@ SITE_ID = 1
 TEMPLATES = [{
     'BACKEND': 'django.template.backends.django.DjangoTemplates',
     'APP_DIRS': True,
-    'DIRS': (
-        path.join(PROJECT_DIR, 'templates'),  # Duplicate, because of Machina<1 weird configuration.
-        MACHINA_MAIN_TEMPLATE_DIR,
-    ),
     'OPTIONS': {
         'context_processors': (
             'django.contrib.auth.context_processors.auth',
@@ -57,7 +54,6 @@ TEMPLATES = [{
             'django.template.context_processors.request',
             'wolnelektury.context_processors.extra_settings',
             'search.context_processors.search_form',
-            'machina.core.context_processors.metadata',
         ),
     },
 }]
@@ -76,7 +72,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'fnpdjango.middleware.SetRemoteAddrFromXRealIP',
     'django.middleware.cache.FetchFromCacheMiddleware',
-    'machina.apps.forum_permission.middleware.ForumPermissionMiddleware',
     'experiments.middleware.experiments_middleware',
 ]
 

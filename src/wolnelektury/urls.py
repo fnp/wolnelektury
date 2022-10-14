@@ -74,7 +74,6 @@ urlpatterns += [
     path('szukaj/', include('search.urls')),
 
     path('i18n/', include('django.conf.urls.i18n')),
-    path('forum/', include('machina.urls')),
 ]
 
 urlpatterns += [

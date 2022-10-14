@@ -19,7 +19,7 @@ from django.conf import settings
 from django.core.files.storage import DefaultStorage
 from django.core.files.uploadedfile import UploadedFile
 from django.http import HttpResponse
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 
 from reporting.utils import read_chunks
 
@@ -200,7 +200,7 @@ def truncate_html_words(s, num, end_text='...'):
 
     This is just a version of django.utils.text.truncate_html_words with no space before the end_text.
     """
-    s = force_text(s)
+    s = force_str(s)
     length = int(num)
     if length <= 0:
         return ''

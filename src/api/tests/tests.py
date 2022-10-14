@@ -108,16 +108,18 @@ class TagTests(ApiTest):
 class PictureTests(ApiTest):
     def test_publish(self):
         slug = "kandinsky-composition-viii"
-        xml = SimpleUploadedFile(
-            'composition8.xml',
-            open(path.join(
+        with open(path.join(
                 picture.tests.__path__[0], "files", slug + ".xml"
-            ), 'rb').read())
-        img = SimpleUploadedFile(
-            'kompozycja-8.png',
-            open(path.join(
+            ), 'rb') as f:
+            xml = SimpleUploadedFile(
+                'composition8.xml',
+                f.read())
+        with open(path.join(
                 picture.tests.__path__[0], "files", slug + ".png"
-            ), 'rb').read())
+            ), 'rb') as f:
+            img = SimpleUploadedFile(
+                'kompozycja-8.png',
+                f.read())
 
         import_form = PictureImportForm({}, {
             'picture_xml_file': xml,

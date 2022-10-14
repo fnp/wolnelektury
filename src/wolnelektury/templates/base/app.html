@@ -48,7 +48,7 @@
                       {% csrf_token %}
                       <input type="hidden" name="language" value="{{ lang.0 }}"/>
                       <button type="submit" lang="{{ lang.0 }}"
-                              class="{% ifequal lang.0 LANGUAGE_CODE %}active{% endifequal %}">{{ lang.1 }}</button>
+                              class="{% if lang.0 == LANGUAGE_CODE %}active{% endif %}">{{ lang.1 }}</button>
                     </form>
                   {% endfor %}
                 </div>

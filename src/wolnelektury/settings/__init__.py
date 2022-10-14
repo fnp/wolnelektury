@@ -8,7 +8,6 @@ from sentry_sdk.integrations.django import DjangoIntegration
 from .apps import *
 from .basic import *
 from .auth import *
-from .cache import *
 from .celery import *
 from .contrib import *
 from .custom import *

@@ -11,7 +11,7 @@ deploy: src/wolnelektury/localsettings.py
 .ONESHELL:
 test:
 	cd src
-	coverage run --branch --source='.' ./manage.py test; true
+	python -Wall -m coverage run --branch --source='.' ./manage.py test; true
 	coverage html -d ../htmlcov.new
 	rm -rf ../htmlcov
 	mv ../htmlcov.new ../htmlcov

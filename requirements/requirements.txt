@@ -10,13 +10,12 @@ libsasscompiler==0.1.9
 jsmin==3.0.1
 
 fnp-django-pagination==2.2.5
-django-modeltranslation==0.18.2
+django-modeltranslation==0.18.4
 django-allauth==0.51
-django-extensions==3.1.5
+django-extensions==3.2.1
 djangorestframework==3.13.1
 djangorestframework-xml==2.0.0
 django-admin-ordering==0.14.0
-django-machina==1.1.6
 django-countries==7.3.2
 
 # A version compatible with Django 2.2+, with long help text and editable max_length.
@@ -34,7 +33,6 @@ pytz==2022.2.1
 
 django-honeypot==1.0.2
 
-python-memcached==1.59
 python-fb==0.2
 
 Feedparser==6.0.10
@@ -50,7 +48,8 @@ librarian==2.4.1
 celery[redis]==5.2.7
 
 # OAI-PMH
-pyoai==2.5.0
+#pyoai==2.5.1
+-e git+https://github.com/infrae/pyoai@5ff2f15e869869e70d8139e4c37b7832854d7049#egg=pyoai
 
 scorched==0.13
 httplib2
