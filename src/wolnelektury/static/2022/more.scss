@@ -273,4 +273,16 @@ form {
         line-height: 150%;
         margin-bottom: 30px;
     }
+
 }
+
+.socialaccount_providers {
+    list-style: none;
+    padding: 0;
+
+    li {
+        display: inline-block;
+        margin-right: 10px;
+    }
+}
+

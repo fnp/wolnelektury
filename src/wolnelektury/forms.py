@@ -2,10 +2,14 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from allauth.socialaccount.forms import SignupForm
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.models import User
 
 from newsletter.forms import NewsletterForm
+
+
+class WLAuthenticationForm(AuthenticationForm):
+    template_name = '2022/form.html'
 
 
 # has to be this order, because otherwise the form is lacking fields

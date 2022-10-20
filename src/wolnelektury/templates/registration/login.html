@@ -1,0 +1,50 @@
+{% extends "2022/base.html" %}
+{% load i18n %}
+
+{% block content %}
+  <div class="l-container">
+    <div class="l-breadcrumb">
+      <a href="/"><span>Strona główna</span></a>
+      <a>Zaloguj się</a>
+    </div>
+  </div>
+
+  <main class="l-main">
+    <div class="l-checkout__box" style="margin-bottom: 70px;">
+      <div class="l-checkout__box__header">
+        <div class="l-checkout__box__header__content">
+          <h1>Zaloguj się</h1>
+        </div>
+      </div>
+      <div class="l-checkout__cols">
+        <div class="l-checkout__col"></div>
+        <div class="l-checkout__col">
+          <form method="post">
+            <div class="l-checkout__form">
+              {% csrf_token %}
+              {{ form }}
+              <div class="l-checkout__form__row confirm">
+                <div class="l-checkout__input">
+                  <button style="margin-left:0">Dalej</button>
+                </div>
+              </div>
+
+              <a href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+            </div>
+          </form>
+
+          {% if USE_OPENID %}
+            <h3>{% trans "Sign in using:" %}</h3>
+
+            <ul class="socialaccount_providers">
+              {% include "socialaccount/snippets/provider_list.html" %}
+            </ul>
+
+            {% include "socialaccount/snippets/login_extra.html" %}
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock %}

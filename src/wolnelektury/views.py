@@ -10,6 +10,7 @@ from django.conf import settings
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.views import LoginView
 from django.core.cache import cache
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
@@ -21,7 +22,7 @@ from ajaxable.utils import placeholdized
 from catalogue.models import Book, Collection, Tag, Fragment
 
 from social.utils import get_or_choose_cite
-from wolnelektury.forms import RegistrationForm, SocialSignupForm
+from wolnelektury.forms import RegistrationForm, SocialSignupForm, WLAuthenticationForm
 
 
 @never_cache
@@ -72,6 +73,13 @@ def main_page(request):
     return render(request, "main_page.html", ctx)
 
 
+class WLLoginView(LoginView):
+    form_class = WLAuthenticationForm
+
+
+wl_login_view = WLLoginView.as_view()
+
+
 class LoginFormView(AjaxableFormView):
     form_class = AuthenticationForm
     template = "auth/login.html"
@@ -81,6 +89,9 @@ class LoginFormView(AjaxableFormView):
     ajax_redirect = True
 
     def __call__(self, request):
+        if request.EXPERIMENTS['layout'].value:
+            return wl_login_view(request)
+
         if request.user.is_authenticated:
             return self.redirect_or_refresh(
                 request, '/',
