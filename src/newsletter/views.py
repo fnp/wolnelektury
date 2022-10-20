@@ -32,7 +32,12 @@ def subscribe_form(request, slug=''):
 
 
 def subscribed(request):
-    return render(request, 'newsletter/subscribed.html', {
+    new_layout = request.EXPERIMENTS['layout'].value
+    if new_layout:
+        template_name = 'newsletter/2022/subscribed.html'
+    else:
+        template_name = 'newsletter/subscribed.html'
+    return render(request, template_name, {
         'page_title': _('Subscribed'),
     })
 
