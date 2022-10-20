@@ -25,7 +25,7 @@ Podanie danych osobowych jest dobrowolne.'''
     data_processing_part2 = '''Dane są przetwarzane w zakresie niezbędnym do wysyłania newslettera odbiorcom.'''
     data_processing_part3 = '''\
 Osobom, których dane są zbierane, przysługuje prawo dostępu do treści swoich danych oraz ich poprawiania.
-Więcej informacji w <a href="">polityce prywatności.</a>'''
+Więcej informacji w <a href="https://nowoczesnapolska.org.pl/prywatnosc/">polityce prywatności.</a>'''
 
     @property
     def data_processing(self):

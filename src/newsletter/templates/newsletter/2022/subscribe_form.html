@@ -1,0 +1,47 @@
+{% extends "2022/base.html" %}
+{% load i18n %}
+{% load honeypot %}
+
+
+{% block content %}
+  <div class="l-container">
+    <div class="l-breadcrumb">
+      <a href="/"><span>Strona główna</span></a>
+      <a>{{ page_title }}</a>
+    </div>
+  </div>
+
+  <main class="l-main">
+    <div class="l-checkout__box" style="margin-bottom: 70px;">
+      <div class="l-checkout__box__header">
+        <div class="l-checkout__box__header__content">
+          <h1>{{ page_title }}</h1>
+        </div>
+      </div>
+
+      <div class="l-checkout__cols">
+        <div class="l-checkout__col"></div>
+        <div class="l-checkout__col">
+          <form method="post">
+            <div class="l-checkout__form">
+              {% csrf_token %}
+              {% render_honeypot_field %}
+              {{ form }}
+
+              <div class="helptext">
+                {{ form.data_processing }}
+              </div>
+
+              <div class="l-checkout__form__row confirm">
+                <div class="l-checkout__input">
+                  <button style="margin-left:0">Dalej</button>
+                </div>
+              </div>
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock %}
