@@ -50,6 +50,7 @@ Więcej informacji w <a href="https://nowoczesnapolska.org.pl/prywatnosc/">polit
 class SubscribeForm(NewsletterForm):
     mailing = True
     agree_newsletter = None
+    required_css_class = 'required'
 
     email = EmailField(label=_('email address'))
 

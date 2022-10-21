@@ -2,13 +2,17 @@
 {% load pipeline %}
 {% load static %}
 {% load piwik_tags %}
+{% load title %}
+
+{% block settings %}
+{% endblock %}
 
 <html class="no-js">
   <head>
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>WolneLektury.pl</title>
+    <title>{% if title %}{{ title }} | {% endif %}WolneLektury.pl</title>
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     {% stylesheet '2022' %}
       <script src="scripts/modernizr.js"></script>
@@ -22,7 +26,18 @@
   <body>
     {% include '2022/header.html' %}
 
-    {% block content %}{% endblock %}
+    {% block global-content %}
+      <div class="l-container">
+        <div class="l-breadcrumb">
+          <a href="/"><span>Strona główna</span></a>
+          {% block breadcrumbs %}<span>{{ title }}</span>{% endblock %}
+        </div>
+      </div>
+
+      <main class="l-main">
+        {% block main %}{% endblock %}
+      </main>
+    {% endblock %}
 
     {% include '2022/footer.html' %}
 

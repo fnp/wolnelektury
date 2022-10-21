@@ -22,7 +22,6 @@ def subscribe_form(request, slug=''):
 
     if new_layout:
         template_name = 'newsletter/2022/subscribe_form.html'
-        form.template_name = '2022/form.html'
     else:
         template_name = 'newsletter/subscribe_form.html'
     return render(request, template_name, {

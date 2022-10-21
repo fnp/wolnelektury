@@ -1,28 +1,18 @@
-{% extends "2022/base.html" %}
+{% extends "2022/base_simple.html" %}
 {% load i18n %}
 
+
+{% block settings %}
+  {% load title %}
+  {% trans "Subscribed" as title %}
+  {% title title %}
+{% endblock %}
+
+
 {% block content %}
-  <div class="l-container">
-    <div class="l-breadcrumb">
-      <a href="/"><span>Strona główna</span></a>
-      <a>{{ page_title }}</a>
-    </div>
-  </div>
+  <h1>{{ title }}</h1>
 
-  <main class="l-main">
-    <div class="l-checkout__box" style="margin-bottom: 70px;">
-      <div class="l-checkout__box__header">
-        <div class="l-checkout__box__header__content">
-          <h1>{{ page_title }}</h1>
-        </div>
-      </div>
-
-      <div class="l-checkout__cols">
-        <div class="l-checkout__col"></div>
-        <div class="l-checkout__col">
-          {% trans "You have subscribed to Wolne Lektury newsletter." %}
-        </div>
-      </div>
-    </div>
-  </main>
+  <p>
+    {% trans "You have subscribed to Wolne Lektury newsletter." %}
+  </p>
 {% endblock %}

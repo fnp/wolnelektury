@@ -1,0 +1,7 @@
+{% extends request.EXPERIMENTS.layout.value|yesno:"2022/base_simple.html,account/base.html" %}
+
+
+{% block breadcrumbs %}
+  <span>{% block head_title %}{% endblock %}</span>
+  {{ block.super }}
+{% endblock %}

@@ -9,11 +9,12 @@ from newsletter.forms import NewsletterForm
 
 
 class WLAuthenticationForm(AuthenticationForm):
-    template_name = '2022/form.html'
+    required_css_class = 'required'
 
 
 # has to be this order, because otherwise the form is lacking fields
 class RegistrationForm(UserCreationForm, NewsletterForm):
+    required_css_class = 'required'
     data_processing_part2 = '''\
 Dane są przetwarzane w zakresie niezbędnym do prowadzenia serwisu, a także w celach prowadzenia statystyk, \
 ewaluacji i sprawozdawczości. W przypadku wyrażenia dodatkowej zgody adres e-mail zostanie wykorzystany \

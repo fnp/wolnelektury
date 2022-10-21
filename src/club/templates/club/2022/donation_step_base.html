@@ -4,11 +4,11 @@
 {% load static %}
 
 
-{% block content %}
+{% block global-content %}
   <div class="l-container">
     <div class="l-breadcrumb">
-      <a href="#"><span>Strona główna</span></a>
-      <a href="#"><span>Wesprzyj nas</span></a>
+      <a href="/"><span>Strona główna</span></a>
+      <span>Wesprzyj nas</span>
     </div>
   </div>
 
@@ -104,6 +104,7 @@
             <div class="l-article__overlay" data-max-height="91">
               {% chunk 'donation-faq' %}
             </div>
+            <button class="l-article__read-more" aria-label="Kliknij aby rozwinąć" data-label="Więcej" data-action="Mniej">Więcej</button>
           </div>
         </div>
       </div>

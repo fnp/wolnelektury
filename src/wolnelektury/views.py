@@ -12,6 +12,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LoginView
 from django.core.cache import cache
+from django.views.generic import FormView
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.utils.translation import gettext_lazy as _
@@ -102,6 +103,13 @@ class LoginFormView(AjaxableFormView):
         auth.login(request, form.get_user())
 
 
+class WLRegisterView(FormView):
+    form_class = RegistrationForm
+    template_name = 'registration/register.html'
+
+wl_register_view = WLRegisterView.as_view()
+
+
 class RegisterFormView(AjaxableFormView):
     form_class = RegistrationForm
     template = "auth/register.html"
@@ -113,6 +121,9 @@ class RegisterFormView(AjaxableFormView):
     honeypot = True
 
     def __call__(self, request):
+        if request.EXPERIMENTS['layout'].value:
+            return wl_register_view(request)
+
         if request.user.is_authenticated:
             return self.redirect_or_refresh(
                 request, '/',
