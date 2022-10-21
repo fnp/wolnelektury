@@ -7,6 +7,10 @@
 <form id='custom-pdf-form' action="" method="post" accept-charset="utf-8" class="cuteform">
   {% csrf_token %}
   {% render_honeypot_field %}
+  {% if request.EXPERIMENTS.layout.value %}
+    {{ form.as_p }}
+    <button type="submit">{% trans "Download" %}</button>
+  {% else %}
   <ol>
     {{ form.nofootnotes|pretty_checkbox }}
     {{ form.nothemes|pretty_checkbox }}
@@ -17,4 +21,5 @@
 
     <li><input type="submit" value="{% trans "Download" %}"/></li>
   </ol>
+  {% endif %}
 </form>

@@ -14,7 +14,7 @@ from .models import Newsletter
 class NewsletterForm(Form):
     email_field = 'email'
     agree_newsletter = BooleanField(
-        required=False, initial=False, label=_('I want to receive Wolne Lektury\'s newsletter.'))
+        required=False, initial=False, label=_('I want to receive Wolne Lektury\'s newsletter.'), label_suffix=False)
     mailing = False
     mailing_field = 'agree_newsletter'
     newsletter = None
@@ -27,6 +27,13 @@ Podanie danych osobowych jest dobrowolne.'''
 Osobom, których dane są zbierane, przysługuje prawo dostępu do treści swoich danych oraz ich poprawiania.
 Więcej informacji w <a href="https://nowoczesnapolska.org.pl/prywatnosc/">polityce prywatności.</a>'''
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Move the newsletter field to the end.
+        f = self.fields['agree_newsletter']
+        del self.fields['agree_newsletter']
+        self.fields['agree_newsletter'] = f
+    
     @property
     def data_processing(self):
         return mark_safe('%s %s %s' % (self.data_processing_part1, self.data_processing_part2, self.data_processing_part3))

@@ -349,10 +349,9 @@ form {
         margin-top: 24px;
     }
 
-    input {
+    input, textarea, select {
         display: block;
         width: 100%;
-        height: 56px;
         background: #FFFFFF;
         color: black;
         border: 1px solid #D5ECED;
@@ -360,6 +359,9 @@ form {
         transition: all cubic-bezier(0, 0, 0.2, 1) 250ms;
         padding: 10px;
         outline: 0;
+    }
+    input, select {
+        height: 56px;
     }
     input[type=checkbox], input[type=radio] {
         display: inline;

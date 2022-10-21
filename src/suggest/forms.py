@@ -66,8 +66,8 @@ class PublishingSuggestForm(NewsletterForm):
     email_field = 'contact'
     contact = forms.CharField(label=_('Contact'), max_length=120, required=False)
     books = forms.CharField(label=_('books'), widget=forms.Textarea, required=True)
-    ebook = forms.BooleanField(label=_('ebook'), required=False, initial=True)
-    audiobook = forms.BooleanField(label=_('audiobook'), required=False)
+    ebook = forms.BooleanField(label=_('ebook'), required=False, initial=True, label_suffix='')
+    audiobook = forms.BooleanField(label=_('audiobook'), required=False, label_suffix='')
 
     data_processing_part2 = SuggestForm.data_processing_part2
 

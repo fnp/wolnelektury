@@ -1,5 +1,12 @@
-{% extends "base/base.html" %}
+{% extends request.EXPERIMENTS.layout.value|yesno:"2022/base_simple.html,base/base.html" %}
 {% load i18n %}
+
+{% block settings %}
+  {% load title %}
+  {% trans "Page does not exist" as title %}
+  {% title title %}
+{% endblock %}
+
 
 {% block titleextra %}404 – {% trans "Page does not exist" %}{% endblock %}
 
