@@ -1,0 +1,31 @@
+.l-download {
+  margin-bottom: 30px !important;
+  li {
+    display: flex;
+    align-items: center;
+    font-weight: $regular;
+    @include font-size(18px);
+    line-height: 150%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #D9D9D9;
+
+    a {
+      margin-right: 0;
+      margin-left: auto;
+      width: 108px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $color-white !important;
+      background: #007880;
+      border-radius: 5px;
+
+      &:hover {
+        text-decoration: none !important;
+        background: darken(#007880, 2%);
+      }
+    }
+  }
+}

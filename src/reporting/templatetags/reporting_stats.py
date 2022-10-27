@@ -19,7 +19,7 @@ class StatsNode(template.Node):
             context[self.varname] = self.value
             return ''
         else:
-            return self.value
+            return str(self.value)
 
 
 def register_counter(f):

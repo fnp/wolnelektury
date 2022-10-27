@@ -85,6 +85,14 @@ def carousel(context, placement):
     }
 
 
+@register.inclusion_tag('social/carousel_2022.html', takes_context=True)
+def carousel_2022(context, placement):
+    banner = Carousel.get(placement).carouselitem_set.first().get_banner()
+    return {
+        'banner': banner,
+    }
+
+
 @register.inclusion_tag('social/embed_video.html')
 def embed_video(url):
     m = re.match(r'https://www.youtube.com/watch\?v=([^&;]+)', url)

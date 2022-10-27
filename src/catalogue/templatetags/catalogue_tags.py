@@ -540,3 +540,11 @@ def preview_ad(context):
         'accessible': book.is_accessible_to(context['request'].user),
         'book': book,
     }
+
+@register.inclusion_tag('catalogue/preview_ad_homepage.html', takes_context=True)
+def preview_ad_homepage(context):
+    book = Book.objects.filter(preview=True).first()
+    return {
+        'accessible': book.is_accessible_to(context['request'].user),
+        'book': book,
+    }

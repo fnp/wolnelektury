@@ -14,15 +14,18 @@ $images-path: "/images" !default;
 }
 
 /* Colors */
-$color-primary: 		  #018189;
-$color-secondary: 		#96C13D;
+$color-lighter-primary: #E1F1F2;
+$color-primary: 		#018189;
+$color-dark-primary: 	#21535F;
+$color-darker-primary: 	#083F4D;
+$color-secondary: 		#92BD39;
 
 $color-white:         #ffffff;
 $color-black:         #000000;
 $color-darker:        #0e0f0f;
-$color-dark:          #3E3E3E;
+$color-dark:          #474747;
 $color-gray:          #666666;
-$color-light-gray:    #CCCCCC;
+$color-light-gray:    #D9D9D9;
 
 $color-light-blue:    #E5F4FF;
 $color-yellow:        #FBC40F;

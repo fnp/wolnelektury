@@ -125,6 +125,7 @@ class Cite(models.Model):
 class Carousel(models.Model):
     placement = models.SlugField(_('placement'), choices=[
         ('main', 'main'),
+        ('main_2022', 'main 2022'),
     ])
     priority = models.SmallIntegerField(_('priority'), default=0)
     language = models.CharField(_('language'), max_length=2, blank=True, default='', choices=settings.LANGUAGES)

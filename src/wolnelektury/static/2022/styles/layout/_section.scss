@@ -1,5 +1,15 @@
 .l-section {
   display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
 
-  & > h2 {}
+  @include rwd(tablet) {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  &.l-section--col {
+    flex-direction: column;
+  }
 }

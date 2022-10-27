@@ -30,9 +30,10 @@ Więcej informacji w <a href="https://nowoczesnapolska.org.pl/prywatnosc/">polit
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         # Move the newsletter field to the end.
-        f = self.fields['agree_newsletter']
-        del self.fields['agree_newsletter']
-        self.fields['agree_newsletter'] = f
+        if 'agree_newsletter' in self.fields:
+            f = self.fields['agree_newsletter']
+            del self.fields['agree_newsletter']
+            self.fields['agree_newsletter'] = f
     
     @property
     def data_processing(self):

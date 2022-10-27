@@ -21,13 +21,23 @@ from django.views.decorators.cache import never_cache
 from ajaxable.utils import AjaxableFormView
 from ajaxable.utils import placeholdized
 from catalogue.models import Book, Collection, Tag, Fragment
-
+import club.models
 from social.utils import get_or_choose_cite
 from wolnelektury.forms import RegistrationForm, SocialSignupForm, WLAuthenticationForm
 
 
+def main_page_2022(request):
+    ctx = {}
+    ctx['last_published'] = Book.objects.exclude(cover_clean='').filter(findable=True, parent=None).order_by('-created_at')[:10]
+    ctx['recommended_collection'] = Collection.objects.filter(listed=True, role='recommend').order_by('?').first()
+    ctx['ambassadors'] = club.models.Ambassador.objects.all().order_by('?')
+    return render(request, '2022/main_page.html', ctx)
+
 @never_cache
 def main_page(request):
+    if request.EXPERIMENTS['layout'].value:
+        return main_page_2022(request)
+
     ctx = {
         'last_published': Book.objects.exclude(cover_thumb='').filter(findable=True, parent=None).order_by('-created_at')[:6],
         'theme_books': [],

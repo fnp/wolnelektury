@@ -27,11 +27,29 @@
   border-radius: 9px;
   padding: 21px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0);
-
   transition: all $ease-dynamic 350ms;
+  outline: 0;
+
+  @include rwd(tablet) {
+    padding: 16px;
+  }
+
+  &.l-books__item--placeholder {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  & * {
+    outline: 0;
+  }
 
   &:not(:last-child) {
     margin-right: 17px;
+
+    @include rwd(tablet) {
+      margin-right: 5px;
+      margin-left: 5px;
+    }
   }
 
   &:hover {
@@ -97,6 +115,10 @@
 
   img {
     max-width: 170px;
+
+    @include rwd(tablet) {
+      max-width: 140px;
+    }
   }
 }
 

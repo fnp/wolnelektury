@@ -53,7 +53,7 @@ class FragmentAdmin(admin.ModelAdmin):
 
 
 class CollectionAdmin(admin.ModelAdmin):
-    list_display = ('title', 'listed')
+    list_display = ('title', 'listed', 'role')
     prepopulated_fields = {'slug': ('title',)}
 
 

@@ -37,3 +37,39 @@ $teal: #007880;
     content: $icon-mute;
   }
 }
+
+
+.sponsors-page {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 48px;
+
+    @include rwd(tablet) {
+        flex-wrap: wrap;
+    }
+
+    .sponsors-column {
+        margin: 1em 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 0;
+        .sponsors-column-name {
+            font-weight: $regular;
+            @include font-size(18px);
+            line-height: 150%;
+            text-align: center;
+            color: #474747;
+        }
+        .sponsor-logos {
+            height: 120px;
+            overflow: hidden;
+            a {
+                margin-top: 20px;
+                display: block;
+                width: 120px;
+                height: 120px;
+            }
+        }
+    }
+}

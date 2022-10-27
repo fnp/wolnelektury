@@ -36,6 +36,12 @@
 .l-navigation__logo {
   position: relative;
   z-index: $master-layer + 1;
+
+  @include rwd(tablet) {
+    img {
+      width: 153px;
+    }
+  }
 }
 
 .l-navigation__button {
@@ -54,6 +60,11 @@
   max-width: 580px;
   margin-left: 60px;
   margin-right: auto;
+
+  @include rwd(tablet) {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
 
   input {
     font-family: $base-font;
@@ -77,6 +88,12 @@
     color: #85C7CC;
     font-size: 30px;
     margin-right: 25px;
+  }
+  
+  @include rwd(tablet) {
+    a {
+      display: none;
+    }
   }
 }
 
@@ -152,11 +169,23 @@
   display: flex;
   justify-content: space-between;
 
+  @include rwd(tablet) {
+    flex-wrap: wrap;
+    max-height: calc(100vh - 120px);
+    overflow-y: scroll;
+  }
+
   ul {
     margin: 0;
     padding: 0;
     list-style: none;
     max-width: 212px;
+
+    @include rwd(tablet) {
+      width: 100%;
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
 
     li {
       font-weight: $regular;

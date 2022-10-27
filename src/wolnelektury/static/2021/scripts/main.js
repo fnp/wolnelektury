@@ -62,7 +62,7 @@
 
 })();
 
-/// Ebook/Audiobook Btns
+// Ebook/Audiobook Btns
 (function() {
   let button = $('.c-media__btn button:not(.l-button--media--full)');
   let popupLayer = $('.c-media__popup');
@@ -112,6 +112,110 @@
   });
 })();
 
+// Homepage books sliders
+(function () {
+  let shelfSlider = $('.l-your-books__shelf .l-books');
+  let shelfNextSlide = $('.l-your-books__shelf .js-next-slide');
+  let shelfPrevSlide = $('.l-your-books__shelf .js-prev-slide');
+  let shelfCollapse = $('.l-your-books__shelf .js-collapse');
+
+  shelfSlider.slick({
+    slidesToScroll: 1,
+    slidesToShow: 4,
+    infinite: false,
+    dots: false,
+    arrows: false,
+    autoplay: false,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          centerMode: false,
+          slidesToShow: 1
+        }
+      }
+    ]
+  });
+
+  shelfNextSlide.on('click', function (event) {
+    event.preventDefault();
+    shelfSlider.slick('slickNext');
+  });
+
+  shelfPrevSlide.on('click', function (event) {
+    event.preventDefault();
+    shelfSlider.slick('slickPrev');
+  });
+
+  shelfCollapse.on('click', function (event) {
+    event.preventDefault();
+    shelfSlider.slick('slickPrev');
+  });
+
+  let collectionsSlider = $('.js-collections .l-books');
+  let collectionsNextSlide = $('.js-collections .js-next-slide');
+  let collectionsPrevSlide = $('.js-collections .js-prev-slide');
+
+  collectionsSlider.slick({
+    slidesToScroll: 1,
+    slidesToShow: 5,
+    infinite: false,
+    dots: false,
+    arrows: false,
+    autoplay: false,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          centerMode: false,
+          slidesToShow: 2
+        }
+      }
+    ]
+  });
+
+  collectionsNextSlide.on('click', function (event) {
+    event.preventDefault();
+    collectionsSlider.slick('slickNext');
+  });
+
+  collectionsPrevSlide.on('click', function (event) {
+    event.preventDefault();
+    collectionsSlider.slick('slickPrev');
+  });
+
+  let newBooksSlider = $('.js-new-books-slider .l-books');
+  let newBooksNextSlide = $('.js-new-books-slider .js-next-slide');
+  let newBooksPrevSlide = $('.js-new-books-slider .js-prev-slide');
+
+  newBooksSlider.slick({
+    slidesToScroll: 1,
+    slidesToShow: 5,
+    infinite: false,
+    dots: false,
+    arrows: false,
+    autoplay: false,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          centerMode: false,
+          slidesToShow: 2
+        }
+      }
+    ]
+  });
+
+  newBooksNextSlide.on('click', function (event) {
+    event.preventDefault();
+    newBooksSlider.slick('slickNext');
+  });
+
+  newBooksPrevSlide.on('click', function (event) {
+    event.preventDefault();
+    newBooksSlider.slick('slickPrev');
+  });
+})();
 
 // Quotes slider
 (function () {
@@ -126,6 +230,29 @@
     autoplay: true,
     autoplaySpeed: 2500
   });
+
+
+  let sliderHomepage = $('.l-quotes');
+  sliderHomepage.slick({
+    slidesToShow: 1,
+    centerMode: true,
+    centerPadding: '250px',
+    infinite: true,
+    dots: true,
+    arrows: false,
+    autoplay: true,
+    autoplaySpeed: 2500,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          centerMode: false,
+          slidesToShow: 1
+        }
+      }
+    ]
+  });
+
 })();
 
 // Text overlay toggler

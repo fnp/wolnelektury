@@ -4,12 +4,24 @@
   margin: 0 auto;
   padding-top: 27px;
   padding-bottom: 38px;
+
+  .l-container {
+    @include rwd(tablet) {
+      display: flex;
+      flex-direction: column;
+    }
+  }
 }
 
 .l-footer__row {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @include rwd(tablet) {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 
   &:nth-child(1) {
     padding-bottom: 25px;
@@ -20,14 +32,25 @@
     margin-top: 25px;
 
     div {
+      @include rwd(tablet) {
+        font-size: 14px;
+      }
       &:nth-child(1) {
         max-width: 315px;
         min-width: 270px;
         padding-right: 53px;
         border-right: 1px solid #007880;
+        @include rwd(tablet) {
+          border-right: 0;
+          min-width: 0;
+          margin-bottom: 20px;
+        }
       }
       &:nth-child(3) {
         max-width: 483px;
+        @include rwd(tablet) {
+          margin-top: 20px;
+        }
       }
 
       a {
@@ -44,20 +67,32 @@
     margin: 0;
     padding: 0;
     list-style: none;
+    @include rwd(tablet) {
+      margin-top: 20px;
+    }
     li {
       font-weight: normal;
       font-size: 21px;
       line-height: 150%;
+      @include rwd(tablet) {
+        font-size: 14px;
+      }
     }
 
     &:nth-of-type(1) {
       margin-left: 90px;
       margin-right: auto;
+      @include rwd(tablet) {
+        margin-left: 0;
+      }
     }
 
     &:nth-of-type(2) {
       margin-left: 10px;
       margin-right: auto;
+      @include rwd(tablet) {
+        margin-left: 0;
+      }
     }
 
     &.teal {

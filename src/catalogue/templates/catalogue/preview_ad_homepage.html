@@ -1,0 +1,34 @@
+{% if book %}
+  <section class="l-section">
+    <div class="p-homepage-prapremiera">
+      <div class="l-container">
+        <h3>Prapremiera</h3>
+        <div class="p-homepage-prapremiera__box">
+          <figure>
+            <a href="{{ book.get_absolute_url }}">
+              <img src="{{ book.cover_clean.url }}" alt="{{ book.pretty_title }}">
+            </a>
+          </figure>
+          <div class="p-homepage-prapremiera__box__content">
+            <strong>
+              <h4>
+                {% for author in book.authors %}
+                  <a href="{{ author.get_absolute_url }}">{{ author }}</a>
+                {% endfor %}
+              </h4>
+              <h3><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></h3>
+              <p>{{ book.abstract|safe }}</p>
+          </div>
+          <div class="p-homepage-prapremiera__box__donate">
+            {% if accessible %}
+              <p>Dziękujemy za wsparcie — przeczytaj w prezencie już dzisiaj!</p>
+            {% else %}
+              <p>Aby przeczytać prapremierę, <strong>dorzuć</strong> się do Wolnych Lektur dowolną wpłatą. Ustaw stałe wsparcie, a będziesz mieć dostęp do kolejnych <strong>prapremier</strong>.</p>
+              <a href="#" class="l-button l-button--default l-button--default--dark">Dorzuć się</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endif %}

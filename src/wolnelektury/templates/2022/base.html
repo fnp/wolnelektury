@@ -26,6 +26,20 @@
   <body>
     {% include '2022/header.html' %}
 
+    {% block under-menu %}{% endblock %}
+
+    <div class="l-container l-change-pop">
+      <h3>Zmieniamy się!</h3>
+      <p>
+        Jeżeli to czytasz jesteś jedną z osób, której prezentujemy nowy wygląd części stron.
+        Będziemy bardzo! wdzięczni za Twoją opinię – <a href='/formularz/ux-strona-ksiazki-T1/' target="_blank">możesz nam ją przesłać tutaj</a>.
+        Jeżeli wolisz klasyczny wygląd - wystarczy, że <a class="quit-experiment" href="#">klikniesz tutaj</a>
+      </p>
+      <!-- button class="l-change-pop__close">
+           <i class="icon icon-close"></i>
+           </button -->
+    </div>
+
     {% block global-content %}
       <div class="l-container">
         <div class="l-breadcrumb">

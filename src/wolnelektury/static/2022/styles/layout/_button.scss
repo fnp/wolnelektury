@@ -38,4 +38,38 @@
       }
     }
   }
+
+  &.l-button--default {
+    cursor: pointer;
+    color: $color-white;
+    background: #007880;
+    border: 2px solid #007880;
+    border-radius: 5px;
+    letter-spacing: -0.01em;
+    font-weight: $semibold;
+    text-align: center;
+    @include font-size(25px);
+    line-height: 140%;
+    padding: 5px 20px;
+    transition: all $ease-dynamic 350ms;
+
+    @include rwd(tablet) {
+      @include font-size(18px);
+    }
+
+    &:hover {
+      background: #083F4D;
+      border-color: #083F4D;
+    }
+
+    &.l-button--default--dark {
+      color: #083F4D;
+      background: #92BD39;
+      border-color: #92BD39;
+      &:hover {
+        background: #FFA500;
+        border-color: #FFA500;
+      }
+    }
+  }
 }

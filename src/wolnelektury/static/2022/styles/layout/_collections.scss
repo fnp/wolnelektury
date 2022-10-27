@@ -1,0 +1,49 @@
+.l-collections {
+  width: 100%;
+  max-width: 1140px;
+
+  .l-books {
+    width: calc(100% + 20px);
+
+    @include rwd(tablet) {
+      width: 100%;
+    }
+
+    .l-books__item {
+      border: 1px solid #D9D9D9;
+    }
+  }
+}
+
+.l-collections__header {
+  margin-top: 36px;
+  display: flex;
+  justify-content: space-between;
+
+  h3 {
+    margin-top: 0;
+    font-weight: $semibold;
+    @include font-size(31px);
+    line-height: 140%;
+    letter-spacing: -0.01em;
+    color: $color-dark;
+
+    @include rwd(tablet) {
+      @include font-size(25px);
+    }
+  }
+
+  .l-your-books__header__actions {
+    button {
+      border-color: $color-light-gray;
+
+      .icon {
+        color: $color-darker-primary;
+      }
+
+      &:hover {
+        background-color: darken($color-white, 2%);
+      }
+    }
+  }
+}

@@ -2,4 +2,9 @@
   width: 100%;
   max-width: 1140px;
   margin: 0 auto;
+
+  @include rwd(tablet) {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 }
