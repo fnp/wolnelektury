@@ -1,8 +1,12 @@
-{% extends "base/base.html" %}
+{% extends request.EXPERIMENTS.layout.value|yesno:"2022/base.html,base/base.html" %}
 
+{% block breadcrumbs %}
+  <span>Eksperymenty</span>
+{% endblock %}
 
+{% block main %}
 {% block body %}
-  <img src="https://upload.wikimedia.org/wikipedia/commons/c/c8/MH1Asimulator.JPG" style="width:100">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/c/c8/MH1Asimulator.JPG" style="width:100%">
 
   {% for exp in request.EXPERIMENTS.values %}
     <div class="experiment" data-slug="{{ exp.slug }}">
@@ -40,4 +44,5 @@
        window.location.reload(true);
    });
   </script>
+{% endblock %}
 {% endblock %}
