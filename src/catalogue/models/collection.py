@@ -15,6 +15,10 @@ class Collection(models.Model):
     slug = models.SlugField(_('slug'), max_length=120, primary_key=True)
     description = models.TextField(_('description'), null=True, blank=True)
     book_slugs = models.TextField(_('book slugs'))
+    authors = models.ManyToManyField(
+        'Tag',
+        limit_choices_to={'category': 'author'}
+    )
     kind = models.CharField(_('kind'), max_length=10, blank=False, default='book', db_index=True,
                             choices=(('book', _('book')), ('picture', _('picture'))))
     listed = models.BooleanField(_('listed'), default=True, db_index=True)

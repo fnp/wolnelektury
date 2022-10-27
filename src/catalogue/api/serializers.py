@@ -148,12 +148,30 @@ class CollectionListSerializer(serializers.ModelSerializer):
 
 class CollectionSerializer(serializers.ModelSerializer):
     books = BookSerializer(many=True, source='get_books', read_only=True)
-    book_slugs = serializers.CharField(write_only=True)
+    authors = TagSerializer(many=True, read_only=True)
+    book_slugs = serializers.CharField(write_only=True, required=False)
+    author_slugs = serializers.CharField(write_only=True, required=False)
     url = AbsoluteURLField()
 
     class Meta:
         model = Collection
-        fields = ['url', 'books', 'description', 'title', 'book_slugs']
+        fields = [
+            'url', 'books', 'description', 'title',
+            'book_slugs', 'authors', 'author_slugs'
+        ]
+
+    def update(self, instance, validated_data):
+        instance = super().update(instance, validated_data)
+        author_slugs = validated_data.get('author_slugs', '').strip().split()
+        if author_slugs:
+            authors = Tag.objects.filter(
+                category='author',
+                slug__in=author_slugs
+            )
+        else:
+            authors = []
+        instance.authors.set(authors)
+        return instance
 
 
 class FragmentSerializer(serializers.ModelSerializer):
