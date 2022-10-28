@@ -1,5 +1,11 @@
-{% extends "base/base.html" %}
+{% extends request.EXPERIMENTS.layout.value|yesno:"2022/base_simple.html,base/base.html" %}
 {% load i18n %}
+
+{% block settings %}
+  {% load title %}
+  {% trans "Authorize access to Wolne Lektury" as title %}
+  {% title title %}
+{% endblock %}
 
 {% block titleextra %}{% trans "Authorize access to Wolne Lektury" %}{% endblock %}
 

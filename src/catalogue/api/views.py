@@ -320,7 +320,7 @@ class TagView(RetrieveAPIView):
                 slug=self.kwargs['slug']
             )
         except Http404:
-            if self.method == 'PUT':
+            if self.request.method == 'PUT':
                 return Tag(
                     category=self.kwargs['category'],
                     slug=self.kwargs['slug']

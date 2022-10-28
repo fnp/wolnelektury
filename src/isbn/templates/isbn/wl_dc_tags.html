@@ -1,14 +1,21 @@
-{% extends "base/base.html" %}
+{% extends request.EXPERIMENTS.layout.value|yesno:"2022/base_simple.html,base/base.html" %}
+
+{% block settings %}
+  {% load title %}
+  {% title 'Przypisane ISBN' %}
+{% endblock %}
 
 {% block title %}Znaczniki ISBN{% endblock %}
 
 {% block body %}
 
   <h1>Znaczniki ISBN</h1>
+  <div class="normal-text">
   <h2>{{ title }}</h2>
-<code>{% for format, content_type, isbn in isbn_formats %}
+  <code>{% for format, content_type, isbn in isbn_formats %}
 &lt;dc:relation.hasFormat id="{{ format }}" xmlns:dc="http://purl.org/dc/elements/1.1/">https://wolnelektury.pl/{% if format == 'html' %}katalog/lektura{% else %}media/book/{{ format }}{% endif %}/{{ slug }}.{{ format }}&lt;/dc:relation.hasFormat><br>
 &lt;meta refines="#{{ format }}" id="{{ format }}-id" property="dcterms:identifier">ISBN-{{ isbn }}&lt;/meta><br>
 &lt;meta refines="#{{ format }}-id" property="identifier-type">ISBN&lt;/meta><br>
   &lt;meta refines="#{{ format }}" property="dcterms:format">{{ content_type }}&lt;/meta><br>{% endfor %}</code>
+  </div>
 {% endblock %}

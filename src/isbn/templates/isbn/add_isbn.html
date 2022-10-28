@@ -1,4 +1,9 @@
-{% extends "base/base.html" %}
+{% extends request.EXPERIMENTS.layout.value|yesno:"2022/base_simple.html,base/base.html" %}
+
+{% block settings %}
+  {% load title %}
+  {% title 'Dodaj ISBN' %}
+{% endblock %}
 
 {% block title %}Dodaj ISBN{% endblock %}
 

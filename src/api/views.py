@@ -75,7 +75,7 @@ def oauth_user_auth(request):
             realms, credentials = endpoint.get_realms_and_credentials(
                 **oauthlib_request(request))
         except OAuth1Error as e:
-            return HttpResponse(e.message, status=400)
+            return HttpResponse(str(e), status=400)
         callback = request.GET.get('oauth_callback')
 
         form = OAuthAuthenticationForm(initial={

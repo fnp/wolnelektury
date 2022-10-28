@@ -1,7 +1,12 @@
-{% extends "base/base.html" %}
+{% extends request.EXPERIMENTS.layout.value|yesno:"2022/base_simple.html,base/base.html" %}
 {% load i18n pagination_tags %}
 {% load set_get from set_get %}
 
+{% block settings %}
+  {% load title %}
+  {% trans "Footnotes" as title %}
+  {% title title %}
+{% endblock %}
 
 {% block bodyid %}footnotes{% endblock %}
 

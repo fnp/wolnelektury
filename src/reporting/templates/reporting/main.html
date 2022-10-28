@@ -1,6 +1,12 @@
-{% extends "base/base.html" %}
+{% extends request.EXPERIMENTS.layout.value|yesno:"2022/base_simple.html,base/base.html" %}
 {% load i18n %}
 {% load reporting_stats catalogue_tags %}
+
+{% block settings %}
+  {% load title %}
+  {% trans "Reports" as title %}
+  {% title title %}
+{% endblock %}
 
 {% block titleextra %}{% trans "Reports" %}{% endblock %}
 

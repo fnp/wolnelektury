@@ -16,7 +16,7 @@ def main_page(request):
 
     return render(
         request,
-        'lesmianator/lesmianator.html',
+        'lesmianator/2022/lesmianator.html' if request.EXPERIMENTS['layout'].value else 'lesmianator/lesmianator.html',
         {"last": last, "shelves": shelves})
 
 @cache.never_cache

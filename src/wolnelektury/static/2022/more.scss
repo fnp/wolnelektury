@@ -318,10 +318,11 @@ form {
         color: #92BD39;
     }
 
-    > p, form {
+    > p, form, > .normal-text {
         min-width: 300px;
         margin-left: 50px;
         margin-right: 50px;
+        width: auto;
     }
 }
 

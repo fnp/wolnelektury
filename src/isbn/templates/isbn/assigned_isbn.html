@@ -1,14 +1,21 @@
-{% extends "base/base.html" %}
+{% extends request.EXPERIMENTS.layout.value|yesno:"2022/base_simple.html,base/base.html" %}
+
+{% block settings %}
+  {% load title %}
+  {% title 'Przypisane ISBN' %}
+{% endblock %}
 
 {% block title %}Przypisane ISBN{% endblock %}
 
 {% block body %}
 
   <h1>Przypisane ISBN</h1>
-  <h2>{{ title }}</h2>
+  <div class="normal-text">
+    <h2>{{ title }}</h2>
   <dl>
     {% for format, isbn in isbn_formats %}
       <dt>{{ format }}</dt><dd>{{ isbn }}</dd>
     {% endfor %}
   </dl>
+  </div>
 {% endblock %}

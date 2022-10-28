@@ -1,6 +1,12 @@
-{% extends "base/base.html" %}
+{% extends request.EXPERIMENTS.layout.value|yesno:"2022/base_simple.html,base/base.html" %}
 {% load i18n %}
 {% load build_absolute_uri from fnp_common %}
+
+{% block settings %}
+  {% load title %}
+  {% trans "WolneLektury.pl API" as title %}
+  {% title title %}
+{% endblock %}
 
 {% block title %}{% trans "WolneLektury.pl API" %}{% endblock %}
 
@@ -35,26 +41,26 @@
     </p>
 
     <ul>
-        <li><a href='{% url "catalogue_api_book_list" "" %}'>
-          {% url "catalogue_api_book_list" "" %}</a> – {% trans "All books" %}</li>
-        <li><a href='{% url "catalogue_api_audiobook_list" "" %}'>
-          {% url "catalogue_api_audiobook_list" "" %}</a> – {% trans "Audiobooks" %}</li>
-        <li><a href='{% url "catalogue_api_daisy_list" "" %}'>
-          {% url "catalogue_api_daisy_list" "" %}</a> – {% trans "DAISY" %}</li>
+      <li><a href='{% url "catalogue_api_book_list" "" %}'>
+        {% url "catalogue_api_book_list" "" %}</a> – {% trans "All books" %}</li>
+      <li><a href='{% url "catalogue_api_audiobook_list" "" %}'>
+        {% url "catalogue_api_audiobook_list" "" %}</a> – {% trans "Audiobooks" %}</li>
+      <li><a href='{% url "catalogue_api_daisy_list" "" %}'>
+        {% url "catalogue_api_daisy_list" "" %}</a> – {% trans "DAISY" %}</li>
 
-        <li><a href='{% url "catalogue_api_tag_list" "author" %}'>
-          {% url "catalogue_api_tag_list" "author" %}</a> – {% trans "List of all authors" %}</li>
-        <li><a href='{% url "catalogue_api_tag_list" "epoch" %}'>
-          {% url "catalogue_api_tag_list" "epoch" %}</a> – {% trans "List of all epochs" %}</li>
-        <li><a href='{% url "catalogue_api_tag_list" "genre" %}'>
-          {% url "catalogue_api_tag_list" "genre" %}</a> – {% trans "List of all genres" %}</li>
-        <li><a href='{% url "catalogue_api_tag_list" "kind" %}'>
-          {% url "catalogue_api_tag_list" "kind" %}</a> – {% trans "List of all kinds" %}</li>
+      <li><a href='{% url "catalogue_api_tag_list" "author" %}'>
+        {% url "catalogue_api_tag_list" "author" %}</a> – {% trans "List of all authors" %}</li>
+      <li><a href='{% url "catalogue_api_tag_list" "epoch" %}'>
+        {% url "catalogue_api_tag_list" "epoch" %}</a> – {% trans "List of all epochs" %}</li>
+      <li><a href='{% url "catalogue_api_tag_list" "genre" %}'>
+        {% url "catalogue_api_tag_list" "genre" %}</a> – {% trans "List of all genres" %}</li>
+      <li><a href='{% url "catalogue_api_tag_list" "kind" %}'>
+        {% url "catalogue_api_tag_list" "kind" %}</a> – {% trans "List of all kinds" %}</li>
 
-        <li><a href='{% url "catalogue_api_tag_list" "theme" %}'>
-          {% url "catalogue_api_tag_list" "theme" %}</a> – {% trans "List of all themes" %}</li>
-        <li><a href='{% url "catalogue_api_collections" %}'>
-          {% url "catalogue_api_collections" %}</a> – {% trans "Collections" %}</li>
+      <li><a href='{% url "catalogue_api_tag_list" "theme" %}'>
+        {% url "catalogue_api_tag_list" "theme" %}</a> – {% trans "List of all themes" %}</li>
+      <li><a href='{% url "catalogue_api_collections" %}'>
+        {% url "catalogue_api_collections" %}</a> – {% trans "Collections" %}</li>
     </ul>
 
     <p>
@@ -84,7 +90,7 @@
     </p>
 
     <p>
-      {% url "api_fragment" "sen-nocy-letniej" "1290526312912-3814598192" as f %}
+      {% url "catalogue_api_fragment" "sen-nocy-letniej" "1290526312912-3814598192" as f %}
       {% blocktrans with "/api/authors/william-shakespeare/themes/zabawa/fragments/" as e %}
         The same way, using also books and themes, you can search for a list of fragments:
         <a href="{{e}}">{{e}}</a>.
