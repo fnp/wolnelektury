@@ -323,11 +323,14 @@ form {
         margin-left: 50px;
         margin-right: 50px;
     }
+}
 
+.page-simple, .nice-controls {
     button, input[type=submit] {
         margin: 24px 0;
         height: 56px;
         background: #083F4D;
+        border: none;
         border-radius: 3px;
         font-weight: 600;
         font-size: 20px;
@@ -338,6 +341,15 @@ form {
         text-align: center;
         color: #FFFFFF;
         width: 340px;
+
+        &.active {
+            outline: 2px solid #083F4D;
+            outline-offset: 3px;
+        }
+        
+        &:disabled {
+            opacity: .8;
+        }
     }
 
     label {
@@ -370,5 +382,22 @@ form {
         height: 1.2em;
         vertical-align: middle;
         margin-right: 1em;
+    }
+}
+
+
+.experiment {
+    display: flex;
+    align-items: center;
+}
+
+
+
+.page-simple {
+    .form-info {
+        h2 {
+            font-size: 1.5em;
+            margin-top: 0;
+        }
     }
 }

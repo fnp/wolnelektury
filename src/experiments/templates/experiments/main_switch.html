@@ -9,8 +9,10 @@
   <img src="https://upload.wikimedia.org/wikipedia/commons/c/c8/MH1Asimulator.JPG" style="width:100%">
 
   {% for exp in request.EXPERIMENTS.values %}
-    <div class="experiment" data-slug="{{ exp.slug }}">
-      {{ exp.name }}
+    <div class="experiment nice-controls" data-slug="{{ exp.slug }}">
+      <span>
+        {{ exp.name }}
+      </span>
       <button
           {% if exp.value %}
           disabled class="active"

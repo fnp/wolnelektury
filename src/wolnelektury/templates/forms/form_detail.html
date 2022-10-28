@@ -1,5 +1,10 @@
-{% extends form.base_template|default:"base/base.html" %}
+{% extends form.base_template|default:request.EXPERIMENTS.layout.value|yesno:"2022/base_simple.html,base/base.html" %}
 {% load forms_builder_tags %}
+{% load title %}
+
+{% block settings %}
+  {% title form.title %}
+{% endblock %}
 
 {% block title %}{{ form.title }}{% endblock %}
 

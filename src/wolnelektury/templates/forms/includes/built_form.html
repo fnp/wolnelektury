@@ -1,25 +1,34 @@
 {% load honeypot %}
 {% load more %}
 
+
 <h1>{{ form.title }}</h1>
 
-    <div class="form-info" style="margin-bottom:2em;">
-	{{ form.intro|first_part:"---"|safe }}
-    </div>
+{{ form_for_form.media }}
+<form method="POST" action="{{ form.get_absolute_url }}" {% if form_for_form.is_multipart %}enctype="multipart/form-data"{% endif %} class="submit-form">
+  {% csrf_token %}
+  {% render_honeypot_field %}
 
-    {{ form_for_form.media }}
-    <form method="POST" action="{{ form.get_absolute_url }}" {% if form_for_form.is_multipart %}enctype="multipart/form-data"{% endif %} class="submit-form">
-    {% csrf_token %}
-    {% render_honeypot_field %}
+  <div class="form-info" style="margin-bottom:2em;">
+    {{ form.intro|first_part:"---"|safe }}
+  </div>
+
+  {% if request.EXPERIMENTS.layout.value %}
+    {{ form_for_form.as_p }}
+    {% if form_for_form.fields %}
+      <button>{{ form.button_text }}</button>
+    {% endif %}
+  {% else %}
     <table>
-        {{ form_for_form.as_table }}
-        {% if form_for_form.fields %}
-            <tr><td></td><td><button>{{ form.button_text }}</button></td></tr>
-        {% endif %}
+      {{ form_for_form.as_table }}
+      {% if form_for_form.fields %}
+        <tr><td></td><td><button>{{ form.button_text }}</button></td></tr>
+      {% endif %}
     </table>
-    </form>
+  {% endif %}
 
 
-    <div class="form-info" style="margin-top:2em;">
-	{{ form.intro|second_part:"---"|safe }}
-    </div>
+  <div class="form-info" style="margin-top:2em;">
+    {{ form.intro|second_part:"---"|safe }}
+  </div>
+</form>
