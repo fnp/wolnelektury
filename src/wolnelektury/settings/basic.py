@@ -43,6 +43,7 @@ SITE_ID = 1
 
 TEMPLATES = [{
     'BACKEND': 'django.template.backends.django.DjangoTemplates',
+    'APP_DIRS': True,
     'OPTIONS': {
         'context_processors': (
             'django.contrib.auth.context_processors.auth',
@@ -54,16 +55,8 @@ TEMPLATES = [{
             'wolnelektury.context_processors.extra_settings',
             'search.context_processors.search_form',
         ),
-        'loaders': [
-            'django.template.loaders.filesystem.Loader',
-            'django.template.loaders.app_directories.Loader',
-        ],
     },
 }]
-if not DEBUG:
-    TEMPLATES['loaders'] = [
-        ('django.template.loaders.cached.Loader', TEMPLATES['loaders'])
-    ]
 
 MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
