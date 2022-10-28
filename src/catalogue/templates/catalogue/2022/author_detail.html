@@ -2,17 +2,13 @@
 
 {% load choose_cites from social_tags %}
 
-{% block global-content %}
-  <div class="l-container">
-    <div class="l-breadcrumb">
-      <a href="/"><span>Strona główna</span></a>
-      <a href="/katalog/"><span>Katalog</span></a>
-      <a href="/katalog/autor/"><span>Autor</span></a>
-    </div>
-  </div>
 
-  <main class="l-main">
+{% block breadcrumbs %}
+  <a href="/katalog/"><span>Katalog</span></a>
+  <a href="/katalog/autor/"><span>Autor</span></a>
+{% endblock %}
 
+{% block main %}
     <div class="l-section">
       <div class="l-author__header">
         {% if tags.0.photo %}
@@ -72,5 +68,4 @@
         {% endif %}
       </div>
     </section>
-  </main>
 {% endblock %}

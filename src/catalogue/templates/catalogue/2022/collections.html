@@ -1,0 +1,38 @@
+{% extends '2022/base.html' %}
+
+
+{% block breadcrumbs %}
+  <a href="/katalog/"><span>Katalog</span></a>
+{% endblock %}
+
+
+{% block main %}
+
+  <div class="l-section">
+    <div class="l-author__header">
+      <h1>Kolekcje</h1>
+    </div>
+  </div>
+
+  {% for collection in objects %}
+    <section class="l-section">
+      <div class="l-collections js-collections">
+        <div class="l-collections__header">
+          <h3><a href="{{ collection.get_absolute_url }}">{{ collection.title }}</a></h3>
+        </div>
+          <div class="l-author__info">
+            <p>
+              {{ collection.description|safe }}
+            </p>
+          </div>
+        <div class="l-books">
+          {% for book in collection.get_books %}
+            {% include 'catalogue/2022/book_box.html' %}
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  {% endfor %}
+
+
+{% endblock %}

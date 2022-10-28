@@ -152,9 +152,12 @@
     shelfSlider.slick('slickPrev');
   });
 
-  let collectionsSlider = $('.js-collections .l-books');
-  let collectionsNextSlide = $('.js-collections .js-next-slide');
-  let collectionsPrevSlide = $('.js-collections .js-prev-slide');
+
+    $('.js-collections').each(function() {
+        let collectionsSlider = $('.l-books', this);
+        if ($collectionsSlider.children().length < 2) return;
+        let collectionsNextSlide = $('.js-next-slide', this);
+        let collectionsPrevSlide = $('.js-prev-slide', this);
 
   collectionsSlider.slick({
     slidesToScroll: 1,
@@ -183,7 +186,7 @@
     event.preventDefault();
     collectionsSlider.slick('slickPrev');
   });
-
+    });
   let newBooksSlider = $('.js-new-books-slider .l-books');
   let newBooksNextSlide = $('.js-new-books-slider .js-next-slide');
   let newBooksPrevSlide = $('.js-new-books-slider .js-prev-slide');

@@ -67,7 +67,11 @@ def daisy_list(request):
 
 def collection(request, slug):
     coll = get_object_or_404(Collection, slug=slug)
-    return render(request, 'catalogue/collection.html', {
+    if request.EXPERIMENTS['layout'].value:
+        template_name = 'catalogue/2022/collection.html'
+    else:
+        template_name = 'catalogue/collection.html'
+    return render(request, template_name, {
         'collection': coll,
         'active_menu_item': 'collections',
     })
@@ -480,7 +484,12 @@ def collections(request):
     else:
         best = objects
 
-    return render(request, 'catalogue/collections.html', {
+    if request.EXPERIMENTS['layout'].value:
+        template_name = 'catalogue/2022/collections.html'
+    else:
+        template_name = 'catalogue/collections.html'
+
+    return render(request, template_name, {
         'objects': objects,
         'best': best,
         'active_menu_item': 'collections'

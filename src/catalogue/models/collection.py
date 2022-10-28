@@ -13,11 +13,12 @@ class Collection(models.Model):
     """A collection of books, which might be defined before publishing them."""
     title = models.CharField(_('title'), max_length=120, db_index=True)
     slug = models.SlugField(_('slug'), max_length=120, primary_key=True)
-    description = models.TextField(_('description'), null=True, blank=True)
+    description = models.TextField(_('description'), blank=True)
     book_slugs = models.TextField(_('book slugs'))
     authors = models.ManyToManyField(
         'Tag',
-        limit_choices_to={'category': 'author'}
+        limit_choices_to={'category': 'author'},
+        blank=True
     )
     kind = models.CharField(_('kind'), max_length=10, blank=False, default='book', db_index=True,
                             choices=(('book', _('book')), ('picture', _('picture'))))
