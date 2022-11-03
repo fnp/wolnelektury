@@ -69,8 +69,10 @@ class Offer(models.Model):
 
     def clear_cache(self):
         clear_cached_renders(self.top_bar)
+        clear_cached_renders(self.top_bar_2022)
         clear_cached_renders(self.list_bar)
         clear_cached_renders(self.detail_bar)
+        clear_cached_renders(self.detail_bar_2022)
         clear_cached_renders(self.status)
         clear_cached_renders(self.status_more)
 
@@ -242,6 +244,24 @@ class Offer(models.Model):
     @cached_render('funding/includes/offer_status_more.html')
     def status_more(self):
         return {'offer': self}
+
+    @cached_render('funding/2022/includes/funding.html')
+    def top_bar_2022(self):
+        ctx = self.basic_info()
+        ctx.update({
+            'link': True,
+            'closeable': True,
+            'add_class': 'funding-top-header',
+        })
+        return ctx
+
+    @cached_render('funding/2022/includes/funding.html')
+    def detail_bar_2022(self):
+        ctx = self.basic_info()
+        ctx.update({
+            'show_title': False,
+        })
+        return ctx
 
 
 class Perk(models.Model):

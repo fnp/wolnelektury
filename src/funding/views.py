@@ -71,7 +71,12 @@ class WLFundView(TemplateView):
 
 class OfferDetailView(FormView):
     form_class = FundingForm
-    template_name = "funding/offer_detail.html"
+
+    def get_template_names(self):
+        if self.request.EXPERIMENTS['layout'].value:
+            return 'funding/2022/offer_detail.html'
+        else:
+            return "funding/offer_detail.html"
 
     @csrf_exempt
     def dispatch(self, request, slug=None):

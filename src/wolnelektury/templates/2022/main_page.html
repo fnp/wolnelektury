@@ -144,10 +144,12 @@
         <div class="l-collections js-collections">
           <div class="l-collections__header">
             <h3>{{ recommended_collection.title }}</h3>
+            {% comment %}
             <div class="l-your-books__header__actions">
               <button class="js-prev-slide"><i class="icon icon-arrow-left"></i></button>
               <button class="js-next-slide"><i class="icon icon-arrow-right"></i></button>
             </div>
+            {% endcomment %}
           </div>
           <div class="l-books">
             {% for book in recommended_collection.get_books %}

@@ -155,7 +155,7 @@
 
     $('.js-collections').each(function() {
         let collectionsSlider = $('.l-books', this);
-        if ($collectionsSlider.children().length < 2) return;
+        if (collectionsSlider.children().length < 2) return;
         let collectionsNextSlide = $('.js-next-slide', this);
         let collectionsPrevSlide = $('.js-prev-slide', this);
 

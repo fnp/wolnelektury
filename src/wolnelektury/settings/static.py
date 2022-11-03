@@ -143,6 +143,13 @@ PIPELINE = {
                 'js/2022.js',
                 '2022/book/filter.js',
                 'chunks/edit.js',
+
+                'js/contrib/jquery.countdown.js', 'js/contrib/jquery.countdown-pl.js',
+                'js/contrib/jquery.countdown-de.js', 'js/contrib/jquery.countdown-uk.js',
+                'js/contrib/jquery.countdown-es.js', 'js/contrib/jquery.countdown-lt.js',
+                'js/contrib/jquery.countdown-ru.js', 'js/contrib/jquery.countdown-fr.js',
+                'pdcounter/pdcounter.js',
+
             ],
             'output_filename': 'js/2022.min.js'
         },

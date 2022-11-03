@@ -1,6 +1,8 @@
 <!doctype html>
+{% load cache %}
 {% load pipeline %}
 {% load static %}
+{% load funding_tags %}
 {% load piwik_tags %}
 {% load title %}
 
@@ -29,17 +31,13 @@
 
     {% block under-menu %}{% endblock %}
 
-    <div class="l-container l-change-pop">
-      <h3>Zmieniamy się!</h3>
-      <p>
-        Jeżeli to czytasz jesteś jedną z osób, której prezentujemy nowy wygląd części stron.
-        Będziemy bardzo! wdzięczni za Twoją opinię – <a href='/formularz/ux-strona-ksiazki-T1/' target="_blank">możesz nam ją przesłać tutaj</a>.
-        Jeżeli wolisz klasyczny wygląd - wystarczy, że <a class="quit-experiment" href="#">klikniesz tutaj</a>
-      </p>
-      <!-- button class="l-change-pop__close">
-           <i class="icon icon-close"></i>
-           </button -->
-    </div>
+    {% if not funding_no_show_current %}
+      <div class="l-container funding-promo-bar">
+        {% cache 120 funding_top_bar LANGUAGE_CODE %}
+          {% funding_top_bar_2022 %}
+        {% endcache %}
+      </div>
+    {% endif %}
 
     {% block global-content %}
       <div class="l-container">
@@ -54,11 +52,27 @@
       </main>
     {% endblock %}
 
+    <div class="l-container l-change-pop">
+      <h3>Zmieniamy się!</h3>
+      <p>
+        Jeżeli to czytasz jesteś jedną z osób, której prezentujemy nowy wygląd części stron.
+        Będziemy bardzo! wdzięczni za Twoją opinię – <a href='/formularz/ux-strona-ksiazki-T1/' target="_blank">możesz nam ją przesłać tutaj</a>.
+        Jeżeli wolisz klasyczny wygląd - wystarczy, że <a class="quit-experiment" href="#">klikniesz tutaj</a>
+      </p>
+      <!-- button class="l-change-pop__close">
+           <i class="icon icon-close"></i>
+           </button -->
+    </div>
+
+
     {% include '2022/footer.html' %}
 
     <script src="{% static '2022/scripts/vendor.js' %}"></script>
     <script src="{% static '2021/scripts/main.js' %}"></script>
 
+    <script type="text/javascript">
+      var LANGUAGE_CODE = "{{ LANGUAGE_CODE }}";
+    </script>
     {% javascript '2022' %}
     {% javascript '2022_player' %}
     {% block extrabody %}{% endblock %}

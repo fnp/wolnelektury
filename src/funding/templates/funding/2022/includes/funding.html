@@ -1,0 +1,42 @@
+{% load i18n %}
+{% load time_tags %}
+
+{% if offer %}
+
+
+  <div class="l-checkout__support">
+    {% if link %}
+      <a href="{% url 'funding_current' offer.slug %}">
+        <span class="buttonlike">Wesprzyj!</span>
+        <div class="funding-bar-container">
+    {% endif %}
+    <div class="l-checkout__support__bar">
+      <span class="{% if percentage < 12 %}little-progress{% endif %}" data-label="{% if sum %}{% trans "collected" %}: {{ sum }} zł{% endif %}" style="width: {{ percentage|stringformat:'.2f' }}%;"></span>
+    </div>
+    <div class="l-checkout__support__footer">
+      {% if show_title %}
+        <p>
+          {% if show_title_calling %}
+            <strong style="margin-right: .6em;">{% trans "Help free the book!" %}</strong>
+          {% endif %}
+          {{ offer }}
+      {% endif %}
+      {% if is_current %}
+        <p>
+          {% trans "until fundraiser end" %}:
+          <strong class="countdown inline" data-until='{{ offer.end|date_to_utc:True|utc_for_js }}'></strong>
+        </p>
+      {% endif %}
+      {% if not is_win %}
+        <p>
+          {% trans "needed" %}: <strong>{{ offer.target }} zł</strong>
+        </p>
+      {% endif %}
+    </div>
+    {% if link %}
+        </div>
+      </a>
+    {% endif %}
+  </div>
+
+{% endif %}

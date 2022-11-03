@@ -16,6 +16,11 @@ def funding_top_bar():
     offer = Offer.current()
     return offer.top_bar() if offer is not None else ''
 
+@register.simple_tag
+def funding_top_bar_2022():
+    offer = Offer.current()
+    return offer.top_bar_2022() if offer is not None else ''
+
 
 @register.simple_tag(takes_context=True)
 def fundings(context, offer):

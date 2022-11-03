@@ -73,3 +73,21 @@ $teal: #007880;
         }
     }
 }
+
+
+
+
+.l-checkout__support__bar span.little-progress::after {
+    white-space: nowrap;
+    justify-content: left;
+    width: 200px;
+    right: -210px;
+    color: #083F4D;
+}
+.funding-description {
+    h2 {
+        margin-top: 0;
+        font-size: 1.125rem;
+        line-height: 1.35;
+    }
+}

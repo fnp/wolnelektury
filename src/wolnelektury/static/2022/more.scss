@@ -324,6 +324,21 @@ form {
         margin-right: 50px;
         width: auto;
     }
+
+    .wlfund {
+        margin: 0;
+        width: 90%;
+        border-collapse: separate;
+
+        tr {
+            td {
+                padding: .625rem .3125rem .625rem;
+                border-top: .625rem solid rgba(255,255,255,0);
+                border-bottom: 1px solid #083F4D;
+                text-align: center;
+            }
+        }
+    }
 }
 
 .page-simple, .nice-controls {
@@ -401,4 +416,42 @@ form {
             margin-top: 0;
         }
     }
+}
+
+
+.funding-promo-bar {
+    margin: 18px auto;
+
+    .l-checkout__support {
+        margin: 0;
+        a {
+            display: flex;
+            align-items: start;
+
+            .buttonlike {
+                margin-right: 10px;
+                background: #FFA500;
+                //color: #083F4D;
+                color: black;
+                border-radius: 5px;
+                font-size: 1.125rem;
+                line-height: 50px;
+                letter-spacing: -0.01em;
+                padding: 0 20px;
+                font-weight: 600;
+                transition: all cubic-bezier(0.25, 1, 0.5, 1) 350ms;
+                &:hover {
+                    background: #92BD39;
+                }
+            }
+            .funding-bar-container {
+                flex-grow: 1;
+            }
+        }
+    }
+}
+
+
+.l-change-pop {
+    margin-bottom: 18px;
 }
