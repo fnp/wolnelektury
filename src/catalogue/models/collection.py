@@ -56,6 +56,9 @@ class Collection(models.Model):
         from catalogue.models import Book
         return Book.objects.filter(self.get_query())
 
+    def get_5_books(self):
+        return self.get_books()[:5]
+
     @cached_render('catalogue/collection_box.html')
     def box(self):
         return {

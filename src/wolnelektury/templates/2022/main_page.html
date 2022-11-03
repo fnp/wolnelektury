@@ -143,7 +143,7 @@
       <section class="l-section">
         <div class="l-collections js-collections">
           <div class="l-collections__header">
-            <h3>{{ recommended_collection.title }}</h3>
+            <h3><a href="{{ recommended_collection.get_absolute_url }}">{{ recommended_collection.title }}</a></h3>
             {% comment %}
             <div class="l-your-books__header__actions">
               <button class="js-prev-slide"><i class="icon icon-arrow-left"></i></button>
@@ -152,7 +152,7 @@
             {% endcomment %}
           </div>
           <div class="l-books">
-            {% for book in recommended_collection.get_books %}
+            {% for book in recommended_collection.get_5_books %}
               {% include 'catalogue/2022/book_box.html' %}
             {% endfor %}
           </div>
@@ -186,7 +186,7 @@
               <h3>
                 Zapisz się na nasz <strong>Newsletter!</strong>
               </h3>
-              <a href="{% url 'subscribe' %}/?pk_campaign=home" class="l-button l-button--default">Weź udział</a>
+              <a href="{% url 'subscribe' %}?pk_campaign=home" class="l-button l-button--default">Weź udział</a>
             </div>
           </div>
         </div>
@@ -305,7 +305,7 @@
           </ul>
         </div>
 
-        {% sponsor_page 'footer' %}
+        {#% sponsor_page 'footer' %#}
 
       </div>
     </section>

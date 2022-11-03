@@ -1,3 +1,7 @@
+{% if banner %}
 <a href="{{ banner.link }}">
+  {% if banner.picture %}
   <img src="{{ banner.image.url }}">
+  {% endif %}
 </a>
+{% endif %}
