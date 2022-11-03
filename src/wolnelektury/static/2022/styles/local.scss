@@ -84,10 +84,15 @@ $teal: #007880;
     right: -210px;
     color: #083F4D;
 }
-.funding-description {
+.funding-details {
     h2 {
         margin-top: 0;
-        font-size: 1.125rem;
-        line-height: 1.35;
+        margin-bottom: 1.5rem;
+    }
+    .funding-description {
+        h2 {
+            font-size: 1.25rem;
+            line-height: 1.35;
+        }
     }
 }

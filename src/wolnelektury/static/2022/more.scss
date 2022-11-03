@@ -455,3 +455,13 @@ form {
 .l-change-pop {
     margin-bottom: 18px;
 }
+
+
+.page-simple button.button-orange {
+    background: #FFA500;
+    color: black;
+    transition: all cubic-bezier(0.25, 1, 0.5, 1) 350ms;
+    &:hover {
+        background: #92BD39;
+    }
+}
