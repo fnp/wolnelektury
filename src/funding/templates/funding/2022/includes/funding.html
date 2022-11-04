@@ -11,7 +11,7 @@
         <div class="funding-bar-container">
     {% endif %}
     <div class="l-checkout__support__bar">
-      <span class="{% if percentage < 12 %}little-progress{% endif %}" data-label="{% if sum %}{% trans "collected" %}: {{ sum }} zł{% endif %}" style="width: {{ percentage|stringformat:'.2f' }}%;"></span>
+      <span class="{% if percentage < 15 %}little-progress{% endif %}" data-label="{% if sum %}{% trans "collected" %}: {{ sum }} zł{% endif %}" style="width: {{ percentage|stringformat:'.2f' }}%;"></span>
     </div>
     <div class="l-checkout__support__footer">
       {% if show_title %}

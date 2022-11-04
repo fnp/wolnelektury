@@ -1,3 +1,4 @@
+
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -204,7 +205,7 @@ class Offer(models.Model):
             'is_current': self.is_current(),
             'is_win': offer_sum >= self.target,
             'missing': self.target - offer_sum,
-            'percentage': 100 * offer_sum / self.target,
+            'percentage': min(100, 100 * offer_sum / self.target),
 
             'show_title': True,
             'show_title_calling': True,
