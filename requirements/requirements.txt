@@ -35,7 +35,7 @@ python-fb==0.2
 
 Feedparser==6.0.10
 
-Pillow==9.2.0
+Pillow==9.3.0
 mutagen==1.45.1
 sorl-thumbnail==12.8.0
 
