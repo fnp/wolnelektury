@@ -1,4 +1,4 @@
-{% extends "base/base.html" %}
+{% extends request.EXPERIMENTS.layout.value|yesno:"2022/base_simple.html,base/base.html" %}
 {% load i18n %}
 
 
@@ -6,12 +6,12 @@
 
 
 {% block body %}
-<div class="white-box normal-text">
 
   <h1>
     Cieszymy się, że jesteś z nami! Dziękujemy za wsparcie!
   </h1>
-  <p>
+  <div class="white-box normal-text">
+    <p>
 
 
     {% if schedule.payed_at %}

@@ -17,7 +17,8 @@
         {% endif %}
     {% else %}
         <div class="poll">
-            <p>{{poll.question}}</p>
+          <p>{{poll.question}}</p>
+          <br>
             <form action="{{poll.get_absolute_url}}" method="post">{% csrf_token %}
             {{ form.vote }}
             <input type="submit" value="{% trans "Submit" %}" />

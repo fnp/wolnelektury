@@ -451,6 +451,10 @@ form {
     }
 }
 
+.l-checkout__support__bar {
+    overflow: hidden;
+}
+
 
 .l-change-pop {
     margin-bottom: 18px;
@@ -463,5 +467,23 @@ form {
     transition: all cubic-bezier(0.25, 1, 0.5, 1) 350ms;
     &:hover {
         background: #92BD39;
+    }
+}
+
+
+.poll-bar {
+    height: 10px;
+    width: 100%;
+    display: block;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+
+    .poll-bar-inner {
+      height: 100%;
+      position: absolute;
+      border-radius: 5px;
+      background-color: #006066;
+      top: 0; left: 0;
     }
 }

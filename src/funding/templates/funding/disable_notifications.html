@@ -1,8 +1,8 @@
-{% extends "base/base.html" %}
+{% extends request.EXPERIMENTS.layout.value|yesno:"2022/base_simple.html,base/base.html" %}
 {% load i18n %}
 {% load fnp_share %}
 
-{% block titleextra %}{% trans "Payment failed" %}{% endblock %}
+{% block titleextra %}{% trans "Disable notifications" %}{% endblock %}
 
 {% block body %}
   <h1>{% trans "Disable notifications" %}</h1>

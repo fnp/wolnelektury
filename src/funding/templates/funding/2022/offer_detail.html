@@ -66,6 +66,7 @@
             <div class="l-article__overlay" data-max-height="91">
               {{ object.status }}
               {{ object.status_more }}
+              {% chunk 'funding_rules'  %}
             </div>
             <button class="l-article__read-more" aria-label="Kliknij aby rozwinąć" data-label="Więcej" data-action="Mniej">Więcej</button>
           </div>
@@ -101,9 +102,7 @@
     {% fundings object %}
   </article>
 
-  {# pomóż uwolnić #}
   {# 1% #}
   {# share? #}
-
 
 {% endblock %}

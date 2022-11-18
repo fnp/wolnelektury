@@ -1,0 +1,29 @@
+{% extends '2022/base.html' %}
+
+
+{% block settings %}
+  {% load title %}
+  {% title 'X' %}
+{% endblock %}
+
+
+{% block main %}
+  <div class="l-section">
+    <div class="l-books__header">
+      <div class="l-books__input">
+        <i class="icon icon-filter"></i>
+        <input type="text" placeholder="filtry, tytuł" class="quick-filter" data-for="book-list">
+      </div>
+    </div>
+  </div>
+
+
+  <div class="l-section l-section--col">
+    <div class="l-books__grid" id="book-list">
+      {% for funding in object_list %}
+        {% include "funding/2022/includes/funding_box.html" %}
+      {% endfor %}
+    </div>
+  </div>
+
+{% endblock %}

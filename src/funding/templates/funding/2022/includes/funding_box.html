@@ -1,0 +1,23 @@
+{% load i18n %}
+{% load sorl_thumbnail %}
+
+<article class="l-books__item" data-pop="-{{ book.popularity.count }}">
+  <figure class="l-books__item__img" style="height:240px">
+    <a href="{{ funding.get_absolute_url }}">
+      {% if funding.cover %}
+        <img src="{{ funding.cover.url }}" alt="{{ funding.title }}">
+      {% endif %}
+    </a>
+  </figure>
+  <div class="l-books__item__actions">
+    <div class="l-checkout__support__bar">
+      {% with funding.basic_info as info %}
+        <span class="{% if info.percentage < 15 %}little-progress{% endif %}" style="width: {{ info.percentage|stringformat:'.2f' }}%;"></span>
+      {% endwith %}
+    </div>
+  </div>
+  <h3>
+      {{ funding.author }}
+  </h3>
+  <h2><a href="{{ funding.get_absolute_url }}">{{ funding.title }}</a></h2>
+</article>

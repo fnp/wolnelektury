@@ -127,6 +127,11 @@ class CurrentView(OfferDetailView):
 class OfferListView(ListView):
     queryset = Offer.public()
 
+    def get_template_names(self):
+        if self.request.EXPERIMENTS['layout'].value:
+            return 'funding/2022/offer_list.html'
+        return 'funding/offer_list.html'
+    
     def get_context_data(self, **kwargs):
         ctx = super(OfferListView, self).get_context_data(**kwargs)
         ctx['funding_no_show_current'] = True

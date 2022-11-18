@@ -1,3 +1,4 @@
+
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -5,6 +6,7 @@ import json
 from django.contrib import admin
 from django.db.models.functions import Now
 from django.db.models import Q
+from django import forms
 from django.utils.html import conditional_escape
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
@@ -67,11 +69,26 @@ class ExpiredFilter(YesNoFilter):
     q = Q(expires_at__isnull=False, expires_at__lt=Now())
 
 
+class ScheduleForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['email'].required = False
+        self.fields['method'].required = False
+        self.fields['consent'].required = False
+
+    class Meta:
+        model = models.Schedule
+        fields = '__all__'
+
+
 class ScheduleAdmin(admin.ModelAdmin):
+    form = ScheduleForm
+
     list_display = [
         'email', 'started_at', 'payed_at', 'expires_at', 'amount', 'monthly', 'yearly', 'is_cancelled',
         'method'
     ]
+    list_display_links = ['email', 'started_at']
     search_fields = ['email']
     list_filter = ['is_cancelled', 'monthly', 'yearly', 'method', PayedFilter, ExpiredFilter, 'source']
     filter_horizontal = ['consent']

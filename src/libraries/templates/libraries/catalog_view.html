@@ -1,5 +1,15 @@
-{% extends "base/base.html" %}
+{% extends request.EXPERIMENTS.layout.value|yesno:"2022/base_simple.html,base/base.html" %}
 {% load i18n %}
+
+{% block settings %}
+  {% load title %}
+  {% trans 'Library directories' as title %}
+  {% title title %}
+{% endblock %}
+
+{% block breadcrumbs %}
+  <a href="{% url 'libraries_main_view' %}"><span>{% trans 'Libraries directory' %}</span></a>
+{% endblock %}
 
 {% block titleextra %}{% trans 'Libraries directory' %}{% endblock %}
 

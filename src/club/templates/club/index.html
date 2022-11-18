@@ -1,4 +1,4 @@
-{% extends "base/base.html" %}
+{% extends request.EXPERIMENTS.layout.value|yesno:"2022/base_simple.html,base/base.html" %}
 {% load i18n %}
 {% load active_schedule from club %}
 {% load chunks %}
@@ -8,9 +8,9 @@
 
 
 {% block body %}
-  <div class="white-box normal-text">
 
-    <h1>{% trans "Wolne Lektury need your help!" %}</h1>
+  <h1>{% trans "Wolne Lektury need your help!" %}</h1>
+  <div class="white-box normal-text">
 
     {% chunk 'club' %}
 
