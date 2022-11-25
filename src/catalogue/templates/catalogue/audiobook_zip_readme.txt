@@ -7,6 +7,8 @@ Audiobooki Wolnych Lektur są udostępniane na wolnych licencjach, co oznacza, �
 
 {% if licenses %}Ten utwór jest jest udostępniony na {% for lic in licenses %}{{ lic }}{% if not forloop.last %}, {% endif %}{% endfor %}.
 
+{% endif %}{% if meta.cover_by %}Okładka na podstawie: {{ meta.cover_by|safe }}{% if meta.cover_source %}, {{ meta.cover_source }}{% endif %}.
+
 {% endif %}Przekaż 1% na wolną bibliotekę KRS 0000070056: https://wolnelektury.pl/info/wesprzyj-nas/
 
 Zostań Przyjacielem Wolnych Lektur: https://wolnelektury.pl/pomagam/

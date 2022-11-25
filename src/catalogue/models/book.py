@@ -510,6 +510,7 @@ class Book(models.Model):
                 licenses.add(license)
         readme = render_to_string('catalogue/audiobook_zip_readme.txt', {
             'licenses': licenses,
+            'meta': self.wldocument2().meta,
         })
         return create_zip(paths, "%s_%s" % (self.slug, format_), {'informacje.txt': readme})
 
