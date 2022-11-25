@@ -1,0 +1,135 @@
+{% load static %}
+
+<form method="post" action="{% url 'club_join' %}">
+  {% csrf_token %}
+  {{ form.errors }}
+  <input type="radio" name="switch" id="switch-once" value="single" class="toggle-input" {% if schedule and not schedule.monthly %}checked{% endif %}>
+  <input type="radio" name="switch" id="switch-monthly" value="monthly" class="toggle-input" {% if not schedule or schedule.monthly %}checked{% endif %}>
+  <div class="l-switch__wrapper">
+    {% if user.is_staff %}
+      <span data-edit="club/club/{{ club.pk }}"></span>
+    {% endif %}
+
+    <div class="l-switch white">
+      <label class='toggle-for' for="switch-once">Jednorazowo</label>
+      <label class='toggle-for' for="switch-monthly">Miesięcznie</label>
+      <span class="toggle"></span>
+    </div>
+  </div>
+
+  <div class="l-checkout__payments payments-once">
+    {% for amount in club.singleamount_set.all %}
+      <div class="l-checkout__payments__box once{% if not schedule.monthly and schedule.amount == amount.amount or not schedule and club.default_single_amount == amount.amount %} is-active{% endif %}{% if forloop.last %} l-checkout__payments__box--xl{% endif %}">
+        <div>
+          <h3>{{ amount.amount }} zł</h3>
+          <div class="l-checkout__payments__box__btn-wrp">
+            <button name="single_amount" value="{{ amount.amount }}">Wybierz</button>
+          </div>
+        </div>
+        {% if amount.description %}
+          <div>
+            <p>{{ amount.description|safe }}</p>
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+    <input type="hidden"
+           name="single_amount_selected"
+           value="{% if schedule and not schedule.monthly %}{{ schedule.amount|floatformat }}{% else %}{{ club.default_single_amount }}{% endif %}">
+
+  </div>
+
+
+  <div class="l-checkout__payments payments-recurring">
+    {% for amount in club.monthlyamount_set.all %}
+      <div class="l-checkout__payments__box{% if schedule.monthly and schedule.amount == amount.amount or not schedule and amount.amount == club.default_monthly_amount %} is-active{% endif %}">
+        <h3>{{ amount.amount }} zł <span>/mies.</span></h3>
+        <div class="l-checkout__payments__box__btn-wrp">
+          <p>{{ amount.description|safe }}</p>
+          <button name="monthly_amount" value="{{ amount.amount }}">Wybierz</button>
+        </div>
+      </div>
+    {% endfor %}
+    <input type="hidden"
+           name="monthly_amount_selected"
+           value="{% if schedule and schedule.monthly %}{{ schedule.amount|floatformat }}{% else %}{{ club.default_monthly_amount }}{% endif %}">
+  </div>
+
+  <div class="l-checkout__amount">
+    <div class="l-checkout__input">
+      <label for="kwota">Inna kwota</label>
+      <!-- input type="text" id="kwota" name="custom_amount" value="" -->
+      {{ form.custom_amount }}
+    </div>
+    <button>Dalej</button>
+  </div>
+</form>
+
+<img src="{% static '2022/images/checkout-footer.png' %}" alt="Bezpieczne płatności zapewniają" class="l-checkout__footer__img">
+<div class="l-checkout__cols bt-w">
+  <div class="l-checkout__col full">
+    <div class="l-checkout__form">
+      <div class="l-checkout__form__row full">
+        <h3>Dane do przelewu tradycyjnego:</h3>
+        <div class="l-checkout__info">
+          <div class="l-checkout__info__item">
+            <div>nazwa odbiorcy</div>
+            <h3>Fundacja Nowoczesna Polska</h3>
+            <button title="Kopiuj tekst" class="js-copy">
+              <img src="{% static '2022/images/copy.svg' %}" alt="Kopiuj">
+            </button>
+            <input type="text" value="Fundacja Nowoczesna Polska">
+          </div>
+          <div class="l-checkout__info__item">
+            <div>adres odbiorcy</div>
+            <h3>ul. Marszałkowska 84/92 lok. 125, 00-514 Warszawa</h3>
+            <button title="Kopiuj tekst" class="js-copy">
+              <img src="{% static '2022/images/copy.svg' %}" alt="Kopiuj">
+            </button>
+            <input type="text" value="ul. Marszałkowska 84/92 lok. 125, 00-514 Warszawa">
+          </div>
+          <div class="l-checkout__info__item">
+            <div>numer konta</div>
+            <h3>75 1090 2851 0000 0001 4324 3317</h3>
+            <button title="Kopiuj tekst" class="js-copy">
+              <img src="{% static '2022/images/copy.svg' %}" alt="Kopiuj">
+            </button>
+            <input type="text" value="75 1090 2851 0000 0001 4324 3317">
+          </div>
+          <div class="l-checkout__info__item">
+            <div>tytuł przelewu</div>
+            <h3>Darowizna na Wolne Lektury + twoja nazwa użytkownika lub e-mail</h3>
+            <button title="Kopiuj tekst" class="js-copy">
+              <img src="{% static '2022/images/copy.svg' %}" alt="Kopiuj">
+            </button>
+            <input type="text" value="Darowizna na Wolne Lektury + twoja nazwa użytkownika lub e-mail">
+          </div>
+          <div class="l-checkout__info__item">
+            <div>wpłaty w EUR</div>
+            <h3>PL88 1090 2851 0000 0001 4324 3374</h3>
+            <button title="Kopiuj tekst" class="js-copy">
+              <img src="{% static '2022/images/copy.svg' %}" alt="Kopiuj">
+            </button>
+            <input type="text" value="PL88 1090 2851 0000 0001 4324 3374">
+          </div>
+          <div class="l-checkout__info__item">
+            <div>Wpłaty w USD</div>
+            <h3>PL82 1090 2851 0000 0001 4324 3385</h3>
+            <button title="Kopiuj tekst" class="js-copy">
+              <img src="{% static '2022/images/copy.svg' %}" alt="Kopiuj">
+            </button>
+            <input type="text" value="PL88 1090 2851 0000 0001 4324 3374">
+          </div>
+          <div class="l-checkout__info__item">
+            <div>SWIFT</div>
+            <h3>WBKPPLPP</h3>
+            <button title="Kopiuj tekst" class="js-copy">
+              <img src="{% static '2022/images/copy.svg' %}" alt="Kopiuj">
+            </button>
+            <input type="text" value="WBKPPLPP">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

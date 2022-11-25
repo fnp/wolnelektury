@@ -23,11 +23,11 @@
         {% with first_text=book.get_first_text %}
           <aside class="l-aside">
             <figure>
-              {% if first_text %}
+              {% if accessible and first_text %}
                 <a href="{% url 'book_text' first_text.slug %}">
               {% endif %}
               <img src="{% if book.cover_clean %}{{ book.cover_clean.url }}{% endif %}" alt="{{ book.pretty_title }}" width="240">
-              {% if first_text %}
+              {% if accessible and first_text %}
                 </a>
               {% endif %}
             </figure>
@@ -118,6 +118,7 @@
               </div>
             </header>
             <article class="l-article">
+              {% if accessible %}
               <div class="c-media">
                 <div class="c-media__actions">
                   <div class="c-media__btn">
@@ -282,6 +283,11 @@
                   </div>
                 {% endif %}
               </div>
+              {% else %}
+              <div class="l-checkout__box">
+                {% include 'club/2022/donation_step1_form.html' %}
+              </div>
+              {% endif %}
 
               <div class="l-article__overlay" data-max-height="327">
                 {{ book.abstract|safe }}
@@ -295,6 +301,7 @@
               </div>
               <button class="l-article__read-more" aria-label="Kliknij aby rozwinąć" data-label="Czytaj więcej" data-action="Zwiń tekst">Czytaj więcej</button>
             </article>
+            {% if accessible %}
             <div class="c-support">
               <div>
                 <h2>Ta książka jest dostępna dla tysięcy dzieciaków dzięki <span>darowiznom</span> od osób takich jak <span>Ty</span>!</h2>
@@ -304,6 +311,7 @@
                 <img src="{% static '2022/images/dziecko.jpeg' %}" alt="Dorzuć się!">
               </figure>
             </div>
+            {% endif %}
           </div>
         {% endwith %}
       </section>

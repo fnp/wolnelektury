@@ -18,7 +18,7 @@ from django.utils.translation import gettext as _, gettext_lazy
 from django.views.decorators.cache import never_cache
 
 from ajaxable.utils import AjaxableFormView
-from club.forms import ScheduleForm
+from club.forms import ScheduleForm, DonationStep1Form
 from club.models import Club
 from annoy.models import DynamicTextInsert
 from pdcounter import views as pdcounter_views
@@ -305,19 +305,18 @@ def book_detail(request, slug):
         return pdcounter_views.book_stub_detail(request, slug)
 
     new_layout = request.EXPERIMENTS['layout']
-    # Not for preview books.
-    if new_layout.value and not book.is_accessible_to(request.user):
-        new_layout.override(None)
     
     return render(
         request,
         'catalogue/2022/book_detail.html' if new_layout.value else 'catalogue/book_detail.html',
         {
             'book': book,
+            'accessible': book.is_accessible_to(request.user),
             'book_children': book.children.all().order_by('parent_number', 'sort_key'),
             'active_menu_item': 'books',
             'club_form': ScheduleForm() if book.preview else None,
             'club': Club.objects.first() if book.preview else None,
+            'donation_form': DonationStep1Form(),
 
             'EXPERIMENTS_SWITCHABLE_layout': True,
         })
