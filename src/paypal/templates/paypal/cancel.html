@@ -1,6 +1,7 @@
-{% extends "base/base.html" %}
+{% extends request.EXPERIMENTS.layout.value|yesno:"2022/base_simple.html,base/base.html" %}
 {% load i18n %}
 
 {% block body %}
+  <h1>Płatność nieudana</h1>
   <p>{% trans "Zrezygnowano z płatności :(" %}</p>
 {% endblock %}

@@ -96,3 +96,86 @@ $teal: #007880;
         }
     }
 }
+
+
+
+
+.book-container {
+    position: relative;
+
+    .set-tools {
+        display: none;
+        font-size: 12px;
+        position: absolute;
+        bottom: 0px;
+        right: 0;
+        left: 0;
+        background: black;
+        background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%);
+        color: white;
+        padding: 30px 10px 10px;
+
+        .sets {
+            span {
+                padding: 3px 18px 3px 3px;
+                background: white;
+                color: black;
+                margin-right: 5px;
+                margin-bottom: 5px;
+                display: inline-block;
+                border-radius: 3px;
+                position: relative;
+
+                .close {
+                    margin-left: 5px;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    font-family: wl;
+                    font-size: 10px;
+                    color: #FF4C54;
+                    padding: 4px;
+                    
+                    &:hover {
+                        text-decoration: none;
+                        color: black;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+        .add-set-tag {
+            input {
+                width: 100%;
+            }
+            button {
+                font-family: wl;
+                position: absolute;
+                right: 12px;
+                color: #FF4C54;
+                bottom: 10px;
+                font-size: 12px;
+                border: 0;
+                background: none;
+                padding: 3px;
+            }
+        }
+    }
+}
+
+
+.book-container-activator {
+    &:hover, &.hover, &.ac-hover {
+        .book-container {
+            &.book-liked {
+                .icon-liked {
+                    font-size: 2em;
+                }
+
+                .set-tools {
+                    display: block;
+                }
+            }
+        }
+    }
+}

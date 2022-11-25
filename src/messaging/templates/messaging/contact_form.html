@@ -1,10 +1,12 @@
-{% extends "base/base.html" %}
+{% extends request.EXPERIMENTS.layout.value|yesno:"2022/base_simple.html,base/base.html" %}
 
 {% block body %}
 
-<h1>Czy na pewno chcesz zrezygnować z otrzymywania e-maili na adres {{ object.email }}?</h1>
+  <h1>Rezygnacja z e-maili</h1>
 
-<form method="POST" action="">
+    <p>Czy na pewno chcesz zrezygnować z otrzymywania e-maili na adres {{ object.email }}?</p>
+
+  <form method="POST" action="">
 	{% csrf_token %}
 	<button type="submit">Tak, wypisz mnie</button>
 </form>

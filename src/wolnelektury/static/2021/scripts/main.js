@@ -335,3 +335,156 @@
     document.execCommand('copy');
   });
 })();
+
+
+
+// Likes
+(function() {
+
+    ids = new Set(); 
+    $(".icon-like").each(
+        (i, e)=>{
+            ids.add($(e).attr('data-book'));
+        }
+    );
+    ids = [...ids].join(',');
+
+    state = {
+        liked: [],
+    };
+    
+    $(".icon-like").on('click', function(e) {
+        e.preventDefault();
+        let liked = $(this).hasClass('icon-liked');
+        $btn = $(this);
+        if (liked) {
+            $.post({
+                url: '/ludzie/lektura/' + $(this).attr('data-book-slug') + '/nie_lubie/',
+                data: {'csrfmiddlewaretoken': $('[name=csrfmiddlewaretoken]').val()},
+                success: function() {
+                    delete state.liked[$btn.attr('data-book')];
+                    updateLiked($btn);
+                }
+            })
+        } else {
+            $.post({
+                url: '/ludzie/lektura/' + $(this).attr('data-book-slug') + '/lubie/',
+                data: {'csrfmiddlewaretoken': $('[name=csrfmiddlewaretoken]').val()},
+                success: function() {
+                    state.liked[$btn.attr('data-book')] = [];
+                    updateLiked($btn);
+                },
+                error: function(e) {
+                    if (e.status == 403) {
+                        $('#login-link').click();
+                    }
+                },
+            });
+        }
+    })
+
+   $(".add-set-tag input[name=name]").autocomplete({
+       source: '/ludzie/moje-tagi/',
+   }).on('autocompleteopen', function() {
+       $(this).closest('article').addClass('ac-hover');
+   }).on('autocompleteclose', function() {
+       $(this).closest('article').removeClass('ac-hover');
+   });
+    $(".add-set-tag").on("submit", function(e) {
+        e.preventDefault();
+        let $form = $(this);
+        $.post({
+            url: $form.attr("action"),
+            data: $form.serialize(),
+            success: (data) => {
+                updateFromData(data);
+                updateLikedAll();
+                $('input[name=name]', $form).val('');
+            }
+        });
+    })
+
+    $(document).on("click", ".sets .close", function() {
+        let bookId = $(this).closest("[data-book]").attr('data-book');
+        $.post({
+            url: '/ludzie/usun-tag/',
+            data: {
+                csrfmiddlewaretoken: $("[name=csrfmiddlewaretoken]").val(),
+                book: bookId,
+                slug: $(this).parent().attr('data-set'),
+            },
+            success: (data) => {
+                updateFromData(data);
+                updateLikedAll();
+            }
+        });
+    })
+
+    
+    function refreshAll(ids) {
+        $.ajax('/ludzie/ulubione/?ids=' + ids, {
+            success: function(result) {
+                updateFromData(result);
+                updateLikedAll();
+            },
+        });
+    }
+    refreshAll(ids);
+
+    function updateFromData(data) {
+        for (pk in data) {
+            if (data[pk] === null) {
+                delete state.liked[pk];
+            } else {
+                state.liked[pk] = data[pk];
+            }
+        }
+    }
+    
+    function updateLikedAll() {
+        $(".icon-like").each(
+            (i, e) => {
+                updateLiked(e);
+            }
+        )
+    }
+
+    function updateLiked(e) {
+        let bookId = $(e).attr('data-book');
+        let liked = bookId in state.liked;
+        $(e).toggleClass('icon-liked', liked);
+        let $bookContainer = $('.book-container-' + bookId);
+        $bookContainer.toggleClass('book-liked', liked);
+        let $sets = $(".sets", $bookContainer);
+        $sets.empty();
+        $.each(state.liked[bookId], (i,e) => {
+            let $set = $("<span>");
+            $set.attr("data-set", e.slug);
+            let $setA = $("<a>").appendTo($set);
+            $setA.attr("href", e.url);
+            $setA.text(e.name);
+            let $setX = $("<a class='close'></a>").appendTo($set);
+            $sets.append($set);
+        });
+    }
+    
+})();
+
+
+
+// Toggle a class on long press.
+(function() {
+    const TIME = 250;
+    let timer;
+
+    $("[data-longpress]").on("touchstart", (e) => {
+        $e = $(e.currentTarget);
+        timer = setTimeout(() => {
+            $e.toggleClass($e.attr('data-longpress'));
+        }, TIME);
+    });
+
+    $("[data-longpress]").on("touchend", () => {
+        clearTimeout(timer);
+    });
+})();

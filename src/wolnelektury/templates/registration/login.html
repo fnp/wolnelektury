@@ -24,6 +24,9 @@
 
     <a href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
 
+    <br><br>
+    <a href="{% url 'register' %}?next={{ request.GET.next }}">Nie masz jeszcze konta?</a>
+
     {% if USE_OPENID %}
       <h3>{% trans "Sign in using:" %}</h3>
 

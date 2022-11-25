@@ -25,6 +25,7 @@ PIPELINE = {
         '2022': {
             'source_filenames': [
                 'contrib/jquery-ui-1.13.1.custom/jquery-ui.css',
+                'css/jquery.countdown.css',
                 '2022/styles/main.scss',
                 '2022/more.scss',
                 'chunks/edit.scss',
@@ -138,11 +139,14 @@ PIPELINE = {
         },
         '2022': {
             'source_filenames': [
+                '2022/scripts/vendor.js',
                 'contrib/jquery-ui-1.13.1.custom/jquery-ui.js',
                 'js/search.js',
                 'js/2022.js',
                 '2022/book/filter.js',
                 'chunks/edit.js',
+                '2022/scripts/modernizr.js',
+                '2021/scripts/main.js',
 
                 'js/contrib/jquery.countdown.js', 'js/contrib/jquery.countdown-pl.js',
                 'js/contrib/jquery.countdown-de.js', 'js/contrib/jquery.countdown-uk.js',

@@ -1,0 +1,41 @@
+{% extends '2022/base.html' %}
+
+{% load choose_cites from social_tags %}
+
+
+{% block breadcrumbs %}
+  <a href="/ludzie/polka/"><span>Półka</span></a>
+{% endblock %}
+
+{% block main %}
+  <div class="l-section">
+    <div class="l-author__header">
+      <h1>{{ tags.0.name }}</h1>
+    </div>
+  </div>
+
+  <div class="l-section">
+    <div class="l-books__header">
+      <div class="l-books__input">
+        <i class="icon icon-filter"></i>
+        <input type="text" placeholder="filtry, tytuł" class="quick-filter" data-for="book-list">
+      </div>
+      <div class="l-books__sorting">
+        <span>Sortuj:</span>
+        <div>
+          <button data-order="data-pop">najpopularniejsze</button>
+          <button class="is-active">alfabetycznie</button>
+          <!--button>chronologicznie</button-->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="l-section l-section--col">
+    <div class="l-books__grid" id="book-list">
+      {% for book in object_list %}
+        {% include "catalogue/2022/book_box.html" %}
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

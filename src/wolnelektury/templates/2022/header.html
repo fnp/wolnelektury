@@ -44,7 +44,7 @@
         </a>
       {% else %}
         <div class="l-navigation__login">
-          <a href='{% url 'login' %}?next={{ request.path }}'>Zaloguj się</a>
+          <a id="login-link" href='{% url 'login' %}?next={{ request.path }}'>Zaloguj się</a>
           /
           <a href='{% url 'register' %}?next={{ request.path }}'>Załóż konto</a>
         </div>

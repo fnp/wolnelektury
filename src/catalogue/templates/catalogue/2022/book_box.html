@@ -1,7 +1,7 @@
 {% load sorl_thumbnail %}
 
-<article class="l-books__item" data-pop="-{{ book.popularity.count }}">
-  <figure class="l-books__item__img" style="height:240px">
+<article class="l-books__item book-container-activator" data-pop="-{{ book.popularity.count }}" data-longpress="hover">
+  <figure class="l-books__item__img book-container book-container-{{ book.pk }}" style="height:240px" data-book="{{ book.pk }}">
     <a href="{{ book.get_absolute_url }}">
       {% if book.is_picture %}
         {% if book.image_file %}
@@ -15,6 +15,17 @@
         {% endif %}
       {% endif %}
     </a>
+
+    <div class="set-tools">
+      <div class="sets"></div>
+      <form method="post" action="{% url 'social_add_set_tag' %}" class="add-set-tag">
+        {% csrf_token %} {# this needs to be copied in with JS #}
+        <input type="hidden" name="book" value="{{ book.id }}">
+        <input name="name" placeholder="nazwa półki" />
+        <button type="submit"></button>
+      </form>
+    </div>
+
   </figure>
   <div class="l-books__item__actions">
     {% if book.is_book %}
@@ -26,7 +37,7 @@
     {% if book.is_picture %}
       <span class="icon icon-picture" title="obraz"></span>
     {% endif %}
-    <!-- a href="#" class="icon icon-like"></a -->
+    <a href="{{ book.get_absolute_url }}" class="icon icon-like" data-book="{{ book.pk }}" data-book-slug="{{ book.slug }}"></a>
   </div>
   <h3>
     {% for author in book.authors %}

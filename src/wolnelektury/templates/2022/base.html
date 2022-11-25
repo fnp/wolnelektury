@@ -17,7 +17,6 @@
     <title>{% if title %}{{ title }} | {% endif %}WolneLektury.pl</title>
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     {% stylesheet '2022' %}
-      <script src="scripts/modernizr.js"></script>
 
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -67,9 +66,6 @@
 
     {% include '2022/footer.html' %}
 
-    <script src="{% static '2022/scripts/vendor.js' %}"></script>
-    <script src="{% static '2021/scripts/main.js' %}"></script>
-
     <script type="text/javascript">
       var LANGUAGE_CODE = "{{ LANGUAGE_CODE }}";
     </script>
@@ -77,5 +73,6 @@
     {% javascript '2022_player' %}
     {% block extrabody %}{% endblock %}
     {% include '2022/hotjar.html' %}
+    {% csrf_token %}
   </body>
 </html>
