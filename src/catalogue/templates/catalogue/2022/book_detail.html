@@ -357,6 +357,7 @@
             {% if book.wiki_link %}
               <li><a href="{{ book.wiki_link }}">strona utworu w Wikipedii</a></li>
             {% endif %}
+	    {% if accessible %}
             <li>
               <a href="{{ book.xml_url }}">źródłowy plik XML</a>
             </li>
@@ -366,6 +367,7 @@
             <li>
               <a target="_blank" href="{{ book.get_extra_info_json.about }}">utwór na Platformie Redakcyjnej</a>
             </li>
+	    {% endif %}
           </ul>
         </div>
       </section>
