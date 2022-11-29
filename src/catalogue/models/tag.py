@@ -73,6 +73,31 @@ class Tag(models.Model):
     created_at = models.DateTimeField(_('creation date'), auto_now_add=True, db_index=True)
     changed_at = models.DateTimeField(_('creation date'), auto_now=True, db_index=True)
 
+    plural = models.CharField(
+        'liczba mnoga', max_length=255, blank=True,
+        help_text='dotyczy gatunków'
+    )
+    genre_epoch_specific = models.BooleanField(
+        default=False,
+        help_text='Po wskazaniu tego gatunku, dodanie epoki byłoby nadmiarowe, np. „dramat romantyczny”'
+    )
+    adjective_feminine_singular = models.CharField(
+        'przymiotnik pojedynczy żeński', max_length=255, blank=True,
+        help_text='twórczość … Adama Mickiewicza; dotyczy epok'
+    )
+    adjective_nonmasculine_plural = models.CharField(
+        'przymiotnik mnogi niemęskoosobowy', max_length=255, blank=True,
+        help_text='utwory … Adama Mickiewicza; dotyczy epok'
+    )
+    genitive = models.CharField(
+        'dopełniacz', max_length=255, blank=True,
+        help_text='utwory … (czyje?); dotyczy autorów'
+    )
+    collective_noun = models.CharField(
+        'określenie zbiorowe', max_length=255, blank=True,
+        help_text='np. „Liryka” albo „Twórczość dramatyczna”; dotyczy rodzajów'
+    )
+
     after_change = Signal()
 
     intermediary_table_model = TagRelation
@@ -131,6 +156,10 @@ class Tag(models.Model):
 
     def get_absolute_gallery_url(self):
         return reverse('tagged_object_list_gallery', args=[self.url_chunk])
+
+    def get_absolute_catalogue_url(self):
+        # TODO: remove magic.
+        return reverse(f'{self.category}_catalogue')
 
     def has_description(self):
         return len(self.description) > 0
@@ -197,25 +226,23 @@ class Tag(models.Model):
                 if category == 'author':
                     tag_sort_key = ' '.join((tag_name.last_name,) + tag_name.first_names)
                     tag_name = tag_name.readable()
-                if lang == settings.LANGUAGE_CODE:
-                    # Allow creating new tag, if it's in default language.
-                    tag, created = Tag.objects.get_or_create(slug=slugify(tag_name), category=category)
-                    if created:
-                        tag_name = str(tag_name)
-                        tag.name = tag_name
-                        setattr(tag, "name_%s" % lang, tag_name)
-                        tag.sort_key = sortify(tag_sort_key.lower())
-                        tag.save()
 
-                    meta_tags.append(tag)
-                else:
-                    # Ignore unknown tags in non-default languages.
-                    try:
-                        tag = Tag.objects.get(category=category, **{"name_%s" % lang: tag_name})
-                    except Tag.DoesNotExist:
-                        pass
-                    else:
+                try:
+                    tag = Tag.objects.get(category=category, **{"name_%s" % lang: tag_name})
+                except Tag.DoesNotExist:
+                    if lang == settings.LANGUAGE_CODE:
+                        # Allow creating new tag, if it's in default language.
+                        tag, created = Tag.objects.get_or_create(slug=slugify(tag_name), category=category)
+                        if created:
+                            tag_name = str(tag_name)
+                            tag.name = tag_name
+                            setattr(tag, "name_%s" % lang, tag_name)
+                            tag.sort_key = sortify(tag_sort_key.lower())
+                            tag.save()
+
                         meta_tags.append(tag)
+                else:
+                    meta_tags.append(tag)
         return meta_tags
 
 
