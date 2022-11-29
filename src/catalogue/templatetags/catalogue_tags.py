@@ -65,66 +65,78 @@ def book_title_html(book):
 
 @register.simple_tag
 def title_from_tags(tags):
-    def split_tags(tags):
-        result = {}
-        for tag in tags:
-            result[tag.category] = tag
-        return result
-
     # TODO: Remove this after adding flection mechanism
     return simple_title(tags)
 
-    class Flection(object):
-        def get_case(self, name, flection):
-            return name
-    flection = Flection()
+
+@register.simple_tag
+def nice_title_from_tags(tags, related_tags):
+    def split_tags(tags):
+        result = {}
+        for tag in tags:
+            result.setdefault(tag.category, []).append(tag)
+        return result
 
     self = split_tags(tags)
 
-    title = ''
-
-    # Specjalny przypadek oglądania wszystkich lektur na danej półce
-    if len(self) == 1 and 'set' in self:
-        return 'Półka %s' % self['set']
-
-    # Specjalny przypadek "Twórczość w pozytywizmie", wtedy gdy tylko epoka
-    # jest wybrana przez użytkownika
-    if 'epoch' in self and len(self) == 1:
-        text = 'Twórczość w %s' % flection.get_case(str(self['epoch']), 'miejscownik')
-        return capfirst(text)
-
-    # Specjalny przypadek "Dramat w twórczości Sofoklesa", wtedy gdy podane
-    # są tylko rodzaj literacki i autor
-    if 'kind' in self and 'author' in self and len(self) == 2:
-        text = '%s w twórczości %s' % (
-            str(self['kind']), flection.get_case(str(self['author']), 'dopełniacz'))
-        return capfirst(text)
-
-    # Przypadki ogólniejsze
-    if 'theme' in self:
-        title += 'Motyw %s' % str(self['theme'])
+    pieces = []
+    plural = True
+    epoch_reduntant = False
 
     if 'genre' in self:
-        if 'theme' in self:
-            title += ' w %s' % flection.get_case(str(self['genre']), 'miejscownik')
+        pieces.append([
+            t.plural or t.name for t in self['genre']
+        ])
+        epoch_reduntant = self['genre'][-1].genre_epoch_specific
+    else:
+        # If we don't have genre,
+        # look if maybe we only have one genre in this context?
+        if 'genre' in related_tags and len(related_tags['genre']) == 1:
+            pieces.append([
+                t.plural or t.name for t in related_tags['genre']
+            ])
+            epoch_reduntant = related_tags['genre'][-1].genre_epoch_specific
+        elif 'kind' in self:
+            # Only use kind if not talking about genre.
+            pieces.append([
+                t.collective_noun or t.name for t in self['kind']
+            ])
+            plural = False
+        elif 'kind' in related_tags and len(related_tags['kind']) == 1:
+            # No info on genre, but there's only one kind related.
+            subpieces = []
+            pieces.append([
+                t.collective_noun or t.name for t in self['kind']
+            ])
+            plural = False
         else:
-            title += str(self['genre'])
+            # We can't say anything about genre or kind.
+            pieces.append(['Twórczość'])
+            plural = False
 
-    if 'kind' in self or 'author' in self or 'epoch' in self:
-        if 'genre' in self or 'theme' in self:
-            if 'kind' in self:
-                title += ' w %s ' % flection.get_case(str(self['kind']), 'miejscownik')
-            else:
-                title += ' w twórczości '
+    if not epoch_reduntant and 'epoch' in self:
+        if plural:
+            form = lambda t: t.adjective_nonmasculine_plural or t.name
         else:
-            title += '%s ' % str(self.get('kind', 'twórczość'))
+            form = lambda t: t.adjective_feminine_singular or t.name
+        pieces.append([
+            form(t) for t in self['epoch']
+        ])
 
     if 'author' in self:
-        title += flection.get_case(str(self['author']), 'dopełniacz')
-    elif 'epoch' in self:
-        title += flection.get_case(str(self['epoch']), 'dopełniacz')
+        pieces.append([
+            t.genitive or t.name for t in self['author']
+        ])
+    
+    p = []
+    for sublist in pieces:
+        for item in sublist[:-2]:
+            p.append(item) + ','
+        for item in sublist[-2:-1]:
+            p.append(item) + ' i'
+        p.append(sublist[-1])
 
-    return capfirst(title)
+    return ' '.join(p)
 
 
 @register.simple_tag

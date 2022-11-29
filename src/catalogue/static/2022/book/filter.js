@@ -2,6 +2,13 @@
 
     $(".quick-filter").each(function() {
         let bookList = $('#' + $(this).data('for'));
+        let filterList = $('.' + $(this).data('filters'));
+        $(this).on('focus', function() {
+            filterList.addClass('filters-enabled');
+        });
+        $(this).on('blur', function() {
+            filterList.removeClass('filters-enabled');
+        });
         $(this).on('input propertychange', function() {
             let search = $(this).val().toLowerCase();
             bookList.children().each(function() {

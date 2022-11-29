@@ -1,11 +1,12 @@
 {% extends '2022/base.html' %}
+{% load catalogue_tags %}
 
 {% load choose_cites from social_tags %}
 
 
 {% block breadcrumbs %}
   <a href="/katalog/"><span>Katalog</span></a>
-  <a href="/katalog/autor/"><span>Autor</span></a>
+  <a href="{{ tags.0.get_absolute_catalogue_url }}"><span>{{ tags.0.get_category_display|title }}</span></a>
 {% endblock %}
 
 {% block main %}
@@ -24,7 +25,19 @@
       <div class="l-books__header">
         <div class="l-books__input">
           <i class="icon icon-filter"></i>
-          <input type="text" placeholder="filtry, tytuł" class="quick-filter" data-for="book-list">
+          <input type="text" placeholder="filtry, tytuł" class="quick-filter" data-for="book-list" data-filters="with-filter">
+          <div class="filter-container">
+            {% for tag in tags %}
+              {% if forloop.counter > 1 %}
+                <span class="filter">
+                  <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>
+                  <a href="{% catalogue_url 'books' tags -tag %}">✖</a>
+                </span>
+              {% endif %}
+            {% endfor %}
+          </div>
+
+          </span>
         </div>
         <div class="l-books__sorting">
              <span>Sortuj:</span>
@@ -34,6 +47,19 @@
              <!--button>chronologicznie</button-->
              </div>
              </div>
+      </div>
+    </div>
+    <div class="l-author with-filter">
+
+      <div class="row">
+        <h2>{% nice_title_from_tags tags categories %}</h2>
+        <div class="filter-container">
+          {% for tag in suggest %}
+            <span class="filter">
+              <a href="{% catalogue_url 'books' tags tag %}">{{ tag }}</a>
+            </span>
+          {% endfor %}
+        </div>
       </div>
     </div>
 

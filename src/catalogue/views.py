@@ -122,6 +122,10 @@ def object_list(request, objects, fragments=None, related_tags=None, tags=None,
             objects = prefetch_relations(objects, 'author')
 
     categories = split_tags(*related_tag_lists)
+    suggest = []
+    for c in ['author', 'epoch', 'kind', 'genre']:
+        if len(categories.get(c, [])) > 1:
+            suggest.extend(categories[c][:4])
 
     objects = list(objects)
 
@@ -137,6 +141,7 @@ def object_list(request, objects, fragments=None, related_tags=None, tags=None,
     result = {
         'object_list': objects,
         'categories': categories,
+        'suggest': suggest,
         'list_type': list_type,
         'tags': tags,
 
@@ -147,16 +152,16 @@ def object_list(request, objects, fragments=None, related_tags=None, tags=None,
     if extra:
         result.update(extra)
 
-    is_author = len(tags) == 1 and tags[0].category == 'author'
     is_set = len(tags) == 1 and tags[0].category == 'set'
     is_theme = len(tags) == 1 and tags[0].category == 'theme'
     new_layout = request.EXPERIMENTS['layout']
-    if is_author and new_layout.value:
-        template = 'catalogue/2022/author_detail.html'
-    elif is_set and new_layout.value:
+
+    if is_set and new_layout.value:
         template = 'catalogue/2022/set_detail.html'
     elif is_theme and new_layout.value:
         template = 'catalogue/2022/theme_detail.html'
+    elif new_layout.value:
+        template = 'catalogue/2022/author_detail.html'
     else:
         template = 'catalogue/tagged_object_list.html'
         
