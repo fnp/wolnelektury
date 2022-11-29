@@ -1,5 +1,6 @@
 {% extends '2022/base.html' %}
 
+{% load chunks %}
 {% load static %}
 {% load choose_cites from social_tags %}
 {% load catalogue_tags %}
@@ -284,9 +285,12 @@
                 {% endif %}
               </div>
               {% else %}
-              <div class="l-checkout__box">
+              <div style="margin-bottom: 1.5rem; font-size: 15px; like-height: 150%; color: #808080;">
                 {% chunk 'book-preview-warn' %}
-                {% include 'club/2022/donation_step1_form.html' %}
+              </div>
+
+              <div class="l-checkout__box">
+                {% include 'club/2022/donation_step1_form.html' with form=donation_form %}
               </div>
               {% endif %}
 
