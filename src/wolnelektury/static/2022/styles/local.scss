@@ -57,12 +57,16 @@ $teal: #007880;
         .sponsors-column-name {
             font-weight: $regular;
             @include font-size(18px);
-            line-height: 150%;
+            line-height: 115%;
+            height: 62px;
+            margin: 0;
             text-align: center;
             color: #474747;
+            display: flex;
+            align-items: center;
         }
         .sponsor-logos {
-            height: 120px;
+            height: 140px;
             overflow: hidden;
             a {
                 margin-top: 20px;
