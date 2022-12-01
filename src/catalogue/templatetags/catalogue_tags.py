@@ -413,12 +413,14 @@ def related_books(context, instance, limit=6, random=1, taken=0):
 
 
 @register.simple_tag
-def related_books_2022(instance, limit=4, taken=0):
+def related_books_2022(book=None, picture=None, limit=4, taken=0):
     limit -= taken
     max_books = limit
 
     books_qs = Book.objects.filter(findable=True)
-    books_qs = books_qs.exclude(common_slug=instance.common_slug).exclude(ancestor=instance)
+    if book is not None:
+        books_qs = books_qs.exclude(common_slug=book.common_slug).exclude(ancestor=book)
+    instance = book or picture
     books = Book.tagged.related_to(instance, books_qs)[:max_books]
 
     return books

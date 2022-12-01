@@ -136,6 +136,15 @@ class Picture(models.Model):
     def authors(self):
         return self.tags.filter(category='author')
 
+    def epochs(self):
+        return self.tags.filter(category='epoch')
+
+    def genres(self):
+        return self.tags.filter(category='genre')
+
+    def kinds(self):
+        return self.tags.filter(category='kind')
+
     def tag_unicode(self, category):
         relations = prefetched_relations(self, category)
         if relations:

@@ -25,7 +25,12 @@ def picture_detail(request, slug):
 
     theme_things = split_tags(picture.related_themes())
 
-    return render(request, "picture/picture_detail.html", {
+    if request.EXPERIMENTS['layout'].value:
+        template_name = 'picture/2022/picture_detail.html'
+    else:
+        template_name = 'picture/picture_detail.html'
+    
+    return render(request, template_name, {
         'picture': picture,
         'themes': theme_things.get('theme', []),
         'things': theme_things.get('thing', []),
