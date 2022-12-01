@@ -71,6 +71,7 @@
       </div>
     </div>
 
+    {% if tags %}
     <section class="l-section">
       <div class="l-author">
         {% with author=tags.0 %}
@@ -94,4 +95,5 @@
         {% endif %}
       </div>
     </section>
+    {% endif %}
 {% endblock %}
