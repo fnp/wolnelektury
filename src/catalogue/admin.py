@@ -39,6 +39,7 @@ class BookAdmin(admin.ModelAdmin):
             'print_on_demand',
             ('wiki_link', BlankFieldListFilter),
             ('parent', EmptyFieldListFilter),
+            ('media', admin.EmptyFieldListFilter),
             ]
     date_hierarchy = 'created_at'
     search_fields = ('title',)

@@ -1,0 +1,37 @@
+{% extends '2022/base.html' %}
+
+
+{% block main %}
+  <div class="l-section">
+    <div class="l-author__header">
+      <h1>
+        {{ object.title }}
+      </h1>
+    </div>
+  </div>
+
+  <div class="l-section">
+    <div class="l-books__header">
+      <div class="l-books__input">
+        <i class="icon icon-filter"></i>
+        <input type="text" placeholder="filtry, tytuł" class="quick-filter" data-for="book-list">
+      </div>
+    </div>
+  </div>
+
+  <div class="l-section l-section--col">
+    <div class="l-books__grid" id="book-list">
+      {% for item in object.item_set.all %}
+        <article class="l-books__item">
+          <figure class="l-books__item__img book-container book-container-{{ book.pk }}" style="height:120px" data-book="{{ book.pk }}">
+            <a href="https://www.youtube.com/watch?v={{ item.youtube_id }}" target="_blank">
+              <img src="https://i.ytimg.com/vi/{{ item.youtube_id }}/mqdefault.jpg" />
+            </a>
+          </figure>
+          <h2><a href="https://www.youtube.com/watch?v={{ item.youtube_id }}" target="_blank">
+            {{ item.title }}</a></h2>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
