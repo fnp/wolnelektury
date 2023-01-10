@@ -198,9 +198,10 @@
            "label": "{{ ref.entity.label }}",
            "description": "{{ ref.entity.description }}",
            "wikipedia_link": "{{ ref.entity.wikipedia_link }}"
-       }{% if not forloop.last %},{% endif %}
+       },
        {% endif %}
        {% endfor %}
+       "": null
   }
   </script>
   {% endlocalize %}

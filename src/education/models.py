@@ -49,15 +49,18 @@ class YPlaylist(models.Model):
         super().save()
         self.download()
     
-    def download(self):
-        response = YouTubeToken.objects.first().call(
-            "GET",
-            "https://www.googleapis.com/youtube/v3/playlistItems",
-            params={
+    def download(self, page_token=None):
+        params = {
                 'part': 'snippet',
                 'playlistId': self.youtube_id,
                 'maxResults': 50,
-            },
+            }
+        if page_token:
+            params['pageToken'] = page_token
+        response = YouTubeToken.objects.first().call(
+            "GET",
+            "https://www.googleapis.com/youtube/v3/playlistItems",
+            params=params
         )
         data = response.json()
         for item in data['items']:
@@ -68,6 +71,8 @@ class YPlaylist(models.Model):
                     'order': item['snippet']['position'],
                 }
             )
+        if data.get('nextPageToken'):
+            self.download(page_token=data['nextPageToken'])
 
 
 

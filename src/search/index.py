@@ -9,6 +9,9 @@ import os
 import re
 from django.conf import settings
 from librarian import dcparser
+import librarian.meta.types.date
+import librarian.meta.types.person
+import librarian.meta.types.text
 from librarian.parser import WLDocument
 from lxml import etree
 import scorched
@@ -318,21 +321,20 @@ class Index(SolrIndex):
             if hasattr(book_info, field.name):
                 if not getattr(book_info, field.name):
                     continue
-                # since no type information is available, we use validator
-                type_indicator = field.validator
-                if type_indicator == dcparser.as_unicode:
+                type_indicator = field.value_type
+                if issubclass(type_indicator, librarian.meta.types.text.TextValue):
                     s = getattr(book_info, field.name)
                     if field.multiple:
                         s = ', '.join(s)
                     fields[field.name] = s
-                elif type_indicator == dcparser.as_person:
+                elif issubclass(type_indicator, librarian.meta.types.person.Person):
                     p = getattr(book_info, field.name)
-                    if isinstance(p, dcparser.Person):
+                    if isinstance(p, librarian.meta.types.person.Person):
                         persons = str(p)
                     else:
                         persons = ', '.join(map(str, p))
                     fields[field.name] = persons
-                elif type_indicator == dcparser.as_date:
+                elif issubclass(type_indicator, librarian.meta.types.date.DateValue):
                     dt = getattr(book_info, field.name)
                     fields[field.name] = dt
 

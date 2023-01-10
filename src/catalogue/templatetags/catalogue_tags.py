@@ -106,7 +106,7 @@ def nice_title_from_tags(tags, related_tags):
             # No info on genre, but there's only one kind related.
             subpieces = []
             pieces.append([
-                t.collective_noun or t.name for t in self['kind']
+                t.collective_noun or t.name for t in related_tags['kind']
             ])
             plural = False
         else:

@@ -11,6 +11,7 @@ INSTALLED_APPS_OUR = [
     'catalogue',
     'chunks',
     'dictionary',
+    'education',
     'experiments',
     'infopages',
     'lesmianator',
