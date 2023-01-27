@@ -131,9 +131,9 @@ def nice_title_from_tags(tags, related_tags):
     p = []
     for sublist in pieces:
         for item in sublist[:-2]:
-            p.append(item) + ','
+            p.append(item + ',')
         for item in sublist[-2:-1]:
-            p.append(item) + ' i'
+            p.append(item + ' i')
         p.append(sublist[-1])
 
     return ' '.join(p)

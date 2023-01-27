@@ -154,13 +154,14 @@ def object_list(request, objects, fragments=None, related_tags=None, tags=None,
 
     is_set = len(tags) == 1 and tags[0].category == 'set'
     is_theme = len(tags) == 1 and tags[0].category == 'theme'
+    has_theme = any((x.category == 'theme' for x in tags))
     new_layout = request.EXPERIMENTS['layout']
 
     if is_set and new_layout.value:
         template = 'catalogue/2022/set_detail.html'
     elif is_theme and new_layout.value:
         template = 'catalogue/2022/theme_detail.html'
-    elif new_layout.value:
+    elif new_layout.value and not has_theme:
         template = 'catalogue/2022/author_detail.html'
     else:
         template = 'catalogue/tagged_object_list.html'

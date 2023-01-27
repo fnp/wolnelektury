@@ -320,7 +320,7 @@ class TagView(RetrieveAPIView):
                 slug=self.kwargs['slug']
             )
         except Http404:
-            if self.request.method == 'PUT':
+            if self.request.method == 'POST':
                 return Tag(
                     category=self.kwargs['category'],
                     slug=self.kwargs['slug']
@@ -330,10 +330,18 @@ class TagView(RetrieveAPIView):
 
     def post(self, request, **kwargs):
         data = json.loads(request.POST.get('data'))
-        desc = data['description_pl']
+        fields = {
+            "description_pl": "description_pl",
+            "plural": "plural",
+            "is_epoch_specific": "genre_epoch_specific",
+            "collective_noun": "collective_noun",
+            "adjective_feminine_singular": "adjective_feminine_singular",
+            "adjective_nonmasculine_plural": "adjective_nonmasculine_plural",
+        }
         obj = self.get_object()
-        obj.description_pl = desc
-        obj.save(update_fields=['description_pl'], quick=True)
+        for data_field, model_field in fields.items():
+            setattr(obj, model_field, data.get(data_field, getattr(obj, model_field)))
+        obj.save(update_fields=fields.values(), quick=True)
         return Response({})
 
 

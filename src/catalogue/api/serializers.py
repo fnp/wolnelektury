@@ -24,7 +24,20 @@ class TagDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Tag
-        fields = ['name', 'url', 'sort_key', 'description']
+        fields = [
+            'name', 'url', 'sort_key',
+            'description',
+            'description_pl',
+            'plural', 'genre_epoch_specific',
+            'adjective_feminine_singular', 'adjective_nonmasculine_plural',
+            'genitive', 'collective_noun',
+        ]
+        write_only_fields = [
+            'description_pl',
+            'plural', 'genre_epoch_specific',
+            'adjective_feminine_singular', 'adjective_nonmasculine_plural',
+            'genitive', 'collective_noun',
+        ]
 
 
 class TranslatorSerializer(serializers.Serializer):

@@ -89,7 +89,7 @@ class Catalogue(common.ResumptionOAIPMH):
         md = wl_dc_reader(xml)
         m = md.getMap()
         if book.parent:
-            m['isPartOf'] = [str(WLURI.from_slug(book.parent.slug))]
+            m['isPartOf'] = [str(WLURI(book.parent.slug))]
         return m
 
     def record_for_book(self, book, headers_only=False):
