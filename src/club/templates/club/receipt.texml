@@ -21,7 +21,7 @@
 \end{flushright}
 \vskip -2.15em
 
-\includegraphics[width=10em]{fnp.eps}
+\includegraphics[width=10em]{wl.eps}
 
 
 
@@ -33,7 +33,7 @@
 
 \vskip 1.5em
 
-Fundacja Nowoczesna Polska prowadząca bibliotekę Wolne Lektury
+Fundacja Wolne Lektury
 potwierdza otrzymanie od Darczyńcy, na swój
 rachunek płatniczy, darowizn pieniężnych w~łącznej kwocie {{ total }} zł.
 
@@ -54,8 +54,8 @@ rachunek płatniczy, darowizn pieniężnych w~łącznej kwocie {{ total }} zł.
 
 \vskip 1em
 
-Darowizny zostały dokonane na rzecz fundacji Nowoczesna Polska
-prowadzącej działalność pożytku publicznego, w tym posiadającej status
+Darowizny zostały dokonane na rzecz fundacji Wolne Lektury
+która prowadzi działalność pożytku publicznego i posiada status
 organizacji pożytku publicznego.
 
 \vskip 1em
@@ -69,7 +69,7 @@ organizacji pożytku publicznego.
 {\Large \textbf{Dane identyfikujące Obdarowanego:}}
 
 \begin{longtable}{ l }
-  fundacja Nowoczesna Polska\\
+  fundacja Wolne Lektury\\
   Marszałkowska 84/92 lok. 125\\
   00-514 Warszawa\\
   KRS: 0000070056\\
@@ -78,7 +78,7 @@ organizacji pożytku publicznego.
 \vskip 1em
 
 \begin{flushright}
-  Zarząd fundacji Nowoczesna Polska\\
+  Zarząd fundacji Wolne Lektury\\
 \end{flushright}
 
 
