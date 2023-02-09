@@ -8,6 +8,7 @@ from django.utils.timezone import now
 from club.models import PayUOrder
 from funding.models import Funding
 from paypal.models import BillingAgreement
+from pz.models import Payment
 
 
 class Command(BaseCommand):
@@ -42,6 +43,15 @@ class Command(BaseCommand):
                 completed_at__year=year
             ).order_by('email').values_list(
                 'email', flat=True
+            ).distinct()
+        )
+        emails.update(
+            Payment.objects.exclude(debit__email='').filter(
+                realised=True,
+                is_dd=True,
+                booking_date__year=year,
+            ).order_by('debit__email').values_list(
+                'debit__email', flat=True
             ).distinct()
         )
 

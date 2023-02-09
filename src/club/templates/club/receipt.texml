@@ -1,3 +1,4 @@
+
 <TeXML xmlns="http://getfo.sourceforge.net/texml/ns1">
 <TeXML escape="0"><![CDATA[
 \documentclass[a4paper,14pt]{letter}
@@ -54,7 +55,7 @@ rachunek płatniczy, darowizn pieniężnych w~łącznej kwocie {{ total }} zł.
 
 \vskip 1em
 
-Darowizny zostały dokonane na rzecz fundacji Wolne Lektury
+Darowizny zostały dokonane na rzecz fundacji Wolne Lektury,
 która prowadzi działalność pożytku publicznego i posiada status
 organizacji pożytku publicznego.
 

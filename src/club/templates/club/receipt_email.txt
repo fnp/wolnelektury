@@ -1,3 +1,4 @@
+
 {% if resend %}Dzień dobry,
 
 czy planujesz rozliczyć podatki w najbliższych dniach? Jeśli tak, pamiętaj, że możesz odliczyć darowizny na Wolne Lektury – szczegółowe informacje na temat kwoty znajdziesz poniżej. Będziemy Ci także wdzięczni za przekazanie na rozwój naszej biblioteki 1,5% podatku. Wystarczy, że wpiszesz KRS 00000 70056 i nazwę fundacji Wolne Lektury w odpowiednią rubrykę. Nawet najmniejsza kwota pomoże nam udostępnić kolejne wartościowe książki tysiącom Czytelniczek i Czytelników.
@@ -29,12 +30,12 @@ Serdecznie dziękujemy za Twoje wsparcie!
 Paulina Choromańska i Jarosław Lipszyc
 w imieniu całego zespołu Wolnych Lektur
 
-PS. W grudniu 2022 r. zmieniliśmy nazwę fundacji z „Nowoczesna Polska” na „Wolne Lektury”. Numer KRS pozostał bez zmian. W żaden sposób nie wpływa to na Twoje prawa. Możesz odliczyć całą kwotę darowizm niezależnie od nazwy na przelewie.
+PS W grudniu 2022 r. zmieniliśmy nazwę fundacji z „Nowoczesna Polska” na „Wolne Lektury”. Numer KRS pozostał bez zmian. W żaden sposób nie wpływa to na Twoje prawa. Możesz odliczyć całą kwotę darowizm niezależnie od nazwy na przelewie.
 
 
 Administratorem danych osobowych jest fundacja Wolne Lektury (ul. Marszałkowska 84/92 lok. 125, 00-514 Warszawa). Podanie danych osobowych jest dobrowolne. Dane są przetwarzane w zakresie niezbędnym do wysyłania informacji darczyńcom Wolnych Lektur. Osobom, których dane są zbierane, przysługuje prawo dostępu do treści swoich danych oraz ich poprawiania. Więcej informacji w polityce prywatności (https://fundacja.wolnelektury.pl/prywatnosc/).
 
-
+{% if optout %}
 -- 
 Jeśli nie chcesz już dostawać podobnych wiadomości, kliknij:
-{{ optout }}
+{{ optout }}{% endif %}

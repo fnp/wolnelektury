@@ -2,6 +2,7 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from datetime import datetime, timedelta
+from decimal import Decimal
 import os
 import tempfile
 from django.apps import apps
@@ -370,8 +371,12 @@ class PayUOrder(payu_models.Order):
         Contact = apps.get_model('messaging', 'Contact')
         Funding = apps.get_model('funding', 'Funding')
         BillingAgreement = apps.get_model('paypal', 'BillingAgreement')
+        DirectDebit = apps.get_model('pz', 'DirectDebit')
+        Payment = apps.get_model('pz', 'Payment')
+
         payments = []
 
+        optout = None
         try:
             contact = Contact.objects.get(email=email)
         except Contact.DoesNotExist:
@@ -381,8 +386,10 @@ class PayUOrder(payu_models.Order):
                 notifications=True).order_by('completed_at').first()
             if funding is None:
                 print('no notifications')
-                return
-            optout = funding.wl_optout_url()
+                if not DirectDebit.objects.filter(email=email, optout=False).exists():
+                    return
+            else:
+                optout = funding.wl_optout_url()
         else:
             if contact.level == Level.OPT_OUT:
                 print('opt-out')
@@ -409,9 +416,22 @@ class PayUOrder(payu_models.Order):
                 'amount': funding.amount,
             })
 
+        for pa in Payment.objects.filter(
+                debit__email=email,
+                realised=True,
+                is_dd=True,
+                booking_date__year=year
+        ):
+            payments.append({
+                'timestamp': datetime(pa.booking_date.year, pa.booking_date.month, pa.booking_date.day, tzinfo=utc),
+                'amount': Decimal(str(pa.debit.amount) + '.00')
+            })
+
+    
         if not payments: return
 
         payments.sort(key=lambda x: x['timestamp'])
+        print(payments)
 
         ctx = {
             "email": email,
@@ -425,7 +445,7 @@ class PayUOrder(payu_models.Order):
         temp = tempfile.NamedTemporaryFile(prefix='receipt-', suffix='.pdf', delete=False)
         temp.close()
         render_to_pdf(temp.name, 'club/receipt.texml', ctx, {
-            "fnp.eps": os.path.join(settings.STATIC_ROOT, "img/fnp.eps"),
+            "wl.eps": os.path.join(settings.STATIC_ROOT, "img/wl.eps"),
             })
 
         message = EmailMessage(
