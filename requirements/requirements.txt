@@ -52,7 +52,7 @@ celery[redis]==5.2.7
 scorched==0.13
 httplib2
 
-sentry-sdk==0.10.2
+sentry-sdk==1.14.0
 
 requests
 
