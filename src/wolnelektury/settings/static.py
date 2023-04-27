@@ -67,6 +67,7 @@ PIPELINE = {
                 'css/new.book.css',
                 'annoy/banner.scss',
                 'annoy/book_text.scss',
+                '2022/styles/reader_player.scss',
 
                 'css/master.picture.css',
             ],

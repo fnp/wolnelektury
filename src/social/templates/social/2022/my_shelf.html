@@ -1,4 +1,5 @@
 {% extends '2022/base.html' %}
+{% load catalogue_tags %}
 
 
 {% block settings %}
@@ -17,7 +18,7 @@
     <div class="l-books__header">
       <div class="l-books__input">
         <i class="icon icon-filter"></i>
-        <input type="text" placeholder="filtry, tytuł" class="quick-filter" data-for="book-list">
+        <input type="text" placeholder="filtry, tytuł" class="quick-filter" data-for="book-list" data-filters="with-filter">
       </div>
       <div class="l-books__sorting">
         <span>Sortuj:</span>
@@ -29,6 +30,26 @@
       </div>
     </div>
   </div>
+
+  <div class="l-author with-filter">
+
+    <div class="row">
+      <h2>&nbsp;</h2>
+      {% if suggest %}
+        <div class="filter-container">
+          {% with list_type='book' %}
+            {% for tag in suggest %}
+              <span class="filter filter-category-{{ tag.category }}">
+                <a href="{% catalogue_url list_type tag %}">{{ tag }}</a>
+              </span>
+            {% endfor %}
+          {% endwith %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+
 
   <div class="l-section l-section--col">
     <div class="l-books__grid" id="book-list">

@@ -64,3 +64,4 @@ class Command(BaseCommand):
                 PayUOrder.send_receipt(email, year, resend=options['resend'])
             except:
                 print('ERROR')
+                raise

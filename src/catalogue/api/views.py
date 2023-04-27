@@ -341,7 +341,10 @@ class TagView(RetrieveAPIView):
         obj = self.get_object()
         for data_field, model_field in fields.items():
             setattr(obj, model_field, data.get(data_field, getattr(obj, model_field)))
-        obj.save(update_fields=fields.values(), quick=True)
+        if obj.pk:
+            obj.save(update_fields=fields.values(), quick=True)
+        else:
+            obj.save()
         return Response({})
 
 

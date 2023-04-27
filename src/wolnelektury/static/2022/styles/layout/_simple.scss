@@ -1,0 +1,141 @@
+.page-simple {
+    margin: 0 16px 70px 16px;
+    padding-bottom: 30px;
+    
+    border-radius: 10px;
+    background: #E1F1F2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .white-box {
+        // for legacy templates
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    h1 {
+        width: 100%;
+        margin: 0 0 50px 0;
+        padding: 32px 45px;
+        border-radius: 10px 10px 0 0;
+
+        font-style: italic;
+        font-weight: 300;
+        font-size: 48px;
+        line-height: 55px;
+        letter-spacing: -0.02em;
+        background: #083F4D;
+        color: #92BD39;
+    }
+
+    > p, form, > .normal-text {
+        margin-left: 16px;
+        margin-right: 16px;
+        width: auto;
+
+        @include rwd($break3) {
+            min-width: 300px;
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+    }
+
+    .wlfund {
+        margin: 0;
+        width: 90%;
+        border-collapse: separate;
+
+        tr {
+            td {
+                padding: .625rem .3125rem .625rem;
+                border-top: .625rem solid rgba(255,255,255,0);
+                border-bottom: 1px solid #083F4D;
+                text-align: center;
+            }
+        }
+    }
+
+    .form-info {
+        h2 {
+            font-size: 1.5em;
+            margin-top: 0;
+        }
+    }
+
+}
+
+.page-simple, .nice-controls {
+    button, input[type=submit] {
+        margin: 24px 0;
+        height: 56px;
+        background: #083F4D;
+        border: none;
+        border-radius: 3px;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #FFFFFF;
+        width: 100%;
+
+        @include rwd($break3) {
+            width: 340px;
+        }
+        
+        &.active {
+            outline: 2px solid #083F4D;
+            outline-offset: 3px;
+        }
+        
+        &:disabled {
+            opacity: .8;
+        }
+
+        &.button-orange {
+            background: #FFA500;
+            color: black;
+            transition: all cubic-bezier(0.25, 1, 0.5, 1) 350ms;
+            &:hover {
+                background: #92BD39;
+            }
+        }
+    }
+
+    label {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 160%;
+        color: #083F4D;
+        margin-top: 24px;
+    }
+
+    input, textarea, select {
+        display: block;
+        width: 100%;
+        background: #FFFFFF;
+        color: black;
+        border: 1px solid #D5ECED;
+        border-radius: 3px;
+        transition: all cubic-bezier(0, 0, 0.2, 1) 250ms;
+        padding: 10px;
+        outline: 0;
+    }
+    input, select {
+        height: 56px;
+    }
+    input[type=checkbox], input[type=radio] {
+        display: inline;
+        float: left;
+        width: 1.2em;
+        height: 1.2em;
+        vertical-align: middle;
+        margin-right: 1em;
+    }
+}

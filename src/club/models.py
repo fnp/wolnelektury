@@ -431,7 +431,6 @@ class PayUOrder(payu_models.Order):
         if not payments: return
 
         payments.sort(key=lambda x: x['timestamp'])
-        print(payments)
 
         ctx = {
             "email": email,
@@ -451,7 +450,7 @@ class PayUOrder(payu_models.Order):
         message = EmailMessage(
                 'Odlicz darowiznę na Wolne Lektury od podatku',
                 template.loader.render_to_string('club/receipt_email.txt', ctx),
-                settings.CONTACT_EMAIL, [email]
+                settings.CLUB_CONTACT_EMAIL, [email]
             )
         with open(temp.name, 'rb') as f:
             message.attach('wolnelektury-darowizny.pdf', f.read(), 'application/pdf')

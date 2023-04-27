@@ -62,6 +62,8 @@ def book_list(request, filters=None, template_name='catalogue/book_list.html',
 
 
 def daisy_list(request):
+    if request.EXPERIMENTS['layout'].value:
+        return object_list(request, Book.objects.filter(media__type='daisy'))
     return book_list(request, Q(media__type='daisy'), template_name='catalogue/daisy_list.html')
 
 
@@ -121,11 +123,12 @@ def object_list(request, objects, fragments=None, related_tags=None, tags=None,
         if isinstance(objects, QuerySet):
             objects = prefetch_relations(objects, 'author')
 
+    
     categories = split_tags(*related_tag_lists)
     suggest = []
     for c in ['author', 'epoch', 'kind', 'genre']:
-        if len(categories.get(c, [])) > 1:
-            suggest.extend(categories[c][:4])
+        #if len(categories.get(c, [])) > 1:
+        suggest.extend(sorted(categories[c], key=lambda t: -t.count)[:3])
 
     objects = list(objects)
 
@@ -152,13 +155,13 @@ def object_list(request, objects, fragments=None, related_tags=None, tags=None,
     if extra:
         result.update(extra)
 
-    is_set = len(tags) == 1 and tags[0].category == 'set'
+    is_set = any((x.category == 'set' for x in tags))
     is_theme = len(tags) == 1 and tags[0].category == 'theme'
     has_theme = any((x.category == 'theme' for x in tags))
     new_layout = request.EXPERIMENTS['layout']
 
     if is_set and new_layout.value:
-        template = 'catalogue/2022/set_detail.html'
+        template = 'social/2022/set_detail.html'
     elif is_theme and new_layout.value:
         template = 'catalogue/2022/theme_detail.html'
     elif new_layout.value and not has_theme:
@@ -475,7 +478,12 @@ def tag_catalogue(request, category):
     else:
         best = described_tags
 
-    return render(request, 'catalogue/tag_catalogue.html', {
+    if request.EXPERIMENTS['layout'].value:
+        template_name = 'catalogue/2022/tag_catalogue.html'
+    else:
+        template_name = 'catalogue/tag_catalogue.html'
+
+    return render(request, template_name, {
         'tags': tags,
         'best': best,
         'title': constants.CATEGORIES_NAME_PLURAL[category],

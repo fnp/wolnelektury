@@ -87,9 +87,9 @@ def carousel(context, placement):
 
 @register.inclusion_tag('social/carousel_2022.html', takes_context=True)
 def carousel_2022(context, placement):
-    banner = Carousel.get(placement).carouselitem_set.first().get_banner()
+    banners = Carousel.get(placement).carouselitem_set.all()#first().get_banner()
     return {
-        'banner': banner,
+        'banners': [b.get_banner() for b in banners],
     }
 
 

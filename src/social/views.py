@@ -72,8 +72,15 @@ def my_shelf(request):
         template_name = 'social/2022/my_shelf.html'
     else:
         template_name = 'social/my_shelf.html'
+
+    tags = list(request.user.tag_set.all())
+    suggest = [t for t in tags if t.name]
+    print(suggest)
+        
     return render(request, template_name, {
-        'books': Book.tagged.with_any(request.user.tag_set.all())
+        'tags': tags,
+        'books': Book.tagged.with_any(tags),
+        'suggest': suggest,
     })
 
 

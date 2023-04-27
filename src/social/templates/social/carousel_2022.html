@@ -1,7 +1,7 @@
-{% if banner %}
-<a href="{{ banner.link }}">
+{% for banner in banners %}
   {% if banner.picture %}
-  <img src="{{ banner.picture.url }}">
+    <div style="background-image: url('{{ banner.picture.url }}');">
+      <a href="{{ banner.link }}"></a>
+    </div>
   {% endif %}
-</a>
-{% endif %}
+{% endfor %}

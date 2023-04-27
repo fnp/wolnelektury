@@ -19,11 +19,11 @@
     </div>
 
 
-    <main class="l-main">
-      <section class="l-section">
+    <main class="l-main page-book">
+      <section class="l-section lay-s-col-rev">
         {% with first_text=book.get_first_text %}
           <aside class="l-aside">
-            <figure>
+            <figure class="only-l">
               {% if accessible and first_text %}
                 <a href="{% url 'book_text' first_text.slug %}">
               {% endif %}
@@ -99,8 +99,11 @@
                   </p>
                 {% endif %}
               </div>
-              <div class="l-header__actions">
-                {% likes_book book as likes %}
+
+
+
+              {% likes_book book as likes %}
+              <div class="l-header__actions only-l">
                 {% if likes %}
                   <form method='post' action='{% url 'social_unlike_book' book.slug %}'>
                     {% csrf_token %}
@@ -119,9 +122,42 @@
               </div>
             </header>
             <article class="l-article">
+
+
+
+
+
               {% if accessible %}
-              <div class="c-media">
-                <div class="c-media__actions">
+                <div class="c-media">
+                  <div class="lay-row lay-l-block lay-spread">
+                  <figure class="only-s book-cover-small">
+                    {% if accessible and first_text %}
+                      <a href="{% url 'book_text' first_text.slug %}">
+                    {% endif %}
+                    <img src="{% if book.cover_clean %}{{ book.cover_clean.url }}{% endif %}" alt="{{ book.pretty_title }}">
+                    {% if accessible and first_text %}
+                      </a>
+                    {% endif %}
+                  </figure>
+                  <div class="lay-col lay-spread lay-grow">
+                  <div class="l-header__actions only-s">
+                    {% if likes %}
+                      <form method='post' action='{% url 'social_unlike_book' book.slug %}'>
+                        {% csrf_token %}
+                        <button class="l-button l-button--fav">
+                          <img src="{% static '2022/images/faved.svg' %}" alt="Usuń z ulubionych">
+                        </button>
+                      </form>
+                    {% else %}
+                      <form method='post' action='{% url 'social_like_book' book.slug %}'>
+                        {% csrf_token %}
+                        <button class="l-button l-button--fav">
+                          <img src="{% static '2022/images/fav.svg' %}" alt="Dodaj do ulubionych">
+                        </button>
+                      </form>
+                    {% endif %}
+                  </div>
+                  <div class="c-media__actions lay-col lay-l-row">
                   <div class="c-media__btn">
                     {% if book.has_mp3_file %}
                       <button class="l-button l-button--media" id="audiobook"><i class="icon icon-audio"></i> pobierz audiobook</button>
@@ -135,7 +171,9 @@
                       <a href="{% url 'book_text' first_text.slug %}" class="l-button l-button--media l-button--media--full"><i class="icon icon-eye"></i> czytaj online</a>
                     {% endif %}
                   </div>
-                </div>
+                  </div>
+                  </div>
+                  </div>
 
 
 
@@ -312,9 +350,9 @@
                 <h2>Ta książka jest dostępna dla tysięcy dzieciaków dzięki <span>darowiznom</span> od osób takich jak <span>Ty</span>!</h2>
                 <a href="{% url 'club_join' %}?pk_campaign=layout">Dorzuć się!</a>
               </div>
-              <figure>
-                <img src="{% static '2022/images/dziecko.jpeg' %}" alt="Dorzuć się!">
-              </figure>
+              <div class="bg">
+                <!-- img src="{% static '2022/images/dziecko.jpeg' %}" alt="Dorzuć się!" -->
+              </div>
             </div>
             {% endif %}
           </div>

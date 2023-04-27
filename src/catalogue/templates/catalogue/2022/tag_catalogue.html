@@ -1,0 +1,44 @@
+{% extends '2022/base.html' %}
+{% load thumbnail %}
+
+
+{% block settings %}
+{% endblock %}
+
+{% block breadcrumbs %}
+  <span>{{ whole_category }}</span>
+{% endblock %}
+
+
+{% block main %}
+  <div class="l-section">
+    <div class="l-author__header">
+      <h1>{{ whole_category }}</h1>
+    </div>
+  </div>
+
+  <div class="l-search-bar">
+    <div class="l-search-bar__input">
+      <i class="icon icon-filter"></i>
+      <input type="text" placeholder="filtry, tytuł" class="quick-filter" data-for="tag-list">
+    </div>
+  </div>
+
+
+  <div class="l-section l-taglist">
+    <ul id="tag-list">
+      {% for tag in tags %}
+        <li>
+          {% if tag.photo %}
+            {% thumbnail tag.photo '40x40' crop='center' as thumb %}
+            <img src="{{ thumb.url }}" class="c-avatar">
+            {% endthumbnail %}
+          {% endif %}
+          <a class="s" href="{{ tag.get_absolute_url }}">{{ tag }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+ </div>
+
+
+{% endblock %}

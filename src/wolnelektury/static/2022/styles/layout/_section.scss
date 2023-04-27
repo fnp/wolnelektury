@@ -4,12 +4,18 @@
   margin-right: auto;
   justify-content: center;
 
-  @include rwd(tablet) {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
+  padding-left: 16px;
+  padding-right: 16px;
 
   &.l-section--col {
     flex-direction: column;
   }
+
+  &.l-section--row {
+      flex-direction: column;
+      @include rwd($break-flow) {
+          flex-direction: row;
+      }
+  }
 }
+

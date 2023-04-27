@@ -154,27 +154,62 @@
 
 
     $('.js-collections').each(function() {
+        //return;
         let collectionsSlider = $('.l-books', this);
         if (collectionsSlider.children().length < 2) return;
+
+        // remove flexbox
+        collectionsSlider.css('display', 'block');
+        
         let collectionsNextSlide = $('.js-next-slide', this);
         let collectionsPrevSlide = $('.js-prev-slide', this);
 
   collectionsSlider.slick({
-    slidesToScroll: 1,
-    slidesToShow: 5,
-    infinite: false,
-    dots: false,
-    arrows: false,
-    autoplay: false,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          centerMode: false,
-          slidesToShow: 2
-        }
-      }
-    ]
+      //prevArrow, nextArrow,
+
+      slidesToScroll: 1,
+      slidesToShow: 1,
+      infinite: false,
+      dots: false,
+      arrows: false,
+      autoplay: false,
+
+      swipeToSlide: true,
+      centerMode: false,
+      mobileFirst: true,
+      responsive: [
+          {
+              breakpoint: 360 - .01,
+              settings: {
+                  slidesToShow: 2,
+              }
+          },
+          {
+              breakpoint: 520 - .01,
+              settings: {
+                  slidesToShow: 3
+              }
+          },
+          {
+              breakpoint: 680 - .01,
+              settings: {
+                  slidesToShow: 4
+              }
+          },
+          {
+              breakpoint: 840 - .01,
+              settings: {
+                  slidesToShow: 5
+              }
+          },
+          {
+              breakpoint: 1172 - .01,
+              settings: {
+                  slidesToShow: 5,
+                  variableWidth: true,
+              }
+          },
+      ]
   });
 
   collectionsNextSlide.on('click', function (event) {
@@ -231,32 +266,45 @@
     dots: true,
     arrows: false,
     autoplay: true,
-    autoplaySpeed: 2500
+    autoplaySpeed: 3000
   });
 
 
   let sliderHomepage = $('.l-quotes');
   sliderHomepage.slick({
     slidesToShow: 1,
-    centerMode: true,
-    centerPadding: '250px',
+    centerMode: false,
     infinite: true,
     dots: true,
     arrows: false,
     autoplay: true,
-    autoplaySpeed: 2500,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          centerMode: false,
-          slidesToShow: 1
-        }
-      }
-    ]
+    autoplaySpeed: 4000,
   });
 
 })();
+
+
+
+
+// Carousel
+(function () {
+  let slider = $('.p-homepage__info__box--carousel');
+
+  slider.slick({
+    slidesToScroll: 1,
+    slidesToShow: 1,
+    infinite: true,
+    dots: true,
+    arrows: false,
+    autoplay: true,
+    autoplaySpeed: 5000
+  });
+
+
+
+})();
+
+
 
 // Text overlay toggler
 (function () {

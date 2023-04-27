@@ -1,19 +1,98 @@
 (function($) {
     $(function() {
 
+        $(".book-right-column").remove();
+
+        if ($("#player-bar").length) {
+            $("h1").first().after($("<div class='dynamic-insert'><a href='#' class='enable-player-bar'><div class='text'><i class='icon icon-play' style='border: 1px solid black; border-radius: 100%; padding: 1em; margin-right: 1em;'></i> Możesz jednocześnie czytać i słuchać tej lektury!</div></a></div>"));
+        }
+        
+        $(".enable-player-bar").click(function() {
+            $('body').addClass('with-player-bar');
+            $('.jp-play').click();
+            return false;
+        })
+
+                                      
+        var smil = $("#smil").text();
+        if (smil) {
+            smil = $.parseJSON(smil);
+
+            $.each(smil, function(i, e) {
+                $('#' + e).addClass('syncable');
+            })
+        }
+
+
+        scrolling = false;
+        /*$(window).on('scroll', function() {
+            if (!scrolling) {
+                $("#locator").removeClass('snap');
+            }
+        });*/
+
+        lastscroll = null;
+        
+        scrollTo = function() {
+            if (!scrolling && $('.playing-highlight').length && $('.playing-highlight')[0] != lastscroll) {
+                lastscroll = $('.playing-highlight')[0];
+                scrolling = true;
+                $("html").animate({
+                    scrollTop: $('.playing-highlight').offset().top,
+                }, {
+                    duration: 2000,
+                    done: function() {
+                        scrolling = false;
+                        
+                    },
+                });
+            }
+        }
+
+        
         $.jPlayer.timeFormat.showHour = true;
 
         $(".jp-jplayer").each(function() {
             var $self = $(this);
+            
             var $root = $self.parent();
             var $currentMedia = null
             var currentDuration = 0;
             var speed = 1;
             var totalDurationLeft = 0;
+            var totalDurationBefore = 0;
             var lastUpdate = 0;
             var player = null;
+            var doesUpdateSynchro = true;
 
-            var setMedia = function(elem, time=0) {
+            // TODO: will need class for attach
+            // may be added from sync data
+            $(".syncable").click(function() {
+                if (!$('body').hasClass('with-player-bar')) return;
+                let id = $(this).attr('id');
+                if (!id) return;
+                for (let i=0; i<smil.length; ++i) {
+                    if (smil[i][0] == id) {
+                        setMediaFromTime(smil[i][1], 'play');
+                        //player.jPlayer('play');
+                        return;
+                    }
+                }
+            });
+
+            var setMediaFromTime = function(time, cmd='pause') {
+                $('.jp-playlist li', $root).each((i, e) => {
+                    d = parseFloat($(e).data('duration'));
+                    if (time < d) {
+                        setMedia($(e), time, cmd);
+                        return false
+                    } else {
+                        time -= d;
+                    }
+                })
+            }
+            
+            var setMedia = function(elem, time=0, cmd='pause') {
                 var media = {}
 
                 media['mp3'] = elem.attr('data-mp3');
@@ -30,23 +109,70 @@
                 $(".c-media__caption .license", $root).html($(".license", elem).html());
                 $(".c-media__caption .project-logo", $root).html($(".project-icon", elem).html());
 
-                player.jPlayer("setMedia", media);
-                player.jPlayer("option", "playbackRate", speed);
-                player.jPlayer("pause", time);
+                console.log('sm 1');
+                doesUpdateSynchro = false;
+                if (!$currentMedia || $currentMedia[0] != elem[0]) {
+                    console.log('set', player.jPlayer("setMedia", media))
+                    player.jPlayer("option", "playbackRate", speed);
+                }
+                doesUpdateSynchro = true;
+                player.jPlayer(cmd, time);
 
                 $currentMedia = elem;
                 $(".play-next", $root).prop("disabled", !elem.next().length);
 
-                let du = elem.data('duration');
+                let du = parseFloat(elem.data('duration'));
                 currentDuration = du;
                 elem.nextAll().each(function() {
-                    du += $(this).data('duration');
+                    du += parseFloat($(this).data('duration'));
                 });
                 totalDurationLeft = du;
+
+                let pdu = 0;
+                elem.prevAll().each(function() {
+                    pdu += parseFloat($(this).data('duration'));
+                });
+                totalDurationBefore = pdu;
+                console.log('sm 3', du, pdu);
 
                 return player;
             };
 
+
+            var updateSynchrotext = function(position) {
+                if (!doesUpdateSynchro) return;
+                
+                let curElemId = null;
+                for (let i=0; i<smil.length; ++i) {
+                    // can faster
+                    if (smil[i][1] <= position) curElemId = smil[i][0];
+                    else break;
+                }
+                $(".playing-highlight").removeClass("playing-highlight");
+                if (curElemId !== null) {
+                    let curElem = $("#" + curElemId);
+                    curElem.addClass("playing-highlight");
+
+                    let miny = window.scrollY;
+                    let maxy = miny + window.innerHeight;
+                    let y = curElem.offset().top;
+
+                    let locator = $("#locator");
+                    // TODO: if snap then roll
+                    locator.removeClass('up').removeClass('down');
+                    if (locator.hasClass('snap')) {
+                        console.log('SCROLL!');
+                        scrollTo();
+                    } else {
+                        if (y < miny) {
+                            locator.addClass('up');
+                        }
+                        if (y > maxy) {
+                            locator.addClass('down');
+                        }
+                    }
+                }
+            }
             
         $self.jPlayer({
             swfPath: "/static/js/contrib/jplayer/",
@@ -105,8 +231,10 @@
                     _paq.push(['trackEvent', 'audiobook', 'chapter']);
                 });
 
+                console.log('READY 3!');
                 var initialElem = $('.jp-playlist li', $root).first();
                 var initialTime = 0;
+                console.log('READY 4!');
                 if (true || Modernizr.localstorage) {
                     try {
                         let speedStr = localStorage['audiobook-speed'];
@@ -133,11 +261,17 @@
                         initialTime = last[2];
                     }
                 }
-                setMedia(initialElem, initialTime);
+                console.log('READY 5!', initialElem, initialTime);
+                setMedia($(initialElem), initialTime);
+                console.log('READY 6!');
             },
 
             timeupdate: function(event) {
                 t = event.jPlayer.status.currentTime;
+
+                updateSynchrotext(totalDurationBefore + t);
+                
+                
                 ttl = (totalDurationLeft - t) / speed;
                 ttl = $.jPlayer.convertTime(ttl);
                 $(".total-time-left").text('Czas do końca: ' + ttl);
@@ -180,6 +314,12 @@
       });
 
 
+   $('#locator').on('click', function() {
+       $(this).toggleClass('snap');
+       lastscroll = null;
+   });
+
+        
 
     });
 })(jQuery)

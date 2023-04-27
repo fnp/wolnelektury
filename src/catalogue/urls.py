@@ -14,7 +14,7 @@ import search.views
 urlpatterns = [
     path('obraz/strona/', picture.views.picture_page, name='picture_page'),
     # pictures - currently pictures are coupled with catalogue, hence the url is here
-    path('obraz/', picture.views.picture_list_thumb, name='picture_list_thumb'),
+    path('obraz/', picture.views.picture_list_thumb, name='picture_list_thumb'), # TODO: catalogue view
     path('obraz/<slug:slug>.html', picture.views.picture_viewer, name='picture_viewer'),
     path('obraz/<slug:slug>/', picture.views.picture_detail, name='picture_detail'),
 
@@ -22,8 +22,9 @@ urlpatterns = [
     path('szukaj/', RedirectView.as_view(
         url='/szukaj/', query_string=True, permanent=True)),
 
-    path('', views.catalogue, name='catalogue'),
+    path('', views.catalogue, name='catalogue'), # TODO catalogue
 
+    # TODO: catalogue
     path('autor/', views.tag_catalogue, {'category': 'author'}, name='author_catalogue'),
     path('epoka/', views.tag_catalogue, {'category': 'epoch'}, name='epoch_catalogue'),
     path('gatunek/', views.tag_catalogue, {'category': 'genre'}, name='genre_catalogue'),
@@ -36,15 +37,15 @@ urlpatterns = [
     path('lektury/', views.literature, name='book_list'),
     path('lektury/<slug:slug>/', views.collection, name='collection'),
     path('audiobooki/', views.audiobooks, name='audiobook_list'),
-    path('daisy/', views.daisy_list, name='daisy_list'),
+    path('daisy/', views.daisy_list, name='daisy_list'), # TODO: catalogue
     path('jtags/', search.views.hint, {'param': 'q', 'mozhint': True}, name='jhint'),
-    path('nowe/', ListView.as_view(
+    path('nowe/', ListView.as_view( # TODO
         queryset=Book.objects.filter(parent=None, findable=True).order_by('-created_at'),
         template_name='catalogue/recent_list.html'), name='recent_list'),
-    path('nowe/audiobooki/', ListView.as_view(
+    path('nowe/audiobooki/', ListView.as_view( # TODO
         queryset=Book.objects.filter(media__type='ogg').annotate(m=Max('media__uploaded_at')).order_by('-m'),
         template_name='catalogue/recent_audiobooks_list.html'), name='recent_audiobooks_list'),
-    path('nowe/daisy/', ListView.as_view(
+    path('nowe/daisy/', ListView.as_view( # TODO
         queryset=Book.objects.filter(media__type='daisy').annotate(m=Max('media__uploaded_at')).order_by('-m'),
         template_name='catalogue/recent_daisy_list.html'), name='recent_daisy_list'),
 

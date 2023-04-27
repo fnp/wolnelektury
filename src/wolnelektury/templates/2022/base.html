@@ -13,15 +13,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
     <title>{% if title %}{{ title }} | {% endif %}WolneLektury.pl</title>
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     {% stylesheet '2022' %}
-
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
-
       {% tracking_code %}
       {% block extrahead %}{% endblock %}
   </head>
@@ -37,6 +32,18 @@
         {% endcache %}
       </div>
     {% endif %}
+
+    <div class="l-container l-change-pop">
+      <h3>Przekaż 1,5%</h3>
+      <p>
+        Przekaż 1,5% podatku na Wolne Lektury KRS 00000 70056<br>
+        Ufunduj darmowe książki dla tysięcy dzieciaków.<br>
+        <a href="/info/wesprzyj-nas/">WIĘCEJ</a>
+      </p>
+      <!-- button class="l-change-pop__close">
+           <i class="icon icon-close"></i>
+           </button -->
+    </div>
 
     {% block global-content %}
       <div class="l-container">

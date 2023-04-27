@@ -10,12 +10,12 @@
 
 
 {% block extrahead %}
-   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-         crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-   crossorigin=""></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+          integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+          crossorigin=""></script>
 {% endblock %}
 
 {% block menu %}
@@ -84,7 +84,7 @@
         <a style="display:inline-block;padding: 1em;" href="{% url 'book_text' prev.slug %}">&larr;&nbsp;{{ prev.title }}</a>
       {% endif %}
       <div style="text-align:center; margin-top:1em;">
-      {% content_warning book %}
+        {% content_warning book %}
       </div>
       <div style="clear:both;"></div>
       {{ book_text|safe }}
@@ -109,9 +109,18 @@
 
 
 
+
 {% endblock big-pane %}
 
 {% block footer %}
+  {% if book.has_sync_file %}
+    <div id="player-bar">
+      {% include 'catalogue/snippets/2022_jplayer_reader.html' %}
+    </div>
+    <script type="application/json" id="smil">
+     {{ book.get_sync|safe }}
+    </script>
+  {% endif %}
   <div id="wltoc" class="box">
     {% if book.parent %}
       {% for b in book.ancestors %}
@@ -121,23 +130,23 @@
         <a href="{% if b.html_file %}{% url 'book_text' b.slug %}{% else %}{{ b.get_absolute_url }}{% endif %}">{{ b.title }}</a>
         <ol>
       {% endfor %}
-        {% for b in book.get_siblings %}
-          <li>
-            {% if b == book %}
-              <strong>{{ b.title }}</strong>
-              <div id="heretoc"></div>
-            {% else %}
-              <a href="{% url 'book_text' b.get_first_text.slug %}">{{ b.title }}</a>
-            {% endif %}
-          </li>
-        {% endfor %}
+      {% for b in book.get_siblings %}
+        <li>
+          {% if b == book %}
+            <strong>{{ b.title }}</strong>
+            <div id="heretoc"></div>
+          {% else %}
+            <a href="{% url 'book_text' b.get_first_text.slug %}">{{ b.title }}</a>
+          {% endif %}
+        </li>
+      {% endfor %}
 
-        {% for b in book.ancestor.all %}
+      {% for b in book.ancestor.all %}
         </ol>
         {% if not forloop.counter.last %}
           </li>
         {% endif %}
-        {% endfor %}
+      {% endfor %}
     {% else %}
       <strong>{{ book.title }}</strong>
       <div id="heretoc"></div>
@@ -150,7 +159,7 @@
   </div>
 
   <div id="info" class="box">
-      {% book_info book %}
+    {% book_info book %}
   </div>
 
   {% if book.other_versions.exists %}
@@ -185,6 +194,11 @@
     {% endfor %}
   </div>
 
+
+  <div id="marker">
+
+  </div>
+
   {% localize off %}
   <script type="application/json" id="interesting-references">
    {
@@ -202,7 +216,8 @@
        {% endif %}
        {% endfor %}
        "": null
-  }
+   }
   </script>
+
   {% endlocalize %}
 {% endblock footer %}

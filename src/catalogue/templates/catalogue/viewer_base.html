@@ -59,13 +59,14 @@
       </footer>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js" integrity="sha512-BkBgWiL0N/EFIbLZYGTgbksKG5bS6PtwnWvVk3gccv+KhtK/4wkLxCRGh+kelKiXx7Ey4jfTabLg3AEIPC7ENA==" crossorigin="anonymous"></script>
+    <script src="{% static 'contrib/jquery-1.8.0.min.js' %}"></script>
     {% block js-dependencies %}{% endblock %}
     <script type="text/javascript">
       var LANGUAGE_CODE = "{{ LANGUAGE_CODE }}";
       var STATIC_URL = "{{ STATIC_URL }}";
     </script>
     {% javascript "book_text" %}
+      {% javascript "2022_player" %}
 
     {% block extrabody %}{% endblock %}
     <script src="{% static "js/contrib/modernizr.custom.19652.js" %}"></script>

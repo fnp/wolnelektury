@@ -3,22 +3,41 @@
     $(".quick-filter").each(function() {
         let bookList = $('#' + $(this).data('for'));
         let filterList = $('.' + $(this).data('filters'));
+
         $(this).on('focus', function() {
             filterList.addClass('filters-enabled');
         });
         $(this).on('blur', function() {
             filterList.removeClass('filters-enabled');
         });
+
         $(this).on('input propertychange', function() {
             let search = $(this).val().toLowerCase();
+
             bookList.children().each(function() {
-                found = !search || $("h2", this).text().toLowerCase().search(search) != -1;
+                found = !search ||
+                    $(".s", this).text().toLowerCase().search(search) != -1
+                    ;
+                if (found) 
+                    $(this).fadeIn();
+                else
+                    $(this).fadeOut();
+            });
+
+
+
+            $('.filter-container', filterList).children().each(function() {
+                console.log($(this).text().toLowerCase());
+                found = !search ||
+                    $(this).text().toLowerCase().search(search) != -1
+                    ;
                 if (found) 
                     $(this).fadeIn();
                 else
                     $(this).fadeOut();
             });
         });
+
     });
 
     $(".l-books__sorting button").on('click', function() {

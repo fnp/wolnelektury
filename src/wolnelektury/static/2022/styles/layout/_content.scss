@@ -1,5 +1,9 @@
 .l-content {
   padding-bottom: 30px;
-  padding-left: 50px;
+  padding-left: 0;
   width: 100%;
+
+  @include rwd($break-flow) {
+      padding-left: 50px;
+  }
 }

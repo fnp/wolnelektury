@@ -5,21 +5,27 @@ $darkteal: #083F4D;
 
 .c-support {
   display: flex;
+  flex-direction: column-reverse;
   margin-top: 50px;
   background: $darkteal;
   border-radius: 15px;
   overflow: hidden;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
 
+  @include rwd($break-flow) {
+      flex-direction: row;
+  }
+  
   h2 {
-    margin: 0 auto;
+      margin: 0 auto 35px;
     font-style: italic;
     font-weight: 400;
     font-size: 34px;
     line-height: 47px;
     letter-spacing: -0.02em;
     color: #ffffff;
+    
     span {
         color: $green;
     }
@@ -30,17 +36,19 @@ $darkteal: #083F4D;
       flex-direction: column;
       justify-content: space-between;
       padding: 20px 30px 30px;
-      height: 280px;
   }
   
-  figure {
-    margin: 0;
-    font-size: 0;
-    position: relative;
+  .bg {
+      flex-basis: 193px;
+      flex-grow: 0;
+      flex-shrink: 0;
+      background-image: url('/static/2022/images/dziecko.jpeg');
+      background-size: cover;
+      background-position: 50% 20%;
 
-    img {
-        width: 270px;
-    }
+      @include rwd($break-flow) {
+          flex-basis: 270px;
+      }
   }
 
   a {

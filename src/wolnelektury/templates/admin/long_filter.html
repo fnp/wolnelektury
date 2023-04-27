@@ -1,0 +1,19 @@
+{% load i18n %}
+<h3>{% blocktranslate with filter_title=title %} By {{ filter_title }} {% endblocktranslate %}</h3>
+<script>
+ function longFilter(f) {
+     $ = django.jQuery;
+     let v = f.value;
+     ul = $(f).next();
+     $('li', ul).each(function(i, e) {
+         $(this).css('display', ($(e).text().search(v) != -1) ? 'block' : 'none');
+     });
+ }
+</script>
+<input style="margin: 0 15px" onkeyup="longFilter(this)">
+<ul class="longfilter" style="word-wrap: anywhere; max-height:400px; overflow:hidden;">
+  {% for choice in choices %}
+    <li{% if choice.selected %} class="selected"{% endif %}>
+      <a href="{{ choice.query_string|iriencode }}" title="{{ choice.display }}">{{ choice.display }}</a></li>
+  {% endfor %}
+</ul>

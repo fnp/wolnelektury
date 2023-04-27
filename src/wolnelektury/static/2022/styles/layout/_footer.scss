@@ -6,21 +6,24 @@
   padding-bottom: 38px;
 
   .l-container {
-    @include rwd(tablet) {
       display: flex;
       flex-direction: column;
-    }
+      @include rwd($break-footer) {
+          display: block;
+      }
   }
 }
 
 .l-footer__row {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
 
-  @include rwd(tablet) {
-    align-items: flex-start;
-    flex-direction: column;
+  align-items: flex-start;
+  flex-direction: column;
+
+  @include rwd($break-footer) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
   }
 
   &:nth-child(1) {
@@ -29,27 +32,32 @@
   }
 
   &:nth-child(2) {
-    margin-top: 25px;
+      margin-top: 25px;
+      column-gap: 20px;
 
     div {
-      @include rwd(tablet) {
         font-size: 14px;
+        @include rwd($break-footer) {
+            font-size: unset;
       }
       &:nth-child(1) {
         max-width: 315px;
-        min-width: 270px;
         padding-right: 53px;
-        border-right: 1px solid #007880;
-        @include rwd(tablet) {
-          border-right: 0;
-          min-width: 0;
-          margin-bottom: 20px;
+
+        border-right: 0;
+        min-width: 0;
+        margin-bottom: 20px;
+        @include rwd($break-footer) {
+            min-width: 270px;
+            border-right: 1px solid #007880;
+            margin-bottom: 0;
         }
       }
       &:nth-child(3) {
         max-width: 483px;
-        @include rwd(tablet) {
-          margin-top: 20px;
+        margin-top: 20px;
+        @include rwd($break-footer) {
+            margin-top: 0;
         }
       }
 
@@ -64,34 +72,34 @@
   }
 
   ul {
-    margin: 0;
     padding: 0;
     list-style: none;
-    @include rwd(tablet) {
-      margin-top: 20px;
+    margin-top: 20px 0 0 0;
+    @include rwd($break-footer) {
+        margin: 0;
     }
     li {
       font-weight: normal;
-      font-size: 21px;
+      font-size: 14x;
       line-height: 150%;
-      @include rwd(tablet) {
-        font-size: 14px;
+      @include rwd($break-footer) {
+        font-size: 21px;
       }
     }
 
     &:nth-of-type(1) {
-      margin-left: 90px;
+      margin-left: 0;
       margin-right: auto;
-      @include rwd(tablet) {
-        margin-left: 0;
+      @include rwd($break-footer) {
+        margin-left: 90px;
       }
     }
 
     &:nth-of-type(2) {
-      margin-left: 10px;
+      margin-left: 0;
       margin-right: auto;
-      @include rwd(tablet) {
-        margin-left: 0;
+      @include rwd($break-footer) {
+        margin-left: 10px;
       }
     }
 

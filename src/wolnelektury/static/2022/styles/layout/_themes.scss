@@ -14,10 +14,17 @@
     margin-bottom: 23px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    align-items: stretch;
 
+    @include rwd($break-flow) {
+        flex-direction: row;
+        
+    }
+    
     a {
-      display: flex;
+        display: flex;
+        justify-content: flex-end;
       align-items: center;
       font-weight: bold;
       font-size: 16px;
@@ -85,7 +92,7 @@
     flex-wrap: wrap;
 
     li {
-      width: 16.66666666666667%;
+        min-width: 150px;
       margin-bottom: 17px;
       font-weight: normal;
       font-size: 18px;

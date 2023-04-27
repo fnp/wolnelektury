@@ -414,6 +414,21 @@ class Book(models.Model):
     has_daisy_file.short_description = 'DAISY'
     has_daisy_file.boolean = True
 
+    def has_sync_file(self):
+        return self.has_media("sync")
+
+    def get_sync(self):
+        with self.get_media('sync').first().file.open('r') as f:
+            sync = f.read().split('\n')
+        offset = float(sync[0])
+        items = []
+        for line in sync[1:]:
+            if not line:
+                continue
+            start, end, elid = line.split()
+            items.append([elid, float(start) + offset])
+        return json.dumps(items)
+    
     def has_audio_epub_file(self):
         return self.has_media("audio.epub")
 

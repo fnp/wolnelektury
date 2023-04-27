@@ -23,7 +23,7 @@ Zestawienie darowizn za rok {{ year }} znajdziesz w załączniku!
 
 Dane z załącznika wprowadź do formularza PIT. Pamiętaj, że w przypadku kontroli z urzędu skarbowego musisz mieć potwierdzenie wykonanych przelewów z Twojego banku.
 
-Podczas wypełniania swojego PIT-u możesz także przekazać 1,5% swojego podatku na Wolne Lektury. Dzięki temu ufundujesz darmową e-książkę, która trafi do tysięcy dzieciaków. Wystarczy, że w odpowiednim polu wpiszesz nazwę organizacji "fundacja Wolne Lektury" oraz numer KRS 0000070056. Wspierasz Wolne Lektury w ten sposób już od dawna? W takim razie nic nie musisz zmieniać, bo system ponownie sam wprowadzi dane fundacji.
+Podczas wypełniania swojego PIT-u możesz także przekazać 1,5% swojego podatku na Wolne Lektury. Dzięki temu ufundujesz darmową e-książkę, która trafi do tysięcy dzieciaków. Wystarczy, że w odpowiednim polu wpiszesz nazwę organizacji „fundacja Wolne Lektury” oraz numer KRS 0000070056. Wspierasz Wolne Lektury w ten sposób już od dawna? W takim razie nic nie musisz zmieniać, bo system ponownie sam wprowadzi dane fundacji.
 
 Serdecznie dziękujemy za Twoje wsparcie!
 

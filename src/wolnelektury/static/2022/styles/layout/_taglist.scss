@@ -1,0 +1,18 @@
+.l-taglist {
+    justify-content: start;
+
+    ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+            padding-left: 50px;
+            min-height: 50px;
+
+            .c-avatar {
+                margin-left: -50px;
+                margin-right: 10px;
+            }
+        }
+    }
+}

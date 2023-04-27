@@ -4,16 +4,17 @@
   margin-top: 60px;
   width: 100%;
 
-  @include rwd(tablet) {
-    flex-direction: column;
+  flex-direction: column;
+  @include rwd($break-flow) {
+    flex-direction: row;
   }
 
   &.p-homepage__info--second {
-    margin-top: 30px;
+    margin-top: 10px;
     flex-wrap: initial;
 
-    @include rwd(tablet) {
-      margin-top: 10px;
+    @include rwd($break-flow) {
+      margin-top: 30px;
     }
   }
 }
@@ -43,43 +44,80 @@
     max-width: 100%;
   }
 
+  &.p-homepage__info__box--carousel {
+      width: 100%;
+      height: calc((100vw - 32px) * 315 / 975);
+      overflow: hidden;
+ 
+      @include rwd($break-flow) {
+          height: 368px;
+      }
+
+      div {
+          background-position: 50%;
+          background-size: cover;
+          display: flex;
+          justify-content: stretch;
+          align-items: stretch;
+          height: calc((100vw - 32px) * 315 / 975);
+
+          @include rwd($break-flow) {
+              height: 368px;
+          }
+
+          a {
+              width: 100%;
+              height: 100%;
+          }
+      }
+
+      .slick-dots {
+          bottom: 10px;
+    li button:before {
+      border: 1px solid #007880;
+    }
+          
+      }
+      
+  }
+  
   &.p-homepage__info__box--donate {
-    width: calc(50% - 10px);
+      width: 100%;
     display: flex;
     padding: 21px;
     color: $color-white;
     margin-top: 20px;
-    margin-right: 10px;
+    margin-right: 0;
     background-color: $color-darker-primary;
     border-color: $color-darker-primary;
 
-    @include rwd(tablet) {
-      width: 100%;
-      margin-right: 0;
+    @include rwd($break-flow) {
+        width: calc(50% - 10px);
+      margin-right: 10px;
     }
   }
 
   &.p-homepage__info__box--newsletter {
-    width: calc(50% - 10px);
+      width: 100%;
     display: flex;
     padding: 21px;
     margin-top: 20px;
-    margin-left: 10px;
+      margin-right: 0;
+      margin-left: 0;
     color: $color-darker-primary;
     background-color: $color-lighter-primary;
     border-color: $color-lighter-primary;
     position: relative;
     overflow: visible;
 
-    @include rwd(tablet) {
-      width: 100%;
-      margin-right: 0;
-      margin-left: 0;
+    @include rwd($break-flow) {
+        width: calc(50% - 10px);
+        margin-left: 10px;
     }
 
     &:after {
       content: "";
-      display: block;
+      display: none;
       width: 555px;
       height: 233px;
       bottom: 0;
@@ -89,8 +127,8 @@
       pointer-events: none;
 
 
-      @include rwd(tablet) {
-        display: none;
+      @include rwd($break-flow) {
+        display: block;
       }
     }
   }
@@ -100,25 +138,29 @@
     max-width: 705px;
     padding: 0;
     color: $color-white;
-    margin-right: 20px;
+    margin-right: 0;
+      margin-bottom: 20px;
     background: $color-darker-primary;
     border: 0;
     display: flex;
-
-    @include rwd(tablet) {
       flex-direction: column;
-      margin-right: 0;
-      margin-bottom: 20px;
+
+      @include rwd($break-flow) {
+          flex-direction: row;
+          margin-right: 20px;
+          margin-bottom: 0;
     }
 
     img {
-      min-width: 270px;
       border-radius: 0;
 
-      @include rwd(tablet) {
-        min-width: 100%;
-        height: 250px;
-        object-fit: cover;
+      min-width: 100%;
+      height: 250px;
+      object-fit: cover;
+      @include rwd($break-flow) {
+          min-width: 270px;
+          height: unset;
+          object-fit: unset;
       }
     }
 
@@ -128,30 +170,30 @@
       padding: 32px;
       background: url("../images/plant.png") center no-repeat;
       p {
-        @include font-size(24px);
+        @include font-size(18px);
 
-        @include rwd(tablet) {
-          @include font-size(18px);
+        @include rwd($break-flow) {
+          @include font-size(24px);
         }
 
         & + p {
           margin-top: 16px;
-          @include font-size(18px);
+          @include font-size(14px);
           line-height: 150%;
 
-          @include rwd(tablet) {
-            @include font-size(14px);
+          @include rwd($break-flow) {
+            @include font-size(18px);
           }
         }
       }
     }
 
     .l-button {
-      margin-top: auto;
+      margin-top: 20px;
       margin-bottom: 0;
 
-      @include rwd(tablet) {
-        margin-top: 20px;
+      @include rwd($break-flow) {
+        margin-top: auto;
       }
     }
   }
@@ -169,10 +211,10 @@
       justify-content: flex-start;
       padding: 15px;
       p {
-        @include font-size(24px);
+        @include font-size(18px);
 
-        @include rwd(tablet) {
-          @include font-size(18px);
+        @include rwd($break-flow) {
+          @include font-size(24px);
         }
 
         strong {
@@ -223,25 +265,26 @@
 
   h3 {
     font-weight: $semibold;
-    @include font-size(31px);
     line-height: 100%;
     letter-spacing: -0.01em;
 
-    @include rwd(tablet) {
-      margin-top: 0;
-      @include font-size(19px);
-      line-height: 100%;
+    margin-top: 0;
+    @include font-size(19px);
+    @include rwd($break-flow) {
+        // margin-top??
+        @include font-size(31px);
+        line-height: 100%;
     }
 
     strong {
       display: block;
       font-weight: $bold;
-      margin-top: 6px;
-      @include font-size(46px);
+      margin-top: 4px;
+      @include font-size(28px);
 
-      @include rwd(tablet) {
-        @include font-size(28px);
-        margin-top: 4px;
+      @include rwd($break-flow) {
+        @include font-size(46px);
+        margin-top: 6px;
       }
     }
   }
@@ -250,11 +293,11 @@
     margin-top: 0;
     font-style: italic;
     font-weight: $regular;
-    @include font-size(21px);
+    @include font-size(13px);
     line-height: 140%;
     letter-spacing: -0.01em;
-    @include rwd(tablet) {
-      @include font-size(13px);
+    @include rwd($break-flow) {
+      @include font-size(21px);
       line-height: 140%;
     }
     strong {
@@ -269,54 +312,63 @@
 }
 
 .p-homepage-prapremiera {
-  width: 100%;
-  background-color: #F2F2F2;
+  //  width: calc(100% + 32px);
+  //background-color: #F2F2F2;
   padding: 25px 0 40px 0;
-  margin-top: 48px;
+  //margin-top: 48px;
+  //margin-left: -16px;
+  margin-left: 16px;
 
-  @include rwd(tablet) {
-    width: calc(100% + 32px);
-    margin-left: -16px;
+  @include rwd($break-flow) {
+      width: 100%;
+      margin-left: 0;
   }
 
   .l-container {
     & > h3 {
       margin-top: 0;
       font-weight: $semibold;
-      @include font-size(31px);
+      @include font-size(25px);
       line-height: 140%;
       letter-spacing: -0.01em;
       color: #92BD39;
 
-      @include rwd(tablet) {
-        @include font-size(25px);
+      @include rwd($break-flow) {
+        @include font-size(31px);
       }
     }
   }
 }
 
 .p-homepage-prapremiera__box {
-  margin-top: 24px;
+  margin-top: 16px;
   background-color: $color-white;
   border: 1px solid #D9D9D9;
   border-radius: 10px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  padding: 21px;
+  padding: 16px;
 
-  @include rwd(tablet) {
-    padding: 16px;
-    flex-direction: column;
+  @include rwd($break-flow) {
+      padding: 21px;
   }
 
+  .p-homepage-prapremiera__box__item {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+  }
+  
   figure {
     margin: 0;
     font-size: 0;
 
-    @include rwd(tablet) {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include rwd($break-flow) {
+        display: block;
     }
 
     a {
@@ -330,20 +382,21 @@
 }
 
 .p-homepage-prapremiera__box__content {
-  width: 385px;
 
-  @include rwd(tablet) {
     width: 100%;
     margin-top: 25px;
-  }
+    @include rwd($break-flow) {
+        //width: 385px;
+        margin-top: 0; // ?
+    }
 
   h4 {
     margin-top: 0;
     font-weight: $regular;
-    @include font-size(21px);
+    @include font-size(18px);
     line-height: 100%;
-    @include rwd(tablet) {
-      @include font-size(18px);
+    @include rwd($break-flow) {
+      @include font-size(21px);
     }
     a {
       color: #007880;
@@ -351,13 +404,13 @@
   }
 
   h3 {
-    margin-top: 0;
+    margin-top: 10px;
     font-weight: $regular;
-    @include font-size(37px);
+    @include font-size(24px);
     line-height: 120%;
-    @include rwd(tablet) {
-      margin-top: 10px;
-      @include font-size(24px);
+    @include rwd($break-flow) {
+      margin-top: 0;
+      @include font-size(37px);
     }
     a {
       color: #083F4D;
@@ -365,14 +418,14 @@
   }
 
   p {
-    margin-top: 22px;
+    margin-top: 10px;
     font-weight: $regular;
     @include font-size(18px);
     line-height: 150%;
     color: #333333;
 
-    @include rwd(tablet) {
-      margin-top: 10px;
+    @include rwd($break-flow) {
+      margin-top: 22px;
     }
   }
 }
@@ -381,29 +434,31 @@
   background: #083F4D;
   border-radius: 7px;
   color: $color-white;
-  width: 390px;
   display: flex;
-  padding: 34px;
   flex-direction: column;
   justify-content: space-between;
 
-  @include rwd(tablet) {
     width: 100%;
     padding: 18px;
     margin-top: 20px;
-  }
+    @include rwd($break-flow) {
+        //width: 390px;
+        padding: 34px;
+        //margin-top: 0;
+    }
 
   p {
     margin-top: 0;
     font-style: italic;
     font-weight: $regular;
-    @include font-size(24px);
+    @include font-size(20px);
     line-height: 150%;
 
-    @include rwd(tablet) {
       margin-bottom: 20px;
-      @include font-size(20px);
-    }
+      @include rwd($break-flow) {
+          margin-bottom: 0;
+          @include font-size(24px);
+      }
 
     strong {
       color: #92BD39;
@@ -413,15 +468,14 @@
 }
 
 .p-homepage__uptodate {
-  width: 100%;
-  margin-top: 60px;
-  margin-bottom: 50px;
-
-  @include rwd(tablet) {
     margin-top: 30px;
     width: calc(100% + 32px);
     margin-left: -16px;
-  }
+    @include rwd($break-flow) {
+        width: 100%;
+        margin-top: 60px;
+        margin-bottom: 50px;
+    }
 }
 
 .p-homepage__uptodate__header {
@@ -433,13 +487,13 @@
   h3 {
     margin-top: 0;
     font-weight: $semibold;
-    @include font-size(31px);
+    @include font-size(25px);
     line-height: 140%;
     letter-spacing: -0.01em;
     color: #474747;
 
-    @include rwd(tablet) {
-      @include font-size(25px);
+    @include rwd($break-flow) {
+      @include font-size(31px);
     }
   }
   ul {
@@ -450,9 +504,9 @@
     align-items: center;
     justify-content: center;
     li {
-      margin-left: 35px;
-      @include rwd(tablet) {
-        margin-left: 15px;
+      margin-left: 15px;
+      @include rwd($break-flow) {
+        margin-left: 35px;
       }
       a {
         font-size: 0;
@@ -461,42 +515,10 @@
         align-items: center;
         justify-content: center;
         .icon {
-          @include font-size(20px);
+          @include font-size(40px);
         }
       }
     }
   }
 }
 
-.p-homepage__uptodate__logos {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 48px;
-
-  @include rwd(tablet) {
-    flex-wrap: wrap;
-  }
-
-  figure {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 0;
-
-    @include rwd(tablet) {
-      margin: 0;
-      width: 50%;
-    }
-
-    figcaption {
-      font-weight: $regular;
-      @include font-size(18px);
-      line-height: 150%;
-      text-align: center;
-      color: #474747;
-    }
-    img {
-      margin-top: 20px;
-    }
-  }
-}

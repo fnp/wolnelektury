@@ -85,15 +85,19 @@ def hint(request, mozhint=False, param='term'):
         for author in authors[:limit]
     ]
     if len(data) < limit:
-        data += [
-            {
-                'label': b.title,
-                'author': b.author_unicode(),
-                'id': b.id,
-                'url': b.get_absolute_url()
-            }
-            for b in Book.objects.filter(findable=True, title__iregex='\m' + prefix)[:limit-len(data)]
-        ]
+        for b in Book.objects.filter(findable=True, title__iregex='\m' + prefix)[:limit-len(data)]:
+            author_str = b.author_unicode()
+            translator = b.translator()
+            if translator:
+                author_str += ' (tłum. ' + translator + ')'
+                data.append(
+                    {
+                        'label': b.title,
+                        'author': author_str,
+                        'id': b.id,
+                        'url': b.get_absolute_url()
+                    }
+                )
 
     if mozhint:
         data = [

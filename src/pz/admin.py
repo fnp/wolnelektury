@@ -81,6 +81,8 @@ class BankPaymentInline(admin.TabularInline):
 
 @admin.register(models.DirectDebit)
 class DirectDebitAdmin(admin.ModelAdmin):
+    #unpaginate
+
     list_display = [
         'payment_id', 'acquisition_date',
         'iban_valid',

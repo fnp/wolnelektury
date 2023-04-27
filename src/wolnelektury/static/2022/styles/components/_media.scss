@@ -1,9 +1,17 @@
 .c-media {
-  margin: 0 auto;
+    margin: 0 auto;
+
+    .only-s {
+        .l-button--fav {
+            margin-top: -10px;
+        }
+    }
 }
 
 .c-media__actions {
-  display: flex;
+    display: flex;
+    column-gap: 38px;
+    row-gap: 10px;
 }
 
 .c-media__btn {
@@ -11,9 +19,9 @@
   text-align: center;
   align-items: center;
 
-  &:nth-child(1) { padding-right: 19px; }
-  &:nth-child(2) { padding-left: 19px; padding-right: 19px; }
-  &:nth-child(3) { padding-left: 19px; }
+  //&:nth-child(1) { padding-right: 19px; }
+  //&:nth-child(2) { padding-left: 19px; padding-right: 19px; }
+  //&:nth-child(3) { padding-left: 19px; }
 
   .l-button {
     width: 100%;
@@ -76,18 +84,13 @@
   top: 0;
   left: 0;
   height: 100%;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   background-color: rgba($color-black, 0.35);
   display: none;
   overflow-y: scroll;
-  padding: 150px 40px 40px 40px;
+  padding: 10vh 40px 40px 40px;
   width: 100%;
-
-  @include rwd(screen-md) {
-    padding: 40px 40px 40px 40px;
-    align-items: flex-start;
-  }
 
   &.is-open {
     display: flex;
@@ -220,4 +223,8 @@
   &:hover {
     opacity: 1;
   }
+}
+
+.book-cover-small img {
+    max-width: calc((100vw - 3 * 16px) / 2);
 }

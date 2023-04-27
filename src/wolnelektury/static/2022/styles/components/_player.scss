@@ -1,10 +1,15 @@
 .c-player {
-  display: flex;
   width: 100%;
   align-items: center;
   position: relative;
   background-color: #D5ECED;
-  padding: 25px 34px 25px 14px;
+  padding: 105px 70px 25px 70px;
+
+  @include rwd($break-flow) {
+      display: flex;
+      flex-direction: row;
+      padding: 25px 34px 25px 14px;
+  }
 }
 
 .c-player__head {
@@ -62,6 +67,31 @@
   display: flex;
   align-items: center;
 
+  .play-prev {
+      position: absolute;
+      left: calc(30% - 20px);
+      top: 15px;
+      @include rwd($break-flow) {
+          position: static;
+      }
+  }
+  .jp-play {
+      position: absolute;
+      left: calc(50% - 25px);
+      top: 10px;
+      @include rwd($break-flow) {
+          position: static;
+      }
+  }
+  .play-next {
+      position: absolute;
+      left: calc(70% - 20px);
+      top: 15px;
+      @include rwd($break-flow) {
+          position: static;
+      }
+  }
+  
   button {
     padding: 0;
     display: flex;
@@ -122,11 +152,13 @@
 }
 
 .c-player__timeline {
-  max-width: 590px;
-  width: calc(100% - 60px);
-  margin-left: auto;
-  margin-right: 0;
-  position: relative;
+  @include rwd($break-flow) {
+      position: relative;
+      width: calc(100% - 60px);
+      margin-left: auto;
+      max-width: 590px;
+      margin-right: 0;
+  }
 
   & > span {
     height: 10px;
@@ -172,8 +204,6 @@
 
 
 .c-player__info {
-  top: -27px;
-  left: 0;
   position: absolute;
   font-style: normal;
   font-weight: normal;
@@ -181,11 +211,20 @@
   line-height: 140%;
   letter-spacing: 0.05em;
   color: #083F4D;
+
+  top: 70px;
+  left: 16px;
+  
+  @include rwd($break-flow) {
+      top: -27px;
+      left: 0;
+  }
 }
 
 .c-player__chapters {
-  top: -27px;
-  right: 0;
+  top: 35px - 8.4px;
+  right: calc(10% - 50px);
+  width: 100px;
   position: absolute;
   font-style: normal;
   font-weight: normal;
@@ -195,6 +234,11 @@
   color: #083F4D;
   z-index: 1;
 
+  @include rwd($break-flow) {
+      top: -27px;
+      right: 0;
+  }
+  
   &.is-active {
     > span {
       &:after {
@@ -212,6 +256,7 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+    justify-content: center;
 
     &:after {
       margin-left: 5px;
@@ -255,11 +300,15 @@
 }
 
 .c-player__volume {
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   margin-left: 40px;
 
+  @include rwd($break-flow) {
+      display: flex;
+  }
+  
   .icon {
     font-size: 21px;
     color: #007880;
@@ -284,13 +333,15 @@
 
 
 .c-player__length {
-  width: 100%;
-  display: block;
-  position: relative;
+
+  @include rwd($break-flow) {
+      position: relative;
+      display: block;
+      width: 100%;
+  }
 
   > span {
     position: absolute;
-    padding-top: 10px;
     font-style: normal;
     font-weight: normal;
     font-size: 12px;
@@ -298,12 +349,34 @@
     letter-spacing: 0.05em;
     color: #083F4D;
 
-    &:nth-child(1) { left: 0; }
-    &:nth-child(2) { right: 0; }
-    &:nth-child(3) {
+    bottom: 22px;
+    
+    @include rwd($break-flow) {
+        padding-top: 10px;
+        bottom: auto;
+    }
+
+    &.jp-current-time {
+        left: 16px;
+        
+        @include rwd($break-flow) {
+            left: 0;
+        }
+    }
+    &.time-left {
+        right: 16px;
+        @include rwd($break-flow) {
+            right: 0;
+        }
+    }
+    &.total-time-left {
         left: 0;
         right: 0;
+        bottom: 5px;
         text-align: center;
+        @include rwd($break-flow) {
+            bottom: auto;
+        }
     }
   }
 }

@@ -43,3 +43,11 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+
+a {
+    color: $color-primary;
+    &:hover {
+        text-decoration: underline;
+    }
+}

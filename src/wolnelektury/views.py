@@ -31,10 +31,14 @@ def main_page_2022(request):
     ctx['last_published'] = Book.objects.exclude(cover_clean='').filter(findable=True, parent=None).order_by('-created_at')[:10]
     ctx['recommended_collection'] = Collection.objects.filter(listed=True, role='recommend').order_by('?').first()
     ctx['ambassadors'] = club.models.Ambassador.objects.all().order_by('?')
+    ctx['widget'] = settings.WIDGETS.get(request.GET.get('w'))
     return render(request, '2022/main_page.html', ctx)
 
 @never_cache
 def main_page(request):
+    if request.GET.get('w') in settings.WIDGETS:
+        request.EXPERIMENTS['layout'].override(True)
+
     if request.EXPERIMENTS['layout'].value:
         return main_page_2022(request)
 
@@ -116,6 +120,15 @@ class LoginFormView(AjaxableFormView):
 class WLRegisterView(FormView):
     form_class = RegistrationForm
     template_name = 'registration/register.html'
+
+    def form_valid(self, form):
+        form.save()
+        user = auth.authenticate(
+            username=form.cleaned_data['username'],
+            password=form.cleaned_data['password1']
+        )
+        auth.login(self.request, user)
+        return HttpResponseRedirect(quote_plus(self.request.GET.get('next', '/'), safe='/?='))
 
 wl_register_view = WLRegisterView.as_view()
 

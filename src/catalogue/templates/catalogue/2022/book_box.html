@@ -1,7 +1,7 @@
 {% load sorl_thumbnail %}
 
 <article class="l-books__item book-container-activator" data-pop="-{{ book.popularity.count }}" data-longpress="hover">
-  <figure class="l-books__item__img book-container book-container-{{ book.pk }}" style="height:240px" data-book="{{ book.pk }}">
+  <figure class="l-books__item__img book-container book-container-{{ book.pk }}" data-book="{{ book.pk }}">
     <a href="{{ book.get_absolute_url }}">
       {% if book.is_picture %}
         {% if book.image_file %}
@@ -39,10 +39,15 @@
     {% endif %}
     <a href="{{ book.get_absolute_url }}" class="icon icon-like" data-book="{{ book.pk }}" data-book-slug="{{ book.slug }}"></a>
   </div>
-  <h3>
+  <h3 class="s">
     {% for author in book.authors %}
       <a href="{{ author.get_absolute_url }}">{{ author }}</a>{% if not forloop.last %}, {% endif %}
     {% endfor %}
   </h3>
-  <h2><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></h2>
+  <h2 class="s"><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></h2>
+  <span class="other-info s">
+    {% for kind in book.kinds %}{{ kind }} {% endfor %}
+    {% for genre in book.genres %}{{ genre }} {% endfor %}
+    {% for epoch in book.epochs %}{{ epoch }} {% endfor %}
+  </span>
 </article>

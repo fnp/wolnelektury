@@ -424,7 +424,18 @@ def related_books_2022(book=None, picture=None, limit=4, taken=0):
     books = Book.tagged.related_to(instance, books_qs)[:max_books]
 
     return books
-    
+
+@register.simple_tag
+def related_pictures_2022(book=None, picture=None, limit=4, taken=0):
+    limit -= taken
+    max_books = limit
+
+    books_qs = Picture.objects.all()
+    instance = book or picture
+    books = Picture.tagged.related_to(instance, books_qs)[:max_books]
+
+    return books
+
 
 @register.simple_tag
 def download_audio(book, daisy=True, mp3=True):

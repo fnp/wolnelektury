@@ -48,10 +48,11 @@
           <div class="l-article__overlay" data-max-height="327" style="margin-top:30px;">
             {% thumbnail picture.image_file "850" upscale=0 as thumb %}
             <a href="{% url 'picture_viewer' picture.slug %}">
-              <img class="cover" src="{{ thumb.url }}"/>
+              <img class="cover" src="{{ thumb.url }}" width="{{ thumb.width }}" height="{{ thumb.height }}" />
             </a>
     {% endthumbnail %}
           </div>
+          <button class="l-article__read-more" aria-label="Kliknij aby rozwinąć" data-label="Pokaż więcej" data-action="Pokaż mniej">Pokaż więcej</button>
         </article>
       </div>
     </section>
@@ -113,8 +114,8 @@
     <div class="l-books__wrapper">
       <div class="l-container">
         <h2>Czytaj także</h2>
-        <div class="l-books">
-          {% related_books_2022 picture=picture as related_books %}
+        <dive class="l-books">
+          {% related_pictures_2022 picture=picture as related_books %}
           {% for rel in related_books %}
             <article class="l-books__item">
               <figure class="l-books__item__img">

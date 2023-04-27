@@ -13,172 +13,42 @@
   font-size: calculateRem($size);
 }
 
-/* Photoshop letter spacing */
-@function tracking($target) {
-  @return ($target / 1000) * 1rem;
-}
 
-@mixin tracking($target) {
-  letter-spacing: tracking($target);
-}
-
-/* Float fix */
-@mixin clearfix {
-  &:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-}
-
-/* Input placeholder selector */
-@mixin placeholder {
-  $placeholders: ":-webkit-input" ":-moz" "-moz" "-ms-input";
-  @each $placeholder in $placeholders {
-    &:#{$placeholder}-placeholder {
-      @content;
-    }
-  }
-}
-
-@mixin keyframes($animation-name) {
-  @keyframes #{$animation-name} {
-    @content;
-  }
-}
-
-@keyframes slide-up {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-    transform: translate(0,0);
-  }
-}
-
-@mixin cascading {
-  @for $i from 1 through 14 {
-    &:nth-child(#{$i}) {
-      animation: slide-up 250ms cubic-bezier(0.645, 0.045, 0.355, 1) forwards  #{$i * 0.1}s;
-    }
-  }
-}
-
-$scrimStops: 0% 0%, 26.2% 19%, 45.9% 34%, 61.8% 47%, 72.2% 56.5%, 80.6% 65%, 87.4% 73%, 92.5% 80.2%, 95.8% 86.1%, 97.9% 91%, 99.2% 95.2%, 99.8% 98.2%, 100% 100%;
-
-@function getColorStop($colorTo, $colorFrom, $weight, $stop) {
-  @return mix($colorFrom, $colorTo, $weight) $stop;
-}
-
-@function getColorStops($colorTo, $colorFrom) {
-  $stops: ();
-  @each $scrimStop in $scrimStops {
-    $stops: append($stops, getColorStop($colorTo, $colorFrom, nth($scrimStop, 1), nth($scrimStop, 2)), comma)
-  }
-  @return $stops;
-}
-
-@function scrim-linear-gradient($args...) {
-  @if (length($args) == 2) {
-    @return linear-gradient(#{getColorStops(nth($args, 1), nth($args, 2))});
-  }
-  @return linear-gradient(#{nth($args, 1)}, #{getColorStops(nth($args, 2), nth($args, 3))});
-}
-
-@function unicode($str) {
-  @return unquote("\"") + $str + unquote("\"");
-}
 
 /* Breakpoints */
-$phone:              450px;
-$smartphone:         767px;
 $tablet:             1024px;
-$only-desktop:       1025px;
-$screen-xs:          1280px;
-$screen-sm:          1368px;
+
+
+// under...
+
+$break2: 360px;
+$break3: 520px;
+$break4: 680px;
+$break5: 840px;
+// somewhere here -- widen?
+$break-wide: 1172px;
+
 $screen-md:          1418px;
-$screen-xl:          1680px;
+
+$B2: $break2;
+$B3: $break3;
+$B4: $break4;
+$B5: $break5;
+
+$break-menu: $break5;
+$break-footer: $break5;
+$break-flow: $break5;
 
 
-@mixin mq($breakpoint) {
-    @media only screen and (max-width: $breakpoint) {
-      @content;
-    }
-
-}
 @mixin rwd($canvas) {
+    //@if $canvas == 'phone' {
+    //} @else if $...
+    @media only screen and (min-width: $canvas) {
+        @content;
+    }
+}
 
-  // Really Small devices
-  @if $canvas == 'phone' {
-    @media only screen and (max-width: $phone) {
-      @content;
-    }
-  }
-
-  // Smartphones
-  @else if $canvas == 'smartphone' {
-    @media only screen and (max-width: $smartphone) {
-      @content;
-    }
-  }
-  @else if $canvas == 'smartphone-portrait' {
-    @media only screen and (max-width: $smartphone) and (orientation: portrait) {
-      @content;
-    }
-  }
-  @else if $canvas == 'smartphone-landscape' {
-    @media only screen and (max-width: $smartphone) and (orientation: landscape) {
-      @content;
-    }
-  }
-
-  // Tablets
-  @else if $canvas == 'tablet' {
-    @media only screen and (max-width: $tablet) {
-      @content;
-    }
-  }
-  @else if $canvas == 'tablet-portrait' {
-    @media only screen and (max-width: $tablet) and (orientation: portrait) {
-      @content;
-    }
-  }
-  @else if $canvas == 'tablet-landscape' {
-    @media only screen and (max-width: $tablet) and (orientation: landscape) {
-      @content;
-    }
-  }
-
-  // Screens
-  @else if  $canvas == 'screen-xs' {
-    @media only screen and (max-width: $screen-xs) {
-      @content;
-    }
-  }
-  @else if $canvas == 'screen-sm' {
-    @media only screen and (max-width: $screen-sm) {
-      @content;
-    }
-  }
-  @else if $canvas == 'screen-md' {
-    @media only screen and (max-width: $screen-md) {
-      @content;
-    }
-  }
-  @else if $canvas == 'screen-xl' {
-    @media only screen and (max-width: $screen-xl) {
-      @content;
-    }
-  }
-
-  // More than tablets
-  @else if $canvas == 'only-desktop' {
-    @media only screen and (min-width: 1025px) {
-      @content;
-    }
-  }
-
+/*
   // Print styles
   @else if $canvas == 'print' {
     @media print {
@@ -186,4 +56,64 @@ $screen-xl:          1680px;
     }
   }
 
+}
+*/
+
+
+.only-l {
+    display: none;
+    @include rwd($break5) {
+        display: block;
+    }
+}
+.only-s {
+    display: block;
+    @include rwd($break5) {
+        display: none;
+    }
+}
+
+.lay-row {
+    display: flex;
+    flex-direction: row;
+    column-gap: 16px;
+}
+.lay-col {
+    display: flex;
+    flex-direction: column;
+}
+.lay-spread {
+    justify-content: space-between;
+}
+.lay-l-row {
+    @include rwd($break5) {
+        display: flex;
+        flex-direction: row;
+    }
+}
+.lay-l-block {
+    @include rwd($break5) {
+        display: block;
+    }
+}
+.lay-s-col-rev {
+    flex-direction: column-reverse;
+    @include rwd($break5) {
+        flex-direction: row;
+    }
+}
+.lay-grow {
+    flex-grow: 1;
+}
+
+
+
+$max-logical-viewport-width: 1140px + 32px;
+
+@mixin lvw($property, $size) {
+    #{$property}: $size * $max-logical-viewport-width / 100;
+    
+    @include rwd($break-wide) {
+        #{$property}: $size * 1vw;
+    }
 }

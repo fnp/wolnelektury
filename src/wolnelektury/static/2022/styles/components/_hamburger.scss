@@ -15,12 +15,9 @@ $bar-color:   #85C7CC;
   position: relative;
   cursor: pointer;
 
-  @include rwd(tablet) {
-    margin-right: 0;
-  }
-
   border: 0;
-  margin: 0; padding: 0;
+  margin: 0;
+  padding: 0;
   background-color: transparent;
   appearance: none;
 
@@ -33,19 +30,6 @@ $bar-color:   #85C7CC;
     padding-left: 17px;
     position: absolute;
     transition: color 300ms $ease-out;
-  }
-
-  &.is-clicked {
-    z-index: $master-layer + 2;
-
-    @include rwd(tablet) {
-      position: fixed;
-      top: 2rem; right: 1rem;
-    }
-
-    &:after {
-      color: $color-black;
-    }
   }
 
   .bar,

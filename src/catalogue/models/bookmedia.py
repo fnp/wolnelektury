@@ -30,6 +30,7 @@ class BookMedia(models.Model):
         ('ogg', FileFormat(name='Ogg Vorbis', ext='ogg')),
         ('daisy', FileFormat(name='DAISY', ext='daisy.zip')),
         ('audio.epub', FileFormat(name='EPUB+audio', ext='audio.epub')),
+        ('sync', FileFormat(name='sync', ext='sync.txt')),
     ])
     format_choices = [(k, _('%s file' % t.name)) for k, t in formats.items()]
 
@@ -38,7 +39,7 @@ class BookMedia(models.Model):
     part_name = models.CharField(_('part name'), default='', blank=True, max_length=512)
     index = models.IntegerField(_('index'), default=0)
     file = models.FileField(_('file'), max_length=600, upload_to=_file_upload_to, storage=BofhFileSystemStorage())
-    duration = models.IntegerField(null=True, blank=True)
+    duration = models.FloatField(null=True, blank=True)
     uploaded_at = models.DateTimeField(_('creation date'), auto_now_add=True, editable=False, db_index=True)
     project_description = models.CharField(max_length=2048, blank=True)
     project_icon = models.CharField(max_length=2048, blank=True)

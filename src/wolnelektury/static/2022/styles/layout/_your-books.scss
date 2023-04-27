@@ -23,10 +23,10 @@
 }
 
 .l-your-books__header__actions {
-  display: flex;
+  display: none;
   
-  @include rwd(tablet) {
-    display: none;
+  @include rwd($break-flow) {
+    display: flex;
   }
 
   button {
@@ -59,26 +59,26 @@
 
 .l-your-books__continue {
   .l-books {
-    border-right: 1px solid #007880;
-    padding-right: 40px;
-    margin-right: 40px;
-
-    @include rwd(tablet) {
       border-right: 0;
       padding-right: 0;
       margin-right: 10px;
-    }
+
+      @include rwd($break-flow) {
+          border-right: 1px solid #007880;
+          padding-right: 40px;
+          margin-right: 40px;
+      }
   }
 }
 
 .l-your-books__shelf {
   width: 100%;
-  max-width: 928px;
-
-  @include rwd(tablet) {
-    width: 100%;
     max-width: 189px;
-  }
+
+    @include rwd($break-flow) {
+        width: 100%;
+        max-width: 928px;
+    }
 
   .l-your-books__header {
     padding-right: 85px;

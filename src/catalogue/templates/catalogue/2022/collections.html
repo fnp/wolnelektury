@@ -14,17 +14,20 @@
     </div>
   </div>
 
+  <div class="l-search-bar">
+    <div class="l-search-bar__input">
+      <i class="icon icon-filter"></i>
+      <input type="text" placeholder="filtry, tytuł" class="quick-filter" data-for="collections">
+    </div>
+  </div>
+
+  <div id="collections">
   {% for collection in objects %}
     <section class="l-section">
       <div class="l-collections -js-collections">
         <div class="l-collections__header">
-          <h3><a href="{{ collection.get_absolute_url }}">{{ collection.title }}</a></h3>
+          <h3><a class="s" href="{{ collection.get_absolute_url }}">{{ collection.title }}</a></h3>
         </div>
-          <div class="l-author__info">
-            <p>
-              {{ collection.description|safe }}
-            </p>
-          </div>
         <div class="l-books">
           {% for book in collection.get_5_books %}
             {% include 'catalogue/2022/book_box.html' %}
@@ -33,6 +36,7 @@
       </div>
     </section>
   {% endfor %}
+  </div>
 
 
 {% endblock %}

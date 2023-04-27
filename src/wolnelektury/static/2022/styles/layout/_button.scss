@@ -1,17 +1,16 @@
 .l-button {
   &.l-button--media {
-    @include font-size(16px);
+    @include font-size(14px);
     border: 2px solid #D5ECED;
     border-radius: 5px;
-    padding: 19px 20px;
+    padding: 10px;
     cursor: pointer;
     transition: all $ease-dynamic 350ms;
     background-color: $color-white;
     outline: 0;
 
     font-weight: bold;
-    font-size: 16px;
-    line-height: 20px;
+    line-height: 17.6px;
     display: flex;
     align-items: center;
     text-align: center;
@@ -19,6 +18,12 @@
     color: #007880;
     font-family: $base-font;
 
+    @include rwd($break-flow) {
+        @include font-size(16px);
+        line-height: 20px;
+        padding: 19px 20px;
+    }
+    
     .icon {
       font-size: 21px;
       margin-right: 15px;
@@ -48,13 +53,13 @@
     letter-spacing: -0.01em;
     font-weight: $semibold;
     text-align: center;
-    @include font-size(25px);
+    @include font-size(18px);
     line-height: 140%;
     padding: 5px 20px;
     transition: all $ease-dynamic 350ms;
 
-    @include rwd(tablet) {
-      @include font-size(18px);
+    @include rwd($break-flow) {
+      @include font-size(25px);
     }
 
     &:hover {

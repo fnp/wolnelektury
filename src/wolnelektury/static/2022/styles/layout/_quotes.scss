@@ -1,47 +1,13 @@
 .l-quotes {
   width: 100%;
   max-width: 1140px;
-  margin-top: 58px;
+  margin-top: 24px;
   position: relative;
   overflow: hidden;
   padding-bottom: 40px;
 
-  @include rwd(tablet) {
-    margin-top: 24px;
-  }
-
-  &:after {
-    content: "";
-    display: block;
-    pointer-events: none;
-    background: url("../images/quotes-slider-bg-right.svg") center no-repeat;
-    width: 170px;
-    height: 407px;
-    position: absolute;
-    right: -150px;
-    top: 0;
-    z-index: $middle-layer;
-
-    @include rwd(tablet) {
-      display: none;
-    }
-  }
-
-  &:before {
-    content: "";
-    display: block;
-    pointer-events: none;
-    background: url("../images/quotes-slider-bg-left.svg") center no-repeat;
-    width: 170px;
-    height: 407px;
-    position: absolute;
-    left: -150px;
-    top: 0;
-    z-index: $middle-layer;
-
-    @include rwd(tablet) {
-      display: none;
-    }
+  @include rwd($break-flow) {
+    margin-top: 58px;
   }
 
   .slick-dots {
@@ -58,15 +24,15 @@
   border-radius: 10px;
   width: 558px;
   margin-top: 50px;
-  margin-left: 32px;
-  margin-right: 32px;
+  margin-left: 0;
+  margin-right: 0;
   padding-left: 32px;
   padding-right: 32px;
   padding-bottom: 32px;
 
-  @include rwd(tablet) {
-    margin-right: 0;
-    margin-left: 0;
+  @include rwd($break-flow) {
+      margin-left: 32px;
+      margin-right: 32px;
   }
 
   img {
@@ -74,43 +40,45 @@
     border-radius: 50%;
     overflow: hidden;
     font-size: 0;
-    margin-top: -50px;
+    margin-top: -24px;
+    width: 48px;
+    height: 48px;
 
-    @include rwd(tablet) {
-      width: 48px;
-      height: 48px;
-      margin-top: -24px;
+    @include rwd($break-flow) {
+        width: unset;
+        height: unset;
+        margin-top: -50px;
     }
   }
 
   h4 {
-    margin-top: 10px;
+    margin-top: 5px;
     font-weight: $semibold;
-    @include font-size(25px);
+    @include font-size(14px);
     line-height: 140%;
     text-align: center;
     letter-spacing: -0.01em;
     color: #474747;
 
-    @include rwd(tablet) {
-      margin-top: 5px;
-      @include font-size(14px);
+    @include rwd($break-flow) {
+      margin-top: 10px;
+      @include font-size(25px);
     }
   }
 
   p {
-    margin-top: 24px;
+    margin-top: 12px;
     font-style: italic;
     font-weight: $regular;
-    @include font-size(26px);
+    @include font-size(20px);
     line-height: 140%;
     text-align: center;
     letter-spacing: -0.02em;
     color: #083F4D;
 
-    @include rwd(tablet) {
-      margin-top: 12px;
-      @include font-size(20px);
+    @include rwd($break-flow) {
+      margin-top: 24px;
+      @include font-size(26px);
     }
   }
 }

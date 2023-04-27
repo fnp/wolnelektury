@@ -14,10 +14,10 @@
     {% endif %}
   </div>
   <div class="l-navigation__menu__book__info">
-    <a href="{{ book.get_absolute_url }}" tabindex="-1">
-      <img src="{{ book.cover_clean.url }}" alt="{{ book.pretty_title }}">
-    </a>
     <h3>
+      <a href="{{ book.get_absolute_url }}" tabindex="-1">
+        <img src="{{ book.cover_clean.url }}" alt="{{ book.pretty_title }}">
+      </a>
       <a href="{{ book.get_absolute_url }}" tabindex="-1">
         {% for author in book.authors %}
           {{ author }}

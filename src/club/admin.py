@@ -1,4 +1,3 @@
-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -81,6 +80,27 @@ class ScheduleForm(forms.ModelForm):
         fields = '__all__'
 
 
+class SourceFilter(admin.SimpleListFilter):
+    title = _('Source') # display title
+    parameter_name = 'source'
+    template = "admin/long_filter.html"
+
+    def lookups(self, request, model_admin):
+        lookups = [
+            (m, m) for m in
+            model_admin.model.objects.exclude(source='').values_list('source', flat=True).distinct()[:10]
+        ]
+        print(lookups)
+        return lookups
+
+    def queryset(self, request, queryset):
+        return queryset
+    
+    #field_name = 'source' # name of the foreign key field
+
+
+
+
 class ScheduleAdmin(admin.ModelAdmin):
     form = ScheduleForm
 
@@ -89,8 +109,12 @@ class ScheduleAdmin(admin.ModelAdmin):
         'method'
     ]
     list_display_links = ['email', 'started_at']
-    search_fields = ['email']
-    list_filter = ['is_cancelled', 'monthly', 'yearly', 'method', PayedFilter, ExpiredFilter, 'source']
+    search_fields = ['email', 'source']
+    list_filter = [
+        'is_cancelled', 'monthly', 'yearly', 'method',
+        PayedFilter, ExpiredFilter,
+        SourceFilter,
+    ]
     filter_horizontal = ['consent']
     date_hierarchy = 'started_at'
     raw_id_fields = ['membership']

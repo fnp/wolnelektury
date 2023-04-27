@@ -231,12 +231,17 @@
 
 //Payments
 .l-checkout__payments {
-  display: flex;
+    display: none;
   padding: 0 30px;
   margin-top: 34px;
   margin-bottom: 0;
   flex-wrap: wrap;
   justify-content: flex-start;
+  flex-direction: column;
+
+  @include rwd($break-flow) {
+      flex-direction: row;
+  }
 }
 
 .l-checkout__payments__box {
@@ -790,4 +795,39 @@
       }
     }
   }
+}
+
+
+
+
+
+.toggle-input{
+    &#switch-once:checked {
+        ~.l-switch__wrapper {
+            label {
+                &:nth-of-type(1) { color: #003C3C; }
+                &:nth-of-type(2) { color: #74BDC2; }
+            }
+            .toggle {
+                left: 5px;
+            }
+        }
+        ~.payments-once {
+            display: flex;
+        }
+    }
+    &#switch-monthly:checked {
+        ~.l-switch__wrapper {
+            label {
+                &:nth-of-type(1) { color: #74BDC2; }
+                &:nth-of-type(2) { color: #003C3C; }
+            }
+            .toggle {
+                left: 39px;
+            }
+        }
+        ~.payments-recurring {
+            display: flex;
+        }
+    }
 }

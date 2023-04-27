@@ -3,11 +3,11 @@
   max-width: 1140px;
 
   .l-books {
-    width: calc(100% + 20px);
-
-    @include rwd(tablet) {
       width: 100%;
-    }
+
+      @include rwd($break-flow) {
+          width: calc(100% + 20px);
+      }
 
     .l-books__item {
       border: 1px solid #D9D9D9;
@@ -23,13 +23,13 @@
   h3 {
     margin-top: 0;
     font-weight: $semibold;
-    @include font-size(31px);
+    @include font-size(25px);
     line-height: 140%;
     letter-spacing: -0.01em;
     color: $color-dark;
 
-    @include rwd(tablet) {
-      @include font-size(25px);
+    @include rwd($break-flow) {
+      @include font-size(31px);
     }
   }
 
