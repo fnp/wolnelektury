@@ -20,18 +20,15 @@
   {% with amounts=club.get_amounts %}
   <div class="l-checkout__payments payments-once">
     {% for amount in amounts.single %}
-      <div class="l-checkout__payments__box once{% if not schedule.monthly and schedule.amount == amount.amount or not schedule and club.default_single_amount == amount.amount %} is-active{% endif %}{% if amount.narrow_wide %} narrow-wide{% endif %}{% if amount.wide %} l-checkout__payments__box--special{% if not amount.wide_not_wide %} l-checkout__payments__box--xl{% endif %}{% endif %}">
-        <div>
-          <h3>{{ amount.amount }} zł</h3>
-          <div class="l-checkout__payments__box__btn-wrp">
-            <button name="single_amount" value="{{ amount.amount }}">Wybierz</button>
-          </div>
-        </div>
-        {% if amount.description %}
-          <div>
+      <div class="l-checkout__payments__box once{% if not schedule.monthly and schedule.amount == amount.amount or not schedule and club.default_single_amount == amount.amount %} is-active{% endif %}{% if amount.wide %} l-checkout__payments__box--special{% endif %} l-checkout__payments__box--{{ amount.box_variant }}">
+
+        <h3>{{ amount.amount }} zł</h3>
+        <div class="l-checkout__payments__box__btn-wrp">
+          {% if amount.description %}
             <p>{{ amount.description|safe }}</p>
-          </div>
-        {% endif %}
+          {% endif %}
+          <button name="single_amount" value="{{ amount.amount }}">Wybierz</button>
+        </div>
       </div>
     {% endfor %}
     <input type="hidden"
@@ -43,10 +40,12 @@
 
   <div class="l-checkout__payments payments-recurring">
     {% for amount in amounts.monthly %}
-      <div class="l-checkout__payments__box{% if schedule.monthly and schedule.amount == amount.amount or not schedule and amount.amount == club.default_monthly_amount %} is-active{% endif %}{% if amount.narrow_wide %} narrow-wide{% endif %}{% if amount.wide and not amount.wide_not_wide %} l-checkout__payments__box--xl{% endif %}">
+      <div class="l-checkout__payments__box{% if schedule.monthly and schedule.amount == amount.amount or not schedule and amount.amount == club.default_monthly_amount %} is-active{% endif %}{% if amount.wide %} l-checkout__payments__box--special{% endif %} l-checkout__payments__box--{{ amount.box_variant }}">
         <h3>{{ amount.amount }} zł <span>/mies.</span></h3>
         <div class="l-checkout__payments__box__btn-wrp">
-          <p>{{ amount.description|safe }}</p>
+          {% if amount.description %}
+            <p>{{ amount.description|safe }}</p>
+          {% endif %}
           <button name="monthly_amount" value="{{ amount.amount }}">Wybierz</button>
         </div>
       </div>

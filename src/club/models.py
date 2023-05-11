@@ -44,21 +44,27 @@ class Club(models.Model):
         for tag, amounts in ('single', single), ('monthly', monthly):
             wide_spot = narrow_spot = 0
             for i, p in enumerate(amounts):
-                if p.description or p.wide:
-                    if not p.description:
-                        p.narrow_wide = True
-                    if narrow_spot == 1:
-                        amounts[i-1].narrow_wide = True
-                        narrow_spot = 0
                 if p.wide:
-                    if wide_spot == 2:
-                        p.wide_not_wide = True
-                        wide_spot += 1
-                    else:
+                    # Do we have space for xl?
+                    if wide_spot < 2:
+                        p.box_variant = 'xl'
                         wide_spot += 2
-                else:
+                    else:
+                        p.box_variant = 'card'
+                        wide_spot += 1
+                    narrow_spot = 0
+                elif p.description:
+                    p.box_variant = 'card'
+                    if narrow_spot:
+                        amounts[i-1].box_variant = 'bar'
                     wide_spot += 1
+                    narrow_spot = 0
+                else:
+                    p.box_variant = 'half'
+                    wide_spot += 1
+                    narrow_spot += 1
                 wide_spot %= 3
+                narrow_spot %= 2
             c[tag] = amounts
             c[f'{tag}_wide_spot'] = wide_spot
         return c
