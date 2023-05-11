@@ -1,20 +1,32 @@
 <div class="row">
-  <h2>O autorze</h2>
+  <h2>
+    {% if tag.category == 'author' %}O autorze
+    {% elif tag.category == 'kind' %}O rodzaju
+    {% elif tag.category == 'genre' %}O gatunku
+    {% elif tag.category == 'epoch' %}O epoce
+    {% elif tag.category == 'set' %}Półka
+    {% endif %}
+  </h2>
   <div>
-    {% if author.photo %}
+    {% if tag.photo %}
       <figure class="l-author__photo">
-        <img src="{{ author.photo.url }}" alt="{{ author.name }}" style="width: 238px;">
+        <img src="{{ tag.photo.url }}" alt="{{ tag.name }}" style="width: 238px;">
         <figcaption>
-          {{ author.photo_attribution|safe }}
+          {{ tag.photo_attribution|safe }}
         </figcaption>
       </figure>
     {% endif %}
     <article class="l-author__info">
-      <h3><a href="{{ author.get_absolute_url }}">{{ author.name }}</a></h3>
+      {% if tag.category == 'set' %}
+        {% load chunks %}
+        {% chunk 'polka-how-to' %}
+      {% else %}
+      <h3><a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a></h3>
       <div class="l-article__overlay" data-max-height="327">
-        {{ author.description|safe }}
+        {{ tag.description|safe }}
       </div>
       <button class="l-article__read-more" aria-label="Kliknij aby rozwinąć" data-label="Czytaj więcej" data-action="Zwiń tekst">Czytaj więcej</button>
+      {% endif %}
     </article>
   </div>
 </div>

@@ -37,11 +37,39 @@ class Club(models.Model):
     def __str__(self):
         return 'Klub'
 
+    def get_amounts(self):
+        c = {}
+        single = list(self.singleamount_set.all())
+        monthly = list(self.monthlyamount_set.all())
+        for tag, amounts in ('single', single), ('monthly', monthly):
+            wide_spot = narrow_spot = 0
+            for i, p in enumerate(amounts):
+                if p.description or p.wide:
+                    if not p.description:
+                        p.narrow_wide = True
+                    if narrow_spot == 1:
+                        amounts[i-1].narrow_wide = True
+                        narrow_spot = 0
+                if p.wide:
+                    if wide_spot == 2:
+                        p.wide_not_wide = True
+                        wide_spot += 1
+                    else:
+                        wide_spot += 2
+                else:
+                    wide_spot += 1
+                wide_spot %= 3
+            c[tag] = amounts
+            c[f'{tag}_wide_spot'] = wide_spot
+        return c
+
+    
 
 class SingleAmount(models.Model):
     club = models.ForeignKey(Club, models.CASCADE)
     amount = models.IntegerField()
     description = models.TextField(blank=True)
+    wide = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['amount']
@@ -50,6 +78,7 @@ class MonthlyAmount(models.Model):
     club = models.ForeignKey(Club, models.CASCADE)
     amount = models.IntegerField()
     description = models.TextField(blank=True)
+    wide = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['amount']

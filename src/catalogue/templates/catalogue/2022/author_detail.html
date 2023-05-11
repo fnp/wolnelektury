@@ -84,7 +84,7 @@
   {% if tags %}
     <section class="l-section">
       <div class="l-author">
-        {% with author=tags.0 %}
+        {% with tag=tags.0 %}
           {% include 'catalogue/2022/author_box.html' %}
         {% endwith %}
         {% choose_cites 3 author=tags.0 as cites %}

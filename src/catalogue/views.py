@@ -109,6 +109,13 @@ def object_list(request, objects, fragments=None, related_tags=None, tags=None,
             Tag.objects.usage_for_queryset(
                 objects, counts=True
             ).exclude(category='set').exclude(pk__in=tag_ids))
+        related_tag_lists.append(
+            Tag.objects.usage_for_queryset(
+                objects, counts=True
+            ).filter(
+                user=request.user
+            ).exclude(name='').exclude(pk__in=tag_ids)
+        )
     if not (extra and extra.get('theme_is_set')):
         if fragments is None:
             if list_type == 'gallery':
@@ -126,8 +133,7 @@ def object_list(request, objects, fragments=None, related_tags=None, tags=None,
     
     categories = split_tags(*related_tag_lists)
     suggest = []
-    for c in ['author', 'epoch', 'kind', 'genre']:
-        #if len(categories.get(c, [])) > 1:
+    for c in ['set', 'author', 'epoch', 'kind', 'genre']:
         suggest.extend(sorted(categories[c], key=lambda t: -t.count)[:3])
 
     objects = list(objects)
@@ -155,14 +161,11 @@ def object_list(request, objects, fragments=None, related_tags=None, tags=None,
     if extra:
         result.update(extra)
 
-    is_set = any((x.category == 'set' for x in tags))
     is_theme = len(tags) == 1 and tags[0].category == 'theme'
     has_theme = any((x.category == 'theme' for x in tags))
     new_layout = request.EXPERIMENTS['layout']
 
-    if is_set and new_layout.value:
-        template = 'social/2022/set_detail.html'
-    elif is_theme and new_layout.value:
+    if is_theme and new_layout.value:
         template = 'catalogue/2022/theme_detail.html'
     elif new_layout.value and not has_theme:
         template = 'catalogue/2022/author_detail.html'

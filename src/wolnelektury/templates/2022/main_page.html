@@ -269,7 +269,7 @@
 
 
   <section class="l-section">
-    <div class="l-collections js-new-books-slider">
+    <div class="l-collections js-collections">
       <div class="l-collections__header">
         <h3><a href="/katalog/nowe/">Nowości</a></h3>
         <div class="l-your-books__header__actions">
@@ -277,7 +277,7 @@
           <button class="js-next-slide"><i class="icon icon-arrow-right"></i></button>
         </div>
       </div>
-      <div class="l-books">
+      <div class="l-books" style="display:block;">
         {% for book in last_published %}
           {% include 'catalogue/2022/book_box.html' %}
         {% endfor %}

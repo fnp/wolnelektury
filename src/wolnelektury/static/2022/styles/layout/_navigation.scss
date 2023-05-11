@@ -148,12 +148,23 @@ body {
   max-width: 1140px;
   border-radius: 10px;
   padding: 10px 50px;
-  width: 100%;
-  margin-bottom: 10px;
+  width: auto;
+  
+  margin-top: 18px;
+  margin-bottom: 18px;
   background-color: #FBC40F;
   position: relative;
   display: none;
 
+  margin-left: 16px;
+  margin-right: 16px;
+  flex-direction: column;
+  column-gap: 48px;
+
+  @include rwd($break-flow) {
+      flex-direction: row;
+  }
+  
   &.show {
     display: flex;
   }
@@ -165,9 +176,8 @@ body {
     line-height: 100%;
     letter-spacing: -0.02em;
     color: #333333;
-    margin: 0;
+    margin: 20px 0;
     min-width: 189px;
-    margin-right: 48px;
   }
 
   p {

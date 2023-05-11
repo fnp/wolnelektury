@@ -159,7 +159,10 @@ class Tag(models.Model):
 
     def get_absolute_catalogue_url(self):
         # TODO: remove magic.
-        return reverse(f'{self.category}_catalogue')
+        if self.category == 'set':
+            return reverse('social_my_shelf')
+        else:
+            return reverse(f'{self.category}_catalogue')
 
     def has_description(self):
         return len(self.description) > 0

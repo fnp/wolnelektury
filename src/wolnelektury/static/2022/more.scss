@@ -5,15 +5,6 @@ body.is-open {
     overflow-y: hidden;
 }
 
-.l-change-pop {
-    margin-top: 18px;
-}
-.is-open .l-change-pop {
-    height: auto;
-    margin-top: 18px;
-    padding: 10px 50px;
-}
-
 .l-navigation__logo {
     height: 44px;
 }
@@ -51,7 +42,7 @@ body.is-open {
     .l-books__item {
         @include rwd($break-wide) {
 
-            width: 214.5px;
+            width: 214.4px;
             margin-left: 17px;
             margin-right: 0;
             &:first-of-type {
@@ -283,12 +274,6 @@ form {
 .l-checkout__support__bar {
     overflow: hidden;
 }
-
-
-.l-change-pop {
-    margin-bottom: 18px;
-}
-
 
 .poll-bar {
     height: 10px;

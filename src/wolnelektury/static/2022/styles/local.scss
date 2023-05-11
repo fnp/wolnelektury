@@ -4,26 +4,6 @@ $green: #92BD39;
 $red: #FF4C54;
 
 
-.l-change-pop {
-    transition: 350ms all;
-    
-    p {
-        a {
-            color: $teal;
-        }
-    }
-}
-
-
-.is-open .l-change-pop {
-    height: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-}
-
-
 .ui-autocomplete a {
     display: block;
     transition: none;
@@ -207,6 +187,7 @@ $red: #FF4C54;
         padding: 5px 10px;
         margin-left: 5px;
         border-radius: 15px;
+        white-space: nowrap;
 
         a {
             color: currentColor;

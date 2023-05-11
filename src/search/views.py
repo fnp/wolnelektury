@@ -90,14 +90,14 @@ def hint(request, mozhint=False, param='term'):
             translator = b.translator()
             if translator:
                 author_str += ' (tłum. ' + translator + ')'
-                data.append(
-                    {
-                        'label': b.title,
-                        'author': author_str,
-                        'id': b.id,
-                        'url': b.get_absolute_url()
-                    }
-                )
+            data.append(
+                {
+                    'label': b.title,
+                    'author': author_str,
+                    'id': b.id,
+                    'url': b.get_absolute_url()
+                }
+            )
 
     if mozhint:
         data = [

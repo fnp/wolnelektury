@@ -19,7 +19,7 @@ django-admin-ordering==0.16
 django-countries==7.3.2
 
 # A version compatible with Django 2.2+, with long help text and editable max_length.
--e git+https://github.com/rczajka/django-forms-builder@6bdb2345cfc02ebf7e0fb049e43e4e0a38b52940#egg=django-forms-builder
+-e git+https://github.com/rczajka/django-forms-builder@30beb889cbf297be35963c15501c764a0689b539#egg=django-forms-builder
 
 
 oauthlib>=3.0.1,<3.1
@@ -40,7 +40,7 @@ mutagen==1.45.1
 sorl-thumbnail==12.8.0
 
 # home-brewed & dependencies
-librarian==2.4.10
+librarian==2.4.12
 
 # celery tasks
 celery[redis]==5.2.7

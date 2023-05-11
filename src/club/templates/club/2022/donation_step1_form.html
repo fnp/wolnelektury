@@ -17,9 +17,10 @@
     </div>
   </div>
 
+  {% with amounts=club.get_amounts %}
   <div class="l-checkout__payments payments-once">
-    {% for amount in club.singleamount_set.all %}
-      <div class="l-checkout__payments__box once{% if not schedule.monthly and schedule.amount == amount.amount or not schedule and club.default_single_amount == amount.amount %} is-active{% endif %}{% if forloop.last %} l-checkout__payments__box--xl{% endif %}">
+    {% for amount in amounts.single %}
+      <div class="l-checkout__payments__box once{% if not schedule.monthly and schedule.amount == amount.amount or not schedule and club.default_single_amount == amount.amount %} is-active{% endif %}{% if amount.narrow_wide %} narrow-wide{% endif %}{% if amount.wide %} l-checkout__payments__box--special{% if not amount.wide_not_wide %} l-checkout__payments__box--xl{% endif %}{% endif %}">
         <div>
           <h3>{{ amount.amount }} zł</h3>
           <div class="l-checkout__payments__box__btn-wrp">
@@ -41,8 +42,8 @@
 
 
   <div class="l-checkout__payments payments-recurring">
-    {% for amount in club.monthlyamount_set.all %}
-      <div class="l-checkout__payments__box{% if schedule.monthly and schedule.amount == amount.amount or not schedule and amount.amount == club.default_monthly_amount %} is-active{% endif %}">
+    {% for amount in amounts.monthly %}
+      <div class="l-checkout__payments__box{% if schedule.monthly and schedule.amount == amount.amount or not schedule and amount.amount == club.default_monthly_amount %} is-active{% endif %}{% if amount.narrow_wide %} narrow-wide{% endif %}{% if amount.wide and not amount.wide_not_wide %} l-checkout__payments__box--xl{% endif %}">
         <h3>{{ amount.amount }} zł <span>/mies.</span></h3>
         <div class="l-checkout__payments__box__btn-wrp">
           <p>{{ amount.description|safe }}</p>
@@ -63,9 +64,15 @@
     </div>
     <button>Dalej</button>
   </div>
+  {% endwith %}
 </form>
 
-<img src="{% static '2022/images/checkout-footer.png' %}" alt="Bezpieczne płatności zapewniają" class="l-checkout__footer__img">
+<div class="l-checkout__secure">
+<img src="{% static '2022/images/payments-padlock.png' %}" class="l-checkout__secure__padlock">
+Bezpieczne płatności zapewniają:
+<img src="{% static '2022/images/payments-2.png' %}" class="l-checkout__secure__img">
+</div>
+
 <div class="l-checkout__cols bt-w">
   <div class="l-checkout__col full">
     <div class="l-checkout__form">
