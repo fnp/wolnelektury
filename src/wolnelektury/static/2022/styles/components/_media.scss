@@ -89,9 +89,13 @@
   background-color: rgba($color-black, 0.35);
   display: none;
   overflow-y: scroll;
-  padding: 10vh 40px 40px 40px;
+  padding: 10vh 16px 10px 10px;
   width: 100%;
 
+  @include rwd($break-flow) {
+      padding: 10vh 40px 40px 40px;
+  }
+  
   &.is-open {
     display: flex;
   }
@@ -99,16 +103,23 @@
 
 .c-media__popup__box {
   background-color: #fff;
-  min-width: 640px;
   position: relative;
   border-radius: 10px;
   overflow: hidden;
+
+  @include rwd($break-flow) {
+      min-width: 640px;
+  }
 }
 
 .c-media__popup__box__lead {
-  padding: 40px;
+  padding: 16px 50px 16px 16px;
   background: #083F4D;
 
+  @include rwd($break-flow) {
+      padding: 40px;
+  }
+  
   h2 {
     margin-top: 0;
     font-weight: 600;
@@ -129,13 +140,17 @@
 }
 
 .c-media__popup__box__items {
-  padding: 40px;
+    padding: 16px;
+  @include rwd($break-flow) {
+      padding: 40px;
+  }
 }
 
 .c-media__popup__box__item {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  column-gap: 16px;
   width: 100%;
   padding: 20px 0;
 
@@ -215,13 +230,18 @@
   cursor: pointer;
   font-size: 0;
   background-color: transparent;
-  top: 35px;
-  right: 40px;
+  top: 15px;
+  right: 20px;
   transition: all $ease-dynamic 350ms;
   opacity: 0.75;
 
   &:hover {
     opacity: 1;
+  }
+
+  @include rwd($break-flow) {
+      top: 35px;
+      right: 40px;
   }
 }
 

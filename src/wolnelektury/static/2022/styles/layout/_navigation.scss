@@ -55,7 +55,6 @@ body {
 .l-navigation__logo {
     display: flex;
     position: relative;
-    z-index: $master-layer + 1;
 
     img {
         width: 153px;
@@ -73,8 +72,17 @@ body {
   margin: 0;
   outline: 0;
   position: relative;
-  z-index: $master-layer + 1;
 }
+
+.is-open {
+    .l-navigation__logo {
+        z-index: $master-layer + 1;
+    }
+    .l-navigation__button {
+        z-index: $master-layer + 1;
+    }
+}
+
 
 .l-naviagion__search {
     width: 60%;
