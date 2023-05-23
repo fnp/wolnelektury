@@ -50,6 +50,9 @@ class BookUserData(models.Model):
     complete = models.BooleanField(default=False)
     last_changed = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        unique_together = [('user', 'book')]
+
     @property
     def state(self):
         return 'complete' if self.complete else 'reading'
