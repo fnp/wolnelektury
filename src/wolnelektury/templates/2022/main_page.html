@@ -141,8 +141,9 @@
   <main class="l-main">
 
     {% if widget %}
+      <div class="l-change-pop show"><p>{{ widget.description }}</p></div>
       <section class="l-section">
-        <iframe src="{{ widget}}" style="width: 100%; height: 600px; border: none;"></iframe>
+        <iframe src="{{ widget.url }}" style="width: 100%; height: 600px; border: none;"></iframe>
       </section>
     {% endif %}
 

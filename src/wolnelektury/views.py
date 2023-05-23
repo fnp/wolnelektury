@@ -32,11 +32,15 @@ def main_page_2022(request):
     ctx['recommended_collection'] = Collection.objects.filter(listed=True, role='recommend').order_by('?').first()
     ctx['ambassadors'] = club.models.Ambassador.objects.all().order_by('?')
     ctx['widget'] = settings.WIDGETS.get(request.GET.get('w'))
+    if not ctx['widget'] and request.EXPERIMENTS['sowka'].value:
+        ctx['widget'] = settings.WIDGETS['pan-sowka']
     return render(request, '2022/main_page.html', ctx)
 
 @never_cache
 def main_page(request):
     if request.GET.get('w') in settings.WIDGETS:
+        request.EXPERIMENTS['layout'].override(True)
+    if request.EXPERIMENTS['sowka'].value:
         request.EXPERIMENTS['layout'].override(True)
 
     if request.EXPERIMENTS['layout'].value:

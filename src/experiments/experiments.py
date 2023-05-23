@@ -14,6 +14,14 @@ class NewLayout(Experiment):
             return False
 
 
+class Sowka(Experiment):
+    slug = 'sowka'
+    name = 'Pan Sówka'
+    size = settings.EXPERIMENTS_SOWKA
+    switchable = False
+
+
 experiments = [
     NewLayout,
+    Sowka,
 ]

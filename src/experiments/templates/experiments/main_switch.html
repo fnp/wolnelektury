@@ -9,6 +9,7 @@
   <img src="https://upload.wikimedia.org/wikipedia/commons/c/c8/MH1Asimulator.JPG" style="width:100%">
 
   {% for exp in request.EXPERIMENTS.values %}
+    {% if exp.switchable or request.user.is_staff %}
     <div class="experiment nice-controls" data-slug="{{ exp.slug }}">
       <span>
         {{ exp.name }}
@@ -24,6 +25,7 @@
           {% endif %}
           data-value="off">wyłączony</button>
     </div>
+    {% endif %}
   {% endfor %}
 {% endblock %}
 

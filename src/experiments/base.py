@@ -7,6 +7,7 @@ class Experiment:
     name = 'experiment'
     explicit = False
     size = 0
+    switchable = True
 
     def qualify(self, request):
         return True
@@ -27,12 +28,13 @@ class Experiment:
         if self.qualify(request) is False:
             return None, False
 
-        cookie_value = request.COOKIES.get(f'EXPERIMENT_{slug}')
-        if cookie_value is not None:
-            if cookie_value == 'on':
-                return True, True
-            elif cookie_value == 'off':
-                return False, True
+        if self.switchable or request.user.is_staff:
+            cookie_value = request.COOKIES.get(f'EXPERIMENT_{slug}')
+            if cookie_value is not None:
+                if cookie_value == 'on':
+                    return True, True
+                elif cookie_value == 'off':
+                    return False, True
 
         number = int(
             hashlib.md5(

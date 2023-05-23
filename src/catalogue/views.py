@@ -109,13 +109,14 @@ def object_list(request, objects, fragments=None, related_tags=None, tags=None,
             Tag.objects.usage_for_queryset(
                 objects, counts=True
             ).exclude(category='set').exclude(pk__in=tag_ids))
-        related_tag_lists.append(
-            Tag.objects.usage_for_queryset(
-                objects, counts=True
-            ).filter(
-                user=request.user
-            ).exclude(name='').exclude(pk__in=tag_ids)
-        )
+        if request.user.is_authenticated:
+            related_tag_lists.append(
+                Tag.objects.usage_for_queryset(
+                    objects, counts=True
+                ).filter(
+                    user=request.user
+                ).exclude(name='').exclude(pk__in=tag_ids)
+            )
     if not (extra and extra.get('theme_is_set')):
         if fragments is None:
             if list_type == 'gallery':
