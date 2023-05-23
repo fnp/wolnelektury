@@ -69,6 +69,10 @@ class Club(models.Model):
             c[f'{tag}_wide_spot'] = wide_spot
         return c
 
+    def get_description_for_amount(self, amount, monthly):
+        amounts = self.monthlyamount_set if monthly else self.singleamount_set
+        amount = amounts.all().filter(amount__lte=amount).last()
+        return amount.description if amount is not None else ''
     
 
 class SingleAmount(models.Model):
@@ -145,6 +149,10 @@ class Schedule(models.Model):
             self.key = get_random_hash(self.email)
         super(Schedule, self).save(*args, **kwargs)
         self.update_contact()
+
+    def get_description(self):
+        club = Club.objects.first()
+        return club.get_description_for_amount(self.amount, self.monthly)
 
     def initiate_payment(self, request):
         return self.get_payment_method().initiate(request, self)

@@ -188,11 +188,15 @@
 .l-switch label {
   color: #fff;
   font-weight: 600;
-  font-size: 21.5px;
+  font-size: 18.5px;
   line-height: 26px;
   transition: color .2s ease;
   width: 122px;
   cursor: pointer;
+
+  @include rwd($break-flow) {
+      font-size: 21.5px;
+  }
 }
 
 .l-switch label:nth-of-type(1) {
@@ -348,6 +352,12 @@
     &:hover {
       background: rgba(#92BD39, 0.75);
     }
+  }
+  img {
+      display: none;
+      @include rwd($break-flow) {
+          display: block;
+      }
   }
 
   &.is-active {
@@ -527,6 +537,7 @@
     span { color: #FF4C54; }
   }
   input, select, textarea {
+      width: 100%;
     height: 56px;
     background: #FFFFFF;
     border: 1px solid #D5ECED;
@@ -541,19 +552,25 @@
   }
 
   button {
-    height: 56px;
+    height: 40px;
     background: #083F4D;
+    border: none;
     border-radius: 3px;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 16px;
     line-height: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin-left: 32px;
     color: #FFFFFF;
-    width: 340px;
+
+    @include rwd($break-flow) {
+        height: 56px;
+        font-size: 20px;
+        width: 340px;
+        margin-left: 32px;
+    }
   }
 }
 
@@ -586,7 +603,7 @@
     }
   }
   &:nth-child(2) {
-    width: calc(100% - 340px);
+    width: calc(100% - 402px);
   }
   &.full {
     width: 100%;
@@ -635,9 +652,15 @@
 }
 
 .l-checkout__form__row {
-  display: flex;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   margin-bottom: 24px;
 
+  @include rwd($break-flow) {
+      flex-direction: row;
+  }
+  
   &:nth-child(4) {
     .l-checkout__input {
       &:nth-child(1) { width: 172px; }
@@ -647,14 +670,8 @@
 
   &.full {
     flex-direction: column;
-
-    .l-checkout__input {
-      &:nth-child(1) {
-        padding-right: 0;
-      }
-      &:nth-child(2) {
-        padding-left: 0;
-      }
+    @include rwd($break-flow) {
+        flex-direction: column;
     }
   }
 
@@ -673,12 +690,6 @@
 
   .l-checkout__input {
     width: 100%;
-    &:nth-child(1) {
-      padding-right: 10px;
-    }
-    &:nth-child(2) {
-      padding-left: 10px;
-    }
   }
 
   & > a {
@@ -694,13 +705,23 @@
   }
 
   &.confirm {
-    display: flex;
+      display: flex;
+      flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: stretch;
     width: 100%;
+    gap: 50px;
 
+    @include rwd($break-flow) {
+        justify-content: space-between;
+    }
+    
     .l-checkout__input {
-      width: auto;
+        flex-grow: 1;
+        @include rwd($break-flow) {
+            width: auto;
+            flex-grow: 0;
+        }
     }
   }
   .errorlist {

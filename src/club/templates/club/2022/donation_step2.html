@@ -18,6 +18,7 @@
           {% endif %}
         </h3>
         <img src="{% static '2022/images/checkout-img-3.jpg' %}" alt="">
+        <p>{{ schedule.get_description }}</p>
       </div>
     </div>
     <div class="l-checkout__col">
@@ -105,5 +106,9 @@
       </form>
     </div>
   </div>
-  <img src="{% static '2022/images/checkout-footer.png' %}" alt="Bezpieczne płatności zapewniają" class="l-checkout__footer__img">
+  <div class="l-checkout__secure">
+    <img src="{% static '2022/images/payments-padlock.png' %}" class="l-checkout__secure__padlock">
+    Bezpieczne płatności zapewniają:
+    <img src="{% static '2022/images/payments-2.png' %}" class="l-checkout__secure__img">
+  </div>
 {% endblock %}
