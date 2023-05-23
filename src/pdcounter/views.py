@@ -21,7 +21,7 @@ def book_stub_detail(request, slug):
     if request.EXPERIMENTS['layout'].value:
         template_name = 'pdcounter/2022/book_detail.html'
     else:
-        template_name = 'pdcounter/book_detail.html'
+        template_name = 'pdcounter/book_stub_detail.html'
 
     return render(request, template_name, {
         'book': book,
