@@ -1,4 +1,4 @@
-{% extends "base/base.html" %}
+{% extends request.EXPERIMENTS.layout|yesno:"2022/base.html,base/base.html" %}
 {% load i18n %}
 {% load catalogue_tags %}
 
@@ -7,9 +7,9 @@
 
 {% block bodyid %}catalogue-catalogue{% endblock %}
 
-{% block body %}
+{% block body %}{% block main %}
   <h1>{% trans "All works" %}</h1>
-  <div class="normal-text catalogue-catalogue">
+  <div class="normal-text catalogue-catalogue l-container">
     <p>
       <a href="{% url 'reporting_catalogue_pdf' %}">
         {% trans "Download the catalogue in PDF format." %}
@@ -25,4 +25,4 @@
     <h2>{% trans "Art" %}</h2>
     {% plain_list pictures by_author=True paged=False initial_blocks=True %}
   </div>
-{% endblock %}
+{% endblock %}{% endblock %}

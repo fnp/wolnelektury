@@ -1,0 +1,10 @@
+<a class="l-author__quotes__slider__item" href="{{ fragment.get_absolute_url }}">
+  <em>
+    {% if fragment.short_text %}
+      {{ fragment.short_text|safe }}
+    {% else %}
+      {{ fragment.text|safe }}
+    {% endif %}
+  </em>
+  <p>{{ fragment.book.pretty_title }}</p>
+</a>

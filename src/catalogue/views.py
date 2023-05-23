@@ -299,9 +299,14 @@ def book_fragments(request, slug, theme_slug):
     fragments = Fragment.tagged.with_all([theme]).filter(
         Q(book=book) | Q(book__ancestor=book))
 
+    if request.EXPERIMENTS['layout'].value:
+        template_name = 'catalogue/2022/book_fragments.html'
+    else:
+        template_name = 'catalogue/book_fragments.html'
+    
     return render(
         request,
-        'catalogue/book_fragments.html',
+        template_name,
         {
             'book': book,
             'theme': theme,

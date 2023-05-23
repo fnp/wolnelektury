@@ -1,4 +1,4 @@
-{% extends "base/base.html" %}
+{% extends request.EXPERIMENTS.layout|yesno:"2022/base_simple.html,base/base.html" %}
 {% load i18n %}
 
 {% block titleextra %}{% trans "Notifications" %}{% endblock %}
