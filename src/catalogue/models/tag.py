@@ -161,6 +161,8 @@ class Tag(models.Model):
         # TODO: remove magic.
         if self.category == 'set':
             return reverse('social_my_shelf')
+        elif self.category == 'thing':
+            return ''
         else:
             return reverse(f'{self.category}_catalogue')
 
