@@ -1,0 +1,156 @@
+{% extends "2022/base.html" %}
+
+
+{% block main %}
+  <main class="l-main">
+    <div class="l-section">
+      <div class="l-author__header">
+        <h1><span>Wynik wyszukiwania dla:</span> {{ query }}</h1>
+      </div>
+    </div>
+
+    <form class="c-form j-form-auto">
+      <div class="c-form__inline-radio">
+        format: {{ filters.format }}
+      </div>
+      <div class="c-form__controls-row">
+        <label class="c-form__control">
+          <span>język:</span>
+          {{ filters.lang }}
+        </label>
+        <label class="c-form__control">
+          <span>epoka:</span>
+          {{ filters.epoch }}
+        </label>
+        <label class="c-form__control">
+          <span>gatunek</span>
+          {{ filters.genre }}
+        </label>
+      </div>
+      <div class="c-form__inline-radio">
+        kategoria:
+        {{ filters.category }}
+      </div>
+      {{ filters.q }}
+      <button type="submit" class="c-form__hidden-submit">wyślij</button>
+    </form>
+
+    {% if results.author %}
+    <div class="l-container">
+      <h2 class="header">Autorzy</h2>
+      <ul class="c-search-result c-search-result-author">
+        {% for tag in results.author %}
+          <li>
+            <a href="{{ tag.get_absolute_url }}">
+              {% if tag.photo %}
+                <figure>
+                  <img src="{{ tag.photo.url }}">
+                </figure>
+              {% endif %}
+              {{ tag.name }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    {% if results.theme %}
+      <div class="l-container">
+        <h2 class="header">Motywy</h2>
+        <ul class="c-search-result">
+          {% for tag in results.theme %}
+            <li>
+              <a href="{{ tag.get_absolute_url }}">
+                {% if tag.photo %}
+                  <figure>
+                    <img src="{{ tag.photo.url }}">
+                  </figure>
+                {% endif %}
+                {{ tag.name }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+
+    {% if results.book %}
+      <div class="l-container">
+        <h2 class="header">Książki</h2>
+      </div>
+      <div class="l-section l-section--col">
+        <div class="l-books__grid">
+          {% for book in results.book %}
+            {% include 'catalogue/2022/book_box.html' %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if results.art %}
+      <div class="l-container">
+        <h2 class="header">Obrazy</h2>
+      </div>
+      <div class="l-section l-section--col">
+        <div class="l-books__grid">
+          {% for book in results.art %}
+            {% include 'catalogue/2022/book_box.html' %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if results.fragment or results.snippet %}
+      <div class="l-container">
+        <h2 class="header">W treści</h2>
+        {% for f in results.snippet %}
+          <div class="c-search-result-fragment">
+            {% for author in f.book.authors %}
+              <a class="c-search-result-fragment-author" href="{{ author.get_absolute_url }}">{{ author }}</a>
+            {% endfor %}
+            <a class="c-search-result-fragment-title" href="{{ f.book.get_absolute_url }}">
+              {{ f.book.title }}
+            </a>
+            <a class="c-search-result-fragment-text" href='{% url 'book_text' f.book.slug %}#sec{{ f.sec }}'>
+              {{ f.headline|safe }}
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if results.collection %}
+      <div class="l-container">
+        <h2 class="header">Kolekcje</h2>
+        <div class="c-search-result-collection">
+          {% for collection in results.collection %}
+            {% include 'catalogue/2022/collection_box.html' %}
+            {% include 'catalogue/2022/collection_box.html' %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if pd_authors %}
+      <div class="l-container">
+        <div class="c-search-result-pd">
+          <h2>Domena publiczna?</h2>
+          <p>
+            Dzieła tych autorów przejdą do zasobów domeny publicznej i będą mogły
+            być publikowane bez żadnych ograniczeń.
+            Dowiedz się, dlaczego biblioteki internetowe nie mogą udostępniać dzieł tego autora.
+          </p>
+          <div>
+            {% for tag in pd_authors %}
+              <div><a href="{{ tag.get_absolute_url }}">
+                <strong>{{ tag }}</strong>
+                Dzieła tego autora będą mogły być publikowane bez ograniczeń w&nbsp;roku&nbsp;<em>{{ tag.goes_to_pd }}</em>.
+              </a></div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </main>
+{% endblock %}

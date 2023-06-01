@@ -2,7 +2,7 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.contrib import admin
-from catalogue.models import Tag, Book, Fragment, BookMedia, Collection, Source
+from catalogue.models import Tag, Book, Fragment, BookMedia, Collection, Source, Snippet
 from pz.admin import EmptyFieldListFilter
 
 
@@ -67,3 +67,6 @@ admin.site.register(Book, BookAdmin)
 admin.site.register(Fragment, FragmentAdmin)
 admin.site.register(Collection, CollectionAdmin)
 admin.site.register(Source, SourceAdmin)
+
+
+admin.site.register(Snippet)

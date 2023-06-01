@@ -536,3 +536,15 @@
         clearTimeout(timer);
     });
 })();
+
+
+
+// Update search form filters.
+(function() {
+    $('.j-form-auto').each(function() {
+        let $form = $(this);
+        $('input', $form).change(function() {$form.submit()});
+        $('select', $form).change(function() {$form.submit()});
+        $('textarea', $form).change(function() {$form.submit()});
+    });
+})();

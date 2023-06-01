@@ -3,6 +3,7 @@
 #
 from django import forms
 from django.forms.utils import flatatt
+from django.forms.widgets import RadioSelect
 from django.utils.encoding import smart_str
 from django.utils.safestring import mark_safe
 from json import dumps
@@ -63,3 +64,8 @@ class JQueryAutoCompleteSearchField(forms.CharField):
             kwargs['widget'] = JQueryAutoCompleteSearchWidget(options)
 
         super(JQueryAutoCompleteSearchField, self).__init__(*args, **kwargs)
+
+
+
+class InlineRadioWidget(RadioSelect):
+    option_template_name = 'search/inline_radio_widget_option.html'

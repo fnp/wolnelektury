@@ -7,3 +7,4 @@ from catalogue.models.fragment import Fragment
 from catalogue.models.book import Book, BookPopularity
 from catalogue.models.collection import Collection
 from catalogue.models.source import Source
+from .snippet import Snippet

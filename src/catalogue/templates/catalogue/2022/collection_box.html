@@ -1,0 +1,10 @@
+<div class="c-collectionbox">
+  <a href="{{ collection.get_absolute_url }}">
+    <div class="c-collectionbox-covers">
+      {% for c in collection.example3 %}
+        <img src="{{ c.cover_clean.url }}">
+      {% endfor %}
+    </div>
+    {{ collection.title }}
+  </a>
+</div>

@@ -1,0 +1,54 @@
+.c-form {
+    padding: 0 16px;
+    
+    .c-form__hidden-submit {
+        font-size: 0;
+        border: 0;
+        opacity: 0;
+    }
+
+    div.c-form__inline-radio, div.c-form__inline-radio > div {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        align-items: center;
+        padding: 10px 0;
+        label {
+            display: flex;
+            span {
+                display: block;
+                padding: 11px 14px;
+            }
+            input {
+                width: 0px;
+                opacity: 0;
+                
+                &:checked + span {
+                    background: #083F4D;
+                    border-radius: 4px;
+                    color: white;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+    .c-form__controls-row {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+    
+    .c-form__control {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+
+        select {
+            padding: 8px 10px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    }
+}

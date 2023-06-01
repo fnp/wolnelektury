@@ -128,6 +128,22 @@ class Index(SolrIndex):
     def __init__(self):
         super(Index, self).__init__(mode='rw')
 
+    def remove_snippets(self, book):
+        book.snippet_set.all().delete()
+
+    def add_snippet(self, book, doc):
+        assert book.id == doc.pop('book_id')
+        # Fragments already exist and can be indexed where they live.
+        if 'fragment_anchor' in doc:
+            return
+
+        text = doc.pop('text')
+        header_index = doc.pop('header_index')
+        book.snippet_set.create(
+            sec=header_index,
+            text=text,
+        )
+
     def delete_query(self, *queries):
         """
         index.delete(queries=...) doesn't work, so let's reimplement it
@@ -229,19 +245,15 @@ class Index(SolrIndex):
             doc['parent_id'] = int(book.parent.id)
         return doc
 
-    def remove_book(self, book_or_id, remove_snippets=True):
+    def remove_book(self, book, remove_snippets=True):
         """Removes a book from search index.
         book - Book instance."""
-        if isinstance(book_or_id, catalogue.models.Book):
-            book_id = book_or_id.id
-        else:
-            book_id = book_or_id
-
-        self.delete_query(self.index.Q(book_id=book_id))
+        self.delete_query(self.index.Q(book_id=book.id))
 
         if remove_snippets:
-            snippets = Snippets(book_id)
+            snippets = Snippets(book.id)
             snippets.remove()
+        self.remove_snippets(book)
 
     def index_book(self, book, book_info=None, overwrite=True):
         """
@@ -249,6 +261,8 @@ class Index(SolrIndex):
         Creates a lucene document for extracted metadata
         and calls self.index_content() to index the contents of the book.
         """
+        if not book.xml_file: return
+
         if overwrite:
             # we don't remove snippets, since they might be still needed by
             # threads using not reopened index
@@ -309,7 +323,7 @@ class Index(SolrIndex):
         fields = {}
 
         if book_info is None:
-            book_info = dcparser.parse(open(book.xml_file.path))
+            book_info = dcparser.parse(open(book.xml_file.path, 'rb'))
 
         fields['slug'] = book.slug
         fields['is_book'] = True
@@ -468,8 +482,8 @@ class Index(SolrIndex):
                     elif end is not None and footnote is not [] and end.tag in self.footnote_tags:
                         handle_text.pop()
                         doc = add_part(snippets, header_index=position, header_type=header.tag,
-                                       text=''.join(footnote),
-                                       is_footnote=True)
+                                       text=''.join(footnote))
+                        self.add_snippet(book, doc)
                         self.index.add(doc)
                         footnote = []
 
@@ -504,6 +518,8 @@ class Index(SolrIndex):
                                        fragment_anchor=fid,
                                        text=fix_format(frag['text']),
                                        themes=frag['themes'])
+                        # Add searchable fragment
+                        self.add_snippet(book, doc)
                         self.index.add(doc)
 
                         # Collect content.
@@ -516,6 +532,7 @@ class Index(SolrIndex):
                 doc = add_part(snippets, header_index=position,
                                header_type=header.tag, text=fix_format(content))
 
+                self.add_snippet(book, doc)
                 self.index.add(doc)
 
         finally:

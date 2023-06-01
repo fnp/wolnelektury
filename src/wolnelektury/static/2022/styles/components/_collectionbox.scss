@@ -1,0 +1,22 @@
+.c-collectionbox {
+    border: 1px solid #D9D9D9;
+    border-radius: 10px;
+    padding: 21px;
+    width: 3*172px + 2*21px + 2px; 
+    font-size: 18px;
+    line-height: 24px;
+   
+    a {
+        display: block;
+    }
+    .c-collectionbox-covers {
+        display: flex;
+        margin-bottom: 15px;
+        img {
+            width: 172px;
+            @media screen and (max-width: 3*172px + 2*21px + 2px + 2*16px) {
+                width: calc((100vw - 2*16px - 2px - 2*21px) / 3);
+            }
+        }
+    }
+}
