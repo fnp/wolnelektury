@@ -18,16 +18,16 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 2.3\n"
 
-#: search/forms.py:11 search/templates/newsearch/search.html:16
-#: search/templates/search/search.html:7
+#: search/forms.py:14 search/templates/newsearch/search.html:16
+#: search/templates/search_/search.html:7
 msgid "Search"
 msgstr "Szukaj"
 
-#: search/forms.py:21
+#: search/forms.py:24
 msgid "title, author, epoch, kind, genre, phrase"
 msgstr "tytuł, autor, epoka, rodzaj, gatunek, cytat"
 
-#: search/templates/search/search.html:27
+#: search/templates/search_/search.html:27
 msgid "Did you mean"
 msgstr ""
 

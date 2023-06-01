@@ -17,6 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: reporting/templates/reporting/main.html:5
+#: reporting/templates/reporting/main.html:7
+#: reporting/templates/reporting/main.html:11
 msgid "Reports"
 msgstr ""

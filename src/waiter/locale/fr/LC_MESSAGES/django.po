@@ -17,19 +17,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: waiter/templates/waiter/wait.html:7 waiter/templates/waiter/wait.html:33
-msgid "The file is ready for download!"
-msgstr ""
-
-#: waiter/templates/waiter/wait.html:10 waiter/templates/waiter/wait.html:46
+#: waiter/templates/waiter/wait.html:8 waiter/templates/waiter/wait.html:18
+#: waiter/templates/waiter/wait.html:53
 msgid "Your file is being prepared, please wait."
 msgstr ""
 
-#: waiter/templates/waiter/wait.html:12 waiter/templates/waiter/wait.html:58
+#: waiter/templates/waiter/wait.html:15 waiter/templates/waiter/wait.html:41
+msgid "The file is ready for download!"
+msgstr ""
+
+#: waiter/templates/waiter/wait.html:20 waiter/templates/waiter/wait.html:68
 msgid "Something went wrong."
 msgstr ""
 
-#: waiter/templates/waiter/wait.html:37
+#: waiter/templates/waiter/wait.html:45
 #, python-format
 msgid ""
 "Your file is ready!\n"
@@ -37,25 +38,25 @@ msgid ""
 "          feel free to use this <a href=\"%(file_url)s\">direct link</a>."
 msgstr ""
 
-#: waiter/templates/waiter/wait.html:45
+#: waiter/templates/waiter/wait.html:58
 msgid "Please wait"
 msgstr ""
 
-#: waiter/templates/waiter/wait.html:50
+#: waiter/templates/waiter/wait.html:59
 #, python-format
 msgid "The file you requested was: <em>%(d)s</em>."
 msgstr ""
 
-#: waiter/templates/waiter/wait.html:53
+#: waiter/templates/waiter/wait.html:63
 msgid ""
 "<strong>Be aware:</strong> Generating the file can take a while.\n"
 "            Please be patient, or bookmark this page and come back later."
 msgstr ""
 
-#: waiter/templates/waiter/wait.html:63
+#: waiter/templates/waiter/wait.html:73
 #, python-format
 msgid ""
 "Something seems to have gone wrong while generating your file.\n"
-"            Please order it again or <a id='suggest' class='ajaxable' href="
-"\"%(s)s\">complain to us</a> about it."
+"            Please order it again or <a id='suggest' class='ajaxable' "
+"href=\"%(s)s\">complain to us</a> about it."
 msgstr ""

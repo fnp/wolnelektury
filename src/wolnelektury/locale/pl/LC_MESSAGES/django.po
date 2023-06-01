@@ -44,15 +44,15 @@ msgstr ""
 msgid "Notifications"
 msgstr ""
 
-#: wolnelektury/templates/404.html:4
+#: wolnelektury/templates/404.html:6 wolnelektury/templates/404.html:11
 msgid "Page does not exist"
 msgstr "Podana strona nie istnieje"
 
-#: wolnelektury/templates/404.html:8
+#: wolnelektury/templates/404.html:15
 msgid "Page not found"
 msgstr "Strona nie znaleziona"
 
-#: wolnelektury/templates/404.html:11
+#: wolnelektury/templates/404.html:18
 msgid ""
 "We are sorry, but this page does not exist. Please check if you entered "
 "correct address or go to "
@@ -60,25 +60,25 @@ msgstr ""
 "Przepraszamy, ale ta strona nie istnieje. Sprawdź czy podałeś dobry adres, "
 "lub przejdź do "
 
-#: wolnelektury/templates/404.html:12
+#: wolnelektury/templates/404.html:19
 msgid "main page"
 msgstr "strony głównej"
 
-#: wolnelektury/templates/500.html:6 wolnelektury/templates/500.html:17
+#: wolnelektury/templates/500.html:7
 msgid "Server error"
 msgstr "Błąd serwera"
 
-#: wolnelektury/templates/500.html:19
+#: wolnelektury/templates/500.html:73
 msgid ""
 "<p>The Wolnelektury.pl site is currently unavailable. Meanwhile, visit our "
-"<a href='http://nowoczesnapolska.org.pl'>blog</a>.</p> <p>Inform our <a "
-"href='mailto:fundacja@nowoczesnapolska.org.pl'>administrators</a> about the "
-"error.</p>"
+"<a href='https://fundacja.wolnelektury.pl'>blog</a>.</p> <p>Inform our <a "
+"href='mailto:fundacja@wolnelektury.pl'>administrators</a> about the error.</"
+"p>"
 msgstr ""
-"<p>Serwis Wolnelektury.pl jest chwilowo niedostępny. Odwiedź naszego <a "
-"href='http://nowoczesnapolska.org.pl'>bloga</a></p>\n"
-"<p>Powiadom <a href='mailto:fundacja@nowoczesnapolska.org."
-"pl'>administratorów</a> o błędzie.</p>"
+"<p>Serwis Wolnelektury.pl jest chwilowo niedostępny. Odwiedź <a "
+"href='https://fundacja.wolnelektury.pl'>stronę Fundacji</a>.</p>\n"
+"<p>Powiadom <a href='mailto:fundacja@wolnelektury.pl'>administratorów</a> o "
+"błędzie.</p>"
 
 #: wolnelektury/templates/503.html:6 wolnelektury/templates/503.html:17
 msgid "Service unavailable"
@@ -108,12 +108,20 @@ msgstr "uproszczone"
 msgid "Import book"
 msgstr "Importuj książkę"
 
+#: wolnelektury/templates/admin/long_filter.html:2
+#, python-format
+msgid " By %(filter_title)s "
+msgstr ""
+
 #: wolnelektury/templates/auth/login.html:11
+#: wolnelektury/templates/registration/login.html:25
 msgid "Forgot Password?"
 msgstr "Nie pamiętasz hasła?"
 
 #: wolnelektury/templates/auth/login.html:17
 #: wolnelektury/templates/auth/register.html:8
+#: wolnelektury/templates/registration/login.html:31
+#: wolnelektury/templates/registration/register.html:20
 msgid "Sign in using:"
 msgstr "Zaloguj się używając:"
 
@@ -134,7 +142,6 @@ msgstr "Język"
 
 #: wolnelektury/templates/base/app.html:66
 #: wolnelektury/templates/base/superbase.html:105
-#: wolnelektury/templates/board_base.html:48
 msgid "Logout"
 msgstr "Wyloguj"
 
@@ -183,22 +190,23 @@ msgid "My shelf"
 msgstr "Moja półka"
 
 #: wolnelektury/templates/base/superbase.html:102
-#: wolnelektury/templates/board_base.html:43
 msgid "Administration"
 msgstr "Administracja"
 
-#: wolnelektury/templates/base/superbase.html:109 wolnelektury/views.py:79
-#: wolnelektury/views.py:80
+#: wolnelektury/templates/base/superbase.html:109 wolnelektury/views.py:106
+#: wolnelektury/views.py:107
 msgid "Sign in"
 msgstr "Zaloguj się"
 
-#: wolnelektury/templates/base/superbase.html:110 wolnelektury/views.py:98
-#: wolnelektury/views.py:99 wolnelektury/views.py:127
+#: wolnelektury/templates/base/superbase.html:110
+#: wolnelektury/templates/registration/register.html:7
+#: wolnelektury/templates/registration/register.html:16
+#: wolnelektury/views.py:144 wolnelektury/views.py:145
+#: wolnelektury/views.py:176
 msgid "Register"
 msgstr "Załóż konto"
 
 #: wolnelektury/templates/base/superbase.html:124
-#: wolnelektury/templates/board_base.html:28
 msgid "Search"
 msgstr "Szukaj"
 
@@ -210,9 +218,9 @@ msgstr "Zamknij"
 msgid "Loading"
 msgstr "Ładowanie"
 
-#: wolnelektury/templates/board_base.html:31
-msgid "Advanced search"
-msgstr "Wyszukiwanie zaawansowane"
+#: wolnelektury/templates/forms/form_sent.html:12
+msgid "Thank you"
+msgstr ""
 
 #: wolnelektury/templates/info/join_us.html:6
 #, python-format
@@ -273,30 +281,30 @@ msgid "Support us"
 msgstr "Wesprzyj nas"
 
 #: wolnelektury/templates/main_menu.html:7
+msgid "School readings"
+msgstr "Lektury szkolne"
+
+#: wolnelektury/templates/main_menu.html:10
 msgid "Literature"
 msgstr "Literatura"
 
-#: wolnelektury/templates/main_menu.html:10
+#: wolnelektury/templates/main_menu.html:13
 msgid "Themes"
 msgstr "Motywy"
 
-#: wolnelektury/templates/main_menu.html:13
+#: wolnelektury/templates/main_menu.html:16
 msgid "Audiobooks"
 msgstr "Audiobooki"
 
-#: wolnelektury/templates/main_menu.html:16
+#: wolnelektury/templates/main_menu.html:19
 #: wolnelektury/templates/main_page.html:52
 msgid "Collections"
 msgstr "Kolekcje"
 
-#: wolnelektury/templates/main_menu.html:19
-#: wolnelektury/templates/main_page.html:108
+#: wolnelektury/templates/main_menu.html:22
+#: wolnelektury/templates/main_page.html:110
 msgid "Newsletter"
 msgstr "Newsletter"
-
-#: wolnelektury/templates/main_menu.html:22
-msgid "School readings"
-msgstr "Lektury szkolne"
 
 #: wolnelektury/templates/main_page.html:11
 #: wolnelektury/templates/main_page.html:12
@@ -331,62 +339,65 @@ msgstr "Utwory, w których występuje ten motyw:"
 msgid "News"
 msgstr "Aktualności"
 
-#: wolnelektury/templates/main_page.html:93
+#: wolnelektury/templates/main_page.html:95
 msgid "Utilities"
 msgstr "Narzędzia"
 
-#: wolnelektury/templates/main_page.html:96
+#: wolnelektury/templates/main_page.html:98
 msgid "Report a bug or suggestion"
 msgstr "Zgłoś błąd lub sugestię"
 
-#: wolnelektury/templates/main_page.html:97
+#: wolnelektury/templates/main_page.html:99
 msgid "Download the catalogue in PDF format."
 msgstr "Pobierz katalog w formacie PDF."
 
-#: wolnelektury/templates/main_page.html:98
+#: wolnelektury/templates/main_page.html:100
 msgid "Art"
 msgstr "Sztuka"
 
-#: wolnelektury/templates/main_page.html:99
+#: wolnelektury/templates/main_page.html:101
 msgid "All works"
 msgstr "Wszystkie utwory"
 
-#: wolnelektury/templates/main_page.html:101
+#: wolnelektury/templates/main_page.html:103
 msgid "Footnotes"
 msgstr "Przypisy"
 
-#: wolnelektury/templates/main_page.html:102
+#: wolnelektury/templates/main_page.html:104
 msgid "Missing a book?"
 msgstr "Nie znalazłeś/-aś utworu?"
 
-#: wolnelektury/templates/main_page.html:103
-#: wolnelektury/templates/publish_plan.html:4
-#: wolnelektury/templates/publish_plan.html:8
+#: wolnelektury/templates/main_page.html:105
+#: wolnelektury/templates/publish_plan.html:6
+#: wolnelektury/templates/publish_plan.html:10
+#: wolnelektury/templates/publish_plan.html:14
 msgid "Publishing plan"
 msgstr "Plan publikacji"
 
-#: wolnelektury/templates/main_page.html:113
+#: wolnelektury/templates/main_page.html:115
 msgid "Information"
 msgstr "Informacje"
 
-#: wolnelektury/templates/main_page.html:115
+#: wolnelektury/templates/main_page.html:117
 msgid "Privacy policy"
 msgstr "Polityka prywatności"
 
-#: wolnelektury/templates/main_page.html:120
+#: wolnelektury/templates/main_page.html:122
 msgid "Follow us on Facebook"
 msgstr "Obserwuj nas na Facebooku"
 
-#: wolnelektury/templates/main_page.html:133
+#: wolnelektury/templates/main_page.html:135
 msgid "Image used:"
 msgstr "Użyto obrazu:"
 
-#: wolnelektury/templates/openid/login.html:5
-#: wolnelektury/templates/openid/login.html:8
+#: wolnelektury/templates/openid/login.html:7
+#: wolnelektury/templates/openid/login.html:21
 msgid "OpenID Sign In"
 msgstr "Logowanie przez OpenID"
 
-#: wolnelektury/templates/openid/login.html:16
+#: wolnelektury/templates/openid/login.html:13
+#: wolnelektury/templates/openid/login.html:29
+#: wolnelektury/templates/registration/login.html:6
 msgid "Sign In"
 msgstr "Zaloguj się"
 
@@ -434,8 +445,8 @@ msgstr "Anulowano logowanie"
 #, python-format
 msgid ""
 "You decided to cancel logging in to our site using one of your exisiting "
-"accounts. If this was a mistake, please proceed to <a href=\"%(login_url)s"
-"\">sign in</a>."
+"accounts. If this was a mistake, please proceed to <a "
+"href=\"%(login_url)s\">sign in</a>."
 msgstr ""
 "Logowanie przy użyciu zewnętrznego konta zostało anulowane. Jeśli był to "
 "błąd, przejdź do <a href=\"%(login_url)s\">strony logowania</a>."
@@ -458,42 +469,46 @@ msgstr ""
 "Używasz konta %(provider_name)s do zalogowania się w \n"
 "%(site_name)s. Jako ostatni krok, proszę wypełnij formularz:"
 
-#: wolnelektury/templates/user.html:5 wolnelektury/templates/user.html:9
+#: wolnelektury/templates/user.html:7 wolnelektury/templates/user.html:11
+#: wolnelektury/templates/user.html:15
 msgid "User"
 msgstr "Użytkownik"
 
-#: wolnelektury/templates/user.html:11
+#: wolnelektury/templates/user.html:17
 msgid "Password"
 msgstr "Hasło"
 
-#: wolnelektury/templates/user.html:12
+#: wolnelektury/templates/user.html:18
 msgid "E-mail"
 msgstr "E-mail"
 
-#: wolnelektury/templates/user.html:13
+#: wolnelektury/templates/user.html:19
 msgid "Social accounts"
 msgstr "Konta społecznościowe"
 
-#: wolnelektury/utils.py:123
+#: wolnelektury/utils.py:112
 msgid "Message sent automatically. Please do not reply."
 msgstr "Wiadomość wysłana automatycznie. Prosimy nie odpowiadać."
 
-#: wolnelektury/utils.py:205
+#: wolnelektury/utils.py:194
 msgid "Yes"
 msgstr "Tak"
 
-#: wolnelektury/utils.py:206
+#: wolnelektury/utils.py:195
 msgid "No"
 msgstr "Nie"
 
-#: wolnelektury/views.py:87 wolnelektury/views.py:108
+#: wolnelektury/views.py:117 wolnelektury/views.py:157
 #, python-format
 msgid "Already logged in as user %(user)s"
 msgstr "Zalogowano jako %(user)s"
 
-#: wolnelektury/views.py:122
+#: wolnelektury/views.py:171
 msgid "You have to be logged in to continue"
 msgstr "Zaloguj się, aby kontynuować"
+
+#~ msgid "Advanced search"
+#~ msgstr "Wyszukiwanie zaawansowane"
 
 #~ msgid "See motifs catalog"
 #~ msgstr "Zobacz katalog motywów"
@@ -571,8 +586,8 @@ msgstr "Zaloguj się, aby kontynuować"
 #~ "\n"
 #~ "\t\t\t\tModern Poland Foundation, 00-514 Warsaw, ul. Marszałkowska 84/92 "
 #~ "lok. 125, tel/fax: (22) 621-30-17\n"
-#~ "                e-mail: <a href=\"mailto:fundacja@nowoczesnapolska.org.pl"
-#~ "\">fundacja@nowoczesnapolska.org.pl</a>\n"
+#~ "                e-mail: <a href=\"mailto:fundacja@nowoczesnapolska.org."
+#~ "pl\">fundacja@nowoczesnapolska.org.pl</a>\n"
 #~ "\t\t\t\t"
 #~ msgstr ""
 #~ "\n"
@@ -1158,16 +1173,16 @@ msgstr "Zaloguj się, aby kontynuować"
 
 #~ msgid ""
 #~ "\n"
-#~ "\t\t\tInternet library with school readings “Wolne Lektury” (<a href="
-#~ "\"http://wolnelektury.pl\">www.wolnelektury.pl</a>) is a project made by "
-#~ "Modern Poland Foundation. It started in 2007 and shares school readings, "
-#~ "which are recommended by Ministry of National Education and are in public "
-#~ "domain.\n"
+#~ "\t\t\tInternet library with school readings “Wolne Lektury” (<a "
+#~ "href=\"http://wolnelektury.pl\">www.wolnelektury.pl</a>) is a project "
+#~ "made by Modern Poland Foundation. It started in 2007 and shares school "
+#~ "readings, which are recommended by Ministry of National Education and are "
+#~ "in public domain.\n"
 #~ "\t\t\t"
 #~ msgstr ""
 #~ "\n"
-#~ "Biblioteka internetowa z lekturami szkolnymi „Wolne Lektury” (<a href="
-#~ "\"http://wolnelektury.pl\">www.wolnelektury.pl</a>) to projekt "
+#~ "Biblioteka internetowa z lekturami szkolnymi „Wolne Lektury” (<a "
+#~ "href=\"http://wolnelektury.pl\">www.wolnelektury.pl</a>) to projekt "
 #~ "realizowany przez fundację Nowoczesna Polska. Działa od 2007 roku i "
 #~ "udostępnia w swoich zbiorach lektury szkolne, które są zalecane do użytku "
 #~ "przez Ministerstwo Edukacji Narodowej i które trafiły już do domeny "
@@ -1175,8 +1190,9 @@ msgstr "Zaloguj się, aby kontynuować"
 
 #~ msgid ""
 #~ "\n"
-#~ "Portions of this page are modifications based on work created and <a href="
-#~ "\"http://code.google.com/policies.html\">shared by Google</a> and used\n"
+#~ "Portions of this page are modifications based on work created and <a "
+#~ "href=\"http://code.google.com/policies.html\">shared by Google</a> and "
+#~ "used\n"
 #~ "according to terms described in the <a href=\"http://creativecommons.org/"
 #~ "licenses/by/3.0/\">Creative Commons\n"
 #~ "3.0 Attribution License</a>.\n"

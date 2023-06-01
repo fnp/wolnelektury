@@ -14,9 +14,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
-"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
-"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && "
+"(n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && "
+"n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 "X-Generator: Poedit 2.3\n"
 
 #: annoy/models.py:11
@@ -51,7 +51,7 @@ msgstr "etykieta otwierania"
 msgid "close label"
 msgstr "etykieta zamykania"
 
-#: annoy/models.py:27 annoy/models.py:106
+#: annoy/models.py:27 annoy/models.py:110
 msgid "text"
 msgstr "tekst"
 
@@ -87,23 +87,27 @@ msgstr "widoczny dla członków klubu"
 msgid "staff preview"
 msgstr "podgląd tylko dla zespołu"
 
-#: annoy/models.py:39
+#: annoy/models.py:37
+msgid "only for authenticated users"
+msgstr ""
+
+#: annoy/models.py:40
 msgid "banner"
 msgstr "banner"
 
-#: annoy/models.py:40
+#: annoy/models.py:41
 msgid "banners"
 msgstr "bannery"
 
-#: annoy/models.py:78
+#: annoy/models.py:82
 msgid "pararaphs"
 msgstr "akapity"
 
-#: annoy/models.py:82
+#: annoy/models.py:86
 msgid "dynamic insert"
 msgstr "dynamiczna wstawka"
 
-#: annoy/models.py:83
+#: annoy/models.py:87
 msgid "dynamic inserts"
 msgstr "dynamiczne wstawki"
 

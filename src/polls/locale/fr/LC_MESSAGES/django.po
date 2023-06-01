@@ -57,10 +57,10 @@ msgstr ""
 msgid "vote items"
 msgstr ""
 
-#: polls/templates/polls/poll.html:11
+#: polls/templates/polls/poll.html:12
 msgid "Thanks for voting! You can see current results below."
 msgstr ""
 
-#: polls/templates/polls/tags/poll.html:23
+#: polls/templates/polls/tags/poll.html:24
 msgid "Submit"
 msgstr ""

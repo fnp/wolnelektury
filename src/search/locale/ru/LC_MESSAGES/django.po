@@ -16,15 +16,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: forms.py:11 templates/newsearch/search.html:16
+#: search/forms.py:14 search/templates/newsearch/search.html:16
+#: search/templates/search_/search.html:7
 msgid "Search"
 msgstr "Поиск"
 
-#: forms.py:21
+#: search/forms.py:24
 #, fuzzy
 #| msgid "title, author, theme/topic, epoch, kind, genre, phrase"
 msgid "title, author, epoch, kind, genre, phrase"
 msgstr "название, автор, тема/сюжет, епоха, вид, жанр, фраза"
+
+#: search/templates/search_/search.html:27
+msgid "Did you mean"
+msgstr ""
 
 #~ msgid "book"
 #~ msgstr "книга"

@@ -63,20 +63,14 @@ msgstr "заготовка книжки"
 msgid "book stubs"
 msgstr "заготовки книжок"
 
-#: pdcounter/templates/pdcounter/author_detail.html:7
-#: pdcounter/templates/pdcounter/book_stub_detail.html:7
-msgid "Public domain counter"
-msgstr ""
-
-#: pdcounter/templates/pdcounter/author_detail.html:26
-msgid "Read article about this author on Wikipedia"
-msgstr "Прочитати статтю про автора у Вікіпедії"
-
+#: pdcounter/templates/pdcounter/2022/author_detail.html:27
 #: pdcounter/templates/pdcounter/author_detail.html:33
 #: pdcounter/templates/pdcounter/pd_author_box.html:9
 msgid "This author's works are copyrighted."
 msgstr "Твори цього автора охороняються авторським правом."
 
+#: pdcounter/templates/pdcounter/2022/author_detail.html:28
+#: pdcounter/templates/pdcounter/2022/author_detail.html:40
 #: pdcounter/templates/pdcounter/author_detail.html:34
 #: pdcounter/templates/pdcounter/author_detail.html:46
 #: pdcounter/templates/pdcounter/pd_author_box.html:10
@@ -89,6 +83,7 @@ msgstr ""
 "publiczna/'>Дізнайтеся</a>, чому електронні бібліотеки не можуть "
 "опублікувати творів цього автора."
 
+#: pdcounter/templates/pdcounter/2022/author_detail.html:32
 #: pdcounter/templates/pdcounter/author_detail.html:38
 #: pdcounter/templates/pdcounter/pd_author_box.html:14
 #, fuzzy
@@ -99,6 +94,7 @@ msgstr ""
 "Твори цього автора є частиною суспільного надбання і скоро будуть "
 "опубліковані у шкільній електронній бібліотеці Wolne Lektury."
 
+#: pdcounter/templates/pdcounter/2022/author_detail.html:36
 #: pdcounter/templates/pdcounter/author_detail.html:42
 msgid ""
 "This author's works will become part of public domain and will be allowed to "
@@ -107,6 +103,7 @@ msgstr ""
 "Твори цього автора стануть частиною суспільного надбання і можна буде їх "
 "вільно публікувати у"
 
+#: pdcounter/templates/pdcounter/2022/book_detail.html:31
 #: pdcounter/templates/pdcounter/book_stub_detail.html:16
 #, fuzzy
 msgid ""
@@ -116,6 +113,7 @@ msgstr ""
 "Цей твір є частиною суспільного надбання і скоро буде опублікований у "
 "шкільній електронній бібліотеці Wolne Lektury."
 
+#: pdcounter/templates/pdcounter/2022/book_detail.html:35
 #: pdcounter/templates/pdcounter/book_stub_detail.html:20
 msgid ""
 "This work will become part of public domain and will be allowed to be "
@@ -124,6 +122,8 @@ msgstr ""
 "Цей твір стане частиною суспільного надбання і можна буде його вільно "
 "публікувати у"
 
+#: pdcounter/templates/pdcounter/2022/book_detail.html:39
+#: pdcounter/templates/pdcounter/2022/book_detail.html:44
 #: pdcounter/templates/pdcounter/book_stub_detail.html:24
 #: pdcounter/templates/pdcounter/book_stub_detail.html:29
 msgid ""
@@ -134,9 +134,19 @@ msgstr ""
 "publiczna/'>Дізнайтеся</a>, чому електронні бібліотеки не можуть "
 "опублікувати цього твору."
 
+#: pdcounter/templates/pdcounter/2022/book_detail.html:43
 #: pdcounter/templates/pdcounter/book_stub_detail.html:28
 msgid "This work is copyrighted."
 msgstr "Цей твір охороняється авторським правом."
+
+#: pdcounter/templates/pdcounter/author_detail.html:7
+#: pdcounter/templates/pdcounter/book_stub_detail.html:7
+msgid "Public domain counter"
+msgstr ""
+
+#: pdcounter/templates/pdcounter/author_detail.html:26
+msgid "Read article about this author on Wikipedia"
+msgstr "Прочитати статтю про автора у Вікіпедії"
 
 #: pdcounter/templates/pdcounter/pd_author_box.html:18
 #, fuzzy

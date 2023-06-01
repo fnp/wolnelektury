@@ -16,748 +16,771 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Translated-Using: django-rosetta 0.5.6\n"
 
-#: constants.py:9
+#: catalogue/constants.py:9
 msgid "Creative Commons Attribution-ShareAlike 3.0 Unported"
-msgstr "Creative Commons Attribution-ShareAlike 3.0 Непортировання лицензия и условия использования "
+msgstr ""
+"Creative Commons Attribution-ShareAlike 3.0 Непортировання лицензия и "
+"условия использования "
 
-#: constants.py:14
+#: catalogue/constants.py:14
 msgid "Free Art License 1.3"
 msgstr "Лицензия Free Art 1.3 "
 
-#: constants.py:60
+#: catalogue/constants.py:60
 #, fuzzy
 #| msgid "author"
 msgid "authors"
 msgstr "авторы"
 
-#: constants.py:61
+#: catalogue/constants.py:61
 #, fuzzy
 #| msgid "epoch"
 msgid "epochs"
 msgstr "эпохи"
 
-#: constants.py:62
+#: catalogue/constants.py:62
 #, fuzzy
 #| msgid "kind"
 msgid "kinds"
 msgstr "виды"
 
-#: constants.py:63
+#: catalogue/constants.py:63
 #, fuzzy
 #| msgid "genre"
 msgid "genres"
 msgstr "жанры"
 
-#: constants.py:64
+#: catalogue/constants.py:64
 #, fuzzy
 #| msgid "theme"
 msgid "themes"
 msgstr "темы"
 
-#: constants.py:65
+#: catalogue/constants.py:65
 msgid "sets"
 msgstr "полки"
 
-#: constants.py:66
+#: catalogue/constants.py:66
 msgid "things"
 msgstr "предметы"
 
-#: constants.py:70
+#: catalogue/constants.py:70
 #, fuzzy
 #| msgid "author"
 msgid "All authors"
 msgstr "Все авторы"
 
-#: constants.py:71
+#: catalogue/constants.py:71
 #, fuzzy
 #| msgid "epoch"
 msgid "All epochs"
 msgstr "Все эпохи"
 
-#: constants.py:72
+#: catalogue/constants.py:72
 #, fuzzy
 #| msgid "kind"
 msgid "All kinds"
 msgstr "Все виды"
 
-#: constants.py:73
+#: catalogue/constants.py:73
 #, fuzzy
 #| msgid "genre"
 msgid "All genres"
 msgstr "Все жанры"
 
-#: constants.py:74
+#: catalogue/constants.py:74
 #, fuzzy
 #| msgid "theme"
 msgid "All themes"
 msgstr "Все темы"
 
-#: constants.py:75
+#: catalogue/constants.py:75
 #, fuzzy
 #| msgid "collections"
 msgid "All sets"
 msgstr "Все полки"
 
-#: constants.py:76
+#: catalogue/constants.py:76
 #, fuzzy
 #| msgid "collections"
 msgid "All things"
 msgstr "Все предметы"
 
-#: forms.py:29
+#: catalogue/forms.py:29
 msgid "Please supply an XML."
 msgstr "Задайте, пожалуйста, XML."
 
-#: forms.py:51
+#: catalogue/forms.py:51
 msgid "Don't show footnotes"
 msgstr "Не показывать сноски"
 
-#: forms.py:52
+#: catalogue/forms.py:52
 msgid "Don't disply themes"
 msgstr "Не показывать темы"
 
-#: forms.py:53
+#: catalogue/forms.py:53
 msgid "Don't use our custom font"
 msgstr "Не используйте наш специальный шрифт"
 
-#: forms.py:54
+#: catalogue/forms.py:54
 msgid "Without cover"
 msgstr "Без обложки"
 
-#: forms.py:55
+#: catalogue/forms.py:55
 #, fuzzy
 #| msgid "Table of contents"
 msgid "Without table of contents"
 msgstr "Без оглавления"
 
-#: forms.py:58
+#: catalogue/forms.py:58
 msgid "Leading"
 msgstr "Интервал"
 
-#: forms.py:59
+#: catalogue/forms.py:59
 msgid "Normal leading"
 msgstr "Нормальный интервал"
 
-#: forms.py:60
+#: catalogue/forms.py:60
 msgid "One and a half leading"
 msgstr "Интервал 1,5"
 
-#: forms.py:61
+#: catalogue/forms.py:61
 msgid "Double leading"
 msgstr "Двойной интервал"
 
-#: forms.py:63
+#: catalogue/forms.py:63
 msgid "Font size"
 msgstr "Размер шрифта"
 
-#: forms.py:64
+#: catalogue/forms.py:64
 msgid "Default"
 msgstr "По умолчанию"
 
-#: forms.py:65
+#: catalogue/forms.py:65
 msgid "Big"
 msgstr "Крупный"
 
-#: forms.py:66
+#: catalogue/forms.py:66
 msgid "Bigger"
 msgstr "Увеличеный"
 
-#: forms.py:88
+#: catalogue/forms.py:88
 msgid "Queue is full. Please try again later."
 msgstr "Очередь заполнена. Просим попробовать позже"
 
-#: models/book.py:58 models/collection.py:14
+#: catalogue/models/book.py:37 catalogue/models/collection.py:14
 msgid "title"
 msgstr "заглавие"
 
-#: models/book.py:59 models/tag.py:58
+#: catalogue/models/book.py:38 catalogue/models/tag.py:58
 msgid "sort key"
 msgstr "ключ сортировки "
 
-#: models/book.py:61
+#: catalogue/models/book.py:40
 #, fuzzy
 #| msgid "Results by authors"
 msgid "sort key by author"
 msgstr "Результаты по авторам"
 
-#: models/book.py:62 models/book.py:63 models/collection.py:15 models/tag.py:57
+#: catalogue/models/book.py:41 catalogue/models/book.py:42
+#: catalogue/models/collection.py:15 catalogue/models/tag.py:57
 msgid "slug"
 msgstr "slug"
 
-#: models/book.py:64
+#: catalogue/models/book.py:43
 msgid "language code"
 msgstr "код языка"
 
-#: models/book.py:65 models/book.py:403 models/collection.py:16
-#: models/tag.py:61 models/tag.py:137
+#: catalogue/models/book.py:44 catalogue/models/book.py:399
+#: catalogue/models/collection.py:16 catalogue/models/tag.py:61
+#: catalogue/models/tag.py:171
 msgid "description"
 msgstr "описание"
 
-#: models/book.py:66
+#: catalogue/models/book.py:45
 msgid "abstract"
 msgstr "кратко"
 
-#: models/book.py:67 models/bookmedia.py:40 models/tag.py:73 models/tag.py:74
+#: catalogue/models/book.py:46
+msgid "toc"
+msgstr ""
+
+#: catalogue/models/book.py:47 catalogue/models/bookmedia.py:43
+#: catalogue/models/tag.py:73 catalogue/models/tag.py:74
 msgid "creation date"
 msgstr "дата создания"
 
-#: models/book.py:68
+#: catalogue/models/book.py:48
 #, fuzzy
 #| msgid "creation date"
 msgid "change date"
 msgstr "дата изменения"
 
-#: models/book.py:69
+#: catalogue/models/book.py:49
 msgid "parent number"
 msgstr "номер родительской директории"
 
-#: models/book.py:70 models/bookmedia.py:43
+#: catalogue/models/book.py:50 catalogue/models/bookmedia.py:46
 msgid "extra information"
 msgstr "дополнительная информация"
 
-#: models/book.py:73
+#: catalogue/models/book.py:53
 msgid "print on demand"
 msgstr "печать по запросу"
 
-#: models/book.py:74 models/collection.py:23
+#: catalogue/models/book.py:54 catalogue/models/collection.py:28
 msgid "recommended"
 msgstr "рокомендуемые"
 
-#: models/book.py:75
+#: catalogue/models/book.py:55
 msgid "audio length"
 msgstr "продолжительность аудио"
 
-#: models/book.py:76
+#: catalogue/models/book.py:56
 msgid "preview"
 msgstr "предпросмотр"
 
-#: models/book.py:77
+#: catalogue/models/book.py:57
 msgid "preview until"
 msgstr "предпросмотр до"
 
-#: models/book.py:79
+#: catalogue/models/book.py:59
 msgid "findable"
 msgstr ""
 
-#: models/book.py:83
+#: catalogue/models/book.py:70
 msgid "cover"
 msgstr "обложка"
 
-#: models/book.py:90
+#: catalogue/models/book.py:72
+#, fuzzy
+#| msgid "cover"
+msgid "clean cover"
+msgstr "обложка"
+
+#: catalogue/models/book.py:73
 msgid "cover thumbnail"
 msgstr "миниатюра обложки"
 
-#: models/book.py:96
+#: catalogue/models/book.py:75
 msgid "cover thumbnail for mobile app"
 msgstr "миниатюра обложки для мобильных приложений"
 
-#: models/book.py:102
+#: catalogue/models/book.py:76
 msgid "cover for mobile app"
 msgstr "обложка для мобильных приложений"
 
-#: models/book.py:108
+#: catalogue/models/book.py:78
 msgid "cover for Ebookpoint"
 msgstr "обложка для Ebookpoint"
 
-#: models/book.py:137 models/collection.py:19
+#: catalogue/models/book.py:106 catalogue/models/collection.py:24
 msgid "book"
 msgstr "книга"
 
-#: models/book.py:138
+#: catalogue/models/book.py:107
 msgid "books"
 msgstr "книги"
 
-#: models/book.py:575
+#: catalogue/models/book.py:620
 #, fuzzy, python-format
 msgid "Book \"%s\" does not exist."
 msgstr "Книга \"%s\"  не найдена."
 
-#: models/book.py:591
+#: catalogue/models/book.py:636
 #, python-format
 msgid "Book %s already exists"
 msgstr "Книга %s уже есть"
 
-#: models/book.py:903
+#: catalogue/models/book.py:954
 msgid "This work needs modernisation"
 msgstr "Работа нуждается в изменении"
 
-#: models/book.py:993 models/bookmedia.py:33
+#: catalogue/models/bookmedia.py:35
 #, fuzzy, python-format
 msgid "%s file"
 msgstr "XML файл"
 
-#: models/bookmedia.py:35
+#: catalogue/models/bookmedia.py:37
 msgid "type"
 msgstr "тип"
 
-#: models/bookmedia.py:36 models/source.py:11 models/tag.py:56
+#: catalogue/models/bookmedia.py:38 catalogue/models/source.py:11
+#: catalogue/models/tag.py:56
 msgid "name"
 msgstr "название"
 
-#: models/bookmedia.py:37
+#: catalogue/models/bookmedia.py:39
 #, fuzzy
 #| msgid "name"
 msgid "part name"
 msgstr "часть названия"
 
-#: models/bookmedia.py:38
+#: catalogue/models/bookmedia.py:40
 msgid "index"
 msgstr "индекс"
 
-#: models/bookmedia.py:39
+#: catalogue/models/bookmedia.py:41
 #, fuzzy
 msgid "file"
 msgstr "XML файл"
 
-#: models/bookmedia.py:52 models/bookmedia.py:53
+#: catalogue/models/bookmedia.py:55 catalogue/models/bookmedia.py:56
 msgid "book media"
 msgstr "аудиокнига"
 
-#: models/collection.py:17
+#: catalogue/models/collection.py:17
 #, fuzzy
 msgid "book slugs"
 msgstr "анонсы книги"
 
-#: models/collection.py:18 models/tag.py:23
-#: templates/catalogue/search_multiple_hits.html:53
+#: catalogue/models/collection.py:23 catalogue/models/tag.py:23
+#: catalogue/templates/catalogue/search_multiple_hits.html:53
 msgid "kind"
 msgstr "форма"
 
-#: models/collection.py:19
+#: catalogue/models/collection.py:24
 msgid "picture"
 msgstr "картинка"
 
-#: models/collection.py:20
+#: catalogue/models/collection.py:25
 #, fuzzy
 #| msgid "Listen"
 msgid "listed"
 msgstr "Послушать"
 
-#: models/collection.py:28
+#: catalogue/models/collection.py:33
 msgid "collection"
 msgstr "коллекция"
 
-#: models/collection.py:29
+#: catalogue/models/collection.py:34
 msgid "collections"
 msgstr "коллекции"
 
-#: models/fragment.py:28
+#: catalogue/models/fragment.py:28
 msgid "fragment"
 msgstr "отрывок"
 
-#: models/fragment.py:29
+#: catalogue/models/fragment.py:29
 msgid "fragments"
 msgstr "отрывки"
 
-#: models/source.py:10
+#: catalogue/models/source.py:10
 #, fuzzy
 #| msgid "extra information"
 msgid "network location"
 msgstr "дополнительная информация"
 
-#: models/source.py:15
+#: catalogue/models/source.py:15
 #, fuzzy
 #| msgid "Source"
 msgid "source"
 msgstr "источник"
 
-#: models/source.py:16
+#: catalogue/models/source.py:16
 #, fuzzy
 #| msgid "Source"
 msgid "sources"
 msgstr "источники"
 
-#: models/tag.py:21
+#: catalogue/models/tag.py:21
 msgid "author"
 msgstr "автор"
 
-#: models/tag.py:22 templates/catalogue/search_multiple_hits.html:39
+#: catalogue/models/tag.py:22
+#: catalogue/templates/catalogue/search_multiple_hits.html:39
 msgid "epoch"
 msgstr "эпоха"
 
-#: models/tag.py:24
+#: catalogue/models/tag.py:24
 msgid "genre"
 msgstr "жанр"
 
-#: models/tag.py:25
+#: catalogue/models/tag.py:25
 msgid "theme"
 msgstr "тема"
 
-#: models/tag.py:26
+#: catalogue/models/tag.py:26
 msgid "set"
 msgstr "полка"
 
-#: models/tag.py:27
+#: catalogue/models/tag.py:27
 msgid "thing"
 msgstr "предмет"
 
-#: models/tag.py:33 models/tag.py:99
+#: catalogue/models/tag.py:33 catalogue/models/tag.py:124
 msgid "tag"
 msgstr "тег"
 
-#: models/tag.py:34
+#: catalogue/models/tag.py:34
 msgid "content type"
 msgstr "тип содержимого"
 
-#: models/tag.py:35
+#: catalogue/models/tag.py:35
 msgid "object id"
 msgstr "ID объекта"
 
-#: models/tag.py:60
+#: catalogue/models/tag.py:60
 msgid "category"
 msgstr "категория"
 
-#: models/tag.py:100
+#: catalogue/models/tag.py:125
 msgid "tags"
 msgstr "теги"
 
-#: templates/catalogue/book_detail.html:24
-#: templates/catalogue/book_text.html:35
+#: catalogue/templates/catalogue/book_detail.html:24
+#: catalogue/templates/catalogue/book_text.html:35
 #, fuzzy
 #| msgid "Other resources"
 msgid "Other versions"
 msgstr "другие варианты"
 
-#: templates/catalogue/book_detail.html:34
+#: catalogue/templates/catalogue/book_detail.html:34
 msgid "See also"
 msgstr "Подробнее"
 
-#: templates/catalogue/book_detail.html:41
-#: templates/catalogue/book_text.html:48 templates/catalogue/book_text.html:67
-#: templates/catalogue/tagged_object_list.html:20
+#: catalogue/templates/catalogue/book_detail.html:41
+#: catalogue/templates/catalogue/book_text.html:48
+#: catalogue/templates/catalogue/book_text.html:67
+#: catalogue/templates/catalogue/tagged_object_list.html:20
 msgid "Themes"
 msgstr "Темы"
 
-#: templates/catalogue/book_detail.html:47
+#: catalogue/templates/catalogue/book_detail.html:47
 msgid "Information about the work"
 msgstr "Информация о работе"
 
-#: templates/catalogue/book_detail.html:62
-#: templates/catalogue/book_detail.html:68
+#: catalogue/templates/catalogue/book_detail.html:62
+#: catalogue/templates/catalogue/book_detail.html:68
 msgid "Source"
 msgstr "Источник"
 
-#: templates/catalogue/book_detail.html:62
-#: templates/catalogue/book_detail.html:68
+#: catalogue/templates/catalogue/book_detail.html:62
+#: catalogue/templates/catalogue/book_detail.html:68
 msgid "of the book"
 msgstr "данной книги"
 
-#: templates/catalogue/book_detail.html:63
-#: templates/catalogue/book_detail.html:69
+#: catalogue/templates/catalogue/book_detail.html:63
+#: catalogue/templates/catalogue/book_detail.html:69
 #, fuzzy
 #| msgid "kind"
 msgid "in"
 msgstr "вид"
 
-#: templates/catalogue/book_detail.html:74
+#: catalogue/templates/catalogue/book_detail.html:74
 msgid "Source XML file"
 msgstr "Исходный файл"
 
-#: templates/catalogue/book_detail.html:78
+#: catalogue/templates/catalogue/book_detail.html:78
 msgid "Book on"
 msgstr "Книга на"
 
-#: templates/catalogue/book_detail.html:78
+#: catalogue/templates/catalogue/book_detail.html:78
 msgid "Editor's Platform"
 msgstr "Платформа редакторов"
 
-#: templates/catalogue/book_detail.html:83
+#: catalogue/templates/catalogue/book_detail.html:83
 msgid "Book description on Wikipedia"
 msgstr "Описание книги на Wikipedia"
 
-#: templates/catalogue/book_detail.html:87
+#: catalogue/templates/catalogue/book_detail.html:87
 msgid "Mix this book"
 msgstr "данной книги"
 
-#: templates/catalogue/book_fragments.html:6
-#: templates/catalogue/book_fragments.html:12
+#: catalogue/templates/catalogue/book_fragments.html:6
+#: catalogue/templates/catalogue/book_fragments.html:12
 msgid "Theme"
 msgstr "Вид"
 
-#: templates/catalogue/book_fragments.html:6
-#: templates/catalogue/book_fragments.html:14
+#: catalogue/templates/catalogue/book_fragments.html:6
+#: catalogue/templates/catalogue/book_fragments.html:14
 msgid "in work "
 msgstr "в работе"
 
-#: templates/catalogue/book_info.html:28
+#: catalogue/templates/catalogue/book_info.html:28
 #, fuzzy
 msgid "Resource prepared based on:"
 msgstr "Текст подготовлен на основе:"
 
-#: templates/catalogue/book_info.html:38
+#: catalogue/templates/catalogue/book_info.html:38
 msgid "Edited by:"
 msgstr "Редактор"
 
-#: templates/catalogue/book_info.html:40
+#: catalogue/templates/catalogue/book_info.html:40
 msgid "Edited and annotated by:"
 msgstr "Под редакцией и с комментариями:"
 
-#: templates/catalogue/book_info.html:48
+#: catalogue/templates/catalogue/book_info.html:48
 msgid "Publisher:"
 msgstr "Издатель"
 
-#: templates/catalogue/book_info.html:55
+#: catalogue/templates/catalogue/book_info.html:55
 msgid "Publication funded by:"
 msgstr "Издано при поддержке"
 
-#: templates/catalogue/book_info.html:62
+#: catalogue/templates/catalogue/book_info.html:62
 msgid "Cover image by:"
 msgstr "Автор изображения на обложке"
 
-#: templates/catalogue/book_list.html:8 templates/catalogue/book_list.html:12
-#: templates/catalogue/picture_list.html:8
-#: templates/catalogue/picture_list.html:10
+#: catalogue/templates/catalogue/book_list.html:8
+#: catalogue/templates/catalogue/book_list.html:12
+#: catalogue/templates/catalogue/picture_list.html:8
+#: catalogue/templates/catalogue/picture_list.html:10
 msgid "Listing of all works"
 msgstr "Список работ"
 
-#: templates/catalogue/book_list.html:25
+#: catalogue/templates/catalogue/book_list.html:25
 msgid "Table of Content"
 msgstr "Оглавление"
 
-#: templates/catalogue/book_list.html:35
+#: catalogue/templates/catalogue/book_list.html:35
 msgid "↑ top ↑"
 msgstr "↑ топ ↑"
 
-#: templates/catalogue/book_short.html:53
-#: templates/catalogue/picture_detail.html:52
+#: catalogue/templates/catalogue/book_short.html:53
+#: catalogue/templates/catalogue/picture_detail.html:52
 msgid "Epoch"
 msgstr "Эпоха"
 
-#: templates/catalogue/book_short.html:61
-#: templates/catalogue/picture_detail.html:58
+#: catalogue/templates/catalogue/book_short.html:61
+#: catalogue/templates/catalogue/picture_detail.html:58
 msgid "Kind"
 msgstr "Вид"
 
-#: templates/catalogue/book_short.html:69
+#: catalogue/templates/catalogue/book_short.html:69
 msgid "Genre"
 msgstr "Жанр"
 
-#: templates/catalogue/book_short.html:79
+#: catalogue/templates/catalogue/book_short.html:79
 msgid "Region"
 msgstr "Регион"
 
-#: templates/catalogue/book_short.html:87
+#: catalogue/templates/catalogue/book_short.html:87
 #, fuzzy
 #| msgid "language code"
 msgid "Language"
 msgstr "Код языка"
 
-#: templates/catalogue/book_short.html:112
+#: catalogue/templates/catalogue/book_short.html:112
 msgid "Read online"
 msgstr "Читать онлайн"
 
-#: templates/catalogue/book_short.html:115
+#: catalogue/templates/catalogue/book_short.html:115
 msgid ""
 "Cena książki w druku cyfrowym jest zależna od liczby stron.<br>Przed zakupem "
 "upewnij się, że cena druku na żądanie jest dla Ciebie odpowiednia."
 "<br>Wszystkie nasze zasoby w wersji elektronicznej są zawsze dostępne "
 "bezpłatnie."
 msgstr ""
-"Цена книги в цифровой печати будет зависеть от количества страниц<br>Перед оплатой "
-"убедись, что цена книги на заказ отвечает твоим возможностям."
-"<br>Все наши материалы всегда доступны в электронном варианте"
-"бесплатно."
-#: templates/catalogue/book_short.html:115
+"Цена книги в цифровой печати будет зависеть от количества страниц<br>Перед "
+"оплатой убедись, что цена книги на заказ отвечает твоим возможностям.<br>Все "
+"наши материалы всегда доступны в электронном вариантебесплатно."
+
+#: catalogue/templates/catalogue/book_short.html:115
 msgid "Print on demand –"
 msgstr "Печать по запросу"
 
-#: templates/catalogue/book_short.html:121
+#: catalogue/templates/catalogue/book_short.html:121
 #, fuzzy
 #| msgid "Download as"
 msgid "Download an ebook"
 msgstr "Скачать электронную книгу"
 
-#: templates/catalogue/book_short.html:140
+#: catalogue/templates/catalogue/book_short.html:140
 #, fuzzy
 #| msgid "Download as"
 msgid "Download audiobook"
 msgstr "Скачать аудиокнигу"
 
-#: templates/catalogue/book_short.html:152
+#: catalogue/templates/catalogue/book_short.html:152
 msgid "For now this work is only available for our subscribers."
 msgstr "Этот материал доступен только для подписчиков"
 
-#: templates/catalogue/book_text.html:24
+#: catalogue/templates/catalogue/book_text.html:24
 msgid "Click to download"
 msgstr "Выбери скачать"
 
-#: templates/catalogue/book_text.html:42
+#: catalogue/templates/catalogue/book_text.html:42
 msgid "Table of contents"
 msgstr "Оглавление"
 
-#: templates/catalogue/book_text.html:54
+#: catalogue/templates/catalogue/book_text.html:54
 msgid "Edit. note"
 msgstr "Изменить примечание"
 
-#: templates/catalogue/book_text.html:60
+#: catalogue/templates/catalogue/book_text.html:60
 msgid "Infobox"
 msgstr "Инфобокс"
 
-#: templates/catalogue/book_text.html:65
+#: catalogue/templates/catalogue/book_text.html:65
 msgid "Numbering"
 msgstr "Номера страниц"
 
-#: templates/catalogue/book_text.html:69
+#: catalogue/templates/catalogue/book_text.html:69
 #, fuzzy
 #| msgid "Don't show footnotes"
 msgid "Footnotes"
 msgstr "Не показывать сноски"
 
-#: templates/catalogue/book_text.html:71
+#: catalogue/templates/catalogue/book_text.html:71
 msgid "References"
 msgstr "Референсы"
 
-#: templates/catalogue/book_text.html:97
-#: templates/catalogue/viewer_base.html:54
+#: catalogue/templates/catalogue/book_text.html:97
+#: catalogue/templates/catalogue/viewer_base.html:54
 msgid "Close"
 msgstr "Закрыть"
 
-#: templates/catalogue/book_text.html:98
+#: catalogue/templates/catalogue/book_text.html:98
 msgid "Please wait..."
 msgstr "Пожалуйста, подождите..."
 
-#: templates/catalogue/book_text.html:158
+#: catalogue/templates/catalogue/book_text.html:167
 msgid "Other versions of the book"
 msgstr "Другие версии книги"
 
-#: templates/catalogue/book_text.html:159
+#: catalogue/templates/catalogue/book_text.html:168
 msgid "Close the other version"
 msgstr "Закройте другие версии"
 
-#: templates/catalogue/catalogue.html:6
+#: catalogue/templates/catalogue/catalogue.html:6
 msgid "Catalogue"
 msgstr "Каталог"
 
-#: templates/catalogue/catalogue.html:11
-#: templates/catalogue/tagged_object_list.html:57
+#: catalogue/templates/catalogue/catalogue.html:11
+#: catalogue/templates/catalogue/tagged_object_list.html:57
 #, fuzzy
 #| msgid "All books"
 msgid "All works"
 msgstr "Все книги"
 
-#: templates/catalogue/catalogue.html:15
+#: catalogue/templates/catalogue/catalogue.html:15
 msgid "Download the catalogue in PDF format."
 msgstr "Скачать каталог в PDF формате."
 
-#: templates/catalogue/catalogue.html:19
-#: templates/catalogue/tag_list_split.html:4
-#: templates/catalogue/tagged_object_list.html:5
+#: catalogue/templates/catalogue/catalogue.html:19
+#: catalogue/templates/catalogue/tag_list_split.html:4
+#: catalogue/templates/catalogue/tagged_object_list.html:5
 msgid "Literature"
 msgstr "Литература"
 
-#: templates/catalogue/catalogue.html:22 templates/catalogue/collections.html:5
-#: templates/catalogue/collections.html:10
+#: catalogue/templates/catalogue/catalogue.html:22
+#: catalogue/templates/catalogue/collections.html:5
+#: catalogue/templates/catalogue/collections.html:10
 #, fuzzy
 msgid "Collections"
 msgstr "Коллекции"
 
-#: templates/catalogue/catalogue.html:25
-#: templates/catalogue/search_multiple_hits.html:117
-#: templates/catalogue/tag_list_split.html:9
-#: templates/catalogue/tagged_object_list.html:5
+#: catalogue/templates/catalogue/catalogue.html:25
+#: catalogue/templates/catalogue/search_multiple_hits.html:117
+#: catalogue/templates/catalogue/tag_list_split.html:9
+#: catalogue/templates/catalogue/tagged_object_list.html:5
 #, fuzzy
 #| msgid "Artist"
 msgid "Art"
 msgstr "Чтец"
 
-#: templates/catalogue/collections.html:16
+#: catalogue/templates/catalogue/collections.html:16
 #, fuzzy
 #| msgid "collections"
 msgid "All collections"
 msgstr "Все коллекции"
 
-#: templates/catalogue/custom_pdf_form.html:5 views.py:408
+#: catalogue/templates/catalogue/custom_pdf_form.html:5 catalogue/views.py:448
 msgid "Download custom PDF"
 msgstr "Скачать PDF"
 
-#: templates/catalogue/custom_pdf_form.html:18 views.py:409
+#: catalogue/templates/catalogue/custom_pdf_form.html:12
+#: catalogue/templates/catalogue/custom_pdf_form.html:22 catalogue/views.py:449
 msgid "Download"
 msgstr "Загрузить"
 
-#: templates/catalogue/daisy_list.html:7 templates/catalogue/daisy_list.html:15
+#: catalogue/templates/catalogue/daisy_list.html:7
+#: catalogue/templates/catalogue/daisy_list.html:15
 msgid "Listing of all DAISY files"
 msgstr "Список всех DAISY файлов"
 
-#: templates/catalogue/daisy_list.html:11
+#: catalogue/templates/catalogue/daisy_list.html:11
 msgid "Latest DAISY audiobooks"
 msgstr "Последние DAISY аудиокниги"
 
-#: templates/catalogue/differentiate_tags.html:12
+#: catalogue/templates/catalogue/differentiate_tags.html:12
 msgid "The criteria are ambiguous. Please select one of the following options:"
 msgstr ""
 "Критерия являются неоднозначными. Пожалуйста, выберите один из следующих "
 "вариантов:"
 
-#: templates/catalogue/fragment_short.html:12
+#: catalogue/templates/catalogue/fragment_short.html:12
 msgid "Expand fragment"
 msgstr "Увеличить фрагмент"
 
-#: templates/catalogue/fragment_short.html:22
+#: catalogue/templates/catalogue/fragment_short.html:22
 msgid "Hide fragment"
 msgstr "Скрыть фрагмент"
 
-#: templates/catalogue/inline_tag_list.html:22
+#: catalogue/templates/catalogue/inline_tag_list.html:22
 msgid "Other"
 msgstr "Другое"
 
-#: templates/catalogue/picture_detail.html:29
+#: catalogue/templates/catalogue/picture_detail.html:29
 msgid "Work is licensed under "
 msgstr "Предоставлено по лицензии"
 
-#: templates/catalogue/picture_detail.html:31
+#: catalogue/templates/catalogue/picture_detail.html:31
 msgid "Based on"
 msgstr "Основано на"
 
-#: templates/catalogue/picture_detail.html:43
+#: catalogue/templates/catalogue/picture_detail.html:43
 msgid "Details"
 msgstr "Подробнее"
 
-#: templates/catalogue/picture_detail.html:46
+#: catalogue/templates/catalogue/picture_detail.html:46
 msgid "Author"
 msgstr "Автор"
 
-#: templates/catalogue/picture_detail.html:64
+#: catalogue/templates/catalogue/picture_detail.html:64
 msgid "Other resources"
 msgstr "другие ресурсы"
 
-#: templates/catalogue/picture_detail.html:67
+#: catalogue/templates/catalogue/picture_detail.html:67
 msgid "Source of the image"
 msgstr "Источник картинки"
 
-#: templates/catalogue/picture_detail.html:70
+#: catalogue/templates/catalogue/picture_detail.html:70
 msgid "Image on the Editor's Platform"
 msgstr "Изображение на платформе редакторов"
 
-#: templates/catalogue/picture_detail.html:73
+#: catalogue/templates/catalogue/picture_detail.html:73
 msgid "View XML source"
 msgstr "Просмотр XML-источника"
 
-#: templates/catalogue/picture_detail.html:76
+#: catalogue/templates/catalogue/picture_detail.html:76
 msgid "Work's themes "
 msgstr "Темы работ"
 
-#: templates/catalogue/player.html:12 templates/catalogue/viewer_base.html:11
+#: catalogue/templates/catalogue/player.html:12
+#: catalogue/templates/catalogue/viewer_base.html:11
 msgid "Wolne Lektury"
 msgstr "на WolneLektury.pl"
 
-#: templates/catalogue/player.html:29
+#: catalogue/templates/catalogue/player.html:29
 msgid "Book's page"
 msgstr "Вернуться на страницу книги"
 
-#: templates/catalogue/player.html:30
+#: catalogue/templates/catalogue/player.html:30
 msgid "Download as"
 msgstr "Скачать как"
 
-#: templates/catalogue/player.html:46
+#: catalogue/templates/catalogue/player.html:46
 msgid "Audiobooks were prepared as a part of the projects:"
 msgstr "Аудиокниги были подготовлены в рамках проекта:"
 
-#: templates/catalogue/player.html:51
+#: catalogue/templates/catalogue/player.html:51
 #, python-format
 msgid "%(cs)s, funded by %(fb)s"
 msgstr "%(cs)s, финансируемого %(fb)s"
 
-#: templates/catalogue/player.html:62
+#: catalogue/templates/catalogue/player.html:62
 #, fuzzy, python-format
 #| msgid ""
 #| "Audiobooks were prepared as a part of the %(cs)s project funded by %(fb)s."
@@ -767,197 +790,202 @@ msgid ""
 msgstr ""
 "Аудиокниги были подготовлены в рамках %(cs)s проектa, финансируемого %(fb)s."
 
-#: templates/catalogue/player.html:64
+#: catalogue/templates/catalogue/player.html:64
 #, fuzzy, python-format
 #| msgid "Audiobooks were prepared as a part of the %(cs)s project."
 msgid "Audiobooks were prepared as a part of the <em>%(cs)s</em> project."
 msgstr "Аудиокниги были подготовлены в рамках %(cs)s проектa."
 
-#: templates/catalogue/recent_audiobooks_list.html:5
-#: templates/catalogue/recent_audiobooks_list.html:10
+#: catalogue/templates/catalogue/recent_audiobooks_list.html:5
+#: catalogue/templates/catalogue/recent_audiobooks_list.html:10
 #, fuzzy
 msgid "Recent audiobooks"
 msgstr "Последние MP3 аудиокниги"
 
-#: templates/catalogue/recent_daisy_list.html:5
-#: templates/catalogue/recent_daisy_list.html:10
+#: catalogue/templates/catalogue/recent_daisy_list.html:5
+#: catalogue/templates/catalogue/recent_daisy_list.html:10
 msgid "Recent DAISY files"
 msgstr "Последние обновления DAISY"
 
-#: templates/catalogue/recent_list.html:5
-#: templates/catalogue/recent_list.html:10
+#: catalogue/templates/catalogue/recent_list.html:5
+#: catalogue/templates/catalogue/recent_list.html:10
 #, fuzzy
 msgid "Recent publications"
 msgstr "Последние обновления"
 
-#: templates/catalogue/recent_list.html:15
-#, python-format
+#: catalogue/templates/catalogue/recent_list.html:15
+#, fuzzy, python-format
+#| msgid ""
+#| "You can also see <a href=\"%(a)s\">recent audiobooks</a>\n"
+#| "    and <a href=\"%(d)s\">recent DAISY files</a>."
 msgid ""
 "You can also see <a href=\"%(a)s\">recent audiobooks</a>\n"
-"    and <a href=\"%(d)s\">recent DAISY files</a>."
+"      and <a href=\"%(d)s\">recent DAISY files</a>."
 msgstr ""
 "Посмотри также <a href=\"%(a)s\">последние обновления аудиокниг</a>\n"
 "    and <a href=\"%(d)s\">последние обновления DAISY</a>."
 
-#: templates/catalogue/search_multiple_hits.html:8
-#: templates/catalogue/search_multiple_hits.html:14
-#: templates/catalogue/search_no_hits.html:5
-#: templates/catalogue/search_no_hits.html:10
-#: templates/catalogue/search_too_long.html:5
-#: templates/catalogue/search_too_long.html:10
-#: templates/catalogue/search_too_short.html:5
-#: templates/catalogue/search_too_short.html:10
+#: catalogue/templates/catalogue/search_multiple_hits.html:8
+#: catalogue/templates/catalogue/search_multiple_hits.html:14
+#: catalogue/templates/catalogue/search_no_hits.html:5
+#: catalogue/templates/catalogue/search_no_hits.html:10
+#: catalogue/templates/catalogue/search_too_long.html:5
+#: catalogue/templates/catalogue/search_too_long.html:10
+#: catalogue/templates/catalogue/search_too_short.html:5
+#: catalogue/templates/catalogue/search_too_short.html:10
 msgid "Search"
 msgstr "Поиск"
 
-#: templates/catalogue/search_multiple_hits.html:28
+#: catalogue/templates/catalogue/search_multiple_hits.html:28
 #, fuzzy
 #| msgid "language code"
 msgid "language"
 msgstr "код языка"
 
-#: templates/catalogue/search_multiple_hits.html:85
-#: templates/catalogue/search_no_hits.html:16
+#: catalogue/templates/catalogue/search_multiple_hits.html:85
+#: catalogue/templates/catalogue/search_no_hits.html:16
 msgid "Did you mean"
 msgstr "Вы имели в виду"
 
-#: templates/catalogue/search_multiple_hits.html:104
+#: catalogue/templates/catalogue/search_multiple_hits.html:104
 #, fuzzy
 #| msgid "books"
 msgid "Books"
 msgstr "книги"
 
-#: templates/catalogue/search_no_hits.html:20
-#: templates/catalogue/tagged_object_list.html:66
+#: catalogue/templates/catalogue/search_no_hits.html:20
+#: catalogue/templates/catalogue/tagged_object_list.html:66
 msgid "Sorry! Search cirteria did not match any resources."
 msgstr "Извините! Критерии поиска не совпадают с имеющимися ресурсами."
 
-#: templates/catalogue/search_too_long.html:13
+#: catalogue/templates/catalogue/search_too_long.html:13
 #, fuzzy
 #| msgid "Sorry! Search query must have at least two characters."
 msgid "Sorry! Search query is too long to be processed."
 msgstr ""
 "Извините, в вопросе должны содержаться по крайней мере два параметра поиска."
 
-#: templates/catalogue/search_too_short.html:13
+#: catalogue/templates/catalogue/search_too_short.html:13
 msgid "Sorry! Search query must have at least two characters."
 msgstr ""
 "Извините, в вопросе должны содержаться по крайней мере два параметра поиска."
 
-#: templates/catalogue/snippets/2022_jplayer.html:49
-#: templates/catalogue/snippets/jplayer.html:36
+#: catalogue/templates/catalogue/snippets/2022_jplayer.html:52
+#: catalogue/templates/catalogue/snippets/2022_jplayer_reader.html:51
+#: catalogue/templates/catalogue/snippets/jplayer.html:36
 #, fuzzy
 #| msgid "Artist"
 msgid "Artist:"
 msgstr "Автор"
 
-#: templates/catalogue/snippets/2022_jplayer.html:50
-#: templates/catalogue/snippets/jplayer.html:37
+#: catalogue/templates/catalogue/snippets/2022_jplayer.html:53
+#: catalogue/templates/catalogue/snippets/2022_jplayer_reader.html:52
+#: catalogue/templates/catalogue/snippets/jplayer.html:37
 #, fuzzy
 #| msgid "Director"
 msgid "director:"
 msgstr "режиссер"
 
-#: templates/catalogue/snippets/content_warning.html:4
+#: catalogue/templates/catalogue/snippets/content_warning.html:4
 msgid "Caution: text contains"
 msgstr "Внимание. Текст содержит"
 
-#: templates/catalogue/snippets/custom_pdf_link_li.html:3
+#: catalogue/templates/catalogue/snippets/custom_pdf_link_li.html:3
 msgid "Download a custom PDF"
 msgstr "Скачать PDF"
 
-#: templates/catalogue/snippets/jplayer.html:64
+#: catalogue/templates/catalogue/snippets/jplayer.html:64
 msgid "previous"
 msgstr "Назад"
 
-#: templates/catalogue/snippets/jplayer.html:65
+#: catalogue/templates/catalogue/snippets/jplayer.html:65
 msgid "Part"
 msgstr "Часть"
 
-#: templates/catalogue/snippets/jplayer.html:66
+#: catalogue/templates/catalogue/snippets/jplayer.html:66
 msgid "next"
 msgstr "Дальше"
 
-#: templates/catalogue/snippets/license_icon.html:6
-#: templates/catalogue/snippets/license_icon.html:7
+#: catalogue/templates/catalogue/snippets/license_icon.html:6
+#: catalogue/templates/catalogue/snippets/license_icon.html:7
 msgid "Free license"
 msgstr "Свободная лицензия"
 
-#: templates/catalogue/tag_catalogue.html:11
+#: catalogue/templates/catalogue/tag_catalogue.html:11
 #, fuzzy
 #| msgid "Wolne Lektury"
 msgid "on Wolne Lektury"
 msgstr "на WolneLektury.pl"
 
-#: templates/catalogue/tag_list.html:7
+#: catalogue/templates/catalogue/tag_list.html:7
 msgid "See full category"
 msgstr "Вся категория"
 
-#: templates/catalogue/tagged_object_list.html:5
+#: catalogue/templates/catalogue/tagged_object_list.html:5
 msgid "Audiobooks"
 msgstr "Аудиокниги"
 
-#: templates/catalogue/tagged_object_list.html:15
+#: catalogue/templates/catalogue/tagged_object_list.html:15
 msgid "Authors"
 msgstr "Авторы"
 
-#: templates/catalogue/tagged_object_list.html:16
+#: catalogue/templates/catalogue/tagged_object_list.html:16
 msgid "Epochs"
 msgstr "Эпохи"
 
-#: templates/catalogue/tagged_object_list.html:17
+#: catalogue/templates/catalogue/tagged_object_list.html:17
 msgid "Genres"
 msgstr "Жанры"
 
-#: templates/catalogue/tagged_object_list.html:18
+#: catalogue/templates/catalogue/tagged_object_list.html:18
 msgid "Kinds"
 msgstr "Формы"
 
-#: templates/catalogue/tagged_object_list.html:52
+#: catalogue/templates/catalogue/tagged_object_list.html:52
 msgid "All matching works"
 msgstr "Все релевантные работы"
 
-#: templates/catalogue/tagged_object_list.html:55
+#: catalogue/templates/catalogue/tagged_object_list.html:55
 msgid "Listing of all audiobooks"
 msgstr "Список всех аудиокниг"
 
-#: templates/catalogue/tagged_object_list.html:62
+#: catalogue/templates/catalogue/tagged_object_list.html:62
 #, fuzzy
 #| msgid "PDF file"
 msgid "DAISY files"
 msgstr "PDF файл"
 
-#: templates/catalogue/tagged_object_list.html:72
+#: catalogue/templates/catalogue/tagged_object_list.html:72
 msgid "Motifs and themes"
 msgstr "Сюжеты и темы"
 
-#: templates/catalogue/tagged_object_list.html:84
+#: catalogue/templates/catalogue/tagged_object_list.html:84
 #, fuzzy
 #| msgid "description"
 msgid "No description."
 msgstr "Нет описания"
 
-#: templates/catalogue/tagged_object_list.html:91
+#: catalogue/templates/catalogue/tagged_object_list.html:91
 msgid "in Wikipedia"
 msgstr "в Википедии"
 
-#: templates/catalogue/tagged_object_list.html:97
+#: catalogue/templates/catalogue/tagged_object_list.html:97
 msgid "in Culture.pl"
 msgstr "на Culture.pl "
 
-#: templates/catalogue/viewer_base.html:56
+#: catalogue/templates/catalogue/viewer_base.html:56
 #, fuzzy
 #| msgid "Leading"
 msgid "Loading"
 msgstr "Ведение"
 
-#: templatetags/catalogue_tags.py:521
+#: catalogue/templatetags/catalogue_tags.py:549
 #, fuzzy
 #| msgid "language code"
 msgid "vulgar language"
 msgstr "код языка"
 
-#: views.py:359
+#: catalogue/views.py:399
 #, python-format
 msgid ""
 "An error occurred: %(exception)s\n"
@@ -968,11 +996,11 @@ msgstr ""
 "\n"
 "%(tb)s"
 
-#: views.py:364
+#: catalogue/views.py:404
 msgid "Book imported successfully"
 msgstr "Загрузка книги прошла успешно"
 
-#: views.py:365
+#: catalogue/views.py:405
 #, python-format
 msgid "Error importing file: %r"
 msgstr "Ошибка загрузки файла: %r"
@@ -1036,8 +1064,8 @@ msgstr "Ошибка загрузки файла: %r"
 #~ "epoch, kind and genre.\n"
 #~ "        As for now we do not support full text search."
 #~ msgstr ""
-#~ "Искать используя критерии: заглавие, автор, тема/"
-#~ "сюжет, эпоха, форма и жанр.\n"
+#~ "Искать используя критерии: заглавие, автор, тема/сюжет, эпоха, форма и "
+#~ "жанр.\n"
 #~ "\t\t функция поиска всего текста пока не поддерживается."
 
 #~ msgid "Book description on Lektury.Gazeta.pl"
@@ -1078,8 +1106,7 @@ msgstr "Ошибка загрузки файла: %r"
 #~ msgstr ""
 #~ "Аудиотека школьных чтений Фонда Nowoczesna Polska.\n"
 #~ ". Можете использовать ее бесплатно и без ограничений. \n"
-#~ "Аудиокниги читают известные актеры, в том числе Данута Стенка и Ян "
-#~ "Пешек."
+#~ "Аудиокниги читают известные актеры, в том числе Данута Стенка и Ян Пешек."
 
 #~ msgid "to print"
 #~ msgstr "печатать"
@@ -1130,8 +1157,7 @@ msgstr "Ошибка загрузки файла: %r"
 
 #~ msgid ""
 #~ "You do not have any shelves. You can create one below, if you want to."
-#~ msgstr ""
-#~ "У вас пока нет полок. Если вы хотите, вы можете создать полку ниже."
+#~ msgstr "У вас пока нет полок. Если вы хотите, вы можете создать полку ниже."
 
 #~ msgid "Put on the shelf!"
 #~ msgstr "Поставьте на полку!"
@@ -1141,8 +1167,7 @@ msgstr "Ошибка загрузки файла: %r"
 
 #~ msgid ""
 #~ "You do not own any shelves. You can create one below, if you want to."
-#~ msgstr ""
-#~ "У вас пока нет полок. Если вы хотите, вы можете создать полку ниже."
+#~ msgstr "У вас пока нет полок. Если вы хотите, вы можете создать полку ниже."
 
 #~ msgid "Save all shelves"
 #~ msgstr "Сохранить все полки"

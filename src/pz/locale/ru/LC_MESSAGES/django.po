@@ -15,202 +15,202 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: admin.py:42
+#: pz/admin.py:46
 msgid "All"
 msgstr "Все"
 
-#: admin.py:43
+#: pz/admin.py:47
 msgid "Empty"
 msgstr "Пустой"
 
-#: admin.py:44
+#: pz/admin.py:48
 msgid "Not empty"
 msgstr "Не пустой"
 
-#: admin.py:111
+#: pz/admin.py:138
 msgid "Processing"
 msgstr "В обработке"
 
-#: admin.py:147
+#: pz/admin.py:174
 msgid "obligatory"
 msgstr "обязательно"
 
-#: admin.py:148
+#: pz/admin.py:175
 msgid "agree contact"
 msgstr "согласен на контакт"
 
-#: models.py:9 models.py:21
+#: pz/models.py:9 pz/models.py:21
 msgid "name"
 msgstr "имя"
 
-#: models.py:10
+#: pz/models.py:10
 msgid "description"
 msgstr "описание"
 
-#: models.py:13 models.py:71
+#: pz/models.py:13 pz/models.py:71
 msgid "campaign"
 msgstr "кампания"
 
-#: models.py:14
+#: pz/models.py:14
 msgid "campaigns"
 msgstr "кампании"
 
-#: models.py:24 models.py:58
+#: pz/models.py:24 pz/models.py:58
 msgid "fundraiser"
 msgstr "сбор средств"
 
-#: models.py:25
+#: pz/models.py:25
 msgid "fundraisers"
 msgstr "сборы средств"
 
-#: models.py:32
+#: pz/models.py:32
 msgid "first name"
 msgstr ""
 
-#: models.py:33
+#: pz/models.py:33
 msgid "last name"
 msgstr "имя"
 
-#: models.py:34
+#: pz/models.py:34
 msgid "sex"
 msgstr "пол"
 
-#: models.py:35
+#: pz/models.py:35
 msgid "M"
 msgstr "М"
 
-#: models.py:36
+#: pz/models.py:36
 msgid "F"
 msgstr "Ж"
 
-#: models.py:38
+#: pz/models.py:38
 msgid "date of birth"
 msgstr "Дата рождения"
 
-#: models.py:39
+#: pz/models.py:39
 msgid "street"
 msgstr "улица"
 
-#: models.py:40
+#: pz/models.py:40
 msgid "building"
 msgstr "номер дома"
 
-#: models.py:41
+#: pz/models.py:41
 msgid "flat"
 msgstr "квартира"
 
-#: models.py:42
+#: pz/models.py:42
 msgid "town"
 msgstr "город"
 
-#: models.py:43
+#: pz/models.py:43
 msgid "postal code"
 msgstr "почтовый индекс"
 
-#: models.py:44
+#: pz/models.py:44
 msgid "phone"
 msgstr "номер телефона"
 
-#: models.py:45
+#: pz/models.py:45
 msgid "e-mail"
 msgstr "email"
 
-#: models.py:46
+#: pz/models.py:46
 msgid "IBAN"
 msgstr "IBAN"
 
-#: models.py:47
+#: pz/models.py:47
 msgid "IBAN valid"
 msgstr ""
 
-#: models.py:48
+#: pz/models.py:48
 msgid "is a consumer"
 msgstr "пользователь"
 
-#: models.py:49
+#: pz/models.py:49
 msgid "payment identifier"
 msgstr "идентификатор платежа"
 
-#: models.py:50
+#: pz/models.py:50
 msgid "agree fundraising"
 msgstr "согласен на участие в сборе средств"
 
-#: models.py:51
+#: pz/models.py:51
 msgid "agree newsletter"
 msgstr "согласен на получение газеты"
 
-#: models.py:53
+#: pz/models.py:53
 msgid "acquisition date"
 msgstr "дата запроса"
 
-#: models.py:53
+#: pz/models.py:53
 msgid "Date from the form"
 msgstr "дата в анкете"
 
-#: models.py:54
+#: pz/models.py:54
 msgid "submission date"
 msgstr "дата подтверждения"
 
-#: models.py:54
+#: pz/models.py:54
 msgid "Date the fundaiser submitted the form"
 msgstr "дата подтверждения анкеты сборщиком средств"
 
-#: models.py:55
+#: pz/models.py:55
 msgid "bank submission date"
 msgstr "дата подтверждения банком"
 
-#: models.py:55
+#: pz/models.py:55
 msgid "Date when the form data is submitted to the bank"
 msgstr "Дата отправки данных анкеты банку"
 
-#: models.py:56
+#: pz/models.py:56
 msgid "bank accepted date"
 msgstr "банк принял дату"
 
-#: models.py:56
+#: pz/models.py:56
 msgid "Date when bank accepted the form"
 msgstr "Дата приема анкеты банком"
 
-#: models.py:59
+#: pz/models.py:59
 msgid "fundraiser commission"
 msgstr "комиссия сборщика средств"
 
-#: models.py:60
+#: pz/models.py:60
 msgid "fundraiser bonus"
 msgstr "бонус для сборщика средств"
 
-#: models.py:61
+#: pz/models.py:61
 msgid "fundaiser bill number"
 msgstr "номер счета сборщика средств"
 
-#: models.py:63
+#: pz/models.py:63
 msgid "amount"
 msgstr "сумма"
 
-#: models.py:65
+#: pz/models.py:65
 msgid "notes"
 msgstr "заметки"
 
-#: models.py:67
+#: pz/models.py:67
 msgid "needs redo"
 msgstr "к повторению"
 
-#: models.py:68
+#: pz/models.py:68
 msgid "cancelled at"
 msgstr "отмена"
 
-#: models.py:69
+#: pz/models.py:69
 msgid "optout"
 msgstr "optout"
 
-#: models.py:76
+#: pz/models.py:76
 msgid "direct debit"
 msgstr "предложение оплаты"
 
-#: models.py:77
+#: pz/models.py:77
 msgid "direct debits"
 msgstr "предложения оплаты"

@@ -49,11 +49,15 @@ msgstr "biblioteka"
 msgid "libraries"
 msgstr "biblioteki"
 
-#: libraries/templates/libraries/catalog_view.html:4
-msgid "Libraries directory"
-msgstr "Katalog bibliotek"
-
-#: libraries/templates/libraries/main_view.html:4
-#: libraries/templates/libraries/main_view.html:7
+#: libraries/templates/libraries/catalog_view.html:6
+#: libraries/templates/libraries/main_view.html:6
+#: libraries/templates/libraries/main_view.html:10
+#: libraries/templates/libraries/main_view.html:13
 msgid "Library directories"
 msgstr "Katalogi bibliotek"
+
+#: libraries/templates/libraries/catalog_view.html:11
+#: libraries/templates/libraries/catalog_view.html:14
+#: libraries/templates/libraries/library_view.html:10
+msgid "Libraries directory"
+msgstr "Katalog bibliotek"

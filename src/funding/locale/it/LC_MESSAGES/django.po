@@ -29,185 +29,209 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: funding/admin.py:44 funding/models.py:257 funding/models.py:275
+#: funding/admin.py:44 funding/models.py:282 funding/models.py:302
 msgid "perks"
 msgstr ""
 
-#: funding/forms.py:18 funding/templates/funding/wlfund.html:29
+#: funding/forms.py:22 funding/templates/funding/wlfund.html:29
 msgid "Amount"
 msgstr ""
 
-#: funding/forms.py:20
+#: funding/forms.py:24
 msgid "Name"
 msgstr ""
 
-#: funding/forms.py:20
+#: funding/forms.py:24
 msgid "Optional name for public list of contributors"
 msgstr ""
 
-#: funding/forms.py:22
+#: funding/forms.py:26
 msgid "Contact e-mail"
 msgstr ""
 
-#: funding/forms.py:24
+#: funding/forms.py:28
 msgid ""
 "We'll use it to send you updates about your payment and the fundraiser "
 "status (which you can always turn off).<br/>Your e-mail won't be publicised."
 msgstr ""
 
-#: funding/forms.py:43
+#: funding/forms.py:49
 #, python-format
 msgid "The minimum amount is %(amount)s PLN."
 msgstr ""
 
-#: funding/forms.py:49
+#: funding/forms.py:55
 msgid "This offer is out of date."
 msgstr ""
 
-#: funding/models.py:26
+#: funding/models.py:28
 msgid "author"
 msgstr ""
 
-#: funding/models.py:27
+#: funding/models.py:29
 msgid "title"
 msgstr ""
 
-#: funding/models.py:28
+#: funding/models.py:30
 msgid "slug"
 msgstr ""
 
-#: funding/models.py:29
+#: funding/models.py:31
 msgid "description"
 msgstr ""
 
-#: funding/models.py:30
+#: funding/models.py:32
 msgid "target"
 msgstr ""
 
-#: funding/models.py:31
+#: funding/models.py:33
 msgid "start"
 msgstr ""
 
-#: funding/models.py:32
+#: funding/models.py:34
 msgid "end"
 msgstr ""
 
-#: funding/models.py:33
+#: funding/models.py:35
 msgid "redakcja URL"
 msgstr ""
 
-#: funding/models.py:34
+#: funding/models.py:36
 msgid "Published book."
 msgstr ""
 
-#: funding/models.py:35
+#: funding/models.py:37
 msgid "Cover"
 msgstr ""
 
-#: funding/models.py:36
+#: funding/models.py:38
 msgid "Poll"
 msgstr ""
 
-#: funding/models.py:38
+#: funding/models.py:40
 msgid "Near-end notifications sent"
 msgstr ""
 
-#: funding/models.py:39
+#: funding/models.py:41
 msgid "End notifications sent"
 msgstr ""
 
-#: funding/models.py:43
+#: funding/models.py:45
 msgid "Cover preview"
 msgstr ""
 
-#: funding/models.py:46 funding/models.py:249 funding/models.py:270
+#: funding/models.py:48 funding/models.py:274 funding/models.py:295
 msgid "offer"
 msgstr ""
 
-#: funding/models.py:47
+#: funding/models.py:49
 msgid "offers"
 msgstr ""
 
-#: funding/models.py:154
+#: funding/models.py:161
 msgid "The fundraiser has ended!"
 msgstr ""
 
-#: funding/models.py:171
+#: funding/models.py:178
 msgid "The fundraiser will end soon!"
 msgstr ""
 
-#: funding/models.py:185
+#: funding/models.py:192
 msgid "The book you helped fund has been published."
 msgstr ""
 
-#: funding/models.py:250
+#: funding/models.py:275
 msgid "price"
 msgstr ""
 
-#: funding/models.py:251 funding/models.py:271
+#: funding/models.py:276 funding/models.py:298
 msgid "name"
 msgstr ""
 
-#: funding/models.py:252
+#: funding/models.py:277
 msgid "long name"
 msgstr ""
 
-#: funding/models.py:253
+#: funding/models.py:278
 msgid "end date"
 msgstr ""
 
-#: funding/models.py:256
+#: funding/models.py:281
 msgid "perk"
 msgstr ""
 
-#: funding/models.py:272
+#: funding/models.py:296
+msgid "customer IP"
+msgstr ""
+
+#: funding/models.py:299
 msgid "email"
 msgstr ""
 
-#: funding/models.py:273 funding/models.py:355
+#: funding/models.py:301 funding/models.py:407
 msgid "amount"
 msgstr ""
 
-#: funding/models.py:274
-msgid "payed at"
-msgstr ""
-
-#: funding/models.py:277
+#: funding/models.py:304
 msgid "notifications"
 msgstr ""
 
-#: funding/models.py:281
+#: funding/models.py:308
 msgid "funding"
 msgstr ""
 
-#: funding/models.py:282
+#: funding/models.py:309
 #: funding/templates/admin/funding/offer/change_form.html:18
 msgid "fundings"
 msgstr ""
 
-#: funding/models.py:356
-msgid "when"
-msgstr ""
-
-#: funding/models.py:359
-msgid "money spent on a book"
-msgstr ""
-
-#: funding/models.py:360
-msgid "money spent on books"
-msgstr ""
-
-#: funding/models.py:388 funding/templates/funding/thanks.html:6
+#: funding/models.py:339 funding/templates/funding/thanks.html:6
 #: funding/templates/funding/thanks.html:13
 msgid "Thank you for your support!"
 msgstr ""
 
-#: funding/templates/funding/disable_notifications.html:5
-#: funding/templates/funding/no_thanks.html:5
-#: funding/templates/funding/no_thanks.html:8
-msgid "Payment failed"
+#: funding/models.py:408
+msgid "when"
 msgstr ""
 
+#: funding/models.py:411
+msgid "money spent on a book"
+msgstr ""
+
+#: funding/models.py:412
+msgid "money spent on books"
+msgstr ""
+
+#: funding/templates/funding/2022/includes/funding.html:14
+#: funding/templates/funding/includes/funding.html:30
+msgid "collected"
+msgstr ""
+
+#: funding/templates/funding/2022/includes/funding.html:20
+#: funding/templates/funding/2022/offer_detail.html:37
+#: funding/templates/funding/includes/funding.html:24
+#: funding/templates/funding/includes/funding.html:48
+#: funding/templates/funding/offer_detail.html:29
+#: funding/templates/funding/offer_list.html:28
+msgid "Help free the book!"
+msgstr ""
+
+#: funding/templates/funding/2022/includes/funding.html:26
+#: funding/templates/funding/includes/funding.html:36
+msgid "until fundraiser end"
+msgstr ""
+
+#: funding/templates/funding/2022/includes/funding.html:32
+#: funding/templates/funding/includes/funding.html:33
+msgid "needed"
+msgstr ""
+
+#: funding/templates/funding/2022/offer_detail.html:101
+#: funding/templates/funding/offer_detail.html:87
+msgid "Supporters"
+msgstr ""
+
+#: funding/templates/funding/disable_notifications.html:5
 #: funding/templates/funding/disable_notifications.html:8
 #: funding/templates/funding/disable_notifications.html:15
 msgid "Disable notifications"
@@ -292,7 +316,7 @@ msgid ""
 msgstr ""
 
 #: funding/templates/funding/email/end.txt:37
-#: funding/templates/funding/email/published.txt:12
+#: funding/templates/funding/email/published.txt:21
 msgid ""
 "If you'd like to help liberate another book, or invite your friends\n"
 "to do so, we're currently raising money for:"
@@ -330,7 +354,7 @@ msgstr ""
 msgid "we have just published the book you contributed to:"
 msgstr ""
 
-#: funding/templates/funding/email/published.txt:9
+#: funding/templates/funding/email/published.txt:16
 msgid ""
 "Thanks to you, it is now available for free,\n"
 "in various formats, to everyone."
@@ -364,25 +388,6 @@ msgstr ""
 #: funding/templates/funding/thanks.html:27
 #: funding/templates/funding/wlfund.html:18
 msgid "Learn more"
-msgstr ""
-
-#: funding/templates/funding/includes/funding.html:24
-#: funding/templates/funding/includes/funding.html:48
-#: funding/templates/funding/offer_detail.html:29
-#: funding/templates/funding/offer_list.html:28
-msgid "Help free the book!"
-msgstr ""
-
-#: funding/templates/funding/includes/funding.html:30
-msgid "collected"
-msgstr ""
-
-#: funding/templates/funding/includes/funding.html:33
-msgid "needed"
-msgstr ""
-
-#: funding/templates/funding/includes/funding.html:36
-msgid "until fundraiser end"
 msgstr ""
 
 #: funding/templates/funding/includes/fundings.html:13
@@ -439,6 +444,11 @@ msgid ""
 "          the work on the <a href=\"%(r)s\">Editorial Platform</a>."
 msgstr ""
 
+#: funding/templates/funding/no_thanks.html:5
+#: funding/templates/funding/no_thanks.html:8
+msgid "Payment failed"
+msgstr ""
+
 #: funding/templates/funding/no_thanks.html:10
 msgid "You're support has not been processed successfully."
 msgstr ""
@@ -469,10 +479,6 @@ msgstr ""
 
 #: funding/templates/funding/offer_detail.html:84
 msgid "See all fundraisers."
-msgstr ""
-
-#: funding/templates/funding/offer_detail.html:87
-msgid "Supporters"
 msgstr ""
 
 #: funding/templates/funding/offer_list.html:5

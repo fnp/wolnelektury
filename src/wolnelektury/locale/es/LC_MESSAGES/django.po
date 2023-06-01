@@ -42,15 +42,15 @@ msgstr ""
 msgid "Notifications"
 msgstr ""
 
-#: wolnelektury/templates/404.html:4
+#: wolnelektury/templates/404.html:6 wolnelektury/templates/404.html:11
 msgid "Page does not exist"
 msgstr "Página no existe"
 
-#: wolnelektury/templates/404.html:8
+#: wolnelektury/templates/404.html:15
 msgid "Page not found"
 msgstr "Página no encontrada"
 
-#: wolnelektury/templates/404.html:11
+#: wolnelektury/templates/404.html:18
 msgid ""
 "We are sorry, but this page does not exist. Please check if you entered "
 "correct address or go to "
@@ -58,24 +58,24 @@ msgstr ""
 "Lo sentimos, esta página no existe. Compruebue si la dirección es correcta o "
 "pase a"
 
-#: wolnelektury/templates/404.html:12
+#: wolnelektury/templates/404.html:19
 msgid "main page"
 msgstr "página principal"
 
-#: wolnelektury/templates/500.html:6 wolnelektury/templates/500.html:17
+#: wolnelektury/templates/500.html:7
 msgid "Server error"
 msgstr "Error del servidor"
 
-#: wolnelektury/templates/500.html:19
+#: wolnelektury/templates/500.html:73
 msgid ""
 "<p>The Wolnelektury.pl site is currently unavailable. Meanwhile, visit our "
-"<a href='http://nowoczesnapolska.org.pl'>blog</a>.</p> <p>Inform our <a "
-"href='mailto:fundacja@nowoczesnapolska.org.pl'>administrators</a> about the "
-"error.</p>"
+"<a href='https://fundacja.wolnelektury.pl'>blog</a>.</p> <p>Inform our <a "
+"href='mailto:fundacja@wolnelektury.pl'>administrators</a> about the error.</"
+"p>"
 msgstr ""
 "<p>La página Wolnelektury.pl actualmente no está disponible. Mientras tanto "
-"visita nuestro <a href='http://nowoczesnapolska.org.pl'>blog</a>.</p> "
-"<p>Informa a nuestros <a href='mailto:fundacja@nowoczesnapolska.org."
+"visita nuestro <a href='https://fundacja.wolnelektury.pl'>blog</a>.</p> "
+"<p>Informa a nuestros <a href='mailto:fundacja@wolnelektury."
 "pl'>administradores</a> sobre el error.</p>"
 
 #: wolnelektury/templates/503.html:6 wolnelektury/templates/503.html:17
@@ -104,12 +104,20 @@ msgstr "simplificado"
 msgid "Import book"
 msgstr "Importar libro"
 
+#: wolnelektury/templates/admin/long_filter.html:2
+#, python-format
+msgid " By %(filter_title)s "
+msgstr ""
+
 #: wolnelektury/templates/auth/login.html:11
+#: wolnelektury/templates/registration/login.html:25
 msgid "Forgot Password?"
 msgstr "¿Olvidaste tu contraseña?"
 
 #: wolnelektury/templates/auth/login.html:17
 #: wolnelektury/templates/auth/register.html:8
+#: wolnelektury/templates/registration/login.html:31
+#: wolnelektury/templates/registration/register.html:20
 msgid "Sign in using:"
 msgstr "Iniciar sesión con:"
 
@@ -132,7 +140,6 @@ msgstr "Versiones de idiomas"
 
 #: wolnelektury/templates/base/app.html:66
 #: wolnelektury/templates/base/superbase.html:105
-#: wolnelektury/templates/board_base.html:48
 msgid "Logout"
 msgstr "Cerrar sesión"
 
@@ -188,22 +195,23 @@ msgid "My shelf"
 msgstr "Mi estante"
 
 #: wolnelektury/templates/base/superbase.html:102
-#: wolnelektury/templates/board_base.html:43
 msgid "Administration"
 msgstr "Administración"
 
-#: wolnelektury/templates/base/superbase.html:109 wolnelektury/views.py:79
-#: wolnelektury/views.py:80
+#: wolnelektury/templates/base/superbase.html:109 wolnelektury/views.py:106
+#: wolnelektury/views.py:107
 msgid "Sign in"
 msgstr "Iniciar sesión"
 
-#: wolnelektury/templates/base/superbase.html:110 wolnelektury/views.py:98
-#: wolnelektury/views.py:99 wolnelektury/views.py:127
+#: wolnelektury/templates/base/superbase.html:110
+#: wolnelektury/templates/registration/register.html:7
+#: wolnelektury/templates/registration/register.html:16
+#: wolnelektury/views.py:144 wolnelektury/views.py:145
+#: wolnelektury/views.py:176
 msgid "Register"
 msgstr "Registrarse"
 
 #: wolnelektury/templates/base/superbase.html:124
-#: wolnelektury/templates/board_base.html:28
 msgid "Search"
 msgstr "Buscar"
 
@@ -215,11 +223,9 @@ msgstr "Cerrar"
 msgid "Loading"
 msgstr "Cargando"
 
-#: wolnelektury/templates/board_base.html:31
-#, fuzzy
-#| msgid "advanced"
-msgid "Advanced search"
-msgstr "avanzado"
+#: wolnelektury/templates/forms/form_sent.html:12
+msgid "Thank you"
+msgstr ""
 
 #: wolnelektury/templates/info/join_us.html:6
 #, fuzzy, python-format
@@ -291,31 +297,31 @@ msgid "Support us"
 msgstr ""
 
 #: wolnelektury/templates/main_menu.html:7
-msgid "Literature"
+msgid "School readings"
 msgstr ""
 
 #: wolnelektury/templates/main_menu.html:10
+msgid "Literature"
+msgstr ""
+
+#: wolnelektury/templates/main_menu.html:13
 msgid "Themes"
 msgstr "Temas"
 
-#: wolnelektury/templates/main_menu.html:13
+#: wolnelektury/templates/main_menu.html:16
 msgid "Audiobooks"
 msgstr "Audiolibros"
 
-#: wolnelektury/templates/main_menu.html:16
+#: wolnelektury/templates/main_menu.html:19
 #: wolnelektury/templates/main_page.html:52
 #, fuzzy
 #| msgid "Account Connections"
 msgid "Collections"
 msgstr "Conexiones de la cuenta de usuario"
 
-#: wolnelektury/templates/main_menu.html:19
-#: wolnelektury/templates/main_page.html:108
-msgid "Newsletter"
-msgstr ""
-
 #: wolnelektury/templates/main_menu.html:22
-msgid "School readings"
+#: wolnelektury/templates/main_page.html:110
+msgid "Newsletter"
 msgstr ""
 
 #: wolnelektury/templates/main_page.html:11
@@ -351,66 +357,69 @@ msgstr ""
 msgid "News"
 msgstr "Noticias"
 
-#: wolnelektury/templates/main_page.html:93
+#: wolnelektury/templates/main_page.html:95
 msgid "Utilities"
 msgstr "Herramientas"
 
-#: wolnelektury/templates/main_page.html:96
+#: wolnelektury/templates/main_page.html:98
 msgid "Report a bug or suggestion"
 msgstr "Reporta un error o una sugerencia"
 
-#: wolnelektury/templates/main_page.html:97
+#: wolnelektury/templates/main_page.html:99
 msgid "Download the catalogue in PDF format."
 msgstr "Descarga el catálogo en el formato PDF"
 
-#: wolnelektury/templates/main_page.html:98
+#: wolnelektury/templates/main_page.html:100
 #, fuzzy
 #| msgid "Artist"
 msgid "Art"
 msgstr "Artista"
 
-#: wolnelektury/templates/main_page.html:99
+#: wolnelektury/templates/main_page.html:101
 #, fuzzy
 #| msgid "All books"
 msgid "All works"
 msgstr "Todos los libros"
 
-#: wolnelektury/templates/main_page.html:101
+#: wolnelektury/templates/main_page.html:103
 msgid "Footnotes"
 msgstr ""
 
-#: wolnelektury/templates/main_page.html:102
+#: wolnelektury/templates/main_page.html:104
 msgid "Missing a book?"
 msgstr "¿Falta un libro?"
 
-#: wolnelektury/templates/main_page.html:103
-#: wolnelektury/templates/publish_plan.html:4
-#: wolnelektury/templates/publish_plan.html:8
+#: wolnelektury/templates/main_page.html:105
+#: wolnelektury/templates/publish_plan.html:6
+#: wolnelektury/templates/publish_plan.html:10
+#: wolnelektury/templates/publish_plan.html:14
 msgid "Publishing plan"
 msgstr "Plan de publicación"
 
-#: wolnelektury/templates/main_page.html:113
+#: wolnelektury/templates/main_page.html:115
 msgid "Information"
 msgstr "Información"
 
-#: wolnelektury/templates/main_page.html:115
+#: wolnelektury/templates/main_page.html:117
 msgid "Privacy policy"
 msgstr ""
 
-#: wolnelektury/templates/main_page.html:120
+#: wolnelektury/templates/main_page.html:122
 msgid "Follow us on Facebook"
 msgstr ""
 
-#: wolnelektury/templates/main_page.html:133
+#: wolnelektury/templates/main_page.html:135
 msgid "Image used:"
 msgstr "La imagen usada:"
 
-#: wolnelektury/templates/openid/login.html:5
-#: wolnelektury/templates/openid/login.html:8
+#: wolnelektury/templates/openid/login.html:7
+#: wolnelektury/templates/openid/login.html:21
 msgid "OpenID Sign In"
 msgstr "Iniciar sesión con OpenID "
 
-#: wolnelektury/templates/openid/login.html:16
+#: wolnelektury/templates/openid/login.html:13
+#: wolnelektury/templates/openid/login.html:29
+#: wolnelektury/templates/registration/login.html:6
 #, fuzzy
 msgid "Sign In"
 msgstr "Iniciar sesión"
@@ -462,12 +471,12 @@ msgstr "Inicio de sesión cancelado"
 #, python-format
 msgid ""
 "You decided to cancel logging in to our site using one of your exisiting "
-"accounts. If this was a mistake, please proceed to <a href=\"%(login_url)s"
-"\">sign in</a>."
+"accounts. If this was a mistake, please proceed to <a "
+"href=\"%(login_url)s\">sign in</a>."
 msgstr ""
 "Ha decidido anular lo de iniciar sesión en nuestra página usando una de sus "
-"cuentas de usuario existentes. Si se ha equivocado, pase a<a href="
-"\"%(login_url)s\">sign in</a>, por favor."
+"cuentas de usuario existentes. Si se ha equivocado, pase a<a "
+"href=\"%(login_url)s\">sign in</a>, por favor."
 
 #: wolnelektury/templates/socialaccount/signup.html:6
 #, fuzzy
@@ -489,42 +498,48 @@ msgid ""
 "%(site_name)s. As a final step, please complete the following form:"
 msgstr ""
 
-#: wolnelektury/templates/user.html:5 wolnelektury/templates/user.html:9
+#: wolnelektury/templates/user.html:7 wolnelektury/templates/user.html:11
+#: wolnelektury/templates/user.html:15
 msgid "User"
 msgstr "Usuario"
 
-#: wolnelektury/templates/user.html:11
+#: wolnelektury/templates/user.html:17
 msgid "Password"
 msgstr "Contraseña"
 
-#: wolnelektury/templates/user.html:12
+#: wolnelektury/templates/user.html:18
 msgid "E-mail"
 msgstr "Correo electrónico"
 
-#: wolnelektury/templates/user.html:13
+#: wolnelektury/templates/user.html:19
 msgid "Social accounts"
 msgstr "Cuentas sociales"
 
-#: wolnelektury/utils.py:123
+#: wolnelektury/utils.py:112
 msgid "Message sent automatically. Please do not reply."
 msgstr ""
 
-#: wolnelektury/utils.py:205
+#: wolnelektury/utils.py:194
 msgid "Yes"
 msgstr ""
 
-#: wolnelektury/utils.py:206
+#: wolnelektury/utils.py:195
 msgid "No"
 msgstr ""
 
-#: wolnelektury/views.py:87 wolnelektury/views.py:108
+#: wolnelektury/views.py:117 wolnelektury/views.py:157
 #, python-format
 msgid "Already logged in as user %(user)s"
 msgstr "Ya has iniciado sesión como usuario %(user)s"
 
-#: wolnelektury/views.py:122
+#: wolnelektury/views.py:171
 msgid "You have to be logged in to continue"
 msgstr "Tienes que iniciar sesión para continuar"
+
+#, fuzzy
+#~| msgid "advanced"
+#~ msgid "Advanced search"
+#~ msgstr "avanzado"
 
 #, fuzzy
 #~| msgid "See our blog"
@@ -546,8 +561,8 @@ msgstr "Tienes que iniciar sesión para continuar"
 #~ "Confirm to authorize access to Wolne Lektury as user <strong>%(user)s</"
 #~ "strong>."
 #~ msgstr ""
-#~ "Confirma para autorizar el acceso a Wolne Lektury como el usuario <strong>"
-#~ "%(user)s</strong>."
+#~ "Confirma para autorizar el acceso a Wolne Lektury como el usuario "
+#~ "<strong>%(user)s</strong>."
 
 #~ msgid "What's new?"
 #~ msgstr "Novedades"
@@ -582,15 +597,15 @@ msgstr "Tienes que iniciar sesión para continuar"
 #~ "\n"
 #~ "\t\t\t\tModern Poland Foundation, 00-514 Warsaw, ul. Marszałkowska 84/92 "
 #~ "lok. 125, tel/fax: (22) 621-30-17\n"
-#~ "                e-mail: <a href=\"mailto:fundacja@nowoczesnapolska.org.pl"
-#~ "\">fundacja@nowoczesnapolska.org.pl</a>\n"
+#~ "                e-mail: <a href=\"mailto:fundacja@nowoczesnapolska.org."
+#~ "pl\">fundacja@nowoczesnapolska.org.pl</a>\n"
 #~ "\t\t\t\t"
 #~ msgstr ""
 #~ "\n"
 #~ "\t\t\t\tFundación Polonia Moderna, c/ Marszałkowska 84/92, lok. 125, "
 #~ "00-514 Varsovia, tel/fax: +48 (22) 621-30-17\n"
-#~ "                e-mail: <a href=\"mailto:fundacja@nowoczesnapolska.org.pl"
-#~ "\">fundacja@nowoczesnapolska.org.pl</a>\n"
+#~ "                e-mail: <a href=\"mailto:fundacja@nowoczesnapolska.org."
+#~ "pl\">fundacja@nowoczesnapolska.org.pl</a>\n"
 #~ "\t\t\t\t"
 
 #~ msgid "Listing of all audiobooks"
@@ -1111,19 +1126,19 @@ msgstr "Tienes que iniciar sesión para continuar"
 
 #~ msgid ""
 #~ "\n"
-#~ "\t\t\tInternet library with school readings “Wolne Lektury” (<a href="
-#~ "\"http://wolnelektury.pl\">www.wolnelektury.pl</a>) is a project made by "
-#~ "Modern Poland Foundation. It started in 2007 and shares school readings, "
-#~ "which are recommended by Ministry of National Education and are in public "
-#~ "domain.\n"
+#~ "\t\t\tInternet library with school readings “Wolne Lektury” (<a "
+#~ "href=\"http://wolnelektury.pl\">www.wolnelektury.pl</a>) is a project "
+#~ "made by Modern Poland Foundation. It started in 2007 and shares school "
+#~ "readings, which are recommended by Ministry of National Education and are "
+#~ "in public domain.\n"
 #~ "\t\t\t"
 #~ msgstr ""
 #~ "\n"
-#~ "\t\t\tLa biblioteca virtual con lecturas “Wolne Lektury” (<a href="
-#~ "\"http://wolnelektury.pl\">www.wolnelektury.pl</a>)es un proyecto creado "
-#~ "por la Fundación Polonia Moderna. Había comenzado su actividad en el año "
-#~ "2007 y está compartiendo las lecturas recomendadas por el Ministerio de "
-#~ "la Educación Nacional y que son del dominio público.\n"
+#~ "\t\t\tLa biblioteca virtual con lecturas “Wolne Lektury” (<a "
+#~ "href=\"http://wolnelektury.pl\">www.wolnelektury.pl</a>)es un proyecto "
+#~ "creado por la Fundación Polonia Moderna. Había comenzado su actividad en "
+#~ "el año 2007 y está compartiendo las lecturas recomendadas por el "
+#~ "Ministerio de la Educación Nacional y que son del dominio público.\n"
 #~ "\t\t\t"
 
 #~ msgid "Searching in"

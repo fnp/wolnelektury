@@ -64,20 +64,14 @@ msgstr "vista previa del libro"
 msgid "book stubs"
 msgstr "vista previa de libros"
 
-#: pdcounter/templates/pdcounter/author_detail.html:7
-#: pdcounter/templates/pdcounter/book_stub_detail.html:7
-msgid "Public domain counter"
-msgstr ""
-
-#: pdcounter/templates/pdcounter/author_detail.html:26
-msgid "Read article about this author on Wikipedia"
-msgstr "Lea el artículo sobre este autor en Wikipedia"
-
+#: pdcounter/templates/pdcounter/2022/author_detail.html:27
 #: pdcounter/templates/pdcounter/author_detail.html:33
 #: pdcounter/templates/pdcounter/pd_author_box.html:9
 msgid "This author's works are copyrighted."
 msgstr "Las obras de este autor tienen todos los derechos de autor reservados."
 
+#: pdcounter/templates/pdcounter/2022/author_detail.html:28
+#: pdcounter/templates/pdcounter/2022/author_detail.html:40
 #: pdcounter/templates/pdcounter/author_detail.html:34
 #: pdcounter/templates/pdcounter/author_detail.html:46
 #: pdcounter/templates/pdcounter/pd_author_box.html:10
@@ -90,6 +84,7 @@ msgstr ""
 "a>  el porqué las bibliotecas virtuales no pueden publicar las obras de este "
 "autor."
 
+#: pdcounter/templates/pdcounter/2022/author_detail.html:32
 #: pdcounter/templates/pdcounter/author_detail.html:38
 #: pdcounter/templates/pdcounter/pd_author_box.html:14
 #, fuzzy
@@ -100,6 +95,7 @@ msgstr ""
 "Las obras de este autor son de dominio público y pronto serán publicadas en "
 "Biblioteca virtual de Wolne Lektury."
 
+#: pdcounter/templates/pdcounter/2022/author_detail.html:36
 #: pdcounter/templates/pdcounter/author_detail.html:42
 msgid ""
 "This author's works will become part of public domain and will be allowed to "
@@ -108,6 +104,7 @@ msgstr ""
 "Las obras de este autor van a ser parte de dominio público y pronto serán "
 "publicadas sin restricciones en"
 
+#: pdcounter/templates/pdcounter/2022/book_detail.html:31
 #: pdcounter/templates/pdcounter/book_stub_detail.html:16
 #, fuzzy
 msgid ""
@@ -117,6 +114,7 @@ msgstr ""
 "Esta obra es de dominio público y pronto será publicada en Biblioteca "
 "virtual de Wolne Lektury."
 
+#: pdcounter/templates/pdcounter/2022/book_detail.html:35
 #: pdcounter/templates/pdcounter/book_stub_detail.html:20
 msgid ""
 "This work will become part of public domain and will be allowed to be "
@@ -125,6 +123,8 @@ msgstr ""
 "Esta obra va a ser parte de dominio público y pronto será publicada sin "
 "restricciones en"
 
+#: pdcounter/templates/pdcounter/2022/book_detail.html:39
+#: pdcounter/templates/pdcounter/2022/book_detail.html:44
 #: pdcounter/templates/pdcounter/book_stub_detail.html:24
 #: pdcounter/templates/pdcounter/book_stub_detail.html:29
 msgid ""
@@ -134,9 +134,19 @@ msgstr ""
 "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</"
 "a> el porqué las bibliotecas virtuales no pueden publicar esta obra."
 
+#: pdcounter/templates/pdcounter/2022/book_detail.html:43
 #: pdcounter/templates/pdcounter/book_stub_detail.html:28
 msgid "This work is copyrighted."
 msgstr "Esta obra tiene todos los derechos de autor reservados."
+
+#: pdcounter/templates/pdcounter/author_detail.html:7
+#: pdcounter/templates/pdcounter/book_stub_detail.html:7
+msgid "Public domain counter"
+msgstr ""
+
+#: pdcounter/templates/pdcounter/author_detail.html:26
+msgid "Read article about this author on Wikipedia"
+msgstr "Lea el artículo sobre este autor en Wikipedia"
 
 #: pdcounter/templates/pdcounter/pd_author_box.html:18
 #, fuzzy

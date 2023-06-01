@@ -65,20 +65,14 @@ msgstr "zapowiedź książki"
 msgid "book stubs"
 msgstr "zapowiedzi książek"
 
-#: pdcounter/templates/pdcounter/author_detail.html:7
-#: pdcounter/templates/pdcounter/book_stub_detail.html:7
-msgid "Public domain counter"
-msgstr "Licznik domeny publicznej"
-
-#: pdcounter/templates/pdcounter/author_detail.html:26
-msgid "Read article about this author on Wikipedia"
-msgstr "Przeczytaj artykuł o autorze w Wikipedii"
-
+#: pdcounter/templates/pdcounter/2022/author_detail.html:27
 #: pdcounter/templates/pdcounter/author_detail.html:33
 #: pdcounter/templates/pdcounter/pd_author_box.html:9
 msgid "This author's works are copyrighted."
 msgstr "Dzieła tego autora objęte są prawem autorskim."
 
+#: pdcounter/templates/pdcounter/2022/author_detail.html:28
+#: pdcounter/templates/pdcounter/2022/author_detail.html:40
 #: pdcounter/templates/pdcounter/author_detail.html:34
 #: pdcounter/templates/pdcounter/author_detail.html:46
 #: pdcounter/templates/pdcounter/pd_author_box.html:10
@@ -91,6 +85,7 @@ msgstr ""
 "się</a>, dlaczego biblioteki internetowe nie mogą udostępniać dzieł tego "
 "autora."
 
+#: pdcounter/templates/pdcounter/2022/author_detail.html:32
 #: pdcounter/templates/pdcounter/author_detail.html:38
 #: pdcounter/templates/pdcounter/pd_author_box.html:14
 msgid ""
@@ -100,6 +95,7 @@ msgstr ""
 "Dzieła tego autora znajdują się w domenie publicznej, ale jeszcze nie "
 "zostały opublikowane w bibliotece internetowej Wolne Lektury."
 
+#: pdcounter/templates/pdcounter/2022/author_detail.html:36
 #: pdcounter/templates/pdcounter/author_detail.html:42
 msgid ""
 "This author's works will become part of public domain and will be allowed to "
@@ -108,6 +104,7 @@ msgstr ""
 "Dzieła tego autora przejdą do zasobów domeny publicznej i będą mogły być "
 "publikowane bez żadnych ograniczeń za"
 
+#: pdcounter/templates/pdcounter/2022/book_detail.html:31
 #: pdcounter/templates/pdcounter/book_stub_detail.html:16
 msgid ""
 "This work is in public domain and will be published on Internet library of "
@@ -116,6 +113,7 @@ msgstr ""
 "Ten utwór znajduje się w domenie publicznej i niedługo zostanie opublikowany "
 "w bibliotece internetowej Wolne Lektury."
 
+#: pdcounter/templates/pdcounter/2022/book_detail.html:35
 #: pdcounter/templates/pdcounter/book_stub_detail.html:20
 msgid ""
 "This work will become part of public domain and will be allowed to be "
@@ -124,6 +122,8 @@ msgstr ""
 "Ten utwór przejdzie do zasobów domeny publicznej i będzie mógł być "
 "publikowany bez żadnych ograniczeń za"
 
+#: pdcounter/templates/pdcounter/2022/book_detail.html:39
+#: pdcounter/templates/pdcounter/2022/book_detail.html:44
 #: pdcounter/templates/pdcounter/book_stub_detail.html:24
 #: pdcounter/templates/pdcounter/book_stub_detail.html:29
 msgid ""
@@ -133,9 +133,19 @@ msgstr ""
 "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Dowiedz "
 "się</a>, dlaczego biblioteki internetowe nie mogą udostępniać tego utworu."
 
+#: pdcounter/templates/pdcounter/2022/book_detail.html:43
 #: pdcounter/templates/pdcounter/book_stub_detail.html:28
 msgid "This work is copyrighted."
 msgstr "Ten utwór objęty jest prawem autorskim."
+
+#: pdcounter/templates/pdcounter/author_detail.html:7
+#: pdcounter/templates/pdcounter/book_stub_detail.html:7
+msgid "Public domain counter"
+msgstr "Licznik domeny publicznej"
+
+#: pdcounter/templates/pdcounter/author_detail.html:26
+msgid "Read article about this author on Wikipedia"
+msgstr "Przeczytaj artykuł o autorze w Wikipedii"
 
 #: pdcounter/templates/pdcounter/pd_author_box.html:18
 msgid ""

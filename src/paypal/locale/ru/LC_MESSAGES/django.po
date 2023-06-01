@@ -15,49 +15,50 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: forms.py:9
+#: paypal/forms.py:9
 msgid "amount in PLN"
 msgstr "сумма в PLN"
 
-#: templates/paypal/cancel.html:5
+#: paypal/templates/paypal/cancel.html:6
 msgid "Zrezygnowano z płatności :("
 msgstr "Оплата не прошла :("
 
-#: templates/paypal/error.html:2
+#: paypal/templates/paypal/error.html:2
 msgid "PayPal Error"
 msgstr "Ошибка PayPal"
 
-#: templates/paypal/error.html:6
+#: paypal/templates/paypal/error.html:6
 msgid "Learn more"
 msgstr "Узнать больше"
 
-#: templates/paypal/form.html:6 templates/paypal/form.html:10
+#: paypal/templates/paypal/form.html:6 paypal/templates/paypal/form.html:10
 msgid "Wolne Lektury Friend Club"
 msgstr "Клуб друзей Wolne Lektury/Свободное чтение"
 
-#: templates/paypal/form.html:18
+#: paypal/templates/paypal/form.html:18
 msgid "Subscribe with PayPal"
 msgstr "Подписаться с PayPal"
 
-#: templates/paypal/form.html:21
+#: paypal/templates/paypal/form.html:21
 msgid "You must be logged in to subscribe."
 msgstr "Для подписки необходимо войти под логином"
 
-#: templates/paypal/return.html:8
+#: paypal/templates/paypal/return.html:8
 msgid "Dziękujemy, że jesteś z nami i pomagasz nam rozwijać Wolne Lektury!"
-msgstr "Спасибо, что ты с нами и помогаешь развивать Wolne Lektury/Свободное чтение! "
+msgstr ""
+"Спасибо, что ты с нами и помогаешь развивать Wolne Lektury/Свободное чтение! "
 
-#: templates/paypal/return.html:9
+#: paypal/templates/paypal/return.html:9
 msgid "Pamiętaj, że zawsze możesz się z nami skontaktować:"
 msgstr "Помни, что всегда можешь связаться с нами:"
 
-#: templates/paypal/return.html:11
+#: paypal/templates/paypal/return.html:11
 msgid "Do przeczytania!"
 msgstr "Прочти!"
 
-#: templates/paypal/return.html:11
+#: paypal/templates/paypal/return.html:11
 msgid "Zespół Wolnych Lektur"
 msgstr "Команда Wolny Lektury/Свободное чтение"

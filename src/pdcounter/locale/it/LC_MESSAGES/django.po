@@ -64,20 +64,14 @@ msgstr ""
 msgid "book stubs"
 msgstr ""
 
-#: pdcounter/templates/pdcounter/author_detail.html:7
-#: pdcounter/templates/pdcounter/book_stub_detail.html:7
-msgid "Public domain counter"
-msgstr ""
-
-#: pdcounter/templates/pdcounter/author_detail.html:26
-msgid "Read article about this author on Wikipedia"
-msgstr ""
-
+#: pdcounter/templates/pdcounter/2022/author_detail.html:27
 #: pdcounter/templates/pdcounter/author_detail.html:33
 #: pdcounter/templates/pdcounter/pd_author_box.html:9
 msgid "This author's works are copyrighted."
 msgstr ""
 
+#: pdcounter/templates/pdcounter/2022/author_detail.html:28
+#: pdcounter/templates/pdcounter/2022/author_detail.html:40
 #: pdcounter/templates/pdcounter/author_detail.html:34
 #: pdcounter/templates/pdcounter/author_detail.html:46
 #: pdcounter/templates/pdcounter/pd_author_box.html:10
@@ -87,6 +81,7 @@ msgid ""
 "a> why Internet libraries can't publish this author's works."
 msgstr ""
 
+#: pdcounter/templates/pdcounter/2022/author_detail.html:32
 #: pdcounter/templates/pdcounter/author_detail.html:38
 #: pdcounter/templates/pdcounter/pd_author_box.html:14
 msgid ""
@@ -94,24 +89,29 @@ msgid ""
 "Internet library of Wolne Lektury."
 msgstr ""
 
+#: pdcounter/templates/pdcounter/2022/author_detail.html:36
 #: pdcounter/templates/pdcounter/author_detail.html:42
 msgid ""
 "This author's works will become part of public domain and will be allowed to "
 "be published without restrictions in"
 msgstr ""
 
+#: pdcounter/templates/pdcounter/2022/book_detail.html:31
 #: pdcounter/templates/pdcounter/book_stub_detail.html:16
 msgid ""
 "This work is in public domain and will be published on Internet library of "
 "Wolne Lektury soon."
 msgstr ""
 
+#: pdcounter/templates/pdcounter/2022/book_detail.html:35
 #: pdcounter/templates/pdcounter/book_stub_detail.html:20
 msgid ""
 "This work will become part of public domain and will be allowed to be "
 "published without restrictions in"
 msgstr ""
 
+#: pdcounter/templates/pdcounter/2022/book_detail.html:39
+#: pdcounter/templates/pdcounter/2022/book_detail.html:44
 #: pdcounter/templates/pdcounter/book_stub_detail.html:24
 #: pdcounter/templates/pdcounter/book_stub_detail.html:29
 msgid ""
@@ -119,8 +119,18 @@ msgid ""
 "a> why Internet libraries can't publish this work."
 msgstr ""
 
+#: pdcounter/templates/pdcounter/2022/book_detail.html:43
 #: pdcounter/templates/pdcounter/book_stub_detail.html:28
 msgid "This work is copyrighted."
+msgstr ""
+
+#: pdcounter/templates/pdcounter/author_detail.html:7
+#: pdcounter/templates/pdcounter/book_stub_detail.html:7
+msgid "Public domain counter"
+msgstr ""
+
+#: pdcounter/templates/pdcounter/author_detail.html:26
+msgid "Read article about this author on Wikipedia"
 msgstr ""
 
 #: pdcounter/templates/pdcounter/pd_author_box.html:18

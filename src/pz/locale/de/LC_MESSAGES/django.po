@@ -17,27 +17,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: pz/admin.py:42
+#: pz/admin.py:46
 msgid "All"
 msgstr ""
 
-#: pz/admin.py:43
+#: pz/admin.py:47
 msgid "Empty"
 msgstr ""
 
-#: pz/admin.py:44
+#: pz/admin.py:48
 msgid "Not empty"
 msgstr ""
 
-#: pz/admin.py:111
+#: pz/admin.py:138
 msgid "Processing"
 msgstr ""
 
-#: pz/admin.py:147
+#: pz/admin.py:174
 msgid "obligatory"
 msgstr ""
 
-#: pz/admin.py:148
+#: pz/admin.py:175
 msgid "agree contact"
 msgstr ""
 

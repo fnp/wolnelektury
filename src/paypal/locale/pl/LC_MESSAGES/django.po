@@ -22,7 +22,7 @@ msgstr ""
 msgid "amount in PLN"
 msgstr "kwota w złotych"
 
-#: paypal/templates/paypal/cancel.html:5
+#: paypal/templates/paypal/cancel.html:6
 msgid "Zrezygnowano z płatności :("
 msgstr ""
 

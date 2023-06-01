@@ -15,19 +15,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: forms.py:20 forms.py:67
+#: suggest/forms.py:20 suggest/forms.py:67
 msgid "Contact"
 msgstr "Контакт"
 
-#: forms.py:21
+#: suggest/forms.py:21
 msgid "Description"
 msgstr "Описание"
 
-#: forms.py:58 forms.py:122
+#: suggest/forms.py:58 suggest/forms.py:122
 msgid "Thank you for your suggestion."
 msgstr "Спасибо за ваше предложение."
 
-#: forms.py:59 forms.py:123
+#: suggest/forms.py:59 suggest/forms.py:123
 msgid ""
 "Thank you for your comment on WolneLektury.pl.\n"
 "The suggestion has been referred to the project coordinator."
@@ -35,92 +35,96 @@ msgstr ""
 "Спасибо за ваш комментарий на  WolneLektury.pl. \n"
 "Предложение было передано координатору проекта."
 
-#: forms.py:68 models.py:30
+#: suggest/forms.py:68 suggest/models.py:30
 msgid "books"
 msgstr "книги"
 
-#: forms.py:69
+#: suggest/forms.py:69
 #, fuzzy
 #| msgid "books"
 msgid "ebook"
 msgstr "книги"
 
-#: forms.py:70
+#: suggest/forms.py:70
 #, fuzzy
 #| msgid "audiobooks"
 msgid "audiobook"
 msgstr "аудиокниги"
 
-#: forms.py:76
+#: suggest/forms.py:76
 #, fuzzy
 #| msgid "One of these fields is required."
 msgid "One of these options is required."
 msgstr "Требуется заполнить одно из этих полей."
 
-#: models.py:13 models.py:29
+#: suggest/models.py:13 suggest/models.py:29
 msgid "contact"
 msgstr "контакт"
 
-#: models.py:14
+#: suggest/models.py:14
 msgid "description"
 msgstr "описание"
 
-#: models.py:15 models.py:32
+#: suggest/models.py:15 suggest/models.py:32
 msgid "creation date"
 msgstr "дата создания"
 
-#: models.py:16 models.py:33
+#: suggest/models.py:16 suggest/models.py:33
 msgid "IP address"
 msgstr "IP-адрес"
 
-#: models.py:21
+#: suggest/models.py:21
 msgid "suggestion"
 msgstr "предложение"
 
-#: models.py:22
+#: suggest/models.py:22
 msgid "suggestions"
 msgstr "предложения"
 
-#: models.py:31
+#: suggest/models.py:31
 msgid "audiobooks"
 msgstr "аудиокниги"
 
-#: models.py:38
+#: suggest/models.py:38
 msgid "publishing suggestion"
 msgstr "издательское предложение"
 
-#: models.py:39
+#: suggest/models.py:39
 msgid "publishing suggestions"
 msgstr "издательские предложения"
 
-#: templates/publishing_suggest.html:7
+#: suggest/templates/publishing_suggest.html:7
 msgid "I'd like to find in WolneLektury.pl these…"
 msgstr "Я хотел/а бы найти на сайте WolneLektury.pl ..."
 
-#: templates/publishing_suggest.html:16
+#: suggest/templates/publishing_suggest.html:16
 msgid ""
 "Remember that we can only publish books in public domain, ie. 70 years after "
 "the death of the author!"
-msgstr "Помните, что мы можем опубликовать книгу, являющуюся общественным достоянием, со смерти автора которой прошло 70 лет."
+msgstr ""
+"Помните, что мы можем опубликовать книгу, являющуюся общественным "
+"достоянием, со смерти автора которой прошло 70 лет."
 
-#: views.py:13
+#: suggest/views.py:13
 msgid "Didn't find a book? Make a suggestion."
 msgstr "Вы не нашли книгу? Отправьте нам предложение."
 
-#: views.py:15 views.py:25
+#: suggest/views.py:15 suggest/views.py:25
 msgid "Send report"
 msgstr "Отправить отчет"
 
-#: views.py:16 views.py:26
+#: suggest/views.py:16 suggest/views.py:26
 msgid "Report was sent successfully."
 msgstr "Отчет отправлен успешно."
 
-#: views.py:23
+#: suggest/views.py:23
 msgid "Report a bug or suggestion"
 msgstr "Сообщите об ошибке или отправьте предложение"
 
 #~ msgid "Message sent automatically. Please do not reply."
-#~ msgstr "Сообщение отправлено автоматически. Пожалуйста, не отвечайте на это письмо."
+#~ msgstr ""
+#~ "Сообщение отправлено автоматически. Пожалуйста, не отвечайте на это "
+#~ "письмо."
 
 #, fuzzy
 #~| msgid ""

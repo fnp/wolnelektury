@@ -15,18 +15,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: search/forms.py:11 search/templates/newsearch/search.html:16
-#: search/templates/search/search.html:7
+#: search/forms.py:14 search/templates/newsearch/search.html:16
+#: search/templates/search_/search.html:7
 msgid "Search"
 msgstr "Search"
 
-#: search/forms.py:21
+#: search/forms.py:24
 #, fuzzy
 #| msgid "title, author, theme/topic, epoch, kind, genre, phrase"
 msgid "title, author, epoch, kind, genre, phrase"
 msgstr "title, author, theme/topic, period, form, genre, phrase"
 
-#: search/templates/search/search.html:27
+#: search/templates/search_/search.html:27
 msgid "Did you mean"
 msgstr ""
 

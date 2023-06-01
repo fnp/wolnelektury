@@ -165,163 +165,163 @@ msgstr ""
 msgid "Queue is full. Please try again later."
 msgstr ""
 
-#: catalogue/models/book.py:60 catalogue/models/collection.py:14
+#: catalogue/models/book.py:37 catalogue/models/collection.py:14
 msgid "title"
 msgstr "заголовок"
 
-#: catalogue/models/book.py:61 catalogue/models/tag.py:58
+#: catalogue/models/book.py:38 catalogue/models/tag.py:58
 msgid "sort key"
 msgstr "ключ сортування"
 
-#: catalogue/models/book.py:63
+#: catalogue/models/book.py:40
 #, fuzzy
 #| msgid "Results by authors"
 msgid "sort key by author"
 msgstr "Результати за авторами"
 
-#: catalogue/models/book.py:64 catalogue/models/book.py:65
+#: catalogue/models/book.py:41 catalogue/models/book.py:42
 #: catalogue/models/collection.py:15 catalogue/models/tag.py:57
 msgid "slug"
 msgstr "slug"
 
-#: catalogue/models/book.py:66
+#: catalogue/models/book.py:43
 msgid "language code"
 msgstr "мовний код"
 
-#: catalogue/models/book.py:67 catalogue/models/book.py:429
+#: catalogue/models/book.py:44 catalogue/models/book.py:399
 #: catalogue/models/collection.py:16 catalogue/models/tag.py:61
-#: catalogue/models/tag.py:137
+#: catalogue/models/tag.py:171
 msgid "description"
 msgstr "опис"
 
-#: catalogue/models/book.py:68
+#: catalogue/models/book.py:45
 msgid "abstract"
 msgstr ""
 
-#: catalogue/models/book.py:69
+#: catalogue/models/book.py:46
 msgid "toc"
 msgstr ""
 
-#: catalogue/models/book.py:70 catalogue/models/bookmedia.py:42
+#: catalogue/models/book.py:47 catalogue/models/bookmedia.py:43
 #: catalogue/models/tag.py:73 catalogue/models/tag.py:74
 msgid "creation date"
 msgstr "дата створення"
 
-#: catalogue/models/book.py:71
+#: catalogue/models/book.py:48
 #, fuzzy
 #| msgid "creation date"
 msgid "change date"
 msgstr "дата створення"
 
-#: catalogue/models/book.py:72
+#: catalogue/models/book.py:49
 msgid "parent number"
 msgstr "номер батька"
 
-#: catalogue/models/book.py:73 catalogue/models/bookmedia.py:45
+#: catalogue/models/book.py:50 catalogue/models/bookmedia.py:46
 msgid "extra information"
 msgstr "додаткова інформація"
 
-#: catalogue/models/book.py:76
+#: catalogue/models/book.py:53
 msgid "print on demand"
 msgstr ""
 
-#: catalogue/models/book.py:77 catalogue/models/collection.py:23
+#: catalogue/models/book.py:54 catalogue/models/collection.py:28
 msgid "recommended"
 msgstr ""
 
-#: catalogue/models/book.py:78
+#: catalogue/models/book.py:55
 msgid "audio length"
 msgstr ""
 
-#: catalogue/models/book.py:79
+#: catalogue/models/book.py:56
 msgid "preview"
 msgstr ""
 
-#: catalogue/models/book.py:80
+#: catalogue/models/book.py:57
 msgid "preview until"
 msgstr ""
 
-#: catalogue/models/book.py:82
+#: catalogue/models/book.py:59
 msgid "findable"
 msgstr ""
 
-#: catalogue/models/book.py:86
+#: catalogue/models/book.py:70
 msgid "cover"
 msgstr "обкладинка"
 
-#: catalogue/models/book.py:93
+#: catalogue/models/book.py:72
 #, fuzzy
 #| msgid "cover"
 msgid "clean cover"
 msgstr "обкладинка"
 
-#: catalogue/models/book.py:100
+#: catalogue/models/book.py:73
 msgid "cover thumbnail"
 msgstr ""
 
-#: catalogue/models/book.py:106
+#: catalogue/models/book.py:75
 msgid "cover thumbnail for mobile app"
 msgstr ""
 
-#: catalogue/models/book.py:112
+#: catalogue/models/book.py:76
 msgid "cover for mobile app"
 msgstr ""
 
-#: catalogue/models/book.py:118
+#: catalogue/models/book.py:78
 msgid "cover for Ebookpoint"
 msgstr ""
 
-#: catalogue/models/book.py:147 catalogue/models/collection.py:19
+#: catalogue/models/book.py:106 catalogue/models/collection.py:24
 msgid "book"
 msgstr "книжка"
 
-#: catalogue/models/book.py:148
+#: catalogue/models/book.py:107
 msgid "books"
 msgstr "книжки"
 
-#: catalogue/models/book.py:621
+#: catalogue/models/book.py:620
 #, python-format
 msgid "Book \"%s\" does not exist."
 msgstr "Книжка \"%s\" не існує."
 
-#: catalogue/models/book.py:637
+#: catalogue/models/book.py:636
 #, python-format
 msgid "Book %s already exists"
 msgstr "Книжка %s вже існує"
 
-#: catalogue/models/book.py:955
+#: catalogue/models/book.py:954
 msgid "This work needs modernisation"
 msgstr ""
 
-#: catalogue/models/book.py:1045 catalogue/models/bookmedia.py:34
+#: catalogue/models/bookmedia.py:35
 #, python-format
 msgid "%s file"
 msgstr "файл %s"
 
-#: catalogue/models/bookmedia.py:36
+#: catalogue/models/bookmedia.py:37
 msgid "type"
 msgstr "тип"
 
-#: catalogue/models/bookmedia.py:37 catalogue/models/source.py:11
+#: catalogue/models/bookmedia.py:38 catalogue/models/source.py:11
 #: catalogue/models/tag.py:56
 msgid "name"
 msgstr "назва"
 
-#: catalogue/models/bookmedia.py:38
+#: catalogue/models/bookmedia.py:39
 #, fuzzy
 #| msgid "name"
 msgid "part name"
 msgstr "назва"
 
-#: catalogue/models/bookmedia.py:39
+#: catalogue/models/bookmedia.py:40
 msgid "index"
 msgstr ""
 
-#: catalogue/models/bookmedia.py:40
+#: catalogue/models/bookmedia.py:41
 msgid "file"
 msgstr "файл"
 
-#: catalogue/models/bookmedia.py:54 catalogue/models/bookmedia.py:55
+#: catalogue/models/bookmedia.py:55 catalogue/models/bookmedia.py:56
 msgid "book media"
 msgstr "book media"
 
@@ -329,26 +329,26 @@ msgstr "book media"
 msgid "book slugs"
 msgstr "slugs книжок"
 
-#: catalogue/models/collection.py:18 catalogue/models/tag.py:23
+#: catalogue/models/collection.py:23 catalogue/models/tag.py:23
 #: catalogue/templates/catalogue/search_multiple_hits.html:53
 msgid "kind"
 msgstr "рід"
 
-#: catalogue/models/collection.py:19
+#: catalogue/models/collection.py:24
 msgid "picture"
 msgstr ""
 
-#: catalogue/models/collection.py:20
+#: catalogue/models/collection.py:25
 #, fuzzy
 #| msgid "Listen"
 msgid "listed"
 msgstr "Послухати"
 
-#: catalogue/models/collection.py:28
+#: catalogue/models/collection.py:33
 msgid "collection"
 msgstr "колекція"
 
-#: catalogue/models/collection.py:29
+#: catalogue/models/collection.py:34
 msgid "collections"
 msgstr "колекції"
 
@@ -403,7 +403,7 @@ msgstr "вибір"
 msgid "thing"
 msgstr ""
 
-#: catalogue/models/tag.py:33 catalogue/models/tag.py:99
+#: catalogue/models/tag.py:33 catalogue/models/tag.py:124
 msgid "tag"
 msgstr "теґ"
 
@@ -419,7 +419,7 @@ msgstr "ІД об'єкту"
 msgid "category"
 msgstr "категорія"
 
-#: catalogue/models/tag.py:100
+#: catalogue/models/tag.py:125
 msgid "tags"
 msgstr "теґи"
 
@@ -627,11 +627,11 @@ msgstr ""
 msgid "Please wait..."
 msgstr ""
 
-#: catalogue/templates/catalogue/book_text.html:158
+#: catalogue/templates/catalogue/book_text.html:167
 msgid "Other versions of the book"
 msgstr ""
 
-#: catalogue/templates/catalogue/book_text.html:159
+#: catalogue/templates/catalogue/book_text.html:168
 msgid "Close the other version"
 msgstr ""
 
@@ -678,11 +678,12 @@ msgstr "Художник"
 msgid "All collections"
 msgstr "колекції"
 
-#: catalogue/templates/catalogue/custom_pdf_form.html:5 catalogue/views.py:414
+#: catalogue/templates/catalogue/custom_pdf_form.html:5 catalogue/views.py:448
 msgid "Download custom PDF"
 msgstr "Завантажити настроюваний PDF"
 
-#: catalogue/templates/catalogue/custom_pdf_form.html:18 catalogue/views.py:415
+#: catalogue/templates/catalogue/custom_pdf_form.html:12
+#: catalogue/templates/catalogue/custom_pdf_form.html:22 catalogue/views.py:449
 msgid "Download"
 msgstr "Завантажити"
 
@@ -807,7 +808,7 @@ msgstr "входить у суспільне надбання"
 #, python-format
 msgid ""
 "You can also see <a href=\"%(a)s\">recent audiobooks</a>\n"
-"    and <a href=\"%(d)s\">recent DAISY files</a>."
+"      and <a href=\"%(d)s\">recent DAISY files</a>."
 msgstr ""
 
 #: catalogue/templates/catalogue/search_multiple_hits.html:8
@@ -853,14 +854,16 @@ msgstr "На жаль, для пошуку потрібно ввести щон�
 msgid "Sorry! Search query must have at least two characters."
 msgstr "На жаль, для пошуку потрібно ввести щонайменше два знаки."
 
-#: catalogue/templates/catalogue/snippets/2022_jplayer.html:53
+#: catalogue/templates/catalogue/snippets/2022_jplayer.html:52
+#: catalogue/templates/catalogue/snippets/2022_jplayer_reader.html:51
 #: catalogue/templates/catalogue/snippets/jplayer.html:36
 #, fuzzy
 #| msgid "Artist"
 msgid "Artist:"
 msgstr "Художник"
 
-#: catalogue/templates/catalogue/snippets/2022_jplayer.html:54
+#: catalogue/templates/catalogue/snippets/2022_jplayer.html:53
+#: catalogue/templates/catalogue/snippets/2022_jplayer_reader.html:52
 #: catalogue/templates/catalogue/snippets/jplayer.html:37
 #, fuzzy
 #| msgid "Director"
@@ -960,13 +963,13 @@ msgstr ""
 msgid "Loading"
 msgstr "Leading"
 
-#: catalogue/templatetags/catalogue_tags.py:521
+#: catalogue/templatetags/catalogue_tags.py:549
 #, fuzzy
 #| msgid "language code"
 msgid "vulgar language"
 msgstr "мовний код"
 
-#: catalogue/views.py:365
+#: catalogue/views.py:399
 #, python-format
 msgid ""
 "An error occurred: %(exception)s\n"
@@ -977,11 +980,11 @@ msgstr ""
 "\n"
 "%(tb)s"
 
-#: catalogue/views.py:370
+#: catalogue/views.py:404
 msgid "Book imported successfully"
 msgstr "Книжку успішно завантажено"
 
-#: catalogue/views.py:371
+#: catalogue/views.py:405
 #, python-format
 msgid "Error importing file: %r"
 msgstr "Помилка в завантаженні файла: %r"

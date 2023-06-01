@@ -36,34 +36,34 @@ msgstr ""
 msgid "Notifications"
 msgstr ""
 
-#: wolnelektury/templates/404.html:4
+#: wolnelektury/templates/404.html:6 wolnelektury/templates/404.html:11
 msgid "Page does not exist"
 msgstr ""
 
-#: wolnelektury/templates/404.html:8
+#: wolnelektury/templates/404.html:15
 msgid "Page not found"
 msgstr ""
 
-#: wolnelektury/templates/404.html:11
+#: wolnelektury/templates/404.html:18
 msgid ""
 "We are sorry, but this page does not exist. Please check if you entered "
 "correct address or go to "
 msgstr ""
 
-#: wolnelektury/templates/404.html:12
+#: wolnelektury/templates/404.html:19
 msgid "main page"
 msgstr ""
 
-#: wolnelektury/templates/500.html:6 wolnelektury/templates/500.html:17
+#: wolnelektury/templates/500.html:7
 msgid "Server error"
 msgstr ""
 
-#: wolnelektury/templates/500.html:19
+#: wolnelektury/templates/500.html:73
 msgid ""
 "<p>The Wolnelektury.pl site is currently unavailable. Meanwhile, visit our "
-"<a href='http://nowoczesnapolska.org.pl'>blog</a>.</p> <p>Inform our <a "
-"href='mailto:fundacja@nowoczesnapolska.org.pl'>administrators</a> about the "
-"error.</p>"
+"<a href='https://fundacja.wolnelektury.pl'>blog</a>.</p> <p>Inform our <a "
+"href='mailto:fundacja@wolnelektury.pl'>administrators</a> about the error.</"
+"p>"
 msgstr ""
 
 #: wolnelektury/templates/503.html:6 wolnelektury/templates/503.html:17
@@ -92,12 +92,20 @@ msgstr ""
 msgid "Import book"
 msgstr ""
 
+#: wolnelektury/templates/admin/long_filter.html:2
+#, python-format
+msgid " By %(filter_title)s "
+msgstr ""
+
 #: wolnelektury/templates/auth/login.html:11
+#: wolnelektury/templates/registration/login.html:25
 msgid "Forgot Password?"
 msgstr ""
 
 #: wolnelektury/templates/auth/login.html:17
 #: wolnelektury/templates/auth/register.html:8
+#: wolnelektury/templates/registration/login.html:31
+#: wolnelektury/templates/registration/register.html:20
 #, fuzzy
 msgid "Sign in using:"
 msgstr "Zaloguj"
@@ -119,7 +127,6 @@ msgstr ""
 
 #: wolnelektury/templates/base/app.html:66
 #: wolnelektury/templates/base/superbase.html:105
-#: wolnelektury/templates/board_base.html:48
 msgid "Logout"
 msgstr ""
 
@@ -155,22 +162,23 @@ msgid "My shelf"
 msgstr ""
 
 #: wolnelektury/templates/base/superbase.html:102
-#: wolnelektury/templates/board_base.html:43
 msgid "Administration"
 msgstr ""
 
-#: wolnelektury/templates/base/superbase.html:109 wolnelektury/views.py:79
-#: wolnelektury/views.py:80
+#: wolnelektury/templates/base/superbase.html:109 wolnelektury/views.py:106
+#: wolnelektury/views.py:107
 msgid "Sign in"
 msgstr "Zaloguj"
 
-#: wolnelektury/templates/base/superbase.html:110 wolnelektury/views.py:98
-#: wolnelektury/views.py:99 wolnelektury/views.py:127
+#: wolnelektury/templates/base/superbase.html:110
+#: wolnelektury/templates/registration/register.html:7
+#: wolnelektury/templates/registration/register.html:16
+#: wolnelektury/views.py:144 wolnelektury/views.py:145
+#: wolnelektury/views.py:176
 msgid "Register"
 msgstr ""
 
 #: wolnelektury/templates/base/superbase.html:124
-#: wolnelektury/templates/board_base.html:28
 msgid "Search"
 msgstr ""
 
@@ -182,8 +190,8 @@ msgstr ""
 msgid "Loading"
 msgstr ""
 
-#: wolnelektury/templates/board_base.html:31
-msgid "Advanced search"
+#: wolnelektury/templates/forms/form_sent.html:12
+msgid "Thank you"
 msgstr ""
 
 #: wolnelektury/templates/info/join_us.html:6
@@ -223,29 +231,29 @@ msgid "Support us"
 msgstr ""
 
 #: wolnelektury/templates/main_menu.html:7
-msgid "Literature"
+msgid "School readings"
 msgstr ""
 
 #: wolnelektury/templates/main_menu.html:10
-msgid "Themes"
+msgid "Literature"
 msgstr ""
 
 #: wolnelektury/templates/main_menu.html:13
-msgid "Audiobooks"
+msgid "Themes"
 msgstr ""
 
 #: wolnelektury/templates/main_menu.html:16
+msgid "Audiobooks"
+msgstr ""
+
+#: wolnelektury/templates/main_menu.html:19
 #: wolnelektury/templates/main_page.html:52
 msgid "Collections"
 msgstr ""
 
-#: wolnelektury/templates/main_menu.html:19
-#: wolnelektury/templates/main_page.html:108
-msgid "Newsletter"
-msgstr ""
-
 #: wolnelektury/templates/main_menu.html:22
-msgid "School readings"
+#: wolnelektury/templates/main_page.html:110
+msgid "Newsletter"
 msgstr ""
 
 #: wolnelektury/templates/main_page.html:11
@@ -281,62 +289,65 @@ msgstr ""
 msgid "News"
 msgstr ""
 
-#: wolnelektury/templates/main_page.html:93
+#: wolnelektury/templates/main_page.html:95
 msgid "Utilities"
 msgstr ""
 
-#: wolnelektury/templates/main_page.html:96
+#: wolnelektury/templates/main_page.html:98
 msgid "Report a bug or suggestion"
 msgstr ""
 
-#: wolnelektury/templates/main_page.html:97
+#: wolnelektury/templates/main_page.html:99
 msgid "Download the catalogue in PDF format."
 msgstr ""
 
-#: wolnelektury/templates/main_page.html:98
+#: wolnelektury/templates/main_page.html:100
 msgid "Art"
 msgstr ""
 
-#: wolnelektury/templates/main_page.html:99
+#: wolnelektury/templates/main_page.html:101
 msgid "All works"
 msgstr ""
 
-#: wolnelektury/templates/main_page.html:101
+#: wolnelektury/templates/main_page.html:103
 msgid "Footnotes"
 msgstr ""
 
-#: wolnelektury/templates/main_page.html:102
+#: wolnelektury/templates/main_page.html:104
 msgid "Missing a book?"
 msgstr ""
 
-#: wolnelektury/templates/main_page.html:103
-#: wolnelektury/templates/publish_plan.html:4
-#: wolnelektury/templates/publish_plan.html:8
+#: wolnelektury/templates/main_page.html:105
+#: wolnelektury/templates/publish_plan.html:6
+#: wolnelektury/templates/publish_plan.html:10
+#: wolnelektury/templates/publish_plan.html:14
 msgid "Publishing plan"
 msgstr ""
 
-#: wolnelektury/templates/main_page.html:113
+#: wolnelektury/templates/main_page.html:115
 msgid "Information"
 msgstr ""
 
-#: wolnelektury/templates/main_page.html:115
+#: wolnelektury/templates/main_page.html:117
 msgid "Privacy policy"
 msgstr ""
 
-#: wolnelektury/templates/main_page.html:120
+#: wolnelektury/templates/main_page.html:122
 msgid "Follow us on Facebook"
 msgstr ""
 
-#: wolnelektury/templates/main_page.html:133
+#: wolnelektury/templates/main_page.html:135
 msgid "Image used:"
 msgstr ""
 
-#: wolnelektury/templates/openid/login.html:5
-#: wolnelektury/templates/openid/login.html:8
+#: wolnelektury/templates/openid/login.html:7
+#: wolnelektury/templates/openid/login.html:21
 msgid "OpenID Sign In"
 msgstr ""
 
-#: wolnelektury/templates/openid/login.html:16
+#: wolnelektury/templates/openid/login.html:13
+#: wolnelektury/templates/openid/login.html:29
+#: wolnelektury/templates/registration/login.html:6
 #, fuzzy
 msgid "Sign In"
 msgstr "Zaloguj"
@@ -384,8 +395,8 @@ msgstr ""
 #, python-format
 msgid ""
 "You decided to cancel logging in to our site using one of your exisiting "
-"accounts. If this was a mistake, please proceed to <a href=\"%(login_url)s"
-"\">sign in</a>."
+"accounts. If this was a mistake, please proceed to <a "
+"href=\"%(login_url)s\">sign in</a>."
 msgstr ""
 
 #: wolnelektury/templates/socialaccount/signup.html:6
@@ -408,39 +419,40 @@ msgid ""
 "%(site_name)s. As a final step, please complete the following form:"
 msgstr ""
 
-#: wolnelektury/templates/user.html:5 wolnelektury/templates/user.html:9
+#: wolnelektury/templates/user.html:7 wolnelektury/templates/user.html:11
+#: wolnelektury/templates/user.html:15
 msgid "User"
 msgstr ""
 
-#: wolnelektury/templates/user.html:11
+#: wolnelektury/templates/user.html:17
 msgid "Password"
 msgstr ""
 
-#: wolnelektury/templates/user.html:12
+#: wolnelektury/templates/user.html:18
 msgid "E-mail"
 msgstr ""
 
-#: wolnelektury/templates/user.html:13
+#: wolnelektury/templates/user.html:19
 msgid "Social accounts"
 msgstr ""
 
-#: wolnelektury/utils.py:123
+#: wolnelektury/utils.py:112
 msgid "Message sent automatically. Please do not reply."
 msgstr ""
 
-#: wolnelektury/utils.py:205
+#: wolnelektury/utils.py:194
 msgid "Yes"
 msgstr ""
 
-#: wolnelektury/utils.py:206
+#: wolnelektury/utils.py:195
 msgid "No"
 msgstr ""
 
-#: wolnelektury/views.py:87 wolnelektury/views.py:108
+#: wolnelektury/views.py:117 wolnelektury/views.py:157
 #, python-format
 msgid "Already logged in as user %(user)s"
 msgstr ""
 
-#: wolnelektury/views.py:122
+#: wolnelektury/views.py:171
 msgid "You have to be logged in to continue"
 msgstr ""

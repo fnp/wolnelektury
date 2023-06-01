@@ -15,38 +15,38 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: chunks/models.py:15 chunks/models.py:36
+#: chunks/models.py:17 chunks/models.py:38
 msgid "key"
 msgstr "clave"
 
-#: chunks/models.py:15
+#: chunks/models.py:17
 msgid "A unique name for this chunk of content"
 msgstr "El nombre único para este elemento del contenido"
 
-#: chunks/models.py:17
+#: chunks/models.py:19
 msgid "description"
 msgstr "descripción"
 
-#: chunks/models.py:18
+#: chunks/models.py:20
 msgid "content"
 msgstr "contenido"
 
-#: chunks/models.py:22
+#: chunks/models.py:24
 msgid "chunk"
 msgstr "elemento"
 
-#: chunks/models.py:23
+#: chunks/models.py:25
 msgid "chunks"
 msgstr "elementos"
 
-#: chunks/models.py:36
+#: chunks/models.py:38
 msgid "A unique name for this attachment"
 msgstr "El nombre único para este archivo adjunto"
 
-#: chunks/models.py:41
+#: chunks/models.py:43
 msgid "attachment"
 msgstr "archivo adjunto"
 
-#: chunks/models.py:41
+#: chunks/models.py:43
 msgid "attachments"
 msgstr "archivos adjuntos"

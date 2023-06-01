@@ -15,176 +15,177 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: admin.py:16
+#: messaging/admin.py:16
 msgid "E-mail content"
 msgstr "содержимое E-mail"
 
-#: admin.py:19
+#: messaging/admin.py:19
 msgid "Sending constraints"
 msgstr "Ограничения отправки"
 
-#: admin.py:29
+#: messaging/admin.py:29
 #, python-format
 msgid "Test e-mail has been sent to %(email)s."
 msgstr "Тестовое сообщение было отправлено на адрес %(email)s."
 
-#: admin.py:31
+#: messaging/admin.py:31
 msgid "You have no email set. Test e-mail not sent."
-msgstr "Не выбран адрес email. Тестовое сообщение не отправлено." 
+msgstr "Не выбран адрес email. Тестовое сообщение не отправлено."
 
-#: models.py:16
+#: messaging/models.py:16
 msgid "state"
 msgstr "Состояние"
 
-#: models.py:17 models.py:185
+#: messaging/models.py:17 messaging/models.py:185
 msgid "subject"
 msgstr "Тема"
 
-#: models.py:18 models.py:186
+#: messaging/models.py:18 messaging/models.py:186
 msgid "body"
 msgstr "Тело письма"
 
-#: models.py:19
+#: messaging/models.py:19
 msgid "min days since"
 msgstr "с дня, минимально"
 
-#: models.py:20
+#: messaging/models.py:20
 msgid "max days since"
 msgstr "до дня, максимально"
 
-#: models.py:21
+#: messaging/models.py:21
 msgid "min hour"
 msgstr "время, минимально"
 
-#: models.py:22
+#: messaging/models.py:22
 msgid "max hour"
 msgstr "время, максимально"
 
-#: models.py:23
+#: messaging/models.py:23
 msgid "min day of month"
 msgstr "в течение месяца, минимально"
 
-#: models.py:24
+#: messaging/models.py:24
 msgid "max day of month"
 msgstr "в течение месяца, максимально"
 
-#: models.py:25
+#: messaging/models.py:25
 msgid "Monday"
 msgstr "Понедельник"
 
-#: models.py:26
+#: messaging/models.py:26
 msgid "Tuesday"
 msgstr "Вторник"
 
-#: models.py:27
+#: messaging/models.py:27
 msgid "Wednesday"
 msgstr "Среда"
 
-#: models.py:28
+#: messaging/models.py:28
 msgid "Thursday"
 msgstr "Четверг"
 
-#: models.py:29
+#: messaging/models.py:29
 msgid "Friday"
 msgstr "Пятница"
 
-#: models.py:30
+#: messaging/models.py:30
 msgid "Saturday"
 msgstr "Суббота"
 
-#: models.py:31
+#: messaging/models.py:31
 msgid "Sunday"
 msgstr "Воскресенье"
 
-#: models.py:32
+#: messaging/models.py:32
 msgid "active"
 msgstr "активно"
 
-#: models.py:35
+#: messaging/models.py:35
 msgid "email template"
 msgstr "шаблон письма"
 
-#: models.py:36
+#: messaging/models.py:36
 msgid "email templates"
 msgstr "шаблоны писем"
 
-#: models.py:111
+#: messaging/models.py:111
 msgid "Cold"
 msgstr "Холодный"
 
-#: models.py:112
+#: messaging/models.py:112
 msgid "Would-be donor"
 msgstr "Потенциальный донор"
 
-#: models.py:113
+#: messaging/models.py:113
 msgid "One-time donor"
 msgstr "Разовый донор"
 
-#: models.py:114
+#: messaging/models.py:114
 msgid "Recurring donor"
 msgstr "Постоянный донор"
 
-#: models.py:115
+#: messaging/models.py:115
 msgid "Manually set as member"
 msgstr "Самостоятельный выбор членства"
 
-#: models.py:116
+#: messaging/models.py:116
 msgid "Opt out"
 msgstr "pt out"
 
-#: models.py:123
+#: messaging/models.py:123
 msgid "contact"
 msgstr "контакт"
 
-#: models.py:124
+#: messaging/models.py:124
 msgid "contacts"
 msgstr "контакты"
 
-#: models.py:189
+#: messaging/models.py:189
 msgid "email sent"
 msgstr "письмо отправлено"
 
-#: models.py:190
+#: messaging/models.py:190
 msgid "emails sent"
 msgstr "письма отправлены"
 
-#: states.py:76
+#: messaging/states.py:76
 msgid "club one-time donors"
 msgstr "клуб разовых доноров"
 
-#: states.py:91
+#: messaging/states.py:91
 msgid "club one-time donors with donation expiring"
 msgstr "клуб разовых доноров с истекающим сроком платежей"
 
-#: states.py:105
+#: messaging/states.py:105
 msgid "club would-be donors"
 msgstr "клуб потенциальных доноров"
 
-#: states.py:117
+#: messaging/states.py:117
 msgid "club recurring donors"
 msgstr "клуб постоянных доноров"
 
-#: states.py:132
+#: messaging/states.py:132
 msgid "club recurring donors with donation expired"
 msgstr "клуб постоянных доноров с истекающим сроком платежей"
 
-#: states.py:147
+#: messaging/states.py:147
 msgid "cold group"
 msgstr "холодная группа"
 
-#: templates/messaging/email_body.html:5
+#: messaging/templates/messaging/email_body.html:5
 msgid "Visit this address if you don't want to be contacted in the future:"
-msgstr "Зайдите на этот адрес, если не хотите, чтобы с вами связывались в будущем:"
+msgstr ""
+"Зайдите на этот адрес, если не хотите, чтобы с вами связывались в будущем:"
 
-#: views.py:15
+#: messaging/views.py:15
 #, python-format
 msgid "a <a href=\"%(docs_url)s\">%(verbose_name)s</a> object."
 msgstr "тип объекта <a href=\"%(docs_url)s\">%(verbose_name)s</a> "
 
-#: views.py:36
+#: messaging/views.py:36
 msgid "Context"
 msgstr "Контекст"

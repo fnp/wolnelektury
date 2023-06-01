@@ -20,27 +20,27 @@ msgstr ""
 "100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
 "(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
 
-#: pz/admin.py:42
+#: pz/admin.py:46
 msgid "All"
 msgstr ""
 
-#: pz/admin.py:43
+#: pz/admin.py:47
 msgid "Empty"
 msgstr ""
 
-#: pz/admin.py:44
+#: pz/admin.py:48
 msgid "Not empty"
 msgstr ""
 
-#: pz/admin.py:111
+#: pz/admin.py:138
 msgid "Processing"
 msgstr ""
 
-#: pz/admin.py:147
+#: pz/admin.py:174
 msgid "obligatory"
 msgstr ""
 
-#: pz/admin.py:148
+#: pz/admin.py:175
 msgid "agree contact"
 msgstr ""
 

@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Translated-Using: django-rosetta 0.5.3\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
 #: isbn/forms.py:66
 #, fuzzy
@@ -43,15 +43,15 @@ msgstr ""
 msgid "Notifications"
 msgstr ""
 
-#: wolnelektury/templates/404.html:4
+#: wolnelektury/templates/404.html:6 wolnelektury/templates/404.html:11
 msgid "Page does not exist"
 msgstr "Tinklalapis neegzistuoja"
 
-#: wolnelektury/templates/404.html:8
+#: wolnelektury/templates/404.html:15
 msgid "Page not found"
 msgstr "Puslapis nerastas"
 
-#: wolnelektury/templates/404.html:11
+#: wolnelektury/templates/404.html:18
 msgid ""
 "We are sorry, but this page does not exist. Please check if you entered "
 "correct address or go to "
@@ -59,25 +59,25 @@ msgstr ""
 "Atsiprašome, bet šis tinklalapis neegzistuoja. Prašome patvirtinti ar "
 "įvedėte teisingą adresą arba eikite į"
 
-#: wolnelektury/templates/404.html:12
+#: wolnelektury/templates/404.html:19
 msgid "main page"
 msgstr "pagrindinį puslapį"
 
-#: wolnelektury/templates/500.html:6 wolnelektury/templates/500.html:17
+#: wolnelektury/templates/500.html:7
 msgid "Server error"
 msgstr "Serverio klaida"
 
-#: wolnelektury/templates/500.html:19
+#: wolnelektury/templates/500.html:73
 msgid ""
 "<p>The Wolnelektury.pl site is currently unavailable. Meanwhile, visit our "
-"<a href='http://nowoczesnapolska.org.pl'>blog</a>.</p> <p>Inform our <a "
-"href='mailto:fundacja@nowoczesnapolska.org.pl'>administrators</a> about the "
-"error.</p>"
+"<a href='https://fundacja.wolnelektury.pl'>blog</a>.</p> <p>Inform our <a "
+"href='mailto:fundacja@wolnelektury.pl'>administrators</a> about the error.</"
+"p>"
 msgstr ""
 "<p>Interneto svetainė yra laikinai neprieinama. Aplankykite mūsų <a "
-"href='http://nowoczesnapolska.org.pl'>blogą</a>.</p> <p>Praneškite<a "
-"href='mailto:fundacja@nowoczesnapolska.org.pl'>administratoriams</a> apie "
-"klaidą.</p>\""
+"href='https://fundacja.wolnelektury.pl'>blogą</a>.</p> <p>Praneškite<a "
+"href='mailto:fundacja@wolnelektury.pl'>administratoriams</a> apie klaidą.</"
+"p>\""
 
 #: wolnelektury/templates/503.html:6 wolnelektury/templates/503.html:17
 msgid "Service unavailable"
@@ -107,12 +107,20 @@ msgstr "supaprastintas"
 msgid "Import book"
 msgstr "Importuoti knygą"
 
+#: wolnelektury/templates/admin/long_filter.html:2
+#, python-format
+msgid " By %(filter_title)s "
+msgstr ""
+
 #: wolnelektury/templates/auth/login.html:11
+#: wolnelektury/templates/registration/login.html:25
 msgid "Forgot Password?"
 msgstr "Pamiršote slaptažodį?"
 
 #: wolnelektury/templates/auth/login.html:17
 #: wolnelektury/templates/auth/register.html:8
+#: wolnelektury/templates/registration/login.html:31
+#: wolnelektury/templates/registration/register.html:20
 msgid "Sign in using:"
 msgstr "Prisijungti naudojant:"
 
@@ -135,7 +143,6 @@ msgstr "Kalbų versijos"
 
 #: wolnelektury/templates/base/app.html:66
 #: wolnelektury/templates/base/superbase.html:105
-#: wolnelektury/templates/board_base.html:48
 msgid "Logout"
 msgstr "Atsijungti"
 
@@ -196,22 +203,23 @@ msgid "My shelf"
 msgstr "Mano lentyna"
 
 #: wolnelektury/templates/base/superbase.html:102
-#: wolnelektury/templates/board_base.html:43
 msgid "Administration"
 msgstr "Administracija "
 
-#: wolnelektury/templates/base/superbase.html:109 wolnelektury/views.py:79
-#: wolnelektury/views.py:80
+#: wolnelektury/templates/base/superbase.html:109 wolnelektury/views.py:106
+#: wolnelektury/views.py:107
 msgid "Sign in"
 msgstr "Prisijungti  "
 
-#: wolnelektury/templates/base/superbase.html:110 wolnelektury/views.py:98
-#: wolnelektury/views.py:99 wolnelektury/views.py:127
+#: wolnelektury/templates/base/superbase.html:110
+#: wolnelektury/templates/registration/register.html:7
+#: wolnelektury/templates/registration/register.html:16
+#: wolnelektury/views.py:144 wolnelektury/views.py:145
+#: wolnelektury/views.py:176
 msgid "Register"
 msgstr "Registruotis "
 
 #: wolnelektury/templates/base/superbase.html:124
-#: wolnelektury/templates/board_base.html:28
 msgid "Search"
 msgstr "Ieškoti"
 
@@ -223,11 +231,9 @@ msgstr "Uždaryti"
 msgid "Loading"
 msgstr "Kraunasi"
 
-#: wolnelektury/templates/board_base.html:31
-#, fuzzy
-#| msgid "advanced"
-msgid "Advanced search"
-msgstr "papildomas"
+#: wolnelektury/templates/forms/form_sent.html:12
+msgid "Thank you"
+msgstr ""
 
 #: wolnelektury/templates/info/join_us.html:6
 #, fuzzy, python-format
@@ -307,34 +313,34 @@ msgid "Support us"
 msgstr ""
 
 #: wolnelektury/templates/main_menu.html:7
+#, fuzzy
+#| msgid "for reading"
+msgid "School readings"
+msgstr "į skaitimą"
+
+#: wolnelektury/templates/main_menu.html:10
 msgid "Literature"
 msgstr ""
 
-#: wolnelektury/templates/main_menu.html:10
+#: wolnelektury/templates/main_menu.html:13
 msgid "Themes"
 msgstr "Motyvai"
 
-#: wolnelektury/templates/main_menu.html:13
+#: wolnelektury/templates/main_menu.html:16
 msgid "Audiobooks"
 msgstr "Audio knygos"
 
-#: wolnelektury/templates/main_menu.html:16
+#: wolnelektury/templates/main_menu.html:19
 #: wolnelektury/templates/main_page.html:52
 #, fuzzy
 #| msgid "Account Connections"
 msgid "Collections"
 msgstr "Paskyros jungtys"
 
-#: wolnelektury/templates/main_menu.html:19
-#: wolnelektury/templates/main_page.html:108
+#: wolnelektury/templates/main_menu.html:22
+#: wolnelektury/templates/main_page.html:110
 msgid "Newsletter"
 msgstr ""
-
-#: wolnelektury/templates/main_menu.html:22
-#, fuzzy
-#| msgid "for reading"
-msgid "School readings"
-msgstr "į skaitimą"
 
 #: wolnelektury/templates/main_page.html:11
 #: wolnelektury/templates/main_page.html:12
@@ -369,66 +375,69 @@ msgstr ""
 msgid "News"
 msgstr "Naujienos"
 
-#: wolnelektury/templates/main_page.html:93
+#: wolnelektury/templates/main_page.html:95
 msgid "Utilities"
 msgstr "Priemonės"
 
-#: wolnelektury/templates/main_page.html:96
+#: wolnelektury/templates/main_page.html:98
 msgid "Report a bug or suggestion"
 msgstr "Praneškite apie klaidą arba teikite pasiūlymus"
 
-#: wolnelektury/templates/main_page.html:97
+#: wolnelektury/templates/main_page.html:99
 msgid "Download the catalogue in PDF format."
 msgstr "Atsisiųsti katalogą PDF formatu."
 
-#: wolnelektury/templates/main_page.html:98
+#: wolnelektury/templates/main_page.html:100
 #, fuzzy
 #| msgid "Artist"
 msgid "Art"
 msgstr "Artistas"
 
-#: wolnelektury/templates/main_page.html:99
+#: wolnelektury/templates/main_page.html:101
 #, fuzzy
 #| msgid "All books"
 msgid "All works"
 msgstr "Visos knygos"
 
-#: wolnelektury/templates/main_page.html:101
+#: wolnelektury/templates/main_page.html:103
 msgid "Footnotes"
 msgstr ""
 
-#: wolnelektury/templates/main_page.html:102
+#: wolnelektury/templates/main_page.html:104
 msgid "Missing a book?"
 msgstr "Neradote knygos?"
 
-#: wolnelektury/templates/main_page.html:103
-#: wolnelektury/templates/publish_plan.html:4
-#: wolnelektury/templates/publish_plan.html:8
+#: wolnelektury/templates/main_page.html:105
+#: wolnelektury/templates/publish_plan.html:6
+#: wolnelektury/templates/publish_plan.html:10
+#: wolnelektury/templates/publish_plan.html:14
 msgid "Publishing plan"
 msgstr "Publikavimo planas"
 
-#: wolnelektury/templates/main_page.html:113
+#: wolnelektury/templates/main_page.html:115
 msgid "Information"
 msgstr "Informacija"
 
-#: wolnelektury/templates/main_page.html:115
+#: wolnelektury/templates/main_page.html:117
 msgid "Privacy policy"
 msgstr ""
 
-#: wolnelektury/templates/main_page.html:120
+#: wolnelektury/templates/main_page.html:122
 msgid "Follow us on Facebook"
 msgstr ""
 
-#: wolnelektury/templates/main_page.html:133
+#: wolnelektury/templates/main_page.html:135
 msgid "Image used:"
 msgstr "Panaudotas paveikslėlis:"
 
-#: wolnelektury/templates/openid/login.html:5
-#: wolnelektury/templates/openid/login.html:8
+#: wolnelektury/templates/openid/login.html:7
+#: wolnelektury/templates/openid/login.html:21
 msgid "OpenID Sign In"
 msgstr "OpenID Prisijungti"
 
-#: wolnelektury/templates/openid/login.html:16
+#: wolnelektury/templates/openid/login.html:13
+#: wolnelektury/templates/openid/login.html:29
+#: wolnelektury/templates/registration/login.html:6
 msgid "Sign In"
 msgstr "Prisijungti  "
 
@@ -477,8 +486,8 @@ msgstr "Prisijungimas atšauktas"
 #, python-format
 msgid ""
 "You decided to cancel logging in to our site using one of your exisiting "
-"accounts. If this was a mistake, please proceed to <a href=\"%(login_url)s"
-"\">sign in</a>."
+"accounts. If this was a mistake, please proceed to <a "
+"href=\"%(login_url)s\">sign in</a>."
 msgstr ""
 "Nusprendėte atšaukti prisijungimą prie mūsų interneto svetainės naudodamiesi "
 "viena iš jūsų egzistuojančių paskyrų. Jei įvyko klaida, prašome pradėti čia "
@@ -504,42 +513,48 @@ msgid ""
 "%(site_name)s. As a final step, please complete the following form:"
 msgstr ""
 
-#: wolnelektury/templates/user.html:5 wolnelektury/templates/user.html:9
+#: wolnelektury/templates/user.html:7 wolnelektury/templates/user.html:11
+#: wolnelektury/templates/user.html:15
 msgid "User"
 msgstr "Vartotojas"
 
-#: wolnelektury/templates/user.html:11
+#: wolnelektury/templates/user.html:17
 msgid "Password"
 msgstr "Slaptažodis"
 
-#: wolnelektury/templates/user.html:12
+#: wolnelektury/templates/user.html:18
 msgid "E-mail"
 msgstr "El- paštas"
 
-#: wolnelektury/templates/user.html:13
+#: wolnelektury/templates/user.html:19
 msgid "Social accounts"
 msgstr "Socialinės paskyros"
 
-#: wolnelektury/utils.py:123
+#: wolnelektury/utils.py:112
 msgid "Message sent automatically. Please do not reply."
 msgstr ""
 
-#: wolnelektury/utils.py:205
+#: wolnelektury/utils.py:194
 msgid "Yes"
 msgstr ""
 
-#: wolnelektury/utils.py:206
+#: wolnelektury/utils.py:195
 msgid "No"
 msgstr ""
 
-#: wolnelektury/views.py:87 wolnelektury/views.py:108
+#: wolnelektury/views.py:117 wolnelektury/views.py:157
 #, python-format
 msgid "Already logged in as user %(user)s"
 msgstr "Jau esate prisijungęs kaip vartotojas %(user)s"
 
-#: wolnelektury/views.py:122
+#: wolnelektury/views.py:171
 msgid "You have to be logged in to continue"
 msgstr "Norėdami tęsti, turite būti prisijungę"
+
+#, fuzzy
+#~| msgid "advanced"
+#~ msgid "Advanced search"
+#~ msgstr "papildomas"
 
 #, fuzzy
 #~| msgid "See our blog"
@@ -599,8 +614,8 @@ msgstr "Norėdami tęsti, turite būti prisijungę"
 #~ "\n"
 #~ "\t\t\t\tModern Poland Foundation, 00-514 Warsaw, ul. Marszałkowska 84/92 "
 #~ "lok. 125, tel/fax: (22) 621-30-17\n"
-#~ "                e-mail: <a href=\"mailto:fundacja@nowoczesnapolska.org.pl"
-#~ "\">fundacja@nowoczesnapolska.org.pl</a>\n"
+#~ "                e-mail: <a href=\"mailto:fundacja@nowoczesnapolska.org."
+#~ "pl\">fundacja@nowoczesnapolska.org.pl</a>\n"
 #~ "\t\t\t\t"
 #~ msgstr ""
 #~ "\n"
@@ -1137,11 +1152,11 @@ msgstr "Norėdami tęsti, turite būti prisijungę"
 
 #~ msgid ""
 #~ "\n"
-#~ "\t\t\tInternet library with school readings “Wolne Lektury” (<a href="
-#~ "\"http://wolnelektury.pl\">www.wolnelektury.pl</a>) is a project made by "
-#~ "Modern Poland Foundation. It started in 2007 and shares school readings, "
-#~ "which are recommended by Ministry of National Education and are in public "
-#~ "domain.\n"
+#~ "\t\t\tInternet library with school readings “Wolne Lektury” (<a "
+#~ "href=\"http://wolnelektury.pl\">www.wolnelektury.pl</a>) is a project "
+#~ "made by Modern Poland Foundation. It started in 2007 and shares school "
+#~ "readings, which are recommended by Ministry of National Education and are "
+#~ "in public domain.\n"
 #~ "\t\t\t"
 #~ msgstr ""
 #~ "\n"
@@ -1169,8 +1184,8 @@ msgstr "Norėdami tęsti, turite būti prisijungę"
 #~ "You can put a book on a shelf by entering page of the reading and "
 #~ "clicking 'Put on the shelf'."
 #~ msgstr ""
-#~ "Gali įmesti knygą į lentyną,  įeik į knygos tinklapį ir išrink \"Į lentyną"
-#~ "\".    "
+#~ "Gali įmesti knygą į lentyną,  įeik į knygos tinklapį ir išrink \"Į "
+#~ "lentyną\".    "
 
 #~ msgid "Choose books' formats which you want to download:"
 #~ msgstr "Pasirink knygos persiuntimo formatą:"

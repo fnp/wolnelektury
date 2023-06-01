@@ -106,7 +106,12 @@ if settings.DEBUG:
     ] + urlpatterns
 
 if settings.DEBUG:
+    import functools
+    from django.views.defaults import page_not_found, server_error
     urlpatterns += [
+        path('error/500/', server_error),
+        path('error/404/', functools.partial(page_not_found, exception=None)),
+
         # Static files
         path('%s<path:path>' % settings.MEDIA_URL[1:], django.views.static.serve,
            {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),

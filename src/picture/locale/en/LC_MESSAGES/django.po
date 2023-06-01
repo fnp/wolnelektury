@@ -80,11 +80,11 @@ msgstr ""
 msgid "extra information"
 msgstr ""
 
-#: picture/models.py:110
+#: picture/models.py:112
 msgid "picture"
 msgstr ""
 
-#: picture/models.py:111
+#: picture/models.py:113
 msgid "pictures"
 msgstr ""
 
@@ -191,7 +191,7 @@ msgstr ""
 msgid "Picture description on Wikipedia"
 msgstr ""
 
-#: picture/views.py:97
+#: picture/views.py:121
 #, python-format
 msgid ""
 "An error occurred: %(exception)s\n"
@@ -199,11 +199,11 @@ msgid ""
 "%(tb)s"
 msgstr ""
 
-#: picture/views.py:99
+#: picture/views.py:123
 msgid "Picture imported successfully"
 msgstr ""
 
-#: picture/views.py:101
+#: picture/views.py:125
 #, python-format
 msgid "Error importing file: %r"
 msgstr ""

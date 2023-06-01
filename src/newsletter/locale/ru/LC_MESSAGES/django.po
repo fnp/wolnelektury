@@ -15,45 +15,48 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: forms.py:17
+#: newsletter/forms.py:17
 msgid "I want to receive Wolne Lektury's newsletter."
 msgstr "Я хочу получать газету Wolne Lektury/Свободное чтение."
 
-#: forms.py:54 models.py:12
+#: newsletter/forms.py:63 newsletter/models.py:12
 msgid "email address"
 msgstr "email адрес"
 
-#: models.py:13
+#: newsletter/models.py:13
 msgid "active"
 msgstr "активно"
 
-#: models.py:18
+#: newsletter/models.py:18
 msgid "subscription"
 msgstr "подписка"
 
-#: models.py:19
+#: newsletter/models.py:19
 msgid "subscriptions"
 msgstr "подписки"
 
-#: templates/admin/newsletter/subscription/change_list.html:9
+#: newsletter/templates/admin/newsletter/subscription/change_list.html:9
 msgid "Extract"
 msgstr "Выдержка"
 
-#: templates/newsletter/confirm_subscription.html:6
-msgid "Your subscription to Wolne Lektury newsletter is confirmed. Thank you!"
-msgstr "Ваша подписка на газету Wolne Lektury/Свободное чтение подтверждена. Спасибо!"
+#: newsletter/templates/newsletter/2022/subscribed.html:7
+#: newsletter/views.py:40
+msgid "Subscribed"
+msgstr "Подписка оформлена"
 
-#: templates/newsletter/subscribe_form.html:14
-msgid "Subscribe"
-msgstr "Подписаться"
-
-#: templates/newsletter/subscribed.html:7
+#: newsletter/templates/newsletter/2022/subscribed.html:16
+#: newsletter/templates/newsletter/subscribed.html:7
 msgid "You have subscribed to Wolne Lektury newsletter."
 msgstr "Вы подписаны на газету Wolne Lektury/Свободное чтение."
 
-#: views.py:29
-msgid "Subscribed"
-msgstr "Подписка оформлена"
+#: newsletter/templates/newsletter/confirm_subscription.html:6
+msgid "Your subscription to Wolne Lektury newsletter is confirmed. Thank you!"
+msgstr ""
+"Ваша подписка на газету Wolne Lektury/Свободное чтение подтверждена. Спасибо!"
+
+#: newsletter/templates/newsletter/subscribe_form.html:14
+msgid "Subscribe"
+msgstr "Подписаться"

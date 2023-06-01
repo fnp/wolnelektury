@@ -34,39 +34,40 @@ msgstr "przypisy redakcji źródła"
 msgid "translator's footnotes"
 msgstr "przypisy tłumacza"
 
-#: dictionary/templates/dictionary/note_list.html:8
-#: dictionary/templates/dictionary/note_list.html:12
+#: dictionary/templates/dictionary/note_list.html:7
+#: dictionary/templates/dictionary/note_list.html:13
+#: dictionary/templates/dictionary/note_list.html:17
 msgid "Footnotes"
 msgstr "Przypisy"
 
-#: dictionary/templates/dictionary/note_list.html:16
+#: dictionary/templates/dictionary/note_list.html:21
 msgid "By first letter"
 msgstr "Pierwsza litera"
 
-#: dictionary/templates/dictionary/note_list.html:18
-#: dictionary/templates/dictionary/note_list.html:20
-#: dictionary/templates/dictionary/note_list.html:36
-#: dictionary/templates/dictionary/note_list.html:38
-#: dictionary/templates/dictionary/note_list.html:55
-#: dictionary/templates/dictionary/note_list.html:57
-#: dictionary/templates/dictionary/note_list.html:73
-#: dictionary/templates/dictionary/note_list.html:75
+#: dictionary/templates/dictionary/note_list.html:23
+#: dictionary/templates/dictionary/note_list.html:25
+#: dictionary/templates/dictionary/note_list.html:41
+#: dictionary/templates/dictionary/note_list.html:43
+#: dictionary/templates/dictionary/note_list.html:60
+#: dictionary/templates/dictionary/note_list.html:62
+#: dictionary/templates/dictionary/note_list.html:78
+#: dictionary/templates/dictionary/note_list.html:80
 msgid "all"
 msgstr "wszystkie"
 
-#: dictionary/templates/dictionary/note_list.html:34
+#: dictionary/templates/dictionary/note_list.html:39
 msgid "By type"
 msgstr "Według typu"
 
-#: dictionary/templates/dictionary/note_list.html:53
+#: dictionary/templates/dictionary/note_list.html:58
 msgid "By qualifier"
 msgstr "Według kwalifikatora"
 
-#: dictionary/templates/dictionary/note_list.html:71
+#: dictionary/templates/dictionary/note_list.html:76
 msgid "By language"
 msgstr "Według języka"
 
-#: dictionary/templates/dictionary/note_list.html:91
+#: dictionary/templates/dictionary/note_list.html:96
 #, python-format
 msgid "%(c)s footnote found"
 msgid_plural "%(c)s footnotes found"

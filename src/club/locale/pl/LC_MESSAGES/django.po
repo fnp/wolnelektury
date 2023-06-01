@@ -14,18 +14,24 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
-"%100<12 || n%100>=14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
-"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && "
+"(n%100<12 || n%100>=14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && "
+"n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 "X-Generator: Poedit 3.0\n"
 
-#: club/admin.py:46
+#: club/admin.py:60
 msgid "payment complete"
 msgstr "płatność zakończona"
 
-#: club/admin.py:52
+#: club/admin.py:66
 msgid "schedule expired"
 msgstr "harmonogram przedawniony"
+
+#: club/admin.py:84
+#, fuzzy
+#| msgid "source"
+msgid "Source"
+msgstr "źródło"
 
 #: club/apps.py:10
 msgid "Club"
@@ -56,143 +62,135 @@ msgstr "miejscowość"
 msgid "Minimal amount is %(amount)d PLN."
 msgstr "Minimalna kwota to %(amount)d zł."
 
-#: club/models.py:27
+#: club/models.py:28
 msgid "minimum amount"
 msgstr "minimalna kwota"
 
-#: club/models.py:28
+#: club/models.py:29
 msgid "minimum amount for year"
 msgstr "minimalna kwota na rok"
-
-#: club/models.py:29
-msgid "proposed amounts for single payment"
-msgstr "proponowane kwoty dla pojedynczej wpłaty"
 
 #: club/models.py:30
 msgid "default single amount"
 msgstr "domyślna kwota dla pojedynczej wpłaty"
 
 #: club/models.py:31
-msgid "proposed amounts for monthly payments"
-msgstr "proponowane kwoty dla miesięcznych wpłat"
-
-#: club/models.py:32
 msgid "default monthly amount"
 msgstr "domyślna kwota dla miesięcznych wpłat"
 
-#: club/models.py:35
+#: club/models.py:34
 msgid "club"
 msgstr "towarzystwo"
 
-#: club/models.py:36
+#: club/models.py:35
 msgid "clubs"
 msgstr "towarzystwa"
 
-#: club/models.py:63
+#: club/models.py:112
 msgid "key"
 msgstr "klucz"
 
-#: club/models.py:64
+#: club/models.py:113
 msgid "email"
 msgstr "email"
 
-#: club/models.py:65 club/models.py:189
+#: club/models.py:114 club/models.py:270
 msgid "membership"
 msgstr "członkostwo"
 
-#: club/models.py:66
+#: club/models.py:115
 msgid "amount"
 msgstr "kwota"
 
-#: club/models.py:67
+#: club/models.py:116
 msgid "method"
 msgstr "metoda płatności"
 
-#: club/models.py:70 club/templates/club/payment_form.html:25
+#: club/models.py:119 club/templates/club/payment_form.html:25
 msgid "monthly"
 msgstr "miesięcznie"
 
-#: club/models.py:71
+#: club/models.py:120
 msgid "yearly"
 msgstr "rocznie"
 
-#: club/models.py:73
+#: club/models.py:122
 msgid "source"
 msgstr "źródło"
 
-#: club/models.py:75
+#: club/models.py:124
 msgid "cancelled"
 msgstr "anulowany"
 
-#: club/models.py:76
+#: club/models.py:125
 msgid "payed at"
 msgstr "opłacona"
 
-#: club/models.py:77
+#: club/models.py:126
 msgid "started at"
 msgstr "start"
 
-#: club/models.py:78
+#: club/models.py:127
 msgid "expires_at"
 msgstr "wygasa"
 
-#: club/models.py:92
+#: club/models.py:141
 msgid "schedule"
 msgstr "harmonogram"
 
-#: club/models.py:93
+#: club/models.py:142
 msgid "schedules"
 msgstr "harmonogramy"
 
-#: club/models.py:181
+#: club/models.py:262
 msgid "user"
 msgstr "użytkownik"
 
-#: club/models.py:182
+#: club/models.py:263
 msgid "created at"
 msgstr "utworzone"
 
-#: club/models.py:183 club/models.py:244
+#: club/models.py:264 club/models.py:325
 msgid "name"
 msgstr "nazwisko"
 
-#: club/models.py:184
+#: club/models.py:265
 msgid "manual"
 msgstr "ustawiony ręcznie"
 
-#: club/models.py:185
+#: club/models.py:266
 msgid "notes"
 msgstr "notatki"
 
-#: club/models.py:186
+#: club/models.py:267
 msgid "updated at"
 msgstr "aktualizacja"
 
-#: club/models.py:190
+#: club/models.py:271
 msgid "memberships"
 msgstr "członkostwa"
 
-#: club/models.py:227
+#: club/models.py:308
 msgid "days before"
 msgstr "dni przed"
 
-#: club/models.py:228
+#: club/models.py:309
 msgid "subject"
 msgstr "temat"
 
-#: club/models.py:229 club/payu/models.py:140
+#: club/models.py:310 club/payu/models.py:157
 msgid "body"
 msgstr "treść"
 
-#: club/models.py:232
+#: club/models.py:313
 msgid "reminder email"
 msgstr "email z przypomnieniem"
 
-#: club/models.py:233
+#: club/models.py:314
 msgid "reminder emails"
 msgstr "emaile z przypomnieniem"
 
-#: club/models.py:238
+#: club/models.py:319
 #, python-format
 msgid "a day before expiration"
 msgid_plural "%d days before expiration"
@@ -201,7 +199,7 @@ msgstr[1] "%d dni przed wygaśnięciem"
 msgstr[2] "%d dni przed wygaśnięciem"
 msgstr[3] "%d dni przed wygaśnięciem"
 
-#: club/models.py:240
+#: club/models.py:321
 #, python-format
 msgid "a day after expiration"
 msgid_plural "%d days after expiration"
@@ -210,19 +208,19 @@ msgstr[1] "%d dni po wygaśnięciu"
 msgstr[2] "%d dni po wygaśnięciu"
 msgstr[3] "%d dni przed wygaśnięciem"
 
-#: club/models.py:245
+#: club/models.py:326
 msgid "photo"
 msgstr "zdjęcie"
 
-#: club/models.py:246
+#: club/models.py:327
 msgid "text"
 msgstr "tekst"
 
-#: club/models.py:249
+#: club/models.py:330
 msgid "ambassador"
 msgstr "ambasador"
 
-#: club/models.py:250
+#: club/models.py:331
 msgid "ambassadors"
 msgstr "ambasadorowie"
 
@@ -278,23 +276,27 @@ msgstr "Anulowane"
 msgid "Rejected"
 msgstr "Odrzucone"
 
-#: club/payu/models.py:44
+#: club/payu/models.py:40
+msgid "Invalid token"
+msgstr ""
+
+#: club/payu/models.py:47
 msgid "PayU order"
 msgstr "zamówienie PayU"
 
-#: club/payu/models.py:45
+#: club/payu/models.py:48
 msgid "PayU orders"
 msgstr "zamówienia PayU"
 
-#: club/payu/models.py:141
+#: club/payu/models.py:158
 msgid "received_at"
 msgstr "odebrana"
 
-#: club/payu/models.py:145
+#: club/payu/models.py:162
 msgid "PayU notification"
 msgstr "notyfikacja PayU"
 
-#: club/payu/models.py:146
+#: club/payu/models.py:163
 msgid "PayU notifications"
 msgstr "notyfikacje PayU"
 
@@ -311,7 +313,7 @@ msgid "One-time donations in last 30 days"
 msgstr "Jednorazowe wpłaty w ciągu ostatnich 30 dni"
 
 #: club/templates/club/dummy_payment.html:4 club/templates/club/index.html:7
-#: club/templates/club/index.html:13
+#: club/templates/club/index.html:12
 #: club/templates/club/membership_form_app.html:5
 #: club/templates/club/schedule.html:5 club/templates/club/thanks.html:6
 #: club/templates/club/year_summary.html:5
@@ -344,19 +346,19 @@ msgid "Thank you for your support! Support us again!"
 msgstr ""
 "Dziękujemy za Twoje dotychczasowe zaangażowanie! Wesprzyj nas ponownie!"
 
-#: club/templates/club/membership_form.html:20
-msgid "See your past support."
-msgstr "Zobacz swoje dotychczasowe wsparcie."
-
-#: club/templates/club/membership_form.html:24
+#: club/templates/club/membership_form.html:21
 msgid "Thank you for wanting to free the books with us!"
 msgstr "Dziękujemy, że chcesz razem z nami uwalniać książki!"
 
-#: club/templates/club/membership_form.html:43
+#: club/templates/club/membership_form.html:26
+msgid "See your past support."
+msgstr "Zobacz swoje dotychczasowe wsparcie."
+
+#: club/templates/club/membership_form.html:41
 msgid "Help us get 100 new Friends by the end of the school semester."
 msgstr "Pomóż nam zdobyć 100 nowych Przyjaciół do końca semestru szkolnego."
 
-#: club/templates/club/membership_form.html:44
+#: club/templates/club/membership_form.html:42
 #, python-format
 msgid ""
 "\n"
@@ -385,7 +387,7 @@ msgstr[3] ""
 "Od początku tej kampanii stałą wpłatą wsparło nas już <b style=\"color: "
 "#0d7e85\">%(supporters)s</b> czytelników i czytelniczek,"
 
-#: club/templates/club/membership_form.html:49
+#: club/templates/club/membership_form.html:47
 #, python-format
 msgid ""
 "\n"
@@ -461,12 +463,12 @@ msgstr "Zapisuję się na newsletter."
 
 #: club/templates/club/payment_form.html:101
 msgid ""
-"You can unsubscribe at any point. More in the <a target=\"_blank\" href="
-"\"https://nowoczesnapolska.org.pl/prywatnosc/\">privacy policy</a>."
+"You can unsubscribe at any point. More in the <a target=\"_blank\" "
+"href=\"https://nowoczesnapolska.org.pl/prywatnosc/\">privacy policy</a>."
 msgstr ""
-"W każdej chwili możesz zrezygnować z subskrypcji. Więcej w <a target=\"_blank"
-"\" href=\"https://nowoczesnapolska.org.pl/prywatnosc/\">polityce "
-"prywatności</a>."
+"W każdej chwili możesz zrezygnować z subskrypcji. Więcej w <a "
+"target=\"_blank\" href=\"https://nowoczesnapolska.org.pl/prywatnosc/"
+"\">polityce prywatności</a>."
 
 #: club/templates/club/payment_form.html:105
 msgid "Donate"
@@ -501,16 +503,27 @@ msgstr "Suma"
 msgid "Supporting Wolne Lektury"
 msgstr "Wspierasz Wolne Lektury"
 
-#: club/templates/payu/rec_payment.html:15
-#, python-format
+#: club/templates/payu/rec_payment.html:19
+#, fuzzy, python-format
+#| msgid ""
+#| "\n"
+#| "        You are setting up a monthly payment in the amount of %(amount)s "
+#| "PLN. Thank you!\n"
+#| "      "
 msgid ""
 "\n"
-"        You are setting up a monthly payment in the amount of %(amount)s "
+"          You are setting up a monthly payment in the amount of %(amount)s "
 "PLN. Thank you!\n"
-"      "
+"        "
 msgstr ""
 "\n"
 "Zlecasz comiesięczną płatność w wysokości %(amount)s zł. Dziękujemy!"
+
+#~ msgid "proposed amounts for single payment"
+#~ msgstr "proponowane kwoty dla pojedynczej wpłaty"
+
+#~ msgid "proposed amounts for monthly payments"
+#~ msgstr "proponowane kwoty dla miesięcznych wpłat"
 
 #, fuzzy
 #~| msgid "Support Wolne Lektury"

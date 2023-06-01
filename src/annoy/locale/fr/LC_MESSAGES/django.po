@@ -49,7 +49,7 @@ msgstr ""
 msgid "close label"
 msgstr ""
 
-#: annoy/models.py:27 annoy/models.py:106
+#: annoy/models.py:27 annoy/models.py:110
 msgid "text"
 msgstr ""
 
@@ -85,23 +85,27 @@ msgstr ""
 msgid "staff preview"
 msgstr ""
 
-#: annoy/models.py:39
-msgid "banner"
+#: annoy/models.py:37
+msgid "only for authenticated users"
 msgstr ""
 
 #: annoy/models.py:40
+msgid "banner"
+msgstr ""
+
+#: annoy/models.py:41
 msgid "banners"
 msgstr ""
 
-#: annoy/models.py:78
+#: annoy/models.py:82
 msgid "pararaphs"
 msgstr ""
 
-#: annoy/models.py:82
+#: annoy/models.py:86
 msgid "dynamic insert"
 msgstr ""
 
-#: annoy/models.py:83
+#: annoy/models.py:87
 msgid "dynamic inserts"
 msgstr ""
 

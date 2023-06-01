@@ -21,11 +21,11 @@ msgstr ""
 msgid "slug"
 msgstr ""
 
-#: api/templates/api/main.html:5
+#: api/templates/api/main.html:7 api/templates/api/main.html:11
 msgid "WolneLektury.pl API"
 msgstr ""
 
-#: api/templates/api/main.html:15
+#: api/templates/api/main.html:21
 #, python-format
 msgid ""
 "\n"
@@ -36,7 +36,7 @@ msgid ""
 "      "
 msgstr ""
 
-#: api/templates/api/main.html:23
+#: api/templates/api/main.html:29
 msgid ""
 "\n"
 "        Default data serialization format is\n"
@@ -46,50 +46,50 @@ msgid ""
 "      "
 msgstr ""
 
-#: api/templates/api/main.html:32
+#: api/templates/api/main.html:38
 msgid ""
 "\n"
 "        The URLs in WolneLektury.pl API are:\n"
 "      "
 msgstr ""
 
-#: api/templates/api/main.html:39
+#: api/templates/api/main.html:45
 msgid "All books"
 msgstr ""
 
-#: api/templates/api/main.html:41
+#: api/templates/api/main.html:47
 msgid "Audiobooks"
 msgstr ""
 
-#: api/templates/api/main.html:43
+#: api/templates/api/main.html:49
 msgid "DAISY"
 msgstr ""
 
-#: api/templates/api/main.html:46
+#: api/templates/api/main.html:52
 msgid "List of all authors"
 msgstr ""
 
-#: api/templates/api/main.html:48
+#: api/templates/api/main.html:54
 msgid "List of all epochs"
 msgstr ""
 
-#: api/templates/api/main.html:50
+#: api/templates/api/main.html:56
 msgid "List of all genres"
 msgstr ""
 
-#: api/templates/api/main.html:52
+#: api/templates/api/main.html:58
 msgid "List of all kinds"
 msgstr ""
 
-#: api/templates/api/main.html:55
+#: api/templates/api/main.html:61
 msgid "List of all themes"
 msgstr ""
 
-#: api/templates/api/main.html:57
+#: api/templates/api/main.html:63
 msgid "Collections"
 msgstr ""
 
-#: api/templates/api/main.html:63
+#: api/templates/api/main.html:69
 #, python-format
 msgid ""
 "\n"
@@ -101,7 +101,7 @@ msgid ""
 "      "
 msgstr ""
 
-#: api/templates/api/main.html:72
+#: api/templates/api/main.html:78
 #, python-format
 msgid ""
 "\n"
@@ -112,7 +112,7 @@ msgid ""
 "      "
 msgstr ""
 
-#: api/templates/api/main.html:80
+#: api/templates/api/main.html:86
 #, python-format
 msgid ""
 "\n"
@@ -122,7 +122,7 @@ msgid ""
 "      "
 msgstr ""
 
-#: api/templates/api/main.html:88
+#: api/templates/api/main.html:94
 #, python-format
 msgid ""
 "\n"
@@ -135,20 +135,21 @@ msgid ""
 "      "
 msgstr ""
 
-#: api/templates/oauth/authorize_token.html:4
-#: api/templates/oauth/authorize_token.html:7
+#: api/templates/oauth/authorize_token.html:6
+#: api/templates/oauth/authorize_token.html:10
+#: api/templates/oauth/authorize_token.html:13
 msgid "Authorize access to Wolne Lektury"
 msgstr "Autorisez l'accès à Wolne Lektury"
 
-#: api/templates/oauth/authorize_token.html:11
+#: api/templates/oauth/authorize_token.html:17
 #, python-format
 msgid ""
 "Confirm to authorize access to Wolne Lektury as user <strong>%(user)s</"
 "strong>."
 msgstr ""
-"Confirmez pour autoriser l'accès à Wolne Lektury comme l'utilisateur <strong>"
-"%(user)s</strong>."
+"Confirmez pour autoriser l'accès à Wolne Lektury comme l'utilisateur "
+"<strong>%(user)s</strong>."
 
-#: api/templates/oauth/authorize_token.html:17
+#: api/templates/oauth/authorize_token.html:23
 msgid "Confirm"
 msgstr ""

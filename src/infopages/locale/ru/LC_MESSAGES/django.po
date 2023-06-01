@@ -15,33 +15,33 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: models.py:12
+#: infopages/models.py:12
 msgid "main page priority"
 msgstr "очередность на главной странице"
 
-#: models.py:13
+#: infopages/models.py:13
 msgid "slug"
 msgstr "slug"
 
-#: models.py:14
+#: infopages/models.py:14
 msgid "title"
 msgstr "название"
 
-#: models.py:15
+#: infopages/models.py:15
 msgid "left column"
 msgstr "левая колонка"
 
-#: models.py:16
+#: infopages/models.py:16
 msgid "right column"
 msgstr "правая колонка"
 
-#: models.py:20
+#: infopages/models.py:20
 msgid "info page"
 msgstr "информационная страница"
 
-#: models.py:21
+#: infopages/models.py:21
 msgid "info pages"
 msgstr "информационные страницы"
