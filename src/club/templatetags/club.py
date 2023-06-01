@@ -80,6 +80,6 @@ def club_monthly_missing_since(start, target):
         monthly=True, payed_at__gte=start).count()
 
 
-@register.simple_tag
-def invite_payment(payment_method, schedule):
-    return payment_method.invite_widget(schedule)
+@register.simple_tag(takes_context=True)
+def invite_payment(context, payment_method, schedule):
+    return payment_method.invite_widget(schedule, context['request'])

@@ -32,12 +32,13 @@ class PayU(PaymentMethod):
     def __init__(self, pos_id):
         self.pos_id = pos_id
 
-    def invite_widget(self, schedule):
+    def invite_widget(self, schedule, request):
         return render_to_string(
             'club/payment/payu_invite.html',
             {
                 'schedule': schedule,
-            }
+            },
+            request=request
         )
 
     def initiate(self, request, schedule):
@@ -66,7 +67,7 @@ class PayURe(PaymentMethod):
     def initiate(self, request, schedule):
         return reverse('club_payu_rec_payment', args=[schedule.key])
 
-    def invite_widget(self, schedule):
+    def invite_widget(self, schedule, request):
         from . import forms
         pos = POSS[self.pos_id]
         widget_args = {
@@ -93,9 +94,10 @@ class PayURe(PaymentMethod):
                 'pos': POSS[self.pos_id],
                 'widget_args': widget_args,
                 'widget_sig': widget_sig,
-            }
+            },
+            request=request
         )
-    
+
     def pay(self, request, schedule):
         # Create order, put it and see what happens next.
         from .models import PayUOrder
@@ -146,12 +148,13 @@ class PayPal(PaymentMethod):
     is_recurring = True
     is_onetime = False
 
-    def invite_widget(self, schedule):
+    def invite_widget(self, schedule, request):
         return render_to_string(
             'club/payment/paypal_invite.html',
             {
                 'schedule': schedule,
-            }
+            },
+            request=request
         )
     
     def initiate(self, request, schedule):
