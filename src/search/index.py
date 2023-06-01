@@ -245,17 +245,18 @@ class Index(SolrIndex):
             doc['parent_id'] = int(book.parent.id)
         return doc
 
-    def remove_book(self, book, remove_snippets=True):
+    def remove_book(self, book, remove_snippets=True, legacy=True):
         """Removes a book from search index.
         book - Book instance."""
-        self.delete_query(self.index.Q(book_id=book.id))
+        if legacy:
+          self.delete_query(self.index.Q(book_id=book.id))
 
-        if remove_snippets:
+          if remove_snippets:
             snippets = Snippets(book.id)
             snippets.remove()
         self.remove_snippets(book)
 
-    def index_book(self, book, book_info=None, overwrite=True):
+    def index_book(self, book, book_info=None, overwrite=True, legacy=True):
         """
         Indexes the book.
         Creates a lucene document for extracted metadata
@@ -266,7 +267,7 @@ class Index(SolrIndex):
         if overwrite:
             # we don't remove snippets, since they might be still needed by
             # threads using not reopened index
-            self.remove_book(book, remove_snippets=False)
+            self.remove_book(book, remove_snippets=False, legacy=legacy)
 
         book_doc = self.create_book_doc(book)
         meta_fields = self.extract_metadata(book, book_info, dc_only=[
@@ -279,7 +280,8 @@ class Index(SolrIndex):
             book_doc[n] = f
 
         book_doc['uid'] = "book%s" % book_doc['book_id']
-        self.index.add(book_doc)
+        if legacy:
+            self.index.add(book_doc)
         del book_doc
         book_fields = {
             'title': meta_fields['title'],
@@ -291,7 +293,7 @@ class Index(SolrIndex):
             if tag_name in meta_fields:
                 book_fields[tag_name] = meta_fields[tag_name]
 
-        self.index_content(book, book_fields=book_fields)
+        self.index_content(book, book_fields=book_fields, legacy=legacy)
 
     master_tags = [
         'opowiadanie',
@@ -382,7 +384,7 @@ class Index(SolrIndex):
             if master.tag in self.master_tags:
                 return master
 
-    def index_content(self, book, book_fields):
+    def index_content(self, book, book_fields, legacy=True):
         """
         Walks the book XML and extract content from it.
         Adds parts for each header tag and for each fragment.
@@ -484,7 +486,8 @@ class Index(SolrIndex):
                         doc = add_part(snippets, header_index=position, header_type=header.tag,
                                        text=''.join(footnote))
                         self.add_snippet(book, doc)
-                        self.index.add(doc)
+                        if legacy:
+                            self.index.add(doc)
                         footnote = []
 
                     # handle fragments and themes.
@@ -520,7 +523,8 @@ class Index(SolrIndex):
                                        themes=frag['themes'])
                         # Add searchable fragment
                         self.add_snippet(book, doc)
-                        self.index.add(doc)
+                        if legacy:
+                            self.index.add(doc)
 
                         # Collect content.
 
@@ -533,7 +537,8 @@ class Index(SolrIndex):
                                header_type=header.tag, text=fix_format(content))
 
                 self.add_snippet(book, doc)
-                self.index.add(doc)
+                if legacy:
+                    self.index.add(doc)
 
         finally:
             snippets.close()

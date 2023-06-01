@@ -90,6 +90,7 @@ class PayURe(PaymentMethod):
         return render_to_string(
             'payu/rec_widget.html',
             {
+                'schedule': schedule,
                 'form': forms.PayUCardTokenForm(),
                 'pos': POSS[self.pos_id],
                 'widget_args': widget_args,

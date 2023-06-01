@@ -17,7 +17,7 @@ class Snippet(models.Model):
             self.update()
 
     def update(self):
-        self.search_vector = build_search_vector('text', config='polish') # config=polish
+        self.search_vector = build_search_vector('text')
         self.save()
 
     @classmethod
