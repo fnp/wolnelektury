@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WolneLektury\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2021-05-24 17:25+0200\n"
+"PO-Revision-Date: 2023-06-02 13:03+0200\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: Fundacja Nowoczesna Polska <fundacja@nowoczesnapolska.org."
 "pl>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Translated-Using: django-rosetta 0.5.6\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: catalogue/constants.py:9
 msgid "Creative Commons Attribution-ShareAlike 3.0 Unported"
@@ -224,10 +224,8 @@ msgid "cover"
 msgstr "okładka"
 
 #: catalogue/models/book.py:72
-#, fuzzy
-#| msgid "cover"
 msgid "clean cover"
-msgstr "okładka"
+msgstr "czysta okładka"
 
 #: catalogue/models/book.py:73
 msgid "cover thumbnail"
@@ -450,7 +448,7 @@ msgstr "Motyw"
 #: catalogue/templates/catalogue/book_fragments.html:6
 #: catalogue/templates/catalogue/book_fragments.html:14
 msgid "in work "
-msgstr "w utworze"
+msgstr "w utworze "
 
 #: catalogue/templates/catalogue/book_info.html:28
 msgid "Resource prepared based on:"
@@ -660,7 +658,7 @@ msgstr "Zobacz też"
 
 #: catalogue/templates/catalogue/picture_detail.html:29
 msgid "Work is licensed under "
-msgstr "Utwór jest udostępniony na licencji"
+msgstr "Utwór jest udostępniony na licencji "
 
 #: catalogue/templates/catalogue/picture_detail.html:31
 msgid "Based on"
@@ -692,7 +690,7 @@ msgstr "Źródłowy plik XML"
 
 #: catalogue/templates/catalogue/picture_detail.html:76
 msgid "Work's themes "
-msgstr "Motywy w utworze"
+msgstr "Motywy w utworze "
 
 #: catalogue/templates/catalogue/player.html:12
 #: catalogue/templates/catalogue/viewer_base.html:11
@@ -746,10 +744,7 @@ msgid "Recent publications"
 msgstr "Ostatnie publikacje"
 
 #: catalogue/templates/catalogue/recent_list.html:15
-#, fuzzy, python-format
-#| msgid ""
-#| "You can also see <a href=\"%(a)s\">recent audiobooks</a>\n"
-#| "    and <a href=\"%(d)s\">recent DAISY files</a>."
+#, python-format
 msgid ""
 "You can also see <a href=\"%(a)s\">recent audiobooks</a>\n"
 "      and <a href=\"%(d)s\">recent DAISY files</a>."
@@ -769,10 +764,8 @@ msgid "Search"
 msgstr "Szukaj"
 
 #: catalogue/templates/catalogue/search_multiple_hits.html:28
-#, fuzzy
-#| msgid "Language"
 msgid "language"
-msgstr "Język"
+msgstr "język"
 
 #: catalogue/templates/catalogue/search_multiple_hits.html:85
 #: catalogue/templates/catalogue/search_no_hits.html:16
