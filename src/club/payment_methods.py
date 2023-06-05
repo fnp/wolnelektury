@@ -150,13 +150,16 @@ class PayPal(PaymentMethod):
     is_onetime = False
 
     def invite_widget(self, schedule, request):
-        return render_to_string(
-            'club/payment/paypal_invite.html',
-            {
-                'schedule': schedule,
-            },
-            request=request
-        )
+        if settings.PAYPAL_ENABLED:
+            return render_to_string(
+                'club/payment/paypal_invite.html',
+                {
+                    'schedule': schedule,
+                },
+                request=request
+            )
+        else:
+            return ''
     
     def initiate(self, request, schedule):
         app = request.GET.get('app')

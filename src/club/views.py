@@ -53,6 +53,11 @@ class DonationStep2(UpdateView):
     template_name = 'club/2022/donation_step2.html'
     step = 2
 
+    def get_context_data(self, **kwargs):
+        c = super().get_context_data(**kwargs)
+        c['club'] = models.Club.objects.first()
+        return c
+
 
 class JoinView(CreateView):
     @property

@@ -15,8 +15,8 @@
           {{ schedule.amount|floatformat }} zł
           {% if schedule.monthly %}
             <span>/mies.</span>
-        {% endif %}</h3>
-        <img src="{% static '2022/images/checkout-img-3.jpg' %}" alt="">
+          {% endif %}</h3>
+          <img src="{% static '2022/images/checkout-img-3.jpg' %}" alt="">
       </div>
     </div>
     <div class="l-checkout__col">
@@ -91,13 +91,17 @@
           </div>
         </div>
         <div class="l-checkout__form__row confirm">
-          <a href="#">Powrót</a>
-          <!-- div class="l-checkout__input">
-            <a href="#">Dalej</a>
-          </div-->
+          <a href="{% url 'donation_step2' schedule.key %}">Powrót</a>
         </div>
       </div>
     </div>
   </div>
-  <img src="{% static '2022/images/checkout-footer.png' %}" alt="Bezpieczne płatności zapewniają" class="l-checkout__footer__img">
+  <div class="l-checkout__secure">
+    <img src="{% static '2022/images/payments-padlock.png' %}" class="l-checkout__secure__padlock">
+    Bezpieczne płatności zapewniają:
+    <img src="{% static '2022/images/payments-payu.png' %}" class="l-checkout__secure__img" alt="PayU Visa MasterCard">
+    {% if club.paypal_enabled %}
+      <img src="{% static '2022/images/payments-paypal.png' %}" class="l-checkout__secure__img" alt="PayPal">
+    {% endif %}
+  </div>
 {% endblock %}

@@ -73,6 +73,11 @@ class Club(models.Model):
         amounts = self.monthlyamount_set if monthly else self.singleamount_set
         amount = amounts.all().filter(amount__lte=amount).last()
         return amount.description if amount is not None else ''
+
+    @property
+    def paypal_enabled(self):
+        print("ENABLED?", settings.PAYPAL_ENABLED)
+        return settings.PAYPAL_ENABLED
     
 
 class SingleAmount(models.Model):

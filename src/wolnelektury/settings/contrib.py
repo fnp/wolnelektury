@@ -17,6 +17,7 @@ PAYPAL_CONFIG = {
     'client_id': '',
     'client_secret': '',
 }
+PAYPAL_ENABLED = True
 
 REST_FRAMEWORK = {
     "DEFAULT_RENDERER_CLASSES": (

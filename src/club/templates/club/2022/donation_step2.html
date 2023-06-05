@@ -97,7 +97,7 @@
             </div>
           </div>
           <div class="l-checkout__form__row confirm">
-            <a href=".#{{ view.step1_hash }}">Powrót</a>
+            <a href="{% url 'donation_step1' schedule.key %}">Powrót</a>
             <div class="l-checkout__input">
               <button>Dalej</button>
             </div>
@@ -109,6 +109,9 @@
   <div class="l-checkout__secure">
     <img src="{% static '2022/images/payments-padlock.png' %}" class="l-checkout__secure__padlock">
     Bezpieczne płatności zapewniają:
-    <img src="{% static '2022/images/payments-2.png' %}" class="l-checkout__secure__img">
+    <img src="{% static '2022/images/payments-payu.png' %}" class="l-checkout__secure__img" alt="PayU Visa MasterCard">
+    {% if club.paypal_enabled %}
+      <img src="{% static '2022/images/payments-paypal.png' %}" class="l-checkout__secure__img" alt="PayPal">
+    {% endif %}
   </div>
 {% endblock %}
