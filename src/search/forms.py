@@ -104,14 +104,14 @@ class SearchFilters(forms.Form):
                 qs['pdbook'] = qs['pdbook'].none()
             if c != 'quote': qs['snippet'] = qs['snippet'].none()
             if c != 'art': qs['art'] = qs['art'].none()
-            qs['art'] = Picture.objects.none()
+            qs['art'] = picture.models.Picture.objects.none()
 
         if self.cleaned_data['format']:
             c = self.cleaned_data['format']
             qs['author'] = qs['author'].none()
             qs['pdauthor'] = qs['pdauthor'].none()
             qs['theme'] = qs['theme'].none()
-            qs['genre'] = qs['genrer'].none()
+            qs['genre'] = qs['genre'].none()
             qs['collection'] = qs['collection'].none()
             if c == 'art':
                 qs['book'] = qs['book'].none()
@@ -163,7 +163,7 @@ class SearchFilters(forms.Form):
         books = qs['book'].annotate(
             search_vector=UnaccentSearchVector('title')
         ).filter(search_vector=squery)
-        books = books.exclude(ancestor__in=books)
+        books = books.exclude(ancestor__in=books).order_by('-popularity__count')
 
         snippets = qs['snippet'].filter(search_vector=squery).annotate(
                     headline=SearchHeadline(
@@ -172,9 +172,8 @@ class SearchFilters(forms.Form):
                         config='polish',
                         start_sel='<strong>',
                         stop_sel='</strong>',
-                        highlight_all=True
                     )
-                )[:100]
+                ).order_by('-book__popularity__count', 'sec')[:100]
         snippets_by_book = {}
         for snippet in snippets:
             snippet_list = snippets_by_book.setdefault(snippet.book, [])
