@@ -85,9 +85,9 @@ class SearchFilters(forms.Form):
             'theme': catalogue.models.Tag.objects.filter(category='theme'),
             'genre': catalogue.models.Tag.objects.filter(category='genre'),
             'collection': catalogue.models.Collection.objects.all(),
-            'book': catalogue.models.Book.objects.all(), #findable
+            'book': catalogue.models.Book.objects.filter(findable=True),
             'pdbook': pdcounter.models.BookStub.objects.all(),
-            'snippet': catalogue.models.Snippet.objects.all(),
+            'snippet': catalogue.models.Snippet.objects.filter(book__findable=True),
             'art': picture.models.Picture.objects.all(),
             # art pieces
         }
