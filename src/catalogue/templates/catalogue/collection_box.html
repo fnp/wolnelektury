@@ -1,5 +1,6 @@
 {% spaceless %}
   {% load i18n %}
+  {% load thumbnail %}
   <div class="collection-box white-box">
     <h2><a href="{{ collection.get_absolute_url }}">{{ collection }}</a></h2>
     <div class="description">
@@ -10,7 +11,7 @@
     <div class="covers">
       {% for book in collection.get_books|slice:":6" %}
         <a href="{{ book.get_absolute_url }}">
-          <img src="{{ book.cover_thumb.url }}" alt="{{ book.pretty_title }}" title="{{ book.pretty_title }}">
+          <img src="{% thumbnail book.cover_clean '139x193' as th %}{{ th.url }}{% endthumbnail %}" alt="{{ book.pretty_title }}" title="{{ book.pretty_title }}">
         </a>
       {% endfor %}
     </div>

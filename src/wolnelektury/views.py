@@ -47,7 +47,7 @@ def main_page(request):
         return main_page_2022(request)
 
     ctx = {
-        'last_published': Book.objects.exclude(cover_thumb='').filter(findable=True, parent=None).order_by('-created_at')[:6],
+        'last_published': Book.objects.exclude(cover_clean='').filter(findable=True, parent=None).order_by('-created_at')[:6],
         'theme_books': [],
     }
 

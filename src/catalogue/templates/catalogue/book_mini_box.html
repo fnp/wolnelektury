@@ -1,12 +1,13 @@
 {% spaceless %}
+  {% load thumbnail %}
   {% with book.author_unicode as author %}
     <div class="book-mini-box">
       <div class="book-mini-box-inner">
         {% if not no_link %}
           <a href="{{ book.get_absolute_url }}">
         {% endif %}
-          {% if book.cover_thumb %}
-            <img src="{{ book.cover_thumb.url }}" alt="{{ author }} – {{ book.title }}" class="cover" />
+          {% if book.cover_clean %}
+            <img src="{% thumbnail book.cover_clean '139x193' as th %}{{ th.url }}{% endthumbnail %}" alt="{{ author }} – {{ book.title }}" class="cover" />
           {% endif %}
           {% if book.is_foreign %}
             <span class="language" title="{{ book.language_name }}">{{ book.language_code }}</span>
