@@ -3,7 +3,7 @@
 #
 from django.apps import apps
 from django.conf import settings
-from django.contrib.postgres.search import SearchHeadline, SearchRank, SearchQuery
+from django.contrib.postgres.search import SearchHeadline, SearchQuery
 from django import forms
 from django.utils.translation import gettext_lazy as _
 from catalogue.constants import LANGUAGES_3TO2
@@ -165,9 +165,7 @@ class SearchFilters(forms.Form):
         ).filter(search_vector=squery)
         books = books.exclude(ancestor__in=books)
 
-        snippets = qs['snippet'].annotate(
-                    rank=SearchRank('search_vector', squery)
-                ).filter(rank__gt=0).order_by('-rank').annotate(
+        snippets = qs['snippet'].filter(search_vector=squery).annotate(
                     headline=SearchHeadline(
                         'text',
                         query,
