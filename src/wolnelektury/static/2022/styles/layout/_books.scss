@@ -238,25 +238,36 @@
   margin-top: 34px;
 
   .l-books__item {
-    width: 705px;
+      width: calc(100% - 10px);
     border: 1px solid #D9D9D9;
     margin-bottom: 17px;
     display: flex;
+    position: relative;
+    @include rwd($break-flow) {
+        width: 705px;
+    }
 
     .l-books__item__img {
-      margin-bottom: 0;
+        margin-bottom: 0;
+    }
+
+    .l-books__item__actions {
+        margin-top: 16px;
+        @include rwd($break-flow) {
+            position: absolute;
+            top: 21px;
+            left: auto;
+            right: 11px;
+        }
     }
   }
 }
 
 .l-books__item__content {
-  padding-left: 40px;
-  position: relative;
-
-  .l-books__item__actions {
-    position: absolute;
-    right: 0;
-  }
+    padding-left: 16px;
+    @include rwd($break-flow) {
+        padding-left: 40px;
+    }
 
   h2 {
     font-weight: $semibold;

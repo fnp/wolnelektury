@@ -5,14 +5,14 @@
         <img src="{{ fragment.book.cover_clean.url }}" alt="{{ fragment.book.title }}">
       {% endif %}
     </a>
-  </figure>
-  <div class="l-books__item__content">
     <div class="l-books__item__actions">
       <a href="{{ fragment.book.get_absolute_url }}" class="icon icon-book-alt"></a>
       {% if fragment.book.has_mp3_file %}
         <a href="{{ fragment.book.get_absolute_url }}" class="icon icon-audio"></a>
       {% endif %}
     </div>
+  </figure>
+  <div class="l-books__item__content">
     <h3>
       {% for author in fragment.book.authors %}
         <a href="{{ author.get_absolute_url }}">{{ author }}</a>{% if not forloop.last %}, {% endif %}
