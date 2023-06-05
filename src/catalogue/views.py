@@ -154,6 +154,7 @@ def object_list(request, objects, fragments=None, related_tags=None, tags=None,
         'suggest': suggest,
         'list_type': list_type,
         'tags': tags,
+        'main_tag': tags[0],
 
         'formats_form': forms.DownloadFormatsForm(),
         'best': best,
@@ -162,14 +163,13 @@ def object_list(request, objects, fragments=None, related_tags=None, tags=None,
     if extra:
         result.update(extra)
 
-    is_theme = len(tags) == 1 and tags[0].category == 'theme'
-    has_theme = any((x.category == 'theme' for x in tags))
-    new_layout = request.EXPERIMENTS['layout']
-
-    if is_theme and new_layout.value:
-        template = 'catalogue/2022/theme_detail.html'
-    elif new_layout.value and not has_theme:
-        template = 'catalogue/2022/author_detail.html'
+    if request.EXPERIMENTS['layout'].value:
+        has_theme = any(((theme := x).category == 'theme' for x in tags))
+        if has_theme:
+            result['main_tag'] = theme
+            template = 'catalogue/2022/theme_detail.html'
+        else:
+            template = 'catalogue/2022/author_detail.html'
     else:
         template = 'catalogue/tagged_object_list.html'
         

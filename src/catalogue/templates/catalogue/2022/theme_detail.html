@@ -1,4 +1,5 @@
 {% extends '2022/base.html' %}
+{% load catalogue_tags %}
 {% load pagination_tags %}
 
 {% block global-content %}
@@ -7,7 +8,7 @@
       <a href="/"><span>Strona główna</span></a>
       <a href="/katalog/"><span>Katalog</span></a>
       <a href="/katalog/motyw/"><span>Motyw</span></a>
-      <span>{{ tags.0.name }}</span>
+      <span>{{ main_tag.name }}</span>
     </div>
   </div>
 
@@ -15,28 +16,44 @@
 
     <div class="l-section">
       <div class="l-author__header">
-        <h1><span>Motyw:</span> {{ tags.0.name }}</h1>
+        <h1><span>Motyw:</span> {{ main_tag.name }}</h1>
       </div>
     </div>
 
-    <!-- div class="l-section">
-         <div class="l-books__header">
-         <div class="l-books__input">
-         <i class="icon icon-filter"></i>
-         <input type="text" placeholder="filtry, tytuł">
-         </div>
-         <div class="l-books__sorting">
-         <span>Sortuj:</span>
-         <div>
-         <button>autorzy</button>
-         <button>epoki</button>
-         <button>gatunki</button>
-         <button>rodzaje</button>
-         <button class="is-active">motywy</button>
-         </div>
-         </div>
-         </div>
-         </div -->
+
+    <div class="l-section">
+      <div class="l-books__header">
+        <div class="l-books__input">
+          <i class="icon icon-filter"></i>
+          <input type="text" placeholder="filtry, tytuł" class="quick-filter" data-for="book-list" data-filters="with-filter">
+          <div class="filter-container">
+            {% for tag in tags %}
+              {% if tag is not main_tag %}
+                <span class="filter filter-category-{{ tag.category }}">
+                  <a href="{% catalogue_url list_type tag %}">{{ tag }}</a>
+                  <a href="{% catalogue_url list_type tags -tag %}">✖</a>
+                </span>
+              {% endif %}
+            {% endfor %}
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="l-author with-filter">
+      <div class="row">
+        <h2>{% nice_title_from_tags tags categories %}</h2>
+        {% if suggest %}
+          <div class="filter-container">
+            {% for tag in suggest %}
+              <span class="filter filter-category-{{ tag.category }}">
+                <a href="{% catalogue_url list_type tags tag %}">{{ tag }}</a>
+              </span>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
 
     {% autopaginate object_list 10 %}
 
@@ -53,8 +70,8 @@
         </div>
         <div class="l-theme__col">
           <div class="l-theme__info">
-            <h3>Motyw: {{ tags.0.name }}</h3>
-            {{ tags.0.description|safe }}
+            <h3>Motyw: {{ main_tag.name }}</h3>
+            {{ main_tag.description|safe }}
             <!--
                  <h3>Motyw w sztuce <i class="icon icon-arrow-left"></i> <i class="icon icon-arrow-right"></i></h3>
                  <div class="l-theme__info__slider">

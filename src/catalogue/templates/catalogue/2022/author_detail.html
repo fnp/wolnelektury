@@ -7,21 +7,21 @@
 {% block breadcrumbs %}
   <a href="/katalog/"><span>Katalog</span></a>
   {% if tags %}
-    <a href="{{ tags.0.get_absolute_catalogue_url }}"><span>{{ tags.0.get_category_display|title }}</span></a>
+    <a href="{{ main_tag.get_absolute_catalogue_url }}"><span>{{ main_tag.get_category_display|title }}</span></a>
   {% endif %}
 {% endblock %}
 
 {% block main %}
   <div class="l-section">
     <div class="l-author__header">
-      {% if tags.0.photo %}
+      {% if main_tag.photo %}
         <figure>
-          <img src="{{ tags.0.photo.url }}" alt="{{ tags.0.name }}">
+          <img src="{{ main_tag.photo.url }}" alt="{{ main_tag.name }}">
         </figure>
       {% endif %}
       <h1>
-        {% if tags %}
-          {{ tags.0.name }}
+        {% if main_tag %}
+          {{ main_tag.name }}
         {% else %}
           {{ title }}
         {% endif %}
@@ -36,7 +36,7 @@
         <input type="text" placeholder="filtry, tytuł" class="quick-filter" data-for="book-list" data-filters="with-filter">
         <div class="filter-container">
           {% for tag in tags %}
-            {% if forloop.counter > 1 %}
+            {% if tag is not main_tag %}
               <span class="filter filter-category-{{ tag.category }}">
                 <a href="{% catalogue_url list_type tag %}">{{ tag }}</a>
                 <a href="{% catalogue_url list_type tags -tag %}">✖</a>
@@ -45,7 +45,6 @@
           {% endfor %}
         </div>
 
-  </span>
       </div>
       <div class="l-books__sorting">
         <span>Sortuj:</span>
@@ -84,10 +83,10 @@
   {% if tags %}
     <section class="l-section">
       <div class="l-author">
-        {% with tag=tags.0 %}
+        {% with tag=main_tag %}
           {% include 'catalogue/2022/author_box.html' %}
         {% endwith %}
-        {% choose_cites 3 author=tags.0 as cites %}
+        {% choose_cites 3 author=main_tag as cites %}
         {% if cites %}
           <div class="row">
             <div class="l-author__quotes">
