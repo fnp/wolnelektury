@@ -154,7 +154,7 @@ def object_list(request, objects, fragments=None, related_tags=None, tags=None,
         'suggest': suggest,
         'list_type': list_type,
         'tags': tags,
-        'main_tag': tags[0],
+        'main_tag': tags[0] if tags else None,
 
         'formats_form': forms.DownloadFormatsForm(),
         'best': best,
