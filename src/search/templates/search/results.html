@@ -35,6 +35,12 @@
       <button type="submit" class="c-form__hidden-submit">wyślij</button>
     </form>
 
+    {% if not hasresults %}
+      <p class="l-change-pop show">
+        Brak wyników.
+      </p>
+    {% endif %}
+
     {% if results.author %}
     <div class="l-container">
       <h2 class="header">Autorzy</h2>
@@ -101,20 +107,22 @@
       </div>
     {% endif %}
 
-    {% if results.fragment or results.snippet %}
+    {% if results.snippet %}
       <div class="l-container">
         <h2 class="header">W treści</h2>
-        {% for f in results.snippet %}
+        {% for book, snippets in results.snippet.items %}
           <div class="c-search-result-fragment">
-            {% for author in f.book.authors %}
+            {% for author in book.authors %}
               <a class="c-search-result-fragment-author" href="{{ author.get_absolute_url }}">{{ author }}</a>
             {% endfor %}
-            <a class="c-search-result-fragment-title" href="{{ f.book.get_absolute_url }}">
-              {{ f.book.title }}
+            <a class="c-search-result-fragment-title" href="{{ book.get_absolute_url }}">
+              {{ book.title }}
             </a>
-            <a class="c-search-result-fragment-text" href='{% url 'book_text' f.book.slug %}#sec{{ f.sec }}'>
-              {{ f.headline|safe }}
-            </a>
+            {% for f in snippets %}
+              <a class="c-search-result-fragment-text" href='{% url 'book_text' f.book.slug %}#sec{{ f.sec }}'>
+                {{ f.headline|safe }}
+              </a>
+            {% endfor %}
           </div>
         {% endfor %}
       </div>
@@ -132,7 +140,7 @@
       </div>
     {% endif %}
 
-    {% if pd_authors %}
+    {% if results.pdauthor or results.pdbook %}
       <div class="l-container">
         <div class="c-search-result-pd">
           <h2>Domena publiczna?</h2>
@@ -142,10 +150,32 @@
             Dowiedz się, dlaczego biblioteki internetowe nie mogą udostępniać dzieł tego autora.
           </p>
           <div>
-            {% for tag in pd_authors %}
+            {% for tag in results.pdauthor %}
               <div><a href="{{ tag.get_absolute_url }}">
                 <strong>{{ tag }}</strong>
-                Dzieła tego autora będą mogły być publikowane bez ograniczeń w&nbsp;roku&nbsp;<em>{{ tag.goes_to_pd }}</em>.
+                {% if tag.death  %}
+                  {% if tag.in_pd %}
+                    Dzieła tego autora są w&nbsp;domenie publicznej i&nbsp;czekają na publikację.
+                  {% else %}
+                    Dzieła tego autora będą mogły być publikowane bez ograniczeń w&nbsp;roku&nbsp;<em>{{ tag.goes_to_pd }}</em>.
+                  {% endif %}
+                {% else %}
+                  Dzieła tego autora są objęte prawem autorskim.
+                {% endif %}
+              </a></div>
+            {% endfor %}
+            {% for book in results.pdbook %}
+              <div><a href="{{ book.get_absolute_url }}">
+                <strong>{{ book }}</strong>
+                {% if book.pd  %}
+                  {% if book.in_pd %}
+                    Ten utwór jest w&nbsp;domenie publicznej i&nbsp;czeka na publikację.
+                  {% else %}
+                    Ten utwór będzie mógł być publikowany bez ograniczeń w&nbsp;roku&nbsp;<em>{{ book.pd }}</em>.
+                  {% endif %}
+                {% else %}
+                  Ten utwór nie jest jeszcze w domenie publicznej.
+                {% endif %}
               </a></div>
             {% endfor %}
           </div>

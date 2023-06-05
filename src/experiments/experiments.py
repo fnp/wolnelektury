@@ -7,7 +7,7 @@ from .base import Experiment
 class NewLayout(Experiment):
     slug = 'layout'
     name = 'Nowy layout strony'
-    size = 1 or settings.EXPERIMENTS_LAYOUT
+    size = settings.EXPERIMENTS_LAYOUT
 
     def qualify(self, request):
         if get_language() != 'pl':
@@ -21,7 +21,14 @@ class Sowka(Experiment):
     switchable = False
 
 
+class Search(Experiment):
+    slug = 'search'
+    name = 'Nowa wyszukiwarka'
+    size = settings.EXPERIMENTS_SEARCH
+
+
 experiments = [
     NewLayout,
     Sowka,
+    Search
 ]

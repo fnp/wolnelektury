@@ -11,6 +11,7 @@ from catalogue.models import Book, Tag
 from pdcounter.models import Author
 from picture.models import Picture
 from search.index import Search, SearchResult, PictureResult
+from .forms import SearchFilters
 from suggest.forms import PublishingSuggestForm
 import re
 import json
@@ -116,8 +117,30 @@ def hint(request, mozhint=False, param='term'):
         return JsonResponse(data, safe=False)
 
 
+
+@cache.never_cache
+def search(request):
+    filters = SearchFilters(request.GET)
+    ctx = {
+        'title': 'Wynik wyszukiwania',
+        'query': filters.data['q'],
+        'filters': filters,
+    }
+    if filters.is_valid():
+        ctx['results'] = filters.results()
+        for k, v in ctx['results'].items():
+            if v:
+                ctx['hasresults'] = True
+                break
+    return render(request, 'search/results.html', ctx)
+
+
 @cache.never_cache
 def main(request):
+    if request.EXPERIMENTS['search'].value:
+        request.EXPERIMENTS['layout'].override(True)
+        return search(request)
+
     query = request.GET.get('q', '')
 
     format = request.GET.get('format')

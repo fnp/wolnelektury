@@ -1,12 +1,14 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
+from django.apps import apps
 from django.conf import settings
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from datetime import datetime
 from django.db.models.signals import post_save, post_delete
+from search.utils import UnaccentSearchVector
 
 
 class Author(models.Model):
@@ -41,6 +43,18 @@ class Author(models.Model):
     has_description.short_description = _('description')
     has_description.boolean = True
 
+    @classmethod
+    def search(cls, query, qs=None):
+        Tag = apps.get_model('catalogue', 'Tag')
+        if qs is None:
+            qs = cls.objects.all()
+        pd_authors = qs.annotate(search_vector=UnaccentSearchVector('name')).filter(search_vector=query)
+        existing_slugs = Tag.objects.filter(
+            category='author', slug__in=list(pd_authors.values_list('slug', flat=True))) \
+            .values_list('slug', flat=True)
+        pd_authors = pd_authors.exclude(slug__in=existing_slugs)
+        return pd_authors
+
     def alive(self):
         return self.death is None
 
@@ -71,6 +85,18 @@ class BookStub(models.Model):
 
     def __str__(self):
         return self.title
+
+    @classmethod
+    def search(cls, query, qs=None):
+        Book = apps.get_model('catalogue', 'Book')
+        if qs is None:
+            qs = cls.objects.all()
+        pd_books = qs.annotate(search_vector=UnaccentSearchVector('title')).filter(search_vector=query)
+        existing_slugs = Book.objects.filter(
+            slug__in=list(pd_books.values_list('slug', flat=True))) \
+            .values_list('slug', flat=True)
+        pd_books = pd_books.exclude(slug__in=existing_slugs)
+        return pd_books
 
     def get_absolute_url(self):
         return reverse('book_detail', args=[self.slug])
