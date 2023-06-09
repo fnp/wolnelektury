@@ -42,23 +42,23 @@
     {% endif %}
 
     {% if results.author %}
-    <div class="l-container">
-      <h2 class="header">Autorzy</h2>
-      <ul class="c-search-result c-search-result-author">
-        {% for tag in results.author %}
-          <li>
-            <a href="{{ tag.get_absolute_url }}">
-              {% if tag.photo %}
-                <figure>
-                  <img src="{{ tag.photo.url }}">
-                </figure>
-              {% endif %}
-              {{ tag.name }}
-            </a>
-          </li>
-        {% endfor %}
-      </ul>
-    </div>
+      <div class="l-container">
+        <h2 class="header">Autorzy</h2>
+        <ul class="c-search-result c-search-result-author">
+          {% for tag in results.author %}
+            <li>
+              <a href="{{ tag.get_absolute_url }}">
+                {% if tag.photo %}
+                  <figure>
+                    <img src="{{ tag.photo.url }}">
+                  </figure>
+                {% endif %}
+                {{ tag.name }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
     {% endif %}
 
     {% if results.theme %}
@@ -66,6 +66,26 @@
         <h2 class="header">Motywy</h2>
         <ul class="c-search-result">
           {% for tag in results.theme %}
+            <li>
+              <a href="{{ tag.get_absolute_url }}">
+                {% if tag.photo %}
+                  <figure>
+                    <img src="{{ tag.photo.url }}">
+                  </figure>
+                {% endif %}
+                {{ tag.name }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+
+    {% if results.genre %}
+      <div class="l-container">
+        <h2 class="header">Gatunki</h2>
+        <ul class="c-search-result">
+          {% for tag in results.genre %}
             <li>
               <a href="{{ tag.get_absolute_url }}">
                 {% if tag.photo %}

@@ -16,6 +16,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.utils import translation
 from django.utils.translation import gettext as _, gettext_lazy
 from django.views.decorators.cache import never_cache
+from django.views.generic import TemplateView
 
 from ajaxable.utils import AjaxableFormView
 from club.forms import ScheduleForm, DonationStep1Form
@@ -23,10 +24,12 @@ from club.models import Club
 from annoy.models import DynamicTextInsert
 from pdcounter import views as pdcounter_views
 from picture.models import Picture, PictureArea
+from wolnelektury.utils import is_ajax
 from catalogue import constants
 from catalogue import forms
 from catalogue.helpers import get_top_level_related_tags
 from catalogue.models import Book, Collection, Tag, Fragment
+from catalogue.models.tag import TagRelation
 from catalogue.utils import split_tags
 from catalogue.models.tag import prefetch_relations
 
@@ -95,6 +98,212 @@ def differentiate_tags(request, tags, ambiguous_slugs):
     )
 
 
+from django.db.models import FilteredRelation, Q
+from django.views.decorators.cache import cache_control
+from django.views.decorators.vary import vary_on_headers
+from django.utils.decorators import method_decorator
+
+
+@method_decorator([
+    vary_on_headers('X-Requested-With'),
+    cache_control(max_age=1),
+], 'dispatch')
+class ObjectListView(TemplateView):
+    page_size = 100
+    themed_page_size = 10
+    item_template_name = ''
+    orderings = {}
+    default_ordering = None
+
+    def setup(self, request, **kwargs):
+        super().setup(request, **kwargs)
+        self.is_themed = False
+        self.ctx = ctx = {}
+        ctx['tags'] = []        
+
+    def get_orderings(self):
+        order = self.get_order()
+        return [
+            {
+                "slug": k,
+                "name": v[1],
+                "active": k == order,
+                "default": v[0] is None,
+            }
+            for k, v in self.orderings.items()
+        ]
+
+    def get_order(self):
+        order = self.request.GET.get('order')
+        if order not in self.orderings:
+            order = self.default_ordering
+        return order
+
+    def order(self, qs):
+        order_tag = self.get_order()
+        if order_tag:
+            order = self.orderings[order_tag]
+            order_by = order[0]
+            if order_by:
+                qs = qs.order_by(order_by)
+        return qs
+
+    def search(self, qs):
+        return qs
+
+    def get_template_names(self):
+        if is_ajax(self.request) or self.request.GET.get('dyn'):
+            if self.is_themed:
+                return self.dynamic_themed_template_name
+            else:
+                return self.dynamic_template_name
+        else:
+            if self.is_themed:
+                return self.themed_template_name
+            else:
+                return self.template_name
+
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data()
+        ctx.update(self.ctx)
+        qs = self.get_queryset()
+        qs = self.search(qs)
+        qs = self.order(qs)
+
+        ctx['object_list'] = qs
+        ctx['suggested_tags'] = self.get_suggested_tags(qs)
+        ctx['suggested_tags_by_category'] = split_tags(ctx['suggested_tags'])
+        return ctx
+
+
+class BookList(ObjectListView):
+    title = gettext_lazy('Literature')
+    list_type = 'books'
+    template_name = 'catalogue/2022/book_list.html'
+    dynamic_template_name = 'catalogue/2022/dynamic_book_list.html'
+    themed_template_name = 'catalogue/2022/themed_book_list.html'
+    dynamic_themed_template_name = 'catalogue/2022/dynamic_themed_book_list.html'
+
+    orderings = {
+        'pop': ('-popularity__count', 'najpopularniejsze'),
+        'alpha': (None, 'alfabetycznie'),
+    }
+    default_ordering = 'alpha'
+
+    def get_queryset(self):
+        return Book.objects.filter(parent=None, findable=True)
+
+    def search(self, qs):
+        term = self.request.GET.get('search')
+        if term:
+            meta_rels = TagRelation.objects.exclude(tag__category='set')
+            # TODO: search tags in currently displaying language
+            if self.is_themed:
+                #qs = qs.annotate(
+                #    meta=FilteredRelation('book__tag_relations', condition=Q(tag_relations__in=meta_rels))
+                #)
+                qs = qs.filter(
+                    Q(book__title__icontains=term) |
+                    #Q(meta__tag_relations__tag__name_pl__icontains=term) |
+                    Q(text__icontains=term)
+                ).distinct()
+            else:
+                qs = qs.annotate(
+                    meta=FilteredRelation('tag_relations', condition=Q(tag_relations__in=meta_rels))
+                )
+                qs = qs.filter(Q(title__icontains=term) | Q(meta__tag__name_pl__icontains=term)).distinct()
+        return qs
+
+
+class ArtList(ObjectListView):
+    template_name = 'catalogue/2022/book_list.html'
+    dynamic_template_name = 'catalogue/2022/dynamic_book_list.html'
+    title = gettext_lazy('Art')
+    list_type = 'gallery'
+
+    def get_queryset(self):
+        return Picture.objects.all()
+
+    def search(self, qs):
+        term = self.request.GET.get('search')
+        if term:
+            qs = qs.filter(Q(title__icontains=term) | Q(tag_relations__tag__name_pl__icontains=term)).distinct()
+        return qs
+    
+
+class LiteratureView(BookList):
+    def get_suggested_tags(self, queryset):
+        tags = list(get_top_level_related_tags([]))
+        tags.sort(key=lambda t: -t.count)
+        if self.request.user.is_authenticated:
+            tags.extend(list(Tag.objects.filter(user=self.request.user).exclude(name='')))
+        return tags
+
+
+class AudiobooksView(LiteratureView):
+    title = gettext_lazy('Audiobooks')
+
+    def get_queryset(self):
+        return Book.objects.filter(findable=True, media__type='mp3').distinct()
+
+
+class GalleryView(ArtList):
+    def get_suggested_tags(self, queryset):
+        return Tag.objects.usage_for_queryset(
+            queryset,
+            counts=True
+        ).exclude(pk__in=[t.id for t in self.ctx['tags']]).order_by('-count')
+    
+
+class TaggedObjectList(BookList):
+    def setup(self, request, tags, **kwargs):
+        super().setup(request, **kwargs)
+        self.ctx['tags'] = analyse_tags(request, tags)
+        self.ctx['fragment_tags'] = [t for t in self.ctx['tags'] if t.category in ('theme', 'object')]
+        self.ctx['work_tags'] = [t for t in self.ctx['tags'] if t not in self.ctx['fragment_tags']]
+        self.is_themed = self.ctx['has_theme'] = bool(self.ctx['fragment_tags'])
+        self.ctx['main_tag'] = self.ctx['fragment_tags'][0] if self.is_themed else self.ctx['tags'][0]
+        self.ctx['filtering_tags'] = [
+            t for t in self.ctx['tags']
+            if t is not self.ctx['main_tag']
+        ]
+
+    def get_queryset(self):
+        qs = Book.tagged.with_all(self.ctx['work_tags']).filter(findable=True)
+        qs = qs.exclude(ancestor__in=qs)
+        if self.is_themed:
+            qs = Fragment.tagged.with_all(self.ctx['fragment_tags']).filter(
+                Q(book__in=qs) | Q(book__ancestor__in=qs)
+            )
+        return qs
+
+    def get_suggested_tags(self, queryset):
+        tag_ids = [t.id for t in self.ctx['tags']]
+        related_tags = list(get_top_level_related_tags(self.ctx['tags']))
+        if not self.is_themed:
+            if self.request.user.is_authenticated:
+                qs = Book.tagged.with_all(self.ctx['tags']).filter(findable=True)
+                related_tags.extend(list(
+                    Tag.objects.usage_for_queryset(
+                        qs
+                    ).filter(
+                        user=self.request.user
+                    ).exclude(name='').exclude(pk__in=tag_ids)
+                ))
+
+            fragments = Fragment.objects.filter(
+                Q(book__in=queryset) | Q(book__ancestor__in=queryset)
+            )
+            related_tags.extend(
+                Tag.objects.usage_for_queryset(
+                    fragments, counts=True
+                ).filter(category__in=('theme', 'object')).exclude(pk__in=tag_ids)
+            .only('name', 'sort_key', 'category', 'slug'))
+
+        return related_tags
+
+    
+    
 def object_list(request, objects, fragments=None, related_tags=None, tags=None,
                 list_type='books', extra=None):
     if not tags:
@@ -135,7 +344,7 @@ def object_list(request, objects, fragments=None, related_tags=None, tags=None,
     categories = split_tags(*related_tag_lists)
     suggest = []
     for c in ['set', 'author', 'epoch', 'kind', 'genre']:
-        suggest.extend(sorted(categories[c], key=lambda t: -t.count)[:3])
+        suggest.extend(sorted(categories[c], key=lambda t: -t.count))
 
     objects = list(objects)
 

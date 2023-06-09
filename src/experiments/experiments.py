@@ -9,10 +9,6 @@ class NewLayout(Experiment):
     name = 'Nowy layout strony'
     size = settings.EXPERIMENTS_LAYOUT
 
-    def qualify(self, request):
-        if get_language() != 'pl':
-            return False
-
 
 class Sowka(Experiment):
     slug = 'sowka'
@@ -21,14 +17,7 @@ class Sowka(Experiment):
     switchable = False
 
 
-class Search(Experiment):
-    slug = 'search'
-    name = 'Nowa wyszukiwarka'
-    size = settings.EXPERIMENTS_SEARCH
-
-
 experiments = [
     NewLayout,
     Sowka,
-    Search
 ]

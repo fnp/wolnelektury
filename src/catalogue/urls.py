@@ -30,12 +30,12 @@ urlpatterns = [
     path('rodzaj/', views.tag_catalogue, {'category': 'kind'}, name='kind_catalogue'),
     path('motyw/', views.tag_catalogue, {'category': 'theme'}, name='theme_catalogue'),
 
-    path('galeria/', views.gallery, name='gallery'),
+    path('galeria/', views.GalleryView.as_view(), name='gallery'),
     path('kolekcje/', views.collections, name='catalogue_collections'),
 
-    path('lektury/', views.literature, name='book_list'),
+    path('lektury/', views.LiteratureView.as_view(), name='book_list'),
     path('lektury/<slug:slug>/', views.collection, name='collection'),
-    path('audiobooki/', views.audiobooks, name='audiobook_list'),
+    path('audiobooki/', views.AudiobooksView.as_view(), name='audiobook_list'),
     path('daisy/', views.daisy_list, name='daisy_list'),
     path('jtags/', search.views.hint, {'param': 'q', 'mozhint': True}, name='jhint'),
     path('nowe/', ListView.as_view(
@@ -76,7 +76,7 @@ urlpatterns = [
         name='tagged_object_list_gallery'),
     re_path(r'^audiobooki/(?P<tags>[a-zA-Z0-9-/]*)/$', views.tagged_object_list, {'list_type': 'audiobooks'},
         name='tagged_object_list_audiobooks'),
-    re_path(r'^(?P<tags>[a-zA-Z0-9-/]*)/$', views.tagged_object_list, {'list_type': 'books'},
+    re_path(r'^(?P<tags>[a-zA-Z0-9-/]*)/$', views.TaggedObjectList.as_view(),
         name='tagged_object_list'),
 
 ]

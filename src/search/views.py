@@ -137,8 +137,7 @@ def search(request):
 
 @cache.never_cache
 def main(request):
-    if request.EXPERIMENTS['search'].value:
-        request.EXPERIMENTS['layout'].override(True)
+    if request.EXPERIMENTS['layout'].value:
         return search(request)
 
     query = request.GET.get('q', '')

@@ -401,7 +401,7 @@
         liked: [],
     };
     
-    $(".icon-like").on('click', function(e) {
+    $(document).on('click', '.icon-like', function(e) {
         e.preventDefault();
         let liked = $(this).hasClass('icon-liked');
         $btn = $(this);
@@ -431,6 +431,7 @@
         }
     })
 
+    // TODO: DYNAMICALLY ADD
    $(".add-set-tag input[name=name]").autocomplete({
        source: '/ludzie/moje-tagi/',
    }).on('autocompleteopen', function() {
@@ -478,6 +479,7 @@
         });
     }
     refreshAll(ids);
+    $.refreshLikes = refreshAll;
 
     function updateFromData(data) {
         for (pk in data) {
