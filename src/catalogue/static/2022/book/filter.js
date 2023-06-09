@@ -8,10 +8,17 @@
     function get_page(page, search, ordering, callback) {
         get_page_by_url('.?page=' + page + '&order=' + ordering + '&search=' + search, callback);
     }
+
+    let lastFulfilledPage = 0;
+
     function get_page_by_url(url, callback) {
+        let requestTime = + new Date();
         $.get(
             url,
             function(data) {
+                if (lastFulfilledPage > requestTime) return;
+                lastFulfilledPage = requestTime;
+
                 html = $(data);
                 objectList = $('#object-list', html);
                 paginate = $('#paginate', html);
