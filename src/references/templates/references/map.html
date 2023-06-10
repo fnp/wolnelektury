@@ -14,13 +14,19 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css">
   <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
   <style>
-    .leaflet-popup-content h2 {
-        margin-top: 0;
-        padding-top: 0;
-        border: 0;
-    }
-   .l-books {
+   .leaflet-popup-content h2 {
+       margin-top: 0;
+       padding-top: 0;
+       border: 0;
+   }
+   .l-popup-books {
+       display: flex;
+       flex-wrap: wrap;
        width: 100px;
+       gap: 5px;
+   }
+   .l-popup-books img {
+       display: block;
    }
   </style>
 {% endblock %}
@@ -45,7 +51,10 @@
        $.get(
            '/pinezki/popup/' + m.target.options.mid,
            function(data) {
-               let p = L.popup({minWidth: 106}).setLatLng(m.latlng).setContent(data);
+               d = $(data);
+               n = Math.min(3, ($('a', d).length));
+               w = 111 * n - 5;
+               let p = L.popup({minWidth: w}).setLatLng(m.latlng).setContent(data);
                map.openPopup(p);
            }
        );
