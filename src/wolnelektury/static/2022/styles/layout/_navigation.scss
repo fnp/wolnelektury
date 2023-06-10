@@ -483,11 +483,14 @@ body {
 
   p {
     margin: 0;
-    width: 427px;
     font-weight: $regular;
     @include font-size(15px);
     line-height: 130%;
     color: #808080;
+
+      @include rwd($break-menu) {
+          width: 427px;
+      }
   }
 }
 

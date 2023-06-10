@@ -20,7 +20,7 @@ class NewsletterForm(Form):
     newsletter = None
 
     data_processing_part1 = '''\
-Administratorem danych osobowych jest Fundacja Nowoczesna Polska (ul. Marszałkowska 84/92 lok. 125, 00-514 Warszawa).
+Administratorem danych osobowych jest Fundacja Wolne Lektury (ul. Marszałkowska 84/92 lok. 125, 00-514 Warszawa).
 Podanie danych osobowych jest dobrowolne.'''
     data_processing_part2 = '''Dane są przetwarzane w zakresie niezbędnym do wysyłania newslettera odbiorcom.'''
     data_processing_part3 = '''\

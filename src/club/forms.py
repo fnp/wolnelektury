@@ -12,7 +12,7 @@ from .payu.forms import CardTokenForm
 class ScheduleForm(forms.ModelForm, NewsletterForm):
     data_processing = '''Informacja o przetwarzaniu danych osobowych
 
-<div class='more-expand'>Administratorem Twoich danych osobowych jest Fundacja Nowoczesna Polska z siedzibą w Warszawie, przy ul. Marszałkowskiej 84/92 lok.125, 00-514 Warszawa (dalej: Fundacja).
+<div class='more-expand'>Administratorem Twoich danych osobowych jest Fundacja Wolne Lektury z siedzibą w Warszawie, przy ul. Marszałkowskiej 84/92 lok.125, 00-514 Warszawa (dalej: Fundacja).
 
 Z Fundacją można się kontaktować we wszystkich sprawach dotyczących przetwarzania danych osobowych oraz korzystania z praw związanych z przetwarzaniem danych, w szczególności w zakresie wycofania udzielonej zgody na przetwarzanie danych poprzez adres e-mail fundacja@nowoczesnapolska.org.pl, telefonicznie pod numerem +48 22 621 30 17 (w dni powszednie w godz. 9-17) lub listownie pisząc na adres siedziby Fundacji.
 Podanie danych osobowych jest dobrowolne, jednak konieczne do przeprowadzenia płatności oraz realizacji innych celów wskazanych poniżej.

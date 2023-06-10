@@ -365,7 +365,6 @@
     font-size: 0;
 
     display: flex;
-    align-items: center;
     justify-content: center;
     @include rwd($break-flow) {
         display: block;
@@ -374,8 +373,10 @@
     a {
       display: block;
       img {
-        min-width: 240px;
-        max-width: 100%;
+          width: 100%;
+          @include rwd($break-flow) {
+              width: 240px;
+          }
       }
     }
   }
@@ -384,11 +385,7 @@
 .p-homepage-prapremiera__box__content {
 
     width: 100%;
-    margin-top: 25px;
-    @include rwd($break-flow) {
-        //width: 385px;
-        margin-top: 0; // ?
-    }
+    margin-top: 0;
 
   h4 {
     margin-top: 0;
