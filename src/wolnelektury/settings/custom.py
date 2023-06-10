@@ -20,7 +20,7 @@ CATALOGUE_CUSTOMPDF_RATE_LIMIT = '1/m'
 # for TeX morefloats library version
 LIBRARIAN_PDF_MOREFLOATS = None
 
-LATEST_BLOG_POSTS = "http://nowoczesnapolska.org.pl/feed/?cat=-135"
+LATEST_BLOG_POSTS = "https://fundacja.wolnelektury.pl/feed/?cat=-135"
 
 CATALOGUE_COUNTERS_FILE = os.path.join(VAR_DIR, 'catalogue_counters.p')
 

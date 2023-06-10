@@ -80,7 +80,7 @@ urlpatterns += [
 urlpatterns += [
     # old static pages - redirected
     path('1procent/', RedirectView.as_view(
-        url='http://nowoczesnapolska.org.pl/wesprzyj_nas/', permanent=True)),
+        url='https://fundacja.wolnelektury.pl/pomoz-nam/1-procent/', permanent=True)),
     path('epub/', RedirectView.as_view(
         url='/katalog/lektury/', permanent=False)),
     path('mozesz-nam-pomoc/', RedirectView.as_view(

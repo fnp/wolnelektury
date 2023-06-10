@@ -6,9 +6,9 @@
     <Description>Biblioteka internetowa WolneLektury.pl</Description>
     <InputEncoding>UTF-8</InputEncoding>
     <Tags>lektury</Tags>
-    <Developer>Fundacja Nowoczesna Polska</Developer>
+    <Developer>Fundacja Wolne Lektury</Developer>
     <Language>pl</Language>
-    <Contact>fundacja@nowoczesnapolska.org.pl</Contact>
+    <Contact>fundacja@wolnelektury.pl</Contact>
     <Image height="16" width="16" type="image/x-icon">https://static.wolnelektury.pl/static/img/favicon.ico</Image>
     <Image height="64" width="64" type="image/png">https://static.wolnelektury.pl/static/img/wl_icon_64.png</Image>
     <Url type="application/atom+xml;profile=opds-catalog"

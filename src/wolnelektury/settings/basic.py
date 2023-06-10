@@ -12,7 +12,7 @@ ADMINS = [
 
 MANAGERS = ADMINS
 
-CONTACT_EMAIL = 'fundacja@nowoczesnapolska.org.pl'
+CONTACT_EMAIL = 'fundacja@wolnelektury.pl'
 
 CACHE_MIDDLEWARE_SECONDS = 24 * 60 * 60
 
