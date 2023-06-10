@@ -1,35 +1,71 @@
+{% extends "2022/base.html" %}
+
 {% load l10n %}
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-       crossorigin=""/>
+{% block extrahead %}
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin=""/>
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+          integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
           crossorigin=""></script>
 
-<div id="map" style="height: 100%"></div>
-<script>
-  var map = L.map('map').setView([51.505, -0.09], 8);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-  }).addTo(map);
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css">
+  <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+  <style>
+    .leaflet-popup-content h2 {
+        margin-top: 0;
+        padding-top: 0;
+        border: 0;
+    }
+   .l-books {
+       width: 100px;
+   }
+  </style>
+{% endblock %}
 
- {% localize off %}
- {% for e in entities %}
- L.marker(
-     [{{ e.lat }}, {{ e.lon }}],
-     {
-         title: "{{ e.label }}",
-         alt: "{{ e.label }}",
-     }
- ).bindPopup("\
-<h1>{{ e.label }}</h1>\
-{% for ref in e.reference_set.all %}\
-<a href='/katalog/lektura/{{ ref.book.slug }}.html#{{ ref.first_section }}'>\
-  {{ ref.book.title }}\
-</a>\
-{% endfor %}\
- ").addTo(map);
- {% endfor %}
+{% block global-content %}
+
+  <div id="map" style="height: calc(100vh - 68px"></div>
+
+{% endblock %}
+
+
+{% block extrabody %}
+  <script>
+   var map = L.map('map').setView([51.505, -0.09], 8);
+   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+   }).addTo(map);
+   var markers = L.markerClusterGroup();
+
+
+   function showMarker(m) {
+       $.get(
+           '/pinezki/popup/' + m.target.options.mid,
+           function(data) {
+               let p = L.popup({minWidth: 106}).setLatLng(m.latlng).setContent(data);
+               map.openPopup(p);
+           }
+       );
+   }
+
+
+   {% localize off %}
+   {% for e in entities %}
+   L.marker(
+       [{{ e.lat }}, {{ e.lon }}],
+       {
+           title: "{{ e.label }}",
+           alt: "{{ e.label }}",
+           mid: {{ e.pk }},
+       }
+   ).on('click', showMarker).addTo(markers);
+   {% endfor %}
  {% endlocalize %}
-</script>
+
+   map.addLayer(markers);
+
+  </script>
+{% endblock %}

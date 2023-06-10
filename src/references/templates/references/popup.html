@@ -1,0 +1,11 @@
+{% load thumbnail %}
+<h2 class="header">{{ entity.label }}</h2>
+
+<div class="l-book_list">
+{% for ref in entity.reference_set.all %}
+  <a href='/katalog/lektura/{{ ref.book.slug }}.html#{{ ref.first_section }}' target="_blank">
+    {% thumbnail ref.book.cover_clean '150x150' as th %}
+    <img src="{{ th.url }}" alt="{{ ref.book.pretty_title }}" title="{{ ref.book.pretty_title }}">
+    {% endthumbnail %}
+  </a>
+{% endfor %}
