@@ -20,8 +20,8 @@ var __bind = function (self, fn) {
             };
 
             this.element.autocomplete($.extend(opts, this.options));
-            this.element.autocomplete('instance')._renderItem = __bind(this, this.render_item_2022);
-            this.element.data('autocomplete')._renderItem = __bind(this, this.render_item);;
+            if (this.element.autocomplete('instance') !== undefined) this.element.autocomplete('instance')._renderItem = __bind(this, this.render_item_2022);
+            if (this.element.data('autocomplete') !== undefined) this.element.data('autocomplete')._renderItem = __bind(this, this.render_item);;
         },
 
         enter: function(event, ui) {

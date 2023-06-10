@@ -55,7 +55,23 @@ body {
 .l-navigation__logo {
     display: flex;
     position: relative;
+    height: 44px;
+    width: 153px;
+    flex-shrink: 0;
+    overflow: hidden;
+    transition: .5s width;
 
+    @include rwd($break-menu) {
+        width: 230px;
+    }
+
+    &.search-active {
+        width: 30px;
+        @include rwd($break-menu) {
+            width: 230px;
+        }
+    }
+    
     img {
         width: 153px;
         @include rwd($break-menu) {
@@ -89,6 +105,7 @@ body {
     max-width: 580px;
     margin-left: 20px;
     margin-right: 20px;
+    flex-grow: 1;
     
     @include rwd($break-menu) {
         margin-left: 60px;

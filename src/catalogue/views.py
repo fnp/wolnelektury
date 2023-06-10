@@ -115,12 +115,18 @@ class ObjectListView(TemplateView):
     orderings = {}
     default_ordering = None
 
-    def setup(self, request, **kwargs):
-        super().setup(request, **kwargs)
+    def analyse(self):
         self.is_themed = False
         self.ctx = ctx = {}
         ctx['tags'] = []        
 
+    def dispatch(self, *args, **kwargs):
+        try:
+            self.analyse()
+        except ResponseInstead as e:
+            return e.response
+        return super().dispatch(*args, **kwargs)
+        
     def get_orderings(self):
         order = self.get_order()
         return [
@@ -242,6 +248,7 @@ class LiteratureView(BookList):
 
 class AudiobooksView(LiteratureView):
     title = gettext_lazy('Audiobooks')
+    list_type = 'audiobooks'
 
     def get_queryset(self):
         return Book.objects.filter(findable=True, media__type='mp3').distinct()
@@ -256,9 +263,9 @@ class GalleryView(ArtList):
     
 
 class TaggedObjectList(BookList):
-    def setup(self, request, tags, **kwargs):
-        super().setup(request, **kwargs)
-        self.ctx['tags'] = analyse_tags(request, tags)
+    def analyse(self):
+        super().analyse()
+        self.ctx['tags'] = analyse_tags(self.request, self.kwargs['tags'])
         self.ctx['fragment_tags'] = [t for t in self.ctx['tags'] if t.category in ('theme', 'object')]
         self.ctx['work_tags'] = [t for t in self.ctx['tags'] if t not in self.ctx['fragment_tags']]
         self.is_themed = self.ctx['has_theme'] = bool(self.ctx['fragment_tags'])
@@ -388,15 +395,21 @@ def object_list(request, objects, fragments=None, related_tags=None, tags=None,
 
 
 def literature(request):
+    if request.EXPERIMENTS['layout'].value:
+        return LiteratureView.as_view()(request)
     books = Book.objects.filter(parent=None, findable=True)
     return object_list(request, books, related_tags=get_top_level_related_tags([]))
 
 
 def gallery(request):
+    if request.EXPERIMENTS['layout'].value:
+        return GalleryView.as_view()(request)
     return object_list(request, Picture.objects.all(), list_type='gallery')
 
 
 def audiobooks(request):
+    if request.EXPERIMENTS['layout'].value:
+        return AudiobooksView.as_view()(request)
     audiobooks = Book.objects.filter(findable=True, media__type__in=('mp3', 'ogg')).distinct()
     return object_list(request, audiobooks, list_type='audiobooks', extra={
         'daisy': Book.objects.filter(findable=True, media__type='daisy').distinct(),
@@ -461,6 +474,9 @@ def theme_list(request, tags, list_type):
 
 
 def tagged_object_list(request, tags, list_type):
+    if request.EXPERIMENTS['layout'].value and list_type in ('books', 'audiobooks'):
+        return TaggedObjectList.as_view()(request, tags=tags)
+
     try:
         tags = analyse_tags(request, tags)
     except ResponseInstead as e:

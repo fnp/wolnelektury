@@ -95,8 +95,19 @@
         $(".is-active", $(this).parent()).removeClass("is-active");
         $(this).addClass("is-active");
         let prop = $(this).attr('data-order');
+        $(".l-books__sorting select").val(prop);
+        if (prop == '-') prop = '';
+        resort(prop);
+    });
+    $(".l-books__sorting select").on('change', function() {
+        let prop = $(this).val();
+        $(".is-active", $(this).parent()).removeClass("is-active");
+        $("[data-order='" + prop +"']", $(this).parent()).addClass("is-active");
+        if (prop == '-') prop = '';
+        resort(prop);
+    });
 
-
+    function resort(prop) {
         // do we NOW have pages (possibly after filtering)?
         // if we don't have pages, we can just sort here.
         let havePages = $('.l-pagination li').length > 0;
@@ -118,6 +129,6 @@
                 }, 200);
             }
         }, 200);
-    });
+    }
     
 })(jQuery);

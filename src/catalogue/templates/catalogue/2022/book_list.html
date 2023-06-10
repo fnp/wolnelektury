@@ -56,7 +56,9 @@
         <div>
           {% for ordering in view.get_orderings %}
             <button
-                {% if not ordering.default %}
+                {% if ordering.default %}
+                data-order="-"
+                {% else %}
                 data-order="{{ ordering.slug }}"
                 {% endif %}
                 {% if ordering.active %}
@@ -64,14 +66,29 @@
                 {% endif %}
             >{{ ordering.name }}</button>
           {% endfor %}
+          <select name="sorting">
+            {% for ordering in view.get_orderings %}
+              <option
+                  {% if ordering.default %}
+                  value="-"
+                  {% else %}
+                  value="{{ ordering.slug }}"
+                  {% endif %}
+                  {% if ordering.active %}
+                  selected="selected"
+                  {% endif %}
+              >{{ ordering.name }}</option>
+          {% endfor %}
+          </select>
         </div>
       </div>
       {% endif %}
     </div>
   </div>
-  <div class="l-author with-filter">
+  <div class="l-section">
+  <div class="with-filter">
     <div class="row">
-      <h2>{% nice_title_from_tags tags suggested_tags_by_category %}</h2>
+      <h2 class="header">{% nice_title_from_tags tags suggested_tags_by_category %}</h2>
       {% if suggested_tags %}
         <div class="filter-container">
           {% for tag in suggested_tags %}
@@ -82,6 +99,7 @@
         </div>
       {% endif %}
     </div>
+  </div>
   </div>
 
   {% autopaginate object_list view.page_size %}

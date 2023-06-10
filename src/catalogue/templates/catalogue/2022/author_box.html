@@ -10,7 +10,7 @@
   <div>
     {% if tag.photo %}
       <figure class="l-author__photo">
-        <img src="{{ tag.photo.url }}" alt="{{ tag.name }}" style="width: 238px;">
+        <img src="{{ tag.photo.url }}" alt="{{ tag.name }}">
         <figcaption>
           {{ tag.photo_attribution|safe }}
         </figcaption>

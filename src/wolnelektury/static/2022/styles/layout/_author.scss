@@ -3,6 +3,13 @@
   display: flex;
   padding: 50px 0;
   justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+
+  @include rwd($break-flow) {
+      flex-direction: row;
+      align-items: flex-start;
+  }
 
   h2 {
     margin: 0;
@@ -21,9 +28,13 @@
     width: 100%;
 
     &:nth-child(1) {
-
       div {
-        display: flex;
+          display: flex;
+          flex-wrap: wrap;
+
+          @include rwd($break-wide) {
+              flex-wrap: nowrap;
+          }
       }
 
       h2 {
@@ -31,21 +42,34 @@
       }
 
       .l-author__photo {
-        width: 100%;
-        max-width: 238px;
+          width: calc(50% - 24px);
+          @include rwd($break-wide) {
+              width: 238px;
+          }
+
+          img {
+              width:100%;
+          }
       }
     }
 
     &:nth-child(2) {
-      max-width: 415px;
-      padding-top: 48px;
-      padding-left: 32px;
+        max-width: 415px - 32px;
+        padding-top: 48px;
+        @include rwd($break-flow) {
+            max-width: 415px;
+            padding-left: 32px;
+        }
     }
   }
 }
 
 .l-author__info {
-  min-width: 364px;
+    display: contents;
+    min-width: 364px;
+    @include rwd($break-wide) {
+        display: block;
+    }    
 
   h3 {
     margin: 0;
@@ -54,6 +78,8 @@
     line-height: 140%;
     letter-spacing: -0.01em;
     color: #007880;
+
+    width: 40%;
   }
   p {
     margin-top: 20px;
@@ -98,8 +124,11 @@
 }
 
 .l-author__photo {
-  margin: 0;
-  margin-right: 50px;
+    margin: 0;
+    margin-right: 16px;
+    @include rwd($break-wide) {
+        margin-right: 50px;
+    }
   img {
     border-radius: 10px;
     overflow: hidden;
