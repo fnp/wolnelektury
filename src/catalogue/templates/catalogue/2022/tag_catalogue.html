@@ -34,7 +34,7 @@
             <img src="{{ thumb.url }}" class="c-avatar">
             {% endthumbnail %}
           {% endif %}
-          <a class="s" href="{{ tag.get_absolute_url }}">{{ tag }}</a>
+          <a class="s" href="{{ tag.get_absolute_url }}">{{ tag }} ({{ tag.count }})</a>
         </li>
       {% endfor %}
     </ul>

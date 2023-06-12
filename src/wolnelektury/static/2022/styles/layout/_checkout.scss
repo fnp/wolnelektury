@@ -523,6 +523,8 @@
   }
 }
 
+
+
 //Input
 .l-checkout__input {
   display: flex;
@@ -964,6 +966,26 @@
         }
         ~.payments-once {
             display: flex;
+
+            &.wide-spot-1 ~.l-checkout__amount {
+                @include rwd($break-flow) {
+                    margin-top: -110px;
+
+                    > div, > button {
+                        width: calc(33.333% - 20px);
+                    }
+                }
+            }
+            &.wide-spot-2 ~.l-checkout__amount {
+                @include rwd($break-flow) {
+                    flex-direction: column;
+                    margin-top: -182px;
+
+                    > div, > button {
+                        width: calc(33.333% - 20px);
+                    }
+                }
+            }
         }
     }
     &#switch-monthly:checked {
@@ -978,6 +1000,26 @@
         }
         ~.payments-recurring {
             display: flex;
+
+            &.wide-spot-1 ~.l-checkout__amount {
+                @include rwd($break-flow) {
+                    margin-top: -110px;
+
+                    > div, > button {
+                        width: calc(33.333% - 20px);
+                    }
+                }
+            }
+            &.wide-spot-2 ~.l-checkout__amount {
+                @include rwd($break-flow) {
+                    flex-direction: column;
+                    margin-top: -182px;
+
+                    > div, > button {
+                        width: calc(33.333% - 20px);
+                    }
+                }
+            }
         }
     }
 }

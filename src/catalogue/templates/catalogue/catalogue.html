@@ -1,6 +1,6 @@
 {% extends request.EXPERIMENTS.layout|yesno:"2022/base.html,base/base.html" %}
 {% load i18n %}
-{% load catalogue_tags %}
+{% load catalogue_tags reporting_stats %}
 
 
 {% block titleextra %}{% trans "Catalogue" %}{% endblock %}
@@ -10,6 +10,8 @@
 {% block body %}{% block main %}
   <h1>{% trans "All works" %}</h1>
   <div class="normal-text catalogue-catalogue l-container">
+    <p>W naszej bibliotece mamy {% count_books %} utworów zebranych w {% count_books_root %} tomów.</p>
+
     <p>
       <a href="{% url 'reporting_catalogue_pdf' %}">
         {% trans "Download the catalogue in PDF format." %}

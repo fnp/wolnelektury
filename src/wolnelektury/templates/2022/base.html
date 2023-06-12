@@ -15,6 +15,10 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <title>{% if title %}{{ title }} | {% endif %}WolneLektury.pl</title>
+    <link rel="icon" href="{% static 'img/favicon.png' %}" type="image/png"/>
+    <link rel="search" type="application/opensearchdescription+xml" title="Wolne Lektury"
+          href="{% static 'opensearch.xml' %}"/>
+    <link rel="manifest" href="/manifest.json">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     {% stylesheet '2022' %}
       {% tracking_code %}
