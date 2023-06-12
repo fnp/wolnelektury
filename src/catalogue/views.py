@@ -269,7 +269,12 @@ class TaggedObjectList(BookList):
         self.ctx['fragment_tags'] = [t for t in self.ctx['tags'] if t.category in ('theme', 'object')]
         self.ctx['work_tags'] = [t for t in self.ctx['tags'] if t not in self.ctx['fragment_tags']]
         self.is_themed = self.ctx['has_theme'] = bool(self.ctx['fragment_tags'])
-        self.ctx['main_tag'] = self.ctx['fragment_tags'][0] if self.is_themed else self.ctx['tags'][0]
+        if self.is_themed:
+            self.ctx['main_tag'] = self.ctx['fragment_tags'][0]
+        elif self.ctx['tags']:
+            self.ctx['main_tag'] = self.ctx['tags'][0]
+        else:
+            self.ctx['main_tag'] = None
         self.ctx['filtering_tags'] = [
             t for t in self.ctx['tags']
             if t is not self.ctx['main_tag']
@@ -439,6 +444,8 @@ def analyse_tags(request, tag_str):
         raise ResponseInstead(HttpResponsePermanentRedirect(
             reverse('tagged_object_list', args=['/'.join(tag.url_chunk for tag in e.tags)])))
 
+    if not tags:
+        raise Http404
     try:
         if len(tags) > settings.MAX_TAG_LIST:
             raise Http404

@@ -123,7 +123,7 @@ def search(request):
     filters = SearchFilters(request.GET)
     ctx = {
         'title': 'Wynik wyszukiwania',
-        'query': filters.data['q'],
+        'query': request.GET.get('q', ''),
         'filters': filters,
     }
     if filters.is_valid():
