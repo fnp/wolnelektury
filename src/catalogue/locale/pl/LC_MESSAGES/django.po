@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WolneLektury\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-06-02 13:03+0200\n"
+"PO-Revision-Date: 2023-06-13 23:32+0200\n"
 "Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
 "Language-Team: Fundacja Nowoczesna Polska <fundacja@nowoczesnapolska.org."
 "pl>\n"
@@ -217,7 +217,7 @@ msgstr "prapremiera do"
 
 #: catalogue/models/book.py:59
 msgid "findable"
-msgstr ""
+msgstr "wyszukiwalna"
 
 #: catalogue/models/book.py:70
 msgid "cover"
@@ -489,33 +489,33 @@ msgstr "Spis treści"
 msgid "↑ top ↑"
 msgstr "↑ góra ↑"
 
-#: catalogue/templates/catalogue/book_short.html:53
+#: catalogue/templates/catalogue/book_short.html:54
 #: catalogue/templates/catalogue/picture_detail.html:52
 msgid "Epoch"
 msgstr "Epoka"
 
-#: catalogue/templates/catalogue/book_short.html:61
+#: catalogue/templates/catalogue/book_short.html:62
 #: catalogue/templates/catalogue/picture_detail.html:58
 msgid "Kind"
 msgstr "Rodzaj"
 
-#: catalogue/templates/catalogue/book_short.html:69
+#: catalogue/templates/catalogue/book_short.html:70
 msgid "Genre"
 msgstr "Gatunek"
 
-#: catalogue/templates/catalogue/book_short.html:79
+#: catalogue/templates/catalogue/book_short.html:80
 msgid "Region"
 msgstr "Region"
 
-#: catalogue/templates/catalogue/book_short.html:87
+#: catalogue/templates/catalogue/book_short.html:88
 msgid "Language"
 msgstr "Język"
 
-#: catalogue/templates/catalogue/book_short.html:112
+#: catalogue/templates/catalogue/book_short.html:113
 msgid "Read online"
 msgstr "Czytaj online"
 
-#: catalogue/templates/catalogue/book_short.html:115
+#: catalogue/templates/catalogue/book_short.html:116
 msgid ""
 "Cena książki w druku cyfrowym jest zależna od liczby stron.<br>Przed zakupem "
 "upewnij się, że cena druku na żądanie jest dla Ciebie odpowiednia."
@@ -523,19 +523,19 @@ msgid ""
 "bezpłatnie."
 msgstr ""
 
-#: catalogue/templates/catalogue/book_short.html:115
+#: catalogue/templates/catalogue/book_short.html:116
 msgid "Print on demand –"
 msgstr "Druk na żądanie z"
 
-#: catalogue/templates/catalogue/book_short.html:121
+#: catalogue/templates/catalogue/book_short.html:122
 msgid "Download an ebook"
 msgstr "Pobierz ebook"
 
-#: catalogue/templates/catalogue/book_short.html:140
+#: catalogue/templates/catalogue/book_short.html:141
 msgid "Download audiobook"
 msgstr "Pobierz audiobook"
 
-#: catalogue/templates/catalogue/book_short.html:152
+#: catalogue/templates/catalogue/book_short.html:153
 msgid "For now this work is only available for our subscribers."
 msgstr "Jak na razie ten utwór jest dostępny wyłącznie dla naszych Przyjaciół."
 
@@ -593,26 +593,28 @@ msgstr "Katalog"
 msgid "All works"
 msgstr "Wszystkie utwory"
 
-#: catalogue/templates/catalogue/catalogue.html:15
+#: catalogue/templates/catalogue/catalogue.html:17
 msgid "Download the catalogue in PDF format."
 msgstr "Pobierz katalog w formacie PDF."
 
-#: catalogue/templates/catalogue/catalogue.html:19
+#: catalogue/templates/catalogue/catalogue.html:21
 #: catalogue/templates/catalogue/tag_list_split.html:4
 #: catalogue/templates/catalogue/tagged_object_list.html:5
+#: catalogue/views.py:186
 msgid "Literature"
 msgstr "Literatura"
 
-#: catalogue/templates/catalogue/catalogue.html:22
+#: catalogue/templates/catalogue/catalogue.html:24
 #: catalogue/templates/catalogue/collections.html:5
 #: catalogue/templates/catalogue/collections.html:10
 msgid "Collections"
 msgstr "Kolekcje"
 
-#: catalogue/templates/catalogue/catalogue.html:25
+#: catalogue/templates/catalogue/catalogue.html:27
 #: catalogue/templates/catalogue/search_multiple_hits.html:117
 #: catalogue/templates/catalogue/tag_list_split.html:9
 #: catalogue/templates/catalogue/tagged_object_list.html:5
+#: catalogue/views.py:227
 msgid "Art"
 msgstr "Sztuka"
 
@@ -620,12 +622,12 @@ msgstr "Sztuka"
 msgid "All collections"
 msgstr "Wszystkie kolekcje"
 
-#: catalogue/templates/catalogue/custom_pdf_form.html:5 catalogue/views.py:448
+#: catalogue/templates/catalogue/custom_pdf_form.html:5 catalogue/views.py:678
 msgid "Download custom PDF"
 msgstr "Stwórz własny PDF"
 
 #: catalogue/templates/catalogue/custom_pdf_form.html:12
-#: catalogue/templates/catalogue/custom_pdf_form.html:22 catalogue/views.py:449
+#: catalogue/templates/catalogue/custom_pdf_form.html:22 catalogue/views.py:679
 msgid "Download"
 msgstr "Pobierz"
 
@@ -835,6 +837,7 @@ msgid "See full category"
 msgstr "Zobacz całą kategorię"
 
 #: catalogue/templates/catalogue/tagged_object_list.html:5
+#: catalogue/views.py:250
 msgid "Audiobooks"
 msgstr "Audiobooki"
 
@@ -890,7 +893,7 @@ msgstr "Ładowanie"
 msgid "vulgar language"
 msgstr "wulgaryzmy"
 
-#: catalogue/views.py:399
+#: catalogue/views.py:629
 #, python-format
 msgid ""
 "An error occurred: %(exception)s\n"
@@ -901,11 +904,11 @@ msgstr ""
 "\n"
 "%(tb)s"
 
-#: catalogue/views.py:404
+#: catalogue/views.py:634
 msgid "Book imported successfully"
 msgstr "Książka zaimportowana"
 
-#: catalogue/views.py:405
+#: catalogue/views.py:635
 #, python-format
 msgid "Error importing file: %r"
 msgstr "Błąd podczas importowania pliku: %r"

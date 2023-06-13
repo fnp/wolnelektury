@@ -17,51 +17,51 @@ msgstr ""
 "X-Translated-Using: django-rosetta 0.5.6\n"
 "X-Generator: Poedit 1.5.4\n"
 
-#: pdcounter/models.py:13
+#: pdcounter/models.py:15
 msgid "name"
 msgstr "nazwa"
 
-#: pdcounter/models.py:14 pdcounter/models.py:64
+#: pdcounter/models.py:16 pdcounter/models.py:78
 msgid "slug"
 msgstr "slug"
 
-#: pdcounter/models.py:15
+#: pdcounter/models.py:17
 msgid "sort key"
 msgstr "klucz sortowania"
 
-#: pdcounter/models.py:16 pdcounter/models.py:41
+#: pdcounter/models.py:18 pdcounter/models.py:43
 msgid "description"
 msgstr "opis"
 
-#: pdcounter/models.py:17
+#: pdcounter/models.py:19
 msgid "year of death"
 msgstr "rok śmierci"
 
-#: pdcounter/models.py:23 pdcounter/models.py:62
+#: pdcounter/models.py:25 pdcounter/models.py:76
 msgid "author"
 msgstr "autor"
 
-#: pdcounter/models.py:24
+#: pdcounter/models.py:26
 msgid "authors"
 msgstr "autorzy"
 
-#: pdcounter/models.py:61
+#: pdcounter/models.py:75
 msgid "title"
 msgstr "tytuł"
 
-#: pdcounter/models.py:63
+#: pdcounter/models.py:77
 msgid "goes to public domain"
 msgstr "trafia do domeny publicznej"
 
-#: pdcounter/models.py:65
+#: pdcounter/models.py:79
 msgid "translator"
 msgstr "tłumacz"
 
-#: pdcounter/models.py:69
+#: pdcounter/models.py:83
 msgid "book stub"
 msgstr "zapowiedź książki"
 
-#: pdcounter/models.py:70
+#: pdcounter/models.py:84
 msgid "book stubs"
 msgstr "zapowiedzi książek"
 

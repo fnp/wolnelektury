@@ -8,6 +8,7 @@ class NewLayout(Experiment):
     slug = 'layout'
     name = 'Nowy layout strony'
     size = settings.EXPERIMENTS_LAYOUT
+    switchable = False
 
 
 class Sowka(Experiment):

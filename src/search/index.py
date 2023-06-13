@@ -9,7 +9,6 @@ import os
 import re
 from django.conf import settings
 from librarian import dcparser
-import librarian.meta.types.date
 import librarian.meta.types.person
 import librarian.meta.types.text
 from librarian.parser import WLDocument
@@ -350,9 +349,6 @@ class Index(SolrIndex):
                     else:
                         persons = ', '.join(map(str, p))
                     fields[field.name] = persons
-                elif issubclass(type_indicator, librarian.meta.types.date.DateValue):
-                    dt = getattr(book_info, field.name)
-                    fields[field.name] = dt
 
         # get published date
         pd = None

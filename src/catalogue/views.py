@@ -567,8 +567,6 @@ def book_detail(request, slug):
             'club_form': ScheduleForm() if book.preview else None,
             'club': Club.objects.first() if book.preview else None,
             'donation_form': DonationStep1Form(),
-
-            'EXPERIMENTS_SWITCHABLE_layout': True,
         })
 
 

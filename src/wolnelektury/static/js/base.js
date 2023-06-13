@@ -375,6 +375,13 @@
             return false;
         });
         
+        // experiments
+        $(".experiment input").on('change', function() {
+            let name = $(this).attr('name');
+            let val = $(this).val();
+            document.cookie = 'EXPERIMENT_' + name + '=' + val + '; path=/; max-age=31536000';
+            window.location.reload(true);
+        });
     });
 })(jQuery);
 

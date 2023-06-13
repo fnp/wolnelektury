@@ -332,34 +332,6 @@
   });
 })();
 
-//Zmieniamy się popup
-(function() {
-  let $change = $('.l-change-pop');
-  function change() {
-    if(localStorage.getItem('change') === null) {
-      $change.addClass('show');
-    } else {
-      $change.remove();
-      return false;
-    }
-
-    $change.on('click', '.l-change-pop__close', function () {
-      $change.slideUp();
-      localStorage.setItem('change', 'showed');
-    });
-  }
-
-  if($change.length) { change(); }
-
-
-    function quit_experiment() {
-        document.cookie = 'EXPERIMENT_layout=off; path=/; max-age=31536000';
-        window.location.reload(true);
-    }
-    $(".quit-experiment").click(quit_experiment);
-
-})();
-
 (function() {
     $('.l-checkout__payments__box button').on('click', function() {
         let container = $(this).closest('.l-checkout__payments');
@@ -549,4 +521,15 @@
         $('select', $form).change(function() {$form.submit()});
         $('textarea', $form).change(function() {$form.submit()});
     });
+
+    
+    // experiments
+    $(".experiment input").on('change', function() {
+        let name = $(this).attr('name');
+        let val = $(this).val();
+        document.cookie = 'EXPERIMENT_' + name + '=' + val + '; path=/; max-age=31536000';
+        window.location.reload(true);
+    });
+
+
 })();

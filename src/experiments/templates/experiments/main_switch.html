@@ -1,52 +1,51 @@
 {% extends request.EXPERIMENTS.layout.value|yesno:"2022/base.html,base/base.html" %}
+{% load static i18n %}
 
 {% block breadcrumbs %}
-  <span>Eksperymenty</span>
+  <span>{% translate "Current experiments" %}</span>
 {% endblock %}
 
 {% block main %}
-{% block body %}
-  <img src="https://upload.wikimedia.org/wikipedia/commons/c/c8/MH1Asimulator.JPG" style="width:100%">
-
-  {% for exp in request.EXPERIMENTS.values %}
-    {% if exp.switchable or request.user.is_staff %}
-    <div class="experiment nice-controls" data-slug="{{ exp.slug }}">
-      <span>
-        {{ exp.name }}
-      </span>
-      <button
-          {% if exp.value %}
-          disabled class="active"
-          {% endif %}
-          data-value="on">włączony</button>
-      <button
-          {% if not exp.value %}
-          disabled class="active"
-          {% endif %}
-          data-value="off">wyłączony</button>
+  {% block body %}
+    <div class="l-checkout__box">
+      <div class="l-checkout__box__header">
+        <img src="{% static 'img/experiment.jpg' %}">
+        <div class="l-checkout__box__header__content">
+          <h1>{% translate "Current experiments" %}</h1>
+        </div>
+      </div>
+      <div>
+        {% for exp in experiments %}
+          <div class="experiment">
+            <span>
+              {{ exp.name }}
+            </span>
+            <div>
+              <input id="experiment-{{ exp.slug }}-off" name="{{ exp.slug }}" class="toggle-input toggle-input-left" value="off" type="radio" {% if not exp.value %}checked="checked"{% endif %}>
+              <input id="experiment-{{ exp.slug }}-on" name="{{ exp.slug }}" class="toggle-input toggle-input-right"  value="on" type="radio" {% if exp.value %}checked="checked"{% endif %}>
+              <div class="l-switch__wrapper">
+                <div class="l-switch white">
+                  <label class="toggle-for toggle-for-left" for="experiment-{{ exp.slug }}-off">{% translate "off" %}</label>
+                  <label class="toggle-for toggle-for-right" for="experiment-{{ exp.slug }}-on">{% translate "on" %}</label>
+                  <span class="toggle"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% empty %}
+          <div class="experiment">
+            <div>
+              {% translate 'There are currently no experiments available.' %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
     </div>
-    {% endif %}
-  {% endfor %}
-{% endblock %}
 
-{% block extrabody %}
-  <style>
-   .experiment {
-       margin: 1em 0;
-       font-size: 1.5em;
-   }
-   .experiment button {
-       margin: 0 1em;
-       padding: .5em;
-       font-size: 1em;
+    <div class="legend">
+      {% translate "Image" %}:
+      Ken Lund, <a target="_blank" href="https://flickr.com/photos/kenlund/42675643424/">Windmill Modern Art, Chicago Lakefront Trail, Chicago, Illinois</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC By-SA 2.0</a>
+    </div>
+  {% endblock %}
 
-   }
-  </style>
-  <script>
-   $(".experiment button").click(function() {
-       document.cookie = 'EXPERIMENT_' + $(this).parent().data('slug') + '=' + $(this).data('value') + '; path=/; max-age=31536000';
-       window.location.reload(true);
-   });
-  </script>
-{% endblock %}
 {% endblock %}
