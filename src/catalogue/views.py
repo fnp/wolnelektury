@@ -284,9 +284,12 @@ class TaggedObjectList(BookList):
         qs = Book.tagged.with_all(self.ctx['work_tags']).filter(findable=True)
         qs = qs.exclude(ancestor__in=qs)
         if self.is_themed:
-            qs = Fragment.tagged.with_all(self.ctx['fragment_tags']).filter(
-                Q(book__in=qs) | Q(book__ancestor__in=qs)
-            )
+            fqs = Fragment.tagged.with_all(self.ctx['fragment_tags'])
+            if self.ctx['work_tags']:
+                fqs = fqs.filter(
+                    Q(book__in=qs) | Q(book__ancestor__in=qs)
+                )
+            qs = fqs
         return qs
 
     def get_suggested_tags(self, queryset):
