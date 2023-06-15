@@ -53,13 +53,6 @@ def book_save(sender, instance, **kwargs):
 def book_delete(sender, instance, **kwargs):
     caches[settings.CACHE_MIDDLEWARE_ALIAS].clear()
 
-    if not settings.NO_SEARCH_INDEX:
-        # remove the book from search index, when it is deleted.
-        from search.index import Index
-        idx = Index()
-        idx.remove_book(instance)
-        idx.index_tags()
-
 
 ####
 # Tag

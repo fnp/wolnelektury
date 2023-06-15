@@ -32,9 +32,9 @@ def build_field(pk, field_name):
 
 
 @shared_task
-def index_book(book_id, book_info=None, **kwargs):
+def index_book(book_id, **kwargs):
     try:
-        return Book.objects.get(id=book_id).search_index(book_info, **kwargs)
+        return Book.objects.get(id=book_id).search_index(**kwargs)
     except Exception as e:
         print("Exception during index: %s" % e)
         print_exc()

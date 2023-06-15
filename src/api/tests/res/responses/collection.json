@@ -1,5 +1,6 @@
 {
     "url": "http://testserver/katalog/lektury/a-collection/",
+    "authors": [],
     "books": [
         {
             "kind": "Liryka", 

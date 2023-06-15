@@ -21,6 +21,7 @@ coverage.xml
 pip-log.txt
 nosetests.xml
 /htmlcov
+.python-version
 
 # Mac OS X garbage
 .DS_Store

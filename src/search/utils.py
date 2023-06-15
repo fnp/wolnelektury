@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db.models import Func
 from django.contrib.postgres.search import SearchQuery, SearchVectorField
 
@@ -8,7 +9,8 @@ class UnaccentSearchQuery(SearchQuery):
     '''
     def as_sql(self, *args, **kwargs):
         sql, params = super().as_sql(*args, **kwargs)
-        sql = f'unaccent({sql}::text)::tsquery'
+        if settings.SEARCH_USE_UNACCENT:
+            sql = f'unaccent({sql}::text)::tsquery'
         return sql, params
 
 
@@ -19,10 +21,11 @@ class UnaccentSearchVector(Func):
     But user enters 'roze' -> stem leaves it as is, so we need original form in the vector.
     '''
     function='to_tsvector'
-    template = '''unaccent(
-      %(function)s('polish', %(expressions)s)::text)::tsvector ||
-     to_tsvector(
-       'polish_simple', 
-       unaccent(%(expressions)s)
-     )'''
+    if settings.SEARCH_USE_UNACCENT:
+        template = f'''unaccent(
+        %(function)s('{settings.SEARCH_CONFIG}', %(expressions)s)::text)::tsvector ||
+        to_tsvector(
+        '{settings.SEARCH_CONFIG_SIMPLE}', 
+        unaccent(%(expressions)s)
+        )'''
     output_field = SearchVectorField()

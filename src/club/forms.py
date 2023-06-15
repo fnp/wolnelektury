@@ -138,7 +138,8 @@ class DonationStep1Form(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         club = models.Club.objects.first()
-        self.fields['custom_amount'].widget.attrs['min'] = club.min_amount
+        if club is not None:
+            self.fields['custom_amount'].widget.attrs['min'] = club.min_amount
 
     def clean(self):
         state = {}

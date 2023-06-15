@@ -16,8 +16,8 @@ from django.utils.functional import lazy
 
 from basicauth import logged_in_or_basicauth, factory_decorator
 from catalogue.models import Book, Tag
+from search.utils import UnaccentSearchQuery, UnaccentSearchVector
 
-from search.views import Search
 import operator
 import logging
 import re
@@ -350,15 +350,6 @@ class SearchFeed(AcquisitionFeed):
         'text': (10, 11),
         }
 
-    PARAMS_TO_FIELDS = {
-        'author': 'authors',
-        'translator': 'translators',
-        #        'title': 'title',
-        'categories': 'tag_name_pl',
-        'description': 'text',
-        #        'text': 'text',
-        }
-
     ATOM_PLACEHOLDER = re.compile(r"^{(atom|opds):\w+}$")
 
     def get_object(self, request):
@@ -413,30 +404,33 @@ class SearchFeed(AcquisitionFeed):
             # query is set above.
             log.debug("Inline query = [%s], criteria: %s" % (query, criteria))
 
-        srch = Search()
-
-        book_hit_filter = srch.index.Q(book_id__any=True)
-        filters = [book_hit_filter] + [srch.index.Q(
-            **{self.PARAMS_TO_FIELDS.get(cn, cn): criteria[cn]}
-            ) for cn in self.MATCHES.keys() if cn in criteria
-            if criteria[cn]]
-
+        books = Book.objects.filter(findable=True).annotate(
+            search_vector=UnaccentSearchVector('title')
+        )
         if query:
-            q = srch.index.query(
-                reduce(
-                    operator.or_,
-                    [srch.index.Q(**{self.PARAMS_TO_FIELDS.get(cn, cn): query}) for cn in self.MATCHES.keys()],
-                    srch.index.Q()))
-        else:
-            q = srch.index.query(srch.index.Q())
+            squery = UnaccentSearchQuery(query, config=settings.SEARCH_CONFIG)
+            books = books.filter(search_vector=squery)
+        if criteria['author']:
+            authors = Tag.objects.filter(category='author').annotate(
+                search_vector=UnaccentSearchVector('name_pl')
+            ).filter(search_vector=UnaccentSearchQuery(criteria['author'], config=settings.SEARCH_CONFIG))
+            books = books.filter(tag_relations__tag__in=authors)
+        if criteria['categories']:
+            tags = Tag.objects.filter(category__in=('genre', 'kind', 'epoch')).annotate(
+                search_vector=UnaccentSearchVector('name_pl')
+            ).filter(search_vector=UnaccentSearchQuery(criteria['categories'], config=settings.SEARCH_CONFIG))
+            books = books.filter(tag_relations__tag__in=tags)
+        if criteria['translator']:
+            # TODO
+            pass
+        if criteria['title']:
+            books = books.filter(
+                search_vector=UnaccentSearchQuery(criteria['title'], config=settings.SEARCH_CONFIG)
+            )
 
-        q = srch.apply_filters(q, filters).field_limit(score=True, fields=['book_id'])
-        results = q.execute()
+        books = books.exclude(ancestor__in=books)
 
-        book_scores = dict([(r['book_id'], r['score']) for r in results])
-        books = Book.objects.filter(findable=True, id__in=set([r['book_id'] for r in results]))
-        books = list(books)
-        books.sort(reverse=True, key=lambda book: book_scores[book.id])
+        books = books.order_by('popularity__count')
         return books
 
     def get_link(self, query):

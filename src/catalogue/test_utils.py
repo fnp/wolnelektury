@@ -19,7 +19,6 @@ from librarian import WLURI
     CACHES={
         'default': {'BACKEND': 'django.core.cache.backends.dummy.DummyCache'},
     },
-    SOLR=settings.SOLR_TEST,
 )
 class WLTestCase(TestCase):
     """
@@ -74,7 +73,7 @@ def info_args(title, language=None):
         language = 'pol'
     return {
         'title': str(title),
-        'url': WLURI.from_slug(slug),
+        'url': WLURI(slug),
         'about': "http://wolnelektury.pl/example/URI/%s" % slug,
         'language': language,
     }

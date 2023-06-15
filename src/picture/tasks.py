@@ -2,8 +2,6 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 import json
-from traceback import print_exc
-
 from celery import shared_task
 from django.core.files.base import ContentFile
 from django.template.loader import render_to_string
@@ -20,14 +18,3 @@ def generate_picture_html(picture_id):
                 'themes': areas_json['themes'],
                 })
     pic.html_file.save("%s.html" % pic.slug, ContentFile(html_text))
-
-
-@shared_task
-def index_picture(picture_id, picture_info=None, **kwargs):
-    from picture.models import Picture
-    try:
-        return Picture.objects.get(id=picture_id).search_index(picture_info, **kwargs)
-    except Exception as e:
-        print("Exception during index: %s" % e)
-        print_exc()
-        raise e

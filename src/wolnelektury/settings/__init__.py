@@ -29,15 +29,6 @@ except NameError:
     CELERY_TASK_ALWAYS_EAGER = True
 
 
-# If SEARCH_INDEX not configured, disable the search.
-try:
-    SOLR
-except NameError:
-    NO_SEARCH_INDEX = True
-else:
-    NO_SEARCH_INDEX = False
-
-
 try:
     SENTRY_DSN
 except NameError:

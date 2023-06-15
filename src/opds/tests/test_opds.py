@@ -1,26 +1,20 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from unittest import skipIf
 from lxml import etree
 from django.conf import settings
 import catalogue
 from catalogue.test_utils import WLTestCase, get_fixture
 from catalogue.models import Book
 from librarian import WLURI, XMLNamespace
-from search.index import Index
 
 AtomNS = XMLNamespace("http://www.w3.org/2005/Atom")
 
 
-@skipIf(getattr(settings, 'NO_SEARCH_INDEX', False), 'Requires search server and NO_SEARCH_INDEX=False.')
 class OpdsSearchTests(WLTestCase):
     """Tests search feed in OPDS.."""
     def setUp(self):
         WLTestCase.setUp(self)
-        index = Index()
-        index.index.delete_all()
-        index.index.commit()
 
         self.do_doktora = Book.from_xml_file(
             get_fixture('do-doktora.xml'))
@@ -32,7 +26,7 @@ class OpdsSearchTests(WLTestCase):
         tree = etree.fromstring(
             self.client.get('/opds/search/?%s' % query).content)
         elem_ids = tree.findall('.//%s/%s' % (AtomNS('entry'), AtomNS('id')))
-        slugs = [WLURI(elem.text).slug for elem in elem_ids]
+        slugs = [WLURI.from_text(elem.text).slug for elem in elem_ids]
         self.assertEqual(set(slugs), set(b.slug for b in books), "OPDS search '%s' failed." % query)
 
     def test_opds_search_simple(self):

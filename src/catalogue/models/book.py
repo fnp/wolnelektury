@@ -529,21 +529,11 @@ class Book(models.Model):
         })
         return create_zip(paths, "%s_%s" % (self.slug, format_), {'informacje.txt': readme})
 
-    def search_index(self, book_info=None, index=None, index_tags=True, commit=True):
+    def search_index(self, index=None):
         if not self.findable:
             return
-        if index is None:
-            from search.index import Index
-            index = Index()
-        try:
-            index.index_book(self, book_info)
-            if index_tags:
-                index.index_tags()
-            if commit:
-                index.index.commit()
-        except Exception as e:
-            index.index.rollback()
-            raise e
+        from search.index import Index
+        Index.index_book(self)
 
     # will make problems in conjunction with paid previews
     def download_pictures(self, remote_gallery_url):
@@ -603,7 +593,7 @@ class Book(models.Model):
 
     @classmethod
     def from_text_and_meta(cls, raw_file, book_info, overwrite=False, dont_build=None, search_index=True,
-                           search_index_tags=True, remote_gallery_url=None, days=0, findable=True):
+                           remote_gallery_url=None, days=0, findable=True):
         from catalogue import tasks
 
         if dont_build is None:
@@ -712,7 +702,7 @@ class Book(models.Model):
                 getattr(book, '%s_file' % format_).build_delay()
 
         if not settings.NO_SEARCH_INDEX and search_index and findable:
-            tasks.index_book.delay(book.id, book_info=book_info, index_tags=search_index_tags)
+            tasks.index_book.delay(book.id)
 
         for child in notify_cover_changed:
             child.parent_cover_changed()

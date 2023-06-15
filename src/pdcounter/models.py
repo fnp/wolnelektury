@@ -110,15 +110,3 @@ class BookStub(models.Model):
 
     def pretty_title(self, html_links=False):
         return ', '.join((self.author, self.title))
-
-
-if not settings.NO_SEARCH_INDEX:
-    def update_index(sender, instance, **kwargs):
-        from search.index import Index
-        idx = Index()
-        idx.index_tags(instance, remove_only='created' not in kwargs)
-
-    post_delete.connect(update_index, Author)
-    post_delete.connect(update_index, BookStub)
-    post_save.connect(update_index, Author)
-    post_save.connect(update_index, BookStub)

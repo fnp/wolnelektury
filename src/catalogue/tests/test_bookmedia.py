@@ -4,7 +4,7 @@
 from os.path import basename, exists
 from unittest import skip
 
-from django.core.files.base import ContentFile
+from django.core.files.base import ContentFile, File
 
 from catalogue.test_utils import *
 from catalogue import models, utils
@@ -17,6 +17,8 @@ class BookMediaTests(WLTestCase):
         self.file = ContentFile(b'X')
         self.file2 = ContentFile(b'Y')
         self.book = models.Book.objects.create(slug='test-book', title='Test')
+        with open(join(dirname(__file__), "files/fraszka-do-anusie.xml")) as f:
+            self.book.xml_file.save(None, File(f))
 
     def set_title(self, title):
         self.book.title = title

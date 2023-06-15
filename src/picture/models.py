@@ -180,7 +180,7 @@ class Picture(models.Model):
             return None
 
     @classmethod
-    def from_xml_file(cls, xml_file, image_file=None, image_store=None, overwrite=False, search_index=True):
+    def from_xml_file(cls, xml_file, image_file=None, image_store=None, overwrite=False):
         """
         Import xml and it's accompanying image file.
         If image file is missing, it will be fetched by librarian.picture.ImageStore
@@ -305,8 +305,6 @@ class Picture(models.Model):
             picture.xml_file.save("%s.xml" % picture.slug, File(xml_file))
             picture.save()
             tasks.generate_picture_html(picture.id)
-            if not settings.NO_SEARCH_INDEX and search_index:
-                tasks.index_picture.delay(picture.id, picture_info=picture_xml.picture_info)
 
         if close_xml_file:
             xml_file.close()
@@ -378,17 +376,3 @@ class Picture(models.Model):
     def clear_cache(self):
         clear_cached_renders(self.mini_box)
         clear_cached_renders(self.midi_box)
-
-    def search_index(self, picture_info=None, index=None, index_tags=True, commit=True):
-        if index is None:
-            from search.index import Index
-            index = Index()
-        try:
-            index.index_picture(self, picture_info)
-            if index_tags:
-                index.index_tags()
-            if commit:
-                index.index.commit()
-        except Exception as e:
-            index.index.rollback()
-            raise e

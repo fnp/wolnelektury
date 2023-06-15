@@ -158,8 +158,8 @@ class SearchFilters(forms.Form):
     def results(self):
         qs = self.get_querysets()
         query = self.cleaned_data['q']
-        squery = UnaccentSearchQuery(query, config='polish')
-        query = SearchQuery(query, config='polish')
+        squery = UnaccentSearchQuery(query, config=settings.SEARCH_CONFIG)
+        query = SearchQuery(query, config=settings.SEARCH_CONFIG)
         books = qs['book'].annotate(
             search_vector=UnaccentSearchVector('title')
         ).filter(search_vector=squery)
@@ -169,7 +169,7 @@ class SearchFilters(forms.Form):
                     headline=SearchHeadline(
                         'text',
                         query,
-                        config='polish',
+                        config=settings.SEARCH_CONFIG,
                         start_sel='<strong>',
                         stop_sel='</strong>',
                     )

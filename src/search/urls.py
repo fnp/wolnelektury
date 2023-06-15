@@ -6,6 +6,6 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.main, name='wlsearch'),
+    path('', views.search, name='wlsearch'),
     path('hint/', views.hint, name='search_hint'),
 ]

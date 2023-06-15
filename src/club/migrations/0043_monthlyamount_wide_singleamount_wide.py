@@ -6,8 +6,9 @@ from django.db import migrations, models
 def last_amount_wide(apps, schema_editor):
     SingleAmount = apps.get_model('club', 'SingleAmount')
     a = SingleAmount.objects.last()
-    a.wide = True
-    a.save()
+    if a is not None:
+        a.wide = True
+        a.save()
 
 
 class Migration(migrations.Migration):

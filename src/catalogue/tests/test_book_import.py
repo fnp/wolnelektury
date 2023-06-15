@@ -14,7 +14,7 @@ class BookImportLogicTests(WLTestCase):
     def setUp(self):
         WLTestCase.setUp(self)
         self.book_info = BookInfoStub(
-            url=WLURI.from_slug("default-book"),
+            url=WLURI("default-book"),
             about="http://wolnelektury.pl/example/URI/default_book",
             title="Default Book",
             author=PersonStub(("Jim",), "Lazy"),
@@ -121,7 +121,7 @@ class BookImportLogicTests(WLTestCase):
 
     def test_book_with_invalid_slug(self):
         """ Book with invalid characters in slug shouldn't be imported """
-        self.book_info.url = WLURI.from_slug("default_book")
+        self.book_info.url = WLURI("default_book")
         book_text = "<utwor />"
         with self.assertRaises(ValueError):
             models.Book.from_text_and_meta(ContentFile(book_text), self.book_info)
@@ -375,7 +375,7 @@ class TreeImportTest(WLTestCase):
 class MultilingualBookImportTest(WLTestCase):
     def setUp(self):
         WLTestCase.setUp(self)
-        common_uri = WLURI.from_slug('common-slug')
+        common_uri = WLURI('common-slug')
 
         self.pol_info = BookInfoStub(
             genre='X-Genre',

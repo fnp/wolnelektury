@@ -12,7 +12,6 @@ from librarian.picture import ImageStore
 
 from catalogue.models import Book
 from picture.models import Picture
-from search.index import Index
 
 
 class Command(BaseCommand):
@@ -28,10 +27,6 @@ class Command(BaseCommand):
         parser.add_argument(
                 '-D', '--dont-build', dest='dont_build', metavar="FORMAT,...",
                 help="Skip building specified formats")
-        parser.add_argument(
-                '-S', '--no-search-index', action='store_false',
-                dest='search_index', default=True,
-                help='Skip indexing imported works for search')
         parser.add_argument(
                 '-F', '--not-findable', action='store_false',
                 dest='findable', default=True,
@@ -50,7 +45,6 @@ class Command(BaseCommand):
         file_base, ext = os.path.splitext(file_path)
         book = Book.from_xml_file(file_path, overwrite=options.get('force'),
                                   dont_build=dont_build,
-                                  search_index_tags=False,
                                   findable=options.get('findable'),
                                   remote_gallery_url='file://' + os.path.dirname(os.path.abspath(file_base)) + '/img/'
                                   )
@@ -83,15 +77,6 @@ class Command(BaseCommand):
 
         verbose = options.get('verbose')
         import_picture = options.get('import_picture')
-
-        if options.get('search_index') and not settings.NO_SEARCH_INDEX:
-            index = Index()
-            try:
-                index.index_tags()
-                index.index.commit()
-            except Exception as e:
-                index.index.rollback()
-                raise e
 
         files_imported = 0
         files_skipped = 0

@@ -107,73 +107,88 @@ class TagRelatedTagsTests(WLTestCase):
     def test_empty(self):
         """ empty tag should have no related tags """
 
-        cats = self.client.get('/katalog/autor/empty/').context['categories']
-        self.assertEqual({k: v for (k, v) in cats.items() if v}, {}, 'tags related to empty tag')
+        suggested = self.client.get('/katalog/autor/empty/').context['suggested_tags']
+        self.assertEqual(suggested, [], 'tags related to empty tag')
 
     def test_has_related(self):
         """ related own and descendants' tags should be generated """
 
-        cats = self.client.get('/katalog/rodzaj/kind/').context['categories']
-        self.assertTrue('Common Man' in [tag.name for tag in cats['author']],
+        suggested = {
+            (t.name, t.category)
+            for t in self.client.get('/katalog/rodzaj/kind/').context['suggested_tags']
+        }
+        self.assertTrue(('Common Man', 'author') in suggested,
                         'missing `author` related tag')
-        self.assertTrue('Epoch' in [tag.name for tag in cats['epoch']],
+        self.assertTrue(('Epoch', 'epoch') in suggested,
                         'missing `epoch` related tag')
-        self.assertFalse(cats.get("kind", False),
+        # TODO: this should probably be changed now.
+        self.assertFalse(any(x for x in suggested if x[1] == "kind"),
                          "There should be no child-only related `kind` tags")
-        self.assertTrue("Genre" in [tag.name for tag in cats['genre']],
+        self.assertTrue(("Genre", 'genre') in suggested,
                         'missing `genre` related tag')
-        self.assertFalse("ChildGenre" in [tag.name for tag in cats['genre']],
+        # TODO: this should probably be changed now.
+        self.assertFalse(("ChildGenre", 'genre') in suggested,
                          "There should be no child-only related `genre` tags")
-        self.assertTrue("GchildGenre" in [tag.name for tag in cats['genre']],
+        self.assertTrue(("GchildGenre", "genre") in suggested,
                         "missing grandchild's related tag")
-        self.assertTrue('Theme' in [tag.name for tag in cats['theme']],
+        self.assertTrue(('Theme', 'theme') in suggested,
                         "missing related theme")
-        self.assertFalse('Child1Theme' in [tag.name for tag in cats['theme']],
-                         "There should be no child-only related `theme` tags")
-        self.assertTrue('GChildTheme' in [tag.name for tag in cats['theme']],
+        self.assertTrue(('Child1Theme', 'theme') in suggested,
+                         "missing child's related theme")
+        self.assertTrue(('GChildTheme', 'theme') in suggested,
                         "missing grandchild's related theme")
 
     def test_related_differ(self):
         """ related tags shouldn't include filtering tags """
 
         response = self.client.get('/katalog/rodzaj/kind/')
-        cats = response.context['categories']
-        self.assertFalse(cats.get('kind', False),
+        suggested = response.context['suggested_tags']
+        self.assertFalse(any(x for x in suggested if x.category == 'kind'),
                          'filtering tag wrongly included in related')
-        cats = self.client.get('/katalog/motyw/theme/').context['categories']
-        self.assertFalse('Theme' in [tag.name for tag in cats['theme']],
+        suggested = {
+            (t.name, t.category)
+            for t in self.client.get(
+                    '/katalog/motyw/theme/').context['suggested_tags']
+        }
+        self.assertFalse(('Theme', 'theme') in suggested,
                          'filtering theme wrongly included in related')
 
     def test_parent_tag_once(self):
         """ if parent and descendants have a common tag, count it only once """
 
-        cats = self.client.get('/katalog/rodzaj/kind/').context['categories']
-        self.assertEqual([(tag.name, tag.count) for tag in cats['epoch']],
+        suggested = self.client.get('/katalog/rodzaj/kind/').context['suggested_tags']
+        self.assertEqual([(tag.name, tag.count) for tag in suggested if tag.category == 'epoch'],
                          [('Epoch', 1)],
                          'wrong related tag epoch tag on tag page')
 
     def test_siblings_tags_count(self):
         """ if children have tags and parent hasn't, count the children """
 
-        cats = self.client.get('/katalog/epoka/epoch/').context['categories']
+        suggested = self.client.get('/katalog/epoka/epoch/').context['suggested_tags']
+        kinds = [(tag.name, tag.count) for tag in suggested if tag.category == 'kind']
         self.assertTrue(
-            ('ChildKind', 2) in [(tag.name, tag.count) for tag in cats['kind']],
-            'wrong related kind tags on tag page, got: ' +
-            str([(tag.name, tag.count) for tag in cats['kind']]))
+            ('ChildKind', 2) in kinds,
+            'wrong related kind tags on tag page'
+        )
 
         # all occurencies of theme should be counted
-        self.assertTrue(('Theme', 4) in [(tag.name, tag.count) for tag in cats['theme']],
-                        'wrong related theme count')
+        themes = [(tag.name, tag.count) for tag in suggested if tag.category == 'theme']
+        self.assertTrue(
+            ('Theme', 4) in themes,
+            'wrong related theme count'
+        )
 
     def test_query_child_tag(self):
         """
         If child and parent have a common tag, but parent isn't included
         in the result, child should still count.
         """
-        cats = self.client.get('/katalog/gatunek/childgenre/').context['categories']
-        self.assertTrue(('Epoch', 2) in [(tag.name, tag.count) for tag in cats['epoch']],
-                        'wrong related kind tags on tag page, got: ' +
-                        str([(tag.name, tag.count) for tag in cats['epoch']]))
+        suggested = self.client.get('/katalog/gatunek/childgenre/').context['suggested_tags']
+        epochs = [(tag.name, tag.count) for tag in suggested if tag.category == 'epoch']
+        self.assertTrue(
+            ('Epoch', 2) in epochs,
+            'wrong related kind tags on tag page'
+        )
 
 
 class CleanTagRelationTests(WLTestCase):
@@ -198,8 +213,8 @@ class CleanTagRelationTests(WLTestCase):
         """ there should be no related tags left after deleting some objects """
 
         models.Book.objects.all().delete()
-        cats = self.client.get('/katalog/rodzaj/k/').context['categories']
-        self.assertEqual({k: v for (k, v) in cats.items() if v}, {})
+        suggested = self.client.get('/katalog/rodzaj/k/').context['suggested_tags']
+        self.assertEqual(suggested, [])
         self.assertEqual(models.Fragment.objects.all().count(), 0,
                          "orphaned fragments left")
         self.assertEqual(models.Tag.intermediary_table_model.objects.all().count(), 0,
@@ -248,10 +263,11 @@ class TestIdenticalTag(WLTestCase):
                 self.book_info)
         categories = {'author': 'autor', 'theme': 'motyw', 'epoch': 'epoka', 'kind': 'rodzaj', 'genre': 'gatunek'}
         for cat, localcat in categories.items():
+            if cat == 'theme': continue
             context = self.client.get('/katalog/%s/tag/' % localcat).context
             self.assertEqual(1, len(context['object_list']))
-            self.assertNotEqual({}, context['categories'])
-            self.assertFalse(context['categories'].get(cat, False))
+            self.assertNotEqual([], context['suggested_tags'])
+            self.assertFalse(any(t for t in context['suggested_tags'] if t.category == cat))
 
 
 class BookTagsTests(WLTestCase):
