@@ -20,6 +20,7 @@ from fnpdjango.storage import BofhFileSystemStorage
 from lxml import html
 from librarian.cover import WLCover
 from librarian.html import transform_abstrakt
+from librarian.builders import builders
 from newtagging import managers
 from catalogue import constants
 from catalogue import fields
@@ -713,45 +714,42 @@ class Book(models.Model):
         cls.published.send(sender=cls, instance=book)
         return book
 
-    def get_master(self):
-        master_tags = [
-            'opowiadanie',
-            'powiesc',
-            'dramat_wierszowany_l',
-            'dramat_wierszowany_lp',
-            'dramat_wspolczesny', 'liryka_l', 'liryka_lp',
-            'wywiad',
-        ]
-        from librarian.parser import WLDocument
-        wld = WLDocument.from_file(self.xml_file.path, parse_dublincore=False)
-        root = wld.edoc.getroot()
-        for master in root.iter():
-            if master.tag in master_tags:
-                return master
-
     def update_references(self):
-        from references.models import Entity, Reference
-        master = self.get_master()
-        if master is None:
-            master = []
-        found = set()
-        for i, sec in enumerate(master):
-            for ref in sec.findall('.//ref'):
-                href = ref.attrib.get('href', '')
-                if not href or href in found:
-                    continue
-                found.add(href)
-                entity, created = Entity.objects.get_or_create(
-                    uri=href
-                )
-                ref, created = Reference.objects.get_or_create(
-                    book=self,
-                    entity=entity
-                )
-                ref.first_section = 'sec%d' % (i + 1)
-                entity.populate()
-                entity.save()
-        Reference.objects.filter(book=self).exclude(entity__uri__in=found).delete()
+        Entity = apps.get_model('references', 'Entity')
+        doc = self.wldocument2()
+        doc._compat_assign_section_ids()
+        doc._compat_assign_ordered_ids()
+        refs = {}
+        for ref_elem in doc.references():
+            uri = ref_elem.attrib.get('href', '')
+            if not uri:
+                continue
+            if uri in refs:
+                ref = refs[uri]
+            else:
+                entity, entity_created = Entity.objects.get_or_create(uri=uri)
+                if entity_created:
+                    entity.populate()
+                    entity.save()
+                ref, ref_created = entity.reference_set.get_or_create(book=self)
+                refs[uri] = ref
+                if not ref_created:
+                    ref.occurence_set.all().delete()
+            sec = ref_elem.get_link()
+            m = re.match(r'sec(\d+)', sec)
+            assert m is not None
+            sec = int(m.group(1))
+            snippet = ref_elem.get_snippet()
+            b = builders['html-snippet']()
+            for s in snippet:
+                s.html_build(b)
+            html = b.output().get_bytes().decode('utf-8')
+
+            ref.occurence_set.create(
+                section=sec,
+                html=html
+            )
+        self.reference_set.exclude(entity__uri__in=refs).delete()
 
     @property
     def references(self):

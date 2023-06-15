@@ -1,11 +1,38 @@
 {% load thumbnail %}
-<h2 class="header">{{ entity.label }}</h2>
+<h2 class="header">
+  <a href="{{ entity.wikipedia_link }}" target="_blank">
+    {{ entity.label }}
+  </a>
+</h2>
 
 <div class="l-popup-books">
 {% for ref in entity.reference_set.all %}
-  <a href='/katalog/lektura/{{ ref.book.slug }}.html#{{ ref.first_section }}' target="_blank">
-    {% thumbnail ref.book.cover_clean '150x150' as th %}
-    <img src="{{ th.url }}" alt="{{ ref.book.pretty_title }}" title="{{ ref.book.pretty_title }}">
-    {% endthumbnail %}
-  </a>
+  <!-- a href='/katalog/lektura/{{ ref.book.slug }}.html#{{ ref.first_section }}' target="_blank"-->
+  <div class="c-search-result-fragment">
+    <div class="l-popup-book-header">
+      <div>
+        {% thumbnail ref.book.cover_clean '150x150' as th %}
+        <a href="{{ ref.book.get_absolute_url }}" target="_blank">
+          <img src="{{ th.url }}" alt="{{ ref.book.pretty_title }}" title="{{ ref.book.pretty_title }}">
+        {% endthumbnail %}
+      </div>
+      <div>
+        {% for author in ref.book.authors %}
+          <a class="c-search-result-fragment-author" href="{{ author.get_absolute_url }}" target="_blank">
+            {{ author.name }}
+          </a>
+        {% endfor %}
+        <a class="c-search-result-fragment-title" href="{{ ref.book.get_absolute_url }}" target="_blank">
+          {{ ref.book.title }}
+        </a>
+      </div>
+    </div>
+
+    {% for occ in ref.occurence_set.all %}
+      <a target="_blank" href="/katalog/lektura/{{ ref.book.slug }}.html#sec{{ occ.section }}" class="c-search-result-fragment-text">
+        {{ occ.html|safe }}
+      </a>
+    {% endfor %}
+      </a>
+  </div>
 {% endfor %}

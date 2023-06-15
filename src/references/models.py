@@ -76,8 +76,15 @@ class Entity(models.Model):
 class Reference(models.Model):
     book = models.ForeignKey('catalogue.Book', models.CASCADE)
     entity = models.ForeignKey(Entity, models.CASCADE)
-    first_section = models.CharField(max_length=255)
 
     class Meta:
         unique_together = (('book', 'entity'),)
 
+
+class Occurence(models.Model):
+    reference = models.ForeignKey(Reference, models.CASCADE)
+    section = models.IntegerField()
+    html = models.TextField()
+
+    class Meta:
+        ordering = ('section',)
