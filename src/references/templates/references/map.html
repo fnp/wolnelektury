@@ -21,6 +21,7 @@
   <script src="{% static 'contrib/leaflet.markercluster-1.4.1/leaflet.markercluster.js' %}"></script>
   <script>
    var map = L.map('references-map').setView([52, 20], 7);
+   L.Icon.Default.imagePath='{{ STATIC_URL }}contrib/leaflet-1.9.4/images/'
 
    if (navigator.geolocation) {
        navigator.geolocation.getCurrentPosition(function(position) {
