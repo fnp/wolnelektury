@@ -27,8 +27,6 @@ def pin_map_tagged(request, tags):
     })
 
 
-
-@never_cache
 def popup(request, pk):
     e = get_object_or_404(models.Entity, pk=pk)
     return render(request, 'references/popup.html', {

@@ -1,4 +1,5 @@
 {% extends "2022/base.html" %}
+{% load cache %}
 {% load static %}
 {% load l10n %}
 
@@ -55,6 +56,7 @@
        );
    }
 
+   {% cache 60 references-map %}
    {% localize off %}
    {% for e in entities %}
    L.marker(
@@ -67,6 +69,7 @@
    ).on('click', showMarker).addTo(markers);
    {% endfor %}
    {% endlocalize %}
+   {% endcache %}
 
    map.addLayer(markers);
 
