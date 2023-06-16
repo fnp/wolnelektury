@@ -24,7 +24,11 @@ PIPELINE = {
         '2022': {
             'source_filenames': [
                 'contrib/jquery-ui-1.13.1.custom/jquery-ui.css',
+                'contrib/leaflet-1.9.4/leaflet.css',
+                'contrib/leaflet.markercluster-1.4.1/MarkerCluster.css',
+                'contrib/leaflet.markercluster-1.4.1/MarkerCluster.Default.css',
                 'css/jquery.countdown.css',
+
                 '2022/styles/main.scss',
                 '2022/more.scss',
                 'chunks/edit.scss',
@@ -141,6 +145,9 @@ PIPELINE = {
             'source_filenames': [
                 '2022/scripts/vendor.js',
                 'contrib/jquery-ui-1.13.1.custom/jquery-ui.js',
+                'contrib/leaflet-1.9.4/leaflet.js',
+                'contrib/leaflet.markercluster-1.4.1/leaflet.markercluster.js',
+
                 'js/search.js',
                 'js/2022.js',
                 '2022/book/filter.js',

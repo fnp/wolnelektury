@@ -44,7 +44,7 @@ urlpatterns += [
     path('wesprzyj/', include('funding.urls')),
     path('ankieta/', include('polls.urls')),
     path('biblioteki/', include('libraries.urls')),
-    path('pinezki/', include('references.urls')),
+    path('mapa/', include('references.urls')),
     path('newsletter/', include('newsletter.urls')),
     path('formularz/', include('forms_builder.forms.urls')),
     path('isbn/', include('isbn.urls')),

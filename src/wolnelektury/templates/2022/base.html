@@ -50,7 +50,9 @@
       </main>
     {% endblock %}
 
-    {% include '2022/footer.html' %}
+    {% block footer %}
+      {% include '2022/footer.html' %}
+    {% endblock %}
 
     <script type="text/javascript">
       var LANGUAGE_CODE = "{{ LANGUAGE_CODE }}";

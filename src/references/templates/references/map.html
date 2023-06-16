@@ -1,70 +1,38 @@
 {% extends "2022/base.html" %}
-
 {% load l10n %}
-
-{% block extrahead %}
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-        crossorigin=""/>
-  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-          integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-          crossorigin=""></script>
-
-  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css">
-  <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
-  <style>
-   .leaflet-popup-content h2 {
-       margin-top: 0;
-       padding-top: 0;
-       border: 0;
-   }
-   .l-popup-books {
-       display: flex;
-       flex-wrap: wrap;
-       gap: 5px;
-       max-height: 350px;
-       overflow-y: scroll;
-   }
-   .l-popup-books img {
-       display: block;
-   }
-   .l-popup-books .c-search-result-fragment {
-       padding: 0 0 20px 0;
-       border-width: 0;
-       border-radius: 0;
-   }
-   .l-popup-book-header {
-       display: flex;
-       gap: 16px;
-   }
-  </style>
-{% endblock %}
 
 {% block global-content %}
 
-  <div id="map" style="height: calc(100vh - 68px)"></div>
+  <div id="references-map"></div>
 
 {% endblock %}
 
 
 {% block extrabody %}
   <script>
-   var map = L.map('map').setView([52, 20], 7);
+   var map = L.map('references-map').setView([52, 20], 7);
+
+   if (navigator.geolocation) {
+       navigator.geolocation.getCurrentPosition(function(position) {
+           map.setView(
+               [position.coords.latitude, position.coords.longitude], 8,
+               {
+                   animate: true,
+               }
+           );
+       });
+   }
+
    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
    }).addTo(map);
    var markers = L.markerClusterGroup();
 
-
    function showMarker(m) {
        $.get(
-           '/pinezki/popup/' + m.target.options.mid,
+           '/mapa/popup/' + m.target.options.mid,
            function(data) {
-               d = $(data);
-               n = Math.min(3, ($('a', d).length));
-               w = 111 * n - 5;
-               let p = L.popup({minWidth: w}).setLatLng(m.latlng).setContent(data);
+               let p = L.popup({minWidth: 340}).setLatLng(m.latlng).setContent(data);
                map.openPopup(p);
            }
        );
@@ -82,9 +50,13 @@
        }
    ).on('click', showMarker).addTo(markers);
    {% endfor %}
- {% endlocalize %}
+   {% endlocalize %}
 
    map.addLayer(markers);
 
   </script>
+{% endblock %}
+
+
+{% block footer %}
 {% endblock %}

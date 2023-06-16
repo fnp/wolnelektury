@@ -1,0 +1,37 @@
+#references-map {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50px;
+    bottom: 0;
+    z-index: 0;
+    @include rwd($break-menu) {
+        top: 68px;
+    }
+
+   .leaflet-popup-content h2 {
+       margin-top: 0;
+       padding-top: 0;
+       border: 0;
+   }
+   .l-popup-books {
+       display: flex;
+       flex-wrap: wrap;
+       gap: 5px;
+       max-height: 350px;
+       overflow-y: scroll;
+   }
+   .l-popup-books img {
+       display: block;
+   }
+   .l-popup-books .c-search-result-fragment {
+       padding: 0 0 20px 0;
+       border-width: 0;
+       border-radius: 0;
+   }
+   .l-popup-book-header {
+       display: flex;
+       gap: 16px;
+   }
+
+}
