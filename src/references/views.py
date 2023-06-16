@@ -8,6 +8,7 @@ from . import models
 
 def pin_map(request):
     return render(request, 'references/map.html', {
+        'title': 'Wakacje',
         'entities': models.Entity.objects.exclude(lat=None).exclude(lon=None),
         'funding_no_show_current': True,
     })
