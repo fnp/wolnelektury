@@ -1,4 +1,5 @@
 {% extends "2022/base.html" %}
+{% load static %}
 {% load l10n %}
 
 {% block global-content %}
@@ -8,7 +9,16 @@
 {% endblock %}
 
 
+{% block extrahead %}
+  <link rel="stylesheet" type="text/css" media="all" href="{% static 'contrib/leaflet-1.9.4/leaflet.css' %}">
+  <link rel="stylesheet" type="text/css" media="all" href="{% static 'contrib/leaflet.markercluster-1.4.1/MarkerCluster.css' %}">
+  <link rel="stylesheet" type="text/css" media="all" href="{% static 'contrib/leaflet.markercluster-1.4.1/MarkerCluster.Default.css' %}">
+{% endblock %}
+
+
 {% block extrabody %}
+  <script src="{% static 'contrib/leaflet-1.9.4/leaflet.js' %}"></script>
+  <script src="{% static 'contrib/leaflet.markercluster-1.4.1/leaflet.markercluster.js' %}"></script>
   <script>
    var map = L.map('references-map').setView([52, 20], 7);
 
@@ -37,7 +47,6 @@
            }
        );
    }
-
 
    {% localize off %}
    {% for e in entities %}
