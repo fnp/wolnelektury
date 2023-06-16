@@ -28,10 +28,15 @@
        padding: 0 0 20px 0;
        border-width: 0;
        border-radius: 0;
+
+       h1, h2, h3, h4 {
+           font-size: 1em;
+           margin: 0;
+           font-weight: bold;
+       }
    }
    .l-popup-book-header {
        display: flex;
        gap: 16px;
    }
-
 }
