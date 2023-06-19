@@ -331,6 +331,7 @@ class TagView(RetrieveAPIView):
     def post(self, request, **kwargs):
         data = json.loads(request.POST.get('data'))
         fields = {
+            "name_pl": "name_pl",
             "description_pl": "description_pl",
             "plural": "plural",
             "is_epoch_specific": "genre_epoch_specific",
