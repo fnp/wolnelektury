@@ -1,4 +1,4 @@
-{% extends form.base_template|default:request.EXPERIMENTS.layout.value|yesno:"2022/base_simple.html,base/base.html" %}
+{% extends form.base_template|default:"2022/base.html" %}
 {% load forms_builder_tags %}
 {% load title %}
 
@@ -6,11 +6,8 @@
   {% title form.title %}
 {% endblock %}
 
-{% block title %}{{ form.title }}{% endblock %}
-
-{% block annoy %}
-{% endblock %}
-
-{% block body %}
-   {% render_built_form form %}
-{% endblock %}
+{% block main %}
+  <div class="page-simple wide">
+    {% render_built_form form %}
+  </div>
+{% endblock main %}

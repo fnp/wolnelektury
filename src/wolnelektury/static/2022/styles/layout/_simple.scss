@@ -8,6 +8,10 @@
     flex-direction: column;
     align-items: center;
 
+    &.wide {
+        align-items: normal;
+    }
+    
     .white-box {
         // for legacy templates
         width: 100%;

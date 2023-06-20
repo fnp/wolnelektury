@@ -1,4 +1,5 @@
 {% extends '2022/base.html' %}
+{% load i18n %}
 
 {% load chunks %}
 {% load static %}
@@ -16,12 +17,42 @@
 
 
   <main class="l-main">
-    <section class="l-section">
+    <section class="l-section lay-s-col-rev">
       <aside class="l-aside">
         <ul class="l-aside__info">
           <li><span>Epoka:</span> {% for tag in picture.epochs %}<a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a> {% endfor %}</li>
           <li><span>Rodzaj:</span> {% for tag in picture.kinds %}<a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a> {% endfor %}</li>
           <li><span>Gatunek:</span> {% for tag in picture.genres %}<a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a> {% endfor %}</li>
+          {% with extra_info=picture.get_extra_info_json %}
+            {% if extra_info.styles %}
+              <li>
+                <span>{% trans "Style" %}:</span>
+                {% for tag in extra_info.styles %}
+                  <a>{{ tag }}</a>
+                  {% if not forloop.last %}, {% endif %}
+                {% endfor %}
+              </li>
+            {% endif %}
+
+            {% if extra_info.medium %}
+              <li>
+                <span>{% trans "Medium" %}:</span>
+                <a>{{ extra_info.medium }}</a>
+              </li>
+            {% endif %}
+
+            {% if extra_info.original_dimensions %}
+              <li>
+                <span>{% trans "Dimensions" %}:</span>
+                <a>{{ extra_info.original_dimensions }}</a>
+              </li>
+            {% endif %}
+
+            <li>
+              <span>{% trans "Date" %}:</span>
+              <a>{{ extra_info.created_at }}</a>
+            </li>
+          {% endwith %}
 
         </ul>
       </aside>
@@ -48,7 +79,7 @@
           <div class="l-article__overlay" data-max-height="327" style="margin-top:30px;">
             {% thumbnail picture.image_file "850" upscale=0 as thumb %}
             <a href="{% url 'picture_viewer' picture.slug %}">
-              <img class="cover" src="{{ thumb.url }}" width="{{ thumb.width }}" height="{{ thumb.height }}" />
+              <img class="l-art__preview" src="{{ thumb.url }}" />
             </a>
     {% endthumbnail %}
           </div>
@@ -57,7 +88,7 @@
       </div>
     </section>
 
-    {% for author in picture.authors %}
+    {% for tag in picture.authors %}
       <section class="l-section">
         <div class="l-author">
           {% include 'catalogue/2022/author_box.html' %}
