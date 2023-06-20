@@ -18,8 +18,7 @@ djangorestframework-xml==2.0.0
 django-admin-ordering==0.16
 django-countries==7.3.2
 
-# A version compatible with Django 2.2+, with long help text and editable max_length.
--e git+https://github.com/rczajka/django-forms-builder@9c5cc4763e586b00b95366299f88f092471b7798#egg=django-forms-builder
+-e git+https://github.com/rczajka/django-forms-builder@d8c611a411c667c2fd4e3eae977c7da33a05143a#egg=django-forms-builder
 
 
 oauthlib>=3.0.1,<3.1
