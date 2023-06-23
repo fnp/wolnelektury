@@ -1,25 +1,22 @@
-{% extends request.EXPERIMENTS.layout.value|yesno:"2022/base_simple.html,base/base.html" %}
+{% extends "2022/base_simple.html" %}
 {% load i18n %}
 {% load static from static %}
 
 
 {% block settings %}
   {% load title %}
-  {% trans "Your file is being prepared, please wait." as title %}
-  {% title title %}
-{% endblock %}
 
-
-{% block titleextra %}
   {% if file_url %}
-    {% trans "The file is ready for download!" %}
+    {% trans "The file is ready for download!" as title %}
   {% else %}
     {% if waiting %}
-      {% trans "Your file is being prepared, please wait." %}
+      {% trans "Your file is being prepared, please wait." as title %}
     {% else %}
-      {% trans "Something went wrong." %}
+      {% trans "Something went wrong." as title %}
     {% endif %}
   {% endif %}
+
+  {% title title %}
 {% endblock %}
 
 

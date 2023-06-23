@@ -43,9 +43,9 @@
     <div class="with-filter">
       <div class="row">
         <h2 class="header">{% nice_title_from_tags tags categories %}</h2>
-        {% if suggest %}
+        {% if suggested_tags %}
           <div class="filter-container">
-            {% for tag in suggest %}
+            {% for tag in suggested_tags %}
               <span class="filter filter-category-{{ tag.category }}">
                 <a href="{% catalogue_url view.list_type tags tag %}">{{ tag }}</a>
               </span>

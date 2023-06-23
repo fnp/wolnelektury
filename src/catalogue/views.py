@@ -202,15 +202,13 @@ class BookList(ObjectListView):
     def search(self, qs):
         term = self.request.GET.get('search')
         if term:
-            meta_rels = TagRelation.objects.exclude(tag__category='set')
+            meta_rels = TagRelation.objects.filter(tag__category='author')
             # TODO: search tags in currently displaying language
             if self.is_themed:
-                #qs = qs.annotate(
-                #    meta=FilteredRelation('book__tag_relations', condition=Q(tag_relations__in=meta_rels))
-                #)
+                rels = meta_rels.filter(tag__name_pl__icontains=term)
                 qs = qs.filter(
                     Q(book__title__icontains=term) |
-                    #Q(meta__tag_relations__tag__name_pl__icontains=term) |
+                    Q(tag_relations__in=rels) |
                     Q(text__icontains=term)
                 ).distinct()
             else:
@@ -294,8 +292,26 @@ class TaggedObjectList(BookList):
 
     def get_suggested_tags(self, queryset):
         tag_ids = [t.id for t in self.ctx['tags']]
-        related_tags = list(get_top_level_related_tags(self.ctx['tags']))
-        if not self.is_themed:
+        if self.is_themed:
+            related_tags = []
+            current_books = self.get_queryset().values_list('book', flat=True).distinct()
+            containing_books = Book.objects.filter(Q(id__in=current_books) | Q(children__in=current_books))
+
+            related_tags.extend(list(
+                Tag.objects.usage_for_queryset(
+                    containing_books,
+                ).exclude(category='set').exclude(pk__in=tag_ids)
+            ))
+            if self.request.user.is_authenticated:
+                related_tags.extend(list(
+                    Tag.objects.usage_for_queryset(
+                        containing_books
+                    ).filter(
+                        user=self.request.user
+                    ).exclude(name='').exclude(pk__in=tag_ids)
+                ))
+        else:
+            related_tags = list(get_top_level_related_tags(self.ctx['tags']))
             if self.request.user.is_authenticated:
                 qs = Book.tagged.with_all(self.ctx['tags']).filter(findable=True)
                 related_tags.extend(list(

@@ -1,32 +1,32 @@
-{% extends request.EXPERIMENTS.layout|yesno:"2022/base.html,base/base.html" %}
+{% extends "2022/base.html" %}
 {% load i18n %}
 {% load catalogue_tags %}
 
-{% block titleextra %}{% trans "Recent publications" %}{% endblock %}
+{% block settings %}
+  {% load title %}
+  {% trans "Recent publications" as title %}
+  {% title title %}
+{% endblock %}
 
-{% block bodyid %}recent-list{% endblock %}
-
-{% block body %}{% block main %}
-  <h1>{% trans "Recent publications" %}</h1>
+{% block main %}
+  <div class="l-article__title">
+    <h1>{% trans "Recent publications" %}</h1>
+  </div>
 
   {% url 'recent_audiobooks_list' as a %}
   {% url 'recent_daisy_list' as d %}
-  <p class='normal-text'>
+  <div class="l-main">
+  <p>
     {% blocktrans %}You can also see <a href="{{a}}">recent audiobooks</a>
       and <a href="{{d}}">recent DAISY files</a>.{% endblocktrans %}
   </p>
+  </div>
 
-  {% if request.EXPERIMENTS.layout %}
-    <div class="l-section l-section--col">
-      <div class="l-books__grid" id="book-list">
-        {% for book in object_list %}
-          {% include "catalogue/2022/book_box.html" %}
-        {% endfor %}
-      </div>
+  <div class="l-section l-section--col">
+    <div class="l-books__grid" id="book-list">
+      {% for book in object_list %}
+        {% include "catalogue/2022/book_box.html" %}
+      {% endfor %}
     </div>
-  {% else %}
-    <div id="books-list">
-      {% work_list object_list %}
-    </div>
-  {% endif %}
-{% endblock %}{% endblock %}
+  </div>
+{% endblock %}

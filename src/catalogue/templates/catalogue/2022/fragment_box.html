@@ -12,7 +12,7 @@
       {% endif %}
     </div>
   </figure>
-  <div class="l-books__item__content">
+  <div class="l-books__item__content s">
     <h3>
       {% for author in fragment.book.authors %}
         <a href="{{ author.get_absolute_url }}">{{ author }}</a>{% if not forloop.last %}, {% endif %}

@@ -51,7 +51,6 @@ FORMS_BUILDER_EXTRA_FIELDS = [
         (100, 'contact.fields.HeaderField', 'Header'),
         (101, 'contact.fields.SeparatorField', 'Separator'),
 ]
-FORMS_BUILDER_HELPTEXT_MAX_LENGTH = 2048
 FORMS_BUILDER_REQUIRED_CSS_CLASS = 'required'
 FORMS_BUILDER_INACTIVE_VISIBLE = True
 FORMS_BUILDER_TEMPLATE_NAME_P = 'forms/p.html'
