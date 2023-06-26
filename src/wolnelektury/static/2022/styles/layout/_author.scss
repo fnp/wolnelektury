@@ -28,7 +28,7 @@
     width: 100%;
 
     &:nth-child(1) {
-      div {
+      > div {
           display: flex;
           flex-wrap: wrap;
 
@@ -42,6 +42,7 @@
       }
 
       .l-author__photo {
+          flex-shrink: 0;
           width: calc(50% - 24px);
           @include rwd($break-wide) {
               width: 238px;
