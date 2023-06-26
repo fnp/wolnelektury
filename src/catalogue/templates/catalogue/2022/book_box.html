@@ -6,7 +6,9 @@
       {% if book.is_picture %}
         {% if book.image_file %}
           {% thumbnail book.image_file "170x240" crop="center" as im %}
-          <img src="{{ im.url }}" width="{{ im.x }}" height="{{ im.y }}" />
+          <img src="{{ im.url }}"
+               srcset="{{ im.url }} 1x, {{ im.url|resolution:"2x" }} 2x"
+               width="{{ im.x }}" height="{{ im.y }}" />
           {% endthumbnail %}
         {% endif %}
       {% else %}

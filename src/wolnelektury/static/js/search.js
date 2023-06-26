@@ -46,14 +46,19 @@ var __bind = function (self, fn) {
 
         render_item_2022: function (ul, item) {
             var label;
-            if (item['author']) {
+            var $label = $("<li><a><div></div><span></span></a></li>");
+            if (item.img) {
+                $('div', $label).append($('<img>').attr('src', item.img));
+            }
+            if (item.author) {
                 label = '<cite>' + item.label + '</cite>, ' + item['author'];
             } else {
                 label = item.label;
             }
-            return $("<li></li>")
-            .append('<a href="'+this.options.host+item.url+'">'+label+'</a>')
-            .appendTo(ul);
+            $('span', $label).html(label);
+            $label.addClass('type-' + item.type);
+            $label.appendTo(ul);
+            return $label;
         },
 
         destroy: function() {

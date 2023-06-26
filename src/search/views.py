@@ -5,8 +5,11 @@ from django.conf import settings
 from django.shortcuts import render
 from django.views.decorators import cache
 from django.http import HttpResponse, JsonResponse
+from sorl.thumbnail import get_thumbnail
 
-from catalogue.models import Book, Tag
+import catalogue.models
+import infopages.models
+import picture.models
 from .forms import SearchFilters
 import re
 import json
@@ -37,30 +40,91 @@ def hint(request, mozhint=False, param='term'):
         if limit < 1:
             limit = 20
 
-    authors = Tag.objects.filter(
-        category='author', name_pl__iregex='\m' + prefix).only('name', 'id', 'slug', 'category')
-    data = [
-        {
-            'label': author.name,
-            'id': author.id,
-            'url': author.get_absolute_url(),
-        }
-        for author in authors[:limit]
-    ]
+    data = []
     if len(data) < limit:
-        for b in Book.objects.filter(findable=True, title__iregex='\m' + prefix)[:limit-len(data)]:
+        authors = catalogue.models.Tag.objects.filter(
+            category='author', name_pl__iregex='\m' + prefix).only('name', 'id', 'slug', 'category')
+        data.extend([
+            {
+                'type': 'author',
+                'label': author.name,
+                'url': author.get_absolute_gallery_url() if author.for_pictures else author.get_absolute_url(),
+                'img': get_thumbnail(author.photo, '72x72', crop='top').url if author.photo else '',
+            }
+            for author in authors[:limit - len(data)]
+        ])
+    if request.user.is_authenticated and len(data) < limit:
+        tags = catalogue.models.Tag.objects.filter(
+            category='set', user=request.user, name_pl__iregex='\m' + prefix).only('name', 'id', 'slug', 'category')
+        data.extend([
+            {
+                'type': 'set',
+                'label': tag.name,
+                'url': tag.get_absolute_url(),
+            }
+            for tag in tags[:limit - len(data)]
+        ])
+    if len(data) < limit:
+        tags = catalogue.models.Tag.objects.filter(
+            category__in=('theme', 'genre', 'epoch', 'kind'), name_pl__iregex='\m' + prefix).only('name', 'id', 'slug', 'category')
+        data.extend([
+            {
+                'type': tag.category,
+                'label': tag.name,
+                'url': tag.get_absolute_gallery_url() if tag.for_pictures else tag.get_absolute_url(),
+            }
+            for tag in tags[:limit - len(data)]
+        ])
+    if len(data) < limit:
+        collections = catalogue.models.Collection.objects.filter(
+            title_pl__iregex='\m' + prefix).only('title', 'slug')
+        data.extend([
+            {
+                'type': 'collection',
+                'label': collection.title,
+                'url': collection.get_absolute_url(),
+            }
+            for collection in collections[:limit - len(data)]
+        ])
+    if len(data) < limit:
+        for b in catalogue.models.Book.objects.filter(findable=True, title__iregex='\m' + prefix)[:limit-len(data)]:
             author_str = b.author_unicode()
             translator = b.translator()
             if translator:
                 author_str += ' (tłum. ' + translator + ')'
             data.append(
                 {
+                    'type': 'book',
                     'label': b.title,
                     'author': author_str,
-                    'id': b.id,
-                    'url': b.get_absolute_url()
+                    'url': b.get_absolute_url(),
+                    'img': get_thumbnail(b.cover_clean, '72x72').url if b.cover_clean else '',
                 }
             )
+    if len(data) < limit:
+        arts = picture.models.Picture.objects.filter(
+            title__iregex='\m' + prefix).only('title', 'id', 'slug') # img?
+        data.extend([
+            {
+                'type': 'art',
+                'label': art.title,
+                'author': art.author_unicode(),
+                'url': art.get_absolute_url(),
+                'img': get_thumbnail(art.image_file, '72x72').url if art.image_file else '',
+            }
+            for art in arts[:limit - len(data)]
+        ])
+    if len(data) < limit:
+        infos = infopages.models.InfoPage.objects.filter(
+            title_pl__iregex='\m' + prefix).only('title', 'id', 'slug')
+        data.extend([
+            {
+                'type': 'info',
+                'label': info.title,
+                'url': info.get_absolute_url(),
+            }
+            for info in infos[:limit - len(data)]
+        ])
 
     if mozhint:
         data = [

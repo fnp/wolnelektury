@@ -30,7 +30,7 @@
       {% for tag in tags %}
         <li>
           {% if tag.photo %}
-            {% thumbnail tag.photo '40x40' crop='center' as thumb %}
+            {% thumbnail tag.photo '40x40' crop='top' as thumb %}
             <img src="{{ thumb.url }}" class="c-avatar">
             {% endthumbnail %}
           {% endif %}

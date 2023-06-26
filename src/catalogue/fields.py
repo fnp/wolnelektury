@@ -372,11 +372,8 @@ class CoverCleanField(CoverField):
 
     @staticmethod
     def transform(wldoc):
-        if wldoc.book_info.cover_box_position == 'none':
-            from librarian.cover import WLCover
-            return WLCover(wldoc.book_info, width=240).output_file()
         from librarian.covers.marquise import MarquiseCover
-        return MarquiseCover(wldoc.book_info, width=240).output_file()
+        return MarquiseCover(wldoc.book_info, width=360).output_file()
 
 
 class CoverThumbField(CoverField):

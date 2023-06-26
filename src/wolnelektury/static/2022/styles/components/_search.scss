@@ -140,3 +140,98 @@
         }
     }
 }
+
+
+.ui-autocomplete {
+    .ui-menu-item {
+        &:before {
+        }
+
+        span {
+            border-radius: 18px;
+            padding: 0px 10px;
+        }
+        
+        &.type-info {
+            &:before {
+                content: '\1f6c8';
+                position: absolute;
+                left: 0;
+                width:36px;
+                line-height: 36px;
+                text-align: center;
+            }
+        }
+        &.type-theme {
+            &:before {
+                content: '☆';
+                position: absolute;
+                left: 0;
+                width:36px;
+                line-height: 36px;
+                text-align: center;
+            }
+        }
+        &.type-genre {
+            a, a:hover {
+                span {
+                    color: black;
+                    background: $wl-green;
+                }
+            }
+        }
+        &.type-epoch {
+            a, a:hover {
+                span {
+                    background: $wl-teal;
+                    color: white;
+                }
+            }
+        }
+        &.type-kind {
+            a, a:hover {
+                span {
+                    color: black;
+                    background: $wl-red;
+                }
+            }
+        }
+        &.type-set {
+            &:before {
+                content: '';
+                position: absolute;
+                left: 0;
+                width:36px;
+                line-height: 36px;
+                text-align: center;
+                font-family: 'wl' !important;
+                color: $wl-red;
+            }
+        }
+        
+        a.ui-menu-item-wrapper {
+            display: flex;
+            transition: none;
+            padding: 0;
+            align-items: center;
+
+            &:hover {
+                text-decoration: none;
+            }
+            
+            div {
+                width: 36px;
+                height: 36px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-right: 5px;
+                img {
+                    max-height: 36px;
+                    max-width: 36px;
+                }
+            }
+        }
+    }
+}
+

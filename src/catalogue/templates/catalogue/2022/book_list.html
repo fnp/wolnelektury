@@ -17,9 +17,9 @@
   <div class="l-section">
     <div class="l-author__header">
       {% if main_tag.photo %}
-        {% thumbnail main_tag.photo '40x40' crop='center' as th %}
+        {% thumbnail main_tag.photo '40x40' crop='top' as th %}
         <figure>
-          <img src="{{ th.url }}" alt="{{ main_tag.name }}">
+          <img src="{{ th.url }}" alt="{{ main_tag.name }}" srcset="{{ th.url }} 1x, {{ th.url|resolution:"2x" }} 2x">
         </figure>
         {% endthumbnail %}
       {% endif %}
