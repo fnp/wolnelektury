@@ -151,7 +151,7 @@
             border-radius: 18px;
             padding: 0px 10px;
         }
-        
+
         &.type-info {
             &:before {
                 content: '\1f6c8';
@@ -194,6 +194,11 @@
                     color: black;
                     background: $wl-red;
                 }
+            }
+        }
+        &.type-author {
+            img {
+                border-radius: 18px;
             }
         }
         &.type-set {

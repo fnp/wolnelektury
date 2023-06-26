@@ -16,6 +16,7 @@ class TagAdmin(admin.ModelAdmin):
     search_fields = ('name',)
     ordering = ('name',)
     readonly_fields = ('occurrences',)
+    raw_id_fields = ['user']
 
     def occurrences(self, tag):
         return tag.items.count()
