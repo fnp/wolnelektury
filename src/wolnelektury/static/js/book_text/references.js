@@ -37,6 +37,10 @@
     $('a.reference').each(function() {
         $this = $(this);
         uri = $this.attr('data-uri');
+        if (uri == '') {
+            $this.remove();
+            return;
+        }
         if (interestingReferences.hasOwnProperty(uri)) {
             $this.addClass('interesting');
             ref = interestingReferences[uri];

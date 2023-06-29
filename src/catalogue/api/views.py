@@ -3,7 +3,9 @@
 #
 import json
 import os.path
+from urllib.request import urlopen
 from django.conf import settings
+from django.core.files.base import ContentFile
 from django.http import Http404, HttpResponse
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
@@ -19,6 +21,7 @@ from catalogue.models import Book, Collection, Tag, Fragment, BookMedia
 from catalogue.models.tag import prefetch_relations
 from club.models import Membership
 from club.permissions import IsClubMember
+from sortify import sortify
 from wolnelektury.utils import re_escape
 from .helpers import books_after, order_books
 from . import serializers
@@ -338,12 +341,36 @@ class TagView(RetrieveAPIView):
             "collective_noun": "collective_noun",
             "adjective_feminine_singular": "adjective_feminine_singular",
             "adjective_nonmasculine_plural": "adjective_nonmasculine_plural",
+            "genitive": "genitive",
+            "collective_noun": "collective_noun",
+            "gazeta_link": "gazeta_link",
+            "culturepl_link": "culturepl_link",
+            "wiki_link_pl": "wiki_link_pl",
+            "photo_attribution": "photo_attribution",
         }
         obj = self.get_object()
+        updated = set()
         for data_field, model_field in fields.items():
-            setattr(obj, model_field, data.get(data_field, getattr(obj, model_field)))
+            value = data.get(data_field)
+            if value:
+                if obj.category == 'author' and model_field == 'name_pl':
+                    obj.sort_key = sortify(value.lower())
+                    updated.add('sort_key')
+                    value = ' '.join(reversed([t.strip() for t in value.split(',', 1)]))
+                setattr(obj, model_field, value)
+                updated.add(model_field)
+        if data.get('photo'):
+            response = urlopen(data['photo'])
+            ext = response.headers.get('Content-Type', '').rsplit('/', 1)[-1]
+            obj.photo.save(
+                "{}.{}".format(self.kwargs['slug'], ext),
+                ContentFile(response.read()),
+                save=False,
+            )
+            updated.add('photo')
+
         if obj.pk:
-            obj.save(update_fields=fields.values(), quick=True)
+            obj.save(update_fields=updated, quick=True)
         else:
             obj.save()
         return Response({})
