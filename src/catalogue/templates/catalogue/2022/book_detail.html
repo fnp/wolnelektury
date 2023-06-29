@@ -364,22 +364,24 @@
         {% endwith %}
       </section>
 
-      {% for author in book.authors %}
+      {% for tag in book.authors %}
         <section class="l-section">
           <div class="l-author">
-              {% include 'catalogue/2022/author_box.html' %}
+            {% include 'catalogue/2022/author_box.html' %}
 
-            {% choose_cites 3 book=book as cites %}
-            {% if cites %}
-              <div class="row">
-                <div class="l-author__quotes">
-                  <div class="l-author__quotes__slider">
-                    {% for fragment in cites %}
-                      {% include "catalogue/2022/fragment_slider_box.html" %}
-                    {% endfor %}
+            {% if forloop.first %}
+              {% choose_cites 3 book=book as cites %}
+              {% if cites %}
+                <div class="row">
+                  <div class="l-author__quotes">
+                    <div class="l-author__quotes__slider">
+                      {% for fragment in cites %}
+                        {% include "catalogue/2022/fragment_slider_box.html" %}
+                      {% endfor %}
+                    </div>
                   </div>
                 </div>
-              </div>
+              {% endif %}
             {% endif %}
           </div>
         </section>
