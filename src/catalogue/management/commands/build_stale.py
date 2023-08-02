@@ -25,17 +25,20 @@ class Command(BaseCommand):
     def handle(self, **options):
         t = time()
         counter = 0
+        tasks = []
         while True:
             if options['time'] is not None and time() - t > options['time']:
                 break
             if options['limit'] is not None and counter >= options['limit']:
                 break
-            tasks = EbookField.find_all_stale(Book, 1)
+            if not tasks:
+                tasks = EbookField.find_all_stale(Book, options['limit'] or 100)
             if not tasks:
                 break
-            for field_name, book in tasks:
-                print(field_name, book)
-                try:
-                    getattr(book, field_name).build()
-                except Exception as e:
-                    print('ERROR', e)
+            field_name, book = tasks.pop(0)
+            print(field_name, book)
+            counter += 1
+            try:
+                getattr(book, field_name).build()
+            except Exception as e:
+                print('ERROR', e)

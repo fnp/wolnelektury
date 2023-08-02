@@ -140,7 +140,7 @@ class Carousel(models.Model):
 
     @classmethod
     def get(cls, placement):
-        carousel = cls.objects.filter(models.Q(language='') | models.Q(language=get_language()), placement=placement).order_by('-priority', '?').first()
+        carousel = cls.objects.filter(placement=placement).order_by('-priority', '?').first()
         if carousel is None:
             carousel = cls.objects.create(placement=placement)
         return carousel
