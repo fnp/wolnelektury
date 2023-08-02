@@ -1,3 +1,5 @@
+import hashlib
+import json
 from django.apps import apps
 from django.conf import settings
 from django.db import models
@@ -109,3 +111,47 @@ class DynamicTextInsertText(models.Model):
     text_color = models.CharField(max_length=10, blank=True)
     text = models.TextField(_('text'))
     image = models.FileField(blank=True, upload_to='annoy/inserts/')
+
+
+class MediaInsertSet(models.Model):
+    file_format = models.CharField(max_length=8, choices=[
+        ('epub', 'epub'),
+        ('mobi', 'mobi'),
+        ])
+    etag = models.CharField(max_length=64, blank=True)
+
+    def update_etag(self):
+        self.etag = hashlib.sha1(json.dumps(self.get_texts()).encode('utf-8')).hexdigest()
+        self.save(update_fields=['etag'])
+
+    def get_texts(self):
+        return [t.text for t in self.mediainserttext_set.all()]
+
+    @classmethod
+    def get_for_format(cls, file_format):
+        return cls.objects.filter(file_format=file_format).first()
+
+    @classmethod
+    def get_texts_for(cls, file_format):
+        self = cls.get_for_format(file_format)
+        if self is None:
+            return []
+        return self.get_texts()
+
+
+class MediaInsertText(models.Model):
+    media_insert_set = models.ForeignKey(MediaInsertSet, models.CASCADE)
+    ordering = models.IntegerField()
+    text = models.TextField()
+
+    class Meta:
+        ordering = ('ordering',)
+
+
+from django.db.models.signals import post_save, post_delete
+from django.dispatch import receiver
+
+@receiver(post_delete, sender=MediaInsertText)
+@receiver(post_save, sender=MediaInsertText)
+def update_etag(sender, instance, **kwargs):
+    instance.media_insert_set.update_etag()

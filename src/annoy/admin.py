@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django import forms
+from admin_ordering.admin import OrderableAdmin
 from modeltranslation.admin import TranslationAdmin
 from . import models
 
@@ -40,3 +41,16 @@ class DynamicTextInsertAdmin(admin.ModelAdmin):
 
 
 admin.site.register(models.DynamicTextInsert, DynamicTextInsertAdmin)
+
+
+class MediaInsertTextInline(OrderableAdmin, admin.TabularInline):
+    model = models.MediaInsertText
+    extra = 0
+    min_num = 1
+
+
+@admin.register(models.MediaInsertSet)
+class MediaInsertSetAdmin(admin.ModelAdmin):
+    list_display = ['file_format', 'etag']
+    inlines = [MediaInsertTextInline]
+    readonly_fields = ['etag']

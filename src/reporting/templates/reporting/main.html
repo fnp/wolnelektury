@@ -1,5 +1,5 @@
-{% extends request.EXPERIMENTS.layout.value|yesno:"2022/base_simple.html,base/base.html" %}
-{% load i18n %}
+{% extends "2022/base_simple.html" %}
+{% load i18n l10n %}
 {% load reporting_stats catalogue_tags %}
 
 {% block settings %}
@@ -48,5 +48,50 @@
         <li>{{ license }} ({{ license_description }})</li>
       {% endfor %}
     </ul>
+
+    {% localize off %}
+    <h3>Aktualność plików</h3>
+    <table border="1">
+      <tr>
+        {% for e in etags %}
+          <td>
+            <div
+                style="width: 80px; overflow: hidden; text-overflow: ellipsis; padding: 2px;"
+                title="{{ e.field }}"
+            >
+              {{ e.field }}
+            </div>
+          </td>
+        {% endfor %}
+      </tr>
+      <tr>
+        {% for e in etags %}
+          <td>
+            <div style="width: 80px; overflow: hidden; text-overflow: ellipsis; padding: 2px;">
+              {{ e.etag }}
+            </div>
+          </td>
+        {% endfor %}
+      </tr>
+      <tr>
+        {% for e in etags %}
+          <td style="vertical-align: top">
+            {% for et in e.tags %}
+              <div
+                  style="position: relative; width:80px; overflow:hidden; text-overflow: ellipsis; padding: 2px;"
+                  title="{{ et.perc }}%"
+              >
+                <span style="z-index: 0; background: {% if et.tag == e.etag %}#92BD39{% elif et.tag == '' %}#FF4C54{% else %}#FFA500{% endif %}; position: absolute;left:0; top:0; bottom: 0; width: {{ et.perc }}%;"></span>
+                <span style="position: relative; z-index: 1">
+                  {{ et.count }} {{ et.tag }}
+                </span>
+              </div>
+            {% endfor %}
+          </td>
+        {% endfor %}
+      </tr>
+    </table>
+    {% endlocalize %}
+
   </div>
 {% endblock %}

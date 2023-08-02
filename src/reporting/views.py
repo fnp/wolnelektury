@@ -30,9 +30,40 @@ def stats_page(request):
         if extra_info.get('license'):
             licenses.add((extra_info.get('license'), extra_info.get('license_description')))
 
+    etags = []
+    all_books = Book.objects.all()
+    all_books_count = all_books.count()
+    noparent_books = Book.objects.filter(children=None)
+    noparent_books_count = noparent_books.count()
+    for field in Book._meta.fields:
+        if not getattr(field, 'with_etag', None): continue
+        etag = field.get_current_etag()
+        d = {
+            'field': field.name,
+            'etag': etag,
+        }
+        if field.for_parents:
+            books = all_books
+            n_books = all_books_count
+        else:
+            books = noparent_books
+            n_books = noparent_books_count
+        tags = books.values_list(field.etag_field.name).order_by(
+            '-' + field.etag_field.name).distinct().annotate(c=Count('*'))
+        d['tags'] = [
+            {
+                'tag': t[0],
+                'count': t[1],
+                'perc': round(100 * t[1] / n_books, 2)
+            }
+            for t in tags
+        ]
+        etags.append(d)
+
     return render(request, 'reporting/main.html', {
         'media_types': media_types,
         'licenses': licenses,
+        'etags': etags,
     })
 
 

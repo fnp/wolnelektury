@@ -2,13 +2,16 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 import os
+import pkg_resources
+import random
+from django.apps import apps
 from django.conf import settings
 from django.core.files import File
 from django.db import models
 from django.db.models.fields.files import FieldFile
 from django.utils.deconstruct import deconstructible
 from django.utils.translation import gettext_lazy as _
-from catalogue.constants import LANGUAGES_3TO2, EBOOK_FORMATS_WITH_CHILDREN, EBOOK_FORMATS_WITHOUT_CHILDREN
+from catalogue.constants import LANGUAGES_3TO2
 from catalogue.utils import absolute_url, remove_zip, truncate_html_words, gallery_path, gallery_url
 from waiter.utils import clear_cache
 
@@ -66,6 +69,7 @@ class EbookField(models.FileField):
     """Represents an ebook file field, attachable to a model."""
     attr_class = EbookFieldFile
     ext = None
+    for_parents = True
     librarian2_api = False
     ZIP = None
 
@@ -124,39 +128,49 @@ class EbookField(models.FileField):
         setattr(cls, 'has_%s' % self.attname, has)
 
     def get_current_etag(self):
-        import pkg_resources
+        MediaInsertSet = apps.get_model('annoy', 'MediaInsertSet')
         librarian_version = pkg_resources.get_distribution("librarian").version
-        return librarian_version
+        etag = librarian_version
+        mis = MediaInsertSet.get_for_format(self.ext)
+        if mis is not None:
+            etag += '_' + mis.etag
+        return etag
 
-    def schedule_stale(self, queryset=None):
-        """Schedule building this format for all the books where etag is stale."""
+    def find_stale(self, limit):
+        """Find some books where this format is stale."""
         # If there is not ETag field, bail. That's true for xml file field.
         if not self.with_etag:
-            return
+            return []
 
         etag = self.get_current_etag()
-        if queryset is None:
-            queryset = self.model.objects.all()
 
-        if self.format_name in EBOOK_FORMATS_WITHOUT_CHILDREN + ['html']:
+        queryset = self.model.objects.all()
+        if not self.for_parents:
             queryset = queryset.filter(children=None)
 
         queryset = queryset.exclude(**{
             f'{self.etag_field_name}__in': [
                 etag, f'{etag}{ETAG_SCHEDULED_SUFFIX}'
-            ]
+           ]
         })
-        for obj in queryset:
-            fieldfile = getattr(obj, self.attname)
-            priority = EBOOK_REBUILD_PRIORITY if fieldfile else EBOOK_BUILD_PRIORITY
-            fieldfile.build_delay(priority=priority)
+
+        queryset = queryset.order_by('?')[:limit]
+        return queryset
 
     @classmethod
-    def schedule_all_stale(cls, model):
+    def find_all_stale(cls, model, limit):
         """Schedules all stale ebooks of all formats to rebuild."""
+        found = []
         for field in model._meta.fields:
             if isinstance(field, cls):
-                field.schedule_stale()
+                for instance in field.find_stale(limit):
+                    found.append((
+                        field.name,
+                        instance
+                    ))
+        random.shuffle(found)
+        found = found[:limit]
+        return found
 
     @staticmethod
     def transform(wldoc):
@@ -191,6 +205,7 @@ class XmlField(EbookField):
 
 class TxtField(EbookField):
     ext = 'txt'
+    for_parents = False
 
     @staticmethod
     def transform(wldoc):
@@ -199,6 +214,7 @@ class TxtField(EbookField):
 
 class Fb2Field(EbookField):
     ext = 'fb2'
+    for_parents = False
     ZIP = 'wolnelektury_pl_fb2'
 
     @staticmethod
@@ -229,9 +245,10 @@ class EpubField(EbookField):
     @staticmethod
     def transform(wldoc):
         from librarian.builders import EpubBuilder
+        MediaInsertSet = apps.get_model('annoy', 'MediaInsertSet')
         return EpubBuilder(
                 base_url='file://' + os.path.abspath(gallery_path(wldoc.meta.url.slug)) + '/',
-                fundraising=settings.EPUB_FUNDRAISING
+                fundraising=MediaInsertSet.get_texts_for('epub')
             ).build(wldoc)
 
 
@@ -243,14 +260,16 @@ class MobiField(EbookField):
     @staticmethod
     def transform(wldoc):
         from librarian.builders import MobiBuilder
+        MediaInsertSet = apps.get_model('annoy', 'MediaInsertSet')
         return MobiBuilder(
                 base_url='file://' + os.path.abspath(gallery_path(wldoc.meta.url.slug)) + '/',
-                fundraising=settings.EPUB_FUNDRAISING
+                fundraising=MediaInsertSet.get_texts_for('mobi')
             ).build(wldoc)
 
 
 class HtmlField(EbookField):
     ext = 'html'
+    for_parents = False
 
     def build(self, fieldfile):
         from django.core.files.base import ContentFile
