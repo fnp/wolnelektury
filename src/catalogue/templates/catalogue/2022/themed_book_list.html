@@ -65,9 +65,6 @@
               {% include 'catalogue/2022/fragment_box.html' %}
             {% endfor %}
           </div>
-          <div id="paginator">
-            {% paginate using '2022/paginate.html' %}
-          </div>
         </div>
         <div class="l-theme__col">
           <div class="l-theme__info">
@@ -83,6 +80,9 @@
             -->
           </div>
         </div>
+      </div>
+      <div id="paginator">
+        {% paginate using '2022/paginate.html' %}
       </div>
     </div>
   </main>
