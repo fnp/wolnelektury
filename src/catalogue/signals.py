@@ -75,4 +75,5 @@ def receive_tags_updated(sender, instance, affected_tags, **kwargs):
         return
 
     caches[settings.CACHE_MIDDLEWARE_ALIAS].clear()
-    instance.clear_cache()
+    if sender in (Book, Picture):
+        instance.clear_cache()
