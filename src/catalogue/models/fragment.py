@@ -39,13 +39,6 @@ class Fragment(models.Model):
         """Returns short version of the fragment."""
         return self.short_text if self.short_text else self.text
 
-    @cached_render('catalogue/fragment_promo.html')
-    def promo_box(self):
-        return {'fragment': self}
-
     @property
     def themes(self):
         return self.tags.filter(category='theme')
-
-    def clear_cache(self):
-        clear_cached_renders(self.promo_box)

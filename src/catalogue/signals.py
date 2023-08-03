@@ -67,11 +67,6 @@ def tag_after_change(sender, instance, **kwargs):
         for model_instance in model.tagged.with_all([instance]).only('pk'):
             model_instance.clear_cache()
 
-    if instance.category == 'author':
-        for model in Fragment, PictureArea:
-            for model_instance in model.tagged.with_all([instance]).only('pk'):
-                model_instance.clear_cache()
-
 
 @receiver(tags_updated)
 def receive_tags_updated(sender, instance, affected_tags, **kwargs):
