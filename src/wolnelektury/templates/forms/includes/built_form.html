@@ -15,19 +15,10 @@
   </div>
 
   {% if form_published %}
-  {% if request.EXPERIMENTS.layout.value %}
     {{ form_for_form.as_p }}
     {% if form_for_form.fields %}
       <button>{{ form.button_text }}</button>
     {% endif %}
-  {% else %}
-    <table>
-      {{ form_for_form.as_table }}
-      {% if form_for_form.fields %}
-        <tr><td></td><td><button>{{ form.button_text }}</button></td></tr>
-      {% endif %}
-    </table>
-  {% endif %}
   {% else %}
   <p class="l-change-pop show">FORMULARZ ZAMKNIĘTY</p>
   {% endif %}

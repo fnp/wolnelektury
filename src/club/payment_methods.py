@@ -19,7 +19,7 @@ class PaymentMethod(object):
     updateable = False
 
     def initiate(self, request, schedule):
-        return reverse('club_dummy_payment', args=[schedule.key])
+        raise NotImplementedError
 
 
 class PayU(PaymentMethod):
@@ -27,7 +27,6 @@ class PayU(PaymentMethod):
     expiration_reliable = True
     slug = 'payu'
     name = 'PayU'
-    template_name = 'club/payment/payu.html'
 
     def __init__(self, pos_id):
         self.pos_id = pos_id
@@ -55,7 +54,6 @@ class PayU(PaymentMethod):
 class PayURe(PaymentMethod):
     slug = 'payu-re'
     name = 'PayU recurring'
-    template_name = 'club/payment/payu-re.html'
     is_recurring = True
     expiration_reliable = True
     cancellable = True
@@ -145,7 +143,6 @@ class PayURe(PaymentMethod):
 class PayPal(PaymentMethod):
     slug = 'paypal'
     name = 'PayPal'
-    template_name = 'club/payment/paypal.html'
     is_recurring = True
     is_onetime = False
 

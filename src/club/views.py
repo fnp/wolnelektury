@@ -13,7 +13,7 @@ from django.views.generic import FormView, CreateView, TemplateView, DetailView,
 from django.views import View
 from .payu import POSS
 from .payu import views as payu_views
-from .forms import ScheduleForm, PayUCardTokenForm
+from .forms import PayUCardTokenForm
 from . import forms
 from . import models
 from .helpers import get_active_schedule
@@ -60,24 +60,13 @@ class DonationStep2(UpdateView):
 
 
 class JoinView(CreateView):
+    form_class = forms.DonationStep1Form
+    template_name = 'club/2022/donation_step1.html'
+
     @property
     def club(self):
         return models.Club.objects.first()
 
-    @property
-    def new_layout(self):
-        return self.request.EXPERIMENTS['layout'].value
-    
-    def get_template_names(self):
-        if self.new_layout:
-            return 'club/2022/donation_step1.html'
-        return 'club/membership_form.html'
-
-    def get_form_class(self):
-        if self.new_layout:
-            return forms.DonationStep1Form
-        return ScheduleForm
-    
     def is_app(self):
         return self.request.GET.get('app')
 
@@ -102,6 +91,7 @@ class JoinView(CreateView):
         return c
 
     def get_initial(self):
+        # referer?
         if self.request.user.is_authenticated and self.request.user.email:
             return {
                 'email': self.request.user.email
@@ -109,8 +99,7 @@ class JoinView(CreateView):
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
-        if not self.new_layout:
-            kwargs['referer'] = self.request.META.get('HTTP_REFERER', '')
+        #kwargs['referer'] = self.request.META.get('HTTP_REFERER', '')
         return kwargs
 
     def form_valid(self, form):
@@ -121,9 +110,7 @@ class JoinView(CreateView):
         return retval
 
     def get_success_url(self):
-        if self.new_layout:
-            return reverse('donation_step2', args=[self.object.key])
-        return self.object.initiate_payment(self.request)
+        return reverse('donation_step2', args=[self.object.key])
 
 
 @method_decorator(never_cache, name='dispatch')
@@ -134,9 +121,8 @@ class ScheduleView(DetailView):
     step = 3
     
     def get_template_names(self):
-        if self.request.EXPERIMENTS['layout'].value:
-            if not self.object.payed_at:
-                return 'club/2022/donation_step3.html'
+        if not self.object.payed_at:
+            return 'club/2022/donation_step3.html'
         return 'club/schedule.html'
         
     def get_context_data(self, *args, **kwargs):
@@ -162,21 +148,6 @@ def cancel(request, key):
     schedule.is_cancelled = True
     schedule.save()
     return HttpResponseRedirect(schedule.get_absolute_url())
-
-
-class DummyPaymentView(TemplateView):
-    template_name = 'club/dummy_payment.html'
-
-    def get_context_data(self, key):
-        return {
-            'schedule': models.Schedule.objects.get(key=key),
-        }
-
-    def post(self, request, key):
-        schedule = models.Schedule.objects.get(key=key)
-        schedule.create_payment()
-
-        return HttpResponseRedirect(schedule.get_absolute_url())
 
 
 class PayUPayment(DetailView):
@@ -214,14 +185,10 @@ class PayUNotifyView(payu_views.NotifyView):
 
 class ScheduleThanksView(DetailView):
     model = models.Schedule
+    template_name = 'club/2022/donation_step4.html'
     slug_field = slug_url_kwarg = 'key'
     step = 4
 
-    def get_template_names(self):
-        if self.request.EXPERIMENTS['layout'].value:
-            return 'club/2022/donation_step4.html'
-        return 'club/thanks.html'
-    
     def get_context_data(self, *args, **kwargs):
         ctx = super().get_context_data(*args, **kwargs)
         ctx['active_menu_item'] = 'club'

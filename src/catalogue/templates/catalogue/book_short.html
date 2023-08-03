@@ -11,10 +11,6 @@
   <div class="{% block box-class %}book-box{% if audiobooks %} audiobook-box{% endif %}{% endblock %}">
     <div class="book-box-inner">
 
-    {% block book-box-pre %}
-      {% include "catalogue/snippets/like_button.html" %}
-    {% endblock %}
-
     {% with book.tags_by_category as tags %}
     <div class="book-left-column">
       <div class="book-box-body">
@@ -162,13 +158,6 @@
     </div>
     {% endwith %}
 
-    {% block right-column %}
-      {% if audiobooks %}{% if book|status:request.user != 'closed' %}
-        <div class="book-right-column">
-          {% include 'catalogue/snippets/jplayer.html' %}
-        </div>
-      {% endif %}{% endif %}
-    {% endblock %}
     {% if book.abstract %}
       <div class="abstract more-expand">
         {{ book.abstract|safe }}

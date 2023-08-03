@@ -1,9 +1,0 @@
-{% extends "auth/login.html" %}
-{% load i18n %}
-{% load honeypot %}
-
-{% block extra %}
-  {{ block.super }}
-
-  {% include "auth/register_form.html" with form=register_form title=_("or register") action_url='register' action_query=request.GET.urlencode honeypot=True submit=register_submit %}
-{% endblock %}

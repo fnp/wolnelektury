@@ -17,17 +17,6 @@ register = template.Library()
 cropper = CustomCroppingEngine()
 
 
-@register.inclusion_tag('picture/picture_wide.html', takes_context=True)
-def picture_wide(context, picture):
-    context.update({
-        'picture': picture,
-        'main_link': reverse('picture_viewer', args=[picture.slug]),
-        'request': context.get('request'),
-        'tags': split_tags(picture.tags),
-        })
-    return context
-
-
 @register.simple_tag()
 def area_thumbnail_url(area, geometry):
     def to_square(coords):

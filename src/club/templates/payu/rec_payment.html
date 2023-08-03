@@ -1,4 +1,4 @@
-{% extends request.session.from_app|yesno:"base/app.html,base/base.html" %}
+{% extends "2022/base_simple.html" %}
 {% load i18n %}
 
 
@@ -22,12 +22,11 @@
       {% endif %}
     </p>
 
+    <p></p>
     <form id="theform" method='POST'>
       {% csrf_token %}
       {{ form }}
     </form>
-
-
 
     <script>
      function paymentcallback(data) {

@@ -132,6 +132,14 @@ def hint(request, mozhint=False, param='term'):
             [
                 item['label']
                 for item in data
+            ],
+            [
+                item.get('author', '')
+                for item in data
+            ],
+            [
+                item['url']
+                for item in data
             ]
         ]
 

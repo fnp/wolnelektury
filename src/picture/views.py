@@ -16,27 +16,24 @@ from catalogue.helpers import get_top_level_related_tags
 def picture_list_thumb(request):
     pictures = Picture.objects.all()
         
-    if request.EXPERIMENTS['layout'].value:
-        related_tags = Tag.objects.usage_for_model(Picture, counts=True)
-        related_tags = sorted(related_tags, key=lambda t: -t.count)
-        suggestion_categories = Counter()
-        suggestions = []
-        for t in related_tags:
-            if suggestion_categories[t.category] < 3:
-                suggestion_categories[t.category] += 1
-                suggestions.append(t)
-                if sum(suggestion_categories.values()) == 10:
-                    break
-        template_name = 'catalogue/2022/author_detail.html'
-        return render(request, template_name, {
-            'object_list': pictures,
-            'title': 'Galeria',
-            'tags': [],
-            'suggest': suggestions,
-            'list_type': 'gallery',
-        })
-    else:
-        return render(request, template_name, {'picture_list': list(pictures)})
+    related_tags = Tag.objects.usage_for_model(Picture, counts=True)
+    related_tags = sorted(related_tags, key=lambda t: -t.count)
+    suggestion_categories = Counter()
+    suggestions = []
+    for t in related_tags:
+        if suggestion_categories[t.category] < 3:
+            suggestion_categories[t.category] += 1
+            suggestions.append(t)
+            if sum(suggestion_categories.values()) == 10:
+                break
+    template_name = 'catalogue/2022/author_detail.html'
+    return render(request, template_name, {
+        'object_list': pictures,
+        'title': 'Galeria',
+        'tags': [],
+        'suggest': suggestions,
+        'list_type': 'gallery',
+    })
 
 
 def picture_detail(request, slug):
@@ -44,10 +41,7 @@ def picture_detail(request, slug):
 
     theme_things = split_tags(picture.related_themes())
 
-    if request.EXPERIMENTS['layout'].value:
-        template_name = 'picture/2022/picture_detail.html'
-    else:
-        template_name = 'picture/picture_detail.html'
+    template_name = 'picture/2022/picture_detail.html'
     
     return render(request, template_name, {
         'picture': picture,

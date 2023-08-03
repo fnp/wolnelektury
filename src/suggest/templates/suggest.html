@@ -1,9 +1,1 @@
 {% extends "ajaxable/form.html" %}
-{% load ajaxable_tags %}
-
-{% block form_fields %}
-  {{ form.contact|pretty_field }}
-  {{ form.description|pretty_field }}
-  {{ form.agree_newsletter|pretty_checkbox }}
-  <li><span class="helptext">{{ form.data_processing }}</span></li>
-{% endblock %}

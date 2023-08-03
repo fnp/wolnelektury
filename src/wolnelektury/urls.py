@@ -22,10 +22,9 @@ urlpatterns = [
 
     # Authentication
     path('uzytkownik/', views.user_settings, name='user_settings'),
-    path('uzytkownik/login/', banner_exempt(views.LoginFormView()), name='login'),
-    path('uzytkownik/signup/', banner_exempt(views.RegisterFormView()), name='register'),
+    path('uzytkownik/login/', views.WLLoginView.as_view(), name='login'),
+    path('uzytkownik/signup/', views.WLRegisterView.as_view(), name='register'),
     path('uzytkownik/logout/', views.logout_then_redirect, name='logout'),
-    path('uzytkownik/zaloguj-utworz/', banner_exempt(views.LoginRegisterFormView()), name='login_register'),
     path('uzytkownik/social/signup/', banner_exempt(views.SocialSignupView.as_view()), name='socialaccount_signup'),
 ]
 
@@ -92,11 +91,6 @@ urlpatterns += [
         url='/info/widget/', permanent=True)),
     path('wolontariat/', RedirectView.as_view(
         url='/info/wlacz-sie-w-prace/', permanent=False)),
-]
-
-urlpatterns += [
-    # path('error-test/', views.exception_test),
-    # path('post-test/', views.post_test),
 ]
 
 

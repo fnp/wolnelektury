@@ -1,7 +1,6 @@
 {% extends "socialaccount/base.html" %}
 
 {% load i18n %}
-{% load ajaxable_tags %}
 
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
@@ -13,11 +12,7 @@
 
 <form class="signup cuteform" id="signup_form" method="post" action="{% url 'socialaccount_signup' %}">
   {% csrf_token %}
-  <ul>
-    {{ form.username|pretty_field }}
-    {{ form.email|pretty_field }}
-    {{ form.agree_newsletter|pretty_checkbox }}
-  </ul>
+  {{ form.as_p }}
   {% if redirect_field_value %}
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}

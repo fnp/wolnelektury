@@ -11,7 +11,6 @@ from newsletter.forms import SubscribeForm, Newsletter
 
 def subscribe_form(request, slug=''):
     newsletter = get_object_or_404(Newsletter, slug=slug)
-    new_layout = request.EXPERIMENTS['layout'].value
     if request.POST:
         form = SubscribeForm(newsletter, request.POST)
         if form.is_valid():
@@ -20,10 +19,7 @@ def subscribe_form(request, slug=''):
     else:
         form = SubscribeForm(newsletter)
 
-    if new_layout:
-        template_name = 'newsletter/2022/subscribe_form.html'
-    else:
-        template_name = 'newsletter/subscribe_form.html'
+    template_name = 'newsletter/2022/subscribe_form.html'
     return render(request, template_name, {
         'page_title': newsletter.page_title,
         'form': form,
@@ -31,11 +27,7 @@ def subscribe_form(request, slug=''):
 
 
 def subscribed(request):
-    new_layout = request.EXPERIMENTS['layout'].value
-    if new_layout:
-        template_name = 'newsletter/2022/subscribed.html'
-    else:
-        template_name = 'newsletter/subscribed.html'
+    template_name = 'newsletter/2022/subscribed.html'
     return render(request, template_name, {
         'page_title': _('Subscribed'),
     })

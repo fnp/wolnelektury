@@ -51,40 +51,6 @@ def book_shelf_tags(context, book_id):
     return lazy(get_value, str)()
 
 
-@register.inclusion_tag('social/carousel.html', takes_context=True)
-def carousel(context, placement):
-    carousel = Carousel.get(placement)
-    banners = [
-            item.get_banner()
-            for item in carousel.carouselitem_set.all().select_related('banner')
-            ]
-
-    request = context['request']
-    if 'banner' in request.GET:
-        try:
-            banner_id = int(request.GET['banner'])
-        except (TypeError, ValueError):
-            pass
-        else:
-            try:
-                index = [b.pk for b in banners].index(banner_id)
-            except ValueError:
-                if request.user.is_staff:
-                    # Staff is allowed to preview any banner.
-                    try:
-                        banners.insert(0, Cite.objects.get(pk=banner_id))
-                    except Cite.DoesNotExist:
-                        pass
-            else:
-                # Put selected banner to front.
-                banners = [banners[index]] + banners[:index] + banners[index+1:]
-
-    return {
-        'carousel': carousel,
-        'banners': banners,
-    }
-
-
 @register.inclusion_tag('social/carousel_2022.html', takes_context=True)
 def carousel_2022(context, placement):
     banners = Carousel.get(placement).carouselitem_set.all()#first().get_banner()

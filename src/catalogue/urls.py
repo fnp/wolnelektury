@@ -30,12 +30,12 @@ urlpatterns = [
     path('rodzaj/', views.tag_catalogue, {'category': 'kind'}, name='kind_catalogue'),
     path('motyw/', views.tag_catalogue, {'category': 'theme'}, name='theme_catalogue'),
 
-    path('galeria/', views.gallery, name='gallery'),
+    path('galeria/', views.GalleryView.as_view(), name='gallery'),
     path('kolekcje/', views.collections, name='catalogue_collections'),
 
-    path('lektury/', views.literature, name='book_list'),
+    path('lektury/', views.LiteratureView.as_view(), name='book_list'),
     path('lektury/<slug:slug>/', views.collection, name='collection'),
-    path('audiobooki/', views.audiobooks, name='audiobook_list'),
+    path('audiobooki/', views.AudiobooksView.as_view(), name='audiobook_list'),
     path('daisy/', views.daisy_list, name='daisy_list'),
     path('jtags/', search.views.hint, {'param': 'q', 'mozhint': True}, name='jhint'),
     path('nowe/', ListView.as_view(
@@ -63,7 +63,6 @@ urlpatterns = [
 
     # Public interface. Do not change this URLs.
     path('lektura/<slug:slug>.html', views.book_text, name='book_text'),
-    path('lektura/<slug:slug>/audiobook/', views.player, name='book_player'),
     path('lektura/<slug:slug>/', views.book_detail, name='book_detail'),
     path('lektura/<slug:slug>/motyw/<slug:theme_slug>/',
          views.book_fragments, name='book_fragments'),

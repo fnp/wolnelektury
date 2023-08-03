@@ -57,19 +57,6 @@ class PictureArea(models.Model):
     def get_area_json(self):
         return json.loads(self.area)
 
-    @cached_render('picture/picturearea_short.html')
-    def midi_box(self):
-        themes = self.tags.filter(category='theme')
-        things = self.tags.filter(category='thing')
-        return {
-            'area': self,
-            'theme': themes[0] if themes else None,
-            'thing': things[0] if things else None,
-        }
-
-    def clear_cache(self):
-        clear_cached_renders(self.midi_box)
-
 
 class Picture(models.Model):
     """
@@ -363,16 +350,9 @@ class Picture(models.Model):
             'picture': self,
         }
 
-    @cached_render('picture/picture_short.html')
-    def midi_box(self):
-        return {
-            'picture': self,
-        }
-
     def related_themes(self):
         return catalogue.models.Tag.objects.usage_for_queryset(
             self.areas.all(), counts=True).filter(category__in=('theme', 'thing'))
 
     def clear_cache(self):
         clear_cached_renders(self.mini_box)
-        clear_cached_renders(self.midi_box)

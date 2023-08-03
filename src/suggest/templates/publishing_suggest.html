@@ -1,16 +1,6 @@
 {% extends "ajaxable/form.html" %}
 {% load i18n %}
-{% load ajaxable_tags %}
 
-{% block form_fields %}
-{{ form.contact|pretty_field }}
-  <li>{% trans "I'd like to find in WolneLektury.pl these…" %}</li>
-  {{ form.books|pretty_field }}
-  {{ form.ebook|pretty_checkbox }}
-  {{ form.audiobook|pretty_checkbox }}
-  {{ form.agree_newsletter|pretty_checkbox }}
-  <li><span class="helptext">{{ form.data_processing }}</span></li>
-{% endblock %}
 
 {% block extra %}
   <p>{% trans "Remember that we can only publish books in public domain, ie. 70 years after the death of the author!" %}</p>

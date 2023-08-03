@@ -10,22 +10,8 @@ from catalogue.constants import LANGUAGES_3TO2
 import catalogue.models
 import pdcounter.models
 import picture.models
-from .fields import JQueryAutoCompleteSearchField, InlineRadioWidget
+from .fields import InlineRadioWidget
 from .utils import UnaccentSearchQuery, UnaccentSearchVector
-
-
-class SearchForm(forms.Form):
-    q = JQueryAutoCompleteSearchField(label=_('Search'))
-    # {'minChars': 2, 'selectFirst': True, 'cacheLength': 50, 'matchContains': "word"})
-
-    def __init__(self, source, *args, **kwargs):
-        kwargs['auto_id'] = False
-        super(SearchForm, self).__init__(*args, **kwargs)
-        self.fields['q'].widget.attrs['id'] = 'search'
-        self.fields['q'].widget.attrs['autocomplete'] = 'off'
-        self.fields['q'].widget.attrs['data-source'] = source
-        if 'q' not in self.data:
-            self.fields['q'].widget.attrs['placeholder'] = _('title, author, epoch, kind, genre, phrase')
 
 
 class SearchFilters(forms.Form):

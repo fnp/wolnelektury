@@ -340,12 +340,6 @@ def book_info(book):
     }
 
 
-@register.inclusion_tag('catalogue/work-list.html', takes_context=True)
-def work_list(context, object_list):
-    request = context.get('request')
-    return {'object_list': object_list, 'request': request}
-
-
 @register.inclusion_tag('catalogue/plain_list.html', takes_context=True)
 def plain_list(context, object_list, with_initials=True, by_author=False, choice=None, book=None, list_type='books',
                paged=True, initial_blocks=False):
@@ -479,11 +473,6 @@ def license_icon(license_url):
 @register.simple_tag
 def license_locative(license_url, default):
     return LICENSES.get(license_url, {}).get('locative', default)
-
-
-@register.filter
-def class_name(obj):
-    return obj.__class__.__name__
 
 
 @register.simple_tag

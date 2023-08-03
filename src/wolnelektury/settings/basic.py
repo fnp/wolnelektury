@@ -50,7 +50,6 @@ TEMPLATES = [{
             'django.template.context_processors.media',
             'django.template.context_processors.request',
             'wolnelektury.context_processors.extra_settings',
-            'search.context_processors.search_form',
         ),
     },
 }]

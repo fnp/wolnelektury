@@ -9,21 +9,11 @@
     {% load honeypot %}
     {% render_honeypot_field %}
   {% endif %}
-  {% if request.EXPERIMENTS.layout.value %}
-    {{ form.as_p }}
-    <p class="helptext">
-      {{ form.data_processing }}
-    </p>
-    <button>{{ submit }}</button>
-  {% else %}
-    <ol>
-      <div id="id_{% if form_prefix %}{{ form_prefix }}-{% endif %}__all__"></div>
-      {% block form_fields %}
-        {{ form.as_p }}
-      {% endblock %}
-      <li><input type="submit" value="{{ submit }}"/></li>
-  </ol>
-  {% endif %}
+  {{ form.as_p }}
+  <p class="helptext">
+    {{ form.data_processing }}
+  </p>
+  <button>{{ submit }}</button>
 </form>
 
 <div class="form-extra">

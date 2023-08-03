@@ -1,4 +1,4 @@
-{% extends request.session.from_app|yesno:"base/app.html,base/base.html" %}
+{% extends "2022/base_simple.html" %}
 {% load chunks i18n %}
 
 
@@ -9,7 +9,7 @@
   <div class="white-box normal-text">
     <h1>{% blocktrans with year=view.kwargs.year email=object.email %}Summary of donations in the year {{ year }} for the address {{ email }}.{% endblocktrans %}</h1>
 
-    <table class="table">
+    <table class="table" border="1">
       <thead>
         <tr>
           <th>{% trans "Date" %}</th>

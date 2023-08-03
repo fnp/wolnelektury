@@ -8,8 +8,6 @@ from django.views.decorators.cache import never_cache
 from django.views.decorators.http import require_POST
 from django.views.generic.edit import FormView
 
-from ajaxable.utils import AjaxableFormView
-
 from catalogue.models import Book, Tag
 import catalogue.models.tag
 from social import forms
@@ -68,11 +66,7 @@ def unlike_book(request, slug):
 
 @login_required
 def my_shelf(request):
-    if request.EXPERIMENTS['layout'].value:
-        template_name = 'social/2022/my_shelf.html'
-    else:
-        template_name = 'social/my_shelf.html'
-
+    template_name = 'social/2022/my_shelf.html'
     tags = list(request.user.tag_set.all())
     suggest = [t for t in tags if t.name]
     print(suggest)
@@ -131,20 +125,3 @@ def my_tags(request):
             t.name for t in tags
         ], safe=False
     )
-
-
-class ObjectSetsFormView(AjaxableFormView):
-    form_class = forms.ObjectSetsForm
-    placeholdize = True
-    template = 'social/sets_form.html'
-    ajax_redirect = True
-    POST_login = True
-
-    def get_object(self, request, slug):
-        return get_object_or_404(Book, slug=slug)
-
-    def context_description(self, request, obj):
-        return obj.pretty_title()
-
-    def form_args(self, request, obj):
-        return (obj, request.user), {}

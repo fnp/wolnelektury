@@ -1,11 +1,18 @@
 .c-lang {
   position: absolute;
-  top: 23px;
-  margin-right: 217px;
+  top: 11px;
+
+  width: 150px;
+  right: 50px + 16px;
   opacity: 0;
   pointer-events: none;
   transition: opacity 350ms $ease-out;
   z-index: $master-layer + 1;
+  display: none;
+
+  @include rwd($break-menu) {
+      display: block;
+  }
 
   &.is-open {
     .c-lang__button {
@@ -48,10 +55,20 @@
   opacity: 0;
   transition: all 350ms $ease-out;
   pointer-events: none;
-  a {
+  display: flex;
+  flex-direction: column;
+
+  button {
     display: block;
     padding: 9px 20px;
     color: #474747;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    font-family: "Source Sans Pro";
+    font-size: 16px;
+    line-height: 18.4px;
+    text-align: left;
 
     &:hover {
       background-color: #EDAA00;

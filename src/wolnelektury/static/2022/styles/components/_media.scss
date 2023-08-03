@@ -54,6 +54,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 
   .icons {}
   .content {
@@ -75,6 +76,47 @@
     font-weight: normal;
     font-size: 12px;
     line-height: 140%;
+  }
+
+  .c-media__settings {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      z-index: 5;
+      min-height: 30px;
+      overflow: hidden;
+      
+      .icon {
+          position: absolute;
+          transition: .5s rotate;
+          bottom: 0;
+          right: 0;
+          line-height: 30px;
+          width: 40px;
+          text-align: center;
+          margin: 0;
+      }
+      > div {
+          height: 0;
+          transition: .5s height;
+          overflow: hidden;
+          background: #F2F2F2;
+          border-bottom: 5px solid #D5ECED;
+          margin-top: -5px;
+          > div {
+              padding: 30px;
+          }
+      }
+      &.active {
+          .icon {
+              rotate: 180deg;
+              
+          }
+          > div {
+              height: 150px;
+          }
+      }
   }
 }
 

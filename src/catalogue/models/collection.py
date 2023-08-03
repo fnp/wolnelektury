@@ -62,11 +62,5 @@ class Collection(models.Model):
     def example3(self):
         return self.get_books()[:3]
 
-    @cached_render('catalogue/collection_box.html')
-    def box(self):
-        return {
-            'collection': self
-        }
-
     def clear_cache(self):
         clear_cached_renders(self.box)

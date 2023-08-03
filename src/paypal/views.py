@@ -10,26 +10,8 @@ from django.shortcuts import get_object_or_404, render, redirect
 
 from api.utils import HttpResponseAppRedirect
 from club.models import Schedule
-from paypal.forms import PaypalSubscriptionForm
-from paypal.rest import execute_agreement, check_agreement, agreement_approval_url, PaypalError
+from paypal.rest import execute_agreement, check_agreement, agreement_approval_url
 from paypal.models import BillingAgreement, BillingPlan
-
-
-def paypal_form(request, app=False):
-    if request.POST:
-        if not request.user.is_authenticated:
-            return HttpResponseForbidden()
-        form = PaypalSubscriptionForm(data=request.POST)
-        if form.is_valid():
-            amount = form.cleaned_data['amount']
-            try:
-                approval_url = agreement_approval_url(amount, app=app)
-            except PaypalError as e:
-                return render(request, 'paypal/error_page.html', {'error': str(e)})
-            return HttpResponseRedirect(approval_url)
-    else:
-        form = PaypalSubscriptionForm()
-    return render(request, 'paypal/form.html', {'form': form})
 
 
 def paypal_init(request, key):

@@ -18,10 +18,7 @@ def book_stub_detail(request, slug):
 
     form = PublishingSuggestForm(initial={"books": "%s — %s, \n" % (book.author, book.title)})
 
-    if request.EXPERIMENTS['layout'].value:
-        template_name = 'pdcounter/2022/book_detail.html'
-    else:
-        template_name = 'pdcounter/book_stub_detail.html'
+    template_name = 'pdcounter/2022/book_detail.html'
 
     return render(request, template_name, {
         'book': book,
@@ -40,10 +37,7 @@ def author_detail(request, slug):
 
     form = PublishingSuggestForm(initial={"books": author.name + ", \n"})
 
-    if request.EXPERIMENTS['layout'].value:
-        template_name = 'pdcounter/2022/author_detail.html'
-    else:
-        template_name = 'pdcounter/author_detail.html'
+    template_name = 'pdcounter/2022/author_detail.html'
 
     return render(request, template_name, {
         'author': author,

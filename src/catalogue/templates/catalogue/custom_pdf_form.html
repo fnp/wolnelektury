@@ -1,25 +1,11 @@
 {% load i18n %}
 {% load honeypot %}
-{% load ajaxable_tags %}
 
 <h1>{% trans "Download custom PDF" %}</h1>
 
 <form id='custom-pdf-form' action="" method="post" accept-charset="utf-8" class="cuteform">
   {% csrf_token %}
   {% render_honeypot_field %}
-  {% if request.EXPERIMENTS.layout.value %}
-    {{ form.as_p }}
-    <button type="submit">{% trans "Download" %}</button>
-  {% else %}
-  <ol>
-    {{ form.nofootnotes|pretty_checkbox }}
-    {{ form.nothemes|pretty_checkbox }}
-    {{ form.nowlfont|pretty_checkbox }}
-    {{ form.nocover|pretty_checkbox }}
-    {{ form.leading|pretty_field }}
-    {{ form.fontsize|pretty_field }}
-
-    <li><input type="submit" value="{% trans "Download" %}"/></li>
-  </ol>
-  {% endif %}
+  {{ form.as_p }}
+  <button type="submit">{% trans "Download" %}</button>
 </form>

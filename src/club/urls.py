@@ -21,7 +21,6 @@ urlpatterns = [
 
     path('przylacz/<key>/', views.claim, name='club_claim'),
     path('anuluj/<key>/', views.cancel, name='club_cancel'),
-    path('testowa-platnosc/<key>/', views.DummyPaymentView.as_view(), name='club_dummy_payment'),
 
     path('platnosc/payu/cykl/<key>/', banner_exempt(views.PayURecPayment.as_view()), name='club_payu_rec_payment'),
     path('platnosc/payu/<key>/', banner_exempt(views.PayUPayment.as_view()), name='club_payu_payment'),

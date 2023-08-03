@@ -19,7 +19,7 @@ from django.views.decorators.cache import never_cache
 from django.views.generic import TemplateView
 
 from ajaxable.utils import AjaxableFormView
-from club.forms import ScheduleForm, DonationStep1Form
+from club.forms import DonationStep1Form
 from club.models import Club
 from annoy.models import DynamicTextInsert
 from pdcounter import views as pdcounter_views
@@ -45,37 +45,13 @@ def catalogue(request):
     })
 
 
-def book_list(request, filters=None, template_name='catalogue/book_list.html',
-              nav_template_name='catalogue/snippets/book_list_nav.html',
-              list_template_name='catalogue/snippets/book_list.html'):
-    """ generates a listing of all books, optionally filtered """
-    books_by_author, orphans, books_by_parent = Book.book_list(filters)
-    books_nav = OrderedDict()
-    for tag in books_by_author:
-        if books_by_author[tag]:
-            books_nav.setdefault(tag.sort_key[0], []).append(tag)
-    return render(request, template_name, {
-        'rendered_nav': render_to_string(nav_template_name, {'books_nav': books_nav}),
-        'rendered_book_list': render_to_string(list_template_name, {
-            'books_by_author': books_by_author,
-            'orphans': orphans,
-            'books_by_parent': books_by_parent,
-        })
-    })
-
-
 def daisy_list(request):
-    if request.EXPERIMENTS['layout'].value:
-        return object_list(request, Book.objects.filter(media__type='daisy'))
-    return book_list(request, Q(media__type='daisy'), template_name='catalogue/daisy_list.html')
+    return object_list(request, Book.objects.filter(media__type='daisy'))
 
 
 def collection(request, slug):
     coll = get_object_or_404(Collection, slug=slug)
-    if request.EXPERIMENTS['layout'].value:
-        template_name = 'catalogue/2022/collection.html'
-    else:
-        template_name = 'catalogue/collection.html'
+    template_name = 'catalogue/2022/collection.html'
     return render(request, template_name, {
         'collection': coll,
         'active_menu_item': 'collections',
@@ -403,41 +379,16 @@ def object_list(request, objects, fragments=None, related_tags=None, tags=None,
     if extra:
         result.update(extra)
 
-    if request.EXPERIMENTS['layout'].value:
-        has_theme = any(((theme := x).category == 'theme' for x in tags))
-        if has_theme:
-            result['main_tag'] = theme
-            template = 'catalogue/2022/theme_detail.html'
-        else:
-            template = 'catalogue/2022/author_detail.html'
+    has_theme = any(((theme := x).category == 'theme' for x in tags))
+    if has_theme:
+        result['main_tag'] = theme
+        template = 'catalogue/2022/theme_detail.html'
     else:
-        template = 'catalogue/tagged_object_list.html'
+        template = 'catalogue/2022/author_detail.html'
         
     return render(
         request, template, result,
     )
-
-
-def literature(request):
-    if request.EXPERIMENTS['layout'].value:
-        return LiteratureView.as_view()(request)
-    books = Book.objects.filter(parent=None, findable=True)
-    return object_list(request, books, related_tags=get_top_level_related_tags([]))
-
-
-def gallery(request):
-    if request.EXPERIMENTS['layout'].value:
-        return GalleryView.as_view()(request)
-    return object_list(request, Picture.objects.all(), list_type='gallery')
-
-
-def audiobooks(request):
-    if request.EXPERIMENTS['layout'].value:
-        return AudiobooksView.as_view()(request)
-    audiobooks = Book.objects.filter(findable=True, media__type__in=('mp3', 'ogg')).distinct()
-    return object_list(request, audiobooks, list_type='audiobooks', extra={
-        'daisy': Book.objects.filter(findable=True, media__type='daisy').distinct(),
-    })
 
 
 class ResponseInstead(Exception):
@@ -500,7 +451,7 @@ def theme_list(request, tags, list_type):
 
 
 def tagged_object_list(request, tags, list_type):
-    if request.EXPERIMENTS['layout'].value and list_type in ('books', 'audiobooks'):
+    if list_type in ('books', 'audiobooks'):
         return TaggedObjectList.as_view()(request, tags=tags)
 
     try:
@@ -550,11 +501,7 @@ def book_fragments(request, slug, theme_slug):
     fragments = Fragment.tagged.with_all([theme]).filter(
         Q(book=book) | Q(book__ancestor=book))
 
-    if request.EXPERIMENTS['layout'].value:
-        template_name = 'catalogue/2022/book_fragments.html'
-    else:
-        template_name = 'catalogue/book_fragments.html'
-    
+    template_name = 'catalogue/2022/book_fragments.html'
     return render(
         request,
         template_name,
@@ -573,38 +520,16 @@ def book_detail(request, slug):
     except Book.DoesNotExist:
         return pdcounter_views.book_stub_detail(request, slug)
 
-    new_layout = request.EXPERIMENTS['layout']
-    
     return render(
         request,
-        'catalogue/2022/book_detail.html' if new_layout.value else 'catalogue/book_detail.html',
+        'catalogue/2022/book_detail.html',
         {
             'book': book,
             'accessible': book.is_accessible_to(request.user),
             'book_children': book.children.all().order_by('parent_number', 'sort_key'),
             'active_menu_item': 'books',
-            'club_form': ScheduleForm() if book.preview else None,
             'club': Club.objects.first() if book.preview else None,
             'donation_form': DonationStep1Form(),
-        })
-
-
-# używane w publicznym interfejsie
-def player(request, slug):
-    book = get_object_or_404(Book, slug=slug)
-    if not book.has_media('mp3'):
-        raise Http404
-
-    audiobooks, projects, total_duration = book.get_audiobooks()
-
-    return render(
-        request,
-        'catalogue/player.html',
-        {
-            'book': book,
-            'audiobook': '',
-            'audiobooks': audiobooks,
-            'projects': projects,
         })
 
 
@@ -736,11 +661,7 @@ def tag_catalogue(request, category):
     else:
         best = described_tags
 
-    if request.EXPERIMENTS['layout'].value:
-        template_name = 'catalogue/2022/tag_catalogue.html'
-    else:
-        template_name = 'catalogue/tag_catalogue.html'
-
+    template_name = 'catalogue/2022/tag_catalogue.html'
     return render(request, template_name, {
         'tags': tags,
         'best': best,
@@ -758,11 +679,7 @@ def collections(request):
     else:
         best = objects
 
-    if request.EXPERIMENTS['layout'].value:
-        template_name = 'catalogue/2022/collections.html'
-    else:
-        template_name = 'catalogue/collections.html'
-
+    template_name = 'catalogue/2022/collections.html'
     return render(request, template_name, {
         'objects': objects,
         'best': best,

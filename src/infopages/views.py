@@ -10,8 +10,6 @@ from infopages.models import InfoPage
 def infopage(request, slug):
     page = get_object_or_404(InfoPage, slug=slug)
 
-    new_layout = request.EXPERIMENTS['layout']
-    
     rc = RequestContext(request)
     try:
         left_column = Template(page.left_column).render(rc)
@@ -25,7 +23,7 @@ def infopage(request, slug):
 
     return render(
         request,
-        'infopages/2022/infopage.html' if new_layout.value else 'infopages/infopage.html',
+        'infopages/2022/infopage.html',
         {
             'page': page,
             'left_column': left_column,

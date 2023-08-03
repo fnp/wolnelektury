@@ -531,5 +531,16 @@
         window.location.reload(true);
     });
 
+    $('.c-lang').on('click', function() {
+        !$(this).toggleClass('is-open');
+    });
+
+
+
+
+
+    $(".c-media__settings > i").on('click', function() {
+        $(".c-media__settings").toggleClass('active');
+    });
 
 })();

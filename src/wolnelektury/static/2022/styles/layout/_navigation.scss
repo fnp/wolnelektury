@@ -22,6 +22,7 @@ body {
   }
   
   .l-container {
+      position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -262,6 +263,10 @@ body {
                   font-size: 30px;
               }
           }
+          .c-lang {
+              display: block;
+              left: 16px;
+          }
       }
   }
 }
@@ -365,6 +370,9 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    @include rwd($break-menu) {
+        width: 60%;
+    }
     
   p {
     color: $color-white;
