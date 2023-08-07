@@ -1,9 +1,7 @@
-{% load i18n %}
-
 <h1>{{ title }}</h1>
 
 <form action="{% if action_url %}{% url action_url %}{% else %}{{ action }}{% endif %}{% if action_query %}?{{ action_query }}{% endif %}" method="post" accept-charset="utf-8"
-      class="cuteform{% if placeholdize %} hidelabels{% endif %}">
+      class="cuteform">
   {% csrf_token %}
   {% if honeypot %}
     {% load honeypot %}

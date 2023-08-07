@@ -9,7 +9,6 @@ from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidde
 from django.shortcuts import render
 from django.utils.encoding import force_str
 from django.utils.functional import Promise
-from django.utils.translation import gettext_lazy as _
 from django.views.decorators.vary import vary_on_headers
 from honeypot.decorators import verify_honeypot_value
 from wolnelektury.utils import is_ajax
@@ -44,12 +43,6 @@ def require_login(request):
     return HttpResponseRedirect('/uzytkownicy/zaloguj')  # next?=request.build_full_path())
 
 
-def placeholdized(form):
-    for field in form.fields.values():
-        field.widget.attrs['placeholder'] = field.label + ('*' if field.required else '')
-    return form
-
-
 class AjaxableFormView:
     """Subclass this to create an ajaxable view for any form.
 
@@ -57,10 +50,9 @@ class AjaxableFormView:
 
     """
     form_class = None
-    placeholdize = False
     # override to customize form look
     template = "ajaxable/form.html"
-    submit = _('Send')
+    submit = 'Send'
     action = ''
 
     title = ''
@@ -136,13 +128,10 @@ class AjaxableFormView:
             cd = self.context_description(request, obj)
             if cd:
                 title += ": " + cd
-        if self.placeholdize:
-            form = placeholdized(form)
         context = {
             self.formname: form,
             "title": title,
             "honeypot": self.honeypot,
-            "placeholdize": self.placeholdize,
             "submit": self.submit,
             "action": self.action,
             "response_data": response_data,
