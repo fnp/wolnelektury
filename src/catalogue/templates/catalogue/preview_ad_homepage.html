@@ -23,7 +23,7 @@
               <p>Dziękujemy za wsparcie — przeczytaj w prezencie już dzisiaj!</p>
             {% else %}
               <p>Aby przeczytać prapremierę, <strong>dorzuć</strong> się do Wolnych Lektur dowolną wpłatą. Ustaw stałe wsparcie, a będziesz mieć dostęp do kolejnych <strong>prapremier</strong>.</p>
-              <a href="#" class="l-button l-button--default l-button--default--dark">Dorzuć się</a>
+	      <a href="{{ book.get_absolute_url }}" class="l-button l-button--default l-button--default--dark">Dorzuć się</a>
             {% endif %}
           </div>
         </div>
