@@ -1,4 +1,4 @@
-{% extends "2022/base.html" %}
+{% extends "base.html" %}
 
 
 {% block main %}
@@ -108,7 +108,7 @@
       <div class="l-section l-section--col">
         <div class="l-books__grid">
           {% for book in results.book %}
-            {% include 'catalogue/2022/book_box.html' %}
+            {% include 'catalogue/book_box.html' %}
           {% endfor %}
         </div>
       </div>
@@ -121,7 +121,7 @@
       <div class="l-section l-section--col">
         <div class="l-books__grid">
           {% for book in results.art %}
-            {% include 'catalogue/2022/book_box.html' %}
+            {% include 'catalogue/book_box.html' %}
           {% endfor %}
         </div>
       </div>
@@ -153,7 +153,7 @@
         <h2 class="header">Kolekcje</h2>
         <div class="c-search-result-collection">
           {% for collection in results.collection %}
-            {% include 'catalogue/2022/collection_box.html' %}
+            {% include 'catalogue/collection_box.html' %}
           {% endfor %}
         </div>
       </div>

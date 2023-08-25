@@ -1,4 +1,4 @@
-{% extends "2022/base.html" %}
+{% extends "base.html" %}
 {% load i18n %}
 {% load catalogue_tags %}
 
@@ -16,7 +16,7 @@
   <div class="l-section l-section--col">
     <div class="l-books__grid" id="book-list">
       {% for book in object_list %}
-        {% include "catalogue/2022/book_box.html" %}
+        {% include "catalogue/book_box.html" %}
       {% endfor %}
     </div>
   </div>

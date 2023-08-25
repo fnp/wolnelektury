@@ -38,7 +38,7 @@ def main_page(request):
     ctx['widget'] = settings.WIDGETS.get(request.GET.get('w'))
     if not ctx['widget'] and request.EXPERIMENTS['sowka'].value:
         ctx['widget'] = settings.WIDGETS['pan-sowka']
-    return render(request, '2022/main_page.html', ctx)
+    return render(request, 'main_page.html', ctx)
 
 
 class WLLoginView(LoginView):

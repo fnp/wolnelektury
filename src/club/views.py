@@ -34,7 +34,7 @@ class DonationStep1(UpdateView):
     queryset = models.Schedule.objects.filter(payed_at=None)
     form_class = forms.DonationStep1Form
     slug_field = slug_url_kwarg = 'key'
-    template_name = 'club/2022/donation_step1.html'
+    template_name = 'club/donation_step1.html'
     step = 1
 
     def get_context_data(self, **kwargs):
@@ -50,7 +50,7 @@ class DonationStep2(UpdateView):
     queryset = models.Schedule.objects.filter(payed_at=None)
     form_class = forms.DonationStep2Form
     slug_field = slug_url_kwarg = 'key'
-    template_name = 'club/2022/donation_step2.html'
+    template_name = 'club/donation_step2.html'
     step = 2
 
     def get_context_data(self, **kwargs):
@@ -61,7 +61,7 @@ class DonationStep2(UpdateView):
 
 class JoinView(CreateView):
     form_class = forms.DonationStep1Form
-    template_name = 'club/2022/donation_step1.html'
+    template_name = 'club/donation_step1.html'
 
     @property
     def club(self):
@@ -122,7 +122,7 @@ class ScheduleView(DetailView):
     
     def get_template_names(self):
         if not self.object.payed_at:
-            return 'club/2022/donation_step3.html'
+            return 'club/donation_step3.html'
         return 'club/schedule.html'
         
     def get_context_data(self, *args, **kwargs):
@@ -185,7 +185,7 @@ class PayUNotifyView(payu_views.NotifyView):
 
 class ScheduleThanksView(DetailView):
     model = models.Schedule
-    template_name = 'club/2022/donation_step4.html'
+    template_name = 'club/donation_step4.html'
     slug_field = slug_url_kwarg = 'key'
     step = 4
 

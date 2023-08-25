@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load catalogue_tags %}
+{% load pagination_tags %}
+
+{% block global-content %}
+  <div class="l-container">
+    <div class="l-breadcrumb">
+      <a href="/"><span>Strona główna</span></a>
+      <a href="/katalog/"><span>Katalog</span></a>
+      <a href="/katalog/motyw/"><span>Motyw</span></a>
+      <span>{{ main_tag.name }}</span>
+    </div>
+  </div>
+
+  <main class="l-main">
+
+    <div class="l-section">
+      <div class="l-author__header">
+        <h1><span>Motyw:</span> {{ main_tag.name }}</h1>
+      </div>
+    </div>
+
+
+    <div class="l-section">
+      <div class="l-books__header">
+        <div class="l-books__input">
+          <i class="icon icon-filter"></i>
+          <input type="text" placeholder="filtry, tytuł" class="quick-filter" data-for="book-list" data-filters="with-filter">
+          <div class="filter-container">
+            {% for tag in tags %}
+              {% if tag is not main_tag %}
+                <span class="filter filter-category-{{ tag.category }}">
+                  <a href="{% catalogue_url list_type tag %}">{{ tag }}</a>
+                  <a href="{% catalogue_url list_type tags -tag %}">✖</a>
+                </span>
+              {% endif %}
+            {% endfor %}
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="with-filter">
+      <div class="row">
+        <h2>{% nice_title_from_tags tags categories %}</h2>
+        {% if suggest %}
+          <div class="filter-container">
+            {% for tag in suggest %}
+              <span class="filter filter-category-{{ tag.category }}">
+                <a href="{% catalogue_url list_type tags tag %}">{{ tag }}</a>
+              </span>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    {% autopaginate object_list 10 %}
+
+    <div class="l-section l-section--col">
+      <div class="l-theme">
+        <div class="l-theme__col">
+          <div class="l-books__col">
+
+            {% for fragment in object_list %}
+              {% include 'catalogue/fragment_box.html' %}
+            {% endfor %}
+            {% paginate %}
+          </div>
+        </div>
+        <div class="l-theme__col">
+          <div class="l-theme__info">
+            <h3>Motyw: {{ main_tag.name }}</h3>
+            {{ main_tag.description|safe }}
+            <!--
+                 <h3>Motyw w sztuce <i class="icon icon-arrow-left"></i> <i class="icon icon-arrow-right"></i></h3>
+                 <div class="l-theme__info__slider">
+                 <img src="images/motyw.jpg" alt="">
+                 <img src="images/motyw.jpg" alt="">
+                 <img src="images/motyw.jpg" alt="">
+                 </div>
+            -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+{% endblock %}

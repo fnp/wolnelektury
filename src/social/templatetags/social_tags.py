@@ -51,8 +51,8 @@ def book_shelf_tags(context, book_id):
     return lazy(get_value, str)()
 
 
-@register.inclusion_tag('social/carousel_2022.html', takes_context=True)
-def carousel_2022(context, placement):
+@register.inclusion_tag('social/carousel.html', takes_context=True)
+def carousel(context, placement):
     banners = Carousel.get(placement).carouselitem_set.all()#first().get_banner()
     return {
         'banners': [b.get_banner() for b in banners],

@@ -1,0 +1,20 @@
+{% comment %}
+{% load i18n %}
+<div class="c-lang">
+  <div class="c-lang__button">
+    <i class="icon icon-lang"></i>
+    {{ LANGUAGE_CODE|language_name_local }}
+    <i class="icon icon-arrow-down"></i>
+  </div>
+  <form method="post" action="{% url 'set_language' %}">
+    {% csrf_token %}
+    <div class="c-lang__list">
+      {% for lang in LANGUAGES %}
+        <button type="submit" lang="{{ lang.0 }}"
+                name="language" value="{{ lang.0 }}" tabindex="121"
+                class="{% if lang.0 == LANGUAGE_CODE %}is-active{% endif %}">{{ lang.1 }}</button>
+      {% endfor %}
+    </div>
+  </form>
+</div>
+{% endcomment %}

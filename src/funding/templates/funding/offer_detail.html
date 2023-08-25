@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load chunks %}
+{% load thumbnail %}
+{% load fundings from funding_tags %}
+
+
+{% block settings %}
+  {% load title %}
+  {% title object %}
+{% endblock %}
+
+
+{% block breadcrumbs %}
+  <a href="{% url 'funding' %}"><span>Zbiórki</span></a>
+  <span>{{ object }}</span>
+{% endblock %}
+
+
+{% block main %}
+  {{ object.detail_bar }}
+
+  <div class="page-simple">
+    <h1>{{ object }}</h1>
+
+    <div class="l-checkout__cols" style="margin-top: 0">
+      <div class="l-checkout__col" >
+        <div class="l-checkout__payments__box is-active">
+          {% if object.cover %}
+            {% thumbnail object.cover '320x1000' as th %}
+            <img src="{{ th.url }}">
+            {% endthumbnail %}
+          {% endif %}
+        </div>
+      </div>
+      <div class="l-checkout__col funding-details">
+        <h2>{% trans "Help free the book!" %}</h2>
+        <div class="funding-description">
+          {{ object.description|safe }}
+        </div>
+        {% if object.is_current %}
+          <form method="post" style="margin: auto;">
+            {{ form.as_p }}
+            <span class="helptext">
+              {{ form.data_processing }}
+            </span>
+            <button type="submit" class="button-orange">Wesprzyj!</button>
+          </form>
+        {% else %}
+          {{ object.status }}
+          {{ object.status_more }}
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="l-checkout__footer">
+    <div class="l-checkout__footer__content">
+
+      {% if object.is_current %}
+        <div class="l-checkout__footer__content__item">
+          <h3>Zasady</h3>
+          <div>
+            <div class="l-article__overlay" data-max-height="91">
+              {{ object.status }}
+              {{ object.status_more }}
+              {% chunk 'funding_rules'  %}
+            </div>
+            <button class="l-article__read-more" aria-label="Kliknij aby rozwinąć" data-label="Więcej" data-action="Mniej">Więcej</button>
+          </div>
+        </div>
+
+        <div class="l-checkout__footer__content__item">
+          <h3>Wpłaty bezpośrednie</h3>
+          <div>
+            <div class="l-article__overlay" data-max-height="91">
+              <p>
+                {% chunk 'funding_form_bottom' %}
+              </p>
+            </div>
+            <button class="l-article__read-more" aria-label="Kliknij aby rozwinąć" data-label="Więcej" data-action="Mniej">Więcej</button>
+          </div>
+        </div>
+
+        <div class="l-checkout__footer__content__item">
+          <h3>Informacja o przetwarzaniu danych osobowych</h3>
+          <div>
+            <div class="l-article__overlay" data-max-height="91">
+              {% chunk 'donation-data-processing' %}
+            </div>
+            <button class="l-article__read-more" aria-label="Kliknij aby rozwinąć" data-label="Więcej" data-action="Mniej">Więcej</button>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <article class="page-simple">
+    <h1>{% trans "Supporters" %}</h1>
+    {% fundings object %}
+  </article>
+
+  {# 1% #}
+  {# share? #}
+
+{% endblock %}

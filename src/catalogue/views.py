@@ -51,7 +51,7 @@ def daisy_list(request):
 
 def collection(request, slug):
     coll = get_object_or_404(Collection, slug=slug)
-    template_name = 'catalogue/2022/collection.html'
+    template_name = 'catalogue/collection.html'
     return render(request, template_name, {
         'collection': coll,
         'active_menu_item': 'collections',
@@ -161,10 +161,10 @@ class ObjectListView(TemplateView):
 class BookList(ObjectListView):
     title = gettext_lazy('Literature')
     list_type = 'books'
-    template_name = 'catalogue/2022/book_list.html'
-    dynamic_template_name = 'catalogue/2022/dynamic_book_list.html'
-    themed_template_name = 'catalogue/2022/themed_book_list.html'
-    dynamic_themed_template_name = 'catalogue/2022/dynamic_themed_book_list.html'
+    template_name = 'catalogue/book_list.html'
+    dynamic_template_name = 'catalogue/dynamic_book_list.html'
+    themed_template_name = 'catalogue/themed_book_list.html'
+    dynamic_themed_template_name = 'catalogue/dynamic_themed_book_list.html'
 
     orderings = {
         'pop': ('-popularity__count', 'najpopularniejsze'),
@@ -196,8 +196,8 @@ class BookList(ObjectListView):
 
 
 class ArtList(ObjectListView):
-    template_name = 'catalogue/2022/book_list.html'
-    dynamic_template_name = 'catalogue/2022/dynamic_book_list.html'
+    template_name = 'catalogue/book_list.html'
+    dynamic_template_name = 'catalogue/dynamic_book_list.html'
     title = gettext_lazy('Art')
     list_type = 'gallery'
 
@@ -382,9 +382,9 @@ def object_list(request, objects, fragments=None, related_tags=None, tags=None,
     has_theme = any(((theme := x).category == 'theme' for x in tags))
     if has_theme:
         result['main_tag'] = theme
-        template = 'catalogue/2022/theme_detail.html'
+        template = 'catalogue/theme_detail.html'
     else:
-        template = 'catalogue/2022/author_detail.html'
+        template = 'catalogue/author_detail.html'
         
     return render(
         request, template, result,
@@ -501,7 +501,7 @@ def book_fragments(request, slug, theme_slug):
     fragments = Fragment.tagged.with_all([theme]).filter(
         Q(book=book) | Q(book__ancestor=book))
 
-    template_name = 'catalogue/2022/book_fragments.html'
+    template_name = 'catalogue/book_fragments.html'
     return render(
         request,
         template_name,
@@ -522,7 +522,7 @@ def book_detail(request, slug):
 
     return render(
         request,
-        'catalogue/2022/book_detail.html',
+        'catalogue/book_detail.html',
         {
             'book': book,
             'accessible': book.is_accessible_to(request.user),
@@ -661,7 +661,7 @@ def tag_catalogue(request, category):
     else:
         best = described_tags
 
-    template_name = 'catalogue/2022/tag_catalogue.html'
+    template_name = 'catalogue/tag_catalogue.html'
     return render(request, template_name, {
         'tags': tags,
         'best': best,
@@ -679,7 +679,7 @@ def collections(request):
     else:
         best = objects
 
-    template_name = 'catalogue/2022/collections.html'
+    template_name = 'catalogue/collections.html'
     return render(request, template_name, {
         'objects': objects,
         'best': best,

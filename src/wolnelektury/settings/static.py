@@ -21,7 +21,7 @@ IMAGE_DIR = 'book/pictures/'
 
 PIPELINE = {
     'STYLESHEETS': {
-        '2022': {
+        'main': {
             'source_filenames': [
                 'contrib/jquery-ui-1.13.1.custom/jquery-ui.css',
                 'css/jquery.countdown.css',
@@ -30,7 +30,7 @@ PIPELINE = {
                 '2022/more.scss',
                 'chunks/edit.scss',
             ],
-            'output_filename': 'css/compressed/2022.css',
+            'output_filename': 'css/compressed/main.css',
         },
         'book_text': {
             'source_filenames': [
@@ -51,17 +51,17 @@ PIPELINE = {
         },
     },
     'JAVASCRIPT': {
-        '2022': {
+        'main': {
             'source_filenames': [
                 '2022/scripts/vendor.js',
                 'contrib/jquery-ui-1.13.1.custom/jquery-ui.js',
 
                 'js/search.js',
-                'js/2022.js',
-                '2022/book/filter.js',
+                'js/header.js',
+                'book/filter.js',
                 'chunks/edit.js',
                 '2022/scripts/modernizr.js',
-                '2021/scripts/main.js',
+                'js/main.js',
 
                 'js/contrib/jquery.cycle2.min.js',
                 'sponsors/js/sponsors.js',
@@ -73,15 +73,15 @@ PIPELINE = {
                 'pdcounter/pdcounter.js',
 
             ],
-            'output_filename': 'js/2022.min.js'
+            'output_filename': 'js/compressed/main.min.js'
         },
-        '2022_player': {
+        'player': {
             'source_filenames': [
                 'js/contrib/jplayer/jquery.jplayer.min.js',
                 'js/contrib/jplayer/jplayer.playlist.min.js',
-                'player/2022_player.js',
+                'player/player.js',
             ],
-            'output_filename': 'js/2022_player.min.js',
+            'output_filename': 'js/compressed/player.min.js',
         },
         'book_text': {
             'source_filenames': [

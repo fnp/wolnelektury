@@ -16,7 +16,7 @@ def main_page(request):
 
     return render(
         request,
-        'lesmianator/2022/lesmianator.html',
+        'lesmianator/lesmianator.html',
         {"last": last, "shelves": shelves})
 
 @cache.never_cache

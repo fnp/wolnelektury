@@ -19,7 +19,7 @@ def subscribe_form(request, slug=''):
     else:
         form = SubscribeForm(newsletter)
 
-    template_name = 'newsletter/2022/subscribe_form.html'
+    template_name = 'newsletter/subscribe_form.html'
     return render(request, template_name, {
         'page_title': newsletter.page_title,
         'form': form,
@@ -27,7 +27,7 @@ def subscribe_form(request, slug=''):
 
 
 def subscribed(request):
-    template_name = 'newsletter/2022/subscribed.html'
+    template_name = 'newsletter/subscribed.html'
     return render(request, template_name, {
         'page_title': _('Subscribed'),
     })

@@ -115,7 +115,7 @@
 {% block footer %}
   {% if book.has_sync_file %}
     <div id="player-bar">
-      {% include 'catalogue/snippets/2022_jplayer_reader.html' %}
+      {% include 'catalogue/snippets/jplayer_reader.html' %}
     </div>
     <script type="application/json" id="smil">
      {{ book.get_sync|safe }}

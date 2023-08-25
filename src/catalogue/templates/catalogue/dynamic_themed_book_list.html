@@ -1,0 +1,14 @@
+{% load pagination_tags %}
+{% autopaginate object_list view.themed_page_size %}
+
+<div>
+<div id="object-list">
+  {% for fragment in object_list %}
+    {% include "catalogue/fragment_box.html" %}
+  {% endfor %}
+</div>
+
+<div id="paginate">
+  {% paginate %}
+</div>
+</div>

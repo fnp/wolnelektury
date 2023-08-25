@@ -26,7 +26,7 @@ def picture_list_thumb(request):
             suggestions.append(t)
             if sum(suggestion_categories.values()) == 10:
                 break
-    template_name = 'catalogue/2022/author_detail.html'
+    template_name = 'catalogue/author_detail.html'
     return render(request, template_name, {
         'object_list': pictures,
         'title': 'Galeria',
@@ -41,7 +41,7 @@ def picture_detail(request, slug):
 
     theme_things = split_tags(picture.related_themes())
 
-    template_name = 'picture/2022/picture_detail.html'
+    template_name = 'picture/picture_detail.html'
     
     return render(request, template_name, {
         'picture': picture,

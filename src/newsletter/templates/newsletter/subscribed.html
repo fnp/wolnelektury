@@ -1,0 +1,18 @@
+{% extends "base_simple.html" %}
+{% load i18n %}
+
+
+{% block settings %}
+  {% load title %}
+  {% trans "Subscribed" as title %}
+  {% title title %}
+{% endblock %}
+
+
+{% block content %}
+  <h1>{{ title }}</h1>
+
+  <p>
+    {% trans "You have subscribed to Wolne Lektury newsletter." %}
+  </p>
+{% endblock %}

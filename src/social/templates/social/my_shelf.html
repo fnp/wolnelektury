@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load catalogue_tags %}
+
+
+{% block settings %}
+  {% load title %}
+  {% title 'Półka' %}
+{% endblock %}
+
+{% block main %}
+  <div class="l-section">
+    <div class="l-author__header">
+      <h1>Półka</h1>
+    </div>
+  </div>
+
+  <div class="l-section">
+    <div class="l-books__header">
+      <div class="l-books__input">
+        <i class="icon icon-filter"></i>
+        <input type="text" placeholder="filtry, tytuł" class="quick-filter" data-for="book-list" data-filters="with-filter">
+      </div>
+      <div class="l-books__sorting">
+        <span>Sortuj:</span>
+        <div>
+          <button data-order="data-pop">najpopularniejsze</button>
+          <button class="is-active">alfabetycznie</button>
+          <!--button>chronologicznie</button-->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="with-filter">
+
+    <div class="row">
+      <h2 class="header">&nbsp;</h2>
+      {% if suggest %}
+        <div class="filter-container">
+          {% with list_type='book' %}
+            {% for tag in suggest %}
+              <span class="filter filter-category-{{ tag.category }}">
+                <a href="{% catalogue_url list_type tag %}">{{ tag }}</a>
+              </span>
+            {% endfor %}
+          {% endwith %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+
+
+  <div class="l-section l-section--col">
+    <div class="l-books__grid" id="book-list">
+      {% for book in books %}
+        {% include "catalogue/book_box.html" %}
+      {% endfor %}
+    </div>
+  </div>
+
+{% endblock %}

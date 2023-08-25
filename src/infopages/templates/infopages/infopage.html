@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block settings %}
+  {% load title %}
+  {% title page.title %}
+{% endblock %}
+
+
+{% block main %}
+    <div class="l-article__title">
+      <h1>{{ page.title }}</h1>
+    </div>
+    <article class="l-article">
+      <div class="l-article__cols">
+        <div class="left-column">
+          {{ left_column }}
+        </div>
+        <div class="right-column">
+          {{ right_column }}
+        </div>
+      </div>
+    </article>
+{% endblock %}

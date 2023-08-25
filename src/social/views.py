@@ -66,7 +66,7 @@ def unlike_book(request, slug):
 
 @login_required
 def my_shelf(request):
-    template_name = 'social/2022/my_shelf.html'
+    template_name = 'social/my_shelf.html'
     tags = list(request.user.tag_set.all())
     suggest = [t for t in tags if t.name]
     print(suggest)

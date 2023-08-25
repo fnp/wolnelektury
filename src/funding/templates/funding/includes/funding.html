@@ -1,69 +1,42 @@
-{% spaceless %}
-  {% load i18n %}
-  {% load time_tags %}
+{% load i18n %}
+{% load time_tags %}
 
-  {% if offer %}
-    <div {% if closeable %}id="funding-closeable" {% endif %}class="funding {{ add_class }}"
-         data-offer-id="{{offer.id}}" style="">
-      {% if closeable %}<a href="#" class="close">X</a>{% endif %}
-      {% if link and is_current %}
-        <div class="call-area">
-          <a class="call honking" href="{% url 'funding_current' offer.slug %}">
-            {% trans "Support!" %}
-          </a>
-          <div class="learn-more">
-            <a href="{% url 'infopage' 'wesprzyj' %}">{% trans "Learn more" %}</a>
-          </div>
-        </div>
-      {% endif %}
-      <div class="description {% if link and is_current %}with-button{% endif %}">
-      {% if link %}
-        <a href="{% if is_current %}{% url 'funding_current' offer.slug %}{% else %}{{ offer.get_absolute_url }}{% endif %}">
-      {% endif %}
-      {% if show_title %}
-        {% if is_current and show_title_calling %}<strong style="margin-right: .6em;">{% trans "Help free the book!" %}</strong>{% endif %}
-        <span class="funding-title{% if not is_current %}-strong{% endif %}">{{ offer }}</span>
-      {% endif %}
+{% if offer %}
 
-      <div class="progress" style="text-align: center; background-size: {{ percentage|stringformat:'.2f' }}% 1px;">
-        {% if sum %}
-          <span class="piece progress-collected">{% trans "collected" %}: {{ sum }} zł</span>
-        {% endif %}
-        {% if not is_win %}
-          <span class="piece progress-target"><span class="{% if sum %}progress-extralabel{% endif %}">{% trans "needed" %}: </span>{{ offer.target }} zł</span>
-        {% endif %}
-        {% if is_current %}
-          <span class="piece progress-until"><span class="progress-extralabel">{% trans "until fundraiser end" %}:</span>
-          <span class="countdown inline" data-until='{{ offer.end|date_to_utc:True|utc_for_js }}'></span>
-          </span>
-        {% else %}
-            <div style="clear: both"></div>
-        {% endif %}
-      </div>
-      {% if link %}</a>{% endif %}
-      </div>
-      <div style="clear: both"></div>
-    </div>
-    {% if closeable %}
-      <div id="funding-handle">{% trans "Help free the book!" %}</div>
-      <script type="text/javascript">
-        (function() {
-            var storage = true;
-            try {
-                localStorage.setItem('test', 'test');
-                localStorage.removeItem('test');
-            } catch (exception) {
-                storage = false;
-            }
-            if (storage) {
-                var closeable = document.getElementById('funding-closeable');
-                if (localStorage['hide-offer-id'] !== closeable.getAttribute('data-offer-id')) {
-                    closeable.style.display = 'block';
-                    document.getElementById('funding-handle').style.display = 'none';
-                }
-            }
-        })();
-      </script>
+
+  <div class="l-checkout__support">
+    {% if link %}
+      <a href="{% url 'funding_current' offer.slug %}">
+        <span class="buttonlike">Wesprzyj!</span>
+        <div class="funding-bar-container">
     {% endif %}
-  {% endif %}
-{% endspaceless %}
+    <div class="l-checkout__support__bar">
+      <span class="{% if percentage < 15 %}little-progress{% endif %}" data-label="{% if sum %}{% trans "collected" %}: {{ sum }} zł{% endif %}" style="width: {{ percentage|stringformat:'.2f' }}%;"></span>
+    </div>
+    <div class="l-checkout__support__footer">
+      {% if show_title %}
+        <p>
+          {% if show_title_calling %}
+            <strong style="margin-right: .6em;">{% trans "Help free the book!" %}</strong>
+          {% endif %}
+          {{ offer }}
+      {% endif %}
+      {% if is_current %}
+        <p>
+          {% trans "until fundraiser end" %}:
+          <strong class="countdown inline" data-until='{{ offer.end|date_to_utc:True|utc_for_js }}'></strong>
+        </p>
+      {% endif %}
+      {% if not is_win %}
+        <p>
+          {% trans "needed" %}: <strong>{{ offer.target }} zł</strong>
+        </p>
+      {% endif %}
+    </div>
+    {% if link %}
+        </div>
+      </a>
+    {% endif %}
+  </div>
+
+{% endif %}

@@ -9,14 +9,12 @@ from django.utils.translation import gettext_lazy as _
 class InfoPage(models.Model):
     """An InfoPage is used to display a two-column flatpage."""
 
-    main_page = models.IntegerField(_('main page priority'), null=True, blank=True)
     slug = models.SlugField(_('slug'), max_length=120, unique=True, db_index=True)
     title = models.CharField(_('title'), max_length=120, blank=True)
     left_column = models.TextField(_('left column'), blank=True)
     right_column = models.TextField(_('right column'), blank=True)
 
     class Meta:
-        ordering = ('main_page', 'slug',)
         verbose_name = _('info page')
         verbose_name_plural = _('info pages')
 

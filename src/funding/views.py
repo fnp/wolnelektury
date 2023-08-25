@@ -71,7 +71,7 @@ class WLFundView(TemplateView):
 
 class OfferDetailView(FormView):
     form_class = FundingForm
-    template_name = 'funding/2022/offer_detail.html'
+    template_name = 'funding/offer_detail.html'
 
     @csrf_exempt
     def dispatch(self, request, slug=None):
@@ -121,7 +121,7 @@ class CurrentView(OfferDetailView):
 
 class OfferListView(ListView):
     queryset = Offer.public()
-    template_name = 'funding/2022/offer_list.html'
+    template_name = 'funding/offer_list.html'
     
     def get_context_data(self, **kwargs):
         ctx = super(OfferListView, self).get_context_data(**kwargs)

@@ -8,6 +8,6 @@ from infopages.models import InfoPage
 
 
 class InfoPageAdmin(TranslationAdmin):
-    list_display = ('title', 'slug', 'main_page')
+    list_display = ('title', 'slug')
 
 admin.site.register(InfoPage, InfoPageAdmin)

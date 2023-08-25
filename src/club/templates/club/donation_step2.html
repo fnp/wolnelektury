@@ -1,0 +1,117 @@
+{% extends 'club/donation_step_base.html' %}
+
+{% load static %}
+
+
+{% block donation-jumbo-image %}{% static '2022/images/checkout-img-2.jpg' %}{% endblock %}
+
+
+{% block donation-step-content %}
+
+  <div class="l-checkout__cols">
+    <div class="l-checkout__col">
+      <div class="l-checkout__payments__box is-active">
+        <h3>
+          {{ schedule.amount|floatformat }} zł
+          {% if schedule.monthly %}
+            <span>/mies.</span>
+          {% endif %}
+        </h3>
+        <img src="{% static '2022/images/checkout-img-3.jpg' %}" alt="">
+        <p>{{ schedule.get_description }}</p>
+      </div>
+    </div>
+    <div class="l-checkout__col">
+
+      <form method='post'>
+        {% csrf_token %}
+        {{ form.errors }}
+        {{ form.amount }}
+        {{ form.monthly }}
+        <div class="l-checkout__form">
+          <div class="l-checkout__form__row">
+            <div class="l-checkout__input">
+              <label for="imie"><span>*</span> Imię</label>
+              {{ form.first_name }}
+              {{ form.first_name.errors }}
+            </div>
+            <div class="l-checkout__input">
+              <label for="nazwisko"><span>*</span> Nazwisko</label>
+              {{ form.last_name }}
+              {{ form.last_name.errors }}
+            </div>
+          </div>
+          <div class="l-checkout__form__row">
+            <div class="l-checkout__input">
+              <label for="email"><span>*</span> E-mail</label>
+              {{ form.email }}
+              {{ form.email.errors }}
+            </div>
+            <div class="l-checkout__input">
+              <label for="telefon"><span>*</span> Telefon</label>
+              {{ form.phone }}
+              {{ form.phone.errors }}
+            </div>
+          </div>
+          <div class="l-checkout__form__row full">
+            <div class="l-checkout__input">
+              <label for="adres-pocztowy">Adres pocztowy</label>
+              {{ form.postal }}
+              {{ form.postal.errors }}
+            </div>
+          </div>
+          <div class="l-checkout__form__row">
+            <div class="l-checkout__input">
+              <label for="kod-pocztowy">Kod pocztowy</label>
+              {{ form.postal_code }}
+              {{ form.postal_code.errors }}
+            </div>
+            <div class="l-checkout__input">
+              <label for="miejscowosc">Miejscowość</label>
+              {{ form.postal_town }}
+              {{ form.postal_town.errors }}
+            </div>
+          </div>
+          <div class="l-checkout__form__row full">
+            <div class="l-checkout__input">
+              <label for="kod-pocztowy">Kraj</label>
+              {{ form.postal_country }}
+              {{ form.postal_country.errors }}
+            </div>
+          </div>
+          <div class="l-checkout__form__row full">
+            {% for consent, key, field in form.consent %}
+              {{ field.errors }}
+              <div class="c-checkbox">
+                {{ field }}
+                <label for="id_{{ key }}">
+                  <p>{% if field.field.required %}<span>*</span> {% endif %}{{ field.label }}</p>
+                </label>
+              </div>
+            {% endfor %}
+            <div class="c-checkbox">
+              {{ form.agree_newsletter }}
+              <label for="id_agree_newsletter">
+                <p>Zapisuję się na newsletter.</p>
+              </label>
+            </div>
+          </div>
+          <div class="l-checkout__form__row confirm">
+            <a href="{% url 'donation_step1' schedule.key %}">Powrót</a>
+            <div class="l-checkout__input">
+              <button>Dalej</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="l-checkout__secure">
+    <img src="{% static '2022/images/payments-padlock.png' %}" class="l-checkout__secure__padlock">
+    Bezpieczne płatności zapewniają:
+    <img src="{% static '2022/images/payments-payu.png' %}" class="l-checkout__secure__img" alt="PayU Visa MasterCard">
+    {% if club.paypal_enabled %}
+      <img src="{% static '2022/images/payments-paypal.png' %}" class="l-checkout__secure__img" alt="PayPal">
+    {% endif %}
+  </div>
+{% endblock %}

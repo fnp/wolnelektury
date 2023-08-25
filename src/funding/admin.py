@@ -62,7 +62,6 @@ class FundingAdmin(admin.ModelAdmin):
     list_display = ['created_at', 'completed_at', 'offer', 'amount', 'name', 'email', 'perk_names']
     search_fields = ['name', 'email', 'offer__title', 'offer__author']
     list_filter = [PayedFilter, 'offer', PerksFilter]
-    search_fields = ['user']
     actions = [export_as_csv_action(
         fields=[
             'id', 'offer', 'name', 'email', 'amount', 'completed_at',

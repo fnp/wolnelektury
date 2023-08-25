@@ -1,27 +1,27 @@
-{% load i18n %}
-
 {% if is_paginated %}
-  <div class="pagination">
+  <div class="l-pagination">
     {% if page_obj.has_previous %}
-      <a href="?page={{ page_obj.previous_page_number }}{{ getvars }}" class="prev">&lsaquo;&lsaquo; {% trans "previous" %} </a>
-    {% else %}
-      <span class="disabled prev">&lsaquo;&lsaquo; {% trans "previous" %} </span>
+      <a href="?page={{ page_obj.previous_page_number }}{{ getvars }}" class="l-pagination__arrow">
+        <i class="icon icon-arrow-left"></i>
+      </a>
     {% endif %}
-    {% for page in pages %}
-      {% if page %}
-        {% if page == page_obj.number %}
-          <span class="current page"> {{ page }} </span>
+    <ul>
+      {% for page in pages %}
+        {% if page %}
+          {% if page == page_obj.number %}
+            <li class="is-active"><a>{{ page }}</a></li>
+          {% else %}
+            <li><a href="?page={{ page }}{{ getvars }}">{{ page }}</a></li>
+          {% endif %}
         {% else %}
-          <a href="?page={{ page }}{{ getvars }}" class="page"> {{ page }} </a>
+          <li><a>…</a></li>
         {% endif %}
-      {% else %}
-        …
-      {% endif %}
-    {% endfor %}
+      {% endfor %}
+    </ul>
     {% if page_obj.has_next %}
-      <a href="?page={{ page_obj.next_page_number }}{{ getvars }}" class="next"> {% trans "next" %} &rsaquo;&rsaquo;</a>
-    {% else %}
-      <span class="disabled next"> {% trans "next" %} &rsaquo;&rsaquo;</span>
+      <a href="?page={{ page_obj.next_page_number }}{{ getvars }}" class="l-pagination__arrow">
+        <i class="icon icon-arrow-right"></i>
+      </a>
     {% endif %}
   </div>
 {% endif %}

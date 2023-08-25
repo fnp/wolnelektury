@@ -1,0 +1,66 @@
+<!doctype html>
+{% load cache %}
+{% load pipeline %}
+{% load static %}
+{% load funding_tags %}
+{% load piwik_tags %}
+{% load title %}
+
+{% block settings %}
+{% endblock %}
+
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <title>{% if title %}{{ title }} | {% endif %}WolneLektury.pl</title>
+    <link rel="icon" href="{% static 'img/favicon.png' %}" type="image/png"/>
+    <link rel="search" type="application/opensearchdescription+xml" title="Wolne Lektury"
+          href="{% static 'opensearch.xml' %}"/>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    {% stylesheet 'main' %}
+      {% tracking_code %}
+      {% block extrahead %}{% endblock %}
+  </head>
+  <body>
+    {% include 'header.html' %}
+
+    {% block under-menu %}{% endblock %}
+
+    {% if not funding_no_show_current %}
+      <div class="l-container funding-promo-bar">
+        {% cache 120 funding_top_bar LANGUAGE_CODE %}
+          {% funding_top_bar %}
+        {% endcache %}
+      </div>
+    {% endif %}
+
+    {% block global-content %}
+      <div class="l-container">
+        <div class="l-breadcrumb">
+          <a href="/"><span>Strona główna</span></a>
+          {% block breadcrumbs %}<span>{{ title }}</span>{% endblock %}
+        </div>
+      </div>
+
+      <main class="l-main">
+        {% block main %}{% endblock %}
+      </main>
+    {% endblock %}
+
+    {% block footer %}
+      {% include 'footer.html' %}
+    {% endblock %}
+
+    <script type="text/javascript">
+      var LANGUAGE_CODE = "{{ LANGUAGE_CODE }}";
+    </script>
+    {% javascript 'main' %}
+    {% javascript 'player' %}
+    {% block extrabody %}{% endblock %}
+    {% include 'hotjar.html' %}
+    {% csrf_token %}
+  </body>
+</html>

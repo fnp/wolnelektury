@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+
+{% block breadcrumbs %}
+  <a href="/katalog/"><span>Katalog</span></a>
+  <a href="/katalog/kolekcje/"><span>Kolekcje</span></a>
+{% endblock %}
+
+
+{% block main %}
+
+  <div class="l-section">
+    <div class="l-author__header">
+      <h1>{{ collection.title }}</h1>
+    </div>
+  </div>
+
+  <div class="l-author__info">
+    <p>
+      {{ collection.description|safe }}
+    </p>
+  </div>
+
+  <div class="l-section">
+    <div class="l-books__header">
+      <div class="l-books__input">
+        <i class="icon icon-filter"></i>
+        <input type="text" placeholder="filtry, tytuł" class="quick-filter" data-for="book-list">
+      </div>
+      <div class="l-books__sorting">
+        <span>Sortuj:</span>
+        <div>
+          <button data-order="data-pop">najpopularniejsze</button>
+          <button class="is-active">alfabetycznie</button>
+          <!--button>chronologicznie</button-->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="l-section l-section--col">
+    <div class="l-books__grid" id="book-list">
+      {% for book in collection.get_books %}
+        {% include "catalogue/book_box.html" %}
+      {% endfor %}
+    </div>
+  </div>
+
+
+{% endblock %}

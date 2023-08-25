@@ -1,0 +1,14 @@
+{% load pagination_tags %}
+{% autopaginate object_list view.page_size %}
+
+<div>
+<div id="object-list">
+  {% for book in object_list %}
+    {% include "catalogue/book_box.html" %}
+  {% endfor %}
+</div>
+
+<div id="paginate">
+  {% paginate %}
+</div>
+</div>

@@ -23,7 +23,7 @@ def infopage(request, slug):
 
     return render(
         request,
-        'infopages/2022/infopage.html',
+        'infopages/infopage.html',
         {
             'page': page,
             'left_column': left_column,
