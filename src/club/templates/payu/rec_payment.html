@@ -2,22 +2,29 @@
 {% load i18n %}
 
 
-{% block titleextra %}{% trans "Wolne Lektury need your help!" %}{% endblock %}
+{% block titleextra %}{% trans "Wolne Lektury potrzebują Twojej pomocy!" %}{% endblock %}
 
 
 {% block body %}
   <div class="white-box normal-text">
 
-    {# On the card payment page. #}
-    <h1>{% trans "Supporting Wolne Lektury" %}</h1>
+    <h1>{% trans "Wspierasz Wolne Lektury" %}</h1>
 
-    <p>
-      {% if schedule.payed_at %}
-        Aktualizujesz dane swojej comiesięcznej darowizny w kwocie {{ amount }} PLN. Dziękujemy!</p><p>
-        Jeśli chcesz zrezygnować z dalszego wsparcia Wolnych Lektur, możesz to zrobić na <a href="{{ schedule.get_absolute_url }}">stronie swojej darowizny</a>.
-      {% else %}
-        {% blocktrans with amount=schedule.amount %}
-          You are setting up a monthly payment in the amount of {{ amount }} PLN. Thank you!
+    {% if schedule.payed_at %}
+      <p>
+        {% blocktrans trimmed %}
+          Aktualizujesz dane swojej comiesięcznej darowizny w kwocie {{ amount }} PLN. Dziękujemy!
+        {% endblocktrans %}
+      </p><p>
+        {% blocktrans trimmed with url=schedule.get_absolute_url %}
+          Jeśli chcesz zrezygnować z dalszego wsparcia Wolnych Lektur,
+          możesz to zrobić na <a href="{{ url }}">stronie swojej darowizny</a>.
+        {% endblocktrans %}
+      </p>
+    {% else %}
+      <p>
+        {% blocktrans trimmed with amount=schedule.amount %}
+          Zlecasz comiesięczną płatność w wysokości {{ amount }} zł. Dziękujemy!
         {% endblocktrans %}
       {% endif %}
     </p>

@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load pagination_tags %}
 
 {% block global-content %}
   <div class="l-container">
     <div class="l-breadcrumb">
-      <a href="/"><span>Strona główna</span></a>
-      <a href="/katalog/lektury/"><span>Literatura</span></a>
+      <a href="/"><span>{% trans "Strona główna" %}</span></a>
+      <a href="/katalog/lektury/"><span>{% trans "Literatura" %}</span></a>
       {% for ancestor in fragment.book.ancestors %}
         <a href="{{ ancestor.get_absolute_url }}">{{ ancestor.title }}</a>
       {% endfor %}
@@ -18,8 +19,8 @@
     <div class="l-section">
       <div class="l-author__header">
         <h1>
-          <span>Motyw:</span> {{ theme.name }}
-          <span>w utworze</span>
+          <span>{% trans "Motyw" %}:</span> {{ theme.name }}
+          <span>{% trans "w utworze" %}</span>
           <a href="{{ book.get_absolute_url }}">{{ book }}</a>
         </h1>
       </div>
@@ -59,7 +60,7 @@
         </div>
         <div class="l-theme__col">
           <div class="l-theme__info">
-            <h3>Motyw: {{ theme.name }}</h3>
+            <h3>{% trans "Motyw" %}: {{ theme.name }}</h3>
             {{ theme.description|safe }}
             <!--
                  <h3>Motyw w sztuce <i class="icon icon-arrow-left"></i> <i class="icon icon-arrow-right"></i></h3>

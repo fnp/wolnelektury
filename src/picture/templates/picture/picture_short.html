@@ -36,7 +36,7 @@
           <div class="tags">
             {% spaceless %}
               <span class="category">
-                <span class="mono"> {% trans "Epoch" %}:</span>&nbsp;<span class="book-box-tag">
+                <span class="mono"> {% trans "Epoka" %}:</span>&nbsp;<span class="book-box-tag">
                   {% for tag in tags.epoch %}
                     <a href="{{ tag.get_absolute_gallery_url }}">{{ tag }}</a>
                     {% if not forloop.last %}<span>, </span>{% endif %}
@@ -45,7 +45,7 @@
               </span>
 
               <span class="category">
-                <span class="mono"> {% trans "Kind" %}:</span>&nbsp;<span class="book-box-tag">
+                <span class="mono"> {% trans "Rodzaj" %}:</span>&nbsp;<span class="book-box-tag">
                   {% for tag in tags.kind %}
                     <a href="{{ tag.get_absolute_gallery_url }}">{{ tag }}</a>
                     {% if not forloop.last %}<span>, </span>{% endif %}
@@ -54,7 +54,7 @@
               </span>
 
               <span class="category">
-                <span class="mono"> {% trans "Genre" %}:</span>&nbsp;<span class="book-box-tag">
+                <span class="mono"> {% trans "Gatunek" %}:</span>&nbsp;<span class="book-box-tag">
                   {% for tag in tags.genre %}
                     <a href="{{ tag.get_absolute_gallery_url }}">{{ tag }}</a>
                     {% if not forloop.last %}<span>, </span>{% endif %}
@@ -71,10 +71,10 @@
       </div>
       <ul class="book-box-tools">
         <li class="book-box-read">
-          <a href="{% url 'picture_viewer' picture.slug %}" class="downarrow">{% trans "View online" %}</a>
+          <a href="{% url 'picture_viewer' picture.slug %}" class="downarrow">{% trans "Zobacz online" %}</a>
         </li>
         <li class="book-box-download">
-          <a href="{{picture.image_file.url}}" class="downarrow">{% trans "download original" %}</a>
+          <a href="{{picture.image_file.url}}" class="downarrow">{% trans "pobierz oryginał" %}</a>
         </li>
       </ul>
     </div>

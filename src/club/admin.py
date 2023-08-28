@@ -8,7 +8,6 @@ from django.db.models import Q
 from django import forms
 from django.utils.html import conditional_escape
 from django.utils.safestring import mark_safe
-from django.utils.translation import gettext_lazy as _
 from fnpdjango.actions import export_as_csv_action
 from modeltranslation.admin import TranslationAdmin
 from wolnelektury.utils import YesNoFilter
@@ -57,13 +56,13 @@ class PayUCardTokenInline(admin.TabularInline):
 
 
 class PayedFilter(YesNoFilter):
-    title = _('payment complete')
+    title = 'płatność zakończona'
     parameter_name = 'payed'
     q = ~Q(payed_at=None)
 
 
 class ExpiredFilter(YesNoFilter):
-    title = _('schedule expired')
+    title = 'harmonogram przedawniony'
     parameter_name = 'expired'
     q = Q(expires_at__isnull=False, expires_at__lt=Now())
 
@@ -81,7 +80,7 @@ class ScheduleForm(forms.ModelForm):
 
 
 class SourceFilter(admin.SimpleListFilter):
-    title = _('Source') # display title
+    title = 'Źródło' # display title
     parameter_name = 'source'
     template = "admin/long_filter.html"
 

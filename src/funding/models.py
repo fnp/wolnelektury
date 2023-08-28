@@ -1,4 +1,3 @@
-
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
@@ -13,7 +12,7 @@ from django.template.loader import render_to_string
 from django.urls import reverse
 from django.utils.html import mark_safe
 from django.utils.timezone import utc
-from django.utils.translation import gettext_lazy as _, override
+from django.utils.translation import override
 from catalogue.models import Book
 from catalogue.utils import get_random_hash
 from polls.models import Poll
@@ -25,28 +24,28 @@ from . import utils
 
 class Offer(models.Model):
     """ A fundraiser for a particular book. """
-    author = models.CharField(_('author'), max_length=255)
-    title = models.CharField(_('title'), max_length=255)
-    slug = models.SlugField(_('slug'))
-    description = models.TextField(_('description'), blank=True)
-    target = models.DecimalField(_('target'), decimal_places=2, max_digits=10)
-    start = models.DateField(_('start'), db_index=True)
-    end = models.DateField(_('end'), db_index=True)
-    redakcja_url = models.URLField(_('redakcja URL'), blank=True)
-    book = models.ForeignKey(Book, models.PROTECT, null=True, blank=True, help_text=_('Published book.'))
-    cover = models.ImageField(_('Cover'), upload_to='funding/covers')
-    poll = models.ForeignKey(Poll, help_text=_('Poll'), null=True, blank=True, on_delete=models.SET_NULL)
+    author = models.CharField('autor', max_length=255)
+    title = models.CharField('tytuł', max_length=255)
+    slug = models.SlugField('slug')
+    description = models.TextField('opis', blank=True)
+    target = models.DecimalField('kwota docelowa', decimal_places=2, max_digits=10)
+    start = models.DateField('początek', db_index=True)
+    end = models.DateField('koniec', db_index=True)
+    redakcja_url = models.URLField('URL na Redakcji', blank=True)
+    book = models.ForeignKey(Book, models.PROTECT, null=True, blank=True, help_text='Opublikowana książka.')
+    cover = models.ImageField('Okładka', upload_to='funding/covers')
+    poll = models.ForeignKey(Poll, help_text='Ankieta', null=True, blank=True, on_delete=models.SET_NULL)
 
-    notified_near = models.DateTimeField(_('Near-end notifications sent'), blank=True, null=True)
-    notified_end = models.DateTimeField(_('End notifications sent'), blank=True, null=True)
+    notified_near = models.DateTimeField('Wysłano powiadomienia przed końcem', blank=True, null=True)
+    notified_end = models.DateTimeField('Wysłano powiadomienia o zakończeniu', blank=True, null=True)
 
     def cover_img_tag(self):
         return mark_safe('<img src="%s" />' % self.cover.url)
-    cover_img_tag.short_description = _('Cover preview')
+    cover_img_tag.short_description = 'Podgląd okładki'
 
     class Meta:
-        verbose_name = _('offer')
-        verbose_name_plural = _('offers')
+        verbose_name = 'zbiórka'
+        verbose_name_plural = 'zbiórki'
         ordering = ['-end']
 
     def __str__(self):
@@ -155,7 +154,7 @@ class Offer(models.Model):
             return
         assert not self.is_current()
         self.notify_all(
-            _('The fundraiser has ended!'),
+            _('Zbiórka dobiegła końca!'),
             'funding/email/end.txt', {
                 'offer': self,
                 'is_win': self.is_win(),
@@ -172,7 +171,7 @@ class Offer(models.Model):
         sum_ = self.sum()
         need = self.target - sum_
         self.notify_all(
-            _('The fundraiser will end soon!'),
+            _('Zbiórka niedługo się zakończy!'),
             'funding/email/near.txt', {
                 'days': (self.end - date.today()).days + 1,
                 'offer': self,
@@ -186,7 +185,7 @@ class Offer(models.Model):
     def notify_published(self):
         assert self.book is not None
         self.notify_all(
-            _('The book you helped fund has been published.'),
+            _('Książka, którą pomogłeś/-aś ufundować, została opublikowana.'),
             'funding/email/published.txt', {
                 'offer': self,
                 'book': self.book,
@@ -241,15 +240,15 @@ class Perk(models.Model):
     If no attached to a particular Offer, applies to all.
 
     """
-    offer = models.ForeignKey(Offer, models.CASCADE, verbose_name=_('offer'), null=True, blank=True)
-    price = models.DecimalField(_('price'), decimal_places=2, max_digits=10)
-    name = models.CharField(_('name'), max_length=255)
-    long_name = models.CharField(_('long name'), max_length=255)
-    end_date = models.DateField(_('end date'), null=True, blank=True)
+    offer = models.ForeignKey(Offer, models.CASCADE, verbose_name='zbiórka', null=True, blank=True)
+    price = models.DecimalField('cena', decimal_places=2, max_digits=10)
+    name = models.CharField('nazwa', max_length=255)
+    long_name = models.CharField('długa nazwa', max_length=255)
+    end_date = models.DateField('data końcowa', null=True, blank=True)
 
     class Meta:
-        verbose_name = _('perk')
-        verbose_name_plural = _('perks')
+        verbose_name = 'prezent'
+        verbose_name_plural = 'prezenty'
         ordering = ['-price']
 
     def __str__(self):
@@ -262,21 +261,21 @@ class Funding(club.payu.models.Order):
     The payment was completed if and only if completed_at is set.
 
     """
-    offer = models.ForeignKey(Offer, models.PROTECT, verbose_name=_('offer'))
-    customer_ip = models.GenericIPAddressField(_('customer IP'), null=True)
+    offer = models.ForeignKey(Offer, models.PROTECT, verbose_name='zbiórka')
+    customer_ip = models.GenericIPAddressField('adres IP', null=True)
     
-    name = models.CharField(_('name'), max_length=127, blank=True)
-    email = models.EmailField(_('email'), blank=True, db_index=True)
+    name = models.CharField('nazwa', max_length=127, blank=True)
+    email = models.EmailField('e-mail', blank=True, db_index=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, models.SET_NULL, blank=True, null=True)
-    amount = models.DecimalField(_('amount'), decimal_places=2, max_digits=10)
-    perks = models.ManyToManyField(Perk, verbose_name=_('perks'), blank=True)
+    amount = models.DecimalField('kwota', decimal_places=2, max_digits=10)
+    perks = models.ManyToManyField(Perk, verbose_name='prezenty', blank=True)
     language_code = models.CharField(max_length=2, null=True, blank=True)
-    notifications = models.BooleanField(_('notifications'), default=True, db_index=True)
+    notifications = models.BooleanField('powiadomienia', default=True, db_index=True)
     notify_key = models.CharField(max_length=32)
 
     class Meta:
-        verbose_name = _('funding')
-        verbose_name_plural = _('fundings')
+        verbose_name = 'wpłata'
+        verbose_name_plural = 'wpłaty'
         ordering = ['-completed_at', 'pk']
 
     @classmethod
@@ -374,12 +373,12 @@ class PayUNotification(club.payu.models.Notification):
 class Spent(models.Model):
     """ Some of the remaining money spent on a book. """
     book = models.ForeignKey(Book, models.PROTECT)
-    amount = models.DecimalField(_('amount'), decimal_places=2, max_digits=10)
-    timestamp = models.DateField(_('when'))
+    amount = models.DecimalField('kwota', decimal_places=2, max_digits=10)
+    timestamp = models.DateField('kiedy')
 
     class Meta:
-        verbose_name = _('money spent on a book')
-        verbose_name_plural = _('money spent on books')
+        verbose_name = 'pieniądze wydane na książkę'
+        verbose_name_plural = 'pieniądze wydane na książki'
         ordering = ['-timestamp']
 
     def __str__(self):

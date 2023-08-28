@@ -1,8 +1,11 @@
 {% load i18n %}
 
 {% url 'funding_wlfund' as wlfund %}
-{% blocktrans %}Any <a href="{{wlfund}}">remaining funds</a> will be spent
-on other books waiting to be published.{% endblocktrans %}
+{% blocktrans trimmed %}
+  Wszelkie <a href="{{ wlfund }}">pozostałe środki</a> przeznaczymy na inne
+  książki czekające na publikację.
+{% endblocktrans %}
 <br/><br/>
-{% blocktrans %}We will supplement every book with your name as a donor, no matter how
-big your support will be.{% endblocktrans %}
+{% blocktrans trimmed %}
+  Zostaniesz umieszczony/-a na liście darczyńców, niezależnie od wysokości wpłaty.
+{% endblocktrans %}

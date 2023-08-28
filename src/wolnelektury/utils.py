@@ -19,7 +19,6 @@ from django.template.loader import render_to_string
 from django.utils.translation import get_language
 from django.conf import settings
 from django.utils.safestring import mark_safe
-from django.utils.translation import gettext as _
 
 
 def utc_for_js(dt):
@@ -109,7 +108,7 @@ def ajax(login_required=False, method=None, template=None, permission_required=N
 def send_noreply_mail(subject, message, recipient_list, **kwargs):
     send_mail(
         '[WolneLektury] ' + subject,
-        message + "\n\n-- \n" + _('Message sent automatically. Please do not reply.'),
+        message + "\n\n-- \nWiadomość wysłana automatycznie. Prosimy nie odpowiadać.",
         'no-reply@wolnelektury.pl', recipient_list, **kwargs)
 
 
@@ -191,8 +190,8 @@ def clear_cached_renders(bound_method):
 class YesNoFilter(admin.SimpleListFilter):
     def lookups(self, request, model_admin):
         return (
-            ('yes', _('Yes')),
-            ('no', _('No')),
+            ('yes', 'Tak'),
+            ('no', 'Nie'),
         )
 
     def queryset(self, request, queryset):

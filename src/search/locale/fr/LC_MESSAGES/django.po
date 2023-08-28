@@ -1,35 +1,157 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Wolne Lektury. See NOTICE for more information.
 msgid ""
 msgstr ""
-"Project-Id-Version: 2\n"
+"Project-Id-Version: WolneLektury-search\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2012-03-04 20:25+0100\n"
-"Last-Translator: xxx <xxx>\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: search/forms.py:14 search/templates/newsearch/search.html:16
-#: search/templates/search_/search.html:7
-msgid "Search"
-msgstr "Rechercher"
-
-#: search/forms.py:24
-#, fuzzy
-#| msgid "title, author, theme/topic, epoch, kind, genre, phrase"
-msgid "title, author, epoch, kind, genre, phrase"
-msgstr "titre, auteur, thème/sujet, époque, type, genre"
-
-#: search/templates/search_/search.html:27
-msgid "Did you mean"
+#: search/forms.py:23 search/forms.py:33 search/forms.py:48 search/forms.py:57
+#: search/forms.py:61
+msgid "wszystkie"
 msgstr ""
 
-#~ msgid "book"
-#~ msgstr "le livre"
+#: search/forms.py:24
+msgid "tekst"
+msgstr ""
+
+#: search/forms.py:25
+msgid "audiobook"
+msgstr ""
+
+#: search/forms.py:26
+msgid "Daisy"
+msgstr ""
+
+#: search/forms.py:27 search/forms.py:39
+msgid "obraz"
+msgstr ""
+
+#: search/forms.py:34
+msgid "autor"
+msgstr ""
+
+#: search/forms.py:36
+msgid "motyw"
+msgstr ""
+
+#: search/forms.py:37 search/templates/search/results.html:26
+msgid "gatunek"
+msgstr ""
+
+#: search/forms.py:38
+msgid "tytuł"
+msgstr ""
+
+#: search/forms.py:40
+msgid "kolekcja"
+msgstr ""
+
+#: search/forms.py:41
+msgid "cytat"
+msgstr ""
+
+#: search/templates/search/results.html:8
+msgid "Wynik wyszukiwania dla:"
+msgstr ""
+
+#: search/templates/search/results.html:14
+msgid "format"
+msgstr ""
+
+#: search/templates/search/results.html:18
+msgid "język"
+msgstr ""
+
+#: search/templates/search/results.html:22
+msgid "epoka"
+msgstr ""
+
+#: search/templates/search/results.html:31
+msgid "kategoria"
+msgstr ""
+
+#: search/templates/search/results.html:35
+msgid "wyślij"
+msgstr ""
+
+#: search/templates/search/results.html:40
+msgid "Brak wyników."
+msgstr ""
+
+#: search/templates/search/results.html:46
+msgid "Autorzy"
+msgstr ""
+
+#: search/templates/search/results.html:66
+msgid "Motywy"
+msgstr ""
+
+#: search/templates/search/results.html:86
+msgid "Gatunki"
+msgstr ""
+
+#: search/templates/search/results.html:106
+msgid "Książki"
+msgstr ""
+
+#: search/templates/search/results.html:119
+msgid "Obrazy"
+msgstr ""
+
+#: search/templates/search/results.html:132
+msgid "W treści"
+msgstr ""
+
+#: search/templates/search/results.html:153
+msgid "Kolekcje"
+msgstr ""
+
+#: search/templates/search/results.html:165
+msgid "Domena publiczna?"
+msgstr ""
+
+#: search/templates/search/results.html:167
+msgid ""
+"Dzieła tych autorów przejdą do zasobów domeny publicznej i będą mogły być "
+"publikowane bez żadnych ograniczeń. Dowiedz się, dlaczego biblioteki "
+"internetowe nie mogą udostępniać dzieł tego autora."
+msgstr ""
+
+#: search/templates/search/results.html:179
+msgid ""
+"Dzieła tego autora są w&nbsp;domenie publicznej i&nbsp;czekają na publikację."
+msgstr ""
+
+#: search/templates/search/results.html:183
+#, python-format
+msgid ""
+"Dzieła tego autora będą mogły być publikowane bez ograniczeń w&nbsp;"
+"roku&nbsp;<em>%(year)s</em>."
+msgstr ""
+
+#: search/templates/search/results.html:188
+msgid "Dzieła tego autora są objęte prawem autorskim."
+msgstr ""
+
+#: search/templates/search/results.html:199
+msgid "Ten utwór jest w&nbsp;domenie publicznej i&nbsp;czeka na publikację."
+msgstr ""
+
+#: search/templates/search/results.html:203
+#, python-format
+msgid ""
+"Ten utwór będzie mógł być publikowany bez ograniczeń w&nbsp;roku&nbsp;"
+"<em>%(year)s</em>."
+msgstr ""
+
+#: search/templates/search/results.html:208
+msgid "Ten utwór nie jest jeszcze w domenie publicznej."
+msgstr ""

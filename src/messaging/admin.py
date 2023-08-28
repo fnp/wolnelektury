@@ -1,6 +1,5 @@
 from django.contrib import admin
 from django.contrib import messages
-from django.utils.translation import gettext_lazy as _
 from fnpdjango.actions import export_as_csv_action
 from . import models
 
@@ -13,10 +12,10 @@ class EmailTemplateAdmin(admin.ModelAdmin):
             ('min_days_since', 'max_days_since'),
             'is_active',
             ]}),
-        (_('E-mail content'), {"fields": [
+        ('Zawartość e-maila', {"fields": [
             'subject', 'body'
         ]}),
-        (_('Sending constraints'), {"fields": [
+        ('Ograniczenia wysyłki', {"fields": [
             ('min_day_of_month', 'max_day_of_month'),
             ('dow_1', 'dow_2', 'dow_3', 'dow_4', 'dow_5', 'dow_6', 'dow_7'),
             ('min_hour', 'max_hour'),
@@ -26,9 +25,17 @@ class EmailTemplateAdmin(admin.ModelAdmin):
     def _test_email(self, request, obj):
         if request.user.email:
             obj.send_test_email(request.user.email)
-            messages.info(request, _('Test e-mail has been sent to %(email)s.') % {"email": request.user.email})
+            messages.info(
+                request,
+                'Na adres %(email)s została wysłana testowa wiadomość.' % {
+                    "email": request.user.email
+                }
+            )
         else:
-            messages.warning(request, _('You have no email set. Test e-mail not sent.'))
+            messages.warning(
+                request,
+                'Nie masz ustawionego adresu e-mail. Wiadomość testowa nie została wysłana.'
+            )
 
     def response_add(self, request, obj):
         self._test_email(request, obj)

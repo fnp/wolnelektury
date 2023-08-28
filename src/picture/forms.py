@@ -2,7 +2,6 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django import forms
-from django.utils.translation import gettext_lazy as _
 from picture.models import Picture
 
 
@@ -21,7 +20,7 @@ class PictureImportForm(forms.Form):
                 self.cleaned_data['picture_xml_file'] = \
                         ContentFile(self.cleaned_data['picture_xml'].encode('utf-8'))
             else:
-                raise forms.ValidationError(_("Please supply an XML."))
+                raise forms.ValidationError('Proszę dostarczyć XML.')
 
         if not self.cleaned_data['picture_image_file']:
             if self.cleaned_data['picture_image_data']:
@@ -29,7 +28,7 @@ class PictureImportForm(forms.Form):
                         ContentFile(b64decode(
                                 self.cleaned_data['picture_image_data']))
             else:
-                raise forms.ValidationError(_("Please supply an image."))
+                raise forms.ValidationError('Proszę dostarczyć obraz.')
 
         return super(PictureImportForm, self).clean()
 

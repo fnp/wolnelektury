@@ -32,7 +32,7 @@
       <div class="c-player__info"></div>
       <div class="c-player__chapters">
         {% if audiobooks.0|length > 1 %}
-          <span>Rozdziały</span>
+          <span>{% trans "Rozdziały" %}</span>
         {% endif %}
         <ul class="jp-playlist">
 		{% localize off %}
@@ -48,8 +48,8 @@
                   {{ i.mp3.part_name }}
                 </span>
                 <span class="attribution">
-                  {% trans "Artist:" %}&nbsp;<span class='artist'>{{ extra_info.artist_name }}</span>,
-                  {% trans "director:" %}&nbsp;<span class='director'>{{ extra_info.director_name }}</span>
+                  {% trans "Czyta:" %}&nbsp;<span class='artist'>{{ extra_info.artist_name }}</span>,
+                  {% trans "reż." %}&nbsp;<span class='director'>{{ extra_info.director_name }}</span>
                 </span>
                 <span class="license">
                   {% if extra_info.license %}{% license_icon extra_info.license %}{% endif %}

@@ -1,9 +1,8 @@
 {% extends "admin/change_form.html" %}
-{% load i18n %}
 
 {% block content_title %}
   {% if change and 'advanced' in request.GET %}
-    <h1>{{ title }} &mdash; {% trans "advanced" %} </h1>
+    <h1>{{ title }} &mdash; zaawansowane</h1>
   {% else %}
     {{ block.super }}
   {% endif %}
@@ -31,9 +30,9 @@
       <ul class="object-tools">
         <li>
           {% if 'advanced' in request.GET %}
-            <a href="." class="advancedlink">{% trans "simplified" %}</a>
+            <a href="." class="advancedlink">uproszczony</a>
           {% else %}
-            <a href="?advanced" class="advancedlink">{% trans "advanced" %}</a>
+            <a href="?advanced" class="advancedlink">zaawansowany</a>
           {% endif %}
         </li>
       </ul>

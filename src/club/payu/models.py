@@ -8,44 +8,43 @@ from django.contrib.sites.models import Site
 from django.db import models
 from django.urls import reverse
 from django.utils.timezone import now
-from django.utils.translation import gettext_lazy as _
 from . import POSS
 
 
 class CardToken(models.Model):
     """ This should be attached to a payment schedule. """
-    pos_id = models.CharField(_('POS id'), max_length=255)
-    disposable_token = models.CharField(_('disposable token'), max_length=255)
-    reusable_token = models.CharField(_('reusable token'), max_length=255, null=True, blank=True)
-    created_at = models.DateTimeField(_('created_at'), auto_now_add=True)
+    pos_id = models.CharField('POS id', max_length=255)
+    disposable_token = models.CharField('token jednorazowy', max_length=255)
+    reusable_token = models.CharField('token wielokrotnego użytku', max_length=255, null=True, blank=True)
+    created_at = models.DateTimeField('utworzony', auto_now_add=True)
 
     class Meta:
         abstract = True
-        verbose_name = _('PayU card token')
-        verbose_name_plural = _('PayU card tokens')
+        verbose_name = 'token PayU karty płatniczej'
+        verbose_name_plural = 'tokeny PayU kart płatniczych'
 
 
 class Order(models.Model):
-    pos_id = models.CharField(_('POS id'), max_length=255)   # TODO: redundant?
-    customer_ip = models.GenericIPAddressField(_('customer IP'))
-    order_id = models.CharField(_('order ID'), max_length=255, blank=True)
+    pos_id = models.CharField('POS id', max_length=255)   # TODO: redundant?
+    customer_ip = models.GenericIPAddressField('adres IP klienta')
+    order_id = models.CharField('ID zamówienia', max_length=255, blank=True)
 
     status = models.CharField(max_length=128, blank=True, choices=[
-        ('PENDING', _('Pending')),
-        ('WAITING_FOR_CONFIRMATION', _('Waiting for confirmation')),
-        ('COMPLETED', _('Completed')),
-        ('CANCELED', _('Canceled')),
-        ('REJECTED', _('Rejected')),
+        ('PENDING', 'Czeka'),
+        ('WAITING_FOR_CONFIRMATION', 'Czeka na potwierdzenie'),
+        ('COMPLETED', 'Ukończone'),
+        ('CANCELED', 'Anulowane'),
+        ('REJECTED', 'Odrzucone'),
 
-        ('ERR-INVALID_TOKEN', _('Invalid token')),
+        ('ERR-INVALID_TOKEN', 'Błędny token'),
     ])
     created_at = models.DateTimeField(null=True, blank=True, auto_now_add=True)
     completed_at = models.DateTimeField(null=True, blank=True)
 
     class Meta:
         abstract = True
-        verbose_name = _('PayU order')
-        verbose_name_plural = _('PayU orders')
+        verbose_name = 'Zamówienie PayU'
+        verbose_name_plural = 'Zamówienia PayU'
 
     # These need to be provided in a subclass.
 
@@ -154,13 +153,13 @@ class Order(models.Model):
 
 class Notification(models.Model):
     """ Add `order` FK to real Order model. """
-    body = models.TextField(_('body'))
-    received_at = models.DateTimeField(_('received_at'), auto_now_add=True)
+    body = models.TextField('treść')
+    received_at = models.DateTimeField('odebrana', auto_now_add=True)
 
     class Meta:
         abstract = True
-        verbose_name = _('PayU notification')
-        verbose_name_plural = _('PayU notifications')
+        verbose_name = 'notyfikacja PayU'
+        verbose_name_plural = 'notyfikacje PayU'
 
     def get_status(self):
         return json.loads(self.body)['order']['status']

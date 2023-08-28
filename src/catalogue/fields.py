@@ -10,7 +10,6 @@ from django.core.files import File
 from django.db import models
 from django.db.models.fields.files import FieldFile
 from django.utils.deconstruct import deconstructible
-from django.utils.translation import gettext_lazy as _
 from catalogue.constants import LANGUAGES_3TO2
 from catalogue.utils import absolute_url, remove_zip, truncate_html_words, gallery_path, gallery_url
 from waiter.utils import clear_cache

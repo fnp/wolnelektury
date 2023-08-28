@@ -1,14 +1,12 @@
-from django.utils.translation import gettext_lazy as _
-
 PLACE_DEFINITIONS = [
-    ('top', _('Top of all pages.'), True),
-    ('book-page', _('Book page'), False),
-    ('book-text-intermission', _('Book text intermission'), False),
-    ('book-fragment-list', _('Next to list of book fragments.'), False),
-    ('blackout', _('Blackout'), True, (
-        ('full', _('Full screen')),
-#        ('centre', _('Centre of screen')),
-        ('upper', _('Upper half of screen')),
+    ('top', 'U góry wszystkich stron', True),
+    ('book-page', 'Strona książki', False),
+    ('book-text-intermission', 'Przerwa w treści książki', False),
+    ('book-fragment-list', 'Obok listy fragmentów książki', False),
+    ('blackout', 'Blackout', True, (
+        ('full', 'Cały ekran'),
+#        ('centre', 'Środek ekranu'),
+        ('upper', 'Górna połowa ekranu'),
     )),
 ]
 

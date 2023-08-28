@@ -3,20 +3,19 @@
 #
 from django.db import models
 from django.urls import reverse
-from django.utils.translation import gettext_lazy as _
 
 
 class InfoPage(models.Model):
     """An InfoPage is used to display a two-column flatpage."""
 
-    slug = models.SlugField(_('slug'), max_length=120, unique=True, db_index=True)
-    title = models.CharField(_('title'), max_length=120, blank=True)
-    left_column = models.TextField(_('left column'), blank=True)
-    right_column = models.TextField(_('right column'), blank=True)
+    slug = models.SlugField('slug', max_length=120, unique=True, db_index=True)
+    title = models.CharField('tytuł', max_length=120, blank=True)
+    left_column = models.TextField('lewa kolumna', blank=True)
+    right_column = models.TextField('prawa kolumna', blank=True)
 
     class Meta:
-        verbose_name = _('info page')
-        verbose_name_plural = _('info pages')
+        verbose_name = 'strona informacyjna'
+        verbose_name_plural = 'strony informacyjne'
 
     def __str__(self):
         return self.title

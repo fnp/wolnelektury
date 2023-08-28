@@ -4,13 +4,13 @@
 {% load i18n %}
 {% block settings %}
   {% load title %}
-  {% trans "OpenID Sign In" as title %}
+  {% trans "Logowanie przez OpenID" as title %}
   {% title title %}
 {% endblock %}
 
 
 {% block breadcrumbs %}
-  <a href="{% url 'login' %}"><span>{% trans "Sign In" %}</span></a>
+  <a href="{% url 'login' %}"><span>{% trans "Zaloguj się" %}</span></a>
   {{ block.super }}
 {% endblock %}
 
@@ -18,7 +18,7 @@
 {% block head_title %}{% endblock %}
 
 {% block body %}
-  <h1>{% trans 'OpenID Sign In' %}</h1>
+  <h1>{% trans 'Logowanie przez OpenID' %}</h1>
   <div class="normal-text white-box">
     <form id="openid_login_form" class="openid_login" method="post" action="{% url 'openid_login' %}">
       {% csrf_token %}
@@ -26,7 +26,7 @@
         OpenID:
       </label><br>
       <input id="id_openid" type="text" class="textinput" name="openid" /><br><br>
-      <button type="submit">{% trans "Sign In" %}</button>
+      <button type="submit">{% trans "Zaloguj się" %}</button>
     </form>
   </div>
 {% endblock %}

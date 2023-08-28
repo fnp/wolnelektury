@@ -1,12 +1,8 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Wolne Lektury. See NOTICE for more information.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: WolneLektury-libraries\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -17,47 +13,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: libraries/models.py:12 libraries/models.py:29
-msgid "name"
-msgstr ""
-
-#: libraries/models.py:13 libraries/models.py:30
-msgid "slug"
-msgstr ""
-
-#: libraries/models.py:16
-msgid "catalog"
-msgstr ""
-
-#: libraries/models.py:17
-msgid "catalogs"
-msgstr ""
-
-#: libraries/models.py:32
-msgid "url"
-msgstr ""
-
-#: libraries/models.py:33
-msgid "description"
-msgstr ""
-
-#: libraries/models.py:36
-msgid "library"
-msgstr ""
-
-#: libraries/models.py:37
-msgid "libraries"
-msgstr ""
-
 #: libraries/templates/libraries/catalog_view.html:6
 #: libraries/templates/libraries/main_view.html:6
 #: libraries/templates/libraries/main_view.html:10
 #: libraries/templates/libraries/main_view.html:13
-msgid "Library directories"
+msgid "Katalogi bibliotek"
 msgstr ""
 
 #: libraries/templates/libraries/catalog_view.html:11
 #: libraries/templates/libraries/catalog_view.html:14
 #: libraries/templates/libraries/library_view.html:10
-msgid "Libraries directory"
+msgid "Katalog bibliotek"
+msgstr ""
+
+#: libraries/templates/libraries/library_view.html:19
+msgid "Adres strony www"
 msgstr ""

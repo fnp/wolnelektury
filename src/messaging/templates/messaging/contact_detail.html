@@ -1,13 +1,18 @@
 {% extends "base_simple.html" %}
+{% load i18n %}
 
 {% block body %}
 
-<h1>Adres wypisany</h1>
+<h1>{% trans "Adres wypisany" %}</h1>
 
 {% if contact.level == 50 %}
-<p>Potwierdzamy, że adres {{ contact.email }} został wypisany z korespondencji.</p>
+  <p>
+    {% blocktrans trimmed with email=contact.email %}
+      Potwierdzamy, że adres {{ email }} został wypisany z korespondencji.
+    {% endblocktrans %}
+  </p>
 {% else %}
-Błąd.
+  {% trans "Błąd." %}
 {% endif %}
 
 {% endblock %}

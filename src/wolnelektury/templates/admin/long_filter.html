@@ -1,5 +1,4 @@
-{% load i18n %}
-<h3>{% blocktranslate with filter_title=title %} By {{ filter_title }} {% endblocktranslate %}</h3>
+<h3>{{ filter_title }}</h3>
 <script>
  function longFilter(f) {
      $ = django.jQuery;

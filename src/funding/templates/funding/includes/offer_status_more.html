@@ -5,16 +5,18 @@
     {% include "funding/snippets/any_remaining.html" %}
   </p>
 {% else %}
-  <p class="date">{% trans "Fundraiser span" %}: {{ offer.start }} – {{ offer.end }}</p>
+  <p class="date">{% trans "Termin zbiórki" %}: {{ offer.start }} – {{ offer.end }}</p>
   {% if offer.is_win %}
     <p>
       {% if offer.book %}
-        {% blocktrans with bu=offer.book.get_absolute_url bt=offer.book %}The book
-        <a href="{{ bu }}">{{ bt }}</a> has been already published.{% endblocktrans %}
+        {% blocktrans trimmed with bu=offer.book.get_absolute_url bt=offer.book %}
+          Książka <a href="{{ bu }}">{{ bt }}</a> została już opublikowana.
+        {% endblocktrans %}
       {% else %}
         {% if offer.redakcja_url %}
-          {% blocktrans with r=offer.redakcja_url %}You can follow
-          the work on the <a href="{{ r }}">Editorial Platform</a>.{% endblocktrans %}
+          {% blocktrans trimmed with r=offer.redakcja_url %}
+            Możesz śledzić prace na <a href="{{ r }}">Platformie Redakcyjnej</a>.
+          {% endblocktrans %}
         {% endif %}
       {% endif %}
     </p>

@@ -4,11 +4,11 @@
 
 {% block settings %}
   {% load title %}
-  {% trans "WolneLektury.pl API" as title %}
+  {% trans "API WolneLektury.pl" as title %}
   {% title title %}
 {% endblock %}
 
-{% block title %}{% trans "WolneLektury.pl API" %}{% endblock %}
+{% block title %}{% trans "API WolneLektury.pl" %}{% endblock %}
 
 {% block bodyid %}api{% endblock %}
 
@@ -18,85 +18,89 @@
   <div class="normal-text white-box">
     <p>
       {% url "api" as u %}
-      {% blocktrans with u=u|build_absolute_uri:request %}
-        WolneLektury.pl API resides under <code>{{ u }}</code>.
-        You can use it to access information about books, their fragments and
-        their metadata.
+      {% blocktrans trimmed with u=u|build_absolute_uri:request %}
+        API serwisu WolneLektury.pl znajduje się pod adresem <code>{{ u }}</code>.
+        Za jego pomocą można uzyskać informacje o utworach, ich fragmentach
+        i metadanych.
       {% endblocktrans %}
     </p>
 
     <p>
-      {% blocktrans %}
-        Default data serialization format is
-        <a href="http://en.wikipedia.org/wiki/JSON">JSON</a>,
-        but you can also use XML by appending <code>?format=xml</code>
-        query parameter to each URL.
+      {% blocktrans trimmed %}
+        Dane domyślnie są serializowane w formacie JSON,
+        ale dostępny jest też format XML – wystarczy dodać parametr
+        <code>?format=xml</code> do dowolnego zapytania.
       {% endblocktrans %}
     </p>
 
     <p>
-      {% blocktrans %}
-        The URLs in WolneLektury.pl API are:
+      {% blocktrans trimmed %}
+        API Wolnych Lektur zawiera następujące adresy URL:
       {% endblocktrans %}
     </p>
 
     <ul>
       <li><a href='{% url "catalogue_api_book_list" "" %}'>
-        {% url "catalogue_api_book_list" "" %}</a> – {% trans "All books" %}</li>
+        {% url "catalogue_api_book_list" "" %}</a> – {% trans "Wszystkie utwory" %}</li>
       <li><a href='{% url "catalogue_api_audiobook_list" "" %}'>
-        {% url "catalogue_api_audiobook_list" "" %}</a> – {% trans "Audiobooks" %}</li>
+        {% url "catalogue_api_audiobook_list" "" %}</a> – {% trans "Audiobooki" %}</li>
       <li><a href='{% url "catalogue_api_daisy_list" "" %}'>
         {% url "catalogue_api_daisy_list" "" %}</a> – {% trans "DAISY" %}</li>
 
       <li><a href='{% url "catalogue_api_tag_list" "author" %}'>
-        {% url "catalogue_api_tag_list" "author" %}</a> – {% trans "List of all authors" %}</li>
+        {% url "catalogue_api_tag_list" "author" %}</a> – {% trans "Lista autorów" %}</li>
       <li><a href='{% url "catalogue_api_tag_list" "epoch" %}'>
-        {% url "catalogue_api_tag_list" "epoch" %}</a> – {% trans "List of all epochs" %}</li>
+        {% url "catalogue_api_tag_list" "epoch" %}</a> – {% trans "Lista epok" %}</li>
       <li><a href='{% url "catalogue_api_tag_list" "genre" %}'>
-        {% url "catalogue_api_tag_list" "genre" %}</a> – {% trans "List of all genres" %}</li>
+        {% url "catalogue_api_tag_list" "genre" %}</a> – {% trans "Lista gatunków literackich" %}</li>
       <li><a href='{% url "catalogue_api_tag_list" "kind" %}'>
-        {% url "catalogue_api_tag_list" "kind" %}</a> – {% trans "List of all kinds" %}</li>
+        {% url "catalogue_api_tag_list" "kind" %}</a> – {% trans "Lista rodzajów literackich" %}</li>
 
       <li><a href='{% url "catalogue_api_tag_list" "theme" %}'>
-        {% url "catalogue_api_tag_list" "theme" %}</a> – {% trans "List of all themes" %}</li>
+        {% url "catalogue_api_tag_list" "theme" %}</a> – {% trans "Lista motywów i tematów literackich" %}</li>
       <li><a href='{% url "catalogue_api_collections" %}'>
-        {% url "catalogue_api_collections" %}</a> – {% trans "Collections" %}</li>
+        {% url "catalogue_api_collections" %}</a> – {% trans "Kolekcje" %}</li>
     </ul>
 
     <p>
       {% url "catalogue_api_book" "studnia-i-wahadlo" as e1 %}
       {% url "catalogue_api_tag" "author" "edgar-allan-poe" as e2 %}
-      {% blocktrans %}
-        Each element of those lists contains a link (in a "href") attibute
-        which points to individual resource's details, i.e.:
-        <a href="{{e1}}">{{e1}}</a> or
-        <a href="{{e2}}">{{e2}}</a>.
+      {% blocktrans trimmed %}
+        Każdy element na tych listach zawiera adres (w atrybucie „href”), pod którym
+        można znaleźć szczegółowe dane, np.
       {% endblocktrans %}
+      <a href="{{e1}}">{{e1}}</a> {% trans "albo" %}
+      <a href="{{e2}}">{{e2}}</a>.
     </p>
 
     <p>
-      {% blocktrans with "/api/authors/adam-mickiewicz/kinds/liryka/books/" as e %}
-        You can combine authors, epochs, genres and kinds to find only books matching
-        those criteria. For instance:
-        <a href="{{e}}">{{e}}</a>.
+      {% blocktrans trimmed %}
+        Można łączyć autorów, epoki, gatunki i rodzaje, aby wybrać tylko utwory
+        odpowiadające zadanym kryteriom. Na przykład:
       {% endblocktrans %}
+      <a href="/api/authors/adam-mickiewicz/kinds/liryka/books/">/api/authors/adam-mickiewicz/kinds/liryka/books/</a>.
     </p>
 
     <p>
-      {% blocktrans with "/api/authors/adam-mickiewicz/kinds/liryka/parent_books/" as e %}
-        If you only want top-level books and not all the children, you can use /parent_books/, as in:
-        <a href="{{e}}">{{e}}</a>.
+      {% blocktrans trimmed %}
+        Aby spośród wszystkich pasujących wybrać tylko utwory najwyższego poziomu
+        (pomijając ich podutwory), można użyć zapytania /parent_books/, np.:
       {% endblocktrans %}
+      <a href="/api/authors/adam-mickiewicz/kinds/liryka/parent_books/">/api/authors/adam-mickiewicz/kinds/liryka/parent_books/"</a>.
     </p>
 
     <p>
+      {% blocktrans trimmed %}
+        W ten sam sposób, filtrując dodatkowo według lektur lub motywów, można
+        wyszukiwać fragmenty:
+      {% endblocktrans %}
+      <a href="/api/authors/william-shakespeare/themes/zabawa/fragments/">/api/authors/william-shakespeare/themes/zabawa/fragments/</a>.
+      {% blocktrans trimmed %}
+        Każdy element uzyskanej listy w atrybucie „href” zawiera link do
+        szczegółowego opisu danego fragmentu, np.:
+      {% endblocktrans %}
       {% url "catalogue_api_fragment" "sen-nocy-letniej" "1290526312912-3814598192" as f %}
-      {% blocktrans with "/api/authors/william-shakespeare/themes/zabawa/fragments/" as e %}
-        The same way, using also books and themes, you can search for a list of fragments:
-        <a href="{{e}}">{{e}}</a>.
-        Again, each entry has a "href" attribute which links to the fragment's details, i.e.:
-        <a href="{{f}}">{{f}}</a>.
-      {% endblocktrans %}
+      <a href="{{f}}">{{f}}</a>.
     </p>
   </div>
 {% endblock %}

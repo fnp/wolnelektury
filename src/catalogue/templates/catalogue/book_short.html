@@ -47,7 +47,7 @@
 
         <div class="tags">
           <span class="category">
-          <span class="mono"> {% trans "Epoch" %}:</span>&nbsp;<span class="book-box-tag">
+          <span class="mono"> {% trans "Epoka" %}:</span>&nbsp;<span class="book-box-tag">
             {% for tag in tags.epoch %}
               <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>
               {% if not forloop.last %}<span>, </span>{% endif %}
@@ -55,7 +55,7 @@
           </span></span>
 
           <span class="category">
-          <span class="mono"> {% trans "Kind" %}:</span>&nbsp;<span class="book-box-tag">
+          <span class="mono"> {% trans "Rodzaj" %}:</span>&nbsp;<span class="book-box-tag">
             {% for tag in tags.kind %}
               <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>
               {% if not forloop.last %}<span>, </span>{% endif %}
@@ -63,7 +63,7 @@
           </span></span>
 
           <span class="category">
-          <span class="mono"> {% trans "Genre" %}:</span>&nbsp;<span class="book-box-tag">
+          <span class="mono"> {% trans "Gatunek" %}:</span>&nbsp;<span class="book-box-tag">
             {% for tag in tags.genre %}
               <a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a>
               {% if not forloop.last %}<span>, </span>{% endif %}
@@ -81,7 +81,7 @@
 
           {% if book.is_foreign %}
             <span class="category">
-              <span class="mono"> {% trans "Language" %}:</span>&nbsp;<span class="book-box-tag">
+              <span class="mono"> {% trans "Język" %}:</span>&nbsp;<span class="book-box-tag">
                 <a>{{ book.language_name }}</a>
               </span>
             </span>
@@ -106,16 +106,16 @@
           <li class="book-box-read">
             {% if book.html_file %}
 	    <div>{% content_warning book %}</div>
-              <a href="{% url 'book_text' book.slug %}" class="downarrow">{% trans "Read online" %}</a>
+              <a href="{% url 'book_text' book.slug %}" class="downarrow">{% trans "Czytaj online" %}</a>
             {% endif %}
             {% if book.print_on_demand %}
-              <a href="{{ book.ridero_link }}" class="downarrow print tlite-tooltip" title="{% trans "Cena książki w druku cyfrowym jest zależna od liczby stron.<br>Przed zakupem upewnij się, że cena druku na żądanie jest dla Ciebie odpowiednia.<br>Wszystkie nasze zasoby w wersji elektronicznej są zawsze dostępne bezpłatnie." %}">{% trans "Print on demand –" %}
+              <a href="{{ book.ridero_link }}" class="downarrow print tlite-tooltip" title="{% trans "Cena książki w druku cyfrowym jest zależna od liczby stron.<br>Przed zakupem upewnij się, że cena druku na żądanie jest dla Ciebie odpowiednia.<br>Wszystkie nasze zasoby w wersji elektronicznej są zawsze dostępne bezpłatnie." %}">{% trans "Druk na żądanie z" %}
                   <img src="{% static 'img/ridero.png' %}" style="height: 0.8em;"/></a>
             {% endif %}
           </li>
           <li class="book-box-download">
             <div class="book-box-formats">
-              {% trans "Download an ebook" %}:<br>
+              {% trans "Pobierz ebook" %}:<br>
               {% if book.pdf_file %}
                 <a href="{{ book.pdf_url}}">PDF</a>
               {% endif %}
@@ -134,19 +134,19 @@
             </div>
             {% if book.has_mp3_file %}
               <div class="book-box-formats">
-                {% trans "Download audiobook" %}:<br>
+                {% trans "Pobierz audiobook" %}:<br>
                 {% download_audio book %}
               </div>
             {% endif %}
             <div class="book-box-formats">
-                {% custom_pdf_link_li book %}
+              {% custom_pdf_link_li book %}
             </div>
           </li>
         </ul>
       {% else %}
         {% block preview-info %}
           <p class="book-box-tools book-box-tools-warn">
-            {% trans "For now this work is only available for our subscribers." %}
+            Ten utwór jest na razie dostępny wyłącznie dla naszych Darczyńców.
 	    <a href="{% url 'club_join' %}">Wspieraj Wolne Lektury</a>
 	  </p>
           <div>{% content_warning book %}</div>

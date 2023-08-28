@@ -7,8 +7,8 @@
 {% block global-content %}
   <div class="l-container">
     <div class="l-breadcrumb">
-      <a href="/"><span>Strona główna</span></a>
-      <span>Wesprzyj nas</span>
+      <a href="/"><span>{% trans "Strona główna" %}</span></a>
+      <span>{% trans "Wesprzyj nas" %}</span>
     </div>
   </div>
 
@@ -16,11 +16,11 @@
   <main class="l-main">
     <div class="l-checkout__support">
       <div class="l-checkout__support__bar">
-        <span data-label="Jest nas {% club_count_recurring %}" style="width: calc({% club_count_recurring %}% / 5);"></span>
+        <span data-label="{% club_count_recurring as c %}{% blocktrans %}Jest nas {{ c }}{% endblocktrans %}" style="width: calc({{ c }}% / 5);"></span>
       </div>
       <div class="l-checkout__support__footer">
-        <p>Dołącz do naszych stałych <strong>darczyńców</strong>!</p>
-        <p>Potrzebujemy <strong>500</strong> regularnych darczyńców, by Wolne Lektury mogły działać!</p>
+        <p>{% blocktrans %}Dołącz do naszych stałych <strong>darczyńców</strong>!{% endblocktrans %}</p>
+        <p>{% blocktrans with c=500 %}Potrzebujemy <strong>{{ c }}</strong> regularnych darczyńców, by Wolne Lektury mogły działać!{% endblocktrans %}</p>
       </div>
     </div>
 
@@ -28,9 +28,9 @@
       <div class="l-checkout__box__header">
         <img src="{% block donation-jumbo-image %}{% static '2022/images/checkout-img-1.jpg' %}{% endblock %}" alt="Wspieraj Wolne Lektury">
         <div class="l-checkout__box__header__content">
-          <h1>Wspieraj Wolne Lektury</h1>
-          <p>Dziękujemy, że chcesz razem z nami uwalniać książki!</p>
-          <p>Wspieraj Wolne Lektury stałą wpłatą – nawet niewielka ma wielką moc! Możesz też wesprzeć Wolne Lektury jednorazowo.</p>
+          <h1>{% trans "Wspieraj Wolne Lektury" %}</h1>
+          <p>{% trans "Dziękujemy, że chcesz razem z nami uwalniać książki!" %}</p>
+          <p>{% trans "Wspieraj Wolne Lektury stałą wpłatą – nawet niewielka ma wielką moc! Możesz też wesprzeć Wolne Lektury jednorazowo." %}</p>
         </div>
       </div>
       <div class="l-checkout__steps">
@@ -40,7 +40,7 @@
         {% endif %}
         <div class="{% if view.step == 1 %}is-current{% else %}is-completed{% endif %}">
           <span>1</span>
-          <p>Rodzaj wsparcia</p>
+          <p>{% trans "Rodzaj wsparcia" %}</p>
         </div>
         {% if view.step > 1 and view.step != 4 %}
           </a>
@@ -51,7 +51,7 @@
         {% endif %}
         <div class="{% if view.step == 2 %}is-current{% elif not schedule %}is-inactive{% else %}is-completed{% endif %}">
           <span>2</span>
-          <p>Dane</p>
+          <p>{% trans "Dane" %}</p>
         </div>
         {% if view.step != 2 and schedule and view.step != 4 %}
           </a>
@@ -62,7 +62,7 @@
         {% endif %}
         <div class="{% if view.step == 3 %}is-current{% elif not schedule or not schedule.method %}is-inactive{% else %}is-completed{% endif %}">
           <span>3</span>
-          <p>Forma płatności</p>
+          <p>{% trans "Forma płatności" %}</p>
         </div>
         {% if view.step != 3 and schedule.email and view.step != 4 %}
           </a>
@@ -70,7 +70,7 @@
 
         <div class="{% if view.step == 4 %}is-completed{% else %}is-inactive{% endif %}">
           <span>4</span>
-          <p>Gotowe</p>
+          <p>{% trans "Gotowe" %}</p>
         </div>
       </div>
 
@@ -82,39 +82,39 @@
     <div class="l-checkout__footer">
       <div class="l-checkout__footer__content">
         <div class="l-checkout__footer__content__item">
-          <h3>Transparentność jest dla nas bardzo ważna.</h3>
+          <h3>{% trans "Transparentność jest dla nas bardzo ważna." %}</h3>
           <div>
             <div class="l-article__overlay" data-max-height="91">
               {% chunk 'donation-transparency' %}
             </div>
-            <button class="l-article__read-more" aria-label="Kliknij aby rozwinąć" data-label="Więcej" data-action="Mniej">Więcej</button>
+            <button class="l-article__read-more" aria-label="{% trans 'Kliknij aby rozwinąć' %}" data-label="{% trans 'Więcej' %}" data-action="{% trans 'Mniej' %}">{% trans 'Więcej' %}</button>
           </div>
         </div>
         <div class="l-checkout__footer__content__item">
-          <h3>Informacja o przetwarzaniu danych osobowych</h3>
+          <h3>{% trans "Informacja o przetwarzaniu danych osobowych" %}</h3>
           <div>
             <div class="l-article__overlay" data-max-height="91">
               {% chunk 'donation-data-processing' %}
             </div>
-            <button class="l-article__read-more" aria-label="Kliknij aby rozwinąć" data-label="Więcej" data-action="Mniej">Więcej</button>
+            <button class="l-article__read-more" aria-label="{% trans 'Kliknij aby rozwinąć' %}" data-label="{% trans 'Więcej' %}" data-action="{% trans 'Mniej' %}">{% trans 'Więcej' %}</button>
           </div>
         </div>
         <div class="l-checkout__footer__content__item">
-          <h3>FAQ</h3>
+          <h3>{% trans "FAQ" %}</h3>
           <div>
             <div class="l-article__overlay" data-max-height="91">
               {% chunk 'donation-faq' %}
             </div>
-            <button class="l-article__read-more" aria-label="Kliknij aby rozwinąć" data-label="Więcej" data-action="Mniej">Więcej</button>
+            <button class="l-article__read-more" aria-label="{% trans 'Kliknij aby rozwinąć' %}" data-label="{% trans 'Więcej' %}" data-action="{% trans 'Mniej' %}">{% trans 'Więcej' %}</button>
           </div>
         </div>
         <div class="l-checkout__footer__content__item">
-          <h3>Regulamin darowizn</h3>
+          <h3>{% trans "Regulamin darowizn" %}</h3>
           <div>
             <div class="l-article__overlay" data-max-height="91">
               {% chunk 'donation-regulamin' %}
             </div>
-            <button class="l-article__read-more" aria-label="Kliknij aby rozwinąć" data-label="Więcej" data-action="Mniej">Więcej</button>
+            <button class="l-article__read-more" aria-label="{% trans 'Kliknij aby rozwinąć' %}" data-label="{% trans 'Więcej' %}" data-action="{% trans 'Mniej' %}">{% trans 'Więcej' %}</button>
           </div>
         </div>
       </div>

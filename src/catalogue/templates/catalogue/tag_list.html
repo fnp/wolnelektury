@@ -4,7 +4,7 @@
   {% load catalogue_tags %}
 
   {% if one_tag %}
-    <p>{% trans "See full category" %} <a href="{% catalogue_url 'default' one_tag %}">{{ one_tag }}</a></p>
+    <p>{% trans "Zobacz całą kategorię" %} <a href="{% catalogue_url 'default' one_tag %}">{{ one_tag }}</a></p>
   {% else %}
     <ul>
       {% if choices %}

@@ -2,15 +2,15 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Account Connections" %}{% endblock %}
+{% block head_title %}{% trans "Połączone konta" %}{% endblock %}
 
 {% block body %}
-<div class="normal-text white-box">
+  <div class="normal-text white-box">
 
-<h1>{% trans "Account Connections" %}</h1>
+    <h1>{% trans "Połączone konta" %}</h1>
 
 {% if form.accounts %}
-<p>{% blocktrans %}You can sign in to your account using any of the following third party accounts:{% endblocktrans %}</p>
+<p>{% blocktrans %}Możesz się logować, używając jednego z tych zewnętrznych kont:{% endblocktrans %}</p>
 
 
 <form method="post">
@@ -30,17 +30,17 @@
 {% endwith %}
 {% endfor %}
 
-<button type="submit">{% trans "Remove" %}</button>
+<button type="submit">{% trans "Usuń" %}</button>
 
 
 </form>
 
 {% else %}
-<p>{% trans "You currently have no social network accounts connected to this account." %}</p>
+<p>{% trans "Nie masz podłączonych żadnych zewnętrznych kont." %}</p>
 {% endif %}
 
 {% if USE_OPENID %}
-<h2>{% trans 'Add a 3rd Party Account' %}</h2>
+<h2>{% trans 'Podłącz zewnętrzne konto' %}</h2>
 
 <ul class="socialaccount_providers">
 {% include "socialaccount/snippets/provider_list.html" with process="connect" %}
@@ -50,5 +50,3 @@
 {% endif %}
 </div>
 {% endblock %}
-
-

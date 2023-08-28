@@ -1,14 +1,13 @@
 {% extends "base_simple.html" %}
-{% load i18n l10n %}
+{% load l10n %}
 {% load reporting_stats catalogue_tags %}
 
 {% block settings %}
   {% load title %}
-  {% trans "Reports" as title %}
-  {% title title %}
+  {% title "Raporty" %}
 {% endblock %}
 
-{% block titleextra %}{% trans "Reports" %}{% endblock %}
+{% block titleextra %}Raporty{% endblock %}
 
 {% block bodyid %}reports-stats{% endblock %}
 

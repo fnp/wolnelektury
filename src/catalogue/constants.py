@@ -11,7 +11,7 @@ LICENSES = {
     },
     'http://artlibre.org/licence/lal/pl/': {
         'icon': 'lal',
-        'description': _('Free Art License 1.3'),
+        'description': _('Licencja Wolnej Sztuki 1.3'),
         'locative': 'Licencji Wolnej Sztuki 1.3',
     }
 }
@@ -57,21 +57,21 @@ LANGUAGES_3TO2 = {
 }
 
 CATEGORIES_NAME_PLURAL = {
-    'author': _('authors'),
-    'epoch': _('epochs'),
-    'kind': _('kinds'),
-    'genre': _('genres'),
-    'theme': _('themes'),
-    'set': _('sets'),
-    'thing': _('things'),
+    'author': _('autorzy'),
+    'epoch': _('epoki'),
+    'kind': _('rodzaje'),
+    'genre': _('gatunki'),
+    'theme': _('motywy'),
+    'set': _('półki'),
+    'thing': _('obiekty'),
 }
 
 WHOLE_CATEGORY = {
-    'author': _('All authors'),
-    'epoch': _('All epochs'),
-    'kind': _('All kinds'),
-    'genre': _('All genres'),
-    'theme': _('All themes'),
-    'set': _('All sets'),
-    'thing': _('All things'),
+    'author': _('Wszyscy autorzy'),
+    'epoch': _('Wszystkie epoki'),
+    'kind': _('Wszystkie rodzaje'),
+    'genre': _('Wszystkie gatunki'),
+    'theme': _('Wszystkie motywy'),
+    'set': _('Wszystkie półki'),
+    'thing': _('Wszystkie obiekty'),
 }

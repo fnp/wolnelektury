@@ -5,7 +5,6 @@ from collections import OrderedDict
 import json
 from collections import namedtuple
 from django.db import models
-from django.utils.translation import gettext_lazy as _
 from slugify import slugify
 import mutagen
 from mutagen import id3
@@ -32,18 +31,18 @@ class BookMedia(models.Model):
         ('audio.epub', FileFormat(name='EPUB+audio', ext='audio.epub')),
         ('sync', FileFormat(name='sync', ext='sync.txt')),
     ])
-    format_choices = [(k, _('%s file' % t.name)) for k, t in formats.items()]
+    format_choices = [(k, 'plik %s' % t.name) for k, t in formats.items()]
 
-    type = models.CharField(_('type'), db_index=True, choices=format_choices, max_length=20)
-    name = models.CharField(_('name'), max_length=512)
-    part_name = models.CharField(_('part name'), default='', blank=True, max_length=512)
-    index = models.IntegerField(_('index'), default=0)
-    file = models.FileField(_('file'), max_length=600, upload_to=_file_upload_to, storage=BofhFileSystemStorage())
+    type = models.CharField('typ', db_index=True, choices=format_choices, max_length=20)
+    name = models.CharField('nazwa', max_length=512)
+    part_name = models.CharField('nazwa części', default='', blank=True, max_length=512)
+    index = models.IntegerField('indeks', default=0)
+    file = models.FileField('plik', max_length=600, upload_to=_file_upload_to, storage=BofhFileSystemStorage())
     duration = models.FloatField(null=True, blank=True)
-    uploaded_at = models.DateTimeField(_('creation date'), auto_now_add=True, editable=False, db_index=True)
+    uploaded_at = models.DateTimeField('data utworzenia', auto_now_add=True, editable=False, db_index=True)
     project_description = models.CharField(max_length=2048, blank=True)
     project_icon = models.CharField(max_length=2048, blank=True)
-    extra_info = models.TextField(_('extra information'), default='{}', editable=False)
+    extra_info = models.TextField('dodatkowe informacje', default='{}', editable=False)
     book = models.ForeignKey('Book', models.CASCADE, related_name='media')
     source_sha1 = models.CharField(null=True, blank=True, max_length=40, editable=False)
 
@@ -52,8 +51,8 @@ class BookMedia(models.Model):
 
     class Meta:
         ordering = ('type', 'index')
-        verbose_name = _('book media')
-        verbose_name_plural = _('book media')
+        verbose_name = 'media książki'
+        verbose_name_plural = 'media książek'
         app_label = 'catalogue'
 
     def get_extra_info_json(self):

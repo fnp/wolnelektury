@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load thumbnail %}
 
 
@@ -20,7 +21,7 @@
   <div class="l-search-bar">
     <div class="l-search-bar__input">
       <i class="icon icon-filter"></i>
-      <input type="text" placeholder="filtry, tytuł" class="quick-filter" data-for="tag-list">
+      <input type="text" placeholder="{% trans 'filtry, tytuł' %}" class="quick-filter" data-for="tag-list">
     </div>
   </div>
 

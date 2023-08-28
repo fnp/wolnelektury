@@ -1,525 +1,281 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Wolne Lektury. See NOTICE for more information.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: WolneLektury-core\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2013-04-09 10:43+0100\n"
-"Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Translated-Using: django-rosetta 0.5.3\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-
-#: isbn/forms.py:66
-#, fuzzy
-#| msgid "of the book"
-msgid "Soft cover book"
-msgstr "šaltinis"
-
-#: push/models.py:10
-msgid "title"
-msgstr ""
-
-#: push/models.py:11
-#, fuzzy
-#| msgid "Table of contents"
-msgid "content"
-msgstr "Turinys"
-
-#: push/models.py:12
-msgid "image"
-msgstr ""
-
-#: push/templates/push/notification_form.html:4
-#: push/templates/push/notification_sent.html:4
-msgid "Notifications"
-msgstr ""
+"Plural-Forms: nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < "
+"11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? "
+"1 : n % 1 != 0 ? 2: 3);\n"
 
 #: wolnelektury/templates/404.html:6 wolnelektury/templates/404.html:11
-msgid "Page does not exist"
-msgstr "Tinklalapis neegzistuoja"
-
 #: wolnelektury/templates/404.html:15
-msgid "Page not found"
-msgstr "Puslapis nerastas"
+msgid "Strona nie istnieje"
+msgstr "Tinklalapis neegzistuoja"
 
 #: wolnelektury/templates/404.html:18
 msgid ""
-"We are sorry, but this page does not exist. Please check if you entered "
-"correct address or go to "
+"Przepraszamy, ale ta strona nie istnieje. Sprawdź, czy podany adres jest "
+"właściwy, lub przejdź do"
 msgstr ""
 "Atsiprašome, bet šis tinklalapis neegzistuoja. Prašome patvirtinti ar "
 "įvedėte teisingą adresą arba eikite į"
 
 #: wolnelektury/templates/404.html:19
-msgid "main page"
+msgid "strony głównej"
 msgstr "pagrindinį puslapį"
 
 #: wolnelektury/templates/500.html:7
-msgid "Server error"
+msgid "Błąd serwera"
 msgstr "Serverio klaida"
 
-#: wolnelektury/templates/500.html:73
+#: wolnelektury/templates/500.html:74
+#, python-format
 msgid ""
-"<p>The Wolnelektury.pl site is currently unavailable. Meanwhile, visit our "
-"<a href='https://fundacja.wolnelektury.pl'>blog</a>.</p> <p>Inform our <a "
-"href='mailto:fundacja@wolnelektury.pl'>administrators</a> about the error.</"
-"p>"
+"Biblioteka WolneLektury.pl jest chwilowo niedostępna. Odwiedź %(site)sstronę "
+"fundacji</a> lub spróbuj ponownie później."
 msgstr ""
-"<p>Interneto svetainė yra laikinai neprieinama. Aplankykite mūsų <a "
-"href='https://fundacja.wolnelektury.pl'>blogą</a>.</p> <p>Praneškite<a "
-"href='mailto:fundacja@wolnelektury.pl'>administratoriams</a> apie klaidą.</"
-"p>\""
 
 #: wolnelektury/templates/503.html:6 wolnelektury/templates/503.html:17
-msgid "Service unavailable"
+msgid "Serwis niedostępny"
 msgstr "Paslauga neprieinama"
 
 #: wolnelektury/templates/503.html:19
-msgid "The Wolnelektury.pl site is currently unavailable due to maintainance."
+msgid ""
+"Bibloiteka WolneLektury.pl jest chwilowo niedostępna z powodu prac "
+"konserwacyjnych."
 msgstr ""
 "Interneto svetainė Wolnelektury.pl šiuo metu yra neprieinama dėl atliekamų "
 "remonto darbų."
 
-#: wolnelektury/templates/admin/base_site.html:4
-#: wolnelektury/templates/admin/base_site.html:7
-msgid "Site administration"
-msgstr "Interneto svetainės administracija"
+#: wolnelektury/templates/base.html:44
+msgid "Strona główna"
+msgstr ""
 
-#: wolnelektury/templates/admin/catalogue/book/change_form.html:6
-#: wolnelektury/templates/admin/catalogue/book/change_form.html:36
-msgid "advanced"
-msgstr "papildomas"
+#: wolnelektury/templates/footer.html:7
+msgid "Fundacja Wolne Lektury"
+msgstr ""
 
-#: wolnelektury/templates/admin/catalogue/book/change_form.html:34
-msgid "simplified"
-msgstr "supaprastintas"
+#: wolnelektury/templates/footer.html:17
+msgctxt "IBAN"
+msgid "Numer konta"
+msgstr ""
 
-#: wolnelektury/templates/admin/catalogue/book/change_list.html:9
-msgid "Import book"
-msgstr "Importuoti knygą"
-
-#: wolnelektury/templates/admin/long_filter.html:2
+#: wolnelektury/templates/footer.html:23
 #, python-format
-msgid " By %(filter_title)s "
-msgstr ""
-
-#: wolnelektury/templates/auth/login.html:11
-#: wolnelektury/templates/registration/login.html:25
-msgid "Forgot Password?"
-msgstr "Pamiršote slaptažodį?"
-
-#: wolnelektury/templates/auth/login.html:17
-#: wolnelektury/templates/auth/register.html:8
-#: wolnelektury/templates/registration/login.html:31
-#: wolnelektury/templates/registration/register.html:20
-msgid "Sign in using:"
-msgstr "Prisijungti naudojant:"
-
-#: wolnelektury/templates/auth/login_register.html:8
-msgid "or register"
-msgstr "arba registruotis "
-
-#: wolnelektury/templates/base/app.html:20
-#: wolnelektury/templates/base/superbase.html:25
-msgid "Wolne Lektury"
-msgstr "Wolne Lektury"
-
-#: wolnelektury/templates/base/app.html:42
-#: wolnelektury/templates/base/app.html:43
-#: wolnelektury/templates/base/superbase.html:75
-#, fuzzy
-#| msgid "Language versions"
-msgid "Language"
-msgstr "Kalbų versijos"
-
-#: wolnelektury/templates/base/app.html:66
-#: wolnelektury/templates/base/superbase.html:105
-msgid "Logout"
-msgstr "Atsijungti"
-
-#: wolnelektury/templates/base/superbase.html:37
-#, fuzzy
-#| msgid "Table of contents"
-msgid "Go to content"
-msgstr "Turinys"
-
-#: wolnelektury/templates/base/superbase.html:38
-msgid "Go to search"
-msgstr ""
-
-#: wolnelektury/templates/base/superbase.html:39
-msgid "Go to page footer"
-msgstr ""
-
-#: wolnelektury/templates/base/superbase.html:65
-#, fuzzy, python-format
-#| msgid ""
-#| "\n"
-#| "                    <a href='%(b)s'>%(c)s</a> free reading you have <a "
-#| "href='%(r)s'>right to</a>\n"
-#| "                    "
-#| msgid_plural ""
-#| "\n"
-#| "                    <a href='%(b)s'>%(c)s</a> free readings you have <a "
-#| "href='%(r)s'>right to</a>\n"
-#| "                    "
 msgid ""
-"\n"
-"                  <a href='%(b)s'>%(c)s</a> free reading you have <a "
-"href='%(r)s'>right to</a>\n"
-"                "
-msgid_plural ""
-"\n"
-"                  <a href='%(b)s'>%(c)s</a> free readings you have <a "
-"href='%(r)s'>right to</a>\n"
-"                "
-msgstr[0] ""
-"\n"
-"                    <a href='%(b)s'>%(c)s</a> nemokamas kūrinys į kurį <a "
-"href='%(r)s'>turite teisę</a>\n"
-"                    "
-msgstr[1] ""
-"\n"
-"                    <a href='%(b)s'>%(c)s</a> nemokami kūriniai į kuriuos <a "
-"href='%(r)s'>turite teisę</a>\n"
-"                    "
-msgstr[2] ""
-"\n"
-"                    <a href='%(b)s'>%(c)s</a> nemokamų kūrinių į kuriuos <a "
-"href='%(r)s'>turite teisę</a>\n"
-"                    "
-
-#: wolnelektury/templates/base/superbase.html:99
-msgid "My shelf"
-msgstr "Mano lentyna"
-
-#: wolnelektury/templates/base/superbase.html:102
-msgid "Administration"
-msgstr "Administracija "
-
-#: wolnelektury/templates/base/superbase.html:109 wolnelektury/views.py:106
-#: wolnelektury/views.py:107
-msgid "Sign in"
-msgstr "Prisijungti  "
-
-#: wolnelektury/templates/base/superbase.html:110
-#: wolnelektury/templates/registration/register.html:7
-#: wolnelektury/templates/registration/register.html:16
-#: wolnelektury/views.py:144 wolnelektury/views.py:145
-#: wolnelektury/views.py:176
-msgid "Register"
-msgstr "Registruotis "
-
-#: wolnelektury/templates/base/superbase.html:124
-msgid "Search"
-msgstr "Ieškoti"
-
-#: wolnelektury/templates/base/superbase.html:162
-msgid "Close"
-msgstr "Uždaryti"
-
-#: wolnelektury/templates/base/superbase.html:164
-msgid "Loading"
-msgstr "Kraunasi"
+"Wolne Lektury to projekt prowadzony przez fundację %(site)sWolne Lektury</a>."
+msgstr ""
 
 #: wolnelektury/templates/forms/form_sent.html:12
-msgid "Thank you"
+msgid "Dziękujemy"
 msgstr ""
 
-#: wolnelektury/templates/info/join_us.html:6
-#, fuzzy, python-format
-#| msgid ""
-#| "\n"
-#| "We have %(c)s work published in Wolne Lektury!\n"
-#| "Help us expand the library and set new readings free by\n"
-#| "<a href=\"http://nowoczesnapolska.org.pl/wesprzyj_nas/\">making a "
-#| "donation\n"
-#| "or transferring 1&#37; of your income tax</a>.\n"
-#| msgid_plural ""
-#| "\n"
-#| "We have %(c)s works published in Wolne Lektury!\n"
-#| "Help us expand the library and set new readings free by\n"
-#| "<a href=\"http://nowoczesnapolska.org.pl/wesprzyj_nas/\">making a "
-#| "donation\n"
-#| "or transferring 1&#37; of your income tax</a>.\n"
-msgid ""
-"\n"
-"    We have %(c)s work published in Wolne Lektury!\n"
-"    Help us expand the library and set new readings free by\n"
-"    <a href=\"http://nowoczesnapolska.org.pl/wesprzyj_nas/\">making a "
-"donation\n"
-"    or transferring 1&#37; of your income tax</a>.\n"
-"  "
-msgid_plural ""
-"\n"
-"    We have %(c)s works published in Wolne Lektury!\n"
-"    Help us expand the library and set new readings free by\n"
-"    <a href=\"http://nowoczesnapolska.org.pl/wesprzyj_nas/\">making a "
-"donation\n"
-"    or transferring 1&#37; of your income tax</a>.\n"
-"  "
-msgstr[0] ""
-"\n"
-"Turime %(c)s kūrinį publikuotą Wolne Lektury interneto svetainėje!\n"
-"Padėkite mums plėtoti biblioteką ir nemokamai bendrinti naujus kūrinius\n"
-"<a href=\"http://nowoczesnapolska.org.pl/wesprzyj_nas/\">remdami mus "
-"finansiškai\n"
-"arba skirdami 1&#37; jūsų pajamų mokesčio</a>.\n"
-msgstr[1] ""
-"\n"
-"Turime %(c)s kūrinius publikuotus Wolne Lektury interneto svetainėje!\n"
-"Padėkite mums plėtoti biblioteką ir nemokamai bendrinti naujus kūrinius\n"
-"<a href=\"http://nowoczesnapolska.org.pl/wesprzyj_nas/\">remdami mus "
-"finansiškai\n"
-"arba skirdami 1&#37; jūsų pajamų mokesčio</a>.\n"
-msgstr[2] ""
-"\n"
-"Turime %(c)s kūrinių publikuotų Wolne Lektury interneto svetainėje!\n"
-"Padėkite mums plėtoti biblioteką ir nemokamai bendrinti naujus kūrinius\n"
-"<a href=\"http://nowoczesnapolska.org.pl/wesprzyj_nas/\">remdami mus "
-"finansiškai\n"
-"arba skirdami 1&#37; jūsų pajamų mokesčio</a>.\n"
-
-#: wolnelektury/templates/info/join_us.html:22
-#, fuzzy
-#| msgid ""
-#| "Become an editor of Wolne Lektury! Find out if\n"
-#| "we're currently working on a reading you're looking for and prepare\n"
-#| "a publication by yourself by logging into the Editorial Platform."
-msgid ""
-"Become an editor of Wolne Lektury! Find out if\n"
-"    we're currently working on a reading you're looking for and prepare\n"
-"    a publication by yourself by logging into the Editorial Platform."
-msgstr ""
-"Tapkite redaktoriumi Wolne Lektury interneto svetainės! Sužinokite ar\n"
-"šiuo metu dirbame su jūsų ieškomu kūriniu ir paruoškite\n"
-"jūsų leidinį prisijungdami prie Redakcinės Platformos."
-
-#: wolnelektury/templates/info/join_us.html:25
-msgid "More..."
-msgstr "Daugiau..."
-
-#: wolnelektury/templates/main_menu.html:4
-msgid "Support us"
+#: wolnelektury/templates/forms/includes/built_form.html:23
+msgid "FORMULARZ ZAMKNIĘTY"
 msgstr ""
 
-#: wolnelektury/templates/main_menu.html:7
-#, fuzzy
-#| msgid "for reading"
-msgid "School readings"
-msgstr "į skaitimą"
-
-#: wolnelektury/templates/main_menu.html:10
-msgid "Literature"
+#: wolnelektury/templates/header.html:45
+msgid "Katalog"
 msgstr ""
 
-#: wolnelektury/templates/main_menu.html:13
-msgid "Themes"
-msgstr "Motyvai"
-
-#: wolnelektury/templates/main_menu.html:16
-msgid "Audiobooks"
-msgstr "Audio knygos"
-
-#: wolnelektury/templates/main_menu.html:19
-#: wolnelektury/templates/main_page.html:52
-#, fuzzy
-#| msgid "Account Connections"
-msgid "Collections"
-msgstr "Paskyros jungtys"
-
-#: wolnelektury/templates/main_menu.html:22
-#: wolnelektury/templates/main_page.html:110
-msgid "Newsletter"
+#: wolnelektury/templates/header.html:49
+msgid "Włącz się"
 msgstr ""
 
-#: wolnelektury/templates/main_page.html:11
-#: wolnelektury/templates/main_page.html:12
-msgid "Wolne Lektury internet library"
-msgstr "Wolne Lektury internetinė biblioteka"
-
-#: wolnelektury/templates/main_page.html:21
-msgid "In our digital library you will find"
-msgstr ""
-
-#: wolnelektury/templates/main_page.html:30
-msgid "and many other books, poems, pictures, audiobooks…"
-msgstr ""
-
-#: wolnelektury/templates/main_page.html:39
-msgid "Recent publications"
-msgstr "Naujos publikacijos"
-
-#: wolnelektury/templates/main_page.html:65
-msgid "Motifs and themes"
-msgstr "Motyvai ir temos"
-
-#: wolnelektury/templates/main_page.html:70
-msgid "Theme"
-msgstr "Motyvas"
-
-#: wolnelektury/templates/main_page.html:71
-msgid "Explore works with the same theme"
-msgstr ""
-
-#: wolnelektury/templates/main_page.html:86
-msgid "News"
+#: wolnelektury/templates/header.html:53
+msgid "Aktualności"
 msgstr "Naujienos"
 
-#: wolnelektury/templates/main_page.html:95
-msgid "Utilities"
+#: wolnelektury/templates/header.html:58
+msgid "Narzędzia"
 msgstr "Priemonės"
 
-#: wolnelektury/templates/main_page.html:98
-msgid "Report a bug or suggestion"
-msgstr "Praneškite apie klaidą arba teikite pasiūlymus"
-
-#: wolnelektury/templates/main_page.html:99
-msgid "Download the catalogue in PDF format."
-msgstr "Atsisiųsti katalogą PDF formatu."
-
-#: wolnelektury/templates/main_page.html:100
-#, fuzzy
-#| msgid "Artist"
-msgid "Art"
-msgstr "Artistas"
-
-#: wolnelektury/templates/main_page.html:101
-#, fuzzy
-#| msgid "All books"
-msgid "All works"
-msgstr "Visos knygos"
-
-#: wolnelektury/templates/main_page.html:103
-msgid "Footnotes"
+#: wolnelektury/templates/header.html:62
+msgid "O nas"
 msgstr ""
 
-#: wolnelektury/templates/main_page.html:104
-msgid "Missing a book?"
-msgstr "Neradote knygos?"
-
-#: wolnelektury/templates/main_page.html:105
-#: wolnelektury/templates/publish_plan.html:6
-#: wolnelektury/templates/publish_plan.html:10
-#: wolnelektury/templates/publish_plan.html:14
-msgid "Publishing plan"
-msgstr "Publikavimo planas"
-
-#: wolnelektury/templates/main_page.html:115
-msgid "Information"
-msgstr "Informacija"
-
-#: wolnelektury/templates/main_page.html:117
-msgid "Privacy policy"
+#: wolnelektury/templates/main_page.html:168
+msgid "zobacz wszystkie kolekcje"
 msgstr ""
 
-#: wolnelektury/templates/main_page.html:122
-msgid "Follow us on Facebook"
+#: wolnelektury/templates/main_page.html:182
+#: wolnelektury/templates/main_page.html:192
+#: wolnelektury/templates/main_page.html:234
+#: wolnelektury/templates/main_page.html:252
+#: wolnelektury/templates/main_page.html:265
+msgid "Dorzuć się!"
 msgstr ""
 
-#: wolnelektury/templates/main_page.html:135
-msgid "Image used:"
-msgstr "Panaudotas paveikslėlis:"
+#: wolnelektury/templates/main_page.html:186
+msgid ""
+"Nasze książki są dostępne dla tysięcy dzieciaków dzięki <strong>darowiznom</"
+"strong> od osób takich jak <strong>Ty</strong>!"
+msgstr ""
+
+#: wolnelektury/templates/main_page.html:197
+msgid "Zapisz się na nasz Newsletter!"
+msgstr ""
+
+#: wolnelektury/templates/main_page.html:201
+msgid "Informacja o&nbsp;nowościach"
+msgstr ""
+
+#: wolnelektury/templates/main_page.html:201
+msgid "Newsletter!"
+msgstr ""
+
+#: wolnelektury/templates/main_page.html:203
+msgctxt "Newsletter"
+msgid "Zapisz się"
+msgstr ""
+
+#: wolnelektury/templates/main_page.html:238
+msgid ""
+"<strong>Wolne Lektury</strong> to lektury szkolne i tysiące innych książek – "
+"za <strong>darmo</strong> i <strong>bez rejestracji</strong>."
+msgstr ""
+
+#: wolnelektury/templates/main_page.html:244
+msgid ""
+"Czytaj i słuchaj online, ściągaj na swój telefon lub komputer, dziel się z "
+"innymi."
+msgstr ""
+
+#: wolnelektury/templates/main_page.html:245
+msgid ""
+"Dla uczennic i uczniów dodajemy przypisy, motywy literackie, biogramy i "
+"geotagowanie."
+msgstr ""
+
+#: wolnelektury/templates/main_page.html:246
+#: wolnelektury/templates/main_page.html:260
+#: wolnelektury/templates/main_page.html:273
+msgid "Dowiedz się więcej"
+msgstr ""
+
+#: wolnelektury/templates/main_page.html:256
+msgid "Jesteśmy częścią ruchu <strong>wolnej kultury</strong>!"
+msgstr ""
+
+#: wolnelektury/templates/main_page.html:269
+msgid ""
+"Jak budujemy najpopularniejszą <strong>bibliotekę online</strong> w Polsce"
+msgstr ""
+
+#: wolnelektury/templates/main_page.html:285
+msgid "Nowości"
+msgstr "Naujos publikacijos"
+
+#: wolnelektury/templates/main_page.html:303
+msgid "Bądź na bieżąco"
+msgstr ""
 
 #: wolnelektury/templates/openid/login.html:7
 #: wolnelektury/templates/openid/login.html:21
-msgid "OpenID Sign In"
+msgid "Logowanie przez OpenID"
 msgstr "OpenID Prisijungti"
 
 #: wolnelektury/templates/openid/login.html:13
 #: wolnelektury/templates/openid/login.html:29
 #: wolnelektury/templates/registration/login.html:6
-msgid "Sign In"
-msgstr "Prisijungti  "
+#: wolnelektury/templates/registration/login.html:12
+#: wolnelektury/templates/registration/login.html:15
+#: wolnelektury/templates/user_actions.html:36
+msgid "Zaloguj się"
+msgstr "Prisijungti"
 
-#: wolnelektury/templates/pagination/pagination.html:6
-#: wolnelektury/templates/pagination/pagination.html:8
-msgid "previous"
-msgstr "ankstėsnis"
+#: wolnelektury/templates/publish_plan.html:6
+#: wolnelektury/templates/publish_plan.html:10
+#: wolnelektury/templates/publish_plan.html:14
+msgid "Plan publikacji"
+msgstr "Publikavimo planas"
 
-#: wolnelektury/templates/pagination/pagination.html:22
-#: wolnelektury/templates/pagination/pagination.html:24
-msgid "next"
-msgstr "sekantis "
+#: wolnelektury/templates/registration/login.html:23
+msgid "Dalej"
+msgstr ""
+
+#: wolnelektury/templates/registration/login.html:25
+msgid "Nie pamiętasz hasła?"
+msgstr "Pamiršote slaptažodį?"
+
+#: wolnelektury/templates/registration/login.html:28
+msgid "Nie masz jeszcze konta?"
+msgstr ""
+
+#: wolnelektury/templates/registration/login.html:31
+#: wolnelektury/templates/registration/register.html:20
+msgid "Zaloguj się używając:"
+msgstr "Prisijungti naudojant:"
+
+#: wolnelektury/templates/registration/register.html:7
+#: wolnelektury/templates/registration/register.html:16
+#: wolnelektury/templates/socialaccount/signup.html:5
+#: wolnelektury/templates/socialaccount/signup.html:8
+#: wolnelektury/templates/socialaccount/signup.html:22
+#: wolnelektury/templates/user_actions.html:38
+msgid "Załóż konto"
+msgstr "Registruotis"
 
 #: wolnelektury/templates/socialaccount/connections.html:5
 #: wolnelektury/templates/socialaccount/connections.html:10
-msgid "Account Connections"
+msgid "Połączone konta"
 msgstr "Paskyros jungtys"
 
 #: wolnelektury/templates/socialaccount/connections.html:13
-msgid ""
-"You can sign in to your account using any of the following third party "
-"accounts:"
+msgid "Możesz się logować, używając jednego z tych zewnętrznych kont:"
 msgstr ""
 "Galite prisijungti prie jūsų paskyros naudodamiesi šiomis third party "
 "paskyromis:"
 
 #: wolnelektury/templates/socialaccount/connections.html:33
-msgid "Remove"
+msgid "Usuń"
 msgstr "Pašalinti"
 
 #: wolnelektury/templates/socialaccount/connections.html:39
-msgid ""
-"You currently have no social network accounts connected to this account."
+msgid "Nie masz podłączonych żadnych zewnętrznych kont."
 msgstr "Neturite socialinio tinklo paskyrų prijungtų prie šios paskyros."
 
 #: wolnelektury/templates/socialaccount/connections.html:43
-msgid "Add a 3rd Party Account"
+msgid "Podłącz zewnętrzne konto"
 msgstr "Pridėti 3rd Party Paskyrą"
 
 #: wolnelektury/templates/socialaccount/login_cancelled.html:5
 #: wolnelektury/templates/socialaccount/login_cancelled.html:10
-msgid "Login Cancelled"
+msgid "Logowanie anulowane"
 msgstr "Prisijungimas atšauktas"
 
 #: wolnelektury/templates/socialaccount/login_cancelled.html:15
 #, python-format
 msgid ""
-"You decided to cancel logging in to our site using one of your exisiting "
-"accounts. If this was a mistake, please proceed to <a "
-"href=\"%(login_url)s\">sign in</a>."
+"Logowanie przy pomocy zewnętrznego konta zostało anulowane. Jeśli to "
+"pomyłka, przejdź do <a href=\"%(login_url)s\">strony logowania</a>."
 msgstr ""
 "Nusprendėte atšaukti prisijungimą prie mūsų interneto svetainės naudodamiesi "
 "viena iš jūsų egzistuojančių paskyrų. Jei įvyko klaida, prašome pradėti čia "
 "<a href=\"%(login_url)s\">sign in</a>."
 
-#: wolnelektury/templates/socialaccount/signup.html:6
-#, fuzzy
-#| msgid "Sign in"
-msgid "Signup"
-msgstr "Prisijungti  "
-
-#: wolnelektury/templates/socialaccount/signup.html:9
-#: wolnelektury/templates/socialaccount/signup.html:25
-#, fuzzy
-#| msgid "Sign in"
-msgid "Sign Up"
-msgstr "Prisijungti  "
-
-#: wolnelektury/templates/socialaccount/signup.html:11
+#: wolnelektury/templates/socialaccount/signup.html:10
 #, python-format
 msgid ""
-"You are about to use your %(provider_name)s account to login to\n"
-"%(site_name)s. As a final step, please complete the following form:"
+"Zakładasz konto w serwisie %(site_name)s przy pomocy zewnętrznego konta "
+"%(provider_name)s. W tym celu wypełnij formularz:"
 msgstr ""
 
 #: wolnelektury/templates/user.html:7 wolnelektury/templates/user.html:11
 #: wolnelektury/templates/user.html:15
-msgid "User"
+msgid "Użytkownik"
 msgstr "Vartotojas"
 
 #: wolnelektury/templates/user.html:17
-msgid "Password"
+msgid "Hasło"
 msgstr "Slaptažodis"
 
 #: wolnelektury/templates/user.html:18
@@ -527,795 +283,22 @@ msgid "E-mail"
 msgstr "El- paštas"
 
 #: wolnelektury/templates/user.html:19
-msgid "Social accounts"
+msgid "Zewnętrzne konta"
 msgstr "Socialinės paskyros"
 
-#: wolnelektury/utils.py:112
-msgid "Message sent automatically. Please do not reply."
+#: wolnelektury/templates/user.html:21
+#: wolnelektury/templates/user_actions.html:19
+msgid "Wspierasz Wolne Lektury, dziękujemy!"
 msgstr ""
 
-#: wolnelektury/utils.py:194
-msgid "Yes"
+#: wolnelektury/templates/user_actions.html:15
+msgid "Administracja"
+msgstr "Administracija"
+
+#: wolnelektury/templates/user_actions.html:16
+msgid "Edytuj"
 msgstr ""
 
-#: wolnelektury/utils.py:195
-msgid "No"
-msgstr ""
-
-#: wolnelektury/views.py:117 wolnelektury/views.py:157
-#, python-format
-msgid "Already logged in as user %(user)s"
-msgstr "Jau esate prisijungęs kaip vartotojas %(user)s"
-
-#: wolnelektury/views.py:171
-msgid "You have to be logged in to continue"
-msgstr "Norėdami tęsti, turite būti prisijungę"
-
-#, fuzzy
-#~| msgid "advanced"
-#~ msgid "Advanced search"
-#~ msgstr "papildomas"
-
-#, fuzzy
-#~| msgid "See our blog"
-#~ msgid "See motifs catalog"
-#~ msgstr "Aplankyk mūsų blogą"
-
-#, fuzzy
-#~| msgid "Recent publications"
-#~ msgid "More recent publications"
-#~ msgstr "Naujos publikacijos"
-
-#~ msgid "Translations"
-#~ msgstr "Vertimai"
-
-#~ msgid "Authorize access to Wolne Lektury"
-#~ msgstr "Leisti prieigą prie Wolne Lektury interneto svetainės"
-
-#~ msgid ""
-#~ "Confirm to authorize access to Wolne Lektury as user <strong>%(user)s</"
-#~ "strong>."
-#~ msgstr ""
-#~ "Patvirtinkite, kad leistute prieigą prie Wolne Lektury interneto "
-#~ "svetainės kaip vartotojas <strong>%(user)s</strong>."
-
-#~ msgid "What's new?"
-#~ msgstr "Kas naujo?"
-
-#~ msgid "Widget"
-#~ msgstr "Valdiklis"
-
-#~ msgid "Welcome"
-#~ msgstr "Sveiki atvykę"
-
-#~ msgid ""
-#~ "\n"
-#~ "\t\t\t\tWolne Lektury is a project lead by <a href=\"http://"
-#~ "nowoczesnapolska.org.pl/\">Modern Poland Foundation</a>.\n"
-#~ "\t\t\t\tDigital reproductions are made by <a href=\"http://www.bn.org.pl/"
-#~ "\">The National Library</a>, <a href=\"http://www.bs.katowice.pl/"
-#~ "\">Biblioteka Śląska</a> and <a href=\"http://www.bibliotekaelblaska.pl/"
-#~ "\">Biblioteka Elbląska</a>, based on TNL, BŚ and BE resources.\n"
-#~ "\t\t\t\tHosting: <a href=\"http://www.icm.edu.pl/\">ICM</a>.\n"
-#~ "\t\t\t\t"
-#~ msgstr ""
-#~ "\n"
-#~ "\t\t\t\tProjektas Wolne Lektury yra <a href=\"http://nowoczesnapolska.org."
-#~ "pl/\">fondo Šiuolaikinė Lenkija</a> vadovaujamas.\n"
-#~ "\t\t\t\tSkaitmeninės reprodukcijos yra <a href=\"http://www.bn.org.pl/\"> "
-#~ "Nacionalinės bibliotekos</a>, <a href=\"http://www.bs.katowice.pl/"
-#~ "\">Silezijos bibliotekos</a> ir <a href=\"http://www.bibliotekaelblaska."
-#~ "pl/\">Elbingo bibliotekos</a> paruoštos, remiantis šių bibliotekų "
-#~ "ištekliais.\n"
-#~ "\t\t\t\tPriegloba: <a href=\"http://www.icm.edu.pl/\">ICM</a>.\n"
-#~ "\t\t\t\t"
-
-#~ msgid ""
-#~ "\n"
-#~ "\t\t\t\tModern Poland Foundation, 00-514 Warsaw, ul. Marszałkowska 84/92 "
-#~ "lok. 125, tel/fax: (22) 621-30-17\n"
-#~ "                e-mail: <a href=\"mailto:fundacja@nowoczesnapolska.org."
-#~ "pl\">fundacja@nowoczesnapolska.org.pl</a>\n"
-#~ "\t\t\t\t"
-#~ msgstr ""
-#~ "\n"
-#~ "\t\t\t\tFondas Šiuolaikinė Lenkija, 00-514 Warszawa, ul. Marszałkowska "
-#~ "84/92 lok. 125, tel/faksas: (22) 621-30-17\n"
-#~ "               el. paštas: <a href=\"mailto:fundacja@nowoczesnapolska.org."
-#~ "pl\">fundacja@nowoczesnapolska.org.pl</a>\n"
-#~ "\t\t\t\t"
-
-#~ msgid "Listing of all audiobooks"
-#~ msgstr "Visų audio knygų sąrašas"
-
-#~ msgid "Latest MP3 audiobooks"
-#~ msgstr "Naujosios MP3 audio knygos"
-
-#~ msgid "Latest Ogg Vorbis audiobooks"
-#~ msgstr "Naujosios Ogg Vorbis audio knygos"
-
-#~ msgid ""
-#~ "Audioteka lektur szkolnych fundacji Nowoczesna Polska.\n"
-#~ "Możecie z niej korzystać bezpłatnie i bez ograniczeń.\n"
-#~ "Audiobooki nagrywają znani aktorzy, wśród nich Danuta Stenka i Jan Peszek."
-#~ msgstr ""
-#~ "Fondo Šiuolaikinė Lenkija privalomos literatūros audio knygų rinkinys.\n"
-#~ "Galite juo naudotis nemokamai ir be apribojimų.\n"
-#~ "Audio knygos yra garsių aktorių įrašomos, tokių kaip Danuta Stenka ir Jan "
-#~ "Peszek."
-
-#~ msgid "See also"
-#~ msgstr "Žiūrėti daugiau"
-
-#~ msgid "in work "
-#~ msgstr "kūrinyje"
-
-#~ msgid "This work is licensed under:"
-#~ msgstr "Šis kūrinys yra licencijuotas pagal:"
-
-#~ msgid ""
-#~ "This work isn't covered by copyright and is part of the\n"
-#~ "        public domain, which means it can be freely used, published and\n"
-#~ "        distributed. If there are any additional copyrighted materials\n"
-#~ "        provided with this work (such as annotations, motifs etc.), "
-#~ "those\n"
-#~ "        materials are licensed under the \n"
-#~ "        <a href=\"http://creativecommons.org/licenses/by-sa/3.0/"
-#~ "\">Creative Commons Attribution-ShareAlike 3.0</a>\n"
-#~ "        license."
-#~ msgstr ""
-#~ "Šio visuomenės srities kūrinio autorių teisė neapima,\n"
-#~ "tai reiškia, kad gali būti laisvai naudojamas bei\n"
-#~ "platinamas. Jei su šiuo kūriniu yra pateikiamos bet kokios\n"
-#~ "papildomos autorinių teisių saugomos medžiagos (kaip pastabos, motyvai ir "
-#~ "t.t.), šios\n"
-#~ "medžiagos yra licencijuotos pagal\n"
-#~ "<a href=\"http://creativecommons.org/licenses/by-sa/3.0/\">Creative "
-#~ "Commons Attribution-ShareAlike 3.0</a>\n"
-#~ "licenciją."
-
-#~ msgid "Text prepared based on:"
-#~ msgstr "Tekstas paruoštas remiantis:"
-
-#~ msgid "Edited and annotated by:"
-#~ msgstr "Redagavimas ir pastabos:"
-
-#~ msgid "Listing of all works"
-#~ msgstr "Visų kūrinių sąrašas"
-
-#~ msgid "Table of Content"
-#~ msgstr "Turinys"
-
-#~ msgid "↑ top ↑"
-#~ msgstr "↑į viršų↑"
-
-#~ msgid "Put a book on the shelf!"
-#~ msgstr "Padėkite knygą į lentyną!"
-
-#~ msgid "Create new shelf"
-#~ msgstr "Sukurti naują lentyną"
-
-#~ msgid ""
-#~ "You do not have any shelves. You can create one below, if you want to."
-#~ msgstr ""
-#~ "Neturite nei vienos lentynos. Jei norite, galite sukurti naują lentyną "
-#~ "žemiau."
-
-#~ msgid "Put on the shelf!"
-#~ msgstr "Padėkite į lentyną!"
-
-#~ msgid "Epoch"
-#~ msgstr "Epocha"
-
-#~ msgid "Kind"
-#~ msgstr "Rūšis  "
-
-#~ msgid "Genre"
-#~ msgstr "Žanras"
-
-#~ msgid "Read online"
-#~ msgstr "Skaityti online"
-
-#~ msgid "Download"
-#~ msgstr "Atsisiųsti"
-
-#~ msgid "to print"
-#~ msgstr "Spausdinti"
-
-#~ msgid "for an e-book reader"
-#~ msgstr "e-knygos skaitytojui"
-
-#~ msgid "for Kindle"
-#~ msgstr "skaityklei Kindle"
-
-#~ msgid "for advanced usage"
-#~ msgstr "išplėstiniam naudojimui"
-
-#~ msgid "Listen"
-#~ msgstr "Klausytis"
-
-#~ msgid "Edit. note"
-#~ msgstr "Redaguoti pastabą"
-
-#~ msgid "Infobox"
-#~ msgstr "Infobox"
-
-#~ msgid "Book's page"
-#~ msgstr "Knygos puslapis"
-
-#~ msgid "for a reader"
-#~ msgstr "skaitytojui"
-
-#, fuzzy
-#~ msgid "for advanced usege"
-#~ msgstr "papildomas"
-
-#~ msgid "Download a custom PDF"
-#~ msgstr "Atsisiųsti PDF failą"
-
-#~ msgid "See"
-#~ msgstr "Žiūrėti"
-
-#~ msgid "Source"
-#~ msgstr "Knygos"
-
-#~ msgid "Source XML file"
-#~ msgstr "Šaltinio XML failas"
-
-#~ msgid "Book on"
-#~ msgstr "Knyga "
-
-#~ msgid "Editor's Platform"
-#~ msgstr "Redaktoriaus Platformoje"
-
-#~ msgid "Book description on Lektury.Gazeta.pl"
-#~ msgstr "Knygos aprašymas Lektury.Gazeta.pl interneto svetainėje"
-
-#~ msgid "Book description on Wikipedia"
-#~ msgstr "Knygos aprašymas Vikipedijoje"
-
-#~ msgid "Mix this book"
-#~ msgstr "Maišyti šią knygą"
-
-#~ msgid "Download all audiobooks for this book"
-#~ msgstr "Atsisiųsti visas šios knygos audio knygas"
-
-#~ msgid "Catalogue"
-#~ msgstr "Katalogas"
-
-#~ msgid "Authors"
-#~ msgstr "Autoriai"
-
-#~ msgid "Kinds"
-#~ msgstr "Rūšys"
-
-#~ msgid "Genres"
-#~ msgstr "Žanrai"
-
-#~ msgid "Epochs"
-#~ msgstr "Epochos"
-
-#~ msgid "Themes and topics"
-#~ msgstr "Motyvai ir temos"
-
-#~ msgid "Listing of all DAISY files"
-#~ msgstr "Visų DAISY failų sąrašas"
-
-#~ msgid "Latest DAISY audiobooks"
-#~ msgstr "Naujosios DAISY audio knygos"
-
-#~ msgid ""
-#~ "System DAISY to uznany na całym świecie format udostępniania książek\n"
-#~ "dostosowany do potrzeb osób słabowidzących, niewidomych oraz innych osób\n"
-#~ "mających trudności z czytaniem. Możecie z nich korzystać bezpłatnie i bez "
-#~ "ograniczeń."
-#~ msgstr ""
-#~ "DAISY sistema yra visame pasaulyje pripažintas knygų bendrinimo formatas\n"
-#~ "pritaikytas  silpnesnio regėjimo žmonėms, akliesiems bei kitiems skaitymo "
-#~ "problemų turintiems žmonėms.Galite jomis naudotis nemokamai ir be "
-#~ "apribojimų."
-
-#~ msgid ""
-#~ "The criteria are ambiguous. Please select one of the following options:"
-#~ msgstr ""
-#~ "Paieškos kriterijai nėra tikslūs. Prašome išrinkti vieną iš žemiau "
-#~ "nurodytų galimybių:"
-
-#~ msgid "Shelves containing fragment"
-#~ msgstr "Lentynos turinčios fragmentus "
-
-#~ msgid ""
-#~ "You do not own any shelves. You can create one below, if you want to."
-#~ msgstr ""
-#~ "Neturite nei vienos lentynos. Jei norite, galite sukurti naują lentyną "
-#~ "žemiau."
-
-#~ msgid "Save all shelves"
-#~ msgstr "Įrašyti visas lentynas"
-
-#~ msgid "Expand fragment"
-#~ msgstr "Išplėsti fragmentą"
-
-#~ msgid "Hide fragment"
-#~ msgstr "Slėpti fragmentą"
-
-#~ msgid "See full category"
-#~ msgstr "Žiūrėti visą kategoriją"
-
-#~ msgid "DAISY"
-#~ msgstr "DAISY"
-
-#~ msgid "Work is licensed under "
-#~ msgstr "Kūrinys yra licencijuotas pagal:"
-
-#~ msgid "Based on"
-#~ msgstr "Remiantis"
-
-#~ msgid "Details"
-#~ msgstr "Detalės "
-
-#~ msgid "Author"
-#~ msgstr "Autorius"
-
-#~ msgid "Other resources"
-#~ msgstr "Kiti ištekliai"
-
-#~ msgid "Source of the image"
-#~ msgstr "Paveikslėlio šaltinis"
-
-#~ msgid "Image on the Editor's Platform"
-#~ msgstr "Paveikslėlis Redaktoriaus Platformoje"
-
-#~ msgid "View XML source"
-#~ msgstr "Žiūrėti XML šaltinį"
-
-#~ msgid "Work's themes "
-#~ msgstr "Kūrinio motyvai"
-
-#~ msgid "Listing of all pictures"
-#~ msgstr "Visų vaizdų sąrašas"
-
-#~ msgid "Download as"
-#~ msgstr "Atsisiųsti kaip"
-
-#~ msgid "Director"
-#~ msgstr "Režisierus"
-
-#~ msgid "Audiobooks were prepared as a part of the projects:"
-#~ msgstr "Audio knygos buvo paruoštos kaip projektų dalis:"
-
-#~ msgid "%(cs)s, funded by %(fb)s"
-#~ msgstr "\"%(cs)s, %(fb)s finansuotų"
-
-#~ msgid ""
-#~ "Audiobooks were prepared as a part of the %(cs)s project funded by %(fb)s."
-#~ msgstr ""
-#~ "Audio knygos buvo paruoštos kaip dalis %(fb)s. finansuoto %(cs)s projekto."
-
-#~ msgid "Audiobooks were prepared as a part of the %(cs)s project."
-#~ msgstr "Audio knygos buvo paruoštos kaip dalis %(cs)s projekto."
-
-#~ msgid "Did you mean"
-#~ msgstr "Gal turėjote omenyje"
-
-#~ msgid "Results by authors"
-#~ msgstr "Rezultatai pagal autorius"
-
-#~ msgid "Results by title"
-#~ msgstr "Rezultatai pagal pavadinimą"
-
-#~ msgid "Results in text"
-#~ msgstr "Rezultatai tekste"
-
-#~ msgid "Other results"
-#~ msgstr "Kiti rezultatai"
-
-#~ msgid "Sorry! Search cirteria did not match any resources."
-#~ msgstr "Atsiprašome! Rezultatų, atitinkančių paieškos kriterijus nėra."
-
-#~ msgid ""
-#~ "Search engine supports following criteria: title, author, theme/topic, "
-#~ "epoch, kind and genre.\n"
-#~ "\t\tAs for now we do not support full text search."
-#~ msgstr ""
-#~ "Paieškos sistema palaiko nurodytus kriterijus: pavadinimas, autorius, "
-#~ "tema, epocha, rūšis ir žanras.\n"
-#~ "\t\t Kol kas negalima atlikti viso teksto paieškos."
-
-#~ msgid "Sorry! Search query must have at least two characters."
-#~ msgstr ""
-#~ "Atsiprašome! Paieškos užklausa turi susidėti mažiausiai iš dviejų "
-#~ "simbolių."
-
-#~ msgid "in Lektury.Gazeta.pl"
-#~ msgstr "Lektury.Gazeta.pl interneto svetainėje"
-
-#~ msgid "in Wikipedia"
-#~ msgstr "Vikipedijoje"
-
-#~ msgid "Your shelves with books"
-#~ msgstr "Tavo lentynos su knygomis"
-
-#~ msgid "You do not own any shelves. You can create one below if you want to"
-#~ msgstr ""
-#~ "Neturite nei vienos lentynos. Jei norite, galite sukurti naują lentyną "
-#~ "žemiau."
-
-#~ msgid "Create shelf"
-#~ msgstr "Sukurti lentyną"
-
-#~ msgid "author"
-#~ msgstr "autorius"
-
-#~ msgid "Hand-outs for teachers"
-#~ msgstr "Dalijamoji medžiaga mokytojams"
-
-#~ msgid "Read work's study of this author on Lektury.Gazeta.pl"
-#~ msgstr ""
-#~ "Skaitykite šio autoriaus kūrinio aprašymą interneto svetainėje Lektury."
-#~ "Gazeta.pl"
-
-#~ msgid "Read article about this author on Wikipedia"
-#~ msgstr "Skaitykite straipsnį apie šį autorių Vikipedijoje"
-
-#~ msgid "This author's works are copyrighted."
-#~ msgstr "Šio autoriaus  kūriniai yra autorinių teisių saugomi ."
-
-#~ msgid ""
-#~ "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find "
-#~ "out</a> why Internet libraries can't publish this author's works."
-#~ msgstr ""
-#~ "<a href='http://domenapubliczna.org/co-to-jest-domena-"
-#~ "publiczna/'>Sužinokite</a> kodėl šio autoriaus kūriniai negali būti "
-#~ "publikuojami internetinėje bibliotekoje."
-
-#~ msgid ""
-#~ "This author's works are in public domain and will be published on "
-#~ "Internet school library of Wolne Lektury soon."
-#~ msgstr ""
-#~ "Šio autoriaus kūriniai yra viešai prieinami ir netrukus bus publikuoti "
-#~ "interneto svetainės Wolne Lektury internetinėje bibliotekoje.  "
-
-#~ msgid ""
-#~ "This author's works will become part of public domain and will be allowed "
-#~ "to be published without restrictions in"
-#~ msgstr ""
-#~ "Šio autoriaus kūriniai netrukus bus viešai prieinami ir galės būti "
-#~ "publikuojami be apribojimų"
-
-#~ msgid ""
-#~ "This work is in public domain and will be published on Internet school "
-#~ "library of Wolne Lektury soon."
-#~ msgstr ""
-#~ "Šis kūrinys yra viešai prieinamas ir netrukus bus publikuotas interneto "
-#~ "svetainės Wolne Lektury internetinėje bibliotekoje."
-
-#~ msgid ""
-#~ "This work will become part of public domain and will be allowed to be "
-#~ "published without restrictions in"
-#~ msgstr ""
-#~ "Šis kūrinys netrukus bus viešai prieinamas ir galės būti publikuojamas be "
-#~ "apribojimų"
-
-#~ msgid ""
-#~ "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find "
-#~ "out</a> why Internet libraries can't publish this work."
-#~ msgstr ""
-#~ "<a href='http://domenapubliczna.org/co-to-jest-domena-"
-#~ "publiczna/'>Sužinokite</a> kodėl šis kūrinys negali būti publikuojamas "
-#~ "internetinėje bibliotekoje."
-
-#~ msgid "This work is copyrighted."
-#~ msgstr "Šis kūrinis yra autorinių teisių saugomas."
-
-#~ msgid "Login to Wolne Lektury"
-#~ msgstr "Prisijungti prie Wolne Lektury interneto svetainės"
-
-#~ msgid "Login"
-#~ msgstr "Prisijungti"
-
-#~ msgid ""
-#~ "Internet Explorer cannot display this site properly. Click here to read "
-#~ "more..."
-#~ msgstr ""
-#~ "Internet Explorer nie sugeba teisingai parodyti šio tinklapio. Paspausti "
-#~ "čia, kad sužinoti daugiau..."
-
-#~ msgid "Your shelves"
-#~ msgstr "Tavo lentynos"
-
-#~ msgid "Register on"
-#~ msgstr "Registruotis į"
-
-#~ msgid "or"
-#~ msgstr "arba"
-
-#~ msgid "return to main page"
-#~ msgstr "gryžk į pagrindinį puslapį"
-
-#, fuzzy
-#~ msgid "Listing of all audiobooks on WolneLektury.pl"
-#~ msgstr "Kūriniu sąrašas LaisvojiLiteratura.lt"
-
-#~ msgid "Put a book"
-#~ msgstr "Prijung literatūrą"
-
-#~ msgid "on the shelf!"
-#~ msgstr "į lentyną!"
-
-#~ msgid "and printing using"
-#~ msgstr "ir spausdinti su pagalbą"
-
-#~ msgid "Download EPUB"
-#~ msgstr "atsisiųsk EPUB failą"
-
-#~ msgid "Download TXT"
-#~ msgstr "atsisiųsk TXT failą"
-
-#~ msgid "on small displays, for example mobile phones"
-#~ msgstr "ant displėjaus, pvz. mobilaus telefono "
-
-#~ msgid "Download ODT"
-#~ msgstr "atsisiųsk ODT failą"
-
-#~ msgid "and editing using"
-#~ msgstr "ir edituoti su pagalbą "
-
-#~ msgid "Book on project's wiki"
-#~ msgstr "Sukurk straipsnį apie knygą vikiprojekte"
-
-#~ msgid "on"
-#~ msgstr "ant"
-
-#~ msgid "See description"
-#~ msgstr "Aprašymas"
-
-#, fuzzy
-#~ msgid "Listing of all works on WolneLektury.pl"
-#~ msgstr "Kūriniu sąrašas LaisvojiLiteratura.lt"
-
-#~ msgid "Jump to"
-#~ msgstr "Santrumpa"
-
-#~ msgid "Categories"
-#~ msgstr "Kūrinio kategorija  "
-
-#, fuzzy
-#~ msgid "Listing of all DAISY files on WolneLektury.pl"
-#~ msgstr "Kūriniu sąrašas LaisvojiLiteratura.lt"
-
-#~ msgid "Show full category"
-#~ msgstr "Apžiūrek visą kategoriją"
-
-#~ msgid "Hide"
-#~ msgstr "Suvyniok"
-
-#~ msgid "Browse books by categories"
-#~ msgstr "Peržiurinek literaturą pagal išrinktą kategoriją"
-
-#~ msgid "delete"
-#~ msgstr "pašalink"
-
-#~ msgid ""
-#~ "Create your own book set. You can share it with friends by sending them "
-#~ "link to your shelf."
-#~ msgstr ""
-#~ "Sukurk savo knygų rinkiny. Gali juo veliau pasidalinti su kitais, "
-#~ "persiūsk jiems nuorodą i tavo lentyną."
-
-#~ msgid "You need to "
-#~ msgstr "Gali"
-
-#~ msgid "sign in"
-#~ msgstr "Prisijungti  "
-
-#~ msgid "to manage your shelves."
-#~ msgstr "Kad valdti savo lentynom."
-
-#~ msgid ""
-#~ "Lessons' prospects and other ideas for using Wolnelektury.pl for teaching."
-#~ msgstr ""
-#~ "Pamokų scenarijai ir kiti sumanymai kaip panaudoti servisą "
-#~ "LaisvojiLiteratura.lt mokslui."
-
-#~ msgid ""
-#~ "are professional recordings of literary texts from our repository, "
-#~ "available on free license in MP3 and Ogg Vorbis formats as well as in "
-#~ "DAISY system."
-#~ msgstr ""
-#~ "Tai profesjonalus literaturinių tekstų garso įrašai, mūsų rinkinių "
-#~ "laisvai prieinami šiuose įrašymo formatouse: MP3, Ogg Vorbis ir sistema "
-#~ "DAISY."
-
-#~ msgid "Themes groups"
-#~ msgstr "Motyvų grupė"
-
-#~ msgid "You can help us!"
-#~ msgstr "Gali mums padėti!"
-
-#~ msgid ""
-#~ "We try our best to elaborate works appended to our library. It is "
-#~ "possible only due to support of our volunteers."
-#~ msgstr ""
-#~ "Dėka savanorių apršymai kūriniu, kurie yra prijungemi i mūsų biblioteką "
-#~ "yra kiekvieną kartą kruopščiai paruošti"
-
-#~ msgid ""
-#~ "We invite people who want to take part in developing Internet school "
-#~ "library Wolne Lektury."
-#~ msgstr ""
-#~ "Kviečiame visus, kurie nori kartu su mumi kurti mokykline internetine "
-#~ "biblioteką Laisvoji Literatura."
-
-#~ msgid "About us"
-#~ msgstr "Apie projektą"
-
-#~ msgid ""
-#~ "\n"
-#~ "\t\t\tInternet library with school readings “Wolne Lektury” (<a "
-#~ "href=\"http://wolnelektury.pl\">www.wolnelektury.pl</a>) is a project "
-#~ "made by Modern Poland Foundation. It started in 2007 and shares school "
-#~ "readings, which are recommended by Ministry of National Education and are "
-#~ "in public domain.\n"
-#~ "\t\t\t"
-#~ msgstr ""
-#~ "\n"
-#~ "\t\t\tInternetine biblioteka \"Laisvoji Literatura\" (www."
-#~ "laisvojiliteratura.lt) siūlanti mokyklinę literaturą -          tai "
-#~ "Šiuolaikines Lenkijos Fondasto projektas. Fondas veike nou 2007 metų ir "
-#~ "savo rinkinuose turi mokyklinę literaturą,          kuri yra "
-#~ "rekomenduojama per Švietimo ir Mokslo Ministeriją ir kuri jau\tpateko į "
-#~ "viešią Interneto svetainę.\n"
-#~ "\t\t\t"
-
-#~ msgid "Searching in"
-#~ msgstr "Ieškoimas"
-
-#~ msgid "More than one result matching the criteria found."
-#~ msgstr "Surasta daugiau nei vienas paješku rezultatas"
-
-#~ msgid "Search in WolneLektury.pl"
-#~ msgstr "Ieškok šiame tinklapyje LasvojiLiteratura.lt "
-
-#~ msgid "Your shelf is empty"
-#~ msgstr "Tavo lentyna yra tuščia"
-
-#~ msgid ""
-#~ "You can put a book on a shelf by entering page of the reading and "
-#~ "clicking 'Put on the shelf'."
-#~ msgstr ""
-#~ "Gali įmesti knygą į lentyną,  įeik į knygos tinklapį ir išrink \"Į "
-#~ "lentyną\".    "
-
-#~ msgid "Choose books' formats which you want to download:"
-#~ msgstr "Pasirink knygos persiuntimo formatą:"
-
-#~ msgid "for listening"
-#~ msgstr "klausyti"
-
-#~ msgid "on favourite MP3 player"
-#~ msgstr "numylėtam MP3 grotuve"
-
-#~ msgid "open format"
-#~ msgstr "atviras formatas"
-
-#~ msgid "Xiph.org Foundation"
-#~ msgstr "Fondo Xiph.Org"
-
-#~ msgid "Updating list of books' formats on the shelf"
-#~ msgstr "Atnaujinti knygų formatų sąrašą lentynose. "
-
-#~ msgid "cancel"
-#~ msgstr "anuliuoti"
-
-#~ msgid "Share this shelf"
-#~ msgstr "Pasidalink šią lentyną."
-
-#~ msgid ""
-#~ "Copy this link and share it with other people to let them see your shelf."
-#~ msgstr ""
-#~ "Sukopijuok šią nuorodą ir persiusk ją tiems, su kuriais noru pasidalinti "
-#~ "savo lentyną."
-
-#, fuzzy
-#~ msgid "Read study of epoch %(last_tag)s on Lektury.Gazeta.pl"
-#~ msgstr "Perskaityk šio autoriaus aprašymą tinklapį Lektury.Gazeta.pl"
-
-#, fuzzy
-#~ msgid "Read study of kind %(last_tag)s on Lektury.Gazeta.pl"
-#~ msgstr "Perskaityk šio autoriaus aprašymą tinklapį Lektury.Gazeta.pl"
-
-#, fuzzy
-#~ msgid "Read study of genre %(last_tag)s on Lektury.Gazeta.pl"
-#~ msgstr "Perskaityk šio autoriaus aprašymą tinklapį Lektury.Gazeta.pl"
-
-#, fuzzy
-#~ msgid "Read related study on Lektury.Gazeta.pl"
-#~ msgstr "Perskaityk šio autoriaus aprašymą tinklapį Lektury.Gazeta.pl"
-
-#, fuzzy
-#~ msgid "Read article about epoch %(last_tag)s on Wikipedia"
-#~ msgstr "Perskaityk straipsnį apie autorių Wikipedijoje"
-
-#, fuzzy
-#~ msgid "Read article about kind %(last_tag)s on Wikipedia"
-#~ msgstr "Perskaityk straipsnį apie autorių Wikipedijoje"
-
-#, fuzzy
-#~ msgid "Read article about genre %(last_tag)s on Wikipedia"
-#~ msgstr "Perskaityk straipsnį apie autorių Wikipedijoje"
-
-#, fuzzy
-#~ msgid "Read related article on Wikipedia"
-#~ msgstr "Perskaityk straipsnį apie autorių Wikipedijoje"
-
-#~ msgid "Delete"
-#~ msgstr "pašalinti "
-
-#~ msgid "return to the main page"
-#~ msgstr "sugryžk į pagrindinį puslapį "
-
-#~ msgid "return to list of materials"
-#~ msgstr "gryžk i medžiagų sarašą"
-
-#~ msgid "Hand-outs for teachers on "
-#~ msgstr "Pagalbinės medžiagos mokytojams"
-
-#, fuzzy
-#~ msgid ""
-#~ "Download TXT - for reading on small displays, for example mobile phones"
-#~ msgstr "ant displėjaus, pvz. mobilaus telefono "
-
-#~ msgid "Polish"
-#~ msgstr "Lenkų"
-
-#~ msgid "German"
-#~ msgstr "Vokiečių"
-
-#~ msgid "English"
-#~ msgstr "Anglų "
-
-#~ msgid "Lithuanian"
-#~ msgstr "Lietuvių"
-
-#~ msgid "French"
-#~ msgstr "Prancūzų"
-
-#~ msgid "Russian"
-#~ msgstr "Rusų"
-
-#~ msgid "Spanish"
-#~ msgstr "Ispanų"
-
-#~ msgid "Ukrainian"
-#~ msgstr "Ukrainiečių"
-
-#~ msgid "Choose your interface language: "
-#~ msgstr "Pasirink sąsajos kalbą:"
-
-#~ msgid "Choose language"
-#~ msgstr "Pasirink kalbą"
-
-#~ msgid "Hide description"
-#~ msgstr "Suvyniok aprašymą "
-
-#~ msgid "Download MP3"
-#~ msgstr "atsisiųsk MP3 failą"
-
-#~ msgid "Download Ogg Vorbis"
-#~ msgstr "atsisiųsk Ogg Vorbis failą"
-
-#~ msgid "Download DAISY"
-#~ msgstr "atsisiųsk DAISY failą"
-
-#~ msgid "check list of books"
-#~ msgstr "patikrink knygų sąrašą"
-
-#~ msgid "in our repository"
-#~ msgstr "mūsų knygų rinkiny"
-
-#~ msgid "Read study of epoch"
-#~ msgstr "Perskaityk gadynės aprašymą"
-
-#~ msgid "Read article about epoch"
-#~ msgstr "Perskaityk straipsnį apie gadynę "
+#: wolnelektury/templates/user_actions.html:22
+msgid "Wyloguj się"
+msgstr "Atsijungti"

@@ -5,8 +5,8 @@ from django.utils.translation import gettext_lazy as _
 
 
 FN_TYPES = {
-    'pa': _("author's footnotes"),
-    'pe': _("Wolne Lektury editorial footnotes"),
-    'pr': _("source editorial footnotes"),
-    'pt': _("translator's footnotes"),
+    'pa': _("przypisy autorskie"),
+    'pe': _("przypisy redaktorów Wolnych Lektur"),
+    'pr': _("przypisy źródła"),
+    'pt': _("przypisy tłumacza"),
 }

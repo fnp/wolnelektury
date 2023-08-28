@@ -1,12 +1,8 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Wolne Lektury. See NOTICE for more information.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: WolneLektury-waiter\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -15,49 +11,48 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != "
+"11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % "
+"100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
+"(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
 
-#: waiter/templates/waiter/wait.html:8 waiter/templates/waiter/wait.html:18
-#: waiter/templates/waiter/wait.html:53
-msgid "Your file is being prepared, please wait."
+#: waiter/templates/waiter/wait.html:10 waiter/templates/waiter/wait.html:38
+msgid "Plik jest gotowy do pobrania!"
 msgstr ""
 
-#: waiter/templates/waiter/wait.html:15 waiter/templates/waiter/wait.html:41
-msgid "The file is ready for download!"
+#: waiter/templates/waiter/wait.html:13 waiter/templates/waiter/wait.html:52
+msgid "Plik jest generowany, proszę czekać."
 msgstr ""
 
-#: waiter/templates/waiter/wait.html:20 waiter/templates/waiter/wait.html:68
-msgid "Something went wrong."
+#: waiter/templates/waiter/wait.html:15 waiter/templates/waiter/wait.html:69
+msgid "Coś poszło nie tak."
 msgstr ""
 
-#: waiter/templates/waiter/wait.html:45
+#: waiter/templates/waiter/wait.html:42
 #, python-format
 msgid ""
-"Your file is ready!\n"
-"          If the download doesn't start in a few seconds,\n"
-"          feel free to use this <a href=\"%(file_url)s\">direct link</a>."
+"Twój plik jest gotowy! Jeśli pobieranie nie zacznie się w ciągu kilku "
+"sekund, skorzystaj z tego <a href=\"%(file_url)s\">bezpośredniego linku</a>."
+msgstr ""
+
+#: waiter/templates/waiter/wait.html:57
+msgid "Proszę czekać"
 msgstr ""
 
 #: waiter/templates/waiter/wait.html:58
-msgid "Please wait"
-msgstr ""
-
-#: waiter/templates/waiter/wait.html:59
 #, python-format
-msgid "The file you requested was: <em>%(d)s</em>."
+msgid "Zamówiony plik to: <em>%(d)s</em>."
 msgstr ""
 
-#: waiter/templates/waiter/wait.html:63
+#: waiter/templates/waiter/wait.html:62
 msgid ""
-"<strong>Be aware:</strong> Generating the file can take a while.\n"
-"            Please be patient, or bookmark this page and come back later."
+"<strong>Uwaga:</strong> Generowanie pliku może trwać dłuższą chwilę. "
+"Poczekaj cierpliwie, albo dodaj tę stronę do zakładek i wróć później."
 msgstr ""
 
-#: waiter/templates/waiter/wait.html:73
+#: waiter/templates/waiter/wait.html:74
 #, python-format
 msgid ""
-"Something seems to have gone wrong while generating your file.\n"
-"            Please order it again or <a id='suggest' class='ajaxable' "
-"href=\"%(s)s\">complain to us</a> about it."
+"Wygląda na to, że coś poszło źle podczas generowania Twojego pliku. Spróbuj "
+"zamówić go jeszcze raz albo <a href=\"%(s)s\">napisz do nas</a>."
 msgstr ""

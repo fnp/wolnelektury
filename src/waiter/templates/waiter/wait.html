@@ -7,12 +7,12 @@
   {% load title %}
 
   {% if file_url %}
-    {% trans "The file is ready for download!" as title %}
+    {% trans "Plik jest gotowy do pobrania!" as title %}
   {% else %}
     {% if waiting %}
-      {% trans "Your file is being prepared, please wait." as title %}
+      {% trans "Plik jest generowany, proszę czekać." as title %}
     {% else %}
-      {% trans "Something went wrong." as title %}
+      {% trans "Coś poszło nie tak." as title %}
     {% endif %}
   {% endif %}
 
@@ -35,40 +35,46 @@
 
 {% block body %}
   {% if file_url %}
-    <h1>{% trans "The file is ready for download!" %}</h1>
+    <h1>{% trans "Plik jest gotowy do pobrania!" %}</h1>
 
     <div class="normal-text white-box">
       <p>
-        {% blocktrans %}Your file is ready!
-          If the download doesn't start in a few seconds,
-          feel free to use this <a href="{{ file_url }}">direct link</a>.{% endblocktrans %}
+        {% blocktrans trimmed %}
+          Twój plik jest gotowy!
+          Jeśli pobieranie nie zacznie się w ciągu kilku sekund,
+          skorzystaj z tego <a href="{{ file_url }}">bezpośredniego linku</a>.
+        {% endblocktrans %}
       </p>
     </div>
   {% else %}
     {% if waiting %}
       <h1>
-        {% trans "Your file is being prepared, please wait." %}
+        {% trans "Plik jest generowany, proszę czekać." %}
       </h1>
 
       <div class="normal-text">
         <p>
-          <img src="{% static "img/indicator.gif" %}" alt="{% trans 'Please wait' %}"/>
-          {% blocktrans with d=waiting.description %}The file you requested was: <em>{{d}}</em>.{% endblocktrans %}
+          <img src="{% static "img/indicator.gif" %}" alt="{% trans 'Proszę czekać' %}"/>
+          {% blocktrans with d=waiting.description %}Zamówiony plik to: <em>{{d}}</em>.{% endblocktrans %}
         </p>
 
         <p>
-          {% blocktrans %}<strong>Be aware:</strong> Generating the file can take a while.
-            Please be patient, or bookmark this page and come back later.{% endblocktrans %}
+          {% blocktrans trimmed%}
+            <strong>Uwaga:</strong> Generowanie pliku może trwać dłuższą chwilę.
+            Poczekaj cierpliwie, albo dodaj tę stronę do zakładek i wróć później.
+          {% endblocktrans %}
         </p>
       </div>
     {% else %}
-      <h1>{% trans "Something went wrong." %}</h1>
+      <h1>{% trans "Coś poszło nie tak." %}</h1>
 
       <div class="normal-text">
         {% url 'suggest' as s %}
         <p>
-          {% blocktrans %}Something seems to have gone wrong while generating your file.
-            Please order it again or <a id='suggest' class='ajaxable' href="{{s}}">complain to us</a> about it.{% endblocktrans %}
+          {% blocktrans trimmed %}
+            Wygląda na to, że coś poszło źle podczas generowania Twojego pliku.
+            Spróbuj zamówić go jeszcze raz albo <a href="{{ s }}">napisz do nas</a>.
+          {% endblocktrans %}
         </p>
       </div>
     {% endif %}

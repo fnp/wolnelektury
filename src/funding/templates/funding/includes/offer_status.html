@@ -3,29 +3,33 @@
 {% if offer.is_current %}
   {% if offer.is_win %}
     <p>
-      {% blocktrans with end=offer.end %}The fundraiser
-      ends on {{ end }}. The full amount has been successfully
-      raised, but you can still contribute and help liberate
-      more books.{% endblocktrans %}
+      {% blocktrans trimmed with end=offer.end %}
+        Zbiórka kończy się {{ end }}. Pełna kwota została już zebrana,
+        ale ciągle możesz dołożyć się i pomóc uwolnić więcej książek.
+      {% endblocktrans %}
     </p>
   {% else %}
   <p>
-    <strong>{% blocktrans with target=offer.target|floatformat:-2 %}We need {{target}} zł to digitize it,
-    compile it and publish for free in multiple formats.{% endblocktrans %}</strong>
+    <strong>{% blocktrans trimmed with target=offer.target|floatformat:-2 %}
+      Potrzebujemy {{ target }} zł, by zdigitalizować tę książkę, opracować
+      i bezpłatnie udostępnić w serwisie w wielu formatach.
+    {% endblocktrans %}</strong>
   </p>
   <p>
-    {% blocktrans with end=offer.end %}If we raise enough money before {{end}} we will
-    publish it and make it available for everyone.{% endblocktrans %}
+    {% blocktrans trimmed with end=offer.end %}
+      Jeśli do {{ end }} uda się zebrać pełną kwotę, opublikujemy ją i będzie
+      dostępna dla wszystkich.
+    {% endblocktrans %}
   </p>
   {% endif %}
 {% else %}
   {% if offer.is_win %}
     <p>
-      {% trans "Full amount was successfully raised!" %}
+      {% trans "Udało się zebrać pełną kwotę!" %}
     </p>
   {% else %}
     <p>
-      {% trans "The amount needed was not raised." %}
+      {% trans "Nie udało się zebrać pełnej kwoty." %}
     </p>
   {% endif %}
 {% endif %}

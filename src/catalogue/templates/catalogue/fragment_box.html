@@ -1,3 +1,4 @@
+{% load i18n %}
 <article class="l-books__item">
   <figure class="l-books__item__img">
     <a href="{{ fragment.get_absolute_url }}">
@@ -22,6 +23,6 @@
     <div class="fragment-text">
       {{ fragment.short_text|safe }}
     </div>
-    <a href="{{ fragment.get_absolute_url }}">Czytaj więcej</a>
+    <a href="{{ fragment.get_absolute_url }}">{% trans "Czytaj więcej" %}</a>
   </div>
 </article>

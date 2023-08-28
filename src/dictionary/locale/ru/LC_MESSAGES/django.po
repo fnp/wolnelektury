@@ -1,12 +1,8 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Wolne Lektury. See NOTICE for more information.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: WolneLektury-dictionary\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -15,33 +11,34 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: dictionary/constants.py:8
-msgid "author's footnotes"
+msgid "przypisy autorskie"
 msgstr "заметки автора"
 
 #: dictionary/constants.py:9
-msgid "Wolne Lektury editorial footnotes"
+msgid "przypisy redaktorów Wolnych Lektur"
 msgstr "редакторские заметки Wolne Lektury"
 
 #: dictionary/constants.py:10
-msgid "source editorial footnotes"
+msgid "przypisy źródła"
 msgstr "редакторские заметки источника"
 
 #: dictionary/constants.py:11
-msgid "translator's footnotes"
+msgid "przypisy tłumacza"
 msgstr "заметки переводчика"
 
 #: dictionary/templates/dictionary/note_list.html:7
 #: dictionary/templates/dictionary/note_list.html:13
 #: dictionary/templates/dictionary/note_list.html:17
-msgid "Footnotes"
+msgid "Przypisy"
 msgstr "Заметки"
 
 #: dictionary/templates/dictionary/note_list.html:21
-msgid "By first letter"
+msgid "Pierwsza litera"
 msgstr "С начала"
 
 #: dictionary/templates/dictionary/note_list.html:23
@@ -52,24 +49,28 @@ msgstr "С начала"
 #: dictionary/templates/dictionary/note_list.html:62
 #: dictionary/templates/dictionary/note_list.html:78
 #: dictionary/templates/dictionary/note_list.html:80
-msgid "all"
+msgid "wszystkie"
 msgstr "все"
 
 #: dictionary/templates/dictionary/note_list.html:39
-msgid "By type"
+msgid "Według typu"
 msgstr "По типу"
 
 #: dictionary/templates/dictionary/note_list.html:58
-msgid "By qualifier"
+msgid "Według kwalifikatora"
 msgstr "По определителю"
 
 #: dictionary/templates/dictionary/note_list.html:76
-msgid "By language"
+msgid "Według języka"
 msgstr "По языку"
 
 #: dictionary/templates/dictionary/note_list.html:96
 #, python-format
-msgid "%(c)s footnote found"
-msgid_plural "%(c)s footnotes found"
+msgid "Znaleziono %(c)s przypis."
+msgid_plural "Znaleziono %(c)s przypisów."
 msgstr[0] " Найдено %(c)s заметок"
 msgstr[1] ""
+
+#: dictionary/templates/dictionary/note_list.html:112
+msgid "źródło na Platformie Redakcyjnej"
+msgstr ""

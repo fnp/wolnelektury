@@ -16,23 +16,21 @@ from django.utils.translation import gettext_lazy as _
 from newtagging.models import TagManager, TaggedItemManager
 
 
-# Those are hard-coded here so that makemessages sees them.
 TAG_CATEGORIES = (
-    ('author', _('author')),
-    ('epoch', _('epoch')),
-    ('kind', _('kind')),
-    ('genre', _('genre')),
-    ('theme', _('theme')),
-    ('set', _('set')),
-    ('thing', _('thing')),  # things shown on pictures
+    ('author', _('autor')),
+    ('epoch', _('epoka')),
+    ('kind', _('rodzaj')),
+    ('genre', _('gatunek')),
+    ('theme', _('motyw')),
+    ('set', _('półka')),
+    ('thing', _('obiekt')),  # things shown on pictures
 )
 
 
 class TagRelation(models.Model):
-
-    tag = models.ForeignKey('Tag', models.CASCADE, verbose_name=_('tag'), related_name='items')
-    content_type = models.ForeignKey(ContentType, models.CASCADE, verbose_name=_('content type'))
-    object_id = models.PositiveIntegerField(_('object id'), db_index=True)
+    tag = models.ForeignKey('Tag', models.CASCADE, verbose_name='tag', related_name='items')
+    content_type = models.ForeignKey(ContentType, models.CASCADE, verbose_name='typ obiektu')
+    object_id = models.PositiveIntegerField('id obiektu', db_index=True)
     content_object = GenericForeignKey('content_type', 'object_id')
 
     objects = TaggedItemManager()
@@ -53,12 +51,12 @@ class Tag(models.Model):
 
     Used to represent searchable metadata (authors, epochs, genres, kinds),
     fragment themes (motifs) and some book hierarchy related kludges."""
-    name = models.CharField(_('name'), max_length=120, db_index=True)
-    slug = models.SlugField(_('slug'), max_length=120, db_index=True)
-    sort_key = models.CharField(_('sort key'), max_length=120, db_index=True)
+    name = models.CharField('nazwa', max_length=120, db_index=True)
+    slug = models.SlugField('slug', max_length=120, db_index=True)
+    sort_key = models.CharField('klucz sortowania', max_length=120, db_index=True)
     category = models.CharField(
-        _('category'), max_length=50, blank=False, null=False, db_index=True, choices=TAG_CATEGORIES)
-    description = models.TextField(_('description'), blank=True)
+        'kategoria', max_length=50, blank=False, null=False, db_index=True, choices=TAG_CATEGORIES)
+    description = models.TextField('opis', blank=True)
 
     for_books = models.BooleanField(default=False)
     for_pictures = models.BooleanField(default=False)
@@ -70,8 +68,8 @@ class Tag(models.Model):
     photo = models.FileField(blank=True, null=True, upload_to='catalogue/tag/')
     photo_attribution = models.CharField(max_length=255, blank=True)
 
-    created_at = models.DateTimeField(_('creation date'), auto_now_add=True, db_index=True)
-    changed_at = models.DateTimeField(_('creation date'), auto_now=True, db_index=True)
+    created_at = models.DateTimeField('data utworzenia', auto_now_add=True, db_index=True)
+    changed_at = models.DateTimeField('data modyfikacji', auto_now=True, db_index=True)
 
     plural = models.CharField(
         'liczba mnoga', max_length=255, blank=True,
@@ -121,8 +119,8 @@ class Tag(models.Model):
 
     class Meta:
         ordering = ('sort_key',)
-        verbose_name = _('tag')
-        verbose_name_plural = _('tags')
+        verbose_name = 'tag'
+        verbose_name_plural = 'tagi'
         unique_together = (("slug", "category"),)
         app_label = 'catalogue'
 
@@ -168,7 +166,7 @@ class Tag(models.Model):
 
     def has_description(self):
         return len(self.description) > 0
-    has_description.short_description = _('description')
+    has_description.short_description = 'opis'
     has_description.boolean = True
 
     @staticmethod

@@ -1,12 +1,8 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Wolne Lektury. See NOTICE for more information.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: WolneLektury-dictionary\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -18,29 +14,29 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: dictionary/constants.py:8
-msgid "author's footnotes"
+msgid "przypisy autorskie"
 msgstr ""
 
 #: dictionary/constants.py:9
-msgid "Wolne Lektury editorial footnotes"
+msgid "przypisy redaktorów Wolnych Lektur"
 msgstr ""
 
 #: dictionary/constants.py:10
-msgid "source editorial footnotes"
+msgid "przypisy źródła"
 msgstr ""
 
 #: dictionary/constants.py:11
-msgid "translator's footnotes"
+msgid "przypisy tłumacza"
 msgstr ""
 
 #: dictionary/templates/dictionary/note_list.html:7
 #: dictionary/templates/dictionary/note_list.html:13
 #: dictionary/templates/dictionary/note_list.html:17
-msgid "Footnotes"
+msgid "Przypisy"
 msgstr ""
 
 #: dictionary/templates/dictionary/note_list.html:21
-msgid "By first letter"
+msgid "Pierwsza litera"
 msgstr ""
 
 #: dictionary/templates/dictionary/note_list.html:23
@@ -51,24 +47,28 @@ msgstr ""
 #: dictionary/templates/dictionary/note_list.html:62
 #: dictionary/templates/dictionary/note_list.html:78
 #: dictionary/templates/dictionary/note_list.html:80
-msgid "all"
+msgid "wszystkie"
 msgstr ""
 
 #: dictionary/templates/dictionary/note_list.html:39
-msgid "By type"
+msgid "Według typu"
 msgstr ""
 
 #: dictionary/templates/dictionary/note_list.html:58
-msgid "By qualifier"
+msgid "Według kwalifikatora"
 msgstr ""
 
 #: dictionary/templates/dictionary/note_list.html:76
-msgid "By language"
+msgid "Według języka"
 msgstr ""
 
 #: dictionary/templates/dictionary/note_list.html:96
 #, python-format
-msgid "%(c)s footnote found"
-msgid_plural "%(c)s footnotes found"
+msgid "Znaleziono %(c)s przypis."
+msgid_plural "Znaleziono %(c)s przypisów."
 msgstr[0] ""
 msgstr[1] ""
+
+#: dictionary/templates/dictionary/note_list.html:112
+msgid "źródło na Platformie Redakcyjnej"
+msgstr ""

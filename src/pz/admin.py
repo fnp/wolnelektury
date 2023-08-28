@@ -5,7 +5,6 @@ from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import path, reverse
 from django.utils.safestring import mark_safe
-from django.utils.translation import gettext_lazy as _
 from django.utils.timezone import now
 from fnpdjango.actions import export_as_csv_action
 from . import bank
@@ -43,9 +42,9 @@ class EmptyFieldListFilter(FieldListFilter):
 
     def choices(self, changelist):
         for lookup, title in (
-            (None, _('All')),
-            ('1', _('Empty')),
-            ('0', _('Not empty')),
+            (None, 'Wszystkie'),
+            ('1', 'Puste'),
+            ('0', 'Niepuste'),
         ):
             yield {
                 'selected': self.lookup_val == lookup,
@@ -135,7 +134,7 @@ class DirectDebitAdmin(admin.ModelAdmin):
                 'campaign',
             ]
         }),
-        (_('Processing'), {"fields": [
+        ('Przetwarzanie', {"fields": [
             ('cancelled_at', 'needs_redo', 'optout'),
             'submission_date',
             'fundraiser_commission',
@@ -171,8 +170,8 @@ class DirectDebitAdmin(admin.ModelAdmin):
     ]
 
     def agree_contact(self, obj):
-        return _('obligatory')
-    agree_contact.short_description = _('agree contact')
+        return 'obowiązkowo'
+    agree_contact.short_description = 'zgoda na kontakt'
 
     def get_changeform_initial_data(self, request):
         return {

@@ -1,11 +1,11 @@
 {% load i18n %}
 {% load honeypot %}
 
-<h1>{% trans "Download custom PDF" %}</h1>
+<h1>{% trans "Stwórz własny PDF" %}</h1>
 
 <form id='custom-pdf-form' action="" method="post" accept-charset="utf-8" class="cuteform">
   {% csrf_token %}
   {% render_honeypot_field %}
   {{ form.as_p }}
-  <button type="submit">{% trans "Download" %}</button>
+  <button type="submit">{% trans "Pobierz" %}</button>
 </form>

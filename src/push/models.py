@@ -2,14 +2,13 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.db import models
-from django.utils.translation import gettext_lazy as _
 
 
 class Notification(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
-    title = models.CharField(max_length=256, verbose_name=_('title'))
-    body = models.CharField(max_length=2048, verbose_name=_('content'))
-    image = models.ImageField(verbose_name=_('image'), blank=True, upload_to='push/img')
+    title = models.CharField(max_length=256, verbose_name='tytuł')
+    body = models.CharField(max_length=2048, verbose_name='treść')
+    image = models.ImageField(verbose_name='obraz', blank=True, upload_to='push/img')
     message_id = models.CharField(max_length=2048)
 
     class Meta:

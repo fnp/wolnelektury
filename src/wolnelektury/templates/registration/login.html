@@ -3,16 +3,16 @@
 
 {% block settings %}
   {% load title %}
-  {% trans 'Sign In' as title %}
+  {% trans 'Zaloguj się' as title %}
   {% title title %}
 {% endblock %}
 
 
 {% block sbreadcrumbs %}
-  <a>Zaloguj się</a>
+  <a>{% trans "Zaloguj się" %}</a>
 {% endblock %}
 
-{% block stitle %}Zaloguj się{% endblock %}
+{% block stitle %}{% trans "Zaloguj się" %}{% endblock %}
 
 {% block content %}
   <h1>{{ title }}</h1>
@@ -20,15 +20,15 @@
   <form method="post">
     {% csrf_token %}
     {{ form }}
-    <button>Dalej</button>
+    <button>{% trans "Dalej" %}</button>
 
-    <a href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+    <a href="{% url 'account_reset_password' %}">{% trans "Nie pamiętasz hasła?" %}</a>
 
     <br><br>
-    <a href="{% url 'register' %}?next={{ request.GET.next }}">Nie masz jeszcze konta?</a>
+    <a href="{% url 'register' %}?next={{ request.GET.next }}">{% trans "Nie masz jeszcze konta?" %}</a>
 
     {% if USE_OPENID %}
-      <h3>{% trans "Sign in using:" %}</h3>
+      <h3>{% trans "Zaloguj się używając:" %}</h3>
 
       <ul class="socialaccount_providers">
         {% include "socialaccount/snippets/provider_list.html" %}

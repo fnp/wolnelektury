@@ -3,15 +3,15 @@
 
 {% block settings %}
   {% load title %}
-  {% trans 'Library directories' as title %}
+  {% trans 'Katalogi bibliotek' as title %}
   {% title title %}
 {% endblock %}
 
 {% block breadcrumbs %}
-  <a href="{% url 'libraries_main_view' %}"><span>{% trans 'Libraries directory' %}</span></a>
+  <a href="{% url 'libraries_main_view' %}"><span>{% trans 'Katalog bibliotek' %}</span></a>
 {% endblock %}
 
-{% block titleextra %}{% trans 'Libraries directory' %}{% endblock %}
+{% block titleextra %}{% trans 'Katalog bibliotek' %}{% endblock %}
 
 
 {% block body %}

@@ -1,5 +1,4 @@
 {% spaceless %}
-  {% load i18n %}
   {% load embed_video from social_tags %}
 
   {% if main %}
@@ -20,7 +19,7 @@
 	{% endif %}
 	<div class="{% if cite.small %}cite-text-small{% endif %}">
         {% if cite.vip %}
-          <p class='vip mono'><span>{{ cite.vip }} {% trans "recommends" %}:</span></p>
+          <p class='vip mono'><span>{{ cite.vip }} poleca:</span></p>
         {% endif %}
 	{% if cite.text %}
           <blockquote class="cite-body">

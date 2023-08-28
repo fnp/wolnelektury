@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load i18n %}
 {% load chunks %}
 {% load static %}
 {% load choose_cites from social_tags %}
@@ -10,8 +10,8 @@
 {% block global-content %}
     <div class="l-container">
       <div class="l-breadcrumb">
-        <a href="/"><span>Strona główna</span></a>
-        <a href="/katalog/lektury/"><span>Literatura</span></a>
+        <a href="/"><span>{% trans "Strona główna" %}</span></a>
+        <a href="/katalog/lektury/"><span>{% trans "Literatura" %}</span></a>
         {% for ancestor in book.ancestors %}
           <a href="{{ ancestor.get_absolute_url }}">{{ ancestor.title }}</a>
         {% endfor %}
@@ -78,9 +78,9 @@
             {% endif  %}
 
             <ul class="l-aside__info">
-              <li><span>Epoka:</span> {% for tag in book.epochs %}<a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a> {% endfor %}</li>
-              <li><span>Rodzaj:</span> {% for tag in book.kinds %}<a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a> {% endfor %}</li>
-              <li><span>Gatunek:</span> {% for tag in book.genres %}<a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a> {% endfor %}</li>
+              <li><span>{% trans "Epoka" %}:</span> {% for tag in book.epochs %}<a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a> {% endfor %}</li>
+              <li><span>{% trans "Rodzaj" %}:</span> {% for tag in book.kinds %}<a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a> {% endfor %}</li>
+              <li><span>{% trans "Gatunek" %}:</span> {% for tag in book.genres %}<a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a> {% endfor %}</li>
 
             </ul>
           </aside>
@@ -94,7 +94,7 @@
                 {% if translators %}
                   <p class="l-header__translators">
                     {% if translators.0 != 'tłumacz nieznany' %}
-                      tłum.
+                      {% trans "tłum." %}
                     {% endif %}
                     {% for translator in translators %}
                       {{ translator }}{% if not forloop.last %}, {% endif %}
@@ -112,14 +112,14 @@
                   <form method='post' action='{% url 'social_unlike_book' book.slug %}'>
                     {% csrf_token %}
                     <button class="l-button l-button--fav">
-                      <img src="{% static '2022/images/faved.svg' %}" alt="Usuń z ulubionych">
+                      <img src="{% static '2022/images/faved.svg' %}" alt="{% trans 'Usuń z ulubionych' %}">
                     </button>
                   </form>
                 {% else %}
                   <form method='post' action='{% url 'social_like_book' book.slug %}'>
                     {% csrf_token %}
                     <button class="l-button l-button--fav">
-                      <img src="{% static '2022/images/fav.svg' %}" alt="Dodaj do ulubionych">
+                      <img src="{% static '2022/images/fav.svg' %}" alt="{% trans 'Dodaj do ulubionych' %}">
                     </button>
                   </form>
                 {% endif %}
@@ -149,14 +149,14 @@
                           <form method='post' action='{% url 'social_unlike_book' book.slug %}'>
                             {% csrf_token %}
                             <button class="l-button l-button--fav">
-                              <img src="{% static '2022/images/faved.svg' %}" alt="Usuń z ulubionych">
+                              <img src="{% static '2022/images/faved.svg' %}" alt="{% trans 'Usuń z ulubionych' %}">
                             </button>
                           </form>
                         {% else %}
                           <form method='post' action='{% url 'social_like_book' book.slug %}'>
                             {% csrf_token %}
                             <button class="l-button l-button--fav">
-                              <img src="{% static '2022/images/fav.svg' %}" alt="Dodaj do ulubionych">
+                              <img src="{% static '2022/images/fav.svg' %}" alt="{% trans 'Dodaj do ulubionych' %}">
                             </button>
                           </form>
                         {% endif %}
@@ -164,15 +164,15 @@
                       <div class="c-media__actions lay-col lay-l-row">
                         <div class="c-media__btn">
                           {% if book.has_mp3_file %}
-                            <button class="l-button l-button--media" id="audiobook"><i class="icon icon-audio"></i> pobierz audiobook</button>
+                            <button class="l-button l-button--media" id="audiobook"><i class="icon icon-audio"></i> {% trans "pobierz audiobook" %}</button>
                           {% endif %}
                         </div>
                         <div class="c-media__btn">
-                          <button class="l-button l-button--media" id="ebook"><i class="icon icon-book"></i> pobierz książkę</button>
+                          <button class="l-button l-button--media" id="ebook"><i class="icon icon-book"></i> {% trans "pobierz książkę" %}</button>
                         </div>
                         <div class="c-media__btn">
                           {% if first_text %}
-                            <a href="{% url 'book_text' first_text.slug %}" class="l-button l-button--media l-button--media--full"><i class="icon icon-eye"></i> czytaj online</a>
+                            <a href="{% url 'book_text' first_text.slug %}" class="l-button l-button--media l-button--media--full"><i class="icon icon-eye"></i> {% trans "czytaj online" %}</a>
                           {% endif %}
                         </div>
                       </div>
@@ -198,15 +198,15 @@
                   <div class="c-media__popup" data-popup="ebook">
                     <div class="c-media__popup__box">
                       <div class="c-media__popup__box__lead">
-                        <h2>Pobieranie e-booka</h2>
-                        <p>Wybierz wersję dla siebie:</p>
+                        <h2>{% trans "Pobieranie e-booka" %}</h2>
+                        <p>{% trans "Wybierz wersję dla siebie" %}:</p>
                       </div>
                       <div class="c-media__popup__box__items">
                         {% if book.pdf_file %}
                           <div class="c-media__popup__box__item">
                             <div>
                               <h3>.pdf</h3>
-                              <p>Jeśli planujesz wydruk albo lekturę na urządzeniu mobilnym bez dodatkowych aplikacji.</p>
+                              <p>{% trans "Jeśli planujesz wydruk albo lekturę na urządzeniu mobilnym bez dodatkowych aplikacji." %}</p>
                             </div>
                             <div>
                               <a href="{{ book.pdf_url }}" class="l-button l-button--media l-button--media--full">.pdf</a>
@@ -217,7 +217,7 @@
                           <div class="c-media__popup__box__item">
                             <div>
                               <h3>.epub</h3>
-                              <p>Uniwersalny format e-booków, obsługiwany przez większość czytników sprzętowych i aplikacji na urządzenia mobilne.</p>
+                              <p>{% trans "Uniwersalny format e-booków, obsługiwany przez większość czytników sprzętowych i aplikacji na urządzenia mobilne." %}</p>
                             </div>
                             <div>
                               <a href="{{ book.epub_url }}" class="l-button l-button--media l-button--media--full">.epub</a>
@@ -228,7 +228,7 @@
                           <div class="c-media__popup__box__item">
                             <div>
                               <h3>.mobi</h3>
-                              <p>Natywny format dla czytnika Amazon Kindle.</p>
+                              <p>{% trans "Natywny format dla czytnika Amazon Kindle." %}</p>
                             </div>
                             <div>
                               <a href="{{ book.mobi_url }}" class="l-button l-button--media l-button--media--full">.mobi</a>
@@ -239,28 +239,28 @@
                           <div class="c-media__popup__box__item">
                             <div>
                               <h3>synchrobook (epub3)</h3>
-                              <p>Książka elektroniczna i audiobook w jednym. Wymaga aplikacji obsługującej format (np. ..., ..., ...).</p>
+                              <p>{% trans "Książka elektroniczna i audiobook w jednym. Wymaga aplikacji obsługującej format." %}</p>
                             </div>
                             <div>
-                              <a href="#" class="l-button l-button--media l-button--media--full">synchrobook</a>
+                              <a href="{{ book.synchro_file }}" class="l-button l-button--media l-button--media--full">synchrobook</a>
                             </div>
                           </div>
                         {% endif %}
                         {% if book.txt_file or book.fb2_file %}
                           <div class="c-media__popup__box__item">
                             <div>
-                              <h3>inne formaty</h3>
+                              <h3>{% trans "inne formaty" %}</h3>
                               <ul>
-                                <li><a href="{% url 'custom_pdf_form' book.slug %}">Stwórz własny PDF</a></li>
-                                {% if book.txt_file %}<li><a href="{{ book.txt_url }}">plik tekstowy (.txt)</a></li>{% endif %}
-                                {% if book.fb2_file %}<li><a href="{{ book.fb2_url }}">FictionBook</a></li>{% endif %}
+                                <li><a href="{% url 'custom_pdf_form' book.slug %}">{% trans "Stwórz własny PDF" %}</a></li>
+                                {% if book.txt_file %}<li><a href="{{ book.txt_url }}">{% trans "plik tekstowy" %} (.txt)</a></li>{% endif %}
+                                {% if book.fb2_file %}<li><a href="{{ book.fb2_url }}">{% trans "FictionBook" %}</a></li>{% endif %}
                               </ul>
                             </div>
                           </div>
                         {% endif %}
                       </div>
                       <button class="c-media__popup__close">
-                        <img src="{% static '2022/images/close.svg' %}" alt="Zamknij">
+                        <img src="{% static '2022/images/close.svg' %}" alt="{% trans 'Zamknij' %}">
                       </button>
                     </div>
                   </div>
@@ -268,14 +268,14 @@
                     <div class="c-media__popup" data-popup="audiobook">
                       <div class="c-media__popup__box">
                         <div class="c-media__popup__box__lead">
-                          <h2>Pobieranie audiobooka</h2>
-                          <p>Wybierz wersję dla siebie:</p>
+                          <h2>{% trans "Pobieranie audiobooka" %}</h2>
+                          <p>{% trans "Wybierz wersję dla siebie" %}:</p>
                         </div>
                         <div class="c-media__popup__box__items">
                           <div class="c-media__popup__box__item">
                             <div>
                               <h3>.mp3</h3>
-                              <p>Uniwersalny format, obsługiwany przez wszystkie urządzenia.</p>
+                              <p>{% trans "Uniwersalny format, obsługiwany przez wszystkie urządzenia." %}</p>
                             </div>
                             <div>
                               <a href="{% url 'download_zip_mp3' book.slug %}" class="l-button l-button--media l-button--media--full">.mp3</a>
@@ -285,7 +285,7 @@
                             <div class="c-media__popup__box__item">
                               <div>
                                 <h3>OggVorbis</h3>
-                                <p>Otwarty format plików audio, oferujący nagranie w najwyższej jakości dźwiękowej.</p>
+                                <p>{% trans "Otwarty format plików audio, oferujący wysokiej jakości nagranie." %}</p>
                               </div>
                               <div>
                                 <a href="{% url 'download_zip_ogg' book.slug %}" class="l-button l-button--media l-button--media--full">.ogg</a>
@@ -296,7 +296,7 @@
                             <div class="c-media__popup__box__item">
                               <div>
                                 <h3>DAISY</h3>
-                                <p>Format dla osób z dysfunkcjami czytania.</p>
+                                <p>{% translate "Format dla osób z dysfunkcjami czytania." %}</p>
                               </div>
                               <div>
                                 {% for dsy in book.media_daisy %}
@@ -309,7 +309,7 @@
                             <div class="c-media__popup__box__item">
                               <div>
                                 <h3>EPUB + audiobook</h3>
-                                <p>Książka elektroniczna i audiobook w jednym. Wymaga aplikacji obsługującej format.</p>
+                                <p>{% trans "Książka elektroniczna i audiobook w jednym. Wymaga aplikacji obsługującej format." %}</p>
                               </div>
                               <div>
                                 {% for epub in book.media_audio_epub %}
@@ -320,7 +320,7 @@
                           {% endif %}
                         </div>
                         <button class="c-media__popup__close">
-                          <img src="{% static '2022/images/close.svg' %}" alt="Zamknij">
+                          <img src="{% static '2022/images/close.svg' %}" alt="{% trans 'Zamknij' %}">
                         </button>
                       </div>
                     </div>
@@ -342,18 +342,23 @@
 
                 {% if book.toc %}
                   <div class="toc">
-                    <h4>Spis treści:</h4>
+                    <h4>{% trans "Spis treści" %}:</h4>
                     {{ book.toc|safe }}
                   </div>
                 {% endif %}
               </div>
-              <button class="l-article__read-more" aria-label="Kliknij aby rozwinąć" data-label="Czytaj więcej" data-action="Zwiń tekst">Czytaj więcej</button>
+              <button class="l-article__read-more" aria-label="{% trans 'Kliknij aby rozwinąć' %}" data-label="{% trans 'Czytaj więcej' %}" data-action="{% trans 'Zwiń tekst' %}">{% trans 'Czytaj więcej' %}</button>
             </article>
             {% if accessible %}
             <div class="c-support">
               <div>
-                <h2>Ta książka jest dostępna dla tysięcy dzieciaków dzięki <span>darowiznom</span> od osób takich jak <span>Ty</span>!</h2>
-                <a href="{% url 'club_join' %}?pk_campaign=layout">Dorzuć się!</a>
+                <h2>
+                  {% blocktrans trimmed %}
+                    Ta książka jest dostępna dla tysięcy dzieciaków dzięki
+                    <span>darowiznom</span> od osób takich jak <span>Ty</span>!
+                  {% endblocktrans %}
+                </h2>
+                <a href="{% url 'club_join' %}?pk_campaign=layout">{% trans "Dorzuć się!" %}</a>
               </div>
               <div class="bg">
                 <!-- img src="{% static '2022/images/dziecko.jpeg' %}" alt="Dorzuć się!" -->
@@ -391,7 +396,9 @@
         <div class="l-themes__wrapper">
           {% with book.related_themes as themes %}
             {% if themes %}
-              <h2>Motywy występujące w tym utworze <a href="/katalog/motyw/"><span>Wszystkie motywy</span> <i class="icon icon-arrow-right"></i></a></h2>
+              <h2>
+                {% trans "Motywy występujące w tym utworze" %}
+                <a href="/katalog/motyw/"><span>{% trans "Wszystkie motywy" %}</span> <i class="icon icon-arrow-right"></i></a></h2>
               <div class="l-themes l-article__overlay" data-max-height="80">
                 <ul>
                   {% for item in themes %}
@@ -399,23 +406,23 @@
                   {% endfor %}
                 </ul>
               </div>
-              <button class="l-article__read-more" aria-label="Kliknij aby rozwinąć" data-label="Czytaj więcej" data-action="Zwiń tekst">Zobacz więcej</button>
+              <button class="l-article__read-more" aria-label="{% trans 'Kliknij aby rozwinąć' %}" data-label="{% trans 'Zobacz więcej' %}" data-action="{% trans 'Zwiń tekst' %}">{% trans 'Zobacz więcej' %}</button>
 
             {% endif %}
           {% endwith %}
           <ul class="links">
             {% if book.wiki_link %}
-              <li><a href="{{ book.wiki_link }}">strona utworu w Wikipedii</a></li>
+              <li><a href="{{ book.wiki_link }}">{% trans "strona utworu w Wikipedii" %}</a></li>
             {% endif %}
 	    {% if accessible %}
             <li>
-              <a href="{{ book.xml_url }}">źródłowy plik XML</a>
+              <a href="{{ book.xml_url }}">{% trans "źródłowy plik XML" %}</a>
             </li>
             <li>
-              <a target="_blank" href="{% url 'poem_from_book' book.slug %}">miksuj treść utworu</a>
+              <a target="_blank" href="{% url 'poem_from_book' book.slug %}">{% trans "miksuj treść utworu" %}</a>
             </li>
             <li>
-              <a target="_blank" href="{{ book.get_extra_info_json.about }}">utwór na Platformie Redakcyjnej</a>
+              <a target="_blank" href="{{ book.get_extra_info_json.about }}">{% trans "utwór na Platformie Redakcyjnej" %}</a>
             </li>
 	    {% endif %}
           </ul>
@@ -430,7 +437,7 @@
     <section class="l-section">
       <div class="l-books__wrapper">
         <div class="l-container">
-          <h2>Czytaj także</h2>
+          <h2>{% trans "Czytaj także" %}</h2>
           <div class="l-books">
             {% if book.other_versions %}
               {% for rel in book.other_versions %}
@@ -469,7 +476,7 @@
             {% endfor %}
 
             <article class="l-books__item l-books__item--link">
-              <a href="/katalog/kolekcje/">i wiele innych książek, wierszy, obrazów, audiobooków…</a>
+              <a href="/katalog/kolekcje/">{% trans "i wiele innych książek, wierszy, obrazów, audiobooków…" %}</a>
               <a href="/katalog/kolekcje/" class="icon-link"><i class="icon icon-all"></i></a>
             </article>
 

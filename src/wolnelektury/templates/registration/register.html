@@ -4,7 +4,7 @@
 
 {% block settings %}
   {% load title %}
-  {% trans "Register" as title %}
+  {% trans "Załóż konto" as title %}
   {% title title %}
 {% endblock %}
 
@@ -13,11 +13,11 @@
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button>{% trans "Register" %}</button>
+    <button>{% trans "Załóż konto" %}</button>
     <p class="helptext">{{ form.data_processing }}</p>
 
     {% if USE_OPENID %}
-      <h3>{% trans "Sign in using:" %}</h3>
+      <h3>{% trans "Zaloguj się używając:" %}</h3>
 
       <ul class="socialaccount_providers">
         {% include "socialaccount/snippets/provider_list.html" %}

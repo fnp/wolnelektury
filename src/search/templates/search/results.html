@@ -5,45 +5,45 @@
   <main class="l-main">
     <div class="l-section">
       <div class="l-author__header">
-        <h1><span>Wynik wyszukiwania dla:</span> {{ query }}</h1>
+        <h1><span>{% trans "Wynik wyszukiwania dla:" %}</span> {{ query }}</h1>
       </div>
     </div>
 
     <form class="c-form j-form-auto">
       <div class="c-form__inline-radio">
-        format: {{ filters.format }}
+        {% trans "format" %}: {{ filters.format }}
       </div>
       <div class="c-form__controls-row">
         <label class="c-form__control">
-          <span>język:</span>
+          <span>{% trans "język" %}:</span>
           {{ filters.lang }}
         </label>
         <label class="c-form__control">
-          <span>epoka:</span>
+          <span>{% trans "epoka" %}:</span>
           {{ filters.epoch }}
         </label>
         <label class="c-form__control">
-          <span>gatunek</span>
+          <span>{% trans "gatunek" %}</span>
           {{ filters.genre }}
         </label>
       </div>
       <div class="c-form__inline-radio">
-        kategoria:
+        {% trans "kategoria" %}:
         {{ filters.category }}
       </div>
       {{ filters.q }}
-      <button type="submit" class="c-form__hidden-submit">wyślij</button>
+      <button type="submit" class="c-form__hidden-submit">{% trans "wyślij" %}</button>
     </form>
 
     {% if not hasresults %}
       <p class="l-change-pop show">
-        Brak wyników.
+        {% trans "Brak wyników." %}
       </p>
     {% endif %}
 
     {% if results.author %}
       <div class="l-container">
-        <h2 class="header">Autorzy</h2>
+        <h2 class="header">{% trans "Autorzy" %}</h2>
         <ul class="c-search-result c-search-result-author">
           {% for tag in results.author %}
             <li>
@@ -63,7 +63,7 @@
 
     {% if results.theme %}
       <div class="l-container">
-        <h2 class="header">Motywy</h2>
+        <h2 class="header">{% trans "Motywy" %}</h2>
         <ul class="c-search-result">
           {% for tag in results.theme %}
             <li>
@@ -83,7 +83,7 @@
 
     {% if results.genre %}
       <div class="l-container">
-        <h2 class="header">Gatunki</h2>
+        <h2 class="header">{% trans "Gatunki" %}</h2>
         <ul class="c-search-result">
           {% for tag in results.genre %}
             <li>
@@ -103,7 +103,7 @@
 
     {% if results.book %}
       <div class="l-container">
-        <h2 class="header">Książki</h2>
+        <h2 class="header">{% trans "Książki" %}</h2>
       </div>
       <div class="l-section l-section--col">
         <div class="l-books__grid">
@@ -116,7 +116,7 @@
 
     {% if results.art %}
       <div class="l-container">
-        <h2 class="header">Obrazy</h2>
+        <h2 class="header">{% trans "Obrazy" %}</h2>
       </div>
       <div class="l-section l-section--col">
         <div class="l-books__grid">
@@ -129,7 +129,7 @@
 
     {% if results.snippet %}
       <div class="l-container">
-        <h2 class="header">W treści</h2>
+        <h2 class="header">{% trans "W treści" %}</h2>
         {% for book, snippets in results.snippet.items %}
           <div class="c-search-result-fragment">
             {% for author in book.authors %}
@@ -150,7 +150,7 @@
 
     {% if results.collection %}
       <div class="l-container">
-        <h2 class="header">Kolekcje</h2>
+        <h2 class="header">{% trans "Kolekcje" %}</h2>
         <div class="c-search-result-collection">
           {% for collection in results.collection %}
             {% include 'catalogue/collection_box.html' %}
@@ -162,11 +162,13 @@
     {% if results.pdauthor or results.pdbook %}
       <div class="l-container">
         <div class="c-search-result-pd">
-          <h2>Domena publiczna?</h2>
+          <h2>{% trans "Domena publiczna?" %}</h2>
           <p>
-            Dzieła tych autorów przejdą do zasobów domeny publicznej i będą mogły
-            być publikowane bez żadnych ograniczeń.
-            Dowiedz się, dlaczego biblioteki internetowe nie mogą udostępniać dzieł tego autora.
+            {% blocktrans trimmed %}
+              Dzieła tych autorów przejdą do zasobów domeny publicznej i będą mogły
+              być publikowane bez żadnych ograniczeń.
+              Dowiedz się, dlaczego biblioteki internetowe nie mogą udostępniać dzieł tego autora.
+            {% endblocktrans %}
           </p>
           <div>
             {% for tag in results.pdauthor %}
@@ -174,12 +176,18 @@
                 <strong>{{ tag }}</strong>
                 {% if tag.death  %}
                   {% if tag.in_pd %}
-                    Dzieła tego autora są w&nbsp;domenie publicznej i&nbsp;czekają na publikację.
+                    {% blocktrans trimmed %}
+                      Dzieła tego autora są w&nbsp;domenie publicznej i&nbsp;czekają na publikację.
+                    {% endblocktrans %}
                   {% else %}
-                    Dzieła tego autora będą mogły być publikowane bez ograniczeń w&nbsp;roku&nbsp;<em>{{ tag.goes_to_pd }}</em>.
+                    {% blocktrans trimmed with year=tag.goes_to_pd %}
+                      Dzieła tego autora będą mogły być publikowane bez ograniczeń w&nbsp;roku&nbsp;<em>{{ year }}</em>.
+                    {% endblocktrans %}
                   {% endif %}
                 {% else %}
-                  Dzieła tego autora są objęte prawem autorskim.
+                  {% blocktrans trimmed %}
+                    Dzieła tego autora są objęte prawem autorskim.
+                  {% endblocktrans %}
                 {% endif %}
               </a></div>
             {% endfor %}
@@ -188,12 +196,18 @@
                 <strong>{{ book }}</strong>
                 {% if book.pd  %}
                   {% if book.in_pd %}
-                    Ten utwór jest w&nbsp;domenie publicznej i&nbsp;czeka na publikację.
+                    {% blocktrans trimmed %}
+                      Ten utwór jest w&nbsp;domenie publicznej i&nbsp;czeka na publikację.
+                    {% endblocktrans %}
                   {% else %}
-                    Ten utwór będzie mógł być publikowany bez ograniczeń w&nbsp;roku&nbsp;<em>{{ book.pd }}</em>.
+                    {% blocktrans trimmed with year=tag.goes_to_pd %}
+                      Ten utwór będzie mógł być publikowany bez ograniczeń w&nbsp;roku&nbsp;<em>{{ year }}</em>.
+                    {% endblocktrans %}
                   {% endif %}
                 {% else %}
-                  Ten utwór nie jest jeszcze w domenie publicznej.
+                  {% blocktrans trimmed %}
+                    Ten utwór nie jest jeszcze w domenie publicznej.
+                  {% endblocktrans %}
                 {% endif %}
               </a></div>
             {% endfor %}

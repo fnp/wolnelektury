@@ -1,12 +1,8 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Wolne Lektury. See NOTICE for more information.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: WolneLektury-newsletter\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -18,43 +14,38 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: newsletter/forms.py:17
-msgid "I want to receive Wolne Lektury's newsletter."
+msgid "Chcę otrzymywać newsletter Wolnych Lektur"
 msgstr ""
 
-#: newsletter/forms.py:63 newsletter/models.py:12
-msgid "email address"
+#: newsletter/forms.py:22
+msgid ""
+"Administratorem danych osobowych jest Fundacja Wolne Lektury (ul. "
+"Marszałkowska 84/92 lok. 125, 00-514 Warszawa).\n"
+"Podanie danych osobowych jest dobrowolne."
 msgstr ""
 
-#: newsletter/models.py:13
-msgid "active"
+#: newsletter/forms.py:25
+msgid ""
+"Dane są przetwarzane w zakresie niezbędnym do wysyłania newslettera "
+"odbiorcom."
 msgstr ""
 
-#: newsletter/models.py:18
-msgid "subscription"
+#: newsletter/forms.py:26
+#, python-format
+msgid ""
+"Osobom, których dane są zbierane, przysługuje prawo dostępu do treści swoich "
+"danych oraz ich poprawiania.\n"
+"Więcej informacji w <a href=\"%(url)s\">polityce prywatności.</a>"
 msgstr ""
 
-#: newsletter/models.py:19
-msgid "subscriptions"
+#: newsletter/forms.py:65
+msgid "adres e-mail"
 msgstr ""
 
-#: newsletter/templates/admin/newsletter/subscription/change_list.html:9
-msgid "Extract"
+#: newsletter/templates/newsletter/subscribed.html:7 newsletter/views.py:32
+msgid "Zapisano do newslettera"
 msgstr ""
 
-#: newsletter/templates/newsletter/2022/subscribed.html:7
-#: newsletter/views.py:40
-msgid "Subscribed"
-msgstr ""
-
-#: newsletter/templates/newsletter/2022/subscribed.html:16
-#: newsletter/templates/newsletter/subscribed.html:7
-msgid "You have subscribed to Wolne Lektury newsletter."
-msgstr ""
-
-#: newsletter/templates/newsletter/confirm_subscription.html:6
-msgid "Your subscription to Wolne Lektury newsletter is confirmed. Thank you!"
-msgstr ""
-
-#: newsletter/templates/newsletter/subscribe_form.html:14
-msgid "Subscribe"
+#: newsletter/templates/newsletter/subscribed.html:16
+msgid "Zapisałaś/eś się do newslettera Wolnych Lektur."
 msgstr ""

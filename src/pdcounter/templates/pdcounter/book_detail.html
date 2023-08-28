@@ -5,8 +5,8 @@
 {% block global-content %}
   <div class="l-container">
     <div class="l-breadcrumb">
-      <a href="/"><span>Strona główna</span></a>
-      <a href="/katalog/lektury/"><span>Literatura</span></a>
+      <a href="/"><span>{% trans "Strona główna" %}</span></a>
+      <a href="/katalog/lektury/"><span>{% trans "Literatura" %}</span></a>
     </div>
   </div>
 
@@ -20,7 +20,7 @@
             <h1>{{ book.title }}</h1>
             {% if book.translator %}
               <p class="l-header__translators">
-                tłum.
+                {% trans "tłum." %}
                 {{ book.translator }}
               </p>
             {% endif %}
@@ -28,20 +28,30 @@
         </header>
         <article class="l-article">
           {% if book.in_pd %}
-            <p>{% trans "This work is in public domain and will be published on Internet library of Wolne Lektury soon." %}</p>
+            <p>{% blocktrans trimmed %}
+              Ten utwór znajduje się w domenie publicznej i niedługo zostanie opublikowany
+              w bibliotece internetowej Wolne Lektury.
+            {% endblocktrans %}</p>
           {% else %}
             {% if book.pd %}
-              <p>
-                {% trans "This work will become part of public domain and will be allowed to be published without restrictions in" %}
-              </p>
+              <p>{% blocktrans trimmed %}
+                Ten utwór przejdzie do zasobów domeny publicznej i będzie mógł być
+                publikowany bez żadnych ograniczeń za
+              {% endblocktrans %}</p>
               <div class='countdown' data-until='{{ pd_counter|date_to_utc|utc_for_js }}'></div>
               <p>
-                {% trans "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</a> why Internet libraries can't publish this work." %}
+                {% blocktrans trimmed with url='https://domenapubliczna.org/co-to-jest-domena-publiczna/' %}
+                  <a href="{{ url }}">Dowiedz się</a>, dlaczego biblioteki internetowe nie mogą
+                  udostępniać tego utworu.
+                {% endblocktrans %}
               </p>
             {% else %}
               <p>
-                {% trans "This work is copyrighted." %}
-                {% trans "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</a> why Internet libraries can't publish this work." %}
+                {% trans "Ten utwór objęty jest prawem autorskim." %}
+                {% blocktrans trimmed with url='https://domenapubliczna.org/co-to-jest-domena-publiczna/' %}
+                  <a href="{{ url }}">Dowiedz się</a>, dlaczego biblioteki internetowe nie mogą
+                  udostępniać tego utworu.
+                {% endblocktrans %}
               </p>
             {% endif %}
           {% endif %}

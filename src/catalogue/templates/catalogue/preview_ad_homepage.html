@@ -1,31 +1,40 @@
+{% load i18n %}
 {% if book %}
-    <div class="p-homepage-prapremiera">
-        <h3>Prapremiera</h3>
-        <div class="p-homepage-prapremiera__box">
-          <div class="p-homepage-prapremiera__box__item">
-            <figure>
-              <a href="{{ book.get_absolute_url }}">
-                <img src="{{ book.cover_clean.url }}" alt="{{ book.pretty_title }}">
-              </a>
-            </figure>
-            <div class="p-homepage-prapremiera__box__content">
-              <h4>
-                {% for author in book.authors %}
-                  <a href="{{ author.get_absolute_url }}">{{ author }}</a>
-                {% endfor %}
-              </h4>
-              <h3><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></h3>
-              <p>{{ book.abstract|safe|truncatewords:20 }}</p>
-            </div>
-          </div>
-          <div class="p-homepage-prapremiera__box__donate">
-            {% if accessible %}
-              <p>Dziękujemy za wsparcie — przeczytaj w prezencie już dzisiaj!</p>
-            {% else %}
-              <p>Aby przeczytać prapremierę, <strong>dorzuć</strong> się do Wolnych Lektur dowolną wpłatą. Ustaw stałe wsparcie, a będziesz mieć dostęp do kolejnych <strong>prapremier</strong>.</p>
-	      <a href="{{ book.get_absolute_url }}" class="l-button l-button--default l-button--default--dark">Dorzuć się</a>
-            {% endif %}
-          </div>
+  <div class="p-homepage-prapremiera">
+    <h3>{% trans "Prapremiera" %}</h3>
+    <div class="p-homepage-prapremiera__box">
+      <div class="p-homepage-prapremiera__box__item">
+        <figure>
+          <a href="{{ book.get_absolute_url }}">
+            <img src="{{ book.cover_clean.url }}" alt="{{ book.pretty_title }}">
+          </a>
+        </figure>
+        <div class="p-homepage-prapremiera__box__content">
+          <h4>
+            {% for author in book.authors %}
+              <a href="{{ author.get_absolute_url }}">{{ author }}</a>
+            {% endfor %}
+          </h4>
+          <h3><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></h3>
+          <p>{{ book.abstract|safe|truncatewords:20 }}</p>
         </div>
+      </div>
+      <div class="p-homepage-prapremiera__box__donate">
+        {% if accessible %}
+          <p>{% trans "Dziękujemy za wsparcie – przeczytaj w prezencie już dzisiaj!" %}</p>
+        {% else %}
+          <p>
+            {% blocktrans trimmed %}
+              Aby przeczytać prapremierę, <strong>dorzuć</strong> się do Wolnych Lektur
+              dowolną wpłatą. Ustaw stałe wsparcie, a będziesz mieć dostęp do
+              kolejnych <strong>prapremier</strong>.
+            {% endblocktrans %}
+          </p>
+	  <a href="{{ book.get_absolute_url }}" class="l-button l-button--default l-button--default--dark">
+            {% trans "Dorzuć się" %}
+          </a>
+        {% endif %}
+      </div>
     </div>
+  </div>
 {% endif %}

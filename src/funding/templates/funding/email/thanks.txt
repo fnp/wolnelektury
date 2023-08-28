@@ -3,12 +3,12 @@
 
 
 {% block body %}
-{% trans 'Thank you for your support - thanks to you we will set another book free.' %}{% if funding.name %}
+{% trans Dziękujemy za wsparcie - dzięki Tobie uwolnimy kolejną książkę.' %}{% if funding.name %}
 
-{% trans 'The book will be supplemented with your name as a donor.' %}{% endif %} 
+{% trans 'Twoje imię i nazwisko lub pseudonim zostaną dodane do listy darczyńców przy opublikowanej książce.' %}{% endif %} 
 {% if funding.perks.exists %}
-{% blocktrans %}We will contact you about details needed for your perks.{% endblocktrans %}
+{% blocktrans %}Skontaktujemy się z Tobą w sprawie prezentów, które wybrałeś/-aś.{% endblocktrans %}
 {% endif %}{# funding.perks.exists #}
-{% blocktrans %}We will keep you informed about status changes to this fundraiser
-and the upcoming ones that we plan to launch.{% endblocktrans %}
+{% blocktrans %}Będziemy Cię informować o zmianach statusu tej zbiórki
+i o kolejnych, które planujemy rozpocząć.{% endblocktrans %}
 {% endblock %}

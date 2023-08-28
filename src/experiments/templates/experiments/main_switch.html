@@ -2,7 +2,7 @@
 {% load static i18n %}
 
 {% block breadcrumbs %}
-  <span>{% translate "Current experiments" %}</span>
+  <span>{% translate "Aktualne eksperymenty" %}</span>
 {% endblock %}
 
 {% block main %}
@@ -11,7 +11,7 @@
       <div class="l-checkout__box__header">
         <img src="{% static 'img/experiment.jpg' %}">
         <div class="l-checkout__box__header__content">
-          <h1>{% translate "Current experiments" %}</h1>
+          <h1>{% translate "Aktualne eksperymenty" %}</h1>
         </div>
       </div>
       <div>
@@ -25,8 +25,8 @@
               <input id="experiment-{{ exp.slug }}-on" name="{{ exp.slug }}" class="toggle-input toggle-input-right"  value="on" type="radio" {% if exp.value %}checked="checked"{% endif %}>
               <div class="l-switch__wrapper">
                 <div class="l-switch white">
-                  <label class="toggle-for toggle-for-left" for="experiment-{{ exp.slug }}-off">{% translate "off" %}</label>
-                  <label class="toggle-for toggle-for-right" for="experiment-{{ exp.slug }}-on">{% translate "on" %}</label>
+                  <label class="toggle-for toggle-for-left" for="experiment-{{ exp.slug }}-off">{% translate "wyłączony" %}</label>
+                  <label class="toggle-for toggle-for-right" for="experiment-{{ exp.slug }}-on">{% translate "włączony" %}</label>
                   <span class="toggle"></span>
                 </div>
               </div>
@@ -35,7 +35,7 @@
         {% empty %}
           <div class="experiment">
             <div>
-              {% translate 'There are currently no experiments available.' %}
+              {% translate 'Aktualnie nie są dostępne żadne eksperymenty.' %}
             </div>
           </div>
         {% endfor %}
@@ -43,7 +43,7 @@
     </div>
 
     <div class="legend">
-      {% translate "Image" %}:
+      {% translate "Obraz" %}:
       Ken Lund, <a target="_blank" href="https://flickr.com/photos/kenlund/42675643424/">Windmill Modern Art, Chicago Lakefront Trail, Chicago, Illinois</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0/" target="_blank">CC By-SA 2.0</a>
     </div>
   {% endblock %}

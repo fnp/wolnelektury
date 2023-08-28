@@ -1,12 +1,8 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Wolne Lektury. See NOTICE for more information.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: WolneLektury-paypal\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -17,46 +13,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: paypal/forms.py:9
-msgid "amount in PLN"
+#: paypal/templates/paypal/cancel.html:5
+msgid "Płatność nieudana"
 msgstr ""
 
 #: paypal/templates/paypal/cancel.html:6
-msgid "Zrezygnowano z płatności :("
-msgstr ""
-
-#: paypal/templates/paypal/error.html:2
-msgid "PayPal Error"
-msgstr ""
-
-#: paypal/templates/paypal/error.html:6
-msgid "Learn more"
-msgstr ""
-
-#: paypal/templates/paypal/form.html:6 paypal/templates/paypal/form.html:10
-msgid "Wolne Lektury Friend Club"
-msgstr ""
-
-#: paypal/templates/paypal/form.html:18
-msgid "Subscribe with PayPal"
-msgstr ""
-
-#: paypal/templates/paypal/form.html:21
-msgid "You must be logged in to subscribe."
-msgstr ""
-
-#: paypal/templates/paypal/return.html:8
-msgid "Dziękujemy, że jesteś z nami i pomagasz nam rozwijać Wolne Lektury!"
-msgstr ""
-
-#: paypal/templates/paypal/return.html:9
-msgid "Pamiętaj, że zawsze możesz się z nami skontaktować:"
-msgstr ""
-
-#: paypal/templates/paypal/return.html:11
-msgid "Do przeczytania!"
-msgstr ""
-
-#: paypal/templates/paypal/return.html:11
-msgid "Zespół Wolnych Lektur"
+msgid "Zrezygnowano z płatności."
 msgstr ""

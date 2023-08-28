@@ -14,18 +14,20 @@ from .models import Newsletter
 class NewsletterForm(Form):
     email_field = 'email'
     agree_newsletter = BooleanField(
-        required=False, initial=False, label=_('I want to receive Wolne Lektury\'s newsletter.'), label_suffix=False)
+        required=False, initial=False, label=_('Chcę otrzymywać newsletter Wolnych Lektur'), label_suffix=False)
     mailing = False
     mailing_field = 'agree_newsletter'
     newsletter = None
 
-    data_processing_part1 = '''\
+    data_processing_part1 = _('''\
 Administratorem danych osobowych jest Fundacja Wolne Lektury (ul. Marszałkowska 84/92 lok. 125, 00-514 Warszawa).
-Podanie danych osobowych jest dobrowolne.'''
-    data_processing_part2 = '''Dane są przetwarzane w zakresie niezbędnym do wysyłania newslettera odbiorcom.'''
-    data_processing_part3 = '''\
+Podanie danych osobowych jest dobrowolne.''')
+    data_processing_part2 = _('''Dane są przetwarzane w zakresie niezbędnym do wysyłania newslettera odbiorcom.''')
+    data_processing_part3 = _('''\
 Osobom, których dane są zbierane, przysługuje prawo dostępu do treści swoich danych oraz ich poprawiania.
-Więcej informacji w <a href="https://nowoczesnapolska.org.pl/prywatnosc/">polityce prywatności.</a>'''
+Więcej informacji w <a href="%(url)s">polityce prywatności.</a>''') % {
+    'url': 'https://fundacja.wolnelektury.pl/prywatnosc/'
+    }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -60,7 +62,7 @@ class SubscribeForm(NewsletterForm):
     agree_newsletter = None
     required_css_class = 'required'
 
-    email = EmailField(label=_('email address'))
+    email = EmailField(label=_('adres e-mail'))
 
     def __init__(self, newsletter, *args, **kwargs):
         self.newsletter = newsletter

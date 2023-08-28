@@ -2,17 +2,17 @@
 {% load i18n %}
 
 {% block body %}
-{% blocktrans count days as d %}there's only {{ d }} day left until the end of the fundraiser for:
-{% plural %}There're only {{ d }} days left until the end of the fundraiser for:
+{% blocktrans count days as d %}został {{ d }} dzień do końca zbiórki na:
+{% plural %}zostało {{ d }} dni do końca zbiórki na:
 {% endblocktrans %}
   {{ offer.author }} – {{ offer.title }}
 
-{% blocktrans with x=sum %}We managed to collect {{x}} PLN so far.{% endblocktrans %}
+{% blocktrans with x=sum %}Dotąd udało nam się zebrać {{ x }} zł.{% endblocktrans %}
 {% if is_win %}
-{% blocktrans %}The fundraiser is a success already, but the more money
-we collect, the more other books we'll publish.{% endblocktrans %}
-{% else %}{% blocktrans with x=need %}We still need {{ x }} PLN more.{% endblocktrans %}
+{% blocktrans %}Zbiórka już osiągnęła sukces, ale im więcej pieniędzy
+zbierzemy, tym więcej opublikujemy książek.{% endblocktrans %}
+{% else %}{% blocktrans with x=need %}Nadal potrzebujemy {{ x }} zł.{% endblocktrans %}
 {% endif %}
-{% trans "There's still time to let your friends know about the fundraiser!" %}
+{% trans "Jest jeszcze czas, by poinformować o zbiórce Twoich znajomych!" %}
 http://{{ site.domain }}{% url 'funding_current' %}
 {% endblock %}

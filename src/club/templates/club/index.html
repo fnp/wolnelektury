@@ -4,12 +4,12 @@
 {% load chunks %}
 
 
-{% block titleextra %}{% trans "Wolne Lektury need your help!" %}{% endblock %}
+{% block titleextra %}{% trans "Wolne Lektury potrzebują Twojej pomocy!" %}{% endblock %}
 
 
 {% block body %}
 
-  <h1>{% trans "Wolne Lektury need your help!" %}</h1>
+  <h1>{% trans "Wolne Lektury potrzebują Twojej pomocy!" %}</h1>
   <div class="white-box normal-text">
 
     {% chunk 'club' %}
@@ -17,9 +17,9 @@
     <p style="margin-top: 2em;">
       {% with schedule=request.user|active_schedule %}
         {% if schedule %}
-          <a href="{{ schedule.get_absolute_url }}">{% trans "Congratulations – you're already a supporter of Wolne Lektury!" %}</a>
+          <a href="{{ schedule.get_absolute_url }}">{% trans "Gratulacje — wspierasz Wolne Lektury!" %}</a>
         {% else %}
-          <a style="background:#018189;color:white;border-radius: 10px;padding:1em 2em" href="{% url 'club_join' %}">{% trans "Become a supporter" %}</a>
+          <a style="background:#018189;color:white;border-radius: 10px;padding:1em 2em" href="{% url 'club_join' %}">{% trans "Zacznij wspierać" %}</a>
         {% endif %}
       {% endwith %}
     </p>

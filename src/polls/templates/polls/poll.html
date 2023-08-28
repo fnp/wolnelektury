@@ -6,10 +6,10 @@
 
 
 {% block body %}
-  <h1>Ankieta</h1>
+  <h1>{% trans "Ankieta" %}</h1>
   <div class="normal-text">
     {% if voted_already %}
-      <p class="poll-msg">{% trans "Thanks for voting! You can see current results below." %}</p>
+      <p class="poll-msg">{% trans "Dziękujemy za oddanie głosu w ankiecie! Poniżej znajdują się bieżące wyniki." %}</p>
     {% endif %}
     {% poll poll %}
   </div>

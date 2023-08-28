@@ -2,17 +2,20 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Login Cancelled" %}{% endblock %}
+{% block head_title %}{% trans "Logowanie anulowane" %}{% endblock %}
 
 {% block body %}
-<div class="normal-text white-box">
+  <div class="normal-text white-box">
 
-<h1>{% trans "Login Cancelled" %}</h1>
+    <h1>{% trans "Logowanie anulowane" %}</h1>
 
 {% url 'socialaccount_login' as login_url %}
 {{ login_url }}
 
-<p>{% blocktrans %}You decided to cancel logging in to our site using one of your exisiting accounts. If this was a mistake, please proceed to <a href="{{login_url}}">sign in</a>.{% endblocktrans %}</p>
+    <p>{% blocktrans trimmed %}
+      Logowanie przy pomocy zewnętrznego konta zostało anulowane.
+      Jeśli to pomyłka, przejdź do <a href="{{login_url}}">strony logowania</a>.
+    {% endblocktrans %}</p>
 </div>
 
 {% endblock %}

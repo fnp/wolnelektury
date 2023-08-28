@@ -3,28 +3,34 @@
 {% load catalogue_tags reporting_stats %}
 
 
-{% block titleextra %}{% trans "Catalogue" %}{% endblock %}
+{% block titleextra %}{% trans "Katalog" %}{% endblock %}
 
 {% block bodyid %}catalogue-catalogue{% endblock %}
 
 {% block body %}{% block main %}
-  <h1>{% trans "All works" %}</h1>
+  <h1>{% trans "Wszystkie utwory" %}</h1>
   <div class="normal-text catalogue-catalogue l-container">
-    <p>W naszej bibliotece mamy {% count_books %} utworów zebranych w {% count_books_root %} tomów.</p>
+    <p>
+      {% count_books as nbooks %}
+      {% count_books_root as ntomes %}
+      {% blocktrans trimmed %}
+        W naszej bibliotece mamy {{ nbooks }} utworów zebranych w {{ ntomes }} tomów.
+      {% endblocktrans %}
+    </p>
 
     <p>
       <a href="{% url 'reporting_catalogue_pdf' %}">
-        {% trans "Download the catalogue in PDF format." %}
+        {% trans "Pobierz katalog w formacie PDF." %}
       </a>
     </p>
 
-    <h2>{% trans "Literature" %}</h2>
+    <h2>{% trans "Literatura" %}</h2>
     {% plain_list books by_author=True paged=False initial_blocks=True %}
 
-    <h2>{% trans "Collections" %}</h2>
+    <h2>{% trans "Kolekcje" %}</h2>
     {% plain_list collections paged=False %}
 
-    <h2>{% trans "Art" %}</h2>
+    <h2>{% trans "Sztuka" %}</h2>
     {% plain_list pictures by_author=True paged=False initial_blocks=True %}
   </div>
 {% endblock %}{% endblock %}

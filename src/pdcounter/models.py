@@ -5,25 +5,24 @@ from django.apps import apps
 from django.conf import settings
 from django.db import models
 from django.urls import reverse
-from django.utils.translation import gettext_lazy as _
 from datetime import datetime
 from django.db.models.signals import post_save, post_delete
 from search.utils import UnaccentSearchVector
 
 
 class Author(models.Model):
-    name = models.CharField(_('name'), max_length=50, db_index=True)
-    slug = models.SlugField(_('slug'), max_length=120, db_index=True, unique=True)
-    sort_key = models.CharField(_('sort key'), max_length=120, db_index=True)
-    description = models.TextField(_('description'), blank=True)
-    death = models.IntegerField(_('year of death'), blank=True, null=True)
+    name = models.CharField('imię i nazwisko', max_length=50, db_index=True)
+    slug = models.SlugField('slug', max_length=120, db_index=True, unique=True)
+    sort_key = models.CharField('klucz sortowania', max_length=120, db_index=True)
+    description = models.TextField('opis', blank=True)
+    death = models.IntegerField('rok śmierci', blank=True, null=True)
     gazeta_link = models.CharField(blank=True, max_length=240)
     wiki_link = models.CharField(blank=True, max_length=240)
 
     class Meta:
         ordering = ('sort_key',)
-        verbose_name = _('author')
-        verbose_name_plural = _('authors')
+        verbose_name = 'autor'
+        verbose_name_plural = 'autorzy'
 
     @property
     def category(self):
@@ -40,7 +39,7 @@ class Author(models.Model):
 
     def has_description(self):
         return len(self.description) > 0
-    has_description.short_description = _('description')
+    has_description.short_description = 'opis'
     has_description.boolean = True
 
     @classmethod
@@ -72,16 +71,16 @@ class Author(models.Model):
 
 
 class BookStub(models.Model):
-    title = models.CharField(_('title'), max_length=120)
-    author = models.CharField(_('author'), max_length=120)
-    pd = models.IntegerField(_('goes to public domain'), null=True, blank=True)
-    slug = models.SlugField(_('slug'), max_length=120, unique=True, db_index=True)
-    translator = models.TextField(_('translator'), blank=True)
+    title = models.CharField('tytuł', max_length=120)
+    author = models.CharField('autor', max_length=120)
+    pd = models.IntegerField('trafia do domeny publicznej', null=True, blank=True)
+    slug = models.SlugField('slug', max_length=120, unique=True, db_index=True)
+    translator = models.TextField('tłumacz', blank=True)
 
     class Meta:
         ordering = ('title',)
-        verbose_name = _('book stub')
-        verbose_name_plural = _('book stubs')
+        verbose_name = 'zapowiedź książki'
+        verbose_name_plural = 'zapowiedzi książek'
 
     def __str__(self):
         return self.title

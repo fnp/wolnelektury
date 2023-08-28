@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 
+{% load i18n %}
 {% load choose_cites from social_tags %}
 
 
 {% block breadcrumbs %}
-  <a href="/ludzie/polka/"><span>Półka</span></a>
+  <a href="/ludzie/polka/"><span>{% trans "Półka" %}</span></a>
 {% endblock %}
 
 {% block main %}
@@ -21,10 +22,10 @@
         <input type="text" placeholder="filtry, tytuł" class="quick-filter" data-for="book-list">
       </div>
       <div class="l-books__sorting">
-        <span>Sortuj:</span>
+        <span>{% trans "Sortuj:" %}</span>
         <div>
-          <button data-order="data-pop">najpopularniejsze</button>
-          <button class="is-active">alfabetycznie</button>
+          <button data-order="data-pop">{% trans "najpopularniejsze" %}</button>
+          <button class="is-active">{% trans "alfabetycznie" %}</button>
           <!--button>chronologicznie</button-->
         </div>
       </div>

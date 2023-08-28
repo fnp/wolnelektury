@@ -1,12 +1,11 @@
 {% extends "admin/change_list.html" %}
-{% load i18n %}
 
 {% block content %}
   <form action="{% url 'import_book' %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <p>
       <input type="file" id="id_book_xml_file" name="book_xml_file"/>
-      <input type="submit" value="{% trans "Import book" %}"/>
+      <input type="submit" value="Import książki" />
     </p>
   </form>
   {{ block.super }}

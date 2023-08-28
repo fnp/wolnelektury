@@ -1,0 +1,59 @@
+{% load i18n static %}
+<div class="l-checkout__info">
+  <div class="l-checkout__info__item">
+    <div>{% trans "nazwa odbiorcy" %}</div>
+    <h3>Fundacja Wolne Lektury</h3>
+    <button title="{% trans 'Kopiuj tekst' %}" class="js-copy">
+      <img src="{% static '2022/images/copy.svg' %}" alt="{% trans 'Kopiuj' %}">
+    </button>
+    <input type="text" value="Fundacja Wolne Lektury">
+  </div>
+  <div class="l-checkout__info__item">
+    <div>{% trans "adres odbiorcy" %}</div>
+    <h3>ul. Marszałkowska 84/92 lok. 125, 00-514 Warszawa</h3>
+    <button title="{% trans 'Kopiuj tekst' %}" class="js-copy">
+      <img src="{% static '2022/images/copy.svg' %}" alt="{% trans 'Kopiuj' %}">
+    </button>
+    <input type="text" value="ul. Marszałkowska 84/92 lok. 125, 00-514 Warszawa">
+  </div>
+  <div class="l-checkout__info__item">
+    <div>{% trans "numer konta" %}</div>
+    <h3>75 1090 2851 0000 0001 4324 3317</h3>
+    <button title="{% trans 'Kopiuj tekst' %}" class="js-copy">
+      <img src="{% static '2022/images/copy.svg' %}" alt="{% trans 'Kopiuj' %}">
+    </button>
+    <input type="text" value="75 1090 2851 0000 0001 4324 3317">
+  </div>
+  <div class="l-checkout__info__item">
+    <div>{% trans "tytuł przelewu" %}</div>
+    <h3>{% trans "Darowizna na Wolne Lektury + twoja nazwa użytkownika lub e-mail" %}</h3>
+    <button title="{% trans 'Kopiuj tekst' %}" class="js-copy">
+      <img src="{% static '2022/images/copy.svg' %}" alt="{% trans 'Kopiuj' %}">
+    </button>
+    <input type="text" value="{% trans 'Darowizna na Wolne Lektury + twoja nazwa użytkownika lub e-mail' %}">
+  </div>
+  <div class="l-checkout__info__item">
+    <div>{% trans "wpłaty w EUR" %}</div>
+    <h3>PL88 1090 2851 0000 0001 4324 3374</h3>
+    <button title="{% trans 'Kopiuj tekst' %}" class="js-copy">
+      <img src="{% static '2022/images/copy.svg' %}" alt="{% trans 'Kopiuj' %}">
+    </button>
+    <input type="text" value="PL88 1090 2851 0000 0001 4324 3374">
+  </div>
+  <div class="l-checkout__info__item">
+    <div>{% trans "Wpłaty w USD" %}</div>
+    <h3>PL82 1090 2851 0000 0001 4324 3385</h3>
+    <button title="{% trans 'Kopiuj tekst' %}" class="js-copy">
+      <img src="{% static '2022/images/copy.svg' %}" alt="{% trans 'Kopiuj' %}">
+    </button>
+    <input type="text" value="PL88 1090 2851 0000 0001 4324 3374">
+  </div>
+  <div class="l-checkout__info__item">
+    <div>SWIFT</div>
+    <h3>WBKPPLPP</h3>
+    <button title="{% trans 'Kopiuj tekst' %}" class="js-copy">
+      <img src="{% static '2022/images/copy.svg' %}" alt="{% trans 'Kopiuj' %}">
+    </button>
+    <input type="text" value="WBKPPLPP">
+  </div>
+</div>

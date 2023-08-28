@@ -99,7 +99,6 @@ def import_picture(request):
     """docstring for import_book"""
     from django.http import HttpResponse
     from picture.forms import PictureImportForm
-    from django.utils.translation import gettext as _
 
     import_form = PictureImportForm(request.POST, request.FILES)
     if import_form.is_valid():
@@ -112,8 +111,8 @@ def import_picture(request):
             info = sys.exc_info()
             exception = pprint.pformat(info[1])
             tb = '\n'.join(traceback.format_tb(info[2]))
-            return HttpResponse(_("An error occurred: %(exception)s\n\n%(tb)s") %
+            return HttpResponse("Wystąpił błąd: %(exception)s\n\n%(tb)s" %
                                 {'exception': exception, 'tb': tb}, content_type='text/plain')
-        return HttpResponse(_("Picture imported successfully"))
+        return HttpResponse('Obraz został zimportowany')
     else:
-        return HttpResponse(_("Error importing file: %r") % import_form.errors)
+        return HttpResponse('Błąd importu pliku: %r' % import_form.errors)

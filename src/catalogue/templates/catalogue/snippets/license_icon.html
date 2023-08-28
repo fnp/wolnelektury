@@ -2,8 +2,8 @@
 {% load static from static %}
 
 {% if license_url %}
-<a class="license-icon" href="{{ license_url }}"
-   title="{% trans "Free license" %}: {{ license_description }}">
-  <img src="{% static icon %}" alt="{% trans "Free license" %}: {{ license_description }}"/>
+  <a class="license-icon" href="{{ license_url }}"
+     title="{% trans "Wolna licencja" %}: {{ license_description }}">
+    <img src="{% static icon %}" alt="{% trans "Wolna licencja" %}: {{ license_description }}"/>
 </a>
 {% endif %}

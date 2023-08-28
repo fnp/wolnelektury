@@ -10,19 +10,19 @@ from suggest import forms
 
 class PublishingSuggestionFormView(AjaxableFormView):
     form_class = forms.PublishingSuggestForm
-    title = _("Didn't find a book? Make a suggestion.")
+    title = _("Nie ma utworu na stronie? Zgłoś sugestię.")
     template = "publishing_suggest.html"
-    submit = _('Send report')
-    success_message = _('Report was sent successfully.')
+    submit = _('Wyślij zgłoszenie')
+    success_message = _('Zgłoszenie zostało wysłane.')
     honeypot = True
     action = reverse_lazy('suggest_publishing')
 
 
 class SuggestionFormView(AjaxableFormView):
     form_class = forms.SuggestForm
-    title = _('Report a bug or suggestion')
+    title = _('Zgłoś błąd lub sugestię')
     template = "suggest.html"
-    submit = _('Send report')
-    success_message = _('Report was sent successfully.')
+    submit = _('Wyślij zgłoszenie')
+    success_message = _('Zgłoszenie zostało wysłane.')
     honeypot = True
     action = reverse_lazy('suggest')

@@ -3,18 +3,17 @@
 #
 from django.db import models
 from django.urls import reverse
-from django.utils.translation import gettext_lazy as _
 
 
 class Catalog(models.Model):
     """Represents a dictionary of libraries"""
 
-    name = models.CharField(_('name'), max_length=120, null=False)
-    slug = models.SlugField(_('slug'), max_length=120, unique=True, db_index=True)
+    name = models.CharField('nazwa', max_length=120, null=False)
+    slug = models.SlugField('slug', max_length=120, unique=True, db_index=True)
 
     class Meta:
-        verbose_name = _('catalog')
-        verbose_name_plural = _('catalogs')
+        verbose_name = 'katalog'
+        verbose_name_plural = 'katalogi'
 
     def __str__(self):
         return self.name
@@ -26,15 +25,15 @@ class Catalog(models.Model):
 class Library(models.Model):
     """Represent a single library in the libraries dictionary"""
 
-    name = models.CharField(_('name'), max_length=120, blank=True)
-    slug = models.SlugField(_('slug'), max_length=120, unique=True, db_index=True, null=True)
+    name = models.CharField('nazwa', max_length=120, blank=True)
+    slug = models.SlugField('slug', max_length=120, unique=True, db_index=True, null=True)
     catalog = models.ForeignKey(Catalog, null=False, related_name='libraries', on_delete=models.PROTECT)
-    url = models.CharField(_('url'), max_length=120, blank=True)
-    description = models.TextField(_('description'), blank=True)
+    url = models.CharField('url', max_length=120, blank=True)
+    description = models.TextField('opis', blank=True)
 
     class Meta:
-        verbose_name = _('library')
-        verbose_name_plural = _('libraries')
+        verbose_name = 'biblioteka'
+        verbose_name_plural = 'biblioteki'
 
     def __str__(self):
         return self.name

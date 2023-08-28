@@ -5,7 +5,6 @@ from django.conf import settings
 from django.contrib.contenttypes.fields import GenericRelation
 from django.urls import reverse
 from django.db import models
-from django.utils.translation import gettext_lazy as _
 from newtagging import managers
 from catalogue.models import Tag
 from wolnelektury.utils import cached_render, clear_cached_renders
@@ -25,8 +24,8 @@ class Fragment(models.Model):
 
     class Meta:
         ordering = ('book', 'anchor',)
-        verbose_name = _('fragment')
-        verbose_name_plural = _('fragments')
+        verbose_name = 'fragment'
+        verbose_name_plural = 'fragmenty'
         app_label = 'catalogue'
 
     def get_absolute_url(self):

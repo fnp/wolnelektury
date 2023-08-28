@@ -22,7 +22,6 @@ import re
 
 from PIL import Image
 
-from django.utils.translation import gettext_lazy as _
 from newtagging import managers
 from os import path
 
@@ -34,10 +33,11 @@ picture_storage = FileSystemStorage(location=path.join(
 
 class PictureArea(models.Model):
     picture = models.ForeignKey('picture.Picture', models.CASCADE, related_name='areas')
-    area = models.TextField(_('area'), default='{}', editable=False)
+    area = models.TextField('obszar', default='{}', editable=False)
     kind = models.CharField(
-        _('kind'), max_length=10, blank=False, null=False, db_index=True,
-        choices=(('thing', _('thing')), ('theme', _('theme'))))
+        'typ', max_length=10, blank=False, null=False, db_index=True,
+        choices=(('thing', 'przedmiot'), ('theme', 'motyw'))
+    )
 
     objects = models.Manager()
     tagged = managers.ModelTaggedItemManager(catalogue.models.Tag)
@@ -63,18 +63,18 @@ class Picture(models.Model):
     Picture resource.
 
     """
-    title = models.CharField(_('title'), max_length=32767)
-    slug = models.SlugField(_('slug'), max_length=120, db_index=True, unique=True)
-    sort_key = models.CharField(_('sort key'), max_length=120, db_index=True, editable=False)
+    title = models.CharField('tytuł', max_length=32767)
+    slug = models.SlugField('slug', max_length=120, db_index=True, unique=True)
+    sort_key = models.CharField('klucz sortowania', max_length=120, db_index=True, editable=False)
     sort_key_author = models.CharField(
-        _('sort key by author'), max_length=120, db_index=True, editable=False, default='')
-    created_at = models.DateTimeField(_('creation date'), auto_now_add=True, db_index=True)
-    changed_at = models.DateTimeField(_('creation date'), auto_now=True, db_index=True)
-    xml_file = models.FileField(_('xml file'), upload_to="xml", storage=picture_storage)
-    image_file = ImageField(_('image file'), upload_to="images", storage=picture_storage)
-    html_file = models.FileField(_('html file'), upload_to="html", storage=picture_storage)
-    areas_json = models.TextField(_('picture areas JSON'), default='{}', editable=False)
-    extra_info = models.TextField(_('extra information'), default='{}')
+        'klucz sortowania wg autora', max_length=120, db_index=True, editable=False, default='')
+    created_at = models.DateTimeField('data utworzenia', auto_now_add=True, db_index=True)
+    changed_at = models.DateTimeField('data zmiany', auto_now=True, db_index=True)
+    xml_file = models.FileField('plik xml', upload_to="xml", storage=picture_storage)
+    image_file = ImageField('plik obrazu', upload_to="images", storage=picture_storage)
+    html_file = models.FileField('plik html', upload_to="html", storage=picture_storage)
+    areas_json = models.TextField('obszary w JSON', default='{}', editable=False)
+    extra_info = models.TextField('dodatkowa informacja', default='{}')
     culturepl_link = models.CharField(blank=True, max_length=240)
     wiki_link = models.CharField(blank=True, max_length=240)
 
@@ -96,8 +96,8 @@ class Picture(models.Model):
     class Meta:
         ordering = ('sort_key_author', 'sort_key')
 
-        verbose_name = _('picture')
-        verbose_name_plural = _('pictures')
+        verbose_name = 'obraz'
+        verbose_name_plural = 'obrazy'
 
     def get_extra_info_json(self):
         return json.loads(self.extra_info or '{}')

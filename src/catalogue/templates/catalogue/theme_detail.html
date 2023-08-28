@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load catalogue_tags %}
 {% load pagination_tags %}
 
 {% block global-content %}
   <div class="l-container">
     <div class="l-breadcrumb">
-      <a href="/"><span>Strona główna</span></a>
-      <a href="/katalog/"><span>Katalog</span></a>
-      <a href="/katalog/motyw/"><span>Motyw</span></a>
+      <a href="/"><span>{% trans "Strona główna" %}</span></a>
+      <a href="/katalog/"><span>{% trans "Katalog" %}</span></a>
+      <a href="/katalog/motyw/"><span>{% trans "Motyw" %}</span></a>
       <span>{{ main_tag.name }}</span>
     </div>
   </div>
@@ -16,7 +17,7 @@
 
     <div class="l-section">
       <div class="l-author__header">
-        <h1><span>Motyw:</span> {{ main_tag.name }}</h1>
+        <h1><span>{% trans "Motyw" %}:</span> {{ main_tag.name }}</h1>
       </div>
     </div>
 
@@ -25,7 +26,7 @@
       <div class="l-books__header">
         <div class="l-books__input">
           <i class="icon icon-filter"></i>
-          <input type="text" placeholder="filtry, tytuł" class="quick-filter" data-for="book-list" data-filters="with-filter">
+          <input type="text" placeholder="{% trans 'filtry, tytuł' %}" class="quick-filter" data-for="book-list" data-filters="with-filter">
           <div class="filter-container">
             {% for tag in tags %}
               {% if tag is not main_tag %}
@@ -70,7 +71,7 @@
         </div>
         <div class="l-theme__col">
           <div class="l-theme__info">
-            <h3>Motyw: {{ main_tag.name }}</h3>
+            <h3>{% trans "Motyw" %}: {{ main_tag.name }}</h3>
             {{ main_tag.description|safe }}
             <!--
                  <h3>Motyw w sztuce <i class="icon icon-arrow-left"></i> <i class="icon icon-arrow-right"></i></h3>

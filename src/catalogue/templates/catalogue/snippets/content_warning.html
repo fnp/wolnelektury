@@ -1,8 +1,8 @@
 {% load i18n %}
 {% if warnings %}
-<p class="content-warning" style="background-color: #9e3610; color:white; display:inline-block; padding: 5px 10px; border-radius: 1em;">
-  {% trans "Caution: text contains" %}
-  {% for w in warnings %}{% if forloop.counter > 1 %},{% endif %}
-    {{ w }}{% endfor %}.
-</p>
+  <p class="content-warning" style="background-color: #9e3610; color:white; display:inline-block; padding: 5px 10px; border-radius: 1em;">
+    {% trans "Uwaga, tekst zawiera" %}
+    {% for w in warnings %}{% if forloop.counter > 1 %},{% endif %}
+      {{ w }}{% endfor %}.
+  </p>
 {% endif %}

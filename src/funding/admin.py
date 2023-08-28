@@ -1,7 +1,6 @@
 # This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
-from django.utils.translation import gettext_lazy as _
 from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin
 from fnpdjango.actions import export_as_csv_action
@@ -24,13 +23,13 @@ class PerkAdmin(TranslationAdmin):
 
 
 class PayedFilter(admin.SimpleListFilter):
-    title = _('payment complete')
+    title = 'płatność doszła do skutku'
     parameter_name = 'payed'
 
     def lookups(self, request, model_admin):
         return (
-            ('yes', _('Yes')),
-            ('no', _('No')),
+            ('yes', 'Tak'),
+            ('no', 'Nie'),
         )
 
     def queryset(self, request, queryset):
@@ -41,13 +40,13 @@ class PayedFilter(admin.SimpleListFilter):
 
 
 class PerksFilter(admin.SimpleListFilter):
-    title = _('perks')
+    title = 'prezenty'
     parameter_name = 'perks'
 
     def lookups(self, request, model_admin):
         return (
-            ('yes', _('Yes')),
-            ('no', _('No')),
+            ('yes', 'Tak'),
+            ('no', 'Nie'),
         )
 
     def queryset(self, request, queryset):

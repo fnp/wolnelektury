@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load catalogue_tags %}
 {% load thumbnail %}
 {% load pagination_tags %}
@@ -7,7 +8,7 @@
 
 
 {% block breadcrumbs %}
-  <a href="/katalog/"><span>Katalog</span></a>
+  <a href="/katalog/"><span>{% trans "Katalog" %}</span></a>
   {% if main_tag %}
     <a href="{{ main_tag.get_absolute_catalogue_url }}"><span>{{ main_tag.get_category_display|title }}</span></a>
   {% endif %}
@@ -37,7 +38,7 @@
     <div class="l-books__header">
       <div class="l-books__input">
         <i class="icon icon-filter"></i>
-        <input type="text" placeholder="filtry, tytuł" class="quick-filter" data-for="book-list" data-filters="with-filter" value="{{ request.GET.search }}">
+        <input type="text" placeholder="{% trans 'filtry, tytuł' %}" class="quick-filter" data-for="book-list" data-filters="with-filter" value="{{ request.GET.search }}">
         <div class="filter-container">
           {% for tag in tags %}
             {% if tag is not main_tag %}
@@ -52,7 +53,7 @@
       </div>
       {% if view.get_orderings %}
       <div class="l-books__sorting">
-        <span>Sortuj:</span>
+        <span>{% trans 'Sortuj:' %}</span>
         <div>
           {% for ordering in view.get_orderings %}
             <button

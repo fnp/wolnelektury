@@ -6,7 +6,6 @@ import time
 from io import BytesIO
 from django.core.cache import cache
 from django.db import models
-from django.utils.translation import gettext_lazy as _
 from django.template.loader import render_to_string
 from PIL import Image
 
@@ -17,10 +16,10 @@ THUMB_HEIGHT = 120
 
 
 class Sponsor(models.Model):
-    name = models.CharField(_('name'), max_length=120)
-    _description = models.CharField(_('description'), blank=True, max_length=255)
-    logo = models.ImageField(_('logo'), upload_to='sponsorzy/sponsor/logo')
-    url = models.URLField(_('url'), blank=True)
+    name = models.CharField('nazwa', max_length=120)
+    _description = models.CharField('opis', blank=True, max_length=255)
+    logo = models.ImageField('logo', upload_to='sponsorzy/sponsor/logo')
+    url = models.URLField('url', blank=True)
 
     def __str__(self):
         return self.name
@@ -33,8 +32,8 @@ class Sponsor(models.Model):
 
 
 class SponsorPage(models.Model):
-    name = models.CharField(_('name'), max_length=120)
-    sponsors = models.TextField(_('sponsors'), default='{}')
+    name = models.CharField('nazwa', max_length=120)
+    sponsors = models.TextField('sponsorzy', default='{}')
     _html = models.TextField(blank=True, editable=False)
     sprite = models.ImageField(upload_to='sponsorzy/sprite', blank=True)
 

@@ -8,8 +8,8 @@
 {% endblock %}
 
 {% block breadcrumbs %}
-  <a href="/katalog/"><span>Katalog</span></a>
-  <a href="/katalog/autor/"><span>Autor</span></a>
+  <a href="/katalog/"><span>{% trans "Katalog" %}</span></a>
+  <a href="/katalog/autor/"><span>{% trans "Autor" %}</span></a>
 {% endblock %}
 
 {% block main %}
@@ -24,20 +24,32 @@
 
     {% if author.alive %}
       <p>
-        {% trans "This author's works are copyrighted." %}
-        {% trans "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</a> why Internet libraries can't publish this author's works." %}
+        {% trans "Dzieła tego autora objęte są prawem autorskim." %}
+        {% blocktrans trimmed with url='https://domenapubliczna.org/co-to-jest-domena-publiczna/' %}
+          <a href="{{ url }}">Dowiedz się</a>, dlaczego biblioteki internetowe nie mogą
+          udostępniać dzieł tego autora.
+        {% endblocktrans %}
       </p>
     {% else %}
       {% if author.in_pd %}
-        <p>{% trans "This author's works are in public domain, but they were not yet published on Internet library of Wolne Lektury." %}</p>
+        <p>{% blocktrans trimmed %}
+          Dzieła tego autora znajdują się w domenie publicznej, ale jeszcze nie
+          zostały opublikowane w bibliotece internetowej Wolne Lektury.
+        {% endblocktrans %}</p>
       {% else %}
         <div>
           <p>
-            {% trans "This author's works will become part of public domain and will be allowed to be published without restrictions in" %}
+            {% blocktrans trimmed %}
+              Dzieła tego autora przejdą do zasobów domeny publicznej i będą mogły być
+              publikowane bez żadnych ograniczeń za
+            {% endblocktrans %}
           </p>
           <div class='countdown' data-until='{{ pd_counter|date_to_utc|utc_for_js }}'></div>
           <p>
-            {% trans "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find out</a> why Internet libraries can't publish this author's works." %}
+            {% blocktrans trimmed with url='https://domenapubliczna.org/co-to-jest-domena-publiczna/' %}
+              <a href="{{ url }}">Dowiedz się</a>, dlaczego biblioteki internetowe nie mogą
+              udostępniać dzieł tego autora.
+            {% endblocktrans %}
           </p>
         </div>
       {% endif %}

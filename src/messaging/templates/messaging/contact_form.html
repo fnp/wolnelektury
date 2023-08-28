@@ -1,14 +1,19 @@
 {% extends "base_simple.html" %}
+{% load i18n %}
 
 {% block body %}
 
-  <h1>Rezygnacja z e-maili</h1>
+  <h1>{% trans "Rezygnacja z e-maili" %}</h1>
 
-    <p>Czy na pewno chcesz zrezygnować z otrzymywania e-maili na adres {{ object.email }}?</p>
+  <p>
+    {% blocktrans trimmed with email=object.email %}
+      Czy na pewno chcesz zrezygnować z otrzymywania e-maili na adres {{ email }}?
+    {% endblocktrans %}
+  </p>
 
   <form method="POST" action="">
-	{% csrf_token %}
-	<button type="submit">Tak, wypisz mnie</button>
-</form>
+    {% csrf_token %}
+    <button type="submit">{% trans "Tak, wypisz mnie" %}</button>
+  </form>
 
 {% endblock %}

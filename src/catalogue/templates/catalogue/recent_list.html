@@ -4,21 +4,23 @@
 
 {% block settings %}
   {% load title %}
-  {% trans "Recent publications" as title %}
+  {% trans "Ostatnie publikacje" as title %}
   {% title title %}
 {% endblock %}
 
 {% block main %}
   <div class="l-article__title">
-    <h1>{% trans "Recent publications" %}</h1>
+    <h1>{% trans "Ostatnie publikacje" %}</h1>
   </div>
 
   {% url 'recent_audiobooks_list' as a %}
   {% url 'recent_daisy_list' as d %}
   <div class="l-main">
-  <p>
-    {% blocktrans %}You can also see <a href="{{a}}">recent audiobooks</a>
-      and <a href="{{d}}">recent DAISY files</a>.{% endblocktrans %}
+    <p>
+      {% blocktrans trimmed %}
+        Zobacz też listę <a href="{{ a }}">ostatnio dodanych audiobooków</a>
+        i <a href="{{ d }}">plików DAISY</a>.
+      {% endblocktrans %}
   </p>
   </div>
 

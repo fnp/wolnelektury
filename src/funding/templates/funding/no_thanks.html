@@ -2,15 +2,18 @@
 {% load i18n %}
 {% load fnp_share %}
 
-{% block titleextra %}{% trans "Payment failed" %}{% endblock %}
+{% block titleextra %}{% trans "Płatność nie doszła do skutku" %}{% endblock %}
 
 {% block body %}
-  <h1>{% trans "Payment failed" %}</h1>
+  <h1>{% trans "Płatność nie doszła do skutku" %}</h1>
   <div class="white-box normal-text">
-    <p>{% trans "You're support has not been processed successfully." %}</p>
+    <p>{% trans "Twoje wsparcie nie zostało zaksięgowane." %}</p>
     {% url 'funding_current' as current %}
     <p>
-      {% blocktrans with current=current %}Return to the <a href="{{current}}">current fundraiser</a> and try again or try to use a different payment method.{% endblocktrans %}
+      {% blocktrans trimmed with current=current %}
+        Wróć do <a href="{{ current }}">aktualnej zbiórki</a> i spróbuj ponownie lub
+        użyj innej metody płatności.
+      {% endblocktrans %}
     </p>
   </div>
 {% endblock %}

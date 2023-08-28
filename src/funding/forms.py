@@ -19,19 +19,23 @@ payment_method = PayU(app_settings.PAYU_POS)
 class FundingForm(NewsletterForm):
     required_css_class = 'required'
 
-    amount = forms.DecimalField(label=_("Amount"), decimal_places=2, widget=PerksAmountWidget())
+    amount = forms.DecimalField(label=_("Kwota"), decimal_places=2, widget=PerksAmountWidget())
     name = forms.CharField(
-        label=_("Name"), required=False, help_text=_("Optional name for public list of contributors"))
+        label=_("Imię i nazwisko na listę darczyńców"),
+        required=False,
+        help_text=_("Opcjonalnie imię i nazwisko lub pseudonim do publicznej listy darczyńców.")
+    )
     email = forms.EmailField(
-        label=_("Contact e-mail"),
+        label=_("E-mail kontaktowy"),
         help_text=mark_safe(_(
-            "We'll use it to "
-            "send you updates about your payment and the fundraiser status (which you can always turn off).<br/>"
-            "Your e-mail won't be publicised.")), required=False)
+            "Użyjemy go do informowania Cię o zmianach statusu płatności i zbiórki "
+            "(z czego zawsze możesz zrezygnować).<br/>"
+            "Twój adres e-mail nie będzie upubliczniony.")),
+        required=False)
 
-    data_processing_part2 = '''\
+    data_processing_part2 = _('''\
 W przypadku podania danych zostaną one wykorzystane w sposób podany powyżej, a w przypadku wyrażenia dodatkowej zgody 
-adres e-mail zostanie wykorzystany także w celu przesyłania newslettera Wolnych Lektur.'''
+adres e-mail zostanie wykorzystany także w celu przesyłania newslettera Wolnych Lektur.''')
 
     def __init__(self, request, offer, *args, **kwargs):
         self.offer = offer
@@ -46,13 +50,13 @@ adres e-mail zostanie wykorzystany także w celu przesyłania newslettera Wolnyc
             if isinstance(min_amount, float):
                 min_amount = formats.number_format(min_amount, 2)
             raise forms.ValidationError(
-                gettext("The minimum amount is %(amount)s PLN.") % {
+                gettext("Minimalna kwota wpłaty to %(amount)s zł.") % {
                     'amount': min_amount})
         return self.cleaned_data['amount']
 
     def clean(self):
         if not self.offer.is_current():
-            raise forms.ValidationError(gettext("This offer is out of date."))
+            raise forms.ValidationError(gettext("Ta zbiórka jest już nieaktywna."))
         return self.cleaned_data
 
     def save(self):

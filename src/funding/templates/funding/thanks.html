@@ -3,39 +3,45 @@
 {% load fnp_share %}
 {% load polls_tags %}
 
-{% block titleextra %}{% trans "Thank you for your support!" %}{% endblock %}
+{% block titleextra %}{% trans "Dziękujemy za Twoje wsparcie!" %}{% endblock %}
 
 {% block body %}
-  <h1>{% trans "Thank you!" %}</h1>
+  <h1>{% trans "Dziękujemy!" %}</h1>
   <div class="white-box normal-text">
-    <a href='/info/wesprzyj-nas/' target="_blank" style='float:right;border:1px solid #ddd;padding: 1em;margin:0 0 1em 1em;background:#eee;'><img src='/media/chunks/attachment/poltora-procent.png' alt='1,5%' style='float:left;margin-right: 1em;margin-top:.2em;'>Możesz też przekazać<br/>1,5% podatku na rozwój biblioteki. &rarr;</a>
+    <a href='/info/wesprzyj-nas/' target="_blank" style='float:right;border:1px solid #ddd;padding: 1em;margin:0 0 1em 1em;background:#eee;'><img src='/media/chunks/attachment/poltora-procent.png' alt='1,5%' style='float:left;margin-right: 1em;margin-top:.2em;'>{% blocktrans trimmed %}
+      Możesz też przekazać<br/>1,5% podatku na rozwój biblioteki.
+    {% endblocktrans %} &rarr;</a>
 
-    <p>{% trans "Thank you for your support!" %}</p>
+    <p>{% trans "Dziękujemy za Twoje wsparcie!" %}</p>
 
     {% if offer.is_win %}
-      <p>{% trans "Full amount was successfully raised!" %}</p>
-      <p>{% blocktrans with b=offer.title %}Your donation will be spent on digitizing, compiling and
-      publishing the book {{ b }} in multiple formats.{% endblocktrans %}</p>
+      <p>{% trans "Udało się zebrać pełną kwotę!" %}</p>
+      <p>{% blocktrans trimmed with b=offer.title %}
+        Wpłacone przez Ciebie pieniądze przeznaczymy na digitalizację, opracowanie
+        i udostępnienie książki {{ b }} w bibliotece w wielu formatach.
+      {% endblocktrans %}</p>
     {% else %}
-      <p>{% blocktrans with b=offer.title %}If the full amount needed is raised,
-      your donation will be spent on digitizing, compiling and
-      publishing the book {{ b }} in multiple formats.{% endblocktrans %}</p>
+      <p>{% blocktrans trimmed with b=offer.title %}
+        Jeśli uda się zebrać pełną kwotę, wpłacone przez Ciebie pieniądze
+        przeznaczymy na digitalizację, opracowanie i udostępnienie książki {{ b }}
+        w bibliotece w wielu formatach.
+      {% endblocktrans %}</p>
     {% endif %}
 
     <p>
       {% include "funding/snippets/any_remaining.html" %}
-      <a href="{% url 'infopage' 'wesprzyj' %}">{% trans "Learn more" %}</a>.
+      <a href="{% url 'infopage' 'wesprzyj' %}">{% trans "Dowiedz się więcej" %}</a>.
     </p>
 
     {% url 'funding_current' offer.slug as current %}
-    <p><a href="{{ current }}">{% trans "Go back to the current fundraiser." %}</a></p>
+    <p><a href="{{ current }}">{% trans "Wróć do aktualnej zbiórki." %}</a></p>
 
 
-    <h3>{% trans "Tell your friends!" %}</h3>
-    <p class="share">{% share current _("I support Wolne Lektury.") "big" %}</p>
+    <h3>{% trans "Powiedz swoim znajomym!" %}</h3>
+    <p class="share">{% share current _("Wspieram Wolne Lektury") "big" %}</p>
 
     {% if offer.poll %}
-      <h3>{% trans "Vote for a book for the next fundraiser" %}</h3>
+      <h3>{% trans "Pomóż wybrać następną książkę, na którą będziemy zbierać pieniądze" %}</h3>
       {% poll offer.poll %}
     {% endif %}
   </div>

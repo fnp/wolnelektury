@@ -1,80 +1,87 @@
 import re
 from django.db import models
 from django.utils.timezone import now
-from django.utils.translation import gettext_lazy as _
 from .bank import parse_export_feedback, parse_payment_feedback
 
 
 class Campaign(models.Model):
-    name = models.CharField(_('name'), max_length=255, unique=True)
-    description = models.TextField(_('description'), blank=True)
+    name = models.CharField('nazwa', max_length=255, unique=True)
+    description = models.TextField('opis', blank=True)
 
     class Meta:
-        verbose_name = _('campaign')
-        verbose_name_plural = _('campaigns')
+        verbose_name = 'kampania'
+        verbose_name_plural = 'kampanie'
 
     def __str__(self):
         return self.name
 
 
 class Fundraiser(models.Model):
-    name = models.CharField(_('name'), max_length=255, unique=True)
+    name = models.CharField('imię i nazwisko', max_length=255, unique=True)
 
     class Meta:
-        verbose_name = _('fundraiser')
-        verbose_name_plural = _('fundraisers')
+        verbose_name = 'fundraiser'
+        verbose_name_plural = 'fundraiserki i fundraiserzy'
 
     def __str__(self):
         return self.name
 
 
 class DirectDebit(models.Model):
-    first_name = models.CharField(_('first name'), max_length=255, blank=True)
-    last_name = models.CharField(_('last name'), max_length=255, blank=True)
-    sex = models.CharField(_('sex'), max_length=1, blank=True, choices=[
-        ('M', _('M')),
-        ('F', _('F')),
+    first_name = models.CharField('imię', max_length=255, blank=True)
+    last_name = models.CharField('nazwisko', max_length=255, blank=True)
+    sex = models.CharField('płeć', max_length=1, blank=True, choices=[
+        ('M', 'M'),
+        ('F', 'K'),
     ])
-    date_of_birth = models.DateField(_('date of birth'), null=True, blank=True)
-    street = models.CharField(_('street'), max_length=255, blank=True)
-    building = models.CharField(_('building'), max_length=255, blank=True)
-    flat = models.CharField(_('flat'), max_length=255, blank=True)
-    town = models.CharField(_('town'), max_length=255, blank=True)
-    postal_code = models.CharField(_('postal code'),  max_length=255, blank=True)
-    phone = models.CharField(_('phone'), max_length=255, blank=True)
-    email = models.CharField(_('e-mail'), max_length=255, blank=True)
-    iban = models.CharField(_('IBAN'), max_length=255, blank=True)
-    iban_valid = models.BooleanField(_('IBAN valid'), default=False, null=True)
-    is_consumer = models.BooleanField(_('is a consumer'), default=True)
-    payment_id = models.CharField(_('payment identifier'), max_length=255, blank=True, unique=True)
-    agree_fundraising = models.BooleanField(_('agree fundraising'), default=False)
-    agree_newsletter = models.BooleanField(_('agree newsletter'), default=False)
+    date_of_birth = models.DateField('data urodzenia', null=True, blank=True)
+    street = models.CharField('ulica', max_length=255, blank=True)
+    building = models.CharField('nr domu', max_length=255, blank=True)
+    flat = models.CharField('nr mieszkania', max_length=255, blank=True)
+    town = models.CharField('miejscowość', max_length=255, blank=True)
+    postal_code = models.CharField('kod pocztowy', max_length=255, blank=True)
+    phone = models.CharField('telefon', max_length=255, blank=True)
+    email = models.CharField('e-mail', max_length=255, blank=True)
+    iban = models.CharField('nr rachunku', max_length=255, blank=True)
+    iban_valid = models.BooleanField('prawidłowy IBAN', default=False, null=True)
+    is_consumer = models.BooleanField('konsument', default=True)
+    payment_id = models.CharField('identyfikator płatności', max_length=255, blank=True, unique=True)
+    agree_fundraising = models.BooleanField('zgoda na kontakt fundraisingowy', default=False)
+    agree_newsletter = models.BooleanField('zgoda na newsletter', default=False)
 
-    acquisition_date = models.DateField(_('acquisition date'), help_text=_('Date from the form'), null=True, blank=True)
-    submission_date = models.DateField(_('submission date'), null=True, blank=True, help_text=_('Date the fundaiser submitted the form'))
-    bank_submission_date = models.DateField(_('bank submission date'), null=True, blank=True, help_text=_('Date when the form data is submitted to the bank'))
-    bank_acceptance_date = models.DateField(_('bank accepted date'), null=True, blank=True, help_text=_('Date when bank accepted the form'))
+    acquisition_date = models.DateField(
+        'data pozyskania', help_text='Data z formularza',
+        null=True, blank=True)
+    submission_date = models.DateField(
+        'data dostarczenia', null=True, blank=True,
+        help_text='Data złożenia formularza przez fundraisera')
+    bank_submission_date = models.DateField(
+        'data złożenia do banku', null=True, blank=True,
+        help_text='Data przesłania danych z formularza do banku')
+    bank_acceptance_date = models.DateField(
+        'data akceptacji przez bank', null=True, blank=True,
+        help_text='Data kiedy bank przekazał informację o akceptacji danych z formularza')
 
-    fundraiser = models.ForeignKey(Fundraiser, models.PROTECT, blank=True, null=True, verbose_name=_('fundraiser'))
-    fundraiser_commission = models.IntegerField(_('fundraiser commission'), null=True, blank=True)
-    fundraiser_bonus = models.IntegerField(_('fundraiser bonus'), null=True, blank=True)
-    fundraiser_bill = models.CharField(_('fundaiser bill number'), max_length=255, blank=True)
+    fundraiser = models.ForeignKey(Fundraiser, models.PROTECT, blank=True, null=True, verbose_name='fundraiser')
+    fundraiser_commission = models.IntegerField('prowizja fundraisera', null=True, blank=True)
+    fundraiser_bonus = models.IntegerField('bonus fundraisera', null=True, blank=True)
+    fundraiser_bill = models.CharField('nr rachunku wystawionego przez fundraisera', max_length=255, blank=True)
 
-    amount = models.IntegerField(_('amount'), null=True, blank=True)
+    amount = models.IntegerField('kwota', null=True, blank=True)
 
-    notes = models.TextField(_('notes'), blank=True)
+    notes = models.TextField('uwagi', blank=True)
 
-    needs_redo = models.BooleanField(_('needs redo'), default=False)
-    cancelled_at = models.DateTimeField(_('cancelled at'), null=True, blank=True)
-    optout = models.BooleanField(_('optout'), default=False)
+    needs_redo = models.BooleanField('do powtórki', default=False)
+    cancelled_at = models.DateTimeField('anulowane', null=True, blank=True)
+    optout = models.BooleanField('optout', default=False)
 
-    campaign = models.ForeignKey(Campaign, models.PROTECT, null=True, blank=True, verbose_name=_('campaign'))
+    campaign = models.ForeignKey(Campaign, models.PROTECT, null=True, blank=True, verbose_name='kampania')
 
     latest_status = models.CharField(max_length=255, blank=True)
     
     class Meta:
-        verbose_name = _('direct debit')
-        verbose_name_plural = _('direct debits')
+        verbose_name = 'polecenie zapłaty'
+        verbose_name_plural = 'polecenia zapłaty'
 
     def __str__(self):
         return "{} {}".format(self.payment_id, self.latest_status)

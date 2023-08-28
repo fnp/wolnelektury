@@ -6,37 +6,36 @@ from datetime import timedelta
 
 from django.db import models
 from django.contrib.auth.models import User
-from django.utils.translation import gettext_lazy as _
 
 
 class Suggestion(models.Model):
-    contact = models.CharField(_('contact'), blank=True, max_length=120)
-    description = models.TextField(_('description'), blank=True)
-    created_at = models.DateTimeField(_('creation date'), auto_now=True)
-    ip = models.GenericIPAddressField(_('IP address'))
+    contact = models.CharField('kontakt', blank=True, max_length=120)
+    description = models.TextField('opis', blank=True)
+    created_at = models.DateTimeField('data utworzenia', auto_now=True)
+    ip = models.GenericIPAddressField('adres IP')
     user = models.ForeignKey(User, models.SET_NULL, blank=True, null=True)
 
     class Meta:
         ordering = ('-created_at',)
-        verbose_name = _('suggestion')
-        verbose_name_plural = _('suggestions')
+        verbose_name = 'sugestia'
+        verbose_name_plural = 'sugestie'
 
     def __str__(self):
         return str(self.created_at)
 
 
 class PublishingSuggestion(models.Model):
-    contact = models.CharField(_('contact'), blank=True, max_length=120)
-    books = models.TextField(_('books'), null=True, blank=True)
-    audiobooks = models.TextField(_('audiobooks'), null=True, blank=True)
-    created_at = models.DateTimeField(_('creation date'), auto_now_add=True)
-    ip = models.GenericIPAddressField(_('IP address'))
+    contact = models.CharField('kontakt', blank=True, max_length=120)
+    books = models.TextField('książki', null=True, blank=True)
+    audiobooks = models.TextField('audiobooki', null=True, blank=True)
+    created_at = models.DateTimeField('data utworzenia', auto_now_add=True)
+    ip = models.GenericIPAddressField('adres IP')
     user = models.ForeignKey(User, models.SET_NULL, blank=True, null=True)
 
     class Meta:
         ordering = ('-created_at',)
-        verbose_name = _('publishing suggestion')
-        verbose_name_plural = _('publishing suggestions')
+        verbose_name = 'sugestia publikacji'
+        verbose_name_plural = 'sugestie publikacji'
 
     def is_spam(self):
         suggestion_text = (self.books or self.audiobooks).strip(' \r\n,')

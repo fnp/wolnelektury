@@ -1,16 +1,18 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load catalogue_tags %}
 
 
 {% block settings %}
   {% load title %}
-  {% title 'Półka' %}
+  {% trans 'Półka' as title %}
+  {% title title %}
 {% endblock %}
 
 {% block main %}
   <div class="l-section">
     <div class="l-author__header">
-      <h1>Półka</h1>
+      <h1>{% trans "Półka" %}</h1>
     </div>
   </div>
 
@@ -18,13 +20,13 @@
     <div class="l-books__header">
       <div class="l-books__input">
         <i class="icon icon-filter"></i>
-        <input type="text" placeholder="filtry, tytuł" class="quick-filter" data-for="book-list" data-filters="with-filter">
+        <input type="text" placeholder="{% trans 'filtry, tytuł' %}" class="quick-filter" data-for="book-list" data-filters="with-filter">
       </div>
       <div class="l-books__sorting">
-        <span>Sortuj:</span>
+        <span>{% trans "Sortuj:" %}</span>
         <div>
-          <button data-order="data-pop">najpopularniejsze</button>
-          <button class="is-active">alfabetycznie</button>
+          <button data-order="data-pop">{% trans "najpopularniejsze" %}</button>
+          <button class="is-active">{% trans "alfabetycznie" %}</button>
           <!--button>chronologicznie</button-->
         </div>
       </div>

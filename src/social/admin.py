@@ -4,7 +4,6 @@
 from django.contrib import admin
 from django.forms import ModelForm
 from django.forms.widgets import TextInput
-from django.utils.translation import gettext_lazy as _
 from admin_ordering.admin import OrderableAdmin
 from social.models import Cite, BannerGroup, Carousel, CarouselItem
 
@@ -26,15 +25,15 @@ class CiteAdmin(admin.ModelAdmin):
     search_fields = ['text', 'link', 'picture_alt', 'picture_author', 'picture_link', 'image_title', 'image_author', 'image_link']
     fieldsets = (
         (None, {'fields': ('group', 'sticky', 'created_at', 'book')}),
-        (_('Content'), {'fields': ('link', 'vip', 'text', 'small')}),
-        (_('Media box'), {'fields': (
+        ('Zawartość', {'fields': ('link', 'vip', 'text', 'small')}),
+        ('Media', {'fields': (
             'video',
             'picture', 'picture_alt',
                 'picture_title', 'picture_author', 'picture_link',
                 'picture_license', 'picture_license_link'
         )}),
         (
-            _('Background'),
+            'Tło',
             {'fields': (
                 ('background_plain', 'background_color'),
                 'image',
@@ -48,11 +47,11 @@ class CiteAdmin(admin.ModelAdmin):
         if cite.text.strip():
             return cite.text
         return "(%s)" % (cite.image_title or cite.link or '-').strip()
-    nonempty_text.short_description = _('text')
+    nonempty_text.short_description = 'tekst'
 
     def has_image(self, cite):
         return bool(cite.image)
-    has_image.short_description = _('image')
+    has_image.short_description = 'obraz'
     has_image.boolean = True
 
 

@@ -1,12 +1,8 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Wolne Lektury. See NOTICE for more information.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: WolneLektury-social\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -15,212 +11,27 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"(n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < "
+"11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? "
+"1 : n % 1 != 0 ? 2: 3);\n"
 
-#: social/admin.py:29
-msgid "Content"
-msgstr ""
-
-#: social/admin.py:30
-msgid "Media box"
-msgstr ""
-
-#: social/admin.py:37
-msgid "Background"
-msgstr ""
-
-#: social/admin.py:51 social/models.py:40
-msgid "text"
-msgstr ""
-
-#: social/admin.py:55
-msgid "image"
-msgstr ""
-
-#: social/forms.py:21
-msgid "Tags (comma-separated)"
-msgstr ""
-
-#: social/forms.py:44
-msgid "Name of the new shelf"
-msgstr ""
-
-#: social/models.py:15
-msgid "name"
-msgstr ""
-
-#: social/models.py:16 social/models.py:67
-msgid "created at"
-msgstr ""
-
-#: social/models.py:20 social/models.py:153
-msgid "banner group"
-msgstr ""
-
-#: social/models.py:21
-msgid "banner groups"
-msgstr ""
-
-#: social/models.py:39
-msgid "book"
-msgstr ""
-
-#: social/models.py:41
-msgid "small"
-msgstr ""
-
-#: social/models.py:41
-msgid "Make this cite display smaller."
-msgstr ""
-
-#: social/models.py:42
-msgid "VIP"
-msgstr ""
-
-#: social/models.py:43
-msgid "link"
-msgstr ""
-
-#: social/models.py:44
-msgid "video"
-msgstr ""
-
-#: social/models.py:45
-msgid "picture"
-msgstr ""
-
-#: social/models.py:47
-msgid "picture alternative text"
-msgstr ""
-
-#: social/models.py:48
-msgid "picture title"
-msgstr ""
-
-#: social/models.py:49
-msgid "picture author"
-msgstr ""
-
-#: social/models.py:50
-msgid "picture link"
-msgstr ""
-
-#: social/models.py:51
-msgid "picture license name"
-msgstr ""
-
-#: social/models.py:52
-msgid "picture license link"
-msgstr ""
-
-#: social/models.py:54
-msgid "sticky"
-msgstr ""
-
-#: social/models.py:55
-msgid "Sticky cites will take precedense."
-msgstr ""
-
-#: social/models.py:56
-msgid "plain background"
-msgstr ""
-
-#: social/models.py:57
-msgid "background color"
-msgstr ""
-
-#: social/models.py:59
-msgid "background image"
-msgstr ""
-
-#: social/models.py:60
-msgid "Best background is 975 x 315 px and under 100kB."
-msgstr ""
-
-#: social/models.py:61
-msgid "background title"
-msgstr ""
-
-#: social/models.py:62
-msgid "background author"
-msgstr ""
-
-#: social/models.py:63
-msgid "background link"
-msgstr ""
-
-#: social/models.py:64
-msgid "background license name"
-msgstr ""
-
-#: social/models.py:65
-msgid "background license link"
-msgstr ""
-
-#: social/models.py:68
-msgid "group"
-msgstr ""
-
-#: social/models.py:72 social/models.py:152
-msgid "banner"
-msgstr ""
-
-#: social/models.py:73
-msgid "banners"
-msgstr ""
-
-#: social/models.py:126
-msgid "placement"
-msgstr ""
-
-#: social/models.py:130
-msgid "priority"
-msgstr ""
-
-#: social/models.py:131
-msgid "language"
-msgstr ""
-
-#: social/models.py:135 social/models.py:151
-msgid "carousel"
-msgstr ""
-
-#: social/models.py:136
-msgid "carousels"
-msgstr ""
-
-#: social/models.py:150
-msgid "order"
-msgstr ""
-
-#: social/models.py:157
-msgid "carousel item"
-msgstr ""
-
-#: social/models.py:158
-msgid "carousel items"
-msgstr ""
-
-#: social/models.py:165 social/models.py:167
-msgid "Either banner or banner group is required."
-msgstr ""
-
-#: social/templates/social/cite_promo.html:23
-msgid "recommends"
-msgstr ""
-
-#: social/templates/social/my_shelf.html:5
-#: social/templates/social/my_shelf.html:10
-msgid "My shelf"
-msgstr ""
-
+#: social/templates/social/my_shelf.html:8
 #: social/templates/social/my_shelf.html:15
-msgid ""
-"Add works to your shelf by clicking on the star on the page of the work. The "
-"work will then show up on My shelf page."
+msgid "Półka"
 msgstr ""
 
-#: social/templates/social/sets_form.html:7
-msgid "Remove from my shelf"
+#: social/templates/social/my_shelf.html:23
+msgid "filtry, tytuł"
+msgstr ""
+
+#: social/templates/social/my_shelf.html:26
+msgid "Sortuj:"
+msgstr ""
+
+#: social/templates/social/my_shelf.html:28
+msgid "najpopularniejsze"
+msgstr ""
+
+#: social/templates/social/my_shelf.html:29
+msgid "alfabetycznie"
 msgstr ""

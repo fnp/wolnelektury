@@ -21,7 +21,7 @@
 {% block menu %}
   <li>
     <a href="{{ book.get_absolute_url }}" id="menu-book" data-box="book-short">
-      <span class="label">{% trans "Click to download" %}:</span>
+      <span class="label">{% trans "Kliknij, by pobrać" %}:</span>
       <img src="{% if book.cover_clean %}{% thumbnail book.cover_clean '240x332' as thumb %}{{ thumb.url }}{% empty %}{{ book.cover_clean.url }}{% endthumbnail %}{% endif %}"
            width="120" height="166"
            alt="{{ book.pretty_title }}"
@@ -32,43 +32,43 @@
   {% if book.other_versions.exists %}
     <li id="menu-other">
       <a href="#" data-box="other">
-        <span class="label">{% trans "Other versions" %}</span>
+        <span class="label">{% trans "Inne wersje" %}</span>
       </a>
     </li>
   {% endif %}
 
   <li id="menu-toc">
     <a href="#" data-box="wltoc">
-      <span class="label">{% trans "Table of contents" %}</span>
+      <span class="label">{% trans "Spis treści" %}</span>
     </a>
   </li>
 
   <li id="menu-themes">
     <a href="#" data-box="themes">
-      <span class="label">{% trans "Themes" %}</span>
+      <span class="label">{% trans "Motywy" %}</span>
     </a>
   </li>
 
   <li id="menu-nota_red">
     <a href="#" data-box="nota_red">
-      <span class="label">{% trans "Edit. note" %}</span>
+      <span class="label">{% trans "Nota red." %}</span>
     </a>
   </li>
 
   <li id="menu-info">
     <a href="#info" data-box="info">
-      <span class="label">{% trans "Infobox" %}</span>
+      <span class="label">{% trans "Informacje" %}</span>
     </a>
   </li>
 
   <a href="#" class="settings-switch" id="settings-line-numbers"
-     data-setting="always-hide-line-numbers"><span>{% trans "Numbering" %}</span></a>
+     data-setting="always-hide-line-numbers"><span>{% trans "Numeracja" %}</span></a>
   <a href="#" class="settings-switch" id="settings-themes"
-     data-setting="always-hide-themes"><span>{% trans "Themes" %}</span></a>
+     data-setting="always-hide-themes"><span>{% trans "Motywy" %}</span></a>
   <a href="#" class="settings-switch" id="settings-annotations"
-     data-setting="no-annotations"><span>{% trans "Footnotes" %}</span></a>
+     data-setting="no-annotations"><span>{% trans "Przypisy" %}</span></a>
   <a href="#" class="settings-switch" id="settings-references"
-     data-setting="no-references"><span>{% trans "References" %}</span></a>
+     data-setting="no-references"><span>{% trans "Pinezki" %}</span></a>
 
 {% endblock menu %}
 
@@ -94,8 +94,8 @@
 
 
   <article id="other-text">
-    <a class="other-text-close" href="#">{% trans "Close" %}</a>
-    <div id="other-text-waiter">{% trans "Please wait..." %}</div>
+    <a class="other-text-close" href="#">{% trans "Zamknij" %}</a>
+    <div id="other-text-waiter">{% trans "Proszę czekać..." %}</div>
     <div id="other-text-body" style="display: none;"></div>
   </article>
 
@@ -164,8 +164,8 @@
 
   {% if book.other_versions.exists %}
     <div class="box" id="other">
-      <h2>{% trans "Other versions of the book" %}</h2>
-      <a class="other-text-close" href="#">{% trans "Close the other version" %}</a>
+      <h2>{% trans "Inne wersje utworu" %}</h2>
+      <a class="other-text-close" href="#">{% trans "Zamknij drugą wersję" %}</a>
       <ul>
         {% spaceless %}
           {% for other_version in book.other_versions %}

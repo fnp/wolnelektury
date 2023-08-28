@@ -4,7 +4,7 @@
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext as _
 
 from newsletter.forms import SubscribeForm, Newsletter
 
@@ -29,6 +29,6 @@ def subscribe_form(request, slug=''):
 def subscribed(request):
     template_name = 'newsletter/subscribed.html'
     return render(request, template_name, {
-        'page_title': _('Subscribed'),
+        'page_title': _('Zapisano do newslettera'),
     })
 

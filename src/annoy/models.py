@@ -4,43 +4,42 @@ from django.apps import apps
 from django.conf import settings
 from django.db import models
 from django.template import Context, Template
-from django.utils.translation import gettext_lazy as _
 from django.utils.timezone import now
 from .places import PLACES, PLACE_CHOICES, STYLES
 
 
 class Banner(models.Model):
-    place = models.SlugField(_('place'), choices=PLACE_CHOICES)
+    place = models.SlugField('miejsce', choices=PLACE_CHOICES)
     style = models.CharField(
-        _('style'), max_length=255, blank=True,
+        'styl', max_length=255, blank=True,
         choices=STYLES,
-        help_text=_('Affects blackout.')
+        help_text='Dotyczy blackoutu.'
     )
-    smallfont = models.BooleanField(_('small font'), default=False)
+    smallfont = models.BooleanField('mały font', default=False)
     text_color = models.CharField(max_length=10, blank=True)
     background_color = models.CharField(max_length=10, blank=True)
     action_label = models.CharField(
-        _('action label'),
+        'etykieta akcji',
         max_length=255, blank=True,
-        help_text=_('If empty, whole banner will serve as a link')
+        help_text='Jeśli pusta, cały banner będzie służył jako link.'
     )
-    open_label = models.CharField(_('open label'), max_length=255, blank=True)
-    close_label = models.CharField(_('close label'), max_length=255, blank=True)
-    text = models.TextField(_('text'))
-    image = models.FileField(_('image'), upload_to='annoy/banners/', blank=True)
-    url = models.CharField(_('url'), max_length=1024)
+    open_label = models.CharField('etykieta otwierania', max_length=255, blank=True)
+    close_label = models.CharField('etykieta zamykania', max_length=255, blank=True)
+    text = models.TextField('tekst')
+    image = models.FileField('obraz', upload_to='annoy/banners/', blank=True)
+    url = models.CharField('URL', max_length=1024)
     priority = models.PositiveSmallIntegerField(
-        _('priority'), default=0,
-        help_text=_('Banners with higher priority come first.'))
-    since = models.DateTimeField(_('since'), null=True, blank=True)
-    until = models.DateTimeField(_('until'), null=True, blank=True)
-    show_members = models.BooleanField(_('show members'), default=False)
-    staff_preview = models.BooleanField(_('staff preview'), default=False)
-    only_authenticated = models.BooleanField(_('only for authenticated users'), default=False)
+        'priorytet', default=0,
+        help_text='Bannery z wyższym priorytetem mają pierwszeństwo.')
+    since = models.DateTimeField('od', null=True, blank=True)
+    until = models.DateTimeField('do', null=True, blank=True)
+    show_members = models.BooleanField('widoczny dla członków klubu', default=False)
+    staff_preview = models.BooleanField('podgląd tylko dla zespołu', default=False)
+    only_authenticated = models.BooleanField('tylko dla zalogowanych', default=False)
 
     class Meta:
-        verbose_name = _('banner')
-        verbose_name_plural = _('banners')
+        verbose_name = 'banner'
+        verbose_name_plural = 'bannery'
         ordering = ('place', '-priority',)
 
     def __str__(self):
@@ -81,12 +80,12 @@ class Banner(models.Model):
 
 
 class DynamicTextInsert(models.Model):
-    paragraphs = models.IntegerField(_('pararaphs'))
+    paragraphs = models.IntegerField('akapity')
     url = models.CharField(max_length=1024)
 
     class Meta:
-        verbose_name = _('dynamic insert')
-        verbose_name_plural = _('dynamic inserts')
+        verbose_name = 'dynamiczna wstawka'
+        verbose_name_plural = 'dynamiczne wstawki'
         ordering = ('paragraphs', )
 
     def __str__(self):
@@ -109,7 +108,7 @@ class DynamicTextInsertText(models.Model):
     own_colors = models.BooleanField(default=False)
     background_color = models.CharField(max_length=10, blank=True)
     text_color = models.CharField(max_length=10, blank=True)
-    text = models.TextField(_('text'))
+    text = models.TextField('tekst')
     image = models.FileField(blank=True, upload_to='annoy/inserts/')
 
 

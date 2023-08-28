@@ -4,7 +4,6 @@ from io import StringIO
 from django.conf import settings
 from django.http import HttpResponse
 from django.utils.safestring import mark_safe
-from django.utils.translation import gettext_lazy as _
 
 
 def bank_export(modeladmin, request, queryset):

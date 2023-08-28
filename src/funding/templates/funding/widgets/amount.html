@@ -14,7 +14,7 @@
     <label>
       <input type="radio" name="{{ perks_input_name }}" value=""
              {% if not perk_chosen %}checked="checked"{% endif %}/>
-      {% trans "Other amount" %}:
+      {% trans "Inna kwota" %}:
     </label>
     <input size="5" name="{{ name }}" value="{% if not perk_chosen %}{{ value|default_if_none:'' }}{% endif %}"/> zł
   {% else %}

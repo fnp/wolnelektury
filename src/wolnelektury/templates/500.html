@@ -4,7 +4,7 @@
     {% load i18n %}
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <title>{% trans "Server error" %} 500 | WolneLektury.pl</title>
+    <title>{% trans "Błąd serwera" %} 500 | WolneLektury.pl</title>
     <style type="text/css">
      * {
          box-sizing: border-box;
@@ -70,7 +70,12 @@
       </div>
     </nav>
     <div class="l-container" id="content">
-      {% trans "<p>The Wolnelektury.pl site is currently unavailable. Meanwhile, visit our <a href='https://fundacja.wolnelektury.pl'>blog</a>.</p> <p>Inform our <a href='mailto:fundacja@wolnelektury.pl'>administrators</a> about the error.</p>" %}
+      <p>
+        {% blocktrans with site="<a href='https://fundacja.wolnelektury.pl'>" trimmed %}
+          Biblioteka WolneLektury.pl jest chwilowo niedostępna.
+          Odwiedź {{ site }}stronę fundacji</a> lub spróbuj ponownie później.
+        {% endblocktrans %}
+      </p>
     </div>
 
   </body>

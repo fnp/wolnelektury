@@ -18,9 +18,6 @@ LOCALE_PATHS = [
 LANGUAGE_CODE = 'pl'
 
 
-def gettext(s):
-    return s
-
 LANGUAGES = tuple(sorted([
     ('pl', 'polski'),
     ('de', 'Deutsch'),

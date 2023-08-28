@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% load static %}
 {% load thumbnail %}
 {% load catalogue_tags %}
@@ -163,7 +164,7 @@
             {% endfor %}
           </div>
           <div class="c-read_more">
-            <a href="/katalog/kolekcje/">zobacz wszystkie kolekcje</a>
+            <a href="/katalog/kolekcje/">{% trans "zobacz wszystkie kolekcje" %}</a>
           </div>
         </div>
 
@@ -177,26 +178,28 @@
         </div>
         <div class="p-homepage__info__box p-homepage__info__box--donate">
           <figure>
-            <img src="{% static '2022/images/book-donate.svg' %}" alt="Dorzuć się!">
+            <img src="{% static '2022/images/book-donate.svg' %}" alt="{% trans 'Dorzuć się!' %}">
           </figure>
           <div class="p-homepage__info__box__content">
             <p>
-              Nasze książki są dostępne dla tysięcy
-              dzieciaków dzięki <strong>darowiznom</strong> od
-              osób takich jak <strong>Ty</strong>!
+              {% blocktrans trimmed %}
+                Nasze książki są dostępne dla tysięcy
+                dzieciaków dzięki <strong>darowiznom</strong> od
+                osób takich jak <strong>Ty</strong>!
+              {% endblocktrans %}
             </p>
-            <a href="{% url 'club_join' %}?pk_campaign=home" class="l-button l-button--default l-button--default--dark">Dorzuć się!</a>
+            <a href="{% url 'club_join' %}?pk_campaign=home" class="l-button l-button--default l-button--default--dark">{% trans "Dorzuć się!" %}</a>
           </div>
         </div>
         <div class="p-homepage__info__box p-homepage__info__box--newsletter">
           <figure>
-            <img src="{% static '2022/images/book-newsletter.svg' %}" alt="Zapisz się na nasz Newsletter!">
+            <img src="{% static '2022/images/book-newsletter.svg' %}" alt="{% trans 'Zapisz się na nasz Newsletter!' %}">
           </figure>
           <div class="p-homepage__info__box__content">
             <h3>
-              Informacja o&nbsp;nowościach <strong>Newsletter!</strong>
+              {% trans "Informacja o&nbsp;nowościach" %} <strong>{% trans "Newsletter!" %}</strong>
             </h3>
-            <a href="{% url 'subscribe' %}?pk_campaign=home" class="l-button l-button--default">Zapisz się</a>
+            <a href="{% url 'subscribe' %}?pk_campaign=home" class="l-button l-button--default">{% trans "Zapisz się" context "Newsletter" %}</a>
           </div>
         </div>
       </div>
@@ -227,40 +230,46 @@
       <div class="p-homepage__info p-homepage__info--second">
         <div class="p-homepage__info__box p-homepage__info__box--full">
           <figure>
-            <img src="{% static '2022/images/kid.png' %}" alt="Dorzuć się!">
+            <img src="{% static '2022/images/kid.png' %}" alt="{% trans 'Dorzuć się!' %}">
           </figure>
           <div class="p-homepage__info__box__content">
             <p>
-              <strong>Wolne Lektury</strong> to lektury szkolne
-              i tysiące innych książek – za <strong>darmo</strong>
-              i <strong>bez rejestracji</strong>.
+              {% blocktrans trimmed %}
+                <strong>Wolne Lektury</strong> to lektury szkolne
+                i tysiące innych książek – za <strong>darmo</strong>
+                i <strong>bez rejestracji</strong>.
+              {% endblocktrans %}
             </p>
-            <p>Czytaj i słuchaj online, ściągaj na swój telefon lub komputer, dziel się z innymi.</p>
-            <p>Dla uczennic i uczniów dodajemy przypisy, motywy literackie, biogramy i geotagowanie.</p>
-            <a href="{% url 'infopage' 'o-projekcie' %}?pk_campaign=wl-infobox" class="l-button l-button--default l-button--default--dark">Dowiedz się więcej</a>
+            <p>{% trans "Czytaj i słuchaj online, ściągaj na swój telefon lub komputer, dziel się z innymi." %}</p>
+            <p>{% trans "Dla uczennic i uczniów dodajemy przypisy, motywy literackie, biogramy i geotagowanie." %}</p>
+            <a href="{% url 'infopage' 'o-projekcie' %}?pk_campaign=wl-infobox" class="l-button l-button--default l-button--default--dark">{% trans "Dowiedz się więcej" %}</a>
           </div>
         </div>
         <div class="p-homepage__info__box__rows">
           <div class="p-homepage__info__box p-homepage__info__box--full--sm">
             <figure>
-              <img src="{% static '2022/images/kid-2.png' %}" alt="Dorzuć się!">
+              <img src="{% static '2022/images/kid-2.png' %}" alt="{% trans 'Dorzuć się!' %}">
             </figure>
             <div class="p-homepage__info__box__content">
               <p>
-                Jesteśmy częścią ruchu <strong>wolnej kultury</strong>!
+                {% blocktrans trimmed %}
+                  Jesteśmy częścią ruchu <strong>wolnej kultury</strong>!
+                {% endblocktrans %}
               </p>
-              <a href="https://fundacja.wolnelektury.pl/o-fundacji/?pk_campaign=wl-infobox" class="l-button l-button--default">Dowiedz się więcej</a>
+              <a href="https://fundacja.wolnelektury.pl/o-fundacji/?pk_campaign=wl-infobox" class="l-button l-button--default">{% trans "Dowiedz się więcej" %}</a>
             </div>
           </div>
           <div class="p-homepage__info__box p-homepage__info__box--full--sm">
             <figure>
-              <img src="{% static '2022/images/kid-3.png' %}" alt="Dorzuć się!">
+              <img src="{% static '2022/images/kid-3.png' %}" alt="{% trans 'Dorzuć się!' %}">
             </figure>
             <div class="p-homepage__info__box__content">
               <p>
-                Jak budujemy najpopularniejszą <strong>bibliotekę online</strong> w Polsce
+                {% blocktrans trimmed %}
+                  Jak budujemy najpopularniejszą <strong>bibliotekę online</strong> w Polsce
+                {% endblocktrans %}
               </p>
-              <a href="/info/jak-powstaja-wolne-lektury/" class="l-button l-button--default">Dowiedz się więcej</a>
+              <a href="/info/jak-powstaja-wolne-lektury/" class="l-button l-button--default">{% trans "Dowiedz się więcej" %}</a>
             </div>
           </div>
         </div>
@@ -272,7 +281,7 @@
   <section class="l-section">
     <div class="l-collections js-collections">
       <div class="l-collections__header">
-        <h3><a href="/katalog/nowe/">Nowości</a></h3>
+        <h3><a href="/katalog/nowe/">{% trans "Nowości" %}</a></h3>
         <div class="l-your-books__header__actions">
           <button class="js-prev-slide"><i class="icon icon-arrow-left"></i></button>
           <button class="js-next-slide"><i class="icon icon-arrow-right"></i></button>
@@ -290,7 +299,7 @@
     <section class="l-section">
       <div class="p-homepage__uptodate">
         <div class="p-homepage__uptodate__header">
-          <h3>Bądź na bieżąco</h3>
+          <h3>{% trans "Bądź na bieżąco" %}</h3>
           <ul>
             <li>
               <a href="https://www.facebook.com/wolnelektury/"

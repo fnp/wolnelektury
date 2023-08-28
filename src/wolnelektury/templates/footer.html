@@ -1,10 +1,10 @@
-{% load static %}
+{% load i18n static %}
 
 <div class="l-footer">
   <div class="l-container">
     <div class="l-footer__row">
       <ul>
-        <li><a href="https://fundacja.wolnelektury.pl">Fundacja Wolne Lektury</a></li>
+        <li><a href="https://fundacja.wolnelektury.pl">{% translate "Fundacja Wolne Lektury" %}</a></li>
         <li>ul. Marszałkowska 84/92 lok. 125</li>
         <li>00-514 Warszawa</li>
         <li>tel. <a href="tel:+48-22-621-30-17">+48 22 621 30 17</a></li>
@@ -14,12 +14,16 @@
         <li>NIP: 952-187-70-87</li>
         <li>KRS: 0000070056</li>
         <li>REGON: 017423865</li>
-        <li>Numer konta: 75 1090 2851 0000 0001 4324 3317</li>
+        <li>{% translate "Numer konta" context "IBAN" %}:
+          {% if LANGUAGE_CODE != "pl" %}PL{% endif %}75 1090 2851 0000 0001 4324 3317</li>
       </ul>
     </div>
     <div class="l-footer__row">
       <div>
-        Wolne Lektury to projekt prowadzony przez fundację <a href="https://fundacja.wolnelektury.pl">Wolne Lektury</a>. <br>
+        {% blocktrans with site='<a href="https://fundacja.wolnelektury.pl">' trimmed %}
+          Wolne Lektury to projekt prowadzony przez fundację {{ site }}Wolne Lektury</a>.
+        {% endblocktrans %}
+        <br>
       </div>
       <div>
         <a href="https://www.gov.pl/web/kultura"><img src="{% static '2022/images/MKiDN.png' %}" alt="MKiDN"></a>

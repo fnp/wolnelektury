@@ -13,7 +13,7 @@ from django.urls import reverse
 from django.db import models
 from django import template
 from django.utils.timezone import now, utc
-from django.utils.translation import gettext_lazy as _, ngettext, gettext, get_language
+from django.utils.translation import get_language
 from django_countries.fields import CountryField
 from catalogue.utils import get_random_hash
 from messaging.states import Level
@@ -25,14 +25,14 @@ from . import utils
 
 
 class Club(models.Model):
-    min_amount = models.IntegerField(_('minimum amount'))
-    min_for_year = models.IntegerField(_('minimum amount for year'))
-    default_single_amount = models.IntegerField(_('default single amount'))
-    default_monthly_amount = models.IntegerField(_('default monthly amount'))
+    min_amount = models.IntegerField('minimalna kwota')
+    min_for_year = models.IntegerField('minimalna kwota na rok')
+    default_single_amount = models.IntegerField('domyślna kwota dla pojedynczej wpłaty')
+    default_monthly_amount = models.IntegerField('domyślna kwota dla miesięcznych wpłat')
 
     class Meta:
-        verbose_name = _('club')
-        verbose_name_plural = _('clubs')
+        verbose_name = 'towarzystwo'
+        verbose_name_plural = 'towarzystwa'
     
     def __str__(self):
         return 'Klub'
@@ -114,22 +114,24 @@ class Consent(models.Model):
 
 class Schedule(models.Model):
     """ Represents someone taking up a plan. """
-    key = models.CharField(_('key'), max_length=255, unique=True)
-    email = models.EmailField(_('email'))
-    membership = models.ForeignKey('Membership', verbose_name=_('membership'), null=True, blank=True, on_delete=models.SET_NULL)
-    amount = models.DecimalField(_('amount'), max_digits=10, decimal_places=2)
-    method = models.CharField(_('method'), max_length=32, choices=[
+    key = models.CharField('klucz', max_length=255, unique=True)
+    email = models.EmailField('e-mail')
+    membership = models.ForeignKey(
+        'Membership', verbose_name='członkostwo',
+        null=True, blank=True, on_delete=models.SET_NULL)
+    amount = models.DecimalField('kwota', max_digits=10, decimal_places=2)
+    method = models.CharField('metoda płatności', max_length=32, choices=[
         (m.slug, m.name) for m in methods
         ])
-    monthly = models.BooleanField(_('monthly'), default=True)
-    yearly = models.BooleanField(_('yearly'), default=False)
+    monthly = models.BooleanField('miesięcznie', default=True)
+    yearly = models.BooleanField('rocznie', default=False)
 
-    source = models.CharField(_('source'), max_length=255, blank=True)
+    source = models.CharField('źródło', max_length=255, blank=True)
 
-    is_cancelled = models.BooleanField(_('cancelled'), default=False)
-    payed_at = models.DateTimeField(_('payed at'), null=True, blank=True)
-    started_at = models.DateTimeField(_('started at'), auto_now_add=True)
-    expires_at = models.DateTimeField(_('expires_at'), null=True, blank=True)
+    is_cancelled = models.BooleanField('anulowany', default=False)
+    payed_at = models.DateTimeField('opłacona', null=True, blank=True)
+    started_at = models.DateTimeField('start', auto_now_add=True)
+    expires_at = models.DateTimeField('wygasa', null=True, blank=True)
     email_sent = models.BooleanField(default=False)
 
     first_name = models.CharField(max_length=255, blank=True)
@@ -143,8 +145,8 @@ class Schedule(models.Model):
     consent = models.ManyToManyField(Consent)
     
     class Meta:
-        verbose_name = _('schedule')
-        verbose_name_plural = _('schedules')
+        verbose_name = 'harmonogram'
+        verbose_name_plural = 'harmonogramy'
 
     def __str__(self):
         return self.key
@@ -264,16 +266,16 @@ class Schedule(models.Model):
 
 class Membership(models.Model):
     """ Represents a user being recognized as a member of the club. """
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, verbose_name=_('user'), on_delete=models.CASCADE)
-    created_at = models.DateTimeField(_('created at'), auto_now_add=True)
-    name = models.CharField(_('name'), max_length=255, blank=True)
-    manual = models.BooleanField(_('manual'), default=False)
-    notes = models.CharField(_('notes'), max_length=2048, blank=True)
-    updated_at = models.DateField(_('updated at'), auto_now=True, blank=True)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, verbose_name='użytkownik', on_delete=models.CASCADE)
+    created_at = models.DateTimeField('utworzone', auto_now_add=True)
+    name = models.CharField('nazwa', max_length=255, blank=True)
+    manual = models.BooleanField('ustawione ręcznie', default=False)
+    notes = models.CharField('notatki', max_length=2048, blank=True)
+    updated_at = models.DateField('aktualizacja', auto_now=True, blank=True)
 
     class Meta:
-        verbose_name = _('membership')
-        verbose_name_plural = _('memberships')
+        verbose_name = 'członkostwo'
+        verbose_name_plural = 'członkostwa'
 
     def __str__(self):
         return str(self.user)
@@ -310,30 +312,30 @@ class Membership(models.Model):
 
 
 class ReminderEmail(models.Model):
-    days_before = models.SmallIntegerField(_('days before'))
-    subject = models.CharField(_('subject'), max_length=1024)
-    body = models.TextField(_('body'))
+    days_before = models.SmallIntegerField('dni przed')
+    subject = models.CharField('temat', max_length=1024)
+    body = models.TextField('treść')
 
     class Meta:
-        verbose_name = _('reminder email')
-        verbose_name_plural = _('reminder emails')
+        verbose_name = 'email z przypomnieniem'
+        verbose_name_plural = 'e-maile z przypomnieniem'
         ordering = ['days_before']
 
     def __str__(self):
         if self.days_before >= 0:
-            return ungettext('a day before expiration', '%d days before expiration', n=self.days_before)
+            return '%d dni przed wygaśnięciem' % self.days_before
         else:
-            return ungettext('a day after expiration', '%d days after expiration', n=-self.days_before)
+            return '%d dni po wygaśnięciu' % -self.days_before
 
 
 class Ambassador(models.Model):
-    name = models.CharField(_('name'), max_length=255)
-    photo = models.ImageField(_('photo'), blank=True)
-    text = models.CharField(_('text'), max_length=1024)
+    name = models.CharField('imię i nazwisko', max_length=255)
+    photo = models.ImageField('zdjęcie', blank=True)
+    text = models.CharField('tekst', max_length=1024)
 
     class Meta:
-        verbose_name = _('ambassador')
-        verbose_name_plural = _('ambassadors')
+        verbose_name = 'ambasador'
+        verbose_name_plural = 'ambasadorowie'
         ordering = ['name']
     
     def __str__(self):

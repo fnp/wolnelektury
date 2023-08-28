@@ -2,39 +2,39 @@
 {% load i18n %}
 
 
-{% block titleextra %}{% trans "Wolne Lektury need your help!" %}{% endblock %}
+{% block titleextra %}{% trans "Wolne Lektury potrzebują Twojej pomocy!" %}{% endblock %}
 
 
 {% block body %}
 
   <h1>
-    Cieszymy się, że jesteś z nami! Dziękujemy za wsparcie!
+    {% trans "Cieszymy się, że jesteś z nami! Dziękujemy za wsparcie!" %}
   </h1>
   <div class="white-box normal-text">
     <p>
 
 
     {% if schedule.payed_at %}
-      Kwota:
+      {% trans "Kwota" %}:
       {{ schedule.amount }} zł
 
       <br>
 
-      Pierwsza wpłata:
+      {% trans "Pierwsza wpłata" %}:
       {{ schedule.payed_at.date }}
 
       <br>
 
       {% if schedule.is_expired %}
         <strong style="color: red">
-          Status darczyńcy nieaktywny od
+          {% trans "Status darczyńcy nieaktywny od" %}
           {{ schedule.expires_at.date }}
         </strong>
       {% else %}
         <strong style="color: green">
-          Status darczyńcy aktywny
+          {% trans "Status darczyńcy aktywny" %}
           {% if schedule.get_payment_method.expiration_reliable %}
-            do
+            {% trans "do" %}
             {{ schedule.expires_at.date }}
           {% endif %}
         </strong>
@@ -49,16 +49,16 @@
 {% if schedule.is_active %}
   {% if schedule.is_recurring %}
      {% if schedule.is_cancelled %}
-         <p><strong>Płatność anulowana.</strong></p>
+         <p><strong>{% trans "Płatność anulowana." %}</strong></p>
          <p>
-           <a style="background:#018189;color:white;border-radius: 10px;padding:1em 2em" href="/pomagam/">Wpłać ponownie</a>
+           <a style="background:#018189;color:white;border-radius: 10px;padding:1em 2em" href="/pomagam/">{% trans "Wpłać ponownie" %}</a>
          </p>
      {% else %}
          {% if schedule.get_payment_method.updateable %}
            <form method='post' action='' class="wlform">
              {% csrf_token %}
              <button type="submit" class="submit">
-               Zaktualizuj dane płatności
+               {% trans "Zaktualizuj dane płatności" %}
              </button>
            </form>
            <br>
@@ -67,14 +67,14 @@
          {% if schedule.get_payment_method.cancellable %}
            <form class="wlform" method='post' action="{% url 'club_cancel' schedule.key %}">
              {% csrf_token %}
-	     <button type="submit" class="submit" style="font-size: .9em">Zrezygnuj z kolejnych płatności</button>
+	     <button type="submit" class="submit" style="font-size: .9em">{% trans "Zrezygnuj z kolejnych płatności" %}</button>
            </form>
          {% endif %}
      {% endif %}
   {% else %}
      <form class="wlform" method='post' action=''>
 	{% csrf_token %}
-	<button type="submit" class="submit">Dorzuć się ponownie</button>
+	<button type="submit" class="submit">{% trans "Dorzuć się ponownie" %}</button>
      </form>
   {% endif %}
 
@@ -86,9 +86,9 @@
       {% csrf_token %}
       <button type="submit" class="submit">
         {% if schedule.is_recurring %}
-          Zaktualizuj dane płatności
+          {% trans "Zaktualizuj dane płatności" %}
         {% else %}
-          Dorzuć się ponownie
+          {% trans "Dorzuć się ponownie" %}
         {% endif %}
       </button>
     </form>
@@ -97,21 +97,21 @@
       <br>
       <form class="wlform" method='post' action="{% url 'club_cancel' schedule.key %}">
         {% csrf_token %}
-	<button type="submit" class="submit" style="font-size: .9em">Zrezygnuj z kolejnych płatności</button>
+	<button type="submit" class="submit" style="font-size: .9em">{% trans "Zrezygnuj z kolejnych płatności" %}</button>
       </form>
     {% endif %}
 
 
  {% else %}
   {% if not schedule.payed_at %}
-   <p>Płatność nie została jeszcze wykonana.</p>
+   <p>{% trans "Płatność nie została jeszcze wykonana." %}</p>
    {% if schedule.payuorder_set.exists %}
-     Czekamy na potwierdzenie płatności.
+     {% trans "Czekamy na potwierdzenie płatności." %}
    {% else %}
 
      <form method='post' action='' class="wlform">
         {% csrf_token %}
-       <button type="submit" class="submit">Dokończ płatność</button>
+       <button type="submit" class="submit">{% trans "Dokończ płatność" %}</button>
      </form>
 
    {% endif %}
@@ -124,31 +124,30 @@
 
   <hr style="margin: 2em 0;">
 
-  <h2>Powiązanie z kontem użytkownika</h2>
+  <h2>{% trans "Powiązanie z kontem użytkownika" %}</h2>
 
 
-<p>
-Twoje wsparcie upoważnia Cię do przedpremierowego dostępu do publikacji.
-Aby z niego korzystać, powiąż darowiznę ze swoim kontem użytkownika na Wolnych Lekturach.
-</p>
+  <p>
+    {% blocktrans trimmed %}
+      Twoje wsparcie upoważnia Cię do przedpremierowego dostępu do publikacji.
+      Aby z niego korzystać, powiąż darowiznę ze swoim kontem użytkownika na Wolnych Lekturach.
+    {% endblocktrans %}
+  </p>
 
 
 <p style="margin-top:2em;">
   <a style="background:#018189;color:white;border-radius: 10px;padding:1em 2em;" href="{% url 'club_claim' schedule.key %}">
     {% if request.user.is_authenticated %}
-      Powiąż darowiznę z kontem <strong>{{ request.user.username }}</strong>
+      {% blocktrans trimmed with user=request.user.username %}
+        Powiąż darowiznę z kontem <strong>{{ user }}</strong>
+      {% endblocktrans %}
     {% else %}
-      Zaloguj się i powiąż darowiznę z kontem
+      {% trans "Zaloguj się i powiąż darowiznę z kontem" %}
     {% endif %}
   </a>
 </p>
 {% endif %}
 
-
-
-
-
-<a href="">
 
 </div>
 

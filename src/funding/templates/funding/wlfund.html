@@ -1,33 +1,33 @@
 {% extends "base_simple.html" %}
 {% load i18n %}
 
-{% block titleextra %}{% trans "Remaining funds" %}{% endblock %}
+{% block titleextra %}{% trans "Pozostałe środki" %}{% endblock %}
 
 {% block body %}
-  <h1>{% trans "Remaining funds" %}</h1>
+  <h1>{% trans "Pozostałe środki" %}</h1>
 
   <div class="left-column normal-text">
     <p>
-      {% blocktrans with r="http://redakcja.wolnelektury.pl/" %}
-        If the full amount needed for publishing a book is not raised in time,
-        the funds are spent on <a href="{{r}}">other books waiting for
-        publication</a>. The same thing happens with any money remaining
-        from successful fundraisers.
+      {% blocktrans trimmed with r="http://redakcja.wolnelektury.pl/" %}
+        Gdy nie udaje się zebrać pełnej kwoty potrzebnej do opublikowania książki,
+        środki przekazujemy na redakcję <a href="{{ r }}">innych utworów
+        oczekujących na publikację w serwisie</a>. Na ten cel przekazujemy również
+        nadmiarowe środki ze zbiórek ukończonych sukcesem.
       {% endblocktrans %}
 
-      <a href="{% url 'infopage' 'wesprzyj' %}">{% trans "Learn more" %}</a>.
+      <a href="{% url 'infopage' 'wesprzyj' %}">{% trans "Dowiedz się więcej" %}</a>.
     </p>
 
-    <p>{% trans "Spending these remaining funds is recorded in this table." %}</p>
+    <p>{% trans "W poniższej tabeli rejestrujemy wydatkowanie tych środków." %}</p>
   </div>
 
   <table class="normal-text wlfund">
 
     <tr>
-      <td>{% trans "Date" %}:</td>
-      <td>{% trans "Operation" %}:</td>
-      <td>{% trans "Amount" %}:</td>
-      <td>{% trans "Balance" %}:</td>
+      <td>{% trans "Data" %}:</td>
+      <td>{% trans "Rozdysponowanie środków" %}:</td>
+      <td>{% trans "Kwota" %}:</td>
+      <td>{% trans "Bilans" %}:</td>
     </tr>
 
     {% for tag, entry in log %}
@@ -35,7 +35,7 @@
         <tr class="funding-minus">
           <td class="oneline">{{ entry.timestamp }}</td>
           <td>
-            {% trans "Money spent on publishing the book" %}:
+            {% trans "Pieniądze przeznaczone na opublikowanie książki" %}:
             <a href="{{ entry.book.get_absolute_url }}">{{ entry.book }}</a>
           </td>
           <td>-{{ entry.amount }}&nbsp;zł</td>
@@ -45,7 +45,7 @@
         <tr class="funding-plus">
           <td class="oneline">{{ entry.end }}</td>
           <td>
-            {% trans "Money remaining from the fundraiser for" %}:
+            {% trans "Pieniądze pozostałe ze zbiórki na" %}:
             <a href="{{ entry.get_absolute_url }}">{{ entry }}</a>
           </td>
           <td>+{{ entry.wlfund }}&nbsp;zł</td>
@@ -55,7 +55,7 @@
     {% empty %}
       <tr>
         <td colspan="4" style="text-align:center; color: #888;">
-          <em>{% trans "There are no previous fundraisers to show yet." %}</em>
+          <em>{% trans "Nie ma jeszcze żadnych zakończonych zbiórek." %}</em>
         </td>
       </tr>
     {% endfor %}

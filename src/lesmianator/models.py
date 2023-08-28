@@ -10,7 +10,6 @@ from random import randint
 from django.core.files.base import ContentFile
 from django.db import models
 from django.utils.timezone import utc
-from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
@@ -21,13 +20,13 @@ from catalogue.models import Book, Tag
 
 
 class Poem(models.Model):
-    slug = models.SlugField(_('slug'), max_length=120, db_index=True)
-    text = models.TextField(_('text'))
+    slug = models.SlugField('slug', max_length=120, db_index=True)
+    text = models.TextField('tekst')
     created_by = models.ForeignKey(User, models.SET_NULL, null=True)
-    created_from = models.TextField(_('extra information'), null=True, blank=True)
-    created_at = models.DateTimeField(_('creation date'), auto_now_add=True, editable=False)
-    seen_at = models.DateTimeField(_('last view date'), auto_now_add=True, editable=False)
-    view_count = models.IntegerField(_('view count'), default=1)
+    created_from = models.TextField('dodatkowe informacje', null=True, blank=True)
+    created_at = models.DateTimeField('data utworzenia', auto_now_add=True, editable=False)
+    seen_at = models.DateTimeField('data ostatniego obejrzenia', auto_now_add=True, editable=False)
+    view_count = models.IntegerField('licznik obejrzeń', default=1)
 
     try:
         f = open(settings.LESMIANATOR_PICKLE, 'rb')
@@ -99,7 +98,7 @@ class Poem(models.Model):
 
 
 class Continuations(models.Model):
-    pickle = models.FileField(_('Continuations file'), upload_to='lesmianator')
+    pickle = models.FileField('plik kontynuacji', upload_to='lesmianator')
     content_type = models.ForeignKey(ContentType, models.CASCADE)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')

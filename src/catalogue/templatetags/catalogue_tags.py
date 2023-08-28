@@ -43,13 +43,13 @@ def html_title_from_tags(tags):
         return title_from_tags(tags)
     template = Template("{{ category }}: <a href='{{ tag.get_absolute_url }}'>{{ tag.name }}</a>")
     return mark_safe(capfirst(",<br/>".join(
-        template.render(Context({'tag': tag, 'category': _(tag.category)})) for tag in tags)))
+        template.render(Context({'tag': tag, 'category': tag.get_category_display()})) for tag in tags)))
 
 
 def simple_title(tags):
     title = []
     for tag in tags:
-        title.append("%s: %s" % (_(tag.category), tag.name))
+        title.append("%s: %s" % (tag.get_category_display(), tag.name))
     return capfirst(', '.join(title))
 
 
@@ -309,16 +309,6 @@ def tag_list(tags, choices=None, category=None, list_type='books'):
     }
 
 
-@register.inclusion_tag('catalogue/inline_tag_list.html')
-def inline_tag_list(tags, choices=None, category=None, list_type='books'):
-    return tag_list(tags, choices, category, list_type)
-
-
-@register.inclusion_tag('catalogue/collection_list.html')
-def collection_list(collections):
-    return {'collections': collections}
-
-
 @register.inclusion_tag('catalogue/book_info.html')
 def book_info(book):
     return {
@@ -522,7 +512,7 @@ def status(book, user):
 @register.inclusion_tag('catalogue/snippets/content_warning.html')
 def content_warning(book):
     warnings_def = {
-        'wulgaryzmy': _('vulgar language'),
+        'wulgaryzmy': _('wulgaryzmy'),
     }
     warnings = book.get_extra_info_json().get('content_warnings', [])
     warnings = sorted(

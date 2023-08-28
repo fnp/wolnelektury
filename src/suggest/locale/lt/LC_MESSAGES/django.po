@@ -1,134 +1,81 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Wolne Lektury. See NOTICE for more information.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: WolneLektury-suggest\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2012-03-02 18:19+0100\n"
-"Last-Translator: Karolina Zuber <suomija@o2.pl>\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < "
+"11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? "
+"1 : n % 1 != 0 ? 2: 3);\n"
 
 #: suggest/forms.py:20 suggest/forms.py:67
-msgid "Contact"
+msgid "Kontakt"
 msgstr "Kontaktas"
 
 #: suggest/forms.py:21
-msgid "Description"
+msgid "Opis"
 msgstr "Aprašymas"
 
+#: suggest/forms.py:23
+msgid ""
+"Dane są przetwarzane w zakresie niezbędnym do obsługi zgłoszenia. W "
+"przypadku wyrażenia dodatkowej zgody adres e-mail zostanie wykorzystany "
+"także w celu przesyłania newslettera Wolnych Lektur."
+msgstr ""
+
 #: suggest/forms.py:58 suggest/forms.py:122
-msgid "Thank you for your suggestion."
+msgid "Dziękujemy za zgłoszenie."
 msgstr "Ačiū už jūsų pasiūlymą."
 
 #: suggest/forms.py:59 suggest/forms.py:123
 msgid ""
-"Thank you for your comment on WolneLektury.pl.\n"
-"The suggestion has been referred to the project coordinator."
+"Dziękujemy za zgłoszenie uwag do serwisu Wolne Lektury.\n"
+"Sugestia została przekazana koordynatorce projektu."
 msgstr ""
 "Ačiū už jūsų komentarą WolneLektury.pl interneto svetainėje \n"
 "Pasiūlymas buvo pateiktas projekto koordinatoriui."
 
-#: suggest/forms.py:68 suggest/models.py:30
-msgid "books"
+#: suggest/forms.py:68
+msgid "książki"
 msgstr "knygas"
 
 #: suggest/forms.py:69
-#, fuzzy
-#| msgid "books"
 msgid "ebook"
-msgstr "knygas"
+msgstr ""
 
 #: suggest/forms.py:70
-#, fuzzy
-#| msgid "audiobooks"
 msgid "audiobook"
-msgstr "audio knygas"
+msgstr ""
 
 #: suggest/forms.py:76
-#, fuzzy
-#| msgid "One of these fields is required."
-msgid "One of these options is required."
-msgstr "Vienas iš šių laukelių yra reikalaujamas."
+msgid "Proszę zaznaczyć co najmniej jedną opcję."
+msgstr ""
 
-#: suggest/models.py:13 suggest/models.py:29
-msgid "contact"
-msgstr "kontaktas"
-
-#: suggest/models.py:14
-msgid "description"
-msgstr "aprašymas"
-
-#: suggest/models.py:15 suggest/models.py:32
-msgid "creation date"
-msgstr "sukūrimo data"
-
-#: suggest/models.py:16 suggest/models.py:33
-msgid "IP address"
-msgstr "IP adresas"
-
-#: suggest/models.py:21
-msgid "suggestion"
-msgstr "pasiūlymas"
-
-#: suggest/models.py:22
-msgid "suggestions"
-msgstr "pasiūlymai"
-
-#: suggest/models.py:31
-msgid "audiobooks"
-msgstr "audio knygas"
-
-#: suggest/models.py:38
-msgid "publishing suggestion"
-msgstr "publikavimo pasiūlymas"
-
-#: suggest/models.py:39
-msgid "publishing suggestions"
-msgstr "publikavimo pasiūlymai"
-
-#: suggest/templates/publishing_suggest.html:7
-msgid "I'd like to find in WolneLektury.pl these…"
-msgstr "Interneto svetainėje WolneLektury.pl norėčiau rasti šias..."
-
-#: suggest/templates/publishing_suggest.html:16
+#: suggest/templates/publishing_suggest.html:6
 msgid ""
-"Remember that we can only publish books in public domain, ie. 70 years after "
-"the death of the author!"
+"Pamiętaj, że możemy publikować jedynie książki w domenie publicznej, czyli "
+"70 lat po śmierci autora!"
 msgstr ""
 
 #: suggest/views.py:13
-msgid "Didn't find a book? Make a suggestion."
+msgid "Nie ma utworu na stronie? Zgłoś sugestię."
 msgstr "Neradote knygos? Teikite pasiūlymus."
 
 #: suggest/views.py:15 suggest/views.py:25
-msgid "Send report"
+msgid "Wyślij zgłoszenie"
 msgstr "Siųsti pranešimą"
 
 #: suggest/views.py:16 suggest/views.py:26
-msgid "Report was sent successfully."
+msgid "Zgłoszenie zostało wysłane."
 msgstr "Pranešimas sėkmingai išsiųstas."
 
 #: suggest/views.py:23
-msgid "Report a bug or suggestion"
+msgid "Zgłoś błąd lub sugestię"
 msgstr "Praneškite apie klaidą arba teikite pasiūlymus"
-
-#~ msgid "Message sent automatically. Please do not reply."
-#~ msgstr "Tai automatiškai sugeneruotas laiškas. Prašome į jį neatsakyti."
-
-#, fuzzy
-#~| msgid ""
-#~| "Thank you for your comment on WolneLektury.pl.\n"
-#~| "The suggestion has been referred to the project coordinator."
-#~ msgid ""
-#~ "    Thank you for your comment on WolneLektury.pl.\n"
-#~ "    The suggestion has been referred to the project coordinator."
-#~ msgstr ""
-#~ "Ačiū už jūsų komentarą WolneLektury.pl interneto svetainėje \n"
-#~ "Pasiūlymas buvo pateiktas projekto koordinatoriui."

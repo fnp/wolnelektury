@@ -15,7 +15,6 @@ from django.core.cache import cache
 from django.views.generic import FormView
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
-from django.utils.translation import gettext_lazy as _
 from django.views.decorators.cache import never_cache
 
 from catalogue.models import Book, Collection, Tag, Fragment

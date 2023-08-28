@@ -1,7 +1,6 @@
 from datetime import timedelta
 from django.apps import apps
 from django.utils.timezone import now
-from django.utils.translation import gettext_lazy as _
 
 
 class Level:
@@ -73,7 +72,7 @@ class State:
 
 class ClubSingle(State):
     slug = 'club-single'
-    name = _('club one-time donors')
+    name = 'darczyńcy z jednorazową wpłatą'
     level = Level.SINGLE
     expired = False
 
@@ -88,7 +87,7 @@ class ClubSingle(State):
 class ClubSingleExpired(State):
     slug = 'club-membership-expiring'
     allow_negative_offset = True
-    name = _('club one-time donors with donation expiring')
+    name = 'darczyńcy z wygasającą jednorazową wpłatą'
     level = Level.SINGLE
     expired = True
 
@@ -102,7 +101,7 @@ class ClubSingleExpired(State):
 
 class ClubTried(State):
     slug = 'club-payment-unfinished'
-    name = _('club would-be donors')
+    name = 'niedoszli darczyńcy'
     level = Level.TRIED
 
     def get_schedule(self, schedules):
@@ -114,7 +113,7 @@ class ClubTried(State):
 
 class ClubRecurring(State):
     slug = 'club-recurring'
-    name = _('club recurring donors')
+    name = 'darczyńcy z wpłatą cykliczną'
     level = Level.RECURRING
     expired = False
 
@@ -129,7 +128,7 @@ class ClubRecurring(State):
 
 class ClubRecurringExpired(State):
     slug = 'club-recurring-payment-problem'
-    name = _('club recurring donors with donation expired')
+    name = 'darczyńcy z wygasającą wpłatą cykliczną'
     level = Level.RECURRING
     expired = True
 
@@ -144,7 +143,7 @@ class ClubRecurringExpired(State):
 
 class Cold(State):
     slug = 'cold'
-    name = _('cold group')
+    name = 'lodówka'
     level = Level.COLD
 
     def get_context(self, contact):

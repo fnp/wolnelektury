@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
-
+{% load i18n %}
 
 {% block breadcrumbs %}
-  <a href="/katalog/"><span>Katalog</span></a>
+  <a href="/katalog/"><span>{% trans "Katalog" %}</span></a>
 {% endblock %}
 
 
@@ -10,14 +10,14 @@
 
   <div class="l-section">
     <div class="l-author__header">
-      <h1>Kolekcje</h1>
+      <h1>{% trans "Kolekcje" %}</h1>
     </div>
   </div>
 
   <div class="l-search-bar">
     <div class="l-search-bar__input">
       <i class="icon icon-filter"></i>
-      <input type="text" placeholder="filtry, tytuł" class="quick-filter" data-for="collections">
+      <input type="text" placeholder="{% trans 'filtry, tytuł' %}" class="quick-filter" data-for="collections">
     </div>
   </div>
 

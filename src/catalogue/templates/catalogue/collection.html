@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
-
+{% load i18n %}
 
 {% block breadcrumbs %}
-  <a href="/katalog/"><span>Katalog</span></a>
-  <a href="/katalog/kolekcje/"><span>Kolekcje</span></a>
+  <a href="/katalog/"><span>{% trans "Katalog" %}</span></a>
+  <a href="/katalog/kolekcje/"><span>{% trans "Kolekcje" %}</span></a>
 {% endblock %}
 
 
@@ -25,13 +25,13 @@
     <div class="l-books__header">
       <div class="l-books__input">
         <i class="icon icon-filter"></i>
-        <input type="text" placeholder="filtry, tytuł" class="quick-filter" data-for="book-list">
+        <input type="text" placeholder="{% trans 'filtry, tytuł' %}" class="quick-filter" data-for="book-list">
       </div>
       <div class="l-books__sorting">
         <span>Sortuj:</span>
         <div>
-          <button data-order="data-pop">najpopularniejsze</button>
-          <button class="is-active">alfabetycznie</button>
+          <button data-order="data-pop">{% trans 'najpopularniejsze' %}</button>
+          <button class="is-active">{% trans 'alfabetycznie' %}</button>
           <!--button>chronologicznie</button-->
         </div>
       </div>

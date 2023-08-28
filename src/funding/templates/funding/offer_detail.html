@@ -12,7 +12,7 @@
 
 
 {% block breadcrumbs %}
-  <a href="{% url 'funding' %}"><span>Zbiórki</span></a>
+  <a href="{% url 'funding' %}"><span>{% trans "Zbiórki" %}</span></a>
   <span>{{ object }}</span>
 {% endblock %}
 
@@ -34,7 +34,7 @@
         </div>
       </div>
       <div class="l-checkout__col funding-details">
-        <h2>{% trans "Help free the book!" %}</h2>
+        <h2>{% trans "Pomóż uwolnić książkę!" %}</h2>
         <div class="funding-description">
           {{ object.description|safe }}
         </div>
@@ -44,7 +44,7 @@
             <span class="helptext">
               {{ form.data_processing }}
             </span>
-            <button type="submit" class="button-orange">Wesprzyj!</button>
+            <button type="submit" class="button-orange">{% trans "Wesprzyj!" %}</button>
           </form>
         {% else %}
           {{ object.status }}
@@ -61,36 +61,36 @@
 
       {% if object.is_current %}
         <div class="l-checkout__footer__content__item">
-          <h3>Zasady</h3>
+          <h3>{% trans "Zasady" %}</h3>
           <div>
             <div class="l-article__overlay" data-max-height="91">
               {{ object.status }}
               {{ object.status_more }}
               {% chunk 'funding_rules'  %}
             </div>
-            <button class="l-article__read-more" aria-label="Kliknij aby rozwinąć" data-label="Więcej" data-action="Mniej">Więcej</button>
+            <button class="l-article__read-more" aria-label="{% trans 'Kliknij aby rozwinąć' %}" data-label="{% trans 'Więcej' %}" data-action="{% trans 'Mniej' %}">{% trans 'Więcej' %}</button>
           </div>
         </div>
 
         <div class="l-checkout__footer__content__item">
-          <h3>Wpłaty bezpośrednie</h3>
+          <h3>{% trans "Wpłaty bezpośrednie" %}</h3>
           <div>
             <div class="l-article__overlay" data-max-height="91">
               <p>
                 {% chunk 'funding_form_bottom' %}
               </p>
             </div>
-            <button class="l-article__read-more" aria-label="Kliknij aby rozwinąć" data-label="Więcej" data-action="Mniej">Więcej</button>
+            <button class="l-article__read-more" aria-label="{% trans 'Kliknij aby rozwinąć' %}" data-label="{% trans 'Więcej' %}" data-action="{% trans 'Mniej' %}">{% trans 'Więcej' %}</button>
           </div>
         </div>
 
         <div class="l-checkout__footer__content__item">
-          <h3>Informacja o przetwarzaniu danych osobowych</h3>
+          <h3>{% trans "Informacja o przetwarzaniu danych osobowych" %}</h3>
           <div>
             <div class="l-article__overlay" data-max-height="91">
               {% chunk 'donation-data-processing' %}
             </div>
-            <button class="l-article__read-more" aria-label="Kliknij aby rozwinąć" data-label="Więcej" data-action="Mniej">Więcej</button>
+            <button class="l-article__read-more" aria-label="{% trans 'Kliknij aby rozwinąć' %}" data-label="{% trans 'Więcej' %}" data-action="{% trans 'Mniej' %}">{% trans 'Więcej' %}</button>
           </div>
         </div>
       {% endif %}
@@ -98,7 +98,7 @@
   </div>
 
   <article class="page-simple">
-    <h1>{% trans "Supporters" %}</h1>
+    <h1>{% trans "Wpłaty" %}</h1>
     {% fundings object %}
   </article>
 

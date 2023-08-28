@@ -2,7 +2,6 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.db import models
-from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ValidationError
 from django.urls import reverse
 
@@ -12,17 +11,17 @@ USED_POLLS_KEY = 'used_polls'
 
 class Poll(models.Model):
 
-    question = models.TextField(_('question'))
-    slug = models.SlugField(_('slug'))
-    open = models.BooleanField(_('open'), default=False)
+    question = models.TextField('pytanie')
+    slug = models.SlugField('slug')
+    open = models.BooleanField('otwarta', default=False)
 
     class Meta:
-        verbose_name = _('Poll')
-        verbose_name_plural = _('Polls')
+        verbose_name = 'ankieta'
+        verbose_name_plural = 'ankiety'
 
     def clean(self):
         if self.open and Poll.objects.exclude(pk=self.pk).filter(slug=self.slug).exists():
-            raise ValidationError(_('Slug of an open poll needs to be unique'))
+            raise ValidationError('Slug otwartej ankiety musi być unikalny')
         return super(Poll, self).clean()
 
     def __str__(self):
@@ -42,12 +41,12 @@ class Poll(models.Model):
 class PollItem(models.Model):
 
     poll = models.ForeignKey(Poll, models.CASCADE, related_name='items')
-    content = models.TextField(_('content'))
-    vote_count = models.IntegerField(_('vote count'), default=0)
+    content = models.TextField('treść')
+    vote_count = models.IntegerField('licznik głosów', default=0)
 
     class Meta:
-        verbose_name = _('vote item')
-        verbose_name_plural = _('vote items')
+        verbose_name = 'pozycja ankiety'
+        verbose_name_plural = 'pozycje ankiety'
 
     def __str__(self):
         return self.content + ' @ ' + str(self.poll)

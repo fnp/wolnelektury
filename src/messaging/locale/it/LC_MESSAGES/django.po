@@ -1,12 +1,8 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Wolne Lektury. See NOTICE for more information.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: WolneLektury-messaging\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -17,172 +13,35 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: messaging/admin.py:16
-msgid "E-mail content"
+#: messaging/templates/messaging/contact_detail.html:6
+msgid "Adres wypisany"
 msgstr ""
 
-#: messaging/admin.py:19
-msgid "Sending constraints"
-msgstr ""
-
-#: messaging/admin.py:29
+#: messaging/templates/messaging/contact_detail.html:10
 #, python-format
-msgid "Test e-mail has been sent to %(email)s."
+msgid "Potwierdzamy, że adres %(email)s został wypisany z korespondencji."
 msgstr ""
 
-#: messaging/admin.py:31
-msgid "You have no email set. Test e-mail not sent."
+#: messaging/templates/messaging/contact_detail.html:15
+msgid "Błąd."
 msgstr ""
 
-#: messaging/models.py:16
-msgid "state"
+#: messaging/templates/messaging/contact_form.html:6
+msgid "Rezygnacja z e-maili"
 msgstr ""
 
-#: messaging/models.py:17 messaging/models.py:185
-msgid "subject"
+#: messaging/templates/messaging/contact_form.html:9
+#, python-format
+msgid ""
+"Czy na pewno chcesz zrezygnować z otrzymywania e-maili na adres %(email)s?"
 msgstr ""
 
-#: messaging/models.py:18 messaging/models.py:186
-msgid "body"
-msgstr ""
-
-#: messaging/models.py:19
-msgid "min days since"
-msgstr ""
-
-#: messaging/models.py:20
-msgid "max days since"
-msgstr ""
-
-#: messaging/models.py:21
-msgid "min hour"
-msgstr ""
-
-#: messaging/models.py:22
-msgid "max hour"
-msgstr ""
-
-#: messaging/models.py:23
-msgid "min day of month"
-msgstr ""
-
-#: messaging/models.py:24
-msgid "max day of month"
-msgstr ""
-
-#: messaging/models.py:25
-msgid "Monday"
-msgstr ""
-
-#: messaging/models.py:26
-msgid "Tuesday"
-msgstr ""
-
-#: messaging/models.py:27
-msgid "Wednesday"
-msgstr ""
-
-#: messaging/models.py:28
-msgid "Thursday"
-msgstr ""
-
-#: messaging/models.py:29
-msgid "Friday"
-msgstr ""
-
-#: messaging/models.py:30
-msgid "Saturday"
-msgstr ""
-
-#: messaging/models.py:31
-msgid "Sunday"
-msgstr ""
-
-#: messaging/models.py:32
-msgid "active"
-msgstr ""
-
-#: messaging/models.py:35
-msgid "email template"
-msgstr ""
-
-#: messaging/models.py:36
-msgid "email templates"
-msgstr ""
-
-#: messaging/models.py:111
-msgid "Cold"
-msgstr ""
-
-#: messaging/models.py:112
-msgid "Would-be donor"
-msgstr ""
-
-#: messaging/models.py:113
-msgid "One-time donor"
-msgstr ""
-
-#: messaging/models.py:114
-msgid "Recurring donor"
-msgstr ""
-
-#: messaging/models.py:115
-msgid "Manually set as member"
-msgstr ""
-
-#: messaging/models.py:116
-msgid "Opt out"
-msgstr ""
-
-#: messaging/models.py:123
-msgid "contact"
-msgstr ""
-
-#: messaging/models.py:124
-msgid "contacts"
-msgstr ""
-
-#: messaging/models.py:189
-msgid "email sent"
-msgstr ""
-
-#: messaging/models.py:190
-msgid "emails sent"
-msgstr ""
-
-#: messaging/states.py:76
-msgid "club one-time donors"
-msgstr ""
-
-#: messaging/states.py:91
-msgid "club one-time donors with donation expiring"
-msgstr ""
-
-#: messaging/states.py:105
-msgid "club would-be donors"
-msgstr ""
-
-#: messaging/states.py:117
-msgid "club recurring donors"
-msgstr ""
-
-#: messaging/states.py:132
-msgid "club recurring donors with donation expired"
-msgstr ""
-
-#: messaging/states.py:147
-msgid "cold group"
+#: messaging/templates/messaging/contact_form.html:16
+msgid "Tak, wypisz mnie"
 msgstr ""
 
 #: messaging/templates/messaging/email_body.html:5
-msgid "Visit this address if you don't want to be contacted in the future:"
-msgstr ""
-
-#: messaging/views.py:15
-#, python-format
-msgid "a <a href=\"%(docs_url)s\">%(verbose_name)s</a> object."
-msgstr ""
-
-#: messaging/views.py:36
-msgid "Context"
+msgid ""
+"Odwiedź ten adres, jeśli nie chcesz, byśmy się kontaktowali z Tobą w "
+"przyszłości:"
 msgstr ""

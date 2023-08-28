@@ -1,16 +1,17 @@
+{% load i18n %}
 {% if book %}
   <div class="l-navigation__menu__book__header">
     {% if accessible %}
       <p class='korona'>
-        <strong>Prapremiera!</strong>
-        Dziękujemy za wsparcie – przeczytaj w prezencie już dzisiaj!
+        <strong>{% trans "Prapremiera!" %}</strong>
+        {% trans "Dziękujemy za wsparcie – przeczytaj w prezencie już dzisiaj!" %}
       </p>
     {% else %}
       <p>
-        <strong>Prapremiera!</strong>
-        Dorzuć się, aby przeczytać.
+        <strong>{% trans "Prapremiera!" %}</strong>
+        {% trans "Dorzuć się, aby przeczytać." %}
       </p>
-      <a class="button" href="{% url 'club_join' %}?pk_campaign=menu-preview">Dorzuć się</a>
+      <a class="button" href="{% url 'club_join' %}?pk_campaign=menu-preview">{% trans "Dorzuć się" %}</a>
     {% endif %}
   </div>
   <div class="l-navigation__menu__book__info">

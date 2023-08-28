@@ -6,7 +6,6 @@ import json
 from urllib.request import urlopen
 
 from django import forms
-from django.utils.translation import gettext_lazy as _
 from slugify import slugify
 
 from isbn.management.commands.import_onix import UNKNOWN
@@ -63,7 +62,7 @@ class FNPISBNForm(forms.Form):
         ('EPUB', 'ePUB'),
         ('MOBI', 'MOBI'),
         ('TXT', 'TXT'),
-        ('SOFT', _('Soft cover book')),
+        ('SOFT', 'Miękka oprawa'),
     )
     LANGUAGE_CHOICES = (
         ('pol', 'polski'),

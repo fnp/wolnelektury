@@ -1,10 +1,11 @@
+{% load i18n %}
 <div class="row">
   <h2>
-    {% if tag.category == 'author' %}O autorze
-    {% elif tag.category == 'kind' %}O rodzaju
-    {% elif tag.category == 'genre' %}O gatunku
-    {% elif tag.category == 'epoch' %}O epoce
-    {% elif tag.category == 'set' %}Półka
+    {% if tag.category == 'author' %}{% trans "O autorze" %}
+    {% elif tag.category == 'kind' %}{% trans "O rodzaju" %}
+    {% elif tag.category == 'genre' %}{% trans "O gatunku" %}
+    {% elif tag.category == 'epoch' %}{% trans "O epoce" %}
+    {% elif tag.category == 'set' %}{% trans "Półka" %}
     {% endif %}
   </h2>
   <div>
@@ -21,11 +22,11 @@
         {% load chunks %}
         {% chunk 'polka-how-to' %}
       {% else %}
-      <h3><a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a></h3>
-      <div class="l-article__overlay" data-max-height="327">
-        {{ tag.description|safe }}
-      </div>
-      <button class="l-article__read-more" aria-label="Kliknij aby rozwinąć" data-label="Czytaj więcej" data-action="Zwiń tekst">Czytaj więcej</button>
+        <h3><a href="{{ tag.get_absolute_url }}">{{ tag.name }}</a></h3>
+        <div class="l-article__overlay" data-max-height="327">
+          {{ tag.description|safe }}
+        </div>
+        <button class="l-article__read-more" aria-label="{% trans 'Kliknij aby rozwinąć' %}" data-label="{% trans 'Czytaj więcej' %}" data-action="{% trans 'Zwiń tekst' %}">{% trans 'Czytaj więcej' %}</button>
       {% endif %}
     </article>
   </div>

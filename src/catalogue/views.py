@@ -14,7 +14,7 @@ from django.urls import reverse
 from django.db.models import Q, QuerySet
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.utils import translation
-from django.utils.translation import gettext as _, gettext_lazy
+from django.utils.translation import gettext_lazy
 from django.views.decorators.cache import never_cache
 from django.views.generic import TemplateView
 
@@ -159,7 +159,7 @@ class ObjectListView(TemplateView):
 
 
 class BookList(ObjectListView):
-    title = gettext_lazy('Literature')
+    title = gettext_lazy('Literatura')
     list_type = 'books'
     template_name = 'catalogue/book_list.html'
     dynamic_template_name = 'catalogue/dynamic_book_list.html'
@@ -167,8 +167,8 @@ class BookList(ObjectListView):
     dynamic_themed_template_name = 'catalogue/dynamic_themed_book_list.html'
 
     orderings = {
-        'pop': ('-popularity__count', 'najpopularniejsze'),
-        'alpha': (None, 'alfabetycznie'),
+        'pop': ('-popularity__count', gettext_lazy('najpopularniejsze')),
+        'alpha': (None, gettext_lazy('alfabetycznie')),
     }
     default_ordering = 'alpha'
 
@@ -198,7 +198,7 @@ class BookList(ObjectListView):
 class ArtList(ObjectListView):
     template_name = 'catalogue/book_list.html'
     dynamic_template_name = 'catalogue/dynamic_book_list.html'
-    title = gettext_lazy('Art')
+    title = gettext_lazy('Sztuka')
     list_type = 'gallery'
 
     def get_queryset(self):
@@ -221,7 +221,7 @@ class LiteratureView(BookList):
 
 
 class AudiobooksView(LiteratureView):
-    title = gettext_lazy('Audiobooks')
+    title = gettext_lazy('Audiobooki')
     list_type = 'audiobooks'
 
     def get_queryset(self):
@@ -570,13 +570,13 @@ def import_book(request):
             exception = pprint.pformat(info[1])
             tb = '\n'.join(traceback.format_tb(info[2]))
             return HttpResponse(
-                _("An error occurred: %(exception)s\n\n%(tb)s") % {
+                "Błąd: %(exception)s\n\n%(tb)s" % {
                     'exception': exception, 'tb': tb
                 },
                 content_type='text/plain'
             )
-        return HttpResponse(_("Book imported successfully"))
-    return HttpResponse(_("Error importing file: %r") % book_import_form.errors)
+        return HttpResponse("Książka zaimportowana")
+    return HttpResponse("Błąd podczas importowania pliku: %r" % book_import_form.errors)
 
 
 # info views for API
@@ -619,8 +619,8 @@ def download_zip(request, file_format=None, media_format=None, slug=None):
 
 class CustomPDFFormView(AjaxableFormView):
     form_class = forms.CustomPDFForm
-    title = gettext_lazy('Download custom PDF')
-    submit = gettext_lazy('Download')
+    title = gettext_lazy('Stwórz własny PDF')
+    submit = gettext_lazy('Pobierz')
     template = 'catalogue/custom_pdf_form.html'
     honeypot = True
 

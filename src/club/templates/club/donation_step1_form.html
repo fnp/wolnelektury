@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 
 <form method="post" action="{% url 'club_join' %}">
   {% csrf_token %}
@@ -11,8 +12,8 @@
     {% endif %}
 
     <div class="l-switch white">
-      <label class='toggle-for' for="switch-once">Jednorazowo</label>
-      <label class='toggle-for' for="switch-monthly">Miesięcznie</label>
+      <label class='toggle-for' for="switch-once">{% trans "Jednorazowo" %}</label>
+      <label class='toggle-for' for="switch-monthly">{% trans "Miesięcznie" %}</label>
       <span class="toggle"></span>
     </div>
   </div>
@@ -27,7 +28,7 @@
             {% if amount.description %}
               <p>{{ amount.description|safe }}</p>
             {% endif %}
-            <button name="single_amount" value="{{ amount.amount }}">Wybierz</button>
+            <button name="single_amount" value="{{ amount.amount }}">{% trans "Wybierz" %}</button>
           </div>
         </div>
       {% endfor %}
@@ -41,12 +42,12 @@
     <div class="l-checkout__payments payments-recurring wide-spot-{{ amounts.monthly_wide_spot }}">
     {% for amount in amounts.monthly %}
       <div class="l-checkout__payments__box{% if schedule.monthly and schedule.amount == amount.amount or not schedule and amount.amount == club.default_monthly_amount %} is-active{% endif %}{% if amount.wide %} l-checkout__payments__box--special{% endif %} l-checkout__payments__box--{{ amount.box_variant }}">
-        <h3>{{ amount.amount }} zł <span>/mies.</span></h3>
+        <h3>{{ amount.amount }} zł <span>{% trans "/mies." context "kwota na miesiąc" %}</span></h3>
         <div class="l-checkout__payments__box__btn-wrp">
           {% if amount.description %}
             <p>{{ amount.description|safe }}</p>
           {% endif %}
-          <button name="monthly_amount" value="{{ amount.amount }}">Wybierz</button>
+          <button name="monthly_amount" value="{{ amount.amount }}">{% trans "Wybierz" %}</button>
         </div>
       </div>
     {% endfor %}
@@ -57,18 +58,17 @@
 
   <div class="l-checkout__amount">
     <div class="l-checkout__input">
-      <label for="kwota">Inna kwota</label>
-      <!-- input type="text" id="kwota" name="custom_amount" value="" -->
+      <label for="kwota">{% trans "Inna kwota" %}</label>
       {{ form.custom_amount }}
     </div>
-    <button>Dalej</button>
+    <button>{% trans "Dalej" %}</button>
   </div>
   {% endwith %}
 </form>
 
 <div class="l-checkout__secure">
   <img src="{% static '2022/images/payments-padlock.png' %}" class="l-checkout__secure__padlock">
-  Bezpieczne płatności zapewniają:
+  {% trans "Bezpieczne płatności zapewniają" %}:
   <img src="{% static '2022/images/payments-payu.png' %}" class="l-checkout__secure__img" alt="PayU Visa MasterCard">
   {% if club.paypal_enabled %}
     <img src="{% static '2022/images/payments-paypal.png' %}" class="l-checkout__secure__img" alt="PayPal">
@@ -79,65 +79,8 @@
   <div class="l-checkout__col full">
     <div class="l-checkout__form">
       <div class="l-checkout__form__row full">
-        <h3>Dane do przelewu tradycyjnego:</h3>
-        <div class="l-checkout__info">
-          <div class="l-checkout__info__item">
-            <div>nazwa odbiorcy</div>
-            <h3>Fundacja Wolne Lektury</h3>
-            <button title="Kopiuj tekst" class="js-copy">
-              <img src="{% static '2022/images/copy.svg' %}" alt="Kopiuj">
-            </button>
-            <input type="text" value="Fundacja Wolne Lektury">
-          </div>
-          <div class="l-checkout__info__item">
-            <div>adres odbiorcy</div>
-            <h3>ul. Marszałkowska 84/92 lok. 125, 00-514 Warszawa</h3>
-            <button title="Kopiuj tekst" class="js-copy">
-              <img src="{% static '2022/images/copy.svg' %}" alt="Kopiuj">
-            </button>
-            <input type="text" value="ul. Marszałkowska 84/92 lok. 125, 00-514 Warszawa">
-          </div>
-          <div class="l-checkout__info__item">
-            <div>numer konta</div>
-            <h3>75 1090 2851 0000 0001 4324 3317</h3>
-            <button title="Kopiuj tekst" class="js-copy">
-              <img src="{% static '2022/images/copy.svg' %}" alt="Kopiuj">
-            </button>
-            <input type="text" value="75 1090 2851 0000 0001 4324 3317">
-          </div>
-          <div class="l-checkout__info__item">
-            <div>tytuł przelewu</div>
-            <h3>Darowizna na Wolne Lektury + twoja nazwa użytkownika lub e-mail</h3>
-            <button title="Kopiuj tekst" class="js-copy">
-              <img src="{% static '2022/images/copy.svg' %}" alt="Kopiuj">
-            </button>
-            <input type="text" value="Darowizna na Wolne Lektury + twoja nazwa użytkownika lub e-mail">
-          </div>
-          <div class="l-checkout__info__item">
-            <div>wpłaty w EUR</div>
-            <h3>PL88 1090 2851 0000 0001 4324 3374</h3>
-            <button title="Kopiuj tekst" class="js-copy">
-              <img src="{% static '2022/images/copy.svg' %}" alt="Kopiuj">
-            </button>
-            <input type="text" value="PL88 1090 2851 0000 0001 4324 3374">
-          </div>
-          <div class="l-checkout__info__item">
-            <div>Wpłaty w USD</div>
-            <h3>PL82 1090 2851 0000 0001 4324 3385</h3>
-            <button title="Kopiuj tekst" class="js-copy">
-              <img src="{% static '2022/images/copy.svg' %}" alt="Kopiuj">
-            </button>
-            <input type="text" value="PL88 1090 2851 0000 0001 4324 3374">
-          </div>
-          <div class="l-checkout__info__item">
-            <div>SWIFT</div>
-            <h3>WBKPPLPP</h3>
-            <button title="Kopiuj tekst" class="js-copy">
-              <img src="{% static '2022/images/copy.svg' %}" alt="Kopiuj">
-            </button>
-            <input type="text" value="WBKPPLPP">
-          </div>
-        </div>
+        <h3>{% trans "Dane do przelewu tradycyjnego" %}:</h3>
+        {% include "club/transfer_info.html" %}
       </div>
     </div>
   </div>

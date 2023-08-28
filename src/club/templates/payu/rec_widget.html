@@ -1,4 +1,5 @@
-<h3>Podaj dane karty płatniczej</h3>
+{% load i18n %}
+<h3>{% trans "Podaj dane karty płatniczej" %}</h3>
 <div class="iframe">
   <form id="theform" method='POST'  action='{% url "club_payu_rec_payment" schedule.key %}'>
     {% csrf_token %}

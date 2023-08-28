@@ -1,134 +1,79 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Wolne Lektury. See NOTICE for more information.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: WolneLektury-suggest\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2012-02-18 13:20+0100\n"
-"Last-Translator: Anna Jopp <aniajopp@gmail.com>\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: suggest/forms.py:20 suggest/forms.py:67
-msgid "Contact"
+msgid "Kontakt"
 msgstr "Contacto"
 
 #: suggest/forms.py:21
-msgid "Description"
+msgid "Opis"
 msgstr "Descripción"
 
+#: suggest/forms.py:23
+msgid ""
+"Dane są przetwarzane w zakresie niezbędnym do obsługi zgłoszenia. W "
+"przypadku wyrażenia dodatkowej zgody adres e-mail zostanie wykorzystany "
+"także w celu przesyłania newslettera Wolnych Lektur."
+msgstr ""
+
 #: suggest/forms.py:58 suggest/forms.py:122
-msgid "Thank you for your suggestion."
+msgid "Dziękujemy za zgłoszenie."
 msgstr "Gracias por tu sugerencia"
 
 #: suggest/forms.py:59 suggest/forms.py:123
 msgid ""
-"Thank you for your comment on WolneLektury.pl.\n"
-"The suggestion has been referred to the project coordinator."
+"Dziękujemy za zgłoszenie uwag do serwisu Wolne Lektury.\n"
+"Sugestia została przekazana koordynatorce projektu."
 msgstr ""
 "Gracias por tu comentario en WolneLektury.pl La sugerencia ha sido remitida "
-"a el coordinador del proyecto"
+"a el coordinador del proyecto."
 
-#: suggest/forms.py:68 suggest/models.py:30
-msgid "books"
+#: suggest/forms.py:68
+msgid "książki"
 msgstr "libros"
 
 #: suggest/forms.py:69
-#, fuzzy
-#| msgid "books"
 msgid "ebook"
-msgstr "libros"
+msgstr ""
 
 #: suggest/forms.py:70
-#, fuzzy
-#| msgid "audiobooks"
 msgid "audiobook"
-msgstr "audiolibros"
+msgstr "audiolibro"
 
 #: suggest/forms.py:76
-#, fuzzy
-#| msgid "One of these fields is required."
-msgid "One of these options is required."
-msgstr "Uno de estos campos es requerido"
+msgid "Proszę zaznaczyć co najmniej jedną opcję."
+msgstr ""
 
-#: suggest/models.py:13 suggest/models.py:29
-msgid "contact"
-msgstr "Contacto"
-
-#: suggest/models.py:14
-msgid "description"
-msgstr "Descripción"
-
-#: suggest/models.py:15 suggest/models.py:32
-msgid "creation date"
-msgstr "Fecha de creación"
-
-#: suggest/models.py:16 suggest/models.py:33
-msgid "IP address"
-msgstr "Dirección IP"
-
-#: suggest/models.py:21
-msgid "suggestion"
-msgstr "sugerencia"
-
-#: suggest/models.py:22
-msgid "suggestions"
-msgstr "sugerencias"
-
-#: suggest/models.py:31
-msgid "audiobooks"
-msgstr "audiolibros"
-
-#: suggest/models.py:38
-msgid "publishing suggestion"
-msgstr "Sugerencia de publicación"
-
-#: suggest/models.py:39
-msgid "publishing suggestions"
-msgstr "Sugerencias de publicación"
-
-#: suggest/templates/publishing_suggest.html:7
-msgid "I'd like to find in WolneLektury.pl these…"
-msgstr "Me gustaría encontrar estos en WolneLektury.pl"
-
-#: suggest/templates/publishing_suggest.html:16
+#: suggest/templates/publishing_suggest.html:6
 msgid ""
-"Remember that we can only publish books in public domain, ie. 70 years after "
-"the death of the author!"
+"Pamiętaj, że możemy publikować jedynie książki w domenie publicznej, czyli "
+"70 lat po śmierci autora!"
 msgstr ""
 
 #: suggest/views.py:13
-msgid "Didn't find a book? Make a suggestion."
+msgid "Nie ma utworu na stronie? Zgłoś sugestię."
 msgstr "No encontraste un libro? Haz una sugerencia."
 
 #: suggest/views.py:15 suggest/views.py:25
-msgid "Send report"
+msgid "Wyślij zgłoszenie"
 msgstr "Envia un report"
 
 #: suggest/views.py:16 suggest/views.py:26
-msgid "Report was sent successfully."
-msgstr "la noticia ha sido enviada con éxito "
+msgid "Zgłoszenie zostało wysłane."
+msgstr "La noticia ha sido enviada con éxito."
 
 #: suggest/views.py:23
-msgid "Report a bug or suggestion"
+msgid "Zgłoś błąd lub sugestię"
 msgstr "Reporta un error o una sugerencia"
-
-#~ msgid "Message sent automatically. Please do not reply."
-#~ msgstr "La mensaje enviado automaticamente. No conteste por favor."
-
-#, fuzzy
-#~| msgid ""
-#~| "Thank you for your comment on WolneLektury.pl.\n"
-#~| "The suggestion has been referred to the project coordinator."
-#~ msgid ""
-#~ "    Thank you for your comment on WolneLektury.pl.\n"
-#~ "    The suggestion has been referred to the project coordinator."
-#~ msgstr ""
-#~ "Gracias por tu comentario en WolneLektury.pl La sugerencia ha sido "
-#~ "remitida a el coordinador del proyecto"

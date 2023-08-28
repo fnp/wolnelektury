@@ -1,520 +1,280 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Wolne Lektury. See NOTICE for more information.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: WolneLektury-core\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2013-04-09 10:43+0100\n"
-"Last-Translator: Radek Czajka <radoslaw.czajka@nowoczesnapolska.org.pl>\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-
-#: isbn/forms.py:66
-#, fuzzy
-#| msgid "of the book"
-msgid "Soft cover book"
-msgstr "книжки"
-
-#: push/models.py:10
-msgid "title"
-msgstr ""
-
-#: push/models.py:11
-#, fuzzy
-#| msgid "Table of contents"
-msgid "content"
-msgstr "Зміст"
-
-#: push/models.py:12
-msgid "image"
-msgstr ""
-
-#: push/templates/push/notification_form.html:4
-#: push/templates/push/notification_sent.html:4
-msgid "Notifications"
-msgstr ""
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != "
+"11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % "
+"100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
+"(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
 
 #: wolnelektury/templates/404.html:6 wolnelektury/templates/404.html:11
-msgid "Page does not exist"
-msgstr "Сторінка не існує"
-
 #: wolnelektury/templates/404.html:15
-msgid "Page not found"
-msgstr "Сторінку не знайдено"
+msgid "Strona nie istnieje"
+msgstr "Сторінка не існує"
 
 #: wolnelektury/templates/404.html:18
 msgid ""
-"We are sorry, but this page does not exist. Please check if you entered "
-"correct address or go to "
+"Przepraszamy, ale ta strona nie istnieje. Sprawdź, czy podany adres jest "
+"właściwy, lub przejdź do"
 msgstr ""
 "На жаль, ця сторінка не існує. Будь ласка, перевірте правильність адреси або "
 "перейдіть на"
 
 #: wolnelektury/templates/404.html:19
-msgid "main page"
+msgid "strony głównej"
 msgstr "головна сторінка"
 
 #: wolnelektury/templates/500.html:7
-msgid "Server error"
+msgid "Błąd serwera"
 msgstr "Помилка сервера"
 
-#: wolnelektury/templates/500.html:73
+#: wolnelektury/templates/500.html:74
+#, python-format
 msgid ""
-"<p>The Wolnelektury.pl site is currently unavailable. Meanwhile, visit our "
-"<a href='https://fundacja.wolnelektury.pl'>blog</a>.</p> <p>Inform our <a "
-"href='mailto:fundacja@wolnelektury.pl'>administrators</a> about the error.</"
-"p>"
+"Biblioteka WolneLektury.pl jest chwilowo niedostępna. Odwiedź %(site)sstronę "
+"fundacji</a> lub spróbuj ponownie później."
 msgstr ""
-"<p>Сторінка Wolnelektury.pl тимчасово недоступна. В міжчасі, увійдіть на наш "
-"<a href='https://fundacja.wolnelektury.pl'>блог</a>.</p> <p>Повідомте наших "
-"<a href='mailto:fundacja@wolnelektury.pl'>адміністраторів</a> про помилку.</"
-"p>"
 
 #: wolnelektury/templates/503.html:6 wolnelektury/templates/503.html:17
-msgid "Service unavailable"
+msgid "Serwis niedostępny"
 msgstr "Послуга недоступна"
 
 #: wolnelektury/templates/503.html:19
-msgid "The Wolnelektury.pl site is currently unavailable due to maintainance."
+msgid ""
+"Bibloiteka WolneLektury.pl jest chwilowo niedostępna z powodu prac "
+"konserwacyjnych."
 msgstr ""
 "У зв'язку з технічними роботами сервіс Wolnelektury.pl тимчасово недоступний."
 
-#: wolnelektury/templates/admin/base_site.html:4
-#: wolnelektury/templates/admin/base_site.html:7
-msgid "Site administration"
-msgstr "Адміністрація сайту"
+#: wolnelektury/templates/base.html:44
+msgid "Strona główna"
+msgstr ""
 
-#: wolnelektury/templates/admin/catalogue/book/change_form.html:6
-#: wolnelektury/templates/admin/catalogue/book/change_form.html:36
-msgid "advanced"
-msgstr "розширений"
+#: wolnelektury/templates/footer.html:7
+msgid "Fundacja Wolne Lektury"
+msgstr ""
 
-#: wolnelektury/templates/admin/catalogue/book/change_form.html:34
-msgid "simplified"
-msgstr "спрощений"
+#: wolnelektury/templates/footer.html:17
+msgctxt "IBAN"
+msgid "Numer konta"
+msgstr ""
 
-#: wolnelektury/templates/admin/catalogue/book/change_list.html:9
-msgid "Import book"
-msgstr "Імпортувати книжку"
-
-#: wolnelektury/templates/admin/long_filter.html:2
+#: wolnelektury/templates/footer.html:23
 #, python-format
-msgid " By %(filter_title)s "
-msgstr ""
-
-#: wolnelektury/templates/auth/login.html:11
-#: wolnelektury/templates/registration/login.html:25
-msgid "Forgot Password?"
-msgstr "Забули пароль?"
-
-#: wolnelektury/templates/auth/login.html:17
-#: wolnelektury/templates/auth/register.html:8
-#: wolnelektury/templates/registration/login.html:31
-#: wolnelektury/templates/registration/register.html:20
-msgid "Sign in using:"
-msgstr "Увійти за допомогою:"
-
-#: wolnelektury/templates/auth/login_register.html:8
-msgid "or register"
-msgstr "або зареєструватися"
-
-#: wolnelektury/templates/base/app.html:20
-#: wolnelektury/templates/base/superbase.html:25
-msgid "Wolne Lektury"
-msgstr "Wolne Lektury"
-
-#: wolnelektury/templates/base/app.html:42
-#: wolnelektury/templates/base/app.html:43
-#: wolnelektury/templates/base/superbase.html:75
-#, fuzzy
-#| msgid "Language versions"
-msgid "Language"
-msgstr "Мовні версії"
-
-#: wolnelektury/templates/base/app.html:66
-#: wolnelektury/templates/base/superbase.html:105
-msgid "Logout"
-msgstr "Вийти "
-
-#: wolnelektury/templates/base/superbase.html:37
-#, fuzzy
-#| msgid "Table of contents"
-msgid "Go to content"
-msgstr "Зміст"
-
-#: wolnelektury/templates/base/superbase.html:38
-msgid "Go to search"
-msgstr ""
-
-#: wolnelektury/templates/base/superbase.html:39
-msgid "Go to page footer"
-msgstr ""
-
-#: wolnelektury/templates/base/superbase.html:65
-#, fuzzy, python-format
-#| msgid ""
-#| "\n"
-#| "                    <a href='%(b)s'>%(c)s</a> free reading you have <a "
-#| "href='%(r)s'>right to</a>\n"
-#| "                    "
-#| msgid_plural ""
-#| "\n"
-#| "                    <a href='%(b)s'>%(c)s</a> free readings you have <a "
-#| "href='%(r)s'>right to</a>\n"
-#| "                    "
 msgid ""
-"\n"
-"                  <a href='%(b)s'>%(c)s</a> free reading you have <a "
-"href='%(r)s'>right to</a>\n"
-"                "
-msgid_plural ""
-"\n"
-"                  <a href='%(b)s'>%(c)s</a> free readings you have <a "
-"href='%(r)s'>right to</a>\n"
-"                "
-msgstr[0] ""
-"\n"
-"                    <a href='%(b)s'>%(c)s</a> безкоштовний текст, до якого "
-"маєш <a href='%(r)s'>право</a>\n"
-"                    "
-msgstr[1] ""
-"\n"
-"                    <a href='%(b)s'>%(c)s</a> безкоштовні тексти, до яких "
-"маєш <a href='%(r)s'>право</a>\n"
-"                    "
-msgstr[2] ""
-"\n"
-"                    <a href='%(b)s'>%(c)s</a> безкоштовні тексти, до яких "
-"маєш <a href='%(r)s'>право</a>\n"
-"                    "
-
-#: wolnelektury/templates/base/superbase.html:99
-msgid "My shelf"
-msgstr "Моя полиця"
-
-#: wolnelektury/templates/base/superbase.html:102
-msgid "Administration"
-msgstr "Адміністрація"
-
-#: wolnelektury/templates/base/superbase.html:109 wolnelektury/views.py:106
-#: wolnelektury/views.py:107
-msgid "Sign in"
-msgstr "Увійти"
-
-#: wolnelektury/templates/base/superbase.html:110
-#: wolnelektury/templates/registration/register.html:7
-#: wolnelektury/templates/registration/register.html:16
-#: wolnelektury/views.py:144 wolnelektury/views.py:145
-#: wolnelektury/views.py:176
-msgid "Register"
-msgstr "Зареєструватися"
-
-#: wolnelektury/templates/base/superbase.html:124
-msgid "Search"
-msgstr "Пошук"
-
-#: wolnelektury/templates/base/superbase.html:162
-msgid "Close"
-msgstr "Закрити"
-
-#: wolnelektury/templates/base/superbase.html:164
-msgid "Loading"
-msgstr "Завантажується"
+"Wolne Lektury to projekt prowadzony przez fundację %(site)sWolne Lektury</a>."
+msgstr ""
 
 #: wolnelektury/templates/forms/form_sent.html:12
-msgid "Thank you"
+msgid "Dziękujemy"
 msgstr ""
 
-#: wolnelektury/templates/info/join_us.html:6
-#, fuzzy, python-format
-#| msgid ""
-#| "\n"
-#| "We have %(c)s work published in Wolne Lektury!\n"
-#| "Help us expand the library and set new readings free by\n"
-#| "<a href=\"http://nowoczesnapolska.org.pl/wesprzyj_nas/\">making a "
-#| "donation\n"
-#| "or transferring 1&#37; of your income tax</a>.\n"
-#| msgid_plural ""
-#| "\n"
-#| "We have %(c)s works published in Wolne Lektury!\n"
-#| "Help us expand the library and set new readings free by\n"
-#| "<a href=\"http://nowoczesnapolska.org.pl/wesprzyj_nas/\">making a "
-#| "donation\n"
-#| "or transferring 1&#37; of your income tax</a>.\n"
-msgid ""
-"\n"
-"    We have %(c)s work published in Wolne Lektury!\n"
-"    Help us expand the library and set new readings free by\n"
-"    <a href=\"http://nowoczesnapolska.org.pl/wesprzyj_nas/\">making a "
-"donation\n"
-"    or transferring 1&#37; of your income tax</a>.\n"
-"  "
-msgid_plural ""
-"\n"
-"    We have %(c)s works published in Wolne Lektury!\n"
-"    Help us expand the library and set new readings free by\n"
-"    <a href=\"http://nowoczesnapolska.org.pl/wesprzyj_nas/\">making a "
-"donation\n"
-"    or transferring 1&#37; of your income tax</a>.\n"
-"  "
-msgstr[0] ""
-"\n"
-"На сайті Wolne Lektury опубліковано вже %(c)s твір!\n"
-"Допоможіть нам розвивати бібліотеку і надавати доступ до нових творів - \n"
-"<a href=\"http://nowoczesnapolska.org.pl/wesprzyj_nas/\">перекажіть нам "
-"благодійний внесок\n"
-"або 1&#37; вашого податку на прибуток.</a>.\n"
-msgstr[1] ""
-"\n"
-"На сайті Wolne Lektury опубліковано вже %(c)s творів!\n"
-"Допоможіть нам розвивати бібліотеку і надавати доступ до нових творів - \n"
-"<a href=\"http://nowoczesnapolska.org.pl/wesprzyj_nas/\">перекажіть нам "
-"благодійний внесок\n"
-"або 1&#37; вашого податку на прибуток.</a>.\n"
-msgstr[2] ""
-"\n"
-"На сайті Wolne Lektury опубліковано вже %(c)s твір!\n"
-"Допоможіть нам розвивати бібліотеку і надавати доступ до нових творів - \n"
-"<a href=\"http://nowoczesnapolska.org.pl/wesprzyj_nas/\">перекажіть нам "
-"благодійний внесок\n"
-"або 1&#37; вашого податку на прибуток.</a>.\n"
-
-#: wolnelektury/templates/info/join_us.html:22
-#, fuzzy
-#| msgid ""
-#| "Become an editor of Wolne Lektury! Find out if\n"
-#| "we're currently working on a reading you're looking for and prepare\n"
-#| "a publication by yourself by logging into the Editorial Platform."
-msgid ""
-"Become an editor of Wolne Lektury! Find out if\n"
-"    we're currently working on a reading you're looking for and prepare\n"
-"    a publication by yourself by logging into the Editorial Platform."
-msgstr ""
-"Стань редактором Wolne Lektury! Дізнайся чи\n"
-"ми вже працюємо над текстом, якого шукаєш та сам підготуй\n"
-"публікацію, реєструючись на Редакторській платформі."
-
-#: wolnelektury/templates/info/join_us.html:25
-msgid "More..."
-msgstr "Більше..."
-
-#: wolnelektury/templates/main_menu.html:4
-msgid "Support us"
+#: wolnelektury/templates/forms/includes/built_form.html:23
+msgid "FORMULARZ ZAMKNIĘTY"
 msgstr ""
 
-#: wolnelektury/templates/main_menu.html:7
-msgid "School readings"
+#: wolnelektury/templates/header.html:45
+msgid "Katalog"
 msgstr ""
 
-#: wolnelektury/templates/main_menu.html:10
-msgid "Literature"
+#: wolnelektury/templates/header.html:49
+msgid "Włącz się"
 msgstr ""
 
-#: wolnelektury/templates/main_menu.html:13
-msgid "Themes"
-msgstr "Теми"
-
-#: wolnelektury/templates/main_menu.html:16
-msgid "Audiobooks"
-msgstr "Аудіокниги"
-
-#: wolnelektury/templates/main_menu.html:19
-#: wolnelektury/templates/main_page.html:52
-#, fuzzy
-#| msgid "Account Connections"
-msgid "Collections"
-msgstr "Пов'язані акаунти"
-
-#: wolnelektury/templates/main_menu.html:22
-#: wolnelektury/templates/main_page.html:110
-msgid "Newsletter"
-msgstr ""
-
-#: wolnelektury/templates/main_page.html:11
-#: wolnelektury/templates/main_page.html:12
-msgid "Wolne Lektury internet library"
-msgstr "Електронна бібліотека WolneLektury.pl"
-
-#: wolnelektury/templates/main_page.html:21
-msgid "In our digital library you will find"
-msgstr ""
-
-#: wolnelektury/templates/main_page.html:30
-msgid "and many other books, poems, pictures, audiobooks…"
-msgstr ""
-
-#: wolnelektury/templates/main_page.html:39
-msgid "Recent publications"
-msgstr "останні публікації"
-
-#: wolnelektury/templates/main_page.html:65
-msgid "Motifs and themes"
-msgstr "Мотиви та теми"
-
-#: wolnelektury/templates/main_page.html:70
-msgid "Theme"
-msgstr "Тема"
-
-#: wolnelektury/templates/main_page.html:71
-msgid "Explore works with the same theme"
-msgstr ""
-
-#: wolnelektury/templates/main_page.html:86
-msgid "News"
+#: wolnelektury/templates/header.html:53
+msgid "Aktualności"
 msgstr "Новості"
 
-#: wolnelektury/templates/main_page.html:95
-msgid "Utilities"
+#: wolnelektury/templates/header.html:58
+msgid "Narzędzia"
 msgstr "утиліти"
 
-#: wolnelektury/templates/main_page.html:98
-msgid "Report a bug or suggestion"
-msgstr "Повідомити про помилку або надіслати свої пропозиції"
-
-#: wolnelektury/templates/main_page.html:99
-msgid "Download the catalogue in PDF format."
-msgstr "Завантажити каталог у форматі PDF."
-
-#: wolnelektury/templates/main_page.html:100
-#, fuzzy
-#| msgid "Artist"
-msgid "Art"
-msgstr "Митець"
-
-#: wolnelektury/templates/main_page.html:101
-#, fuzzy
-#| msgid "All books"
-msgid "All works"
-msgstr "Всі книжки"
-
-#: wolnelektury/templates/main_page.html:103
-msgid "Footnotes"
+#: wolnelektury/templates/header.html:62
+msgid "O nas"
 msgstr ""
 
-#: wolnelektury/templates/main_page.html:104
-msgid "Missing a book?"
-msgstr "Не знайшли книжки?"
-
-#: wolnelektury/templates/main_page.html:105
-#: wolnelektury/templates/publish_plan.html:6
-#: wolnelektury/templates/publish_plan.html:10
-#: wolnelektury/templates/publish_plan.html:14
-msgid "Publishing plan"
-msgstr "План публікації"
-
-#: wolnelektury/templates/main_page.html:115
-msgid "Information"
-msgstr "інформація"
-
-#: wolnelektury/templates/main_page.html:117
-msgid "Privacy policy"
+#: wolnelektury/templates/main_page.html:168
+msgid "zobacz wszystkie kolekcje"
 msgstr ""
 
-#: wolnelektury/templates/main_page.html:122
-msgid "Follow us on Facebook"
+#: wolnelektury/templates/main_page.html:182
+#: wolnelektury/templates/main_page.html:192
+#: wolnelektury/templates/main_page.html:234
+#: wolnelektury/templates/main_page.html:252
+#: wolnelektury/templates/main_page.html:265
+msgid "Dorzuć się!"
 msgstr ""
 
-#: wolnelektury/templates/main_page.html:135
-msgid "Image used:"
-msgstr "Використано графіку:"
+#: wolnelektury/templates/main_page.html:186
+msgid ""
+"Nasze książki są dostępne dla tysięcy dzieciaków dzięki <strong>darowiznom</"
+"strong> od osób takich jak <strong>Ty</strong>!"
+msgstr ""
+
+#: wolnelektury/templates/main_page.html:197
+msgid "Zapisz się na nasz Newsletter!"
+msgstr ""
+
+#: wolnelektury/templates/main_page.html:201
+msgid "Informacja o&nbsp;nowościach"
+msgstr ""
+
+#: wolnelektury/templates/main_page.html:201
+msgid "Newsletter!"
+msgstr ""
+
+#: wolnelektury/templates/main_page.html:203
+msgctxt "Newsletter"
+msgid "Zapisz się"
+msgstr ""
+
+#: wolnelektury/templates/main_page.html:238
+msgid ""
+"<strong>Wolne Lektury</strong> to lektury szkolne i tysiące innych książek – "
+"za <strong>darmo</strong> i <strong>bez rejestracji</strong>."
+msgstr ""
+
+#: wolnelektury/templates/main_page.html:244
+msgid ""
+"Czytaj i słuchaj online, ściągaj na swój telefon lub komputer, dziel się z "
+"innymi."
+msgstr ""
+
+#: wolnelektury/templates/main_page.html:245
+msgid ""
+"Dla uczennic i uczniów dodajemy przypisy, motywy literackie, biogramy i "
+"geotagowanie."
+msgstr ""
+
+#: wolnelektury/templates/main_page.html:246
+#: wolnelektury/templates/main_page.html:260
+#: wolnelektury/templates/main_page.html:273
+msgid "Dowiedz się więcej"
+msgstr ""
+
+#: wolnelektury/templates/main_page.html:256
+msgid "Jesteśmy częścią ruchu <strong>wolnej kultury</strong>!"
+msgstr ""
+
+#: wolnelektury/templates/main_page.html:269
+msgid ""
+"Jak budujemy najpopularniejszą <strong>bibliotekę online</strong> w Polsce"
+msgstr ""
+
+#: wolnelektury/templates/main_page.html:285
+msgid "Nowości"
+msgstr "Останні публікації"
+
+#: wolnelektury/templates/main_page.html:303
+msgid "Bądź na bieżąco"
+msgstr ""
 
 #: wolnelektury/templates/openid/login.html:7
 #: wolnelektury/templates/openid/login.html:21
-msgid "OpenID Sign In"
+msgid "Logowanie przez OpenID"
 msgstr "Увійти за допомогою OpenID"
 
 #: wolnelektury/templates/openid/login.html:13
 #: wolnelektury/templates/openid/login.html:29
 #: wolnelektury/templates/registration/login.html:6
-msgid "Sign In"
+#: wolnelektury/templates/registration/login.html:12
+#: wolnelektury/templates/registration/login.html:15
+#: wolnelektury/templates/user_actions.html:36
+msgid "Zaloguj się"
 msgstr "Увійти"
 
-#: wolnelektury/templates/pagination/pagination.html:6
-#: wolnelektury/templates/pagination/pagination.html:8
-msgid "previous"
-msgstr "попередня"
+#: wolnelektury/templates/publish_plan.html:6
+#: wolnelektury/templates/publish_plan.html:10
+#: wolnelektury/templates/publish_plan.html:14
+msgid "Plan publikacji"
+msgstr "План публікації"
 
-#: wolnelektury/templates/pagination/pagination.html:22
-#: wolnelektury/templates/pagination/pagination.html:24
-msgid "next"
-msgstr "наступна"
+#: wolnelektury/templates/registration/login.html:23
+msgid "Dalej"
+msgstr ""
+
+#: wolnelektury/templates/registration/login.html:25
+msgid "Nie pamiętasz hasła?"
+msgstr "Забули пароль?"
+
+#: wolnelektury/templates/registration/login.html:28
+msgid "Nie masz jeszcze konta?"
+msgstr ""
+
+#: wolnelektury/templates/registration/login.html:31
+#: wolnelektury/templates/registration/register.html:20
+msgid "Zaloguj się używając:"
+msgstr "Увійти за допомогою:"
+
+#: wolnelektury/templates/registration/register.html:7
+#: wolnelektury/templates/registration/register.html:16
+#: wolnelektury/templates/socialaccount/signup.html:5
+#: wolnelektury/templates/socialaccount/signup.html:8
+#: wolnelektury/templates/socialaccount/signup.html:22
+#: wolnelektury/templates/user_actions.html:38
+msgid "Załóż konto"
+msgstr "Зареєструватися"
 
 #: wolnelektury/templates/socialaccount/connections.html:5
 #: wolnelektury/templates/socialaccount/connections.html:10
-msgid "Account Connections"
+msgid "Połączone konta"
 msgstr "Пов'язані акаунти"
 
 #: wolnelektury/templates/socialaccount/connections.html:13
-msgid ""
-"You can sign in to your account using any of the following third party "
-"accounts:"
+msgid "Możesz się logować, używając jednego z tych zewnętrznych kont:"
 msgstr ""
 "Можете увійти у Ваш акаунт за допомогою інших облікових записів таких, як:"
 
 #: wolnelektury/templates/socialaccount/connections.html:33
-msgid "Remove"
+msgid "Usuń"
 msgstr "Видалити"
 
 #: wolnelektury/templates/socialaccount/connections.html:39
-msgid ""
-"You currently have no social network accounts connected to this account."
+msgid "Nie masz podłączonych żadnych zewnętrznych kont."
 msgstr "У Вас немає зараз жодних облікових записів пов'язаних з цим акаунтом."
 
 #: wolnelektury/templates/socialaccount/connections.html:43
-msgid "Add a 3rd Party Account"
+msgid "Podłącz zewnętrzne konto"
 msgstr "Додати інший обліковий запис "
 
 #: wolnelektury/templates/socialaccount/login_cancelled.html:5
 #: wolnelektury/templates/socialaccount/login_cancelled.html:10
-msgid "Login Cancelled"
+msgid "Logowanie anulowane"
 msgstr "Реєстрацію скасовано"
 
 #: wolnelektury/templates/socialaccount/login_cancelled.html:15
 #, python-format
 msgid ""
-"You decided to cancel logging in to our site using one of your exisiting "
-"accounts. If this was a mistake, please proceed to <a "
-"href=\"%(login_url)s\">sign in</a>."
+"Logowanie przy pomocy zewnętrznego konta zostało anulowane. Jeśli to "
+"pomyłka, przejdź do <a href=\"%(login_url)s\">strony logowania</a>."
 msgstr ""
 "Реєстрацію на сайті за допомогою існуючого облікового запису було скасовано. "
 "Якщо це помилка, перейдіть до сторінки <a href=\"%(login_url)s\">реєстрації</"
 "a>."
 
-#: wolnelektury/templates/socialaccount/signup.html:6
-#, fuzzy
-#| msgid "Sign in"
-msgid "Signup"
-msgstr "Увійти"
-
-#: wolnelektury/templates/socialaccount/signup.html:9
-#: wolnelektury/templates/socialaccount/signup.html:25
-#, fuzzy
-#| msgid "Sign in"
-msgid "Sign Up"
-msgstr "Увійти"
-
-#: wolnelektury/templates/socialaccount/signup.html:11
+#: wolnelektury/templates/socialaccount/signup.html:10
 #, python-format
 msgid ""
-"You are about to use your %(provider_name)s account to login to\n"
-"%(site_name)s. As a final step, please complete the following form:"
+"Zakładasz konto w serwisie %(site_name)s przy pomocy zewnętrznego konta "
+"%(provider_name)s. W tym celu wypełnij formularz:"
 msgstr ""
 
 #: wolnelektury/templates/user.html:7 wolnelektury/templates/user.html:11
 #: wolnelektury/templates/user.html:15
-msgid "User"
+msgid "Użytkownik"
 msgstr "Користувач"
 
 #: wolnelektury/templates/user.html:17
-msgid "Password"
+msgid "Hasło"
 msgstr "Пароль"
 
 #: wolnelektury/templates/user.html:18
@@ -522,756 +282,22 @@ msgid "E-mail"
 msgstr "Електронна адреса"
 
 #: wolnelektury/templates/user.html:19
-msgid "Social accounts"
+msgid "Zewnętrzne konta"
 msgstr "Облікові записи в соціальних мережах"
 
-#: wolnelektury/utils.py:112
-msgid "Message sent automatically. Please do not reply."
+#: wolnelektury/templates/user.html:21
+#: wolnelektury/templates/user_actions.html:19
+msgid "Wspierasz Wolne Lektury, dziękujemy!"
 msgstr ""
 
-#: wolnelektury/utils.py:194
-msgid "Yes"
+#: wolnelektury/templates/user_actions.html:15
+msgid "Administracja"
+msgstr "Адміністрація"
+
+#: wolnelektury/templates/user_actions.html:16
+msgid "Edytuj"
 msgstr ""
 
-#: wolnelektury/utils.py:195
-msgid "No"
-msgstr ""
-
-#: wolnelektury/views.py:117 wolnelektury/views.py:157
-#, python-format
-msgid "Already logged in as user %(user)s"
-msgstr "Ви вже увійшли як користувач %(user)s"
-
-#: wolnelektury/views.py:171
-msgid "You have to be logged in to continue"
-msgstr "Щоб продовжити, увійдіть в свій акаунт."
-
-#, fuzzy
-#~| msgid "advanced"
-#~ msgid "Advanced search"
-#~ msgstr "розширений"
-
-#, fuzzy
-#~| msgid "See our blog"
-#~ msgid "See motifs catalog"
-#~ msgstr "Дивитись наш блог"
-
-#, fuzzy
-#~| msgid "Recent publications"
-#~ msgid "More recent publications"
-#~ msgstr "останні публікації"
-
-#~ msgid "Translations"
-#~ msgstr "Переклади"
-
-#~ msgid "Authorize access to Wolne Lektury"
-#~ msgstr "Авторизувати доступ до Wolne Lektury"
-
-#~ msgid ""
-#~ "Confirm to authorize access to Wolne Lektury as user <strong>%(user)s</"
-#~ "strong>."
-#~ msgstr ""
-#~ "Підтвердити, щоб авторизувати доступ до Wolne Lektury від імені "
-#~ "користувача <strong>%(user)s</strong>."
-
-#~ msgid "What's new?"
-#~ msgstr "Що нового?"
-
-#~ msgid "Widget"
-#~ msgstr "Віджет"
-
-#~ msgid "Welcome"
-#~ msgstr "Ласкаво просимо"
-
-#~ msgid ""
-#~ "\n"
-#~ "\t\t\t\tWolne Lektury is a project lead by <a href=\"http://"
-#~ "nowoczesnapolska.org.pl/\">Modern Poland Foundation</a>.\n"
-#~ "\t\t\t\tDigital reproductions are made by <a href=\"http://www.bn.org.pl/"
-#~ "\">The National Library</a>, <a href=\"http://www.bs.katowice.pl/"
-#~ "\">Biblioteka Śląska</a> and <a href=\"http://www.bibliotekaelblaska.pl/"
-#~ "\">Biblioteka Elbląska</a>, based on TNL, BŚ and BE resources.\n"
-#~ "\t\t\t\tHosting: <a href=\"http://www.icm.edu.pl/\">ICM</a>.\n"
-#~ "\t\t\t\t"
-#~ msgstr ""
-#~ "\n"
-#~ "\t\t\t\tWolne Lektury це проект <a href=\"http://nowoczesnapolska.org.pl/"
-#~ "\">Фонду Сучасна Польща (Fundacja Nowoczesna Polska)</a>.\n"
-#~ "\t\t\t\tЦифрові репродукції виконані <a href=\"http://www.bn.org.pl/"
-#~ "\">Національною Бібліотекою</a>, <a href=\"http://www.bs.katowice.pl/"
-#~ "\">Сілезькою бібліотекою</a> та <a href=\"http://www.bibliotekaelblaska."
-#~ "pl/\">Ельблонзькою бібліотекою</a>, на основі їх засобів.\n"
-#~ "\t\t\t\tХостинг: <a href=\"http://www.icm.edu.pl/\">ICM</a>.\n"
-#~ "\t\t\t\t"
-
-#~ msgid ""
-#~ "\n"
-#~ "\t\t\t\tModern Poland Foundation, 00-514 Warsaw, ul. Marszałkowska 84/92 "
-#~ "lok. 125, tel/fax: (22) 621-30-17\n"
-#~ "                e-mail: <a href=\"mailto:fundacja@nowoczesnapolska.org."
-#~ "pl\">fundacja@nowoczesnapolska.org.pl</a>\n"
-#~ "\t\t\t\t"
-#~ msgstr ""
-#~ "\n"
-#~ "\t\t\t\tFundacja Nowoczesna Polska (Фонд Сучасна Польща), 00-514 "
-#~ "Warszawa, ul. Marszałkowska 84/92 lok. 125, тел/факс: (22) 621-30-17\n"
-#~ "                eлектронна пошта: <a href=\"mailto:"
-#~ "fundacja@nowoczesnapolska.org.pl\">fundacja@nowoczesnapolska.org.pl</a>\n"
-#~ "\t\t\t\t"
-
-#~ msgid "Listing of all audiobooks"
-#~ msgstr "Список усіх аудіокниг"
-
-#~ msgid "Latest MP3 audiobooks"
-#~ msgstr "Останні аудіокниги MP3"
-
-#~ msgid "Latest Ogg Vorbis audiobooks"
-#~ msgstr "Останні аудіокниги Ogg Vorbis"
-
-#~ msgid ""
-#~ "Audioteka lektur szkolnych fundacji Nowoczesna Polska.\n"
-#~ "Możecie z niej korzystać bezpłatnie i bez ograniczeń.\n"
-#~ "Audiobooki nagrywają znani aktorzy, wśród nich Danuta Stenka i Jan Peszek."
-#~ msgstr ""
-#~ "Аудіотека шкільної літератури Фонду Сучасна Польща (Fundacja Nowoczesna "
-#~ "Polska).\n"
-#~ "Можна нею користуватися безкоштовно і без обмежень.\n"
-#~ "Аудіокниги зачитують відомі актори, серед яких Данута Стенка та Ян Пешек."
-
-#~ msgid "See also"
-#~ msgstr "Дивитись також"
-
-#~ msgid "in work "
-#~ msgstr "у творі"
-
-#~ msgid "This work is licensed under:"
-#~ msgstr "Цей твір доступний на умовах ліцензії:"
-
-#~ msgid ""
-#~ "This work isn't covered by copyright and is part of the\n"
-#~ "        public domain, which means it can be freely used, published and\n"
-#~ "        distributed. If there are any additional copyrighted materials\n"
-#~ "        provided with this work (such as annotations, motifs etc.), "
-#~ "those\n"
-#~ "        materials are licensed under the \n"
-#~ "        <a href=\"http://creativecommons.org/licenses/by-sa/3.0/"
-#~ "\">Creative Commons Attribution-ShareAlike 3.0</a>\n"
-#~ "        license."
-#~ msgstr ""
-#~ "Цей твір не охороняється авторським правом і є частиною\n"
-#~ "        суспільного надбання, тому його можна використовувати без "
-#~ "обмежень, публікувати, та\n"
-#~ "        розповсюджувати. Якщо твір містить додаткові матеріали, котрі "
-#~ "охороняються авторським правом\n"
-#~ "        (наприклад примітки, мотиви, тощо), доступ до цих\n"
-#~ "        додаткових матеріалів надається на умовах ліцензії \n"
-#~ "        <a href=\"http://creativecommons.org/licenses/by-sa/3.0/"
-#~ "\">Creative Commons Із зазначенням імені автора – На тих же умовах 3.0</"
-#~ "a>\n"
-#~ "       ."
-
-#~ msgid "Text prepared based on:"
-#~ msgstr "Текст підготовлено на основі:"
-
-#~ msgid "Edited and annotated by:"
-#~ msgstr "Редагування та примітки:"
-
-#~ msgid "Listing of all works"
-#~ msgstr "Список усіх творів"
-
-#~ msgid "Table of Content"
-#~ msgstr "Зміст"
-
-#~ msgid "↑ top ↑"
-#~ msgstr "↑ вгору ↑"
-
-#~ msgid "Put a book on the shelf!"
-#~ msgstr "Покласти книжку на полицю!"
-
-#~ msgid "Create new shelf"
-#~ msgstr "Створити нову полицю"
-
-#~ msgid ""
-#~ "You do not have any shelves. You can create one below, if you want to."
-#~ msgstr ""
-#~ "В вас немає жодних полиць. Нижче ви можете створити полицю, якщо бажаєте."
-
-#~ msgid "Put on the shelf!"
-#~ msgstr "Покласти на полицю!"
-
-#~ msgid "Epoch"
-#~ msgstr "Епоха"
-
-#~ msgid "Kind"
-#~ msgstr "Рід"
-
-#~ msgid "Genre"
-#~ msgstr "Жанр"
-
-#~ msgid "Read online"
-#~ msgstr "Читати онлайн"
-
-#~ msgid "Download"
-#~ msgstr "Завантажити"
-
-#~ msgid "to print"
-#~ msgstr "друкувати"
-
-#~ msgid "for an e-book reader"
-#~ msgstr "для інтернетного читача"
-
-#~ msgid "for Kindle"
-#~ msgstr "для Kindle"
-
-#~ msgid "for advanced usage"
-#~ msgstr "для досвіченого користувача"
-
-#~ msgid "Listen"
-#~ msgstr "Слухати"
-
-#~ msgid "Edit. note"
-#~ msgstr "Коментар редактора"
-
-#~ msgid "Infobox"
-#~ msgstr "Інфобокс"
-
-#~ msgid "Book's page"
-#~ msgstr "Сторінка книжки"
-
-#~ msgid "for a reader"
-#~ msgstr "для читача"
-
-#, fuzzy
-#~ msgid "for advanced usege"
-#~ msgstr "розширений"
-
-#~ msgid "Download a custom PDF"
-#~ msgstr "Завантажити PDF"
-
-#~ msgid "See"
-#~ msgstr "Дивитись"
-
-#~ msgid "Source"
-#~ msgstr "Джерело"
-
-#~ msgid "Source XML file"
-#~ msgstr "Вихідний файл XML"
-
-#~ msgid "Book on"
-#~ msgstr "Книжка на"
-
-#~ msgid "Editor's Platform"
-#~ msgstr "Редакторська платформа"
-
-#~ msgid "Book description on Lektury.Gazeta.pl"
-#~ msgstr "Опис книжки на Lektury.Gazeta.pl"
-
-#~ msgid "Book description on Wikipedia"
-#~ msgstr "Опис книжки у Вікіпедії"
-
-#~ msgid "Mix this book"
-#~ msgstr "Міксувати цю книжку"
-
-#~ msgid "Download all audiobooks for this book"
-#~ msgstr "Завантажити всі аудіокниги для цієї книжки"
-
-#~ msgid "Catalogue"
-#~ msgstr "Каталог"
-
-#~ msgid "Authors"
-#~ msgstr "Автори"
-
-#~ msgid "Kinds"
-#~ msgstr "Роди"
-
-#~ msgid "Genres"
-#~ msgstr "Жанри"
-
-#~ msgid "Epochs"
-#~ msgstr "Епохи"
-
-#~ msgid "Themes and topics"
-#~ msgstr "Теми та мотиви"
-
-#~ msgid "Listing of all DAISY files"
-#~ msgstr "Список усіх файлів DAISY"
-
-#~ msgid "Latest DAISY audiobooks"
-#~ msgstr "Останні аудіокниги DAISY"
-
-#~ msgid ""
-#~ "System DAISY to uznany na całym świecie format udostępniania książek\n"
-#~ "dostosowany do potrzeb osób słabowidzących, niewidomych oraz innych osób\n"
-#~ "mających trudności z czytaniem. Możecie z nich korzystać bezpłatnie i bez "
-#~ "ograniczeń."
-#~ msgstr ""
-#~ "Система DAISY це визнаний у всьому світі формат надавання доступу до "
-#~ "книжок,\n"
-#~ "котрий відповідає потребам осіб слабозорих, сліпих, а також інших осіб,\n"
-#~ "які мають труднощі з читанням. Можете ними користуватися безкоштовно і "
-#~ "без обмежень."
-
-#~ msgid ""
-#~ "The criteria are ambiguous. Please select one of the following options:"
-#~ msgstr "Вибрані критерії неоднозначні. Виберіть один з наступних варіантів:"
-
-#~ msgid "Shelves containing fragment"
-#~ msgstr "Полиці, які містять фрагмент"
-
-#~ msgid ""
-#~ "You do not own any shelves. You can create one below, if you want to."
-#~ msgstr ""
-#~ "У вас немає жодних полиць. Нижче ви можете створити полицю, якщо бажаєте."
-
-#~ msgid "Save all shelves"
-#~ msgstr "Зберегти всі полиці"
-
-#~ msgid "Expand fragment"
-#~ msgstr "Показати фрагмент"
-
-#~ msgid "Hide fragment"
-#~ msgstr "Сховати фрагмент"
-
-#~ msgid "See full category"
-#~ msgstr "Дивитись всю категорію"
-
-#~ msgid "DAISY"
-#~ msgstr "DAISY"
-
-#~ msgid "Work is licensed under "
-#~ msgstr "Твір на умовах ліцензії"
-
-#~ msgid "Based on"
-#~ msgstr "На основі"
-
-#~ msgid "Details"
-#~ msgstr "Подробиці"
-
-#~ msgid "Author"
-#~ msgstr "Автор"
-
-#~ msgid "Other resources"
-#~ msgstr "Інші засоби"
-
-#~ msgid "Source of the image"
-#~ msgstr "Джерело графіки"
-
-#~ msgid "Image on the Editor's Platform"
-#~ msgstr "Графіка на Редакторській платформі"
-
-#~ msgid "View XML source"
-#~ msgstr "Дивитись вихідний XML"
-
-#~ msgid "Work's themes "
-#~ msgstr "Теми твору"
-
-#~ msgid "Listing of all pictures"
-#~ msgstr "Список всіх графік"
-
-#~ msgid "Download as"
-#~ msgstr "Завантажити як"
-
-#~ msgid "Director"
-#~ msgstr "Режисер"
-
-#~ msgid "Audiobooks were prepared as a part of the projects:"
-#~ msgstr "Аудіокниги виготовлено в рамах проектів:"
-
-#~ msgid "%(cs)s, funded by %(fb)s"
-#~ msgstr "%(cs)s, фінансованого з коштів %(fb)s"
-
-#~ msgid ""
-#~ "Audiobooks were prepared as a part of the %(cs)s project funded by %(fb)s."
-#~ msgstr ""
-#~ "Аудіокниги виготовлено в рамах проекту %(cs)s, фінансованого з коштів "
-#~ "%(fb)s."
-
-#~ msgid "Audiobooks were prepared as a part of the %(cs)s project."
-#~ msgstr "Аудіокниги виготовлено в рамах проекту %(cs)s."
-
-#~ msgid "Did you mean"
-#~ msgstr "Чи йдеться про"
-
-#~ msgid "Results by authors"
-#~ msgstr "Результати за автором"
-
-#~ msgid "Results by title"
-#~ msgstr "Результати за заголовком"
-
-#~ msgid "Results in text"
-#~ msgstr "Результати в тексті"
-
-#~ msgid "Other results"
-#~ msgstr "Інші результати"
-
-#~ msgid "Sorry! Search cirteria did not match any resources."
-#~ msgstr "На жаль, критеріям пошуку не відповідає жоден результат."
-
-#~ msgid ""
-#~ "Search engine supports following criteria: title, author, theme/topic, "
-#~ "epoch, kind and genre.\n"
-#~ "\t\tAs for now we do not support full text search."
-#~ msgstr ""
-#~ "В пошуковій системі можливий пошук за критеріями: автор, тема/мотив, "
-#~ "епоха, рід та жанр.\n"
-#~ "\t\tПоки що неможливий пошук в цілому тексті."
-
-#~ msgid "Sorry! Search query must have at least two characters."
-#~ msgstr "На жаль, для пошуку потрібно ввести щонайменше два знаки."
-
-#~ msgid "in Lektury.Gazeta.pl"
-#~ msgstr "на Lektury.Gazeta.pl"
-
-#~ msgid "in Wikipedia"
-#~ msgstr "у Вікіпедії"
-
-#~ msgid "Your shelves with books"
-#~ msgstr "Ваші полиці з книжками"
-
-#~ msgid "You do not own any shelves. You can create one below if you want to"
-#~ msgstr ""
-#~ "У вас немає жодних полиць. Нижче ви можете створити полицю, якщо бажаєте"
-
-#~ msgid "Create shelf"
-#~ msgstr "Створити полицю"
-
-#~ msgid "author"
-#~ msgstr "автор"
-
-#~ msgid "Hand-outs for teachers"
-#~ msgstr "Матеріали для вчителів"
-
-#~ msgid "Read work's study of this author on Lektury.Gazeta.pl"
-#~ msgstr "Прочитати обговорення цього автора на Lektury.Gazeta.pl"
-
-#~ msgid "Read article about this author on Wikipedia"
-#~ msgstr "Прочитати статтю про цього автора у Вікіпедії"
-
-#~ msgid "This author's works are copyrighted."
-#~ msgstr "Твори цього автора охороняються авторським правом."
-
-#~ msgid ""
-#~ "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find "
-#~ "out</a> why Internet libraries can't publish this author's works."
-#~ msgstr ""
-#~ "<a href='http://domenapubliczna.org/co-to-jest-domena-"
-#~ "publiczna/'>Дізнатися</a> чому електронні бібліотеки не можуть "
-#~ "опублікувати творів цього автора."
-
-#~ msgid ""
-#~ "This author's works are in public domain and will be published on "
-#~ "Internet school library of Wolne Lektury soon."
-#~ msgstr ""
-#~ "Твори цього автора є частиною суспільного надбання і незабаром будуть "
-#~ "опубліковані на  Wolne Lektury."
-
-#~ msgid ""
-#~ "This author's works will become part of public domain and will be allowed "
-#~ "to be published without restrictions in"
-#~ msgstr ""
-#~ "Твори цього автора стануть частиною суспільного надбання і можна буде їх "
-#~ "публікувати без обмежень в"
-
-#~ msgid ""
-#~ "This work is in public domain and will be published on Internet school "
-#~ "library of Wolne Lektury soon."
-#~ msgstr ""
-#~ "Цей твір є частиною суспільного надбання і незабаром буде опублікований "
-#~ "на Wolne Lektury"
-
-#~ msgid ""
-#~ "This work will become part of public domain and will be allowed to be "
-#~ "published without restrictions in"
-#~ msgstr ""
-#~ "Цей твір стане частиною суспільного надбання і можна буде його "
-#~ "публікувати без обмежень у"
-
-#~ msgid ""
-#~ "<a href='http://domenapubliczna.org/co-to-jest-domena-publiczna/'>Find "
-#~ "out</a> why Internet libraries can't publish this work."
-#~ msgstr ""
-#~ "<a href='http://domenapubliczna.org/co-to-jest-domena-"
-#~ "publiczna/'>Дізнатися</a>, чому електронні бібліотеки не можуть "
-#~ "опублікувати цього твору"
-
-#~ msgid "This work is copyrighted."
-#~ msgstr "Цей твір охороняється авторським правом"
-
-#~ msgid "Login to Wolne Lektury"
-#~ msgstr "Увійти у WolneLektury.pl"
-
-#~ msgid "Login"
-#~ msgstr "Увійти"
-
-#~ msgid ""
-#~ "Internet Explorer cannot display this site properly. Click here to read "
-#~ "more..."
-#~ msgstr ""
-#~ "Інтернет Експолорер не може правильно відобразити цієї сторінки. "
-#~ "Натисніть, щоб дізнатися більше..."
-
-#~ msgid "Your shelves"
-#~ msgstr "Ваші полиці"
-
-#~ msgid "Register on"
-#~ msgstr "Реєстрація на"
-
-#~ msgid "or"
-#~ msgstr "або"
-
-#~ msgid "return to main page"
-#~ msgstr "повернення на головну сторінку"
-
-#, fuzzy
-#~ msgid "Listing of all audiobooks on WolneLektury.pl"
-#~ msgstr "Алфавітний список творів на WolneLektury.pl"
-
-#~ msgid "Put a book"
-#~ msgstr "Покласти книжку"
-
-#~ msgid "on the shelf!"
-#~ msgstr "на полицю!"
-
-#~ msgid "and printing using"
-#~ msgstr "та друку з використанням"
-
-#~ msgid "Download EPUB"
-#~ msgstr "Завантажити EPUB"
-
-#~ msgid "Download TXT"
-#~ msgstr "Завантажити TXT"
-
-#~ msgid "on small displays, for example mobile phones"
-#~ msgstr "на невеликих екранах, на приклад на мобільному телефоні"
-
-#~ msgid "Download ODT"
-#~ msgstr "Завантажити ODT"
-
-#~ msgid "and editing using"
-#~ msgstr "та едиції з використанням"
-
-#~ msgid "Book on project's wiki"
-#~ msgstr "Книжка на вікі проекту"
-
-#~ msgid "on"
-#~ msgstr "на"
-
-#~ msgid "See description"
-#~ msgstr "Дивитись опис"
-
-#~ msgid "Jump to"
-#~ msgstr "Перейти до"
-
-#~ msgid "Categories"
-#~ msgstr "Категорії"
-
-#, fuzzy
-#~ msgid "Listing of all DAISY files on WolneLektury.pl"
-#~ msgstr "Алфавітний список творів на WolneLektury.pl"
-
-#~ msgid "Show full category"
-#~ msgstr "Показати всю категорію"
-
-#~ msgid "Hide"
-#~ msgstr "Сховати"
-
-#~ msgid "Browse books by categories"
-#~ msgstr "Переглядати книжки за категоріями"
-
-#~ msgid "delete"
-#~ msgstr "видалити"
-
-#~ msgid ""
-#~ "Create your own book set. You can share it with friends by sending them "
-#~ "link to your shelf."
-#~ msgstr ""
-#~ "Створити свій вибір книжок. Ви можете поділитися ним з друзями висилаючи "
-#~ "їм посилання на вашу полицю."
-
-#~ msgid "You need to "
-#~ msgstr "Вам треба"
-
-#~ msgid "sign in"
-#~ msgstr "увійти в акаунт"
-
-#~ msgid "to manage your shelves."
-#~ msgstr "щоб управляти своїми полицями"
-
-#~ msgid ""
-#~ "Lessons' prospects and other ideas for using Wolnelektury.pl for teaching."
-#~ msgstr ""
-#~ "Плани уроків та інші ідеї як користуватися Wolnelektury.pl в навчанні"
-
-#~ msgid ""
-#~ "are professional recordings of literary texts from our repository, "
-#~ "available on free license in MP3 and Ogg Vorbis formats as well as in "
-#~ "DAISY system."
-#~ msgstr ""
-#~ "це професійні записи текстів літератури з нашої бази, доступні на вільній "
-#~ "ліцензії у форматах MP3 та Ogg Vorbis, а також в системі DAISY."
-
-#~ msgid "Themes groups"
-#~ msgstr "Групи мотивів"
-
-#~ msgid "You can help us!"
-#~ msgstr "Можете нам допомогти!"
-
-#~ msgid ""
-#~ "We try our best to elaborate works appended to our library. It is "
-#~ "possible only due to support of our volunteers."
-#~ msgstr ""
-#~ "Ми намагаємося якомога краще підготувати твори, які додаються до нашої "
-#~ "бібліотеки. Це можливо тільки завдяки нашим волонтерам."
-
-#~ msgid ""
-#~ "We invite people who want to take part in developing Internet school "
-#~ "library Wolne Lektury."
-#~ msgstr ""
-#~ "Запрошуємо всіх, хто хоче брати участь у творенні шкільної  інтернет-"
-#~ "бібліотеки Wolne Lektury."
-
-#~ msgid "About us"
-#~ msgstr "Про нас"
-
-#~ msgid ""
-#~ "\n"
-#~ "\t\t\tInternet library with school readings “Wolne Lektury” (<a "
-#~ "href=\"http://wolnelektury.pl\">www.wolnelektury.pl</a>) is a project "
-#~ "made by Modern Poland Foundation. It started in 2007 and shares school "
-#~ "readings, which are recommended by Ministry of National Education and are "
-#~ "in public domain.\n"
-#~ "\t\t\t"
-#~ msgstr ""
-#~ "\n"
-#~ "\t\t\tІнтернет-бібліотека шкільної літератури “Wolne Lektury” (<a "
-#~ "href=\"http://wolnelektury.pl\">www.wolnelektury.pl</a>) це проект "
-#~ "реалізований Фондом Модерна Польща. Проект стартував у 2007 році та надає "
-#~ "доступ до літератури, рекомендованої Міністерством національної освіти, "
-#~ "яка є частиною суспільного надбання.\n"
-#~ "\t\t\t"
-
-#~ msgid "Searching in"
-#~ msgstr "Пошук в"
-
-#~ msgid "More than one result matching the criteria found."
-#~ msgstr "Більше ніж один результат відповідає критеріям."
-
-#~ msgid "Search in WolneLektury.pl"
-#~ msgstr "Пошук в WolneLektury.pl"
-
-#~ msgid "Your shelf is empty"
-#~ msgstr "Ваша полиця порожня"
-
-#~ msgid ""
-#~ "You can put a book on a shelf by entering page of the reading and "
-#~ "clicking 'Put on the shelf'."
-#~ msgstr ""
-#~ "Щоб покласти книжку на полицю, увійдіть на сторінку книжки та натисніть "
-#~ "\"Покласти на полицю\"."
-
-#~ msgid "Choose books' formats which you want to download:"
-#~ msgstr "Вибрати формат, в якому хочете завантажити книжку:"
-
-#~ msgid "for listening"
-#~ msgstr "для слухання"
-
-#~ msgid "on favourite MP3 player"
-#~ msgstr "на улюбленому плеєрі MP3"
-
-#~ msgid "Xiph.org Foundation"
-#~ msgstr "Фонд Xiph.org"
-
-#~ msgid "Updating list of books' formats on the shelf"
-#~ msgstr "Оновити список форматів книжок, які на полиці"
-
-#~ msgid "cancel"
-#~ msgstr "відхилити"
-
-#~ msgid "Share this shelf"
-#~ msgstr "Поділитися цією полицею"
-
-#~ msgid ""
-#~ "Copy this link and share it with other people to let them see your shelf."
-#~ msgstr "Копіювати це посилання, щоб вислати іншим, та поділитися полицею."
-
-#, fuzzy
-#~ msgid "Read study of epoch %(last_tag)s on Lektury.Gazeta.pl"
-#~ msgstr "Прочитати обговорення цього автора на Lektury.Gazeta.pl"
-
-#, fuzzy
-#~ msgid "Read study of kind %(last_tag)s on Lektury.Gazeta.pl"
-#~ msgstr "Прочитати обговорення цього автора на Lektury.Gazeta.pl"
-
-#, fuzzy
-#~ msgid "Read study of genre %(last_tag)s on Lektury.Gazeta.pl"
-#~ msgstr "Прочитати обговорення цього автора на Lektury.Gazeta.pl"
-
-#, fuzzy
-#~ msgid "Read related study on Lektury.Gazeta.pl"
-#~ msgstr "Прочитати обговорення цього автора на Lektury.Gazeta.pl"
-
-#, fuzzy
-#~ msgid "Read article about epoch %(last_tag)s on Wikipedia"
-#~ msgstr "Прочитати статтю про цього автора на Вікіпедії"
-
-#, fuzzy
-#~ msgid "Read article about kind %(last_tag)s on Wikipedia"
-#~ msgstr "Прочитати статтю про цього автора на Вікіпедії"
-
-#, fuzzy
-#~ msgid "Read article about genre %(last_tag)s on Wikipedia"
-#~ msgstr "Прочитати статтю про цього автора на Вікіпедії"
-
-#, fuzzy
-#~ msgid "Read related article on Wikipedia"
-#~ msgstr "Прочитати статтю про цього автора на Вікіпедії"
-
-#~ msgid "Delete"
-#~ msgstr "Видалити"
-
-#~ msgid "return to the main page"
-#~ msgstr "повернення на головну"
-
-#~ msgid "return to list of materials"
-#~ msgstr "повернення до списку матеріалів"
-
-#~ msgid "Hand-outs for teachers on "
-#~ msgstr "Матеріали для вчителів у"
-
-#, fuzzy
-#~ msgid ""
-#~ "Download TXT - for reading on small displays, for example mobile phones"
-#~ msgstr "на невеликих екранах, на приклад на мобільному телефоні"
-
-#~ msgid "Choose your interface language: "
-#~ msgstr "Вибрати мову інтерфейсу"
-
-#~ msgid "Choose language"
-#~ msgstr "Вибрати мову"
-
-#~ msgid "Hide description"
-#~ msgstr "Сховати опис"
-
-#~ msgid "Download MP3"
-#~ msgstr "Завантажити MP3"
-
-#~ msgid "Download Ogg Vorbis"
-#~ msgstr "Завантажити Ogg Vorbis"
-
-#~ msgid "Download DAISY"
-#~ msgstr "Завантажити DAISY"
-
-#~ msgid "Alphabetical listing of works"
-#~ msgstr "Алфавітний список творів"
-
-#~ msgid "check list of books"
-#~ msgstr "перевірити список книжок"
-
-#~ msgid "in our repository"
-#~ msgstr "в нашій базі"
-
-#~ msgid "Read study of epoch"
-#~ msgstr "Прочитати обговорення епохи"
-
-#~ msgid "Read article about epoch"
-#~ msgstr "Прочитати статтю про цю епоху"
+#: wolnelektury/templates/user_actions.html:22
+msgid "Wyloguj się"
+msgstr "Вийти"

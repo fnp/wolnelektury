@@ -1,25 +1,27 @@
 {% extends "funding/email/base.txt" %}
 {% load i18n %}
 {% block body %}
-{% blocktrans %}we have just published the book you contributed to:{% endblocktrans %}
+{% blocktrans %}właśnie opublikowaliśmy książkę, którą wsparłeś/-aś:{% endblocktrans %}
 
   {{ author }} – {{ offer.book.title }}
   https://{{ site.domain }}{{ offer.book.get_absolute_url }}
 
 {% if book.preview %}
-Dzięki Tobie, niedługo będzie bezpłatnie dla wszystkich w wielu formatach. Tymczasem możesz przeczytać ją już teraz jako prapremierę.
-{% if funding.user %}Wystarczy, że zalogujesz się na Wolnych Lekturach (jako {{ funding.user.username }}).
-{% else %}Wystarczy, że zalogujesz się na Wolnych Lekturach i wejdziesz pod ten adres, aby uzyskać wcześniejszy dostęp:
+{% blocktrans %}Dzięki Tobie, niedługo będzie bezpłatnie dla wszystkich w wielu formatach.
+Tymczasem możesz przeczytać ją już teraz jako prapremierę.{% endblocktrans %}
+{% if funding.user %}{% blocktrans with user=funding.user.username %}Wystarczy, że zalogujesz się na Wolnych Lekturach (jako {{ user }}).{% endblocktrans %}
+{% else %}{% blocktrans %}Wystarczy, że zalogujesz się na Wolnych Lekturach i wejdziesz pod ten adres,
+aby uzyskać wcześniejszy dostęp:{% endblocktrans %}
 https://{{ site.domain }}{% url 'funding_claim' funding.notify_key %}
 {% endif %}
 {% else %}
-{% blocktrans %}Thanks to you, it is now available for free,
-in various formats, to everyone.{% endblocktrans %}
+{% blocktrans %}Dzięki Tobie jest teraz dostępna bezpłatnie
+dla wszystkich w wielu formatach.{% endblocktrans %}
 {% endif %}
 
 {% if current %}
-{% blocktrans %}If you'd like to help liberate another book, or invite your friends
-to do so, we're currently raising money for:{% endblocktrans %}
+{% blocktrans %}Jeśli chcesz pomóc uwolnić kolejną książkę, albo zachęcić do tego
+swoich znajomych, to aktualnie zbieramy na:{% endblocktrans %}
 
   {{ current.author }} – {{ current.title }}
   https://{{ site.domain }}{% url 'funding_current' %}

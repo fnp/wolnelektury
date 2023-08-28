@@ -1,4 +1,5 @@
 {% load cache %}
+{% load i18n %}
 {% load static %}
 {% load menu %}
 {% load latest_blog_posts from blog %}
@@ -41,24 +42,24 @@
             <div class="l-navigation__menu__links">
               {% cache 30 menu LANGUAGE_CODE %}
                 <ul>
-                  <li><strong>Katalog</strong></li>
+                  <li><strong>{% trans "Katalog" %}</strong></li>
                   {% menu 'Katalog' %}
                 </ul>
                 <ul>
-                  <li><strong>Włącz się</strong></li>
+                  <li><strong>{% trans "Włącz się" %}</strong></li>
                   {% menu 'Włącz się' %}
                 </ul>
                 <ul>
-                  <li><strong>Aktualności</strong></li>
+                  <li><strong>{% trans "Aktualności" %}</strong></li>
                   {% latest_blog_posts %}
                   {% menu 'Aktualności' %}
                 </ul>
                 <ul>
-                  <li><strong>Narzędzia</strong></li>
+                  <li><strong>{% trans "Narzędzia" %}</strong></li>
                   {% menu 'Narzędzia' %}
                 </ul>
                 <ul>
-                  <li><strong>O nas</strong></li>
+                  <li><strong>{% trans "O nas" %}</strong></li>
                   {% menu 'O nas' %}
                 </ul>
               {% endcache %}

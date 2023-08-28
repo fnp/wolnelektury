@@ -26,7 +26,7 @@ class BookImportForm(forms.Form):
                 self.cleaned_data['book_xml_file'] = \
                     ContentFile(self.cleaned_data['book_xml'].encode('utf-8'))
             else:
-                raise forms.ValidationError(_("Please supply an XML."))
+                raise forms.ValidationError("Proszę podać XML.")
         return super(BookImportForm, self).clean()
 
     def save(self, **kwargs):
@@ -48,24 +48,24 @@ class DownloadFormatsForm(forms.Form):
 
 
 CUSTOMIZATION_FLAGS = (
-    ('nofootnotes', _("Don't show footnotes")),
-    ('nothemes', _("Don't disply themes")),
-    ('nowlfont', _("Don't use our custom font")),
-    ('nocover', _("Without cover")),
-    ('notoc', _("Without table of contents")),
+    ('nofootnotes', _("Bez przypisów")),
+    ('nothemes', _("Bez motywów")),
+    ('nowlfont', _("Bez naszego kroju pisma")),
+    ('nocover', _("Bez okładki")),
+    ('notoc', _("Bez spisu treści")),
     )
 CUSTOMIZATION_OPTIONS = (
-    ('leading', _("Leading"), (
-        ('', _('Normal leading')),
-        ('onehalfleading', _('One and a half leading')),
-        ('doubleleading', _('Double leading')),
+    ('leading', _("Interlinia"), (
+        ('', _('Zwykła interlinia')),
+        ('onehalfleading', _('Powiększona interlinia')),
+        ('doubleleading', _('Podwójna interlinia')),
     )),
-    ('fontsize', _("Font size"), (
-        ('', _('Default')),
-        ('13pt', _('Big')),
-        ('16pt', _('Bigger')),
+    ('fontsize', _("Rozmiar tekstu"), (
+        ('', _('Domyślny')),
+        ('13pt', _('Duży')),
+        ('16pt', _('Większy')),
     )),
-    # ('pagesize', _("Paper size"), (
+    # ('pagesize', _("Rozmiar papieru"), (
     #     ('a4paper', _('A4')),
     #     ('a5paper', _('A5')),
     # )),
@@ -85,7 +85,7 @@ class CustomPDFForm(forms.Form):
         self.cleaned_data['cust'] = self.customizations
         self.cleaned_data['path'] = get_customized_pdf_path(self.book, self.cleaned_data['cust'])
         if not WaitedFile.can_order(self.cleaned_data['path']):
-            raise ValidationError(_('Queue is full. Please try again later.'))
+            raise ValidationError(_('Kolejka jest pełna. Proszę spróbować ponownie później.'))
         return self.cleaned_data
 
     @property

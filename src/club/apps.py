@@ -2,9 +2,8 @@
 # Copyright © Fundacja Nowoczesna Polska. See NOTICE for more information.
 #
 from django.apps import AppConfig
-from django.utils.translation import gettext_lazy as _
 
 
 class ClubConfig(AppConfig):
     name = 'club'
-    verbose_name = _('Club')
+    verbose_name = 'Towarzystwo'

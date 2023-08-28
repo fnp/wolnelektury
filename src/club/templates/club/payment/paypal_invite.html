@@ -1,5 +1,5 @@
-{% load static %}
-<h3>Wolisz wpłacić przez PayPal?</h3>
+{% load i18n static %}
+<h3>{% trans "Wolisz wpłacić przez PayPal?" %}</h3>
 <a href="{% url 'paypal_init' schedule.key %}">
   <div class="iframe">
     <img src="{% static 'club/paypal.png' %}" alt="PayPal">

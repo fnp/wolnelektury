@@ -35,29 +35,29 @@ bofh_storage = BofhFileSystemStorage()
 
 class Book(models.Model):
     """Represents a book imported from WL-XML."""
-    title = models.CharField(_('title'), max_length=32767)
-    sort_key = models.CharField(_('sort key'), max_length=120, db_index=True, editable=False)
+    title = models.CharField('tytuł', max_length=32767)
+    sort_key = models.CharField('klucz sortowania', max_length=120, db_index=True, editable=False)
     sort_key_author = models.CharField(
-        _('sort key by author'), max_length=120, db_index=True, editable=False, default='')
-    slug = models.SlugField(_('slug'), max_length=120, db_index=True, unique=True)
-    common_slug = models.SlugField(_('slug'), max_length=120, db_index=True)
-    language = models.CharField(_('language code'), max_length=3, db_index=True, default=app_settings.DEFAULT_LANGUAGE)
-    description = models.TextField(_('description'), blank=True)
-    abstract = models.TextField(_('abstract'), blank=True)
-    toc = models.TextField(_('toc'), blank=True)
-    created_at = models.DateTimeField(_('creation date'), auto_now_add=True, db_index=True)
-    changed_at = models.DateTimeField(_('change date'), auto_now=True, db_index=True)
-    parent_number = models.IntegerField(_('parent number'), default=0)
-    extra_info = models.TextField(_('extra information'), default='{}')
+        'klucz sortowania wg autora', max_length=120, db_index=True, editable=False, default='')
+    slug = models.SlugField('slug', max_length=120, db_index=True, unique=True)
+    common_slug = models.SlugField('wspólny slug', max_length=120, db_index=True)
+    language = models.CharField('kod języka', max_length=3, db_index=True, default=app_settings.DEFAULT_LANGUAGE)
+    description = models.TextField('opis', blank=True)
+    abstract = models.TextField('abstrakt', blank=True)
+    toc = models.TextField('spis treści', blank=True)
+    created_at = models.DateTimeField('data utworzenia', auto_now_add=True, db_index=True)
+    changed_at = models.DateTimeField('data motyfikacji', auto_now=True, db_index=True)
+    parent_number = models.IntegerField('numer w ramach rodzica', default=0)
+    extra_info = models.TextField('dodatkowe informacje', default='{}')
     gazeta_link = models.CharField(blank=True, max_length=240)
     wiki_link = models.CharField(blank=True, max_length=240)
-    print_on_demand = models.BooleanField(_('print on demand'), default=False)
-    recommended = models.BooleanField(_('recommended'), default=False)
-    audio_length = models.CharField(_('audio length'), blank=True, max_length=8)
-    preview = models.BooleanField(_('preview'), default=False)
-    preview_until = models.DateField(_('preview until'), blank=True, null=True)
+    print_on_demand = models.BooleanField('druk na żądanie', default=False)
+    recommended = models.BooleanField('polecane', default=False)
+    audio_length = models.CharField('długość audio', blank=True, max_length=8)
+    preview = models.BooleanField('prapremiera', default=False)
+    preview_until = models.DateField('prapremiera do', blank=True, null=True)
     preview_key = models.CharField(max_length=32, blank=True, null=True)
-    findable = models.BooleanField(_('findable'), default=True, db_index=True)
+    findable = models.BooleanField('wyszukiwalna', default=True, db_index=True)
 
     # files generated during publication
     xml_file = fields.XmlField(storage=bofh_storage, with_etag=False)
@@ -68,15 +68,15 @@ class Book(models.Model):
     mobi_file = fields.MobiField(storage=bofh_storage)
     pdf_file = fields.PdfField(storage=bofh_storage)
 
-    cover = fields.CoverField(_('cover'), storage=bofh_storage)
+    cover = fields.CoverField('okładka', storage=bofh_storage)
     # Cleaner version of cover for thumbs
-    cover_clean = fields.CoverCleanField(_('clean cover'))
-    cover_thumb = fields.CoverThumbField(_('cover thumbnail'))
+    cover_clean = fields.CoverCleanField('czysta okładka')
+    cover_thumb = fields.CoverThumbField('miniatura okładki')
     cover_api_thumb = fields.CoverApiThumbField(
-        _('cover thumbnail for mobile app'))
-    simple_cover = fields.SimpleCoverField(_('cover for mobile app'))
+        'mniaturka okładki dla aplikacji')
+    simple_cover = fields.SimpleCoverField('okładka dla aplikacji')
     cover_ebookpoint = fields.CoverEbookpointField(
-        _('cover for Ebookpoint'))
+        'okładka dla Ebookpoint')
 
     ebook_formats = constants.EBOOK_FORMATS
     formats = ebook_formats + ['html', 'xml']
@@ -104,8 +104,8 @@ class Book(models.Model):
 
     class Meta:
         ordering = ('sort_key_author', 'sort_key')
-        verbose_name = _('book')
-        verbose_name_plural = _('books')
+        verbose_name = 'książka'
+        verbose_name_plural = 'książki'
         app_label = 'catalogue'
 
     def __str__(self):
@@ -397,7 +397,7 @@ class Book(models.Model):
 
     def has_description(self):
         return len(self.description) > 0
-    has_description.short_description = _('description')
+    has_description.short_description = 'opis'
     has_description.boolean = True
 
     def has_mp3_file(self):
@@ -608,7 +608,7 @@ class Book(models.Model):
                 try:
                     children.append(Book.objects.get(slug=part_url.slug))
                 except Book.DoesNotExist:
-                    raise Book.DoesNotExist(_('Book "%s" does not exist.') % part_url.slug)
+                    raise Book.DoesNotExist('Książka "%s" nie istnieje.' % part_url.slug)
 
         # Read book metadata
         book_slug = book_info.url.slug
@@ -624,7 +624,7 @@ class Book(models.Model):
                 book.preview_until = date.today() + timedelta(days)
         else:
             if not overwrite:
-                raise Book.AlreadyExists(_('Book %s already exists') % book_slug)
+                raise Book.AlreadyExists('Książka %s już istnieje' % book_slug)
             # Save shelves for this book
             book_shelves = list(book.tags.filter(category='set'))
             old_cover = book.cover_info()
@@ -939,7 +939,7 @@ class Book(models.Model):
     def stage_note(self):
         stage = self.get_extra_info_json().get('stage')
         if stage and stage < '0.4':
-            return (_('This work needs modernisation'),
+            return (_('Ten utwór wymaga uwspółcześnienia'),
                     reverse('infopage', args=['wymagajace-uwspolczesnienia']))
         else:
             return None, None

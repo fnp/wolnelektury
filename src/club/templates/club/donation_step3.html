@@ -1,5 +1,5 @@
 {% extends 'club/donation_step_base.html' %}
-
+{% load i18n %}
 {% load static %}
 {% load club %}
 
@@ -14,7 +14,7 @@
         <h3>
           {{ schedule.amount|floatformat }} zł
           {% if schedule.monthly %}
-            <span>/mies.</span>
+            <span>{% trans "/mies." context "kwota na miesiąc" %}</span>
           {% endif %}</h3>
           <img src="{% static '2022/images/checkout-img-3.jpg' %}" alt="">
       </div>
@@ -22,7 +22,6 @@
     <div class="l-checkout__col">
       <div class="l-checkout__form">
         <div class="l-checkout__form__row full">
-          <!-- h3>Wybierz bezpieczną płatność:</h3-->
           <div class="iframe">
             {% for method in schedule.get_payment_methods %}
               {% invite_payment method schedule %}
@@ -30,75 +29,18 @@
           </div>
         </div>
         <div class="l-checkout__form__row full">
-          <h3>Możesz też ustawić stały przelew na konto:</h3>
-          <div class="l-checkout__info">
-            <div class="l-checkout__info__item">
-              <div>nazwa odbiorcy</div>
-              <h3>Fundacja Wolne Lektury</h3>
-              <button title="Kopiuj tekst" class="js-copy">
-                <img src="{% static '2022/images/copy.svg' %}" alt="Kopiuj">
-              </button>
-              <input type="text" value="Fundacja Wolne Lektury">
-            </div>
-            <div class="l-checkout__info__item">
-              <div>adres odbiorcy</div>
-              <h3>ul. Marszałkowska 84/92 lok. 125, 00-514 Warszawa</h3>
-              <button title="Kopiuj tekst" class="js-copy">
-                <img src="{% static '2022/images/copy.svg' %}" alt="Kopiuj">
-              </button>
-              <input type="text" value="ul. Marszałkowska 84/92 lok. 125, 00-514 Warszawa">
-            </div>
-            <div class="l-checkout__info__item">
-              <div>numer konta</div>
-              <h3>75 1090 2851 0000 0001 4324 3317</h3>
-              <button title="Kopiuj tekst" class="js-copy">
-                <img src="{% static '2022/images/copy.svg' %}" alt="Kopiuj">
-              </button>
-              <input type="text" value="75 1090 2851 0000 0001 4324 3317">
-            </div>
-            <div class="l-checkout__info__item">
-              <div>tytuł przelewu</div>
-              <h3>Darowizna na Wolne Lektury + twoja nazwa użytkownika lub e-mail</h3>
-              <button title="Kopiuj tekst" class="js-copy">
-                <img src="{% static '2022/images/copy.svg' %}" alt="Kopiuj">
-              </button>
-              <input type="text" value="Darowizna na Wolne Lektury + twoja nazwa użytkownika lub e-mail">
-            </div>
-            <div class="l-checkout__info__item">
-              <div>wpłaty w EUR</div>
-              <h3>PL88 1090 2851 0000 0001 4324 3374</h3>
-              <button title="Kopiuj tekst" class="js-copy">
-                <img src="{% static '2022/images/copy.svg' %}" alt="Kopiuj">
-              </button>
-              <input type="text" value="PL88 1090 2851 0000 0001 4324 3374">
-            </div>
-            <div class="l-checkout__info__item">
-              <div>Wpłaty w USD</div>
-              <h3>PL82 1090 2851 0000 0001 4324 3385</h3>
-              <button title="Kopiuj tekst" class="js-copy">
-                <img src="{% static '2022/images/copy.svg' %}" alt="Kopiuj">
-              </button>
-              <input type="text" value="PL88 1090 2851 0000 0001 4324 3374">
-            </div>
-            <div class="l-checkout__info__item">
-              <div>SWIFT</div>
-              <h3>WBKPPLPP</h3>
-              <button title="Kopiuj tekst" class="js-copy">
-                <img src="{% static '2022/images/copy.svg' %}" alt="Kopiuj">
-              </button>
-              <input type="text" value="WBKPPLPP">
-            </div>
-          </div>
+          <h3>{% trans "Możesz też ustawić stały przelew na konto:" %}</h3>
+          {% include "club/transfer_info.html" %}
         </div>
         <div class="l-checkout__form__row confirm">
-          <a href="{% url 'donation_step2' schedule.key %}">Powrót</a>
+          <a href="{% url 'donation_step2' schedule.key %}">{% trans "Powrót" %}</a>
         </div>
       </div>
     </div>
   </div>
   <div class="l-checkout__secure">
     <img src="{% static '2022/images/payments-padlock.png' %}" class="l-checkout__secure__padlock">
-    Bezpieczne płatności zapewniają:
+    {% trans "Bezpieczne płatności zapewniają" %}:
     <img src="{% static '2022/images/payments-payu.png' %}" class="l-checkout__secure__img" alt="PayU Visa MasterCard">
     {% if club.paypal_enabled %}
       <img src="{% static '2022/images/payments-paypal.png' %}" class="l-checkout__secure__img" alt="PayPal">

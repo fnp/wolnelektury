@@ -17,12 +17,12 @@ from wolnelektury.utils import send_noreply_mail
 
 class SuggestForm(NewsletterForm):
     email_field = 'contact'
-    contact = forms.CharField(label=_('Contact'), max_length=120, required=False)
-    description = forms.CharField(label=_('Description'), widget=forms.Textarea, required=True)
+    contact = forms.CharField(label=_('Kontakt'), max_length=120, required=False)
+    description = forms.CharField(label=_('Opis'), widget=forms.Textarea, required=True)
 
-    data_processing_part2 = '''\
+    data_processing_part2 = _('''\
 Dane są przetwarzane w zakresie niezbędnym do obsługi zgłoszenia. W przypadku wyrażenia dodatkowej zgody \
-adres e-mail zostanie wykorzystany także w celu przesyłania newslettera Wolnych Lektur.'''
+adres e-mail zostanie wykorzystany także w celu przesyłania newslettera Wolnych Lektur.''')
 
     def save(self, request):
         super(SuggestForm, self).save()
@@ -55,17 +55,17 @@ Kontakt: %(contact)s
             pass
         else:
             send_noreply_mail(
-                gettext('Thank you for your suggestion.'),
+                gettext('Dziękujemy za zgłoszenie.'),
                 gettext("""\
-Thank you for your comment on WolneLektury.pl.
-The suggestion has been referred to the project coordinator."""),
+Dziękujemy za zgłoszenie uwag do serwisu Wolne Lektury.
+Sugestia została przekazana koordynatorce projektu."""),
                 [contact], fail_silently=True)
 
 
 class PublishingSuggestForm(NewsletterForm):
     email_field = 'contact'
-    contact = forms.CharField(label=_('Contact'), max_length=120, required=False)
-    books = forms.CharField(label=_('books'), widget=forms.Textarea, required=True)
+    contact = forms.CharField(label=_('Kontakt'), max_length=120, required=False)
+    books = forms.CharField(label=_('książki'), widget=forms.Textarea, required=True)
     ebook = forms.BooleanField(label=_('ebook'), required=False, initial=True, label_suffix='')
     audiobook = forms.BooleanField(label=_('audiobook'), required=False, label_suffix='')
 
@@ -73,7 +73,7 @@ class PublishingSuggestForm(NewsletterForm):
 
     def clean(self):
         if not self.cleaned_data['ebook'] and not self.cleaned_data['audiobook']:
-            msg = gettext("One of these options is required.")
+            msg = gettext("Proszę zaznaczyć co najmniej jedną opcję.")
             self._errors['ebook'] = self.error_class([msg])
             self._errors['audiobook'] = self.error_class([msg])
         return super(PublishingSuggestForm, self).clean()
@@ -119,8 +119,8 @@ class PublishingSuggestForm(NewsletterForm):
                 pass
             else:
                 send_noreply_mail(
-                    gettext('Thank you for your suggestion.'),
+                    gettext('Dziękujemy za zgłoszenie.'),
                     gettext("""\
-Thank you for your comment on WolneLektury.pl.
-The suggestion has been referred to the project coordinator."""),
+Dziękujemy za zgłoszenie uwag do serwisu Wolne Lektury.
+Sugestia została przekazana koordynatorce projektu."""),
                     [contact], fail_silently=True)

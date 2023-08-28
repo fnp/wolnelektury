@@ -3,39 +3,35 @@
 
 
 {% block body %}{% if is_win %}
-{% blocktrans %}we succesfully collected the full amount needed
-for the book you contributed to:{% endblocktrans %}
+{% blocktrans %}udało nam się zebrać pełną kwotę na książkę, którą wsparłeś/-aś:{% endblocktrans %}
 
   {{ offer.author }} – {{ offer.title }}
   http://{{ site.domain }}{{ offer.get_absolute_url }}
 
-{% blocktrans %}We will now digitize it, develop and publish it in the library,
-in various formats, free for everyone.{% endblocktrans %}
+{% blocktrans %}Teraz ją zdigitalizujemy, opracujemy i bezpłatnie udostępnimy
+w bibliotece w wielu formatach.{% endblocktrans %}
 {% if funding.name %}
-{% blocktrans %}Your name will be included on the list of contributors, irrespectively
-of the amount of your contribution.{% endblocktrans %}
+{% blocktrans %}Zostaniesz umieszczony/-a na liście darczyńców, niezależnie od wysokości wpłaty.{% endblocktrans %}
 {% endif %}{# funding.name #}{% if funding.perks.exists %}
-{% blocktrans %}We will contact you again about details needed
-to deliver your perks.{% endblocktrans %}
+{% blocktrans %}Skontaktujemy się z Tobą w sprawie prezentów, które wybrałeś/-aś.{% endblocktrans %}
 {% endif %}{# funding.perks.exists #}{% if remaining %}
-{% blocktrans with r=remaining %}All of the money remaining after this fundraiser ({{ r }} PLN)
-will be spent on liberating other books still waiting for publication.{% endblocktrans %}
-{% blocktrans %}You can see how we're spending these funds on this page:{% endblocktrans %}
+{% blocktrans with r=remaining %}Wszystkie dodatkowe pieniądze pozostałe z tej zbiórki ({{ r }} zł)
+zostaną przeznaczone na uwolnienie innych książek czekających na publikację.{% endblocktrans %}
+{% blocktrans %}Możesz zobaczyć, jak wydajemy te środki, na tej stronie:{% endblocktrans %}
 http://{{ site.domain }}{% url 'funding_wlfund' %}
 {% endif %}{# remaining #}{% else %}{# !is_win #}
-{% blocktrans %}unfortunately, we were unable to collect the full amount needed
-for the book you contributed to:{% endblocktrans %}
+{% blocktrans %}niestety, nie udało nam się zebrać pełnej kwoty na książkę, którą wsparłeś/-aś:{% endblocktrans %}
 
   {{ offer.author }} – {{ offer.title }}
   http://{{ site.domain }}{{ offer.get_absolute_url }}
 {% if remaining %}
-{% blocktrans with x=remaining %}All of the money we collected in this fundraiser ({{ x }} PLN)
-will be spent on liberating other books still waiting for publication.{% endblocktrans %}
-{% blocktrans %}You can see how we're spending these funds on this page:{% endblocktrans %}
+{% blocktrans with x=remaining %}Wszystkie pieniądze z tej zbiórki ({{ x }} zł)
+zostaną przeznaczone na uwolnienie innych książek czekających na publikację.{% endblocktrans %}
+{% blocktrans %}Możesz zobaczyć, jak wydajemy te środki, na tej stronie:{% endblocktrans %}
 http://{{ site.domain }}{% url 'funding_wlfund' %}
 {% endif %}{# remaining #}{% endif %}{# is_win #}{% if current %}
-{% blocktrans %}If you'd like to help liberate another book, or invite your friends
-to do so, we're currently raising money for:{% endblocktrans %}
+{% blocktrans %}Jeśli chcesz pomóc uwolnić kolejną książkę, albo zachęcić do tego
+swoich znajomych, to aktualnie zbieramy na:{% endblocktrans %}
 
   {{ current.author }} – {{ current.title }}
   http://{{ site.domain }}{% url 'funding_current' %}

@@ -1,5 +1,4 @@
 {% extends "admin/change_form.html" %}
-{% load i18n %}
 
 {% block extrahead %}
   {{ block.super }}
@@ -15,7 +14,7 @@
 {% endblock %}
 
 {% block pretitle %}
-  <a id="generated-switch">↓ {% trans "fundings" %} ↓</a>
+  <a id="generated-switch">↓ wpłaty ↓</a>
   <div id="generated" style="display:none; padding:1em; border: 1px solid #aaa;">{% spaceless %}
     {% for funding in original.funders %}
       {% if funding.name %}

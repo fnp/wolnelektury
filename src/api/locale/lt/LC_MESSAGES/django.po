@@ -1,12 +1,8 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# This file is part of Wolnelektury, licensed under GNU Affero GPLv3 or later.
+# Copyright © Fundacja Wolne Lektury. See NOTICE for more information.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: WolneLektury-api\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
@@ -15,142 +11,117 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"(n%100<10 || n%100>=20) ? 1 : 2);\n"
-
-#: api/models.py:16
-msgid "slug"
-msgstr ""
+"Plural-Forms: nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < "
+"11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? "
+"1 : n % 1 != 0 ? 2: 3);\n"
 
 #: api/templates/api/main.html:7 api/templates/api/main.html:11
-msgid "WolneLektury.pl API"
+msgid "API WolneLektury.pl"
 msgstr ""
 
 #: api/templates/api/main.html:21
 #, python-format
 msgid ""
-"\n"
-"        WolneLektury.pl API resides under <code>%(u)s</code>.\n"
-"        You can use it to access information about books, their fragments "
-"and\n"
-"        their metadata.\n"
-"      "
+"API serwisu WolneLektury.pl znajduje się pod adresem <code>%(u)s</code>. Za "
+"jego pomocą można uzyskać informacje o utworach, ich fragmentach i "
+"metadanych."
 msgstr ""
 
 #: api/templates/api/main.html:29
 msgid ""
-"\n"
-"        Default data serialization format is\n"
-"        <a href=\"http://en.wikipedia.org/wiki/JSON\">JSON</a>,\n"
-"        but you can also use XML by appending <code>?format=xml</code>\n"
-"        query parameter to each URL.\n"
-"      "
+"Dane domyślnie są serializowane w formacie JSON, ale dostępny jest też "
+"format XML – wystarczy dodać parametr <code>?format=xml</code> do dowolnego "
+"zapytania."
 msgstr ""
 
-#: api/templates/api/main.html:38
-msgid ""
-"\n"
-"        The URLs in WolneLektury.pl API are:\n"
-"      "
+#: api/templates/api/main.html:37
+msgid "API Wolnych Lektur zawiera następujące adresy URL:"
 msgstr ""
 
-#: api/templates/api/main.html:45
-msgid "All books"
+#: api/templates/api/main.html:44
+msgid "Wszystkie utwory"
 msgstr ""
 
-#: api/templates/api/main.html:47
-msgid "Audiobooks"
+#: api/templates/api/main.html:46
+msgid "Audiobooki"
 msgstr ""
 
-#: api/templates/api/main.html:49
+#: api/templates/api/main.html:48
 msgid "DAISY"
 msgstr ""
 
-#: api/templates/api/main.html:52
-msgid "List of all authors"
+#: api/templates/api/main.html:51
+msgid "Lista autorów"
 msgstr ""
 
-#: api/templates/api/main.html:54
-msgid "List of all epochs"
+#: api/templates/api/main.html:53
+msgid "Lista epok"
 msgstr ""
 
-#: api/templates/api/main.html:56
-msgid "List of all genres"
+#: api/templates/api/main.html:55
+msgid "Lista gatunków literackich"
 msgstr ""
 
-#: api/templates/api/main.html:58
-msgid "List of all kinds"
+#: api/templates/api/main.html:57
+msgid "Lista rodzajów literackich"
 msgstr ""
 
-#: api/templates/api/main.html:61
-msgid "List of all themes"
+#: api/templates/api/main.html:60
+msgid "Lista motywów i tematów literackich"
 msgstr ""
 
-#: api/templates/api/main.html:63
-msgid "Collections"
+#: api/templates/api/main.html:62
+msgid "Kolekcje"
 msgstr ""
 
-#: api/templates/api/main.html:69
-#, python-format
+#: api/templates/api/main.html:68
 msgid ""
-"\n"
-"        Each element of those lists contains a link (in a \"href\") "
-"attibute\n"
-"        which points to individual resource's details, i.e.:\n"
-"        <a href=\"%(e1)s\">%(e1)s</a> or\n"
-"        <a href=\"%(e2)s\">%(e2)s</a>.\n"
-"      "
+"Każdy element na tych listach zawiera adres (w atrybucie „href”), pod którym "
+"można znaleźć szczegółowe dane, np."
 msgstr ""
 
-#: api/templates/api/main.html:78
-#, python-format
-msgid ""
-"\n"
-"        You can combine authors, epochs, genres and kinds to find only books "
-"matching\n"
-"        those criteria. For instance:\n"
-"        <a href=\"%(e)s\">%(e)s</a>.\n"
-"      "
+#: api/templates/api/main.html:72
+msgid "albo"
 msgstr ""
 
-#: api/templates/api/main.html:86
-#, python-format
+#: api/templates/api/main.html:77
 msgid ""
-"\n"
-"        If you only want top-level books and not all the children, you can "
-"use /parent_books/, as in:\n"
-"        <a href=\"%(e)s\">%(e)s</a>.\n"
-"      "
+"Można łączyć autorów, epoki, gatunki i rodzaje, aby wybrać tylko utwory "
+"odpowiadające zadanym kryteriom. Na przykład:"
 msgstr ""
 
-#: api/templates/api/main.html:94
-#, python-format
+#: api/templates/api/main.html:85
 msgid ""
-"\n"
-"        The same way, using also books and themes, you can search for a list "
-"of fragments:\n"
-"        <a href=\"%(e)s\">%(e)s</a>.\n"
-"        Again, each entry has a \"href\" attribute which links to the "
-"fragment's details, i.e.:\n"
-"        <a href=\"%(f)s\">%(f)s</a>.\n"
-"      "
+"Aby spośród wszystkich pasujących wybrać tylko utwory najwyższego poziomu "
+"(pomijając ich podutwory), można użyć zapytania /parent_books/, np.:"
+msgstr ""
+
+#: api/templates/api/main.html:93
+msgid ""
+"W ten sam sposób, filtrując dodatkowo według lektur lub motywów, można "
+"wyszukiwać fragmenty:"
+msgstr ""
+
+#: api/templates/api/main.html:98
+msgid ""
+"Każdy element uzyskanej listy w atrybucie „href” zawiera link do "
+"szczegółowego opisu danego fragmentu, np.:"
 msgstr ""
 
 #: api/templates/oauth/authorize_token.html:6
 #: api/templates/oauth/authorize_token.html:10
 #: api/templates/oauth/authorize_token.html:13
-msgid "Authorize access to Wolne Lektury"
+msgid "Zezwól na dostęp do Wolnych Lektur"
 msgstr "Leisti prieigą prie Wolne Lektury interneto svetainės"
 
 #: api/templates/oauth/authorize_token.html:17
 #, python-format
 msgid ""
-"Confirm to authorize access to Wolne Lektury as user <strong>%(user)s</"
-"strong>."
+"Potwierdź dostęp do Wolnych Lektur jako użytkownik <strong>%(user)s</strong>."
 msgstr ""
 "Patvirtinkite, kad leistute prieigą prie Wolne Lektury interneto svetainės "
 "kaip vartotojas <strong>%(user)s</strong>."
 
 #: api/templates/oauth/authorize_token.html:23
-msgid "Confirm"
+msgid "Potwierdź"
 msgstr ""

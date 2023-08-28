@@ -20,33 +20,32 @@ class SearchFilters(forms.Form):
         min_length=2, max_length=256,
     )
     format = forms.ChoiceField(required=False, choices=[
-        ('', 'wszystkie'),
-        ('text', 'tekst'),
-        ('audio', 'audiobook'),
-        ('daisy', 'Daisy'),
-        ('art', 'obraz'),
-        #('theme', 'motywy'),
+        ('', _('wszystkie')),
+        ('text', _('tekst')),
+        ('audio', _('audiobook')),
+        ('daisy', _('Daisy')),
+        ('art', _('obraz')),
     ], widget=InlineRadioWidget())
     lang = forms.ChoiceField(required=False)
     epoch = forms.ChoiceField(required=False)
     genre = forms.ChoiceField(required=False)
     category = forms.ChoiceField(required=False, choices=[
-        ('', 'wszystkie'),
-        ('author', 'autor'),
-        #('translator', 'tłumacz'),
-        ('theme', 'motyw'),
-        ('genre', 'gatunek'),
-        ('book', 'tytuł'),
-        ('art', 'obraz'),
-        ('collection', 'kolekcja'),
-        ('quote', 'cytat'),
+        ('', _('wszystkie')),
+        ('author', _('autor')),
+        #('translator', _('tłumacz')),
+        ('theme', _('motyw')),
+        ('genre', _('gatunek')),
+        ('book', _('tytuł')),
+        ('art', _('obraz')),
+        ('collection', _('kolekcja')),
+        ('quote', _('cytat')),
     ], widget=InlineRadioWidget())
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
         langs = dict(settings.LANGUAGES)
-        self.fields['lang'].choices = [('', 'wszystkie')] + [
+        self.fields['lang'].choices = [('', _('wszystkie'))] + [
             (
                 b,
                 langs.get(LANGUAGES_3TO2.get(b, b), b)
@@ -55,11 +54,11 @@ class SearchFilters(forms.Form):
                     'language', flat=True
             ).distinct().order_by()
         ]
-        self.fields['epoch'].choices = [('', 'wszystkie')] + [
+        self.fields['epoch'].choices = [('', _('wszystkie'))] + [
             (b.slug, b.name)
             for b in catalogue.models.Tag.objects.filter(category='epoch')
         ]
-        self.fields['genre'].choices = [('', 'wszystkie')] + [
+        self.fields['genre'].choices = [('', _('wszystkie'))] + [
             (b.slug, b.name)
             for b in catalogue.models.Tag.objects.filter(category='genre')
         ]

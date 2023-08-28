@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block breadcrumbs %}
-  <a href="{% url 'libraries_main_view' %}"><span>{% trans 'Libraries directory' %}</span></a>
+  <a href="{% url 'libraries_main_view' %}"><span>{% trans 'Katalog bibliotek' %}</span></a>
   <a href="{{ library.catalog.get_absolute_url }}"><span>{{ library.catalog.name }}</span></a>
 {% endblock %}
 
@@ -16,7 +16,7 @@
 {% block body %}
   <h1>{{ library.name }}</h1>
   <div class="normal-text">
-    <p>Adres strony www: <a href="{{library.url}}">{{library.url}}</a></p>
+    <p>{% trans "Adres strony www" %}: <a href="{{library.url}}">{{library.url}}</a></p>
     {% autoescape off %}{{library.description}}{% endautoescape%}
   </div>
 {% endblock %}
