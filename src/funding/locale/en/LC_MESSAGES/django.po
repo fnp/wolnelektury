@@ -353,6 +353,7 @@ msgstr ""
 "or try to use a different payment method."
 
 #: funding/templates/funding/offer_detail.html:15
+#: funding/templates/funding/offer_list.html:7
 msgid "Zbiórki"
 msgstr "Fundraisers"
 
@@ -390,7 +391,7 @@ msgstr ""
 msgid "Wpłaty"
 msgstr ""
 
-#: funding/templates/funding/offer_list.html:15
+#: funding/templates/funding/offer_list.html:17
 msgid "filtry, tytuł"
 msgstr "filters, title"
 

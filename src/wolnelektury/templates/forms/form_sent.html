@@ -17,5 +17,18 @@
 
 {% block body %}
    <h1>{{ form.title }}</h1>
-   <p>{{ form.response }}</p>
+   <p id="form-response">{{ form.response|safe }}</p>
+{% endblock %}
+
+{% block extrabody %}
+  <script type="text/javascript">
+   (function() {
+       let $a = $("#form-response a");
+       if ($a.length) {
+           setTimeout(() => {
+               window.location.href = $a.attr('href');
+           }, 5000);
+       }
+   })();
+  </script>
 {% endblock %}

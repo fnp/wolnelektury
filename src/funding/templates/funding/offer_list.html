@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 
 {% block settings %}
   {% load title %}
-  {% title 'Zbiórki' %}
+  {% trans 'Zbiórki' as title %}
+  {% title title %}
 {% endblock %}
 
 
