@@ -323,7 +323,7 @@
   button.on('click', function() {
     let dataLabel = $(this).attr('data-label');
     let dataAction = $(this).attr('data-action');
-    $(this).parent().find('.l-article__overlay').toggleClass('is-clicked');
+    $(this).parent().parent().find('.l-article__overlay').toggleClass('is-clicked');
     if($(this).text() === dataLabel) {
       $(this).text(dataAction);
     } else {
