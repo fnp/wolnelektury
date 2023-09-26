@@ -46,7 +46,6 @@ urlpatterns += [
     path('mapa/', include('references.urls')),
     path('newsletter/', include('newsletter.urls')),
     path('formularz/', include('forms_builder.forms.urls')),
-    path('isbn/', include('isbn.urls')),
     path('messaging/', include('messaging.urls')),
     path('re/', include('redirects.urls')),
     path('stats/', include('stats.urls')),
