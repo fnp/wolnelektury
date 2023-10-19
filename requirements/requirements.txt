@@ -39,7 +39,7 @@ mutagen==1.45.1
 sorl-thumbnail==12.8.0
 
 # home-brewed & dependencies
-librarian==2.6.1
+librarian==23.10
 
 # celery tasks
 celery[redis]==5.2.7

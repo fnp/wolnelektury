@@ -209,6 +209,25 @@
 .l-author__quotes__slider__item {
   max-width: 336px;
   outline: 0;
+
+  .verse-indent {
+      padding-left: 1em;
+      &.verse-indent-2 { padding-left: 1.1em; }
+      &.verse-indent-3 { padding-left: 1.2em; }
+      &.verse-indent-4 { padding-left: 1.3em; }
+      &.verse-indent-5 { padding-left: 1.4em; }
+      &.verse-indent-6 { padding-left: 1.5em; }
+      &.verse-indent-7 { padding-left: 1.6em; }
+      &.verse-indent-8 { padding-left: 1.7em; }
+      &.verse-indent-9 { padding-left: 1.8em; }
+      &.verse-indent-10 { padding-left: 1.9em; }
+      &.verse-indent-11 { padding-left: 2em; }
+      &.verse-indent-12 { padding-left: 2.1em; }
+  }
+  .verse-cont { padding-left: 2.1em; }
+  .verse-p { padding-left: 1em; }
+  .verse-right { text-align: right; }
+  .verse-center { text-align: center; }
 }
 
 

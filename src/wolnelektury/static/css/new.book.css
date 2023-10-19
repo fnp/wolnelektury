@@ -217,6 +217,45 @@ div.kwestia div.stanza {
     margin: 0;
 }
 
+.verse-p {
+    padding-left: 1em;
+}
+.verse-indent {
+    padding-left: 1em;
+}
+.verse-right { text-align: right; }
+.verse-center { text-align: center; }
+
+.verse-indent.verse-indent-2 { padding-left: 2em; }
+.verse-indent.verse-indent-3 { padding-left: 3em; }
+.verse-indent.verse-indent-4 { padding-left: 4em; }
+.verse-indent.verse-indent-5 { padding-left: 5em; }
+.verse-indent.verse-indent-6 { padding-left: 6em; }
+.verse-indent.verse-indent-7 { padding-left: 7em; }
+.verse-indent.verse-indent-8 { padding-left: 8em; }
+.verse-indent.verse-indent-9 { padding-left: 9em; }
+.verse-indent.verse-indent-10 { padding-left: 10em; }
+.verse-indent.verse-indent-11 { padding-left: 11em; }
+.verse-indent.verse-indent-12 { padding-left: 12em; }
+.verse-cont { padding-left: 12em; }
+
+@media screen and (max-width: 40em) {
+    .verse-indent { padding-left: 4%; }
+    .verse-indent.verse-indent-2 { padding-left: 8%; }
+    .verse-indent.verse-indent-3 { padding-left: 12%; }
+    .verse-indent.verse-indent-4 { padding-left: 16%; }
+    .verse-indent.verse-indent-5 { padding-left: 20%; }
+    .verse-indent.verse-indent-6 { padding-left: 24%; }
+    .verse-indent.verse-indent-7 { padding-left: 28%; }
+    .verse-indent.verse-indent-8 { padding-left: 32%; }
+    .verse-indent.verse-indent-9 { padding-left: 36%; }
+    .verse-indent.verse-indent-10 { padding-left: 40%; }
+    .verse-indent.verse-indent-11 { padding-left: 44%; }
+    .verse-indent.verse-indent-12 { padding-left: 48%; }
+    .verse-cont { padding-left: 48%; }
+}
+
+
 p.paragraph {
     text-align: justify;
     margin: 0;
