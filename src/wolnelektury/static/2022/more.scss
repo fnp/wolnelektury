@@ -266,9 +266,10 @@ form {
         a {
             display: flex;
             align-items: start;
+            gap: 0 10px;
+            flex-wrap: wrap;
 
             .buttonlike {
-                margin-right: 10px;
                 background: #FFA500;
                 //color: #083F4D;
                 color: black;
@@ -285,6 +286,11 @@ form {
             }
             .funding-bar-container {
                 flex-grow: 1;
+
+                display: contents;
+                @include rwd($B4) {
+                    display: block;
+                }
             }
         }
     }
