@@ -267,7 +267,11 @@ form {
             display: flex;
             align-items: start;
             gap: 0 10px;
+
             flex-wrap: wrap;
+            @include rwd($B4) {
+                flex-wrap: nowrap;
+            }
 
             .buttonlike {
                 background: #FFA500;
