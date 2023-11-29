@@ -29,6 +29,7 @@ def bank_export(modeladmin, request, queryset):
 def parse_payment_feedback(f):
     lines = csv.reader(StringIO(f.read().decode('cp1250')))
     for line in lines:
+        if not line: continue
         print(line)
         assert line[0] in ('1', '2')
         if line[0] == '1':
@@ -49,6 +50,7 @@ def parse_export_feedback(f):
     # The AU file.
     lines = csv.reader(StringIO(f.read().decode('cp1250')))
     for line in lines:
+        if not line: continue
         payment_id = line[0]
         status = int(line[8])
         comment = line[9]

@@ -8,7 +8,7 @@ from urllib.parse import urljoin
 from django.contrib.syndication.views import Feed
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
-from django.utils.feedgenerator import Atom1Feed
+from django.utils.feedgenerator import Atom1Feed, Enclosure
 from django.conf import settings
 from django.http import Http404
 from django.contrib.sites.models import Site
@@ -145,23 +145,32 @@ class OPDSFeed(Atom1Feed):
 
         # Enclosure as OPDS Acquisition Link
         for enc in item.get('enclosures', []):
-            handler.addQuickElement(
-                "link", '',
+            handler.startElement(
+                "link",
                 {
                     "rel": "http://opds-spec.org/acquisition",
                     "href": enc.url,
-                    "length": enc.length,
+                    "length": str(enc.length),
                     "type": enc.mime_type,
                 })
-            # add a "red book" icon
-            handler.addQuickElement(
-                "link", '',
-                {
-                    "rel": "http://opds-spec.org/thumbnail",
-                    "href": self._book_img,
-                    "length": self._book_img_size,
-                    "type": "image/png",
+            if hasattr(enc, 'indirect'):
+                NS = 'http://opds-spec.org/2010/catalog'
+                handler.startPrefixMapping('opds', NS)
+                handler.startElementNS((NS, 'indirectAcquisition'), 'opds:indirectAcquisition', {
+                    (None, 'type'): enc.indirect,
                 })
+                handler.endElementNS((NS, 'indirectAcquisition'), 'opds:indirectAcquisition')
+                handler.endPrefixMapping('opds')
+            handler.endElement('link')
+        # add a "red book" icon
+        handler.addQuickElement(
+            "link", '',
+            {
+                "rel": "http://opds-spec.org/thumbnail",
+                "href": self._book_img,
+                "length": self._book_img_size,
+                "type": "image/png",
+            })
 
         # Categories.
         for cat in item['categories']:
@@ -175,7 +184,6 @@ class OPDSFeed(Atom1Feed):
 class AcquisitionFeed(Feed):
     feed_type = OPDSFeed
     link = 'http://www.wolnelektury.pl/'
-    item_enclosure_mime_type = "application/epub+zip"
     author_name = "Wolne Lektury"
     author_link = "http://www.wolnelektury.pl/"
 
@@ -200,11 +208,23 @@ class AcquisitionFeed(Feed):
         except AttributeError:
             return ''
 
-    def item_enclosure_url(self, book):
-        return full_url(book.epub_url()) if book.epub_file else None
-
-    def item_enclosure_length(self, book):
-        return book.epub_file.size if book.epub_file else None
+    def item_enclosures(self, book):
+        enc = []
+        if book.epub_file:
+            enc.append(Enclosure(
+                url=full_url(book.epub_url()),
+                length=book.epub_file.size,
+                mime_type="application/epub+zip"
+            ))
+        if book.has_mp3_file():
+            e = Enclosure(
+                url=full_url(reverse('download_zip_mp3', args=[book.slug])),
+                length=sum(bm.file.size for bm in book.get_media('mp3')),
+                mime_type="application/zip"
+            )
+            e.indirect = 'audio/mpeg'
+            enc.append(e)
+        return enc
 
 
 @piwik_track
@@ -277,7 +297,9 @@ class ByTagFeed(AcquisitionFeed):
         return get_object_or_404(Tag, category=category, slug=slug)
 
     def items(self, tag):
-        return Book.tagged_top_level([tag])
+        qs = Book.tagged_top_level([tag])
+        qs = qs.filter(preview=False, findable=True)
+        return qs
 
 
 @factory_decorator(logged_in_or_basicauth())
@@ -404,7 +426,7 @@ class SearchFeed(AcquisitionFeed):
             # query is set above.
             log.debug("Inline query = [%s], criteria: %s" % (query, criteria))
 
-        books = Book.objects.filter(findable=True).annotate(
+        books = Book.objects.filter(findable=True, preview=False).annotate(
             search_vector=UnaccentSearchVector('title')
         )
         if query:
