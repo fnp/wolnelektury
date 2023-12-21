@@ -16,9 +16,11 @@
   </div>
   <div class="l-navigation__menu__book__info">
     <h3>
-      <a href="{{ book.get_absolute_url }}" tabindex="-1">
-        <img src="{{ book.cover_clean.url }}" alt="{{ book.pretty_title }}">
-      </a>
+      {% if book.cover_clean %}
+        <a href="{{ book.get_absolute_url }}" tabindex="-1">
+          <img src="{{ book.cover_clean.url }}" alt="{{ book.pretty_title }}">
+        </a>
+      {% endif %}
       <a href="{{ book.get_absolute_url }}" tabindex="-1">
         {% for author in book.authors %}
           {{ author }}

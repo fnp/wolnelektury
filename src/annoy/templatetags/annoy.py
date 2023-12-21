@@ -14,6 +14,14 @@ def annoy_banner(context, place):
         'closable': PLACES.get(place, False),
     }
 
+@register.inclusion_tag('annoy/banner_blackout.html', takes_context=True)
+def annoy_banner_blackout(context):
+    banners = Banner.choice('blackout', request=context['request'])
+    return {
+        'banner': banners.first(),
+        'closable': True,
+    }
+
 
 @register.inclusion_tag('annoy/banners.html', takes_context=True)
 def annoy_banners(context, place):

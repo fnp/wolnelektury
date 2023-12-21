@@ -65,6 +65,7 @@ PIPELINE = {
 
                 'js/contrib/jquery.cycle2.min.js',
                 'sponsors/js/sponsors.js',
+                'annoy/banner.js',
 
                 'js/contrib/jquery.countdown.js', 'js/contrib/jquery.countdown-pl.js',
                 'js/contrib/jquery.countdown-de.js', 'js/contrib/jquery.countdown-uk.js',

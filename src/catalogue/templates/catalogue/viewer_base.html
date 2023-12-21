@@ -3,7 +3,7 @@
 {% load static from static %}
 {% load pipeline %}
 {% load piwik_tags %}
-{% load annoy_banner from annoy %}
+{% load annoy %}
 <html class="no-js {% if VARIANT %}{{ VARIANT }}{% endif %}">
   <head>
     <meta charset="utf-8">
@@ -15,7 +15,7 @@
     {% tracking_code %}
   </head>
   <body id="{% block body-id %}reader{% endblock %}">
-    {% annoy_banner 'blackout' %}
+    {% annoy_banner_blackout %}
     {% annoy_banner 'top' %}
     <nav id="no-menu"><ul>
       <li><a href="#" id="menu-toggle-on"></a></li>

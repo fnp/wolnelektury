@@ -1,0 +1,40 @@
+{% if banner %}
+  {% if closable %}
+    <a class='annoy-banner-on annoy-banner-on_{{ banner.place }}'
+       href="{{ banner.url }}"
+       data-target="#annoy-banner-{{ banner.id }}"
+    >
+    </a>
+  {% endif %}
+  <div class="
+              annoy-banner
+              annoy-banner_{{ banner.place }}
+              annoy-banner-style_{{ banner.style }}
+              {% if banner.image %}with-image{% endif %}
+              {% if banner.smallfont %}banner-smallfont{% endif %}
+              "
+       id="annoy-banner-{{ banner.id }}"
+	      style="
+              {% if banner.text_color %}color: {{ banner.text_color }};{% endif %}
+              {% if banner.background_color %}background-color: {{ banner.background_color }};{% endif %}
+              ">
+    <div class="annoy-banner-inner">
+
+      <div class="text">
+        {{ banner.get_text|safe|linebreaks }}
+        <div class="annoy-banner_actions">
+          <a class="action l-button l-button--default l-button--default--dark" href="{{ banner.url }}">
+            {{ banner.action_label }}
+          </a>
+          <a class='annoy-banner-off annoy-banner-off_{{ banner.place }}  l-button l-button--default'>{{ banner.close_label|default:"x" }}</a>
+        </div>
+      </div>
+      {% if banner.image %}
+        <div class="annoy-banner_img">
+          <img src="{{ banner.image.url }}">
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+{% endif %}

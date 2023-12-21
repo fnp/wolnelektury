@@ -22,12 +22,10 @@
                 _paq.push(['trackEvent', 'banner', 'banner-hide', $target.attr('id')]);
             });
 
-            if (Modernizr.localstorage) {
-                if (!localStorage[tag]) {
-                    $on.hide();
-                    $target.show();
-                    _paq.push(['trackEvent', 'banner', 'banner-show', $target.attr('id')]);
-                }
+            if (!localStorage[tag]) {
+                $on.hide();
+                $target.show();
+                _paq.push(['trackEvent', 'banner', 'banner-show', $target.attr('id')]);
             }
         });
 

@@ -4,11 +4,13 @@
     <h3>{% trans "Prapremiera" %}</h3>
     <div class="p-homepage-prapremiera__box">
       <div class="p-homepage-prapremiera__box__item">
+        {% if book.cover_clean %}
         <figure>
           <a href="{{ book.get_absolute_url }}">
             <img src="{{ book.cover_clean.url }}" alt="{{ book.pretty_title }}">
           </a>
         </figure>
+        {% endif %}
         <div class="p-homepage-prapremiera__box__content">
           <h4>
             {% for author in book.authors %}
