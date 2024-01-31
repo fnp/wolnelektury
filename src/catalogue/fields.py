@@ -306,7 +306,7 @@ class HtmlField(EbookField):
 
         book = fieldfile.instance
 
-        html_output = self.transform(book.wldocument(parse_dublincore=False))
+        html_output = self.transform(book.wldocument(parse_dublincore=False), book)
 
         # Delete old fragments, create from scratch if necessary.
         book.fragments.all().delete()
