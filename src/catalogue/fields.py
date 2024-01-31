@@ -1,15 +1,19 @@
 # This file is part of Wolne Lektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Wolne Lektury. See NOTICE for more information.
 #
+import io
 import os
 import pkg_resources
 import random
+import time
+from urllib.request import urlopen
 from django.apps import apps
 from django.conf import settings
 from django.core.files import File
 from django.db import models
 from django.db.models.fields.files import FieldFile
 from django.utils.deconstruct import deconstructible
+from librarian.cover import make_cover
 from catalogue.constants import LANGUAGES_3TO2
 from catalogue.utils import absolute_url, remove_zip, truncate_html_words, gallery_path, gallery_url
 from waiter.utils import clear_cache
@@ -30,6 +34,25 @@ class UploadToPath(object):
     def __eq__(self, other):
         return isinstance(other, type(self)) and other.path == self.path
 
+
+def get_make_cover(book):
+    extra = book.get_extra_info_json()
+    cover_logo = extra.get('logo_mono', extra.get('logo'))
+    if cover_logo:
+        while True:
+            try:
+                cover_logo = io.BytesIO(urlopen(cover_logo, timeout=3).read())
+            except:
+                time.sleep(2)
+            else:
+                break
+    
+    def mc(*args, **kwargs):
+        if cover_logo:
+            kwargs['cover_logo'] = cover_logo
+        return make_cover(*args, **kwargs)
+    return mc
+    
 
 class EbookFieldFile(FieldFile):
     """Represents contents of an ebook file field."""
@@ -172,7 +195,7 @@ class EbookField(models.FileField):
         return found
 
     @staticmethod
-    def transform(wldoc):
+    def transform(wldoc, book):
         """Transforms an librarian.WLDocument into an librarian.OutputFile.
         """
         raise NotImplemented()
@@ -185,6 +208,7 @@ class EbookField(models.FileField):
         book = fieldfile.instance
         out = self.transform(
             book.wldocument2() if self.librarian2_api else book.wldocument(),
+            book,
         )
         with open(out.get_filename(), 'rb') as f:
             fieldfile.save(None, File(f), save=False)
@@ -207,7 +231,7 @@ class TxtField(EbookField):
     for_parents = False
 
     @staticmethod
-    def transform(wldoc):
+    def transform(wldoc, book):
         return wldoc.as_text()
 
 
@@ -217,7 +241,7 @@ class Fb2Field(EbookField):
     ZIP = 'wolnelektury_pl_fb2'
 
     @staticmethod
-    def transform(wldoc):
+    def transform(wldoc, book):
         return wldoc.as_fb2()
 
 
@@ -226,9 +250,10 @@ class PdfField(EbookField):
     ZIP = 'wolnelektury_pl_pdf'
 
     @staticmethod
-    def transform(wldoc):
+    def transform(wldoc, book):
         return wldoc.as_pdf(
-            morefloats=settings.LIBRARIAN_PDF_MOREFLOATS, cover=True,
+            morefloats=settings.LIBRARIAN_PDF_MOREFLOATS,
+            cover=get_make_cover(book),
             base_url=absolute_url(gallery_url(wldoc.book_info.url.slug)), customizations=['notoc'])
 
     def build(self, fieldfile):
@@ -242,12 +267,13 @@ class EpubField(EbookField):
     ZIP = 'wolnelektury_pl_epub'
 
     @staticmethod
-    def transform(wldoc):
+    def transform(wldoc, book):
         from librarian.builders import EpubBuilder
         MediaInsertSet = apps.get_model('annoy', 'MediaInsertSet')
         return EpubBuilder(
                 base_url='file://' + os.path.abspath(gallery_path(wldoc.meta.url.slug)) + '/',
-                fundraising=MediaInsertSet.get_texts_for('epub')
+                fundraising=MediaInsertSet.get_texts_for('epub'),
+                cover=get_make_cover(book),
             ).build(wldoc)
 
 
@@ -257,12 +283,13 @@ class MobiField(EbookField):
     ZIP = 'wolnelektury_pl_mobi'
 
     @staticmethod
-    def transform(wldoc):
+    def transform(wldoc, book):
         from librarian.builders import MobiBuilder
         MediaInsertSet = apps.get_model('annoy', 'MediaInsertSet')
         return MobiBuilder(
                 base_url='file://' + os.path.abspath(gallery_path(wldoc.meta.url.slug)) + '/',
-                fundraising=MediaInsertSet.get_texts_for('mobi')
+                fundraising=MediaInsertSet.get_texts_for('mobi'),
+                cover=get_make_cover(book),
             ).build(wldoc)
 
 
@@ -359,7 +386,7 @@ class HtmlField(EbookField):
         return False
 
     @staticmethod
-    def transform(wldoc):
+    def transform(wldoc, book):
         # ugly, but we can't use wldoc.book_info here
         from librarian import DCNS
         url_elem = wldoc.edoc.getroot().find('.//' + DCNS('identifier.url'))
@@ -378,8 +405,8 @@ class CoverField(EbookField):
     directory = 'cover'
 
     @staticmethod
-    def transform(wldoc):
-        return wldoc.as_cover()
+    def transform(wldoc, book):
+        return get_make_cover(book)(wldoc.book_info, width=360).output_file()
 
     def set_file_permissions(self, fieldfile):
         pass
@@ -389,16 +416,15 @@ class CoverCleanField(CoverField):
     directory = 'cover_clean'
 
     @staticmethod
-    def transform(wldoc):
-        from librarian.covers.marquise import MarquiseCover
-        return MarquiseCover(wldoc.book_info, width=360).output_file()
+    def transform(wldoc, book):
+        return get_make_cover(book)(wldoc.book_info, width=360).output_file()
 
 
 class CoverThumbField(CoverField):
     directory = 'cover_thumb'
 
     @staticmethod
-    def transform(wldoc):
+    def transform(wldoc, book):
         from librarian.cover import WLCover
         return WLCover(wldoc.book_info, height=193).output_file()
 
@@ -407,7 +433,7 @@ class CoverApiThumbField(CoverField):
     directory = 'cover_api_thumb'
 
     @staticmethod
-    def transform(wldoc):
+    def transform(wldoc, book):
         from librarian.cover import WLNoBoxCover
         return WLNoBoxCover(wldoc.book_info, height=500).output_file()
 
@@ -416,7 +442,7 @@ class SimpleCoverField(CoverField):
     directory = 'cover_simple'
 
     @staticmethod
-    def transform(wldoc):
+    def transform(wldoc, book):
         from librarian.cover import WLNoBoxCover
         return WLNoBoxCover(wldoc.book_info, height=1000).output_file()
 
@@ -425,6 +451,6 @@ class CoverEbookpointField(CoverField):
     directory = 'cover_ebookpoint'
 
     @staticmethod
-    def transform(wldoc):
+    def transform(wldoc, book):
         from librarian.cover import EbookpointCover
         return EbookpointCover(wldoc.book_info).output_file()

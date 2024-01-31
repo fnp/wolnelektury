@@ -1,5 +1,6 @@
 {% load i18n %}
 {% load catalogue_tags %}
+{% load thumbnail %}
 
 {% with extra_info=book.get_extra_info_json %}
   <p>
@@ -37,6 +38,12 @@
 
   {% if extra_info.description %}
     <p>{{ extra_info.description }}</p>
+  {% endif %}
+
+  {% if extra_info.logo %}
+    {% thumbnail extra_info.logo '300x200' as th %}
+    <img src="{{ th.url }}" style="width: 300px; max-width: 100%;">
+  {% endthumbnail %}
   {% endif %}
 
   {% if extra_info.editor or extra_info.technical_editor %}

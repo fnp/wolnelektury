@@ -11,14 +11,14 @@
                 e.preventDefault();
                 $target.slideDown('fast');
                 $on.hide();
-                if (Modernizr.localstorage) localStorage.removeItem(tag);
+                localStorage.removeItem(tag);
                 _paq.push(['trackEvent', 'banner', 'banner-unhide', $target.attr('id')]);
             });
 
             $off.click(function() {
                 $target.slideUp('fast');
                 $on.show();
-                if (Modernizr.localstorage) localStorage[tag] = true;
+                localStorage[tag] = true;
                 _paq.push(['trackEvent', 'banner', 'banner-hide', $target.attr('id')]);
             });
 

@@ -17,6 +17,8 @@ class BookImportForm(forms.Form):
     gallery_url = forms.CharField(required=False)
     days = forms.IntegerField(required=False)
     hidden = forms.BooleanField(required=False)
+    logo = forms.CharField(required=False)
+    logo_mono = forms.CharField(required=False)
 
     def clean(self):
         from django.core.files.base import ContentFile
@@ -34,6 +36,8 @@ class BookImportForm(forms.Form):
                                   remote_gallery_url=self.cleaned_data['gallery_url'],
                                   days=self.cleaned_data['days'],
                                   findable=not self.cleaned_data['hidden'],
+                                  logo=self.cleaned_data['logo'],
+                                  logo_mono=self.cleaned_data['logo_mono'],
                                   **kwargs)
 
 

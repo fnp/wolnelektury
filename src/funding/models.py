@@ -262,7 +262,7 @@ class Funding(club.payu.models.Order):
 
     """
     offer = models.ForeignKey(Offer, models.PROTECT, verbose_name='zbiórka')
-    customer_ip = models.GenericIPAddressField('adres IP', null=True)
+    customer_ip = models.GenericIPAddressField('adres IP', null=True, blank=True)
     
     name = models.CharField('nazwa', max_length=127, blank=True)
     email = models.EmailField('e-mail', blank=True, db_index=True)
@@ -271,7 +271,7 @@ class Funding(club.payu.models.Order):
     perks = models.ManyToManyField(Perk, verbose_name='prezenty', blank=True)
     language_code = models.CharField(max_length=2, null=True, blank=True)
     notifications = models.BooleanField('powiadomienia', default=True, db_index=True)
-    notify_key = models.CharField(max_length=32)
+    notify_key = models.CharField(max_length=32, blank=True)
 
     class Meta:
         verbose_name = 'wpłata'

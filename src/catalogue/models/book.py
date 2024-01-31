@@ -594,7 +594,7 @@ class Book(models.Model):
 
     @classmethod
     def from_text_and_meta(cls, raw_file, book_info, overwrite=False, dont_build=None, search_index=True,
-                           remote_gallery_url=None, days=0, findable=True):
+                           remote_gallery_url=None, days=0, findable=True, logo=None, logo_mono=None):
         from catalogue import tasks
 
         if dont_build is None:
@@ -641,7 +641,12 @@ class Book(models.Model):
             book.common_slug = book_info.variant_of.slug
         else:
             book.common_slug = book.slug
-        book.extra_info = json.dumps(book_info.to_dict())
+        extra = book_info.to_dict()
+        if logo:
+            extra['logo'] = logo
+        if logo_mono:
+            extra['logo_mono'] = logo_mono
+        book.extra_info = json.dumps(extra)
         book.load_abstract()
         book.load_toc()
         book.save()
@@ -729,8 +734,12 @@ class Book(models.Model):
             else:
                 entity, entity_created = Entity.objects.get_or_create(uri=uri)
                 if entity_created:
-                    entity.populate()
-                    entity.save()
+                    try:
+                        entity.populate()
+                    except:
+                        pass
+                    else:
+                        entity.save()
                 ref, ref_created = entity.reference_set.get_or_create(book=self)
                 refs[uri] = ref
                 if not ref_created:

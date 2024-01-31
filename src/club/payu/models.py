@@ -25,7 +25,7 @@ class CardToken(models.Model):
 
 
 class Order(models.Model):
-    pos_id = models.CharField('POS id', max_length=255)   # TODO: redundant?
+    pos_id = models.CharField('POS id', max_length=255, blank=True)   # TODO: redundant?
     customer_ip = models.GenericIPAddressField('adres IP klienta')
     order_id = models.CharField('ID zamówienia', max_length=255, blank=True)
 

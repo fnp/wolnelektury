@@ -546,6 +546,7 @@ def book_text(request, slug):
 
     return render(request, 'catalogue/book_text.html', {
         'book': book,
+        'extra_info': book.get_extra_info_json(),
         'book_text': book_text,
         'inserts': DynamicTextInsert.get_all(request)
     })
