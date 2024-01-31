@@ -42,7 +42,9 @@
 
   {% if extra_info.logo %}
     {% thumbnail extra_info.logo '300x200' as th %}
-    <img src="{{ th.url }}" style="width: 300px; max-width: 100%;">
+    <img src="{{ th.url }}" style="width: 300px; max-width: 100%;"
+         alt="{{ extra_info.logo_alt|default:'Sponsor' }}"
+    >
   {% endthumbnail %}
   {% endif %}
 

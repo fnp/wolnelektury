@@ -19,6 +19,7 @@ class BookImportForm(forms.Form):
     hidden = forms.BooleanField(required=False)
     logo = forms.CharField(required=False)
     logo_mono = forms.CharField(required=False)
+    logo_alt = forms.CharField(required=False)
 
     def clean(self):
         from django.core.files.base import ContentFile
@@ -38,6 +39,7 @@ class BookImportForm(forms.Form):
                                   findable=not self.cleaned_data['hidden'],
                                   logo=self.cleaned_data['logo'],
                                   logo_mono=self.cleaned_data['logo_mono'],
+                                  logo_alt=self.cleaned_data['logo_alt'],
                                   **kwargs)
 
 

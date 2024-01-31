@@ -594,7 +594,7 @@ class Book(models.Model):
 
     @classmethod
     def from_text_and_meta(cls, raw_file, book_info, overwrite=False, dont_build=None, search_index=True,
-                           remote_gallery_url=None, days=0, findable=True, logo=None, logo_mono=None):
+                           remote_gallery_url=None, days=0, findable=True, logo=None, logo_mono=None, logo_alt=None):
         from catalogue import tasks
 
         if dont_build is None:
@@ -646,6 +646,8 @@ class Book(models.Model):
             extra['logo'] = logo
         if logo_mono:
             extra['logo_mono'] = logo_mono
+        if logo_alt:
+            extra['logo_alt'] = logo_alt
         book.extra_info = json.dumps(extra)
         book.load_abstract()
         book.load_toc()

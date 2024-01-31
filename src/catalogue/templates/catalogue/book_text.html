@@ -62,8 +62,10 @@
   </li>
 
   {% if extra_info.logo_mono %}
-  {% thumbnail extra_info.logo_mono '200x200' as th %}
-    <img src="{{ th.url }}" style="width: 100px; padding: 10px;">
+    {% thumbnail extra_info.logo_mono '200x200' as th %}
+    <img src="{{ th.url }}" style="width: 100px; padding: 10px;"
+         alt="{{ extra_info.logo_alt|default:'Sponsor' }}"
+    >
   {% endthumbnail %}
   {% endif %}
 
