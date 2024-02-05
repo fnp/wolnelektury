@@ -514,6 +514,31 @@ table.border td, table.border th {
 
 }
 
+
+
+.theme-begin {
+    font-size: .9em;
+    position: relative;
+    float: right;
+    margin-bottom: 8px;
+    clear: both;
+    line-height: 1.5em;
+    text-align: left;
+    z-index: 60;
+
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    letter-spacing: 0;
+    text-transform: none;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+
+        margin-right: -160px;
+}
 }
 
 
