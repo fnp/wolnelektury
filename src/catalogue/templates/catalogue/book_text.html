@@ -1,8 +1,11 @@
-{% extends "catalogue/viewer_base.html" %}
+{% extends "base.html" %}
+
+
 {% load i18n l10n %}
 {% load catalogue_tags %}
 {% load chunks %}
 {% load thumbnail %}
+{% load static %}
 {% load annoy_banners from annoy %}
 
 
@@ -17,6 +20,7 @@
           integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
           crossorigin=""></script>
 {% endblock %}
+
 
 {% block menu %}
   <li>
@@ -37,30 +41,6 @@
     </li>
   {% endif %}
 
-  <li id="menu-toc">
-    <a href="#" data-box="wltoc">
-      <span class="label">{% trans "Spis treści" %}</span>
-    </a>
-  </li>
-
-  <li id="menu-themes">
-    <a href="#" data-box="themes">
-      <span class="label">{% trans "Motywy" %}</span>
-    </a>
-  </li>
-
-  <li id="menu-nota_red">
-    <a href="#" data-box="nota_red">
-      <span class="label">{% trans "Nota red." %}</span>
-    </a>
-  </li>
-
-  <li id="menu-info">
-    <a href="#info" data-box="info">
-      <span class="label">{% trans "Informacje" %}</span>
-    </a>
-  </li>
-
   {% if extra_info.logo_mono %}
     {% thumbnail extra_info.logo_mono '200x200' as th %}
     <img src="{{ th.url }}" style="width: 100px; padding: 10px;"
@@ -69,58 +49,191 @@
   {% endthumbnail %}
   {% endif %}
 
-  <a href="#" class="settings-switch" id="settings-line-numbers"
-     data-setting="always-hide-line-numbers"><span>{% trans "Numeracja" %}</span></a>
-  <a href="#" class="settings-switch" id="settings-themes"
-     data-setting="always-hide-themes"><span>{% trans "Motywy" %}</span></a>
-  <a href="#" class="settings-switch" id="settings-annotations"
-     data-setting="no-annotations"><span>{% trans "Przypisy" %}</span></a>
-  <a href="#" class="settings-switch" id="settings-references"
-     data-setting="no-references"><span>{% trans "Pinezki" %}</span></a>
+
 
 {% endblock menu %}
 
 
-{% block big-pane %}
+
+{% block breadcrumb-right %}
+  <div class="l-text_toolbar" id="menu">
+    <a href="#info" data-box="info">
+      <img src="{% static '2022/images/about.svg' %}" alt="{% trans "Informacje" %}">
+    </a>
+
+    <a href="#" data-box="settings" style="display: none;">
+      <img src="{% static '2022/images/settings.svg' %}" alt="{% trans "Ustawienia" %}">
+    </a>
+
+    <a href="#wltoc" data-box="wltoc" style="display: none;">
+      <img src="{% static '2022/images/toc.svg' %}" alt="{% trans "Spis treści" %}">
+    </a>
+
+
+
+
+    <div id="info" class="box">
+      {% book_info book %}
+    </div>
+
+
+    <div id="settings" class="box">
+      <a href="#" class="settings-switch" id="settings-line-numbers"
+         data-setting="always-hide-line-numbers"><span>{% trans "Numeracja" %}</span></a>
+      <a href="#" class="settings-switch" id="settings-themes"
+         data-setting="always-hide-themes"><span>{% trans "Motywy" %}</span></a>
+      <a href="#" class="settings-switch" id="settings-annotations"
+         data-setting="no-annotations"><span>{% trans "Przypisy" %}</span></a>
+      <a href="#" class="settings-switch" id="settings-references"
+         data-setting="no-references"><span>{% trans "Pinezki" %}</span></a>
+    </div>
+
+
+    <div id="wltoc" class="box">
+      {% if book.parent %}
+        {% for b in book.ancestors %}
+          {% if forloop.counter > 1 %}
+            <li>
+          {% endif %}
+          <a href="{% if b.html_file %}{% url 'book_text' b.slug %}{% else %}{{ b.get_absolute_url }}{% endif %}">{{ b.title }}</a>
+          <ol>
+        {% endfor %}
+        {% for b in book.get_siblings %}
+          <li>
+            {% if b == book %}
+              <strong>{{ b.title }}</strong>
+              <div id="heretoc"></div>
+            {% else %}
+              <a href="{% url 'book_text' b.get_first_text.slug %}">{{ b.title }}</a>
+            {% endif %}
+          </li>
+        {% endfor %}
+
+        {% for b in book.ancestor.all %}
+          </ol>
+          {% if not forloop.counter.last %}
+            </li>
+          {% endif %}
+        {% endfor %}
+      {% else %}
+        <strong>{{ book.title }}</strong>
+        <div id="heretoc"></div>
+        <ol>
+          {% for c in book.get_children %}
+            <li><a href="{% url 'book_text' c.get_first_text.slug %}">{{ c.title }}</a></li>
+          {% endfor %}
+        </ol>
+      {% endif %}
+    </div>
+
+  </div>
+{% endblock %}
+
+
+
+
+{% block main %}
+  <div id="global-progress" class="l-container">
+    <div class="bar">
+      <span class="piece" style="flex-grow: 100;">
+        <span class="filled"></span>
+      </span>
+    </div>
+    <div class="progress-text">
+      Szacowany czas do końca: <span class="progress-text-value">56 min</span>
+    </div>
+  </div>
+
+  <header class="l-text_header">
+    <img class="l-text_header_cover" src="{% if book.cover_clean %}{{ book.cover_clean.url }}{% endif %}" alt="{{ book.pretty_title }}">
+
+    <div class="l-text_header__content">
+      <p class="l-text_header_author">{% for author in book.authors %}<a href="{{ author.get_absolute_url }}">{{ author.name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}
+      </p>
+      <h1 class="l-text_header_title"><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></h1>
+      {% with translators=book.translators %}
+        {% if translators %}
+          <p class="l-header__translators">
+            {% if translators.0 != 'tłumacz nieznany' %}
+              {% trans "tłum." %}
+            {% endif %}
+            {% for translator in translators %}
+              {{ translator }}{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+          </p>
+        {% endif %}
+      {% endwith %}
+      <div style="margin-top:1em;">
+        {% content_warning book %}
+      </div>
+
+    </div>
+  </header>
+
 
   <article id="main-text">
     {% with next=book.get_next_text prev=book.get_prev_text %}
       {% if next %}
-        <a style="float:right; padding: 1em;" href="{% url 'book_text' next.slug %}">{{ next.title }}&nbsp;&rarr;</a>
+        <a class="text_next-book" href="{% url 'book_text' next.slug %}">{{ next.title }}&nbsp;&rarr;</a>
       {% endif %}
       {% if prev %}
-        <a style="display:inline-block;padding: 1em;" href="{% url 'book_text' prev.slug %}">&larr;&nbsp;{{ prev.title }}</a>
+        <a class="text_prev-book" href="{% url 'book_text' prev.slug %}">&larr;&nbsp;{{ prev.title }}</a>
       {% endif %}
-      <div style="text-align:center; margin-top:1em;">
-        {% content_warning book %}
-      </div>
-      <div style="clear:both;"></div>
       {{ book_text|safe }}
     {% endwith %}
-  </article>
 
 
 
-  <article id="other-text">
-    <a class="other-text-close" href="#">{% trans "Zamknij" %}</a>
-    <div id="other-text-waiter">{% trans "Proszę czekać..." %}</div>
-    <div id="other-text-body" style="display: none;"></div>
-  </article>
 
-  <div id="reference-box">
-    <div id="reference-map"></div>
-    <a id="reference-close" href="#">x</a>
-    <div id="reference-images">
+
+
+    <article id="other-text">
+      <a class="other-text-close" href="#">{% trans "Zamknij" %}</a>
+      <div id="other-text-waiter">{% trans "Proszę czekać..." %}</div>
+      <div id="other-text-body" style="display: none;"></div>
+    </article>
+
+    <div id="reference-box">
+      <div id="reference-map"></div>
+      <a id="reference-close" href="#">x</a>
+      <div id="reference-images">
+      </div>
+      <a id="reference-link" target="_blank"></a>
     </div>
-    <a id="reference-link" target="_blank"></a>
-  </div>
+
+
+    {% if book.other_versions.exists %}
+      <div class="box" id="other">
+        <h2>{% trans "Inne wersje utworu" %}</h2>
+        <a class="other-text-close" href="#">{% trans "Zamknij drugą wersję" %}</a>
+        <ul>
+          {% spaceless %}
+            {% for other_version in book.other_versions %}
+              <li>
+                <a class="display-other"
+                   data-other="{{ other_version.html_url }}"
+                   href="{% url 'book_text' other_version.slug %}">
+                  {{ other_version.mini_box_nolink }}
+                </a>
+              </li>
+            {% endfor %}
+          {% endspaceless %}
+        </ul>
+      </div>
+    {% endif %}
+
+    <div id="annoy-stubs">
+      {% annoy_banners 'book-text-intermission' %}
+
+      {% for insert in inserts %}
+        {% include 'annoy/dynamic_insert.html' %}
+      {% endfor %}
+    </div>
+
+  </article>
 
 
 
-
-{% endblock big-pane %}
-
-{% block footer %}
   {% if book.has_sync_file %}
     <div id="player-bar">
       {% include 'catalogue/snippets/jplayer_reader.html' %}
@@ -129,78 +242,6 @@
      {{ book.get_sync|safe }}
     </script>
   {% endif %}
-  <div id="wltoc" class="box">
-    {% if book.parent %}
-      {% for b in book.ancestors %}
-        {% if forloop.counter > 1 %}
-          <li>
-        {% endif %}
-        <a href="{% if b.html_file %}{% url 'book_text' b.slug %}{% else %}{{ b.get_absolute_url }}{% endif %}">{{ b.title }}</a>
-        <ol>
-      {% endfor %}
-      {% for b in book.get_siblings %}
-        <li>
-          {% if b == book %}
-            <strong>{{ b.title }}</strong>
-            <div id="heretoc"></div>
-          {% else %}
-            <a href="{% url 'book_text' b.get_first_text.slug %}">{{ b.title }}</a>
-          {% endif %}
-        </li>
-      {% endfor %}
-
-      {% for b in book.ancestor.all %}
-        </ol>
-        {% if not forloop.counter.last %}
-          </li>
-        {% endif %}
-      {% endfor %}
-    {% else %}
-      <strong>{{ book.title }}</strong>
-      <div id="heretoc"></div>
-      <ol>
-        {% for c in book.get_children %}
-          <li><a href="{% url 'book_text' c.get_first_text.slug %}">{{ c.title }}</a></li>
-        {% endfor %}
-      </ol>
-    {% endif %}
-  </div>
-
-  <div id="info" class="box">
-    {% book_info book %}
-  </div>
-
-  {% if book.other_versions.exists %}
-    <div class="box" id="other">
-      <h2>{% trans "Inne wersje utworu" %}</h2>
-      <a class="other-text-close" href="#">{% trans "Zamknij drugą wersję" %}</a>
-      <ul>
-        {% spaceless %}
-          {% for other_version in book.other_versions %}
-            <li>
-              <a class="display-other"
-                 data-other="{{ other_version.html_url }}"
-                 href="{% url 'book_text' other_version.slug %}">
-                {{ other_version.mini_box_nolink }}
-              </a>
-            </li>
-          {% endfor %}
-        {% endspaceless %}
-      </ul>
-    </div>
-  {% endif %}
-
-  <div class="box" id="book-short">
-    {% include 'catalogue/book_short.html' %}
-  </div>
-
-  <div id="annoy-stubs">
-    {% annoy_banners 'book-text-intermission' %}
-
-    {% for insert in inserts %}
-      {% include 'annoy/dynamic_insert.html' %}
-    {% endfor %}
-  </div>
 
 
   <div id="marker">
@@ -228,4 +269,5 @@
   </script>
 
   {% endlocalize %}
-{% endblock footer %}
+
+{% endblock main %}

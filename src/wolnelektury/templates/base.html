@@ -39,11 +39,13 @@
     {% endif %}
 
     {% block global-content %}
-      <div class="l-container">
+      <div class="l-container l-breadcrumb-container">
         <div class="l-breadcrumb">
           <a href="/"><span>{% translate "Strona główna" %}</span></a>
           {% block breadcrumbs %}<span>{{ title }}</span>{% endblock %}
         </div>
+        {% block breadcrumb-right %}
+        {% endblock %}
       </div>
 
       <main class="l-main">

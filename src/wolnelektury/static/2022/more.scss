@@ -152,7 +152,7 @@ body.is-open {
 
     position:absolute;
     top: 60px;
-    z-index: 1;
+    z-index: 50;
 
     position: absolute;
     width: 186px;
@@ -259,10 +259,10 @@ form {
 
 
 .funding-promo-bar {
-    margin: 18px auto;
+    margin: auto;
 
     .l-checkout__support {
-        margin: 0;
+        margin: 18px 0;
         a {
             display: flex;
             align-items: start;

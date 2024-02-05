@@ -29,17 +29,21 @@ PIPELINE = {
                 '2022/styles/main.scss',
                 '2022/more.scss',
                 'chunks/edit.scss',
+
+                'scss/text.scss',
             ],
             'output_filename': 'css/compressed/main.css',
         },
         'book_text': {
             'source_filenames': [
                 'css/import/gelasio.css',
+
                 'scss/book_text.scss',
                 'css/new.book.css',
-                'annoy/banner.scss',
-                'annoy/book_text.scss',
-                '2022/styles/reader_player.scss',
+
+                'annoy/banner.scss',  # ?
+                'annoy/book_text.scss',  # ?
+                '2022/styles/reader_player.scss',  # ?
 
                 'css/master.picture.css',
             ],
@@ -66,6 +70,12 @@ PIPELINE = {
                 'js/contrib/jquery.cycle2.min.js',
                 'sponsors/js/sponsors.js',
                 'annoy/banner.js',
+                'js/book_text/info.js',
+                'js/book_text/menu.js',
+                'js/book_text/note.js',
+                'js/book_text/references.js',
+                'js/book_text/settings.js',
+                'js/book_text/toc.js',
 
                 'js/contrib/jquery.countdown.js', 'js/contrib/jquery.countdown-pl.js',
                 'js/contrib/jquery.countdown-de.js', 'js/contrib/jquery.countdown-uk.js',

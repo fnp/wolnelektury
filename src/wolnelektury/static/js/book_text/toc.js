@@ -5,11 +5,11 @@
     }
 
     if ($('#wltoc li').length > 0) {
-        $('#menu-toc').show();
+        $('a[href="#wltoc"]').show();
     }
 
     if ($('#wltoc li a').length == 0) {
-        $('#menu li a[href="#wltoc"]').remove();
+        $('a[href="#wltoc"]').remove();
     }
 
     $("#toc").remove();
