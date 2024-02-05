@@ -331,6 +331,9 @@ class Book(models.Model):
             total += app_settings.GET_MP3_LENGTH(media.file.path)
         return int(total)
 
+    def get_time(self):
+        return round(self.xml_file.size / 1000 * 40)
+    
     def has_media(self, type_):
         if type_ in Book.formats:
             return bool(getattr(self, "%s_file" % type_))

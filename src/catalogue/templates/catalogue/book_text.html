@@ -133,14 +133,14 @@
 
 
 {% block main %}
-  <div id="global-progress" class="l-container">
+  <div id="global-progress" class="l-container" data-t="{{ book.get_time }}">
     <div class="bar">
       <span class="piece" style="flex-grow: 100;">
         <span class="filled"></span>
       </span>
     </div>
     <div class="progress-text">
-      Szacowany czas do końca: <span class="progress-text-value">56 min</span>
+      Szacowany czas do końca: <span class="progress-text-value">-</span>
     </div>
   </div>
 

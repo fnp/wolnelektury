@@ -76,6 +76,7 @@ PIPELINE = {
                 'js/book_text/references.js',
                 'js/book_text/settings.js',
                 'js/book_text/toc.js',
+                'js/book_text/progress.js',
 
                 'js/contrib/jquery.countdown.js', 'js/contrib/jquery.countdown-pl.js',
                 'js/contrib/jquery.countdown-de.js', 'js/contrib/jquery.countdown-uk.js',
