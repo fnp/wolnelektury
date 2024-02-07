@@ -120,7 +120,61 @@
 }
 #reference-box {
     display: none;
+    width: 300px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index:100;
+    background: #eee;
+ 
+    img {
+        margin: 0;
+    }
+    
+    #reference-map {
+        height:400px;
+        width: 300px;
+        @media screen and (max-height: 800px) {
+            height: 300px;
+        }
+    }
+    #reference-images {
+        padding: 10px;
+        white-space: nowrap;
+        overflow-x: auto;
+        a {
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0 10px 0 0;
+            img {
+                width: auto;
+                border: 5px solid white;
+                box-shadow: 4px 4px 4px #666;
+                max-width: 240px;
+                max-height: 200px;
+            }
+        }
+    }
+    #reference-link {
+        display: block;
+        font-size: 1.5em;
+        padding: 10px;
+    }
+ 
+    #reference-close {
+        font-size: 30px;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 1000;
+        font-family: sans-serif;
+        color: black;
+    }
 }
+
+
+
+
 #menu #info {
     padding-top: 0;
     display: none;
@@ -536,7 +590,18 @@ table.border td, table.border th {
     -moz-user-select: none;
     -ms-user-select: none;
 
-        margin-right: -160px;
+    margin-right: -227px;
+    width: 170px;
+    text-indent: 0;
+    color: inherit;
+    padding-left: 12px;
+    border-left: 1px solid #333;
+}
+
+
+a.reference.interesting:after {
+    content: url('../images/pin.svg');
+    padding: 3px;
 }
 }
 

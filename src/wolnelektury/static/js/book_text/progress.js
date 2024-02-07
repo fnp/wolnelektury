@@ -15,7 +15,6 @@
         textlen = textbottom - texttop;
         progress = (window.scrollY - texttop) / textlen;
         progress = Math.max(0, Math.min(progress, 1))
-        console.log('SCROLL BODY', progress);
 
         $('#global-progress .filled').css('right', (1 - progress) * 100 + '%');
         tleft = Math.round((1 - progress) * t / 60);
