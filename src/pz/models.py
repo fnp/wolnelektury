@@ -78,6 +78,8 @@ class DirectDebit(models.Model):
     campaign = models.ForeignKey(Campaign, models.PROTECT, null=True, blank=True, verbose_name='kampania')
 
     latest_status = models.CharField(max_length=255, blank=True)
+
+    nosignature = models.BooleanField('Bez podpisu', default=False)
     
     class Meta:
         verbose_name = 'polecenie zapłaty'

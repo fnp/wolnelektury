@@ -117,6 +117,7 @@ class DirectDebitAdmin(admin.ModelAdmin):
     fieldsets = [
         (None, {
             "fields": [
+                'nosignature',
                 ('first_name', 'sex', 'date_of_birth'),
                 'last_name',
                 ('street', 'building'),
