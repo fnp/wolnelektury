@@ -30,6 +30,8 @@
 
     {% block under-menu %}{% endblock %}
 
+    {% include 'banner_procent.html' %}
+
     {% if not funding_no_show_current %}
       <div class="l-container funding-promo-bar">
         {% cache 120 funding_top_bar LANGUAGE_CODE %}
