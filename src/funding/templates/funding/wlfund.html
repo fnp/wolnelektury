@@ -26,7 +26,8 @@
     <tr>
       <td>{% trans "Data" %}:</td>
       <td>{% trans "Rozdysponowanie środków" %}:</td>
-      <td>{% trans "Kwota" %}:</td>
+      <td>{% trans "Zebrane" %}:</td>
+      <td>{% trans "Wydane" %}:</td>
       <td>{% trans "Bilans" %}:</td>
     </tr>
 
@@ -35,20 +36,29 @@
         <tr class="funding-minus">
           <td class="oneline">{{ entry.timestamp }}</td>
           <td>
-            {% trans "Pieniądze przeznaczone na opublikowanie książki" %}:
-            <a href="{{ entry.book.get_absolute_url }}">{{ entry.book }}</a>
+            {% trans "Pieniądze przeznaczone na publikację" %}:
+            {% if entry.book %}
+              <a href="{{ entry.book.get_absolute_url }}">{{ entry.book }}</a>
+              {% if entry.annotation %}
+                ({{ entry.annotation }})
+              {% endif %}
+            {% else %}
+              <a href="{{ entry.link }}">{{ entry.annotation }}</a>
+            {% endif %}
           </td>
-          <td>-{{ entry.amount }}&nbsp;zł</td>
+          <td></td>
+          <td>{{ entry.amount }}&nbsp;zł</td>
           <td>{{ entry.total }}&nbsp;zł</td>
         </tr>
       {% else %}
         <tr class="funding-plus">
           <td class="oneline">{{ entry.end }}</td>
           <td>
-            {% trans "Pieniądze pozostałe ze zbiórki na" %}:
+            {% trans "Zbiórka" %}:
             <a href="{{ entry.get_absolute_url }}">{{ entry }}</a>
           </td>
-          <td>+{{ entry.wlfund }}&nbsp;zł</td>
+          <td>{{ entry.wlfund }}&nbsp;zł</td>
+          <td></td>
           <td>{{ entry.total }}&nbsp;zł</td>
         </tr>
       {% endif %}

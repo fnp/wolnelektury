@@ -372,9 +372,11 @@ class PayUNotification(club.payu.models.Notification):
 
 class Spent(models.Model):
     """ Some of the remaining money spent on a book. """
-    book = models.ForeignKey(Book, models.PROTECT)
+    book = models.ForeignKey(Book, models.PROTECT, null=True, blank=True)
+    link = models.URLField(blank=True, help_text='zamiast książki, np. kolekcja')
     amount = models.DecimalField('kwota', decimal_places=2, max_digits=10)
     timestamp = models.DateField('kiedy')
+    annotation = models.CharField('adnotacja', max_length=255, blank=True, help_text="np. 'audiobook'")
 
     class Meta:
         verbose_name = 'pieniądze wydane na książkę'

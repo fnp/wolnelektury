@@ -51,20 +51,15 @@ class WLFundView(TemplateView):
         offers = []
 
         for o in Offer.past():
-            if o.is_win():
-                o.wlfund = o.sum() - o.target
-                if o.wlfund > 0:
-                    offers.append(o)
-            else:
-                o.wlfund = o.sum()
-                if o.wlfund > 0:
-                    offers.append(o)
+            o.wlfund = o.sum()
+            if o.wlfund > 0:
+                offers.append(o)
         amount = sum(o.wlfund for o in offers) - sum(o.amount for o in Spent.objects.all())
 
         ctx['amount'] = amount
         ctx['log'] = add_total(amount, mix(
-            (offers, lambda x: x.end, 'offer'),
             (Spent.objects.all().select_related(), lambda x: x.timestamp, 'spent'),
+            (offers, lambda x: x.end, 'offer'),
         ))
         return ctx
 
