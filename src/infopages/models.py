@@ -10,6 +10,11 @@ class InfoPage(models.Model):
 
     slug = models.SlugField('slug', max_length=120, unique=True, db_index=True)
     title = models.CharField('tytuł', max_length=120, blank=True)
+    published = models.BooleanField(
+        'opublikowana',
+        help_text='Nieopublikowane strony są widoczne tylko dla administratorów.'
+    )
+    findable = models.BooleanField('wyszukiwalna')
     left_column = models.TextField('lewa kolumna', blank=True)
     right_column = models.TextField('prawa kolumna', blank=True)
 

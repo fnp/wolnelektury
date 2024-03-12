@@ -116,6 +116,8 @@ def hint(request, mozhint=False, param='term'):
         ])
     if len(data) < limit:
         infos = infopages.models.InfoPage.objects.filter(
+            published=True,
+            findable=True,
             title_pl__iregex='\m' + prefix).only('title', 'id', 'slug')
         data.extend([
             {

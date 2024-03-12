@@ -8,7 +8,10 @@ from infopages.models import InfoPage
 
 
 def infopage(request, slug):
-    page = get_object_or_404(InfoPage, slug=slug)
+    if request.user.is_staff:
+        page = get_object_or_404(InfoPage, slug=slug)
+    else:
+        page = get_object_or_404(InfoPage, slug=slug, published=True)
 
     rc = RequestContext(request)
     try:
