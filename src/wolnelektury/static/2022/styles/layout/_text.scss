@@ -89,6 +89,11 @@
 
     
 }
+
+#heretoc {
+    margin-top: .5em;
+}
+
 #menu .box {
     display: none;
     position: absolute;
@@ -99,7 +104,7 @@
     height: 300px;
     padding: 30px; 
     overflow: auto;
-    background: #F7BA00;
+    background: #FFE79E;
     box-shadow: 0px 0px 20px rgba(1, 129, 137, 0.2);
     border-radius: 10px;
 }
@@ -185,7 +190,6 @@
     height: 300px;
     padding: 0px 30px 30px; 
     overflow: auto;
-    background: #F7BA00;
     box-shadow: 0px 0px 20px rgba(1, 129, 137, 0.2);
     border-radius: 10px;
     
