@@ -92,6 +92,11 @@
 
 #heretoc {
     margin-top: .5em;
+
+    // Workaround for missing li's.
+    ol a {
+        line-height: 30px;
+    }
 }
 
 #menu .box {
