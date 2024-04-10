@@ -251,10 +251,13 @@ class PdfField(EbookField):
 
     @staticmethod
     def transform(wldoc, book):
+        MediaInsertSet = apps.get_model('annoy', 'MediaInsertSet')
         return wldoc.as_pdf(
             morefloats=settings.LIBRARIAN_PDF_MOREFLOATS,
             cover=get_make_cover(book),
-            base_url=absolute_url(gallery_url(wldoc.book_info.url.slug)), customizations=['notoc'])
+            base_url=absolute_url(gallery_url(wldoc.book_info.url.slug)), customizations=['notoc'],
+            fundraising=MediaInsertSet.get_texts_for('pdf'),
+        )
 
     def build(self, fieldfile):
         super().build(fieldfile)

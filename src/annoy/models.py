@@ -116,6 +116,7 @@ class MediaInsertSet(models.Model):
     file_format = models.CharField(max_length=8, choices=[
         ('epub', 'epub'),
         ('mobi', 'mobi'),
+        ('pdf', 'pdf'),
         ])
     etag = models.CharField(max_length=64, blank=True)
 
