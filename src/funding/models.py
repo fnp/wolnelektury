@@ -372,11 +372,25 @@ class PayUNotification(club.payu.models.Notification):
 
 class Spent(models.Model):
     """ Some of the remaining money spent on a book. """
-    book = models.ForeignKey(Book, models.PROTECT, null=True, blank=True)
-    link = models.URLField(blank=True, help_text='zamiast książki, np. kolekcja')
+    book = models.ForeignKey(
+        Book, models.PROTECT, null=True, blank=True,
+        verbose_name='książka',
+        help_text='Książka, na którą zostały wydatkowane środki. '
+        'Powinny tu być uwzględnione zarówno książki na które zbierano środki, jak i dodatkowe książki '
+        'sfinansowane z nadwyżek ze zbiórek.'
+    )
+    link = models.URLField(
+        blank=True,
+        help_text="Jeśli wydatek nie dotyczy pojedynczej książki, to zamiast pola „Książka” "
+        "powinien zostać uzupełniony link do sfinansowanego obiektu (np. kolekcji)."
+    )
     amount = models.DecimalField('kwota', decimal_places=2, max_digits=10)
     timestamp = models.DateField('kiedy')
-    annotation = models.CharField('adnotacja', max_length=255, blank=True, help_text="np. 'audiobook'")
+    annotation = models.CharField(
+        'adnotacja', max_length=255, blank=True,
+        help_text="Adnotacja pojawi się w nawiasie w rozliczeniu, by wyjaśnić sytuację w której "
+        "do tej samej książki może być przypisany więcej niż jeden wydatek. "
+        "Np. osobny wydatek na audiobook może mieć adnotację „audiobook”.")
 
     class Meta:
         verbose_name = 'pieniądze wydane na książkę'
@@ -384,5 +398,5 @@ class Spent(models.Model):
         ordering = ['-timestamp']
 
     def __str__(self):
-        return "Spent: %s" % str(self.book)
+        return "Wydane na: %s" % str(self.book or self.link)
 

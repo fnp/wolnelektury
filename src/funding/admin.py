@@ -73,6 +73,7 @@ class SpentAdmin(admin.ModelAdmin):
     model = Spent
     list_display = ['book', 'amount', 'timestamp']
     search_fields = ['book__title']
+    autocomplete_fields = ['book']
 
 
 admin.site.register(Offer, OfferAdmin)
