@@ -91,6 +91,7 @@ class Book(models.Model):
     tagged = managers.ModelTaggedItemManager(Tag)
     tags = managers.TagDescriptor(Tag)
     tag_relations = GenericRelation(Tag.intermediary_table_model)
+    translators = models.ManyToManyField(Tag)
 
     html_built = django.dispatch.Signal()
     published = django.dispatch.Signal()
@@ -153,12 +154,6 @@ class Book(models.Model):
 
     def genre_unicode(self):
         return self.tag_unicode('genre')
-
-    def translators(self):
-        translators = self.get_extra_info_json().get('translators') or []
-        return [
-            '\xa0'.join(reversed(translator.split(', ', 1))) for translator in translators
-        ]
 
     def translator(self):
         translators = self.get_extra_info_json().get('translators')
@@ -658,13 +653,16 @@ class Book(models.Model):
 
         meta_tags = Tag.tags_from_info(book_info)
 
-        for tag in meta_tags:
+        for tag, relationship in meta_tags:
             if not tag.for_books:
                 tag.for_books = True
                 tag.save()
 
-        book.tags = set(meta_tags + book_shelves)
+        just_tags = [t for (t, rel) in meta_tags if not rel]
+        book.tags = set(just_tags + book_shelves)
         book.save()  # update sort_key_author
+
+        book.translators.set([t for (t, rel) in meta_tags if rel == 'translator'])
 
         cover_changed = old_cover != book.cover_info()
         obsolete_children = set(b for b in book.children.all()

@@ -213,16 +213,20 @@ class Tag(models.Model):
         from slugify import slugify
         from sortify import sortify
         meta_tags = []
-        categories = (('kinds', 'kind'), ('genres', 'genre'), ('authors', 'author'), ('epochs', 'epoch'))
-        for field_name, category in categories:
+        categories = (
+            # BookInfo field names, Tag category, relationship
+            ('kinds', 'kind', None),
+            ('genres', 'genre', None),
+            ('epochs', 'epoch', None),
+            ('authors', 'author', None),
+            ('translators', 'author', 'translator'),
+        )
+        for field_name, category, relationship in categories:
             try:
                 tag_names = getattr(info, field_name)
             except (AttributeError, KeyError):  # TODO: shouldn't be KeyError here at all.
-                try:
-                    tag_names = [getattr(info, category)]
-                except KeyError:
-                    # For instance, Pictures do not have 'genre' field.
-                    continue
+                # For instance, Pictures do not have 'genre' field.
+                continue
             for tag_name in tag_names:
                 lang = getattr(tag_name, 'lang', None) or settings.LANGUAGE_CODE
                 tag_sort_key = tag_name
@@ -243,9 +247,9 @@ class Tag(models.Model):
                             tag.sort_key = sortify(tag_sort_key.lower())
                             tag.save()
 
-                        meta_tags.append(tag)
+                        meta_tags.append((tag, relationship))
                 else:
-                    meta_tags.append(tag)
+                    meta_tags.append((tag, relationship))
         return meta_tags
 
 

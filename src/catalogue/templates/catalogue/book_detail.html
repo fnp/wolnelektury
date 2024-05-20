@@ -90,18 +90,17 @@
                 <p>{% for author in book.authors %}<a href="{{ author.get_absolute_url }}">{{ author.name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}
                 </p>
                 <h1><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></h1>
-                {% with translators=book.translators %}
-                {% if translators %}
+                {% if book.translators.exists %}
                   <p class="l-header__translators">
-                    {% if translators.0 != 'tłumacz nieznany' %}
-                      {% trans "tłum." %}
-                    {% endif %}
-                    {% for translator in translators %}
-                      {{ translator }}{% if not forloop.last %}, {% endif %}
+                    {% for translator in book.translators.all %}
+                      {% if forloop.first and translator.name != 'tłumacz nieznany' %}
+                        {% trans "tłum." %}
+                      {% endif %}
+                      <a href="{{ translator.get_absolute_url }}">
+                        {{ translator }}</a>{% if not forloop.last %}, {% endif %}
                     {% endfor %}
                   </p>
                 {% endif %}
-                {% endwith %}
               </div>
 
 

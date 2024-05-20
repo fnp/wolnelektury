@@ -202,7 +202,7 @@ class Picture(models.Model):
             picture.title = str(picture_xml.picture_info.title)
             picture.extra_info = json.dumps(picture_xml.picture_info.to_dict())
 
-            picture_tags = set(catalogue.models.Tag.tags_from_info(picture_xml.picture_info))
+            picture_tags = set([t for (t, rel) in catalogue.models.Tag.tags_from_info(picture_xml.picture_info)])
             for tag in picture_tags:
                 if not tag.for_pictures:
                     tag.for_pictures = True

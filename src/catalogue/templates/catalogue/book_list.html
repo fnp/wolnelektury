@@ -117,6 +117,17 @@
     {% paginate %}
   </div>
 
+  {% if translation_list %}
+    <div class="l-section l-section--col">
+      <h2 class="header">Tłumaczenia</h2>
+      <div class="l-books__grid" id="book-list">
+        {% for book in translation_list %}
+          {% include "catalogue/book_box.html" %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+
   {% if main_tag %}
     <section class="l-section">
       <div class="l-author">
