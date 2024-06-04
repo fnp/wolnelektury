@@ -91,7 +91,7 @@ class Book(models.Model):
     tagged = managers.ModelTaggedItemManager(Tag)
     tags = managers.TagDescriptor(Tag)
     tag_relations = GenericRelation(Tag.intermediary_table_model)
-    translators = models.ManyToManyField(Tag)
+    translators = models.ManyToManyField(Tag, blank=True)
 
     html_built = django.dispatch.Signal()
     published = django.dispatch.Signal()
