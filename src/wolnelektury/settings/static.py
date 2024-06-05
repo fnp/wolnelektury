@@ -31,6 +31,7 @@ PIPELINE = {
                 'chunks/edit.scss',
 
                 'scss/text.scss',
+                '2022/styles/reader_player.scss',
             ],
             'output_filename': 'css/compressed/main.css',
         },
@@ -59,6 +60,7 @@ PIPELINE = {
             'source_filenames': [
                 '2022/scripts/vendor.js',
                 'contrib/jquery-ui-1.13.1.custom/jquery-ui.js',
+                #'js/contrib/jquery.scrollto.js',
 
                 'js/search.js',
                 'js/header.js',
@@ -77,6 +79,9 @@ PIPELINE = {
                 'js/book_text/settings.js',
                 'js/book_text/toc.js',
                 'js/book_text/progress.js',
+
+                'js/book_text/pbox.js',
+                'js/book_text/pbox-items.js',
 
                 'js/contrib/jquery.countdown.js', 'js/contrib/jquery.countdown-pl.js',
                 'js/contrib/jquery.countdown-de.js', 'js/contrib/jquery.countdown-uk.js',
@@ -99,6 +104,9 @@ PIPELINE = {
             'source_filenames': [
                 'js/contrib/jquery.form.js',
                 'js/contrib/jquery.jqmodal.js',
+
+                'js/contrib/jquery.scrollto.js',
+
                 'js/book_text/info.js',
                 'js/book_text/menu.js',
                 'js/book_text/note.js',

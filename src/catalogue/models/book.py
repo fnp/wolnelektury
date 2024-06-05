@@ -414,7 +414,7 @@ class Book(models.Model):
     has_daisy_file.boolean = True
 
     def has_sync_file(self):
-        return self.has_media("sync")
+        return settings.FEATURE_SYNCHRO and self.has_media("sync")
 
     def get_sync(self):
         with self.get_media('sync').first().file.open('r') as f:

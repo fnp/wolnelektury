@@ -550,7 +550,10 @@ def book_text(request, slug):
         'book': book,
         'extra_info': book.get_extra_info_json(),
         'book_text': book_text,
-        'inserts': DynamicTextInsert.get_all(request)
+        'inserts': DynamicTextInsert.get_all(request),
+
+        'club': Club.objects.first(),
+        'donation_form': DonationStep1Form(),
     })
 
 

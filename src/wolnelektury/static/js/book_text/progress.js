@@ -1,6 +1,7 @@
 (function($){$(function(){
 
-    t = $('#global-progress').data('t');
+    let t = $('#global-progress').data('t');
+
     function upd_t() {
         $text = $('#main-text #book-text');
         texttop = $text.offset().top;

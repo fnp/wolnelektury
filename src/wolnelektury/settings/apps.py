@@ -8,6 +8,7 @@ INSTALLED_APPS_OUR = [
     'ajaxable',
     'annoy',
     'api',
+    'bookmarks',
     'catalogue',
     'chunks',
     'dictionary',

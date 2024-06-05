@@ -4,10 +4,13 @@
         $(".book-right-column").remove();
 
         if ($("#player-bar").length) {
-            $("h1").first().after($("<div class='dynamic-insert'><a href='#' class='enable-player-bar'><div class='text'><i class='icon icon-play' style='border: 1px solid black; border-radius: 100%; padding: 1em; margin-right: 1em;'></i> Możesz jednocześnie czytać i słuchać tej lektury!</div></a></div>"));
+            $("#book-text-buttons").append(
+                $("<a class='enable-player-bar'><i class='icon icon-play'></i> zacznij słuchać</a>")
+            ).show();
         }
         
         $(".enable-player-bar").click(function() {
+            
             $('body').addClass('with-player-bar');
             $('.jp-play').click();
             return false;
@@ -67,9 +70,11 @@
 
             // TODO: will need class for attach
             // may be added from sync data
-            $(".syncable").click(function() {
-                if (!$('body').hasClass('with-player-bar')) return;
-                let id = $(this).attr('id');
+
+
+            $(".zakladka-tool_sluchaj").click(function() {
+                $('body').addClass('with-player-bar');
+                let id = $(this).data('sync');
                 if (!id) return;
                 for (let i=0; i<smil.length; ++i) {
                     if (smil[i][0] == id) {

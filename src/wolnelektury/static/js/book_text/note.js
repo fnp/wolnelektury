@@ -1,9 +1,10 @@
 (function($){$(function(){
 
 
-if ($('#nota_red li').length > 0) {
-    $("#menu-nota_red").show();
-}
+    if ($('#nota_red p').length > 0) {
+        $("#info").prepend($("<hr>"));
+        $("#info").prepend($('#nota_red *'));
+    }
 
 
 

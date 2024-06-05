@@ -1,0 +1,24 @@
+.bookmarks-quote-box {
+    padding: 30px ;
+    background: #E6F0F1;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+
+    .bookmarks-quote {
+        
+    }
+
+    .bookmarks-quote-content {
+        padding: 30px;
+    }
+    
+    .bookmarks-quote-book {
+        img {
+            width: 170px;
+        }
+    }
+}

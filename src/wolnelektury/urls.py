@@ -57,6 +57,7 @@ urlpatterns += [
     path('towarzystwo/', RedirectView.as_view(url='/pomagam/', permanent=False, query_string=True)),
     path('towarzystwo/<path:path>', RedirectView.as_view(
         url='/pomagam/%(path)s', permanent=False)),
+    path('', include('bookmarks.urls')),
 
     path('chunks/', include('chunks.urls')),
 

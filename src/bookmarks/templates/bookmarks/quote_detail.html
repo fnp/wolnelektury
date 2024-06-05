@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+
+{% block breadcrumbs %}
+  <a><span>Cytaty użytkowników</span></a>
+
+{% endblock %}
+
+{% block main %}
+
+{% with book=object.book %}
+  <main class="l-main page-book">
+    <section class="l-section lay-s-col-rev">
+      {% with first_text=book.get_first_text %}
+        <aside class="l-aside">
+          <figure class="only-l">
+            <a href="{{ book.get_absolute_url }}">
+              <img src="{% if book.cover_clean %}{{ book.cover_clean.url }}{% endif %}" alt="{{ book.pretty_title }}" width="240">
+            </a>
+          </figure>
+          </ul>
+        </aside>
+        <div class="l-content">
+          <header class="l-header">
+            <div class="l-header__content">
+              <p>{% for author in book.authors %}<a href="{{ author.get_absolute_url }}">{{ author.name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}
+              </p>
+              <h1><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></h1>
+              {% if book.translators.exists %}
+                <p class="l-header__translators">
+                  {% for translator in book.translators.all %}
+                    {% if forloop.first and translator.name != 'tłumacz nieznany' %}
+                      {% trans "tłum." %}
+                    {% endif %}
+                    <a href="{{ translator.get_absolute_url }}">
+                    {{ translator }}</a>{% if not forloop.last %}, {% endif %}
+                  {% endfor %}
+                </p>
+              {% endif %}
+            </div>
+
+
+
+          </header>
+          <article class="">
+
+            <div class="c-media">
+              <div class="lay-row lay-l-block lay-spread">
+                <figure class="only-s book-cover-small">
+                  <a href="{{ book.get_absolute_url }}">
+                    <img src="{% if book.cover_clean %}{{ book.cover_clean.url }}{% endif %}" alt="{{ book.pretty_title }}">
+                  </a>
+                </figure>
+              </div>
+            </div>
+
+              <div class="row">
+                <div class="l-author__quotes">
+                    <div class="l-author__quotes__slider__item">
+                      <em>
+                        <p>
+                          {{ object.text|linebreaksbr }}
+                        </p>
+                      </em>
+                      <p>
+                        <a class="text-link" href="{% url 'book_text' object.book.slug %}#{{ object.start_elem }}">zobacz w treści</a>
+                      </p>
+                  </div>
+                </div>
+              </div>
+          </article>
+        </div>
+      {% endwith %}
+    </section>
+
+  </main>
+
+
+
+
+  {% endwith %}
+{% endblock %}

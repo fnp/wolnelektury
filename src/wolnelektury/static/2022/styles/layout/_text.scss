@@ -67,13 +67,12 @@
         left: 0;
         top: 0;
     }
-    #book-text {
-        padding: 5px;
+    .main-text-body {
+        margin: 16px;
         @include rwd($break-wide) {
             width: 717px;
-            padding: 0;
+            margin: 0 auto;
         }
-        margin: 0 auto;
 
         color: #333333;
 
@@ -244,12 +243,13 @@
     
 
 #main-text #book-text {
+
     body {
-    font-size: 16px;
-    font-family: Gelasio, Georgia, "Times New Roman", serif;
-    line-height: 1.5em;
-    margin: 0;
-}
+        font-size: 16px;
+        font-family: Gelasio, Georgia, "Times New Roman", serif;
+        line-height: 1.5em;
+        margin: 0;
+    }
 
 a {
     color: blue;
@@ -366,6 +366,7 @@ blockquote {
 /* ============= */
 .verse, .paragraph {
     position:relative;
+    padding: 0 48px 0 0;
 }
 /*.anchor {
     position: absolute;
@@ -467,7 +468,7 @@ div.kwestia div.stanza {
 
 p.paragraph {
     text-align: justify;
-    margin: 0;
+    margin: 0 0 0 44px;
     text-indent: 1.5em;
 }
 
@@ -562,8 +563,9 @@ table.border td, table.border th {
 .anchor {
     /* Show line numbers. */
     float: left;
+    clear: left;
     font-size: .8em;
-    margin-left: -40px;
+    margin-left: 0;
     width: 36px;
     height: auto;
     padding: 2px;
@@ -573,7 +575,6 @@ table.border td, table.border th {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-
 }
 
 
@@ -586,7 +587,6 @@ table.border td, table.border th {
     clear: both;
     line-height: 1.5em;
     text-align: left;
-    z-index: 60;
 
     font-style: normal;
     font-weight: normal;
@@ -651,4 +651,374 @@ a.reference.interesting:after {
 #info .sponsors img {
     margin-bottom: 1em;
 }
+}
+
+
+#main-text {
+    #annotation-box {
+        display: none;
+        position: fixed;
+
+        .pointer-bottom {
+            transform: rotate(45deg);
+            left: 27.5px;
+            bottom: -6px;
+            width: 12px;
+            height: 12px;
+            position: absolute;
+
+                display: block;
+                width: 12px;
+                height: 12px;
+                position: absolute;
+                z-index: 1;
+                border-radius: 0px 0px 2px 0px;
+                background: var(--white-100, #FFF);
+                border: 1px solid var(--teal-700, #007880);
+                display: block;
+            }
+        .pointer-top {
+            left: 27.5px;
+            bottom: -5px;
+            transform: rotate(45deg);
+            display: block;
+            width: 12px;
+            height: 12px;
+            position: absolute;
+            z-index: 3;
+            border-radius: 0px 0px 2px 0px;
+            background: #fff;
+            display: block;
+        }
+
+        #annotation {
+            max-width: 470px;
+            position: relative;
+            z-index: 2;
+            background: white;
+
+            padding: 20px;
+            box-shadow: 0px 0px 20px rgba(1, 129, 137, 0.2);
+            border: 1px solid #007880;
+            border-radius: 6px;
+
+            @include rwd($break-wide) {
+            }
+        }
+
+        
+        #annotation-content {
+            max-height: 138px;
+            overflow-y: scroll;
+            color: var(--black-900, #333);
+            leading-trim: both;
+            text-edge: cap;
+            font-variant-numeric: oldstyle-nums proportional-nums;
+            /* Czytnik/Desktop/p read */
+            font-family: "Source Serif Pro";
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 28px; /* 155.556% */ 
+        }
+
+        #footnote-link {
+            display: block;
+            margin-top: 16px;
+            text-align: right;
+        }
+    }
+
+
+    #qbox {
+        display: none;
+        position: fixed;
+        padding: 4px;
+        border: 1px solid #007880;
+        border-radius: 22px;
+        background: white;
+        box-shadow: 6px 6px 10px 0px rgba(0, 120, 128, 0.35);
+        overflow: hidden;
+
+        &.copied {
+            .content:after {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                content: "skopiowane";
+                display: flex;
+                background: white;
+                color: black;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+        
+        .content {
+            overflow: hidden;
+            display: flex;
+            a {
+                width: 70px;
+                line-height: 44px;
+                text-align: center;
+                border-left: 1px solid #BBF6FA;
+
+                &:nth-child(1) {
+                    border-left: none;
+                }
+
+                img {
+                    vertical-align: middle;
+                    height: 22px;
+                }
+            }
+        }
+
+        .pointer-bottom {
+            transform: rotate(45deg);
+            left: 128px;
+            top: -6px;
+            width: 12px;
+            height: 12px;
+            position: absolute;
+
+            display: block;
+            width: 12px;
+            height: 12px;
+            position: absolute;
+            z-index: 1;
+            border-radius: 0px 0px 2px 0px;
+            background: var(--white-100, #FFF);
+            border: 1px solid var(--teal-700, #007880);
+            display: block;
+        }
+        .pointer-top {
+            left: 128px;
+            top: -5px;
+            transform: rotate(45deg);
+            display: block;
+            width: 12px;
+            height: 12px;
+            position: absolute;
+            z-index: 3;
+            border-radius: 0px 0px 2px 0px;
+            background: #fff;
+            display: block;
+        }
+
+    }
+}
+
+
+
+.zakladka {
+    display: none;
+    position: absolute;
+    //z-index: 70;
+    width: 40px;
+    height: 40px;
+    .icon {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        .icon-exists, .icon-note {display: none;}
+        img {
+        }
+    }
+
+    #zakladka-box {
+        padding: 20px;
+        width: 270px;
+        border: 1px solid #007880;
+        border-radius: 8px;
+        box-shadow: 6px 6px 10px 0px rgba(0, 120, 128, 0.35);
+        background: #E1F1F2;
+        position: relative;
+        left: -225px;
+        z-index: 3;
+        @include rwd($break-wide) {
+            left: -12px;
+        }
+        
+        .pointer-bottom {
+            transform: rotate(45deg);
+            left: 238px;
+            top: -7px;
+            width: 12px;
+            height: 12px;
+            position: absolute;
+            box-sizing: border-box;
+
+            display: block;
+            width: 12px;
+            height: 12px;
+            position: absolute;
+            z-index: 1;
+            border-radius: 0px 0px 2px 0px;
+            background: var(--white-100, #E1F1F2);
+            border: 1px solid var(--teal-700, #007880);
+            display: block;
+
+            @include rwd($break-wide) {
+                left: 25px;
+            }
+        }
+        .pointer-top {
+            left: 238px;
+            top: -5px;
+            transform: rotate(45deg);
+            display: block;
+            width: 12px;
+            height: 12px;
+            position: absolute;
+            z-index: 3;
+            border-radius: 0px 0px 2px 0px;
+            background: #E1F1F2;
+            display: block;
+            @include rwd($break-wide) {
+                left: 25px;
+            }
+        }
+
+
+        .content {
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 12px;
+            .zakladka-tool {
+                color: #333;
+                line-height: 30px;
+                font-family: "Source Sans Pro";
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 400;
+                cursor: pointer;
+                padding-left: 38px;
+
+                &:before {
+                    height: 30px;
+                    width: 30px;
+                    display: inline-block;
+                    vertical-align: bottom;
+                    margin-left: -38px;
+                    margin-right: 8px;
+                }
+                
+                &.zakladka-tool_zakladka_delete:before {
+                    content: url('/static/2022/images/zakladka-usun.svg');
+                }
+                &.zakladka-tool_zakladka:before {
+                    content: url('/static/2022/images/add-icon.svg');
+                }
+                &.zakladka-tool_sluchaj:before {
+                    content: url('/static/2022/images/play-now-icon.svg');
+                }
+                &.zakladka-tool_notka:before {
+                    content: url('/static/2022/images/add-note-icon.svg');
+                }
+            }
+            .zakladka-tool_notka_text {
+                display: none;
+                width: 100%;
+                position: relative;
+                textarea {
+                    width: 100%;
+
+display: flex;
+padding: 16px;
+justify-content: center;
+align-items: center;
+gap: 8px;
+flex: 1 0 0; 
+border-radius: 6px;
+border: 1px solid #007880;
+background: #fff;
+                }
+                #notka-save, #notka-saved {
+                    position: absolute;
+                    top: 4px;
+                    right: 4px;
+                    display: none;
+                    width: 16px;
+                    height: 16px;
+                }
+                #notka-saved {
+                }
+            }
+            .zakladka-tool_zakladka_delete {
+                display: none;
+//                position: absolute;
+//                bottom: 40px;
+//                right: 3px;
+//                width: 29px;
+//                height: 29px;
+//                cursor: pointer;
+//                align-items: center;
+//                justify-content: center;
+            }
+        }
+    }
+
+    
+
+    &.zakladka-exists {
+        .icon-empty {display: none;}
+        .icon-exists {display: flex;}
+        #zakladka-box .content {
+            .zakladka-tool_notka_text {display: block;}
+            .zakladka-tool_zakladka_delete {display: block;}
+        }
+    }
+    &.zakladka-note {
+        .icon-empty {display: none;}
+        .icon-note {display: flex;}
+        #zakladka-box .content {
+            .zakladka-tool_notka_text {display: block;}
+            .zakladka-tool_zakladka_delete {display: block;}
+        }
+    }
+}
+
+
+
+/*
+.zakladka-tool_sluchaj {display: none;}
+.has-sync .zakladka-tool_sluchaj {display: block;}
+*/
+
+#book-text-buttons {
+    display: none;
+    margin-top: 16px;
+    border: 1px solid #D5ECED;
+    border-radius: 6px;
+    padding: 8px;
+    max-width: 717px;
+    
+
+    a {
+        display: inline-block;
+        padding: 20px 30px;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 6px;
+        &:hover {
+            background: #E1F1F2;
+        }
+        i {
+            margin-right: 10px;
+            &.icon-play {
+                color: white;
+                background: #018189;
+                display: inline-block;
+                padding: 10px 8px 10px 12px;
+                border-radius: 100%;
+            }
+        }
+    }
 }

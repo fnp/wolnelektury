@@ -3,6 +3,11 @@
 @import "components/select";
 
 
+
+
+
+#player-bar {
+
 // copied from local, move to base
 .jp-state-playing .icon-play {
   &:before {
@@ -16,6 +21,8 @@
 }
 
 // *
+
+
 
 
 .c-media {
@@ -106,12 +113,13 @@
   width: 100%;
   align-items: center;
   position: relative;
-  background-color: black;
+  color: #083F4D;
+  background-color: #D5ECED;
   padding: 0 34px 0 14px;
 }
 
 .c-player__btn {
-  background: white;
+  background: #083F4D;
   border: 0;
   outline: 0;
   border-radius: 50%;
@@ -196,7 +204,7 @@
     }
 
     .icon {
-      color: white;
+      color: #083F4D;
       font-size: 16px;
     }
   }
@@ -352,7 +360,7 @@
 
   .icon {
     font-size: 21px;
-    color: white;
+    color: #083F4D;
     margin-right: 8px;
     cursor: pointer;
   }
@@ -416,7 +424,7 @@
 
     &.up:after { 
         content: '▲';
-        color: white;
+        color: #083F4D;
         font-size: .8em;
         position: absolute;
         top: 0px;
@@ -426,7 +434,7 @@
     }
     &.down:after { 
         content: '▼';
-        color: white;
+        color: #083F4D;
         font-size: .8em;
         position: absolute;
         bottom: 2px;
@@ -436,6 +444,7 @@
     }
 }
 
+}
 
 
 #menu {
@@ -448,7 +457,7 @@
 
 
 .with-player-bar .playing-highlight {
-    background: #D5ECED;
+    background: #FFE694;
 }
 
 
@@ -459,9 +468,6 @@
 .with-player-bar {
     #player-bar {
         display: block;
-    }
-    .syncable {
-        cursor: pointer;
     }
 }
 
