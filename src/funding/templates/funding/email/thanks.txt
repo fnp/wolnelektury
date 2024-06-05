@@ -3,7 +3,7 @@
 
 
 {% block body %}
-{% trans Dziękujemy za wsparcie - dzięki Tobie uwolnimy kolejną książkę.' %}{% if funding.name %}
+{% trans 'Dziękujemy za wsparcie - dzięki Tobie uwolnimy kolejną książkę.' %}{% if funding.name %}
 
 {% trans 'Twoje imię i nazwisko lub pseudonim zostaną dodane do listy darczyńców przy opublikowanej książce.' %}{% endif %} 
 {% if funding.perks.exists %}
