@@ -12,6 +12,8 @@ import re
 
 @cache.never_cache
 def bookmarks(request):
+    if not request.user.is_authenticated:
+        return JsonResponse({})
     try:
         slug = request.headers['Referer'].rsplit('.', 1)[0].rsplit('/', 1)[-1]
     except:
