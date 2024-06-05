@@ -474,7 +474,7 @@
             let text = window.location.protocol + '//' +
                 window.location.host +
                 window.location.pathname;
-            if (anchor) text += anchor;
+            if (anchor) text += '#' + anchor;
             navigator.clipboard.writeText(text);
             
             this.hideCopied();
