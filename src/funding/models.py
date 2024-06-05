@@ -12,7 +12,7 @@ from django.template.loader import render_to_string
 from django.urls import reverse
 from django.utils.html import mark_safe
 from django.utils.timezone import utc
-from django.utils.translation import override
+from django.utils.translation import gettext_lazy as _, override
 from catalogue.models import Book
 from catalogue.utils import get_random_hash
 from polls.models import Poll
