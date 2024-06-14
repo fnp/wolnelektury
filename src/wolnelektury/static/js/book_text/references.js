@@ -168,6 +168,9 @@
             left: nx,
             right: right
         });
+        $elem.css({
+            display: "block"
+        });
         if (!$elem.data('attach-bottom')) {
             ny = y - $elem.height() - 10;
         } else {
@@ -180,9 +183,6 @@
             left: leftoffset - 6
         });
 
-        $elem.css({
-            display: "block"
-        });
     }
 
     function closeNoteBox() {
@@ -216,23 +216,12 @@
         if ($(this).parents('#footnotes').length) return;
         event.preventDefault();
 
-
-
-        let x = $(this).width() / 2, y = 0;
-        let elem = $(this);
-        while (elem.attr('id') != 'book-text') {
-            let p = $(elem).position();
-            x += p.left;
-            y += p.top;
-            elem = elem.parent();
-        }
         href = $(this).attr('href').substr(1);
         content = $("[name='" + href + "']").next().next().html();
         if (!content) return;
         $("#annotation-content").html(content);
         $("#footnote-link").attr('href', '#' + href)
 
-        
         putNoteAt($('#annotation-box'), this);
         event.stopPropagation();
     });
