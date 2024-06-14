@@ -468,7 +468,7 @@ div.kwestia div.stanza {
 
 p.paragraph {
     text-align: justify;
-    margin: 0 0 0 44px;
+    margin: 0;
     text-indent: 1.5em;
 }
 
@@ -565,7 +565,7 @@ table.border td, table.border th {
     float: left;
     clear: left;
     font-size: .8em;
-    margin-left: 0;
+    margin-left: -40px;
     width: 36px;
     height: auto;
     padding: 2px;
@@ -738,7 +738,6 @@ a.reference.interesting:after {
         border-radius: 22px;
         background: white;
         box-shadow: 6px 6px 10px 0px rgba(0, 120, 128, 0.35);
-        overflow: hidden;
 
         &.copied {
             .content:after {
@@ -753,9 +752,10 @@ a.reference.interesting:after {
                 color: black;
                 justify-content: center;
                 align-items: center;
+                border-radius: 22px;
             }
         }
-        
+
         .content {
             overflow: hidden;
             display: flex;

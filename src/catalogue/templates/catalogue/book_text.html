@@ -223,7 +223,6 @@
     </div>
 
     <div id="qbox" class="qbox"
-         data-default-leftoffset="105"
          data-attach-bottom="true"
     >
       <div class="content">
@@ -270,9 +269,13 @@
               /
               <a href="{% url 'register' %}?next={{ request.path }}"> Załóż konto
               </a>
+            </div>
+            <div class="zakladka-tool zakladka-tool_sluchaj">
+              Słuchaj od tego miejsca
+            </div>
+        </div>
           {% endif %}
 
-            </div>
 
             <div class="pointer pointer-bottom"></div>
             <div class="pointer pointer-top"></div>

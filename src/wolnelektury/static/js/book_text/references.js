@@ -139,10 +139,11 @@
             leftoffset = x - margin;
         } else {
             right = '';
-        
-            // default position.
-            leftoffset = 40;
+
             leftoffset = $elem.data('default-leftoffset');
+            if (leftoffset === undefined) {
+                leftoffset = $elem.width() / 2;
+            }
             
             nx = x - leftoffset;
 
@@ -157,12 +158,8 @@
 
             // Do we need to move away from the right?
             if (nx + boxwidth > maxx) {
-                // ACTUALLY CALCULATE STUFF
-                // if maxx - minx < 470 px -- daj z lewej do prawej i już!
-                
                 right = '';
                 let d = nx + boxwidth - maxx;
-                //if (leftoffset + d > $elem.width() - 10) d = $elem.width() - leftoffset - 10;
                 nx -= d;
                 leftoffset += d;
             }
