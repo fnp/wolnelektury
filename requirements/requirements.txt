@@ -13,7 +13,7 @@ fnp-django-pagination==2.2.5
 django-modeltranslation==0.18.4
 django-allauth==0.51
 django-extensions==3.2.1
-djangorestframework==3.13.1
+djangorestframework==3.15.2
 djangorestframework-xml==2.0.0
 django-admin-ordering==0.16
 django-countries==7.3.2
