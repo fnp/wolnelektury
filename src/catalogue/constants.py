@@ -17,7 +17,8 @@ LICENSES = {
 }
 LICENSES['http://creativecommons.org/licenses/by-sa/3.0/deed.pl'] = \
     LICENSES['http://creativecommons.org/licenses/by-sa/3.0/']
-
+LICENSES['http://creativecommons.org/licenses/by-sa/4.0/deed.pl'] = \
+    LICENSES['http://creativecommons.org/licenses/by-sa/3.0/']
 
 for license, data in list(LICENSES.items()):
     LICENSES[license.replace('http://', 'https://')] = data
