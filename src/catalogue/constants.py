@@ -7,7 +7,12 @@ LICENSES = {
     'http://creativecommons.org/licenses/by-sa/3.0/': {
         'icon': 'cc-by-sa',
         'description': _('Creative Commons Attribution-ShareAlike 3.0 Unported'),
-        'locative': 'licencji CC-BY-SA 3.0 PL',
+        'locative': 'licencji CC BY-SA 3.0 PL',
+    },
+    'http://creativecommons.org/licenses/by-sa/4.0/deed.pl': {
+        'icon': 'cc-by-sa',
+        'description': _('Creative Commons Attribution-ShareAlike 4.0 Unported'),
+        'locative': 'licencji CC BY-SA 4.0 PL',
     },
     'http://artlibre.org/licence/lal/pl/': {
         'icon': 'lal',
@@ -16,8 +21,6 @@ LICENSES = {
     }
 }
 LICENSES['http://creativecommons.org/licenses/by-sa/3.0/deed.pl'] = \
-    LICENSES['http://creativecommons.org/licenses/by-sa/3.0/']
-LICENSES['http://creativecommons.org/licenses/by-sa/4.0/deed.pl'] = \
     LICENSES['http://creativecommons.org/licenses/by-sa/3.0/']
 
 for license, data in list(LICENSES.items()):
