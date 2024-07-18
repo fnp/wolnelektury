@@ -48,7 +48,7 @@ celery[redis]==5.2.7
 #pyoai==2.5.1
 -e git+https://github.com/infrae/pyoai@5ff2f15e869869e70d8139e4c37b7832854d7049#egg=pyoai
 
-sentry-sdk==0.10.2
+sentry-sdk==2.8.0
 
 requests
 
