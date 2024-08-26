@@ -605,6 +605,8 @@
     });
 
     $('a.anchor').on('click', function(e) {
+        // Workaround for bad TOC markers.
+        if (($this).closest('#toc').length) return;
         e.preventDefault();
 
         let sel = window.getSelection();
