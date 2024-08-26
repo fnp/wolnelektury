@@ -17,7 +17,6 @@ from catalogue.helpers import get_audiobook_tags
 from catalogue.models import Book, BookMedia, Fragment, Tag, Source
 from catalogue.constants import LICENSES
 from club.models import Membership
-from picture.models import Picture
 
 register = template.Library()
 
@@ -272,47 +271,9 @@ class CatalogueURLNode(Node):
                 return reverse('book_list')
 
 
-# @register.inclusion_tag('catalogue/tag_list.html')
-def tag_list(tags, choices=None, category=None, list_type='books'):
-    if choices is None:
-        choices = []
-
-    if category is None and tags:
-        category = tags[0].category
-
-    category_choices = [tag for tag in choices if tag.category == category]
-
-    if len(tags) == 1 and category not in [t.category for t in choices]:
-        one_tag = tags[0]
-    else:
-        one_tag = None
-
-    if category is not None:
-        other = Tag.objects.filter(category=category).exclude(pk__in=[t.pk for t in tags])\
-            .exclude(pk__in=[t.pk for t in category_choices])
-        # Filter out empty tags.
-        ct = ContentType.objects.get_for_model(Picture if list_type == 'gallery' else Book)
-        other = other.filter(items__content_type=ct).distinct()
-        if list_type == 'audiobooks':
-            other = other.filter(id__in=get_audiobook_tags())
-        other = other.only('name', 'slug', 'category')
-    else:
-        other = []
-
-    return {
-        'one_tag': one_tag,
-        'choices': choices,
-        'category_choices': category_choices,
-        'tags': tags,
-        'other': other,
-        'list_type': list_type,
-    }
-
-
 @register.inclusion_tag('catalogue/book_info.html')
 def book_info(book):
     return {
-        'is_picture': isinstance(book, Picture),
         'book': book,
     }
 
@@ -347,63 +308,15 @@ def plain_list(context, object_list, with_initials=True, by_author=False, choice
     }
 
 
-# TODO: These are no longer just books.
-@register.inclusion_tag('catalogue/related_books.html', takes_context=True)
-def related_books(context, instance, limit=6, random=1, taken=0):
-    limit -= taken
-    max_books = limit - random
-    is_picture = isinstance(instance, Picture)
-
-    pics_qs = Picture.objects.all()
-    if is_picture:
-        pics_qs = pics_qs.exclude(pk=instance.pk)
-    pics = Picture.tagged.related_to(instance, pics_qs)
-    if pics.exists():
-        # Reserve one spot for an image.
-        max_books -= 1
-
-    books_qs = Book.objects.filter(findable=True)
-    if not is_picture:
-        books_qs = books_qs.exclude(common_slug=instance.common_slug).exclude(ancestor=instance)
-    books = Book.tagged.related_to(instance, books_qs)[:max_books]
-
-    pics = pics[:1 + max_books - books.count()]
-
-    random_excluded_books = [b.pk for b in books]
-    random_excluded_pics = [p.pk for p in pics]
-    (random_excluded_pics if is_picture else random_excluded_books).append(instance.pk)
-
-    return {
-        'request': context['request'],
-        'books': books,
-        'pics': pics,
-        'random': random,
-        'random_excluded_books': random_excluded_books,
-        'random_excluded_pics': random_excluded_pics,
-    }
-
-
 @register.simple_tag
-def related_books_2022(book=None, picture=None, limit=4, taken=0):
+def related_books_2022(book=None, limit=4, taken=0):
     limit -= taken
     max_books = limit
 
     books_qs = Book.objects.filter(findable=True)
     if book is not None:
         books_qs = books_qs.exclude(common_slug=book.common_slug).exclude(ancestor=book)
-    instance = book or picture
-    books = Book.tagged.related_to(instance, books_qs)[:max_books]
-
-    return books
-
-@register.simple_tag
-def related_pictures_2022(book=None, picture=None, limit=4, taken=0):
-    limit -= taken
-    max_books = limit
-
-    books_qs = Picture.objects.all()
-    instance = book or picture
-    books = Picture.tagged.related_to(instance, books_qs)[:max_books]
+    books = Book.tagged.related_to(book, books_qs)[:max_books]
 
     return books
 

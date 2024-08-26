@@ -295,10 +295,6 @@ class TagCategoryView(ListAPIView):
     def get_queryset(self):
         category = self.kwargs['category']
         tags = Tag.objects.filter(category=category).exclude(items=None).order_by('slug')
-        if self.request.query_params.get('book_only') == 'true':
-            tags = tags.filter(for_books=True)
-        if self.request.GET.get('picture_only') == 'true':
-            tags = filter(for_pictures=True)
 
         after = self.request.query_params.get('after')
         count = self.request.query_params.get('count')

@@ -9,7 +9,6 @@ from django.utils.translation import gettext_lazy as _
 from catalogue.constants import LANGUAGES_3TO2
 import catalogue.models
 import pdcounter.models
-import picture.models
 from .fields import InlineRadioWidget
 from .utils import UnaccentSearchQuery, UnaccentSearchVector
 
@@ -21,10 +20,8 @@ class SearchFilters(forms.Form):
     )
     format = forms.ChoiceField(required=False, choices=[
         ('', _('wszystkie')),
-        ('text', _('tekst')),
         ('audio', _('audiobook')),
         ('daisy', _('Daisy')),
-        ('art', _('obraz')),
     ], widget=InlineRadioWidget())
     lang = forms.ChoiceField(required=False)
     epoch = forms.ChoiceField(required=False)
@@ -36,7 +33,6 @@ class SearchFilters(forms.Form):
         ('theme', _('motyw')),
         ('genre', _('gatunek')),
         ('book', _('tytuł')),
-        ('art', _('obraz')),
         ('collection', _('kolekcja')),
         ('quote', _('cytat')),
     ], widget=InlineRadioWidget())
@@ -73,8 +69,6 @@ class SearchFilters(forms.Form):
             'book': catalogue.models.Book.objects.filter(findable=True),
             'pdbook': pdcounter.models.BookStub.objects.all(),
             'snippet': catalogue.models.Snippet.objects.filter(book__findable=True),
-            'art': picture.models.Picture.objects.all(),
-            # art pieces
         }
         if self.cleaned_data['category']:
             c = self.cleaned_data['category']
@@ -88,8 +82,6 @@ class SearchFilters(forms.Form):
                 qs['book'] = qs['book'].none()
                 qs['pdbook'] = qs['pdbook'].none()
             if c != 'quote': qs['snippet'] = qs['snippet'].none()
-            if c != 'art': qs['art'] = qs['art'].none()
-            qs['art'] = picture.models.Picture.objects.none()
 
         if self.cleaned_data['format']:
             c = self.cleaned_data['format']
@@ -98,26 +90,19 @@ class SearchFilters(forms.Form):
             qs['theme'] = qs['theme'].none()
             qs['genre'] = qs['genre'].none()
             qs['collection'] = qs['collection'].none()
-            if c == 'art':
-                qs['book'] = qs['book'].none()
-                qs['pdbook'] = qs['pdbook'].none()
-                qs['snippet'] = qs['snippet'].none()
-            if c in ('text', 'audio', 'daisy'):
-                qs['art'] = qs['art'].none()
-                if c == 'audio':
-                    qs['book'] = qs['book'].filter(media__type='mp3')
-                    qs['pdbook'] = qs['book'].none()
-                    qs['snippet'] = qs['snippet'].filter(book__media__type='mp3')
-                elif c == 'daisy':
-                    qs['book'] = qs['book'].filter(media__type='daisy')
-                    qs['snippet'] = qs['snippet'].filter(book__media__type='daisy')
+            if c == 'audio':
+                qs['book'] = qs['book'].filter(media__type='mp3')
+                qs['pdbook'] = qs['book'].none()
+                qs['snippet'] = qs['snippet'].filter(book__media__type='mp3')
+            elif c == 'daisy':
+                qs['book'] = qs['book'].filter(media__type='daisy')
+                qs['snippet'] = qs['snippet'].filter(book__media__type='daisy')
 
         if self.cleaned_data['lang']:
             qs['author'] = qs['author'].none()
             qs['pdauthor'] = qs['pdauthor'].none()
             qs['theme'] = qs['theme'].none()
             qs['genre'] = qs['genre'].none()
-            qs['art'] = qs['art'].none()
             qs['collection'] = qs['collection'].none()
             qs['book'] = qs['book'].filter(language=self.cleaned_data['lang'])
             qs['pdbook'] = qs['pdbook'].none()
@@ -136,7 +121,6 @@ class SearchFilters(forms.Form):
                 qs['book'] = qs['book'].filter(tag_relations__tag=t)
                 qs['pdbook'] = qs['pdbook'].none()
                 qs['snippet'] = qs['snippet'].filter(book__tag_relations__tag=t)
-                qs['art'] = qs['art'].filter(tag_relations__tag=t)
             
         return qs
 
@@ -179,9 +163,6 @@ class SearchFilters(forms.Form):
                 search_vector=UnaccentSearchVector('title')
             ).filter(search_vector=squery),
             'book': books[:100],
-            'art': qs['art'].annotate(
-                search_vector=UnaccentSearchVector('title')
-            ).filter(search_vector=squery)[:100],
             'snippet': snippets_by_book,
             'pdauthor': pdcounter.models.Author.search(squery, qs=qs['pdauthor']),
             'pdbook': pdcounter.models.BookStub.search(squery, qs=qs['pdbook']),

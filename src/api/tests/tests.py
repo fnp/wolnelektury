@@ -17,9 +17,6 @@ from django.test import TestCase
 from django.test.utils import override_settings
 
 from catalogue.models import Book, Tag
-from picture.forms import PictureImportForm
-from picture.models import Picture
-import picture.tests
 from api.models import Consumer, Token
 
 
@@ -103,34 +100,6 @@ class TagTests(ApiTest):
         tag = self.load_json('/api/authors/joe/')
         self.assertEqual(tag['name'], self.tag.name,
                          'Wrong tag details.')
-
-
-class PictureTests(ApiTest):
-    def test_publish(self):
-        slug = "kandinsky-composition-viii"
-        with open(path.join(
-                picture.tests.__path__[0], "files", slug + ".xml"
-            ), 'rb') as f:
-            xml = SimpleUploadedFile(
-                'composition8.xml',
-                f.read())
-        with open(path.join(
-                picture.tests.__path__[0], "files", slug + ".png"
-            ), 'rb') as f:
-            img = SimpleUploadedFile(
-                'kompozycja-8.png',
-                f.read())
-
-        import_form = PictureImportForm({}, {
-            'picture_xml_file': xml,
-            'picture_image_file': img
-            })
-
-        assert import_form.is_valid()
-        if import_form.is_valid():
-            import_form.save()
-
-        Picture.objects.get(slug=slug)
 
 
 class BooksTests(ApiTest):
@@ -470,11 +439,6 @@ class AuthorizedTests(ApiTest):
                                data={"data": json.dumps({})})
         self.assertEqual(response.status_code, 403)
 
-        response = self.signed('/api/pictures/',
-                               method='POST',
-                               data={"data": json.dumps({})})
-        self.assertEqual(response.status_code, 403)
-
         self.user.is_superuser = True
         self.user.save()
 
@@ -483,16 +447,6 @@ class AuthorizedTests(ApiTest):
                                    method='POST',
                                    data={"data": json.dumps({
                                        "book_xml": "<utwor/>"
-                                   })})
-            self.assertTrue(mock.called)
-        self.assertEqual(response.status_code, 201)
-
-        with patch('picture.models.Picture.from_xml_file') as mock:
-            response = self.signed('/api/pictures/',
-                                   method='POST',
-                                   data={"data": json.dumps({
-                                       "picture_xml": "<utwor/>",
-                                       "picture_image_data": "Kg==",
                                    })})
             self.assertTrue(mock.called)
         self.assertEqual(response.status_code, 201)

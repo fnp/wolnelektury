@@ -9,7 +9,6 @@ import django.views.static
 from annoy.utils import banner_exempt
 import catalogue.views
 import club.views
-import picture.views
 from . import views
 
 
@@ -63,7 +62,6 @@ urlpatterns += [
 
     # Admin panel
     path('admin/catalogue/book/import', catalogue.views.import_book, name='import_book'),
-    path('admin/catalogue/picture/import', picture.views.import_picture, name='import_picture'),
     path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('admin/', admin.site.urls),
 

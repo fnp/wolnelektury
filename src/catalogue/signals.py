@@ -7,7 +7,6 @@ from django.core.exceptions import ImproperlyConfigured
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 from newtagging.models import tags_updated
-from picture.models import Picture, PictureArea
 from .models import BookMedia, Book, Collection, Fragment, Tag
 
 
@@ -63,9 +62,8 @@ def book_delete(sender, instance, **kwargs):
 def tag_after_change(sender, instance, **kwargs):
     caches[settings.CACHE_MIDDLEWARE_ALIAS].clear()
 
-    for model in Book, Picture:
-        for model_instance in model.tagged.with_all([instance]).only('pk'):
-            model_instance.clear_cache()
+    for book in Book.tagged.with_all([instance]).only('pk'):
+        book.clear_cache()
 
 
 @receiver(tags_updated)
@@ -75,5 +73,5 @@ def receive_tags_updated(sender, instance, affected_tags, **kwargs):
         return
 
     caches[settings.CACHE_MIDDLEWARE_ALIAS].clear()
-    if sender in (Book, Picture):
+    if sender in (Book,):
         instance.clear_cache()

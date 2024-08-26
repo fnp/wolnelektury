@@ -114,19 +114,6 @@
       </div>
     {% endif %}
 
-    {% if results.art %}
-      <div class="l-container">
-        <h2 class="header">{% trans "Obrazy" %}</h2>
-      </div>
-      <div class="l-section l-section--col">
-        <div class="l-books__grid">
-          {% for book in results.art %}
-            {% include 'catalogue/book_box.html' %}
-          {% endfor %}
-        </div>
-      </div>
-    {% endif %}
-
     {% if results.snippet %}
       <div class="l-container">
         <h2 class="header">{% trans "W treści" %}</h2>

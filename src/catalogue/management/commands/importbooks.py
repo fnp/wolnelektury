@@ -8,10 +8,7 @@ from django.core.management.base import BaseCommand
 from django.core.management.color import color_style
 from django.core.files import File
 from django.db import transaction
-from librarian.picture import ImageStore
-
 from catalogue.models import Book
-from picture.models import Picture
 
 
 class Command(BaseCommand):
@@ -31,9 +28,6 @@ class Command(BaseCommand):
                 '-F', '--not-findable', action='store_false',
                 dest='findable', default=True,
                 help='Set book as not findable.')
-        parser.add_argument(
-                '-p', '--picture', action='store_true', dest='import_picture',
-                default=False, help='Import pictures')
         parser.add_argument('directory', nargs='+')
 
     def import_book(self, file_path, options):
@@ -59,24 +53,11 @@ class Command(BaseCommand):
                     print("Importing %s.%s" % (file_base, ebook_format))
         book.save()
 
-    def import_picture(self, file_path, options, continue_on_error=True):
-        try:
-            image_store = ImageStore(os.path.dirname(file_path))
-            picture = Picture.from_xml_file(file_path, image_store=image_store, overwrite=options.get('force'))
-        except Exception as ex:
-            if continue_on_error:
-                print("%s: %s" % (file_path, ex))
-                return
-            else:
-                raise ex
-        return picture
-
     @transaction.atomic
     def handle(self, **options):
         self.style = color_style()
 
         verbose = options.get('verbose')
-        import_picture = options.get('import_picture')
 
         files_imported = 0
         files_skipped = 0
@@ -105,16 +86,12 @@ class Command(BaseCommand):
 
                     # Import book files
                     try:
-                        if import_picture:
-                            self.import_picture(file_path, options)
-                        else:
-                            self.import_book(file_path, options)
-
+                        self.import_book(file_path, options)
                         files_imported += 1
 
-                    except (Book.AlreadyExists, Picture.AlreadyExists):
+                    except Book.AlreadyExists:
                         print(self.style.ERROR(
-                            '%s: Book or Picture already imported. Skipping. To overwrite use --force.' %
+                            '%s: Book already imported. Skipping. To overwrite use --force.' %
                             file_path))
                         files_skipped += 1
 

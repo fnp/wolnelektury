@@ -50,11 +50,7 @@
 
   {% if extra_info.editor or extra_info.technical_editor %}
     <p>
-      {% if is_picture %}
-        {% trans "Opracowanie redakcyjne:" %}
-      {% else %}
-        {% trans "Opracowanie redakcyjne i przypisy:" %}
-      {% endif %}
+      {% trans "Opracowanie redakcyjne i przypisy:" %}
       {% all_editors extra_info %}.
     </p>
   {% endif %}

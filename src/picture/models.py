@@ -12,7 +12,6 @@ from slugify import slugify
 
 from catalogue.models.tag import prefetched_relations
 from catalogue.utils import split_tags
-from picture import tasks
 from wolnelektury.utils import cached_render, clear_cached_renders
 from io import BytesIO
 import itertools
@@ -291,7 +290,6 @@ class Picture(models.Model):
 
             picture.xml_file.save("%s.xml" % picture.slug, File(xml_file))
             picture.save()
-            tasks.generate_picture_html(picture.id)
 
         if close_xml_file:
             xml_file.close()

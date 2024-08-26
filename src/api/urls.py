@@ -34,7 +34,6 @@ urlpatterns = [
     path('blog',
          piwik_track_view(views.BlogView.as_view())),
 
-    path('pictures/', include('picture.api.urls')),
     path('', include('social.api.urls')),
     path('', include('catalogue.api.urls')),
 ]

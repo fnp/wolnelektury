@@ -9,7 +9,6 @@ from sorl.thumbnail import get_thumbnail
 
 import catalogue.models
 import infopages.models
-import picture.models
 from .forms import SearchFilters
 import re
 import json
@@ -48,7 +47,7 @@ def hint(request, mozhint=False, param='term'):
             {
                 'type': 'author',
                 'label': author.name,
-                'url': author.get_absolute_gallery_url() if author.for_pictures else author.get_absolute_url(),
+                'url': author.get_absolute_url(),
                 'img': get_thumbnail(author.photo, '72x72', crop='top').url if author.photo else '',
             }
             for author in authors[:limit - len(data)]
@@ -71,7 +70,7 @@ def hint(request, mozhint=False, param='term'):
             {
                 'type': tag.category,
                 'label': tag.name,
-                'url': tag.get_absolute_gallery_url() if tag.for_pictures else tag.get_absolute_url(),
+                'url': tag.get_absolute_url(),
             }
             for tag in tags[:limit - len(data)]
         ])
@@ -101,19 +100,6 @@ def hint(request, mozhint=False, param='term'):
                     'img': get_thumbnail(b.cover_clean, '72x72').url if b.cover_clean else '',
                 }
             )
-    if len(data) < limit:
-        arts = picture.models.Picture.objects.filter(
-            title__iregex='\m' + prefix).only('title', 'id', 'slug') # img?
-        data.extend([
-            {
-                'type': 'art',
-                'label': art.title,
-                'author': art.author_unicode(),
-                'url': art.get_absolute_url(),
-                'img': get_thumbnail(art.image_file, '72x72').url if art.image_file else '',
-            }
-            for art in arts[:limit - len(data)]
-        ])
     if len(data) < limit:
         infos = infopages.models.InfoPage.objects.filter(
             published=True,
