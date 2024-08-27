@@ -23,7 +23,6 @@ urlpatterns = [
     path('rodzaj/', views.tag_catalogue, {'category': 'kind'}, name='kind_catalogue'),
     path('motyw/', views.tag_catalogue, {'category': 'theme'}, name='theme_catalogue'),
 
-    path('galeria/', views.GalleryView.as_view(), name='gallery'),
     path('kolekcje/', views.collections, name='catalogue_collections'),
 
     path('lektury/', views.LiteratureView.as_view(), name='book_list'),
@@ -64,8 +63,6 @@ urlpatterns = [
     path('isbn/<slug:book_format>/<slug:slug>/', views.get_isbn),
 
     # This should be the last pattern.
-    re_path(r'^galeria/(?P<tags>[a-zA-Z0-9-/]*)/$', views.tagged_object_list, {'list_type': 'gallery'},
-        name='tagged_object_list_gallery'),
     re_path(r'^audiobooki/(?P<tags>[a-zA-Z0-9-/]*)/$', views.tagged_object_list, {'list_type': 'audiobooks'},
         name='tagged_object_list_audiobooks'),
     re_path(r'^(?P<tags>[a-zA-Z0-9-/]*)/$', views.tagged_object_list, {'list_type': 'books'},

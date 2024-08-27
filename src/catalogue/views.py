@@ -23,7 +23,6 @@ from club.forms import DonationStep1Form
 from club.models import Club
 from annoy.models import DynamicTextInsert
 from pdcounter import views as pdcounter_views
-from picture.models import Picture, PictureArea
 from wolnelektury.utils import is_ajax
 from catalogue import constants
 from catalogue import forms
@@ -39,7 +38,6 @@ staff_required = user_passes_test(lambda user: user.is_staff)
 def catalogue(request):
     return render(request, 'catalogue/catalogue.html', {
         'books': Book.objects.filter(findable=True, parent=None),
-        'pictures': Picture.objects.all(),
         'collections': Collection.objects.filter(listed=True),
         'active_menu_item': 'all_works',
     })
@@ -195,22 +193,6 @@ class BookList(ObjectListView):
         return qs
 
 
-class ArtList(ObjectListView):
-    template_name = 'catalogue/book_list.html'
-    dynamic_template_name = 'catalogue/dynamic_book_list.html'
-    title = gettext_lazy('Sztuka')
-    list_type = 'gallery'
-
-    def get_queryset(self):
-        return Picture.objects.all()
-
-    def search(self, qs):
-        term = self.request.GET.get('search')
-        if term:
-            qs = qs.filter(Q(title__icontains=term) | Q(tag_relations__tag__name_pl__icontains=term)).distinct()
-        return qs
-    
-
 class LiteratureView(BookList):
     def get_suggested_tags(self, queryset):
         tags = list(get_top_level_related_tags([]))
@@ -227,14 +209,6 @@ class AudiobooksView(LiteratureView):
     def get_queryset(self):
         return Book.objects.filter(findable=True, media__type='mp3').distinct()
 
-
-class GalleryView(ArtList):
-    def get_suggested_tags(self, queryset):
-        return Tag.objects.usage_for_queryset(
-            queryset,
-            counts=True
-        ).exclude(pk__in=[t.id for t in self.ctx['tags']]).order_by('-count')
-    
 
 class TaggedObjectList(BookList):
     def analyse(self):
