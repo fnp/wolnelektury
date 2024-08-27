@@ -16,6 +16,20 @@
   <h1>Statystyka</h1>
 
   <div class="normal-text">
+    <h3>Nieużywane tagi</h3>
+
+    <p>
+      Te tagi nie mają żadnych książek.
+      Prawdopodobnie można je usunąć, jeśli nie zawierają cennych informacji
+      albo czekają właśnie na publikację książki.
+    </p>
+
+    <ul>
+    {% for tag in unused_tags %}
+      <li><a href="{{ tag.get_absolute_url }}">{{ tag }} ({{ tag.get_category_display }})</a></li>
+    {% endfor %}
+    </ul>
+
     <h3>Audiobooki</h3>
 
     <table class="stats">

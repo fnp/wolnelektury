@@ -17,6 +17,7 @@
 {% block main %}
   <div class="l-section">
     <div class="l-author__header">
+      <span data-edit="catalogue/tag/{{ main_tag.id }}"></span>
       {% if main_tag.photo %}
         {% thumbnail main_tag.photo '40x40' crop='top' as th %}
         <figure>

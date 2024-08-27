@@ -8,7 +8,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.db.models import Count
 from django.shortcuts import render
 
-from catalogue.models import Book, BookMedia
+from catalogue.models import Book, BookMedia, Tag
 from reporting.utils import render_to_pdf, render_to_csv, generated_file_view
 
 
@@ -60,10 +60,13 @@ def stats_page(request):
         ]
         etags.append(d)
 
+    unused_tags = Tag.objects.exclude(category='set').filter(items=None, book=None)
+        
     return render(request, 'reporting/main.html', {
         'media_types': media_types,
         'licenses': licenses,
         'etags': etags,
+        'unused_tags': unused_tags,
     })
 
 
