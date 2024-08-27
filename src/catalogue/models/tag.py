@@ -152,9 +152,6 @@ class Tag(models.Model):
     def get_absolute_url(self):
         return reverse('tagged_object_list', args=[self.url_chunk])
 
-    def get_absolute_gallery_url(self):
-        return reverse('tagged_object_list_gallery', args=[self.url_chunk])
-
     def get_absolute_catalogue_url(self):
         # TODO: remove magic.
         if self.category == 'set':

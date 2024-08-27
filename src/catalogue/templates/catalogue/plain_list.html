@@ -12,7 +12,7 @@
           <p class="header">{{ initial }}</p>
         {% endif %}
         {% for item in object_list %}
-          <p><a href="{% if book %}{% url 'book_fragments' book.slug item.slug %}{% elif choice %}{% catalogue_url list_type choice item %}{% elif list_type == 'gallery' and item.get_absolute_gallery_url %}{{ item.get_absolute_gallery_url }}{% else %}{{ item.get_absolute_url }}{% endif %}">{{ item }}{% if item.count %}&nbsp;({{ item.count}}){% endif %}</a></p>
+          <p><a href="{% if book %}{% url 'book_fragments' book.slug item.slug %}{% elif choice %}{% catalogue_url list_type choice item %}{{ item.get_absolute_url }}">{{ item }}{% if item.count %}&nbsp;({{ item.count}}){% endif %}</a></p>
         {% endfor %}
         {% if initial_blocks %}</div>{% endif %}
       {% endfor %}
