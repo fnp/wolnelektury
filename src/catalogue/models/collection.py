@@ -19,8 +19,6 @@ class Collection(models.Model):
         limit_choices_to={'category': 'author'},
         blank=True
     )
-    kind = models.CharField('rodzaj', max_length=10, blank=False, default='book', db_index=True,
-                            choices=(('book', 'książki'), ('picture', 'obrazy')))
     listed = models.BooleanField('na liście', default=True, db_index=True)
     role = models.CharField(max_length=128, blank=True, db_index=True, choices=[
         ('', '–'),

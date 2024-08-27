@@ -7,17 +7,10 @@ from django.views.generic import ListView, RedirectView
 from catalogue.feeds import AudiobookFeed
 from catalogue.models import Book
 from catalogue import views
-import picture.views
 import search.views
 
 
 urlpatterns = [
-    path('obraz/strona/', picture.views.picture_page, name='picture_page'),
-    # pictures - currently pictures are coupled with catalogue, hence the url is here
-    path('obraz/', picture.views.picture_list_thumb, name='picture_list_thumb'),
-    path('obraz/<slug:slug>.html', picture.views.picture_viewer, name='picture_viewer'),
-    path('obraz/<slug:slug>/', picture.views.picture_detail, name='picture_detail'),
-
     # old search page - redirected
     path('szukaj/', RedirectView.as_view(
         url='/szukaj/', query_string=True, permanent=True)),
