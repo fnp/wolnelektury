@@ -1,31 +1,15 @@
 {% extends 'base.html' %}
 {% load i18n %}
-{% load catalogue_tags %}
-
-{% load choose_cites from social_tags %}
 
 
 {% block breadcrumbs %}
   <a href="/katalog/"><span>{% trans "Katalog" %}</span></a>
-  {% if tags %}
-    <a href="{{ main_tag.get_absolute_catalogue_url }}"><span>{{ main_tag.get_category_display|title }}</span></a>
-  {% endif %}
 {% endblock %}
 
 {% block main %}
   <div class="l-section">
     <div class="l-author__header">
-      {% if main_tag.photo %}
-        <figure>
-          <img src="{{ main_tag.photo.url }}" alt="{{ main_tag.name }}">
-        </figure>
-      {% endif %}
       <h1>
-        {% if main_tag %}
-          {{ main_tag.name }}
-        {% else %}
-          {{ title }}
-        {% endif %}
       </h1>
     </div>
   </div>
@@ -35,17 +19,6 @@
       <div class="l-books__input">
         <i class="icon icon-filter"></i>
         <input type="text" placeholder="{% trans 'filtry, tytuł' %}" class="quick-filter" data-for="book-list" data-filters="with-filter">
-        <div class="filter-container">
-          {% for tag in tags %}
-            {% if tag is not main_tag %}
-              <span class="filter filter-category-{{ tag.category }}">
-                <a href="{% catalogue_url list_type tag %}">{{ tag }}</a>
-                <a href="{% catalogue_url list_type tags -tag %}">✖</a>
-              </span>
-            {% endif %}
-          {% endfor %}
-        </div>
-
       </div>
       <div class="l-books__sorting">
         <span>{% trans "Sortuj:" %}</span>
@@ -60,12 +33,11 @@
   <div class="with-filter">
 
     <div class="row">
-      <h2>{% nice_title_from_tags tags categories %}</h2>
       {% if suggest %}
         <div class="filter-container">
           {% for tag in suggest %}
             <span class="filter filter-category-{{ tag.category }}">
-              <a href="{% catalogue_url list_type tags tag %}">{{ tag }}</a>
+              <a href="{{ tag.get_absolute_url }}">{{ tag }}</a>
             </span>
           {% endfor %}
         </div>
@@ -81,29 +53,4 @@
     </div>
   </div>
 
-  {% if tags %}
-    <section class="l-section">
-      <div class="l-author">
-        {% with tag=main_tag %}
-          {% include 'catalogue/author_box.html' %}
-        {% endwith %}
-        {% choose_cites 3 author=main_tag as cites %}
-        {% if cites %}
-          <div class="row">
-            <div class="l-author__quotes">
-              <div class="l-author__quotes__slider">
-
-                {% for fragment in cites %}
-                  <div class="l-author__quotes__slider__item">
-                    {% include "catalogue/fragment_slider_box.html" %}
-                  </div>
-                {% endfor %}
-
-              </div>
-            </div>
-          </div>
-        {% endif %}
-      </div>
-    </section>
-    {% endif %}
 {% endblock %}

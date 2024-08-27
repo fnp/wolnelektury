@@ -39,7 +39,6 @@ def catalogue(request):
     return render(request, 'catalogue/catalogue.html', {
         'books': Book.objects.filter(findable=True, parent=None),
         'collections': Collection.objects.filter(listed=True),
-        'active_menu_item': 'all_works',
     })
 
 
@@ -52,7 +51,6 @@ def collection(request, slug):
     template_name = 'catalogue/collection.html'
     return render(request, template_name, {
         'collection': coll,
-        'active_menu_item': 'collections',
     })
 
 
@@ -287,42 +285,30 @@ class TaggedObjectList(BookList):
 
     
     
-def object_list(request, objects, fragments=None, related_tags=None, tags=None,
-                list_type='books', extra=None):
-    if not tags:
-        tags = []
-    tag_ids = [tag.pk for tag in tags]
-
+def object_list(request, objects, list_type='books'):
     related_tag_lists = []
-    if related_tags:
-        related_tag_lists.append(related_tags)
-    else:
+    if True:
         related_tag_lists.append(
             Tag.objects.usage_for_queryset(
                 objects, counts=True
-            ).exclude(category='set').exclude(pk__in=tag_ids))
+            ).exclude(category='set'))
         if request.user.is_authenticated:
             related_tag_lists.append(
                 Tag.objects.usage_for_queryset(
                     objects, counts=True
                 ).filter(
                     user=request.user
-                ).exclude(name='').exclude(pk__in=tag_ids)
+                ).exclude(name='')
             )
-    if not (extra and extra.get('theme_is_set')):
-        if fragments is None:
-            if list_type == 'gallery':
-                fragments = PictureArea.objects.filter(picture__in=objects)
-            else:
-                fragments = Fragment.objects.filter(book__in=objects)
+    if True:
+        fragments = Fragment.objects.filter(book__in=objects)
         related_tag_lists.append(
             Tag.objects.usage_for_queryset(
                 fragments, counts=True
-            ).filter(category='theme').exclude(pk__in=tag_ids)
+            ).filter(category='theme')
             .only('name', 'sort_key', 'category', 'slug'))
         if isinstance(objects, QuerySet):
             objects = prefetch_relations(objects, 'author')
-
     
     categories = split_tags(*related_tag_lists)
     suggest = []
@@ -331,36 +317,13 @@ def object_list(request, objects, fragments=None, related_tags=None, tags=None,
 
     objects = list(objects)
 
-    if not objects and len(tags) == 1 and list_type == 'books':
-        if PictureArea.tagged.with_any(tags).exists() or Picture.tagged.with_any(tags).exists():
-            return redirect('tagged_object_list_gallery', '/'.join(tag.url_chunk for tag in tags))
-
-    if len(objects) > 3:
-        best = random.sample(objects, 3)
-    else:
-        best = objects
-
     result = {
         'object_list': objects,
-        'categories': categories,
         'suggest': suggest,
         'list_type': list_type,
-        'tags': tags,
-        'main_tag': tags[0] if tags else None,
-
-        'formats_form': forms.DownloadFormatsForm(),
-        'best': best,
-        'active_menu_item': list_type,
     }
-    if extra:
-        result.update(extra)
 
-    has_theme = any(((theme := x).category == 'theme' for x in tags))
-    if has_theme:
-        result['main_tag'] = theme
-        template = 'catalogue/theme_detail.html'
-    else:
-        template = 'catalogue/author_detail.html'
+    template = 'catalogue/author_detail.html'
         
     return render(
         request, template, result,
@@ -401,74 +364,8 @@ def analyse_tags(request, tag_str):
     return tags
 
 
-def theme_list(request, tags, list_type):
-    shelf_tags = [tag for tag in tags if tag.category == 'set']
-    fragment_tags = [tag for tag in tags if tag.category != 'set']
-    if list_type == 'gallery':
-        fragments = PictureArea.tagged.with_all(fragment_tags)
-    else:
-        fragments = Fragment.tagged.with_all(fragment_tags)
-
-    if shelf_tags:
-        # TODO: Pictures on shelves not supported yet.
-        books = Book.tagged.with_all(shelf_tags).order_by()
-        fragments = fragments.filter(Q(book__in=books) | Q(book__ancestor__in=books))
-    elif list_type == 'books':
-        fragments = fragments.filter(book__findable=True)
-
-    if not fragments and len(tags) == 1 and list_type == 'books':
-        if PictureArea.tagged.with_any(tags).exists() or Picture.tagged.with_any(tags).exists():
-            return redirect('tagged_object_list_gallery', '/'.join(tag.url_chunk for tag in tags))
-
-    return object_list(request, fragments, tags=tags, list_type=list_type, extra={
-        'theme_is_set': True,
-        'active_menu_item': 'theme',
-    })
-
-
 def tagged_object_list(request, tags, list_type):
-    if list_type in ('books', 'audiobooks'):
-        return TaggedObjectList.as_view()(request, tags=tags)
-
-    try:
-        tags = analyse_tags(request, tags)
-    except ResponseInstead as e:
-        return e.response
-
-    if list_type == 'gallery' and any(tag.category == 'set' for tag in tags):
-        raise Http404
-
-    if any(tag.category in ('theme', 'thing') for tag in tags):
-        return theme_list(request, tags, list_type=list_type)
-
-    if list_type == 'books':
-        books = Book.tagged.with_all(tags)
-
-        if any(tag.category == 'set' for tag in tags):
-            params = {'objects': books}
-        else:
-            books = books.filter(findable=True)
-            params = {
-                'objects': Book.tagged_top_level(tags).filter(findable=True),
-                'fragments': Fragment.objects.filter(book__in=books),
-                'related_tags': get_top_level_related_tags(tags),
-            }
-    elif list_type == 'gallery':
-        params = {'objects': Picture.tagged.with_all(tags)}
-    elif list_type == 'audiobooks':
-        audiobooks = Book.objects.filter(findable=True, media__type__in=('mp3', 'ogg')).distinct()
-        params = {
-            'objects': Book.tagged.with_all(tags, audiobooks),
-            'extra': {
-                'daisy': Book.tagged.with_all(
-                    tags, audiobooks.filter(media__type='daisy').distinct()
-                ),
-            }
-        }
-    else:
-        raise Http404
-
-    return object_list(request, tags=tags, list_type=list_type, **params)
+    return TaggedObjectList.as_view()(request, tags=tags)
 
 
 def book_fragments(request, slug, theme_slug):
@@ -485,7 +382,6 @@ def book_fragments(request, slug, theme_slug):
             'book': book,
             'theme': theme,
             'fragments': fragments,
-            'active_menu_item': 'books',
         })
 
 
@@ -503,7 +399,6 @@ def book_detail(request, slug):
             'book': book,
             'accessible': book.is_accessible_to(request.user),
             'book_children': book.children.all().order_by('parent_number', 'sort_key'),
-            'active_menu_item': 'books',
             'club': Club.objects.first() if book.preview else None,
             'donation_form': DonationStep1Form(),
         })
@@ -647,7 +542,6 @@ def tag_catalogue(request, category):
         'best': best,
         'title': constants.CATEGORIES_NAME_PLURAL[category],
         'whole_category': constants.WHOLE_CATEGORY[category],
-        'active_menu_item': 'theme' if category == 'theme' else None,
     })
 
 
@@ -663,7 +557,6 @@ def collections(request):
     return render(request, template_name, {
         'objects': objects,
         'best': best,
-        'active_menu_item': 'collections'
     })
 
 

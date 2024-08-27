@@ -9,7 +9,6 @@ class Command(BaseCommand):
 
     def handle(self, **options):
         from catalogue.models import Book
-        from picture.models import Picture
         from urllib.request import urlopen, HTTPError, URLError
         from django.urls import reverse
         from django.contrib.sites.models import Site
@@ -25,14 +24,6 @@ class Command(BaseCommand):
                 ],
                 'admin:catalogue_book_change'
             ),
-            (
-                Picture,
-                [
-                    ('wiki_link', lambda p: p.wiki_link),
-                    ('źródło', lambda p: p.get_extra_info_json().get('source_url')),
-                ],
-                'admin:pictures_picture_change'
-            )
         ]
 
         for model, model_fields, admin_name in fields:

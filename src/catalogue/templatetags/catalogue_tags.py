@@ -256,16 +256,12 @@ class CatalogueURLNode(Node):
                 pass
 
         if len(tag_slugs) > 0:
-            if list_type == 'gallery':
-                return reverse('tagged_object_list_gallery', kwargs={'tags': '/'.join(tag_slugs)})
-            elif list_type == 'audiobooks':
+            if list_type == 'audiobooks':
                 return reverse('tagged_object_list_audiobooks', kwargs={'tags': '/'.join(tag_slugs)})
             else:
                 return reverse('tagged_object_list', kwargs={'tags': '/'.join(tag_slugs)})
         else:
-            if list_type == 'gallery':
-                return reverse('gallery')
-            elif list_type == 'audiobooks':
+            if list_type == 'audiobooks':
                 return reverse('audiobook_list')
             else:
                 return reverse('book_list')
