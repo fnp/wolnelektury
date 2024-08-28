@@ -653,11 +653,6 @@ class Book(models.Model):
 
         meta_tags = Tag.tags_from_info(book_info)
 
-        for tag, relationship in meta_tags:
-            if not tag.for_books:
-                tag.for_books = True
-                tag.save()
-
         just_tags = [t for (t, rel) in meta_tags if not rel]
         book.tags = set(just_tags + book_shelves)
         book.save()  # update sort_key_author

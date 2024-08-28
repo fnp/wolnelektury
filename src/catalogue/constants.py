@@ -67,7 +67,6 @@ CATEGORIES_NAME_PLURAL = {
     'genre': _('gatunki'),
     'theme': _('motywy'),
     'set': _('półki'),
-    'thing': _('obiekty'),
 }
 
 WHOLE_CATEGORY = {
@@ -77,5 +76,4 @@ WHOLE_CATEGORY = {
     'genre': _('Wszystkie gatunki'),
     'theme': _('Wszystkie motywy'),
     'set': _('Wszystkie półki'),
-    'thing': _('Wszystkie obiekty'),
 }

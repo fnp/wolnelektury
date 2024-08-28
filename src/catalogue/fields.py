@@ -350,7 +350,6 @@ class HtmlField(EbookField):
                             tag.name = theme_name
                             setattr(tag, "name_%s" % lang, theme_name)
                             tag.sort_key = sortify(theme_name.lower())
-                            tag.for_books = True
                             tag.save()
                         themes.append(tag)
                     elif lang is not None:
@@ -380,10 +379,6 @@ class HtmlField(EbookField):
 
                 new_fragment.save()
                 new_fragment.tags = set(meta_tags + themes)
-                for theme in themes:
-                    if not theme.for_books:
-                        theme.for_books = True
-                        theme.save()
             book.html_built.send(sender=type(self), instance=book)
             return True
         return False

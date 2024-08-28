@@ -23,7 +23,6 @@ TAG_CATEGORIES = (
     ('genre', _('gatunek')),
     ('theme', _('motyw')),
     ('set', _('półka')),
-    ('thing', _('obiekt')),  # things shown on pictures
 )
 
 
@@ -57,9 +56,6 @@ class Tag(models.Model):
     category = models.CharField(
         'kategoria', max_length=50, blank=False, null=False, db_index=True, choices=TAG_CATEGORIES)
     description = models.TextField('opis', blank=True)
-
-    for_books = models.BooleanField(default=False)
-    for_pictures = models.BooleanField(default=False)
 
     user = models.ForeignKey(User, models.CASCADE, blank=True, null=True)
     gazeta_link = models.CharField(blank=True, max_length=240)
@@ -113,7 +109,6 @@ class Tag(models.Model):
         'gatunek': 'genre',
         'motyw': 'theme',
         'polka': 'set',
-        'obiekt': 'thing',
     }
     categories_dict = dict((item[::-1] for item in categories_rev.items()))
 
@@ -156,8 +151,6 @@ class Tag(models.Model):
         # TODO: remove magic.
         if self.category == 'set':
             return reverse('social_my_shelf')
-        elif self.category == 'thing':
-            return ''
         else:
             return reverse(f'{self.category}_catalogue')
 
