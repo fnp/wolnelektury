@@ -84,6 +84,7 @@ class Reference(models.Model):
 class Occurence(models.Model):
     reference = models.ForeignKey(Reference, models.CASCADE)
     section = models.IntegerField()
+    anchor = models.CharField(max_length=64)
     html = models.TextField()
 
     class Meta:

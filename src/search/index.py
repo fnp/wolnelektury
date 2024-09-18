@@ -2,7 +2,8 @@
 # Copyright © Fundacja Wolne Lektury. See NOTICE for more information.
 #
 import re
-from librarian.parser import WLDocument
+from librarian.elements.base import WLElement
+from librarian.document import WLDocument
 from lxml import etree
 
 
@@ -31,22 +32,15 @@ class Index:
     skip_header_tags = ['autor_utworu', 'nazwa_utworu', 'dzielo_nadrzedne',
                         '{http://www.w3.org/1999/02/22-rdf-syntax-ns#}RDF']
 
-    @classmethod
-    def get_master(cls, root):
-        """
-        Returns the first master tag from an etree.
-        """
-        for master in root.iter():
-            if master.tag in cls.master_tags:
-                return master
-
     @staticmethod
-    def add_snippet(book, text, position):
+    def add_snippet(book, text, position, anchor):
         book.snippet_set.create(
             sec=position + 1,
-            text=text
+            text=text,
+            anchor=anchor
         )
 
+    # TODO: The section links stuff won't work.
     @classmethod
     def index_book(cls, book):
         """
@@ -57,12 +51,22 @@ class Index:
 
         book.snippet_set.all().delete()
 
-        wld = WLDocument.from_file(book.xml_file.path, parse_dublincore=False)
-        root = wld.edoc.getroot()
+        wld = WLDocument(filename=book.xml_file.path)
+        wld.assign_ids()
 
-        master = cls.get_master(root)
+        master = wld.tree.getroot().master
         if master is None:
             return []
+
+        def get_indexable(element):
+            for child in element:
+                if not isinstance(child, WLElement):
+                    continue
+                if not child.attrib.get('_id'):
+                    for e in get_indexable(child):
+                        yield e
+                else:
+                    yield child
 
         def walker(node):
             if node.tag not in cls.ignore_content_tags:
@@ -85,11 +89,13 @@ class Index:
 
             return re.sub("(?m)/$", "", text)
 
-        for position, header in enumerate(master):
+        for position, header in enumerate(get_indexable(master)):
             if header.tag in cls.skip_header_tags:
                 continue
             if header.tag is etree.Comment:
                 continue
+
+            el_id = header.attrib['_id']
 
             # section content
             content = []
@@ -110,7 +116,7 @@ class Index:
                     handle_text.append(collect_footnote)
                 elif end is not None and footnote is not [] and end.tag in cls.footnote_tags:
                     handle_text.pop()
-                    cls.add_snippet(book, ''.join(footnote), position)
+                    cls.add_snippet(book, ''.join(footnote), position, el_id)
                     footnote = []
 
                 if text is not None and handle_text is not []:
@@ -118,4 +124,4 @@ class Index:
                     hdl(text)
 
             # in the end, add a section text.
-            cls.add_snippet(book, fix_format(content), position)
+            cls.add_snippet(book, fix_format(content), position, el_id)

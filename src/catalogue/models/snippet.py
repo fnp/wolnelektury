@@ -7,6 +7,7 @@ from search.utils import UnaccentSearchVector
 class Snippet(models.Model):
     book = models.ForeignKey('Book', models.CASCADE)
     sec = models.IntegerField()
+    anchor = models.CharField(max_length=64)
     text = models.TextField()
     search_vector = SearchVectorField()
 

@@ -126,7 +126,7 @@
               {{ book.title }}
             </a>
             {% for f in snippets %}
-              <a class="c-search-result-fragment-text" href='{% url 'book_text' f.book.slug %}#sec{{ f.sec }}'>
+              <a class="c-search-result-fragment-text" href='{% url 'book_text' f.book.slug %}#{{ f.anchor }}'>
                 {{ f.headline|safe }}
               </a>
             {% endfor %}

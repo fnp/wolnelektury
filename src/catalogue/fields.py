@@ -229,10 +229,12 @@ class XmlField(EbookField):
 class TxtField(EbookField):
     ext = 'txt'
     for_parents = False
+    librarian2_api = True
 
     @staticmethod
     def transform(wldoc, book):
-        return wldoc.as_text()
+        from librarian.builders.txt import TxtBuilder
+        return TxtBuilder().build(wldoc)
 
 
 class Fb2Field(EbookField):
@@ -299,6 +301,7 @@ class MobiField(EbookField):
 class HtmlField(EbookField):
     ext = 'html'
     for_parents = False
+    librarian2_api = True
 
     def build(self, fieldfile):
         from django.core.files.base import ContentFile
@@ -309,7 +312,7 @@ class HtmlField(EbookField):
 
         book = fieldfile.instance
 
-        html_output = self.transform(book.wldocument(parse_dublincore=False), book)
+        html_output = self.transform(book.wldocument2(), book)
 
         # Delete old fragments, create from scratch if necessary.
         book.fragments.all().delete()
@@ -385,17 +388,15 @@ class HtmlField(EbookField):
 
     @staticmethod
     def transform(wldoc, book):
-        # ugly, but we can't use wldoc.book_info here
-        from librarian import DCNS
-        url_elem = wldoc.edoc.getroot().find('.//' + DCNS('identifier.url'))
-        if url_elem is None:
+        from librarian.builders.html import HtmlBuilder
+        url = wldoc.meta.url
+        if not url:
             gal_url = ''
             gal_path = ''
         else:
-            slug = url_elem.text.rstrip('/').rsplit('/', 1)[1]
-            gal_url = gallery_url(slug=slug)
-            gal_path = gallery_path(slug=slug)
-        return wldoc.as_html(gallery_path=gal_path, gallery_url=gal_url, base_url=absolute_url(gal_url))
+            gal_url = gallery_url(slug=url.slug)
+            gal_path = gallery_path(slug=url.slug)
+        return HtmlBuilder(gallery_path=gal_path, gallery_url=gal_url, base_url=absolute_url(gal_url)).build(wldoc)
 
 
 class CoverField(EbookField):

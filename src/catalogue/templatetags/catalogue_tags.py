@@ -307,6 +307,8 @@ def plain_list(context, object_list, with_initials=True, by_author=False, choice
 @register.simple_tag
 def related_books_2022(book=None, limit=4, taken=0):
     limit -= taken
+    if limit < 0:
+        return []
     max_books = limit
 
     books_qs = Book.objects.filter(findable=True)

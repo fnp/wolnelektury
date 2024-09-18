@@ -28,7 +28,7 @@
     </div>
 
     {% for occ in ref.occurence_set.all %}
-      <a target="_blank" href="/katalog/lektura/{{ ref.book.slug }}.html#sec{{ occ.section }}" class="c-search-result-fragment-text">
+      <a target="_blank" href="/katalog/lektura/{{ ref.book.slug }}.html#{{ occ.anchor }}" class="c-search-result-fragment-text">
         {{ occ.html|safe }}
       </a>
     {% endfor %}

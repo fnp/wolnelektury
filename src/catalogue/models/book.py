@@ -19,7 +19,7 @@ from django.utils.translation import gettext_lazy as _, get_language
 from fnpdjango.storage import BofhFileSystemStorage
 from lxml import html
 from librarian.cover import WLCover
-from librarian.html import transform_abstrakt
+from librarian.builders.html import AbstraktHtmlBuilder
 from librarian.builders import builders
 from newtagging import managers
 from catalogue import constants
@@ -327,7 +327,10 @@ class Book(models.Model):
         return int(total)
 
     def get_time(self):
-        return round(self.xml_file.size / 1000 * 40)
+        try:
+            return round(self.xml_file.size / 1000 * 40)
+        except ValueError:
+            return 0
     
     def has_media(self, type_):
         if type_ in Book.formats:
@@ -554,11 +557,8 @@ class Book(models.Model):
                 urlretrieve('%s/%s' % (remote_gallery_url, ilustr_src), ilustr_path)
 
     def load_abstract(self):
-        abstract = self.wldocument(parse_dublincore=False).edoc.getroot().find('.//abstrakt')
-        if abstract is not None:
-            self.abstract = transform_abstrakt(abstract)
-        else:
-            self.abstract = ''
+        self.abstract = AbstraktHtmlBuilder().build(
+            self.wldocument2()).get_bytes().decode('utf-8')
 
     def load_toc(self):
         self.toc = ''
@@ -717,13 +717,14 @@ class Book(models.Model):
         cls.published.send(sender=cls, instance=book)
         return book
 
+    # TODO TEST
     def update_references(self):
         Entity = apps.get_model('references', 'Entity')
         doc = self.wldocument2()
-        doc._compat_assign_section_ids()
-        doc._compat_assign_ordered_ids()
+        doc.assign_ids()
+
         refs = {}
-        for ref_elem in doc.references():
+        for i, ref_elem in enumerate(doc.references()):
             uri = ref_elem.attrib.get('href', '')
             if not uri:
                 continue
@@ -742,10 +743,8 @@ class Book(models.Model):
                 refs[uri] = ref
                 if not ref_created:
                     ref.occurence_set.all().delete()
-            sec = ref_elem.get_link()
-            m = re.match(r'sec(\d+)', sec)
-            assert m is not None
-            sec = int(m.group(1))
+            anchor = ref_elem.get_link()
+
             snippet = ref_elem.get_snippet()
             b = builders['html-snippet']()
             for s in snippet:
@@ -753,7 +752,8 @@ class Book(models.Model):
             html = b.output().get_bytes().decode('utf-8')
 
             ref.occurence_set.create(
-                section=sec,
+                section=i,
+                anchor=anchor,
                 html=html
             )
         self.reference_set.exclude(entity__uri__in=refs).delete()
