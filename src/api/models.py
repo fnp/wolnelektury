@@ -112,7 +112,7 @@ class Token(models.Model):
         settings.AUTH_USER_MODEL, models.CASCADE,
         null=True, blank=True, related_name='tokens'
     )
-    consumer = models.ForeignKey(Consumer, models.CASCADE)
+    consumer = models.ForeignKey(Consumer, models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return "%s Token %s for %s" % (self.get_token_type_display(), self.key, self.consumer)

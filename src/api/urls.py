@@ -13,6 +13,7 @@ urlpatterns = [
     path('oauth/request_token/', csrf_exempt(views.OAuth1RequestTokenView.as_view())),
     path('oauth/authorize/', views.oauth_user_auth, name='oauth_user_auth'),
     path('oauth/access_token/', csrf_exempt(views.OAuth1AccessTokenView.as_view())),
+    path('login/', csrf_exempt(views.LoginView.as_view())),
 
     path('', TemplateView.as_view(template_name='api/main.html'), name='api'),
 

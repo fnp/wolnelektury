@@ -28,6 +28,7 @@ REST_FRAMEWORK = {
         'api.renderers.LegacyXMLRenderer',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
+        'api.drf_auth.WLTokenAuthentication',
         'api.drf_auth.PistonOAuthAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     )

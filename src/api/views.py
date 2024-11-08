@@ -1,21 +1,23 @@
 # This file is part of Wolne Lektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Wolne Lektury. See NOTICE for more information.
 #
+from time import time
+from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
 from django import forms
 from django.http import HttpResponse
 from django.http import Http404
 from django.shortcuts import render
 from django.views.generic.base import View
-from oauthlib.common import urlencode
+from oauthlib.common import urlencode, generate_token
 from oauthlib.oauth1 import RequestTokenEndpoint, AccessTokenEndpoint
 from oauthlib.oauth1 import AuthorizationEndpoint, OAuth1Error
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.generics import RetrieveAPIView, get_object_or_404
+from rest_framework.generics import GenericAPIView, RetrieveAPIView, get_object_or_404
 from catalogue.models import Book
-from .models import BookUserData, KEY_SIZE, SECRET_SIZE
+from .models import BookUserData, KEY_SIZE, SECRET_SIZE, Token
 from . import serializers
 from .request_validator import PistonRequestValidator
 from .utils import oauthlib_request, oauthlib_response, vary_on_auth
@@ -129,6 +131,27 @@ class OAuth1AccessTokenView(View):
                 **oauthlib_request(request)
             )
         )
+
+
+class LoginView(GenericAPIView):
+    serializer_class = serializers.LoginSerializer
+
+    def post(self, request):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        d = serializer.validated_data
+        user = authenticate(username=d['username'], password=d['password'])
+        if user is None:
+            return Response({"detail": "Invalid credentials."})
+
+        key = generate_token()[:KEY_SIZE]
+        Token.objects.create(
+            key=key,
+            token_type=Token.ACCESS,
+            timestamp=time(),
+            user=user,
+        )
+        return Response({"access_token": key})
 
 
 @vary_on_auth

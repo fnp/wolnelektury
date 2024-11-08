@@ -2,9 +2,10 @@
 # Copyright © Fundacja Wolne Lektury. See NOTICE for more information.
 #
 from oauthlib.oauth1 import ResourceEndpoint
-from rest_framework.authentication import BaseAuthentication
+from rest_framework.authentication import BaseAuthentication, TokenAuthentication
 from .request_validator import PistonRequestValidator
 from .utils import oauthlib_request
+from .models import Token
 
 
 class PistonOAuthAuthentication(BaseAuthentication):
@@ -21,3 +22,7 @@ class PistonOAuthAuthentication(BaseAuthentication):
         )
         if v:
             return r.token.user, r.token
+
+
+class WLTokenAuthentication(TokenAuthentication):
+    model = Token
