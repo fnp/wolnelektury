@@ -67,6 +67,12 @@ class ExpiredFilter(YesNoFilter):
     q = Q(expires_at__isnull=False, expires_at__lt=Now())
 
 
+class ActiveFilter(YesNoFilter):
+    title = 'płatność aktualna'
+    parameter_name = 'active'
+    q = Q(expires_at__gt=Now())
+
+
 class ScheduleForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -111,7 +117,7 @@ class ScheduleAdmin(admin.ModelAdmin):
     search_fields = ['email', 'source']
     list_filter = [
         'is_cancelled', 'monthly', 'yearly', 'method',
-        PayedFilter, ExpiredFilter,
+        PayedFilter, ActiveFilter, ExpiredFilter,
         SourceFilter,
     ]
     filter_horizontal = ['consent']
