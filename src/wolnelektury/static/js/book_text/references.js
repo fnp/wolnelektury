@@ -615,7 +615,7 @@
         let range = document.createRange();
 
         let $p = $(this).nextAll('.paragraph').first()
-        range.selectNode($p[0]);
+        range.selectNodeContents($p[0]);
         sel.addRange(range);
         
         qbox.showForSelection(sel);

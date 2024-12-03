@@ -293,7 +293,7 @@ h2 {
 
 h3, .subtitle2 {
     font-size: 1.5em;
-    margin: 1.5em 0 0;
+    margin: 1.5em 0 1em 0;
     font-weight: normal;
     line-height: 1.5em;
 }
@@ -471,6 +471,10 @@ p.paragraph {
     margin: 0;
     text-indent: 1.5em;
 }
+p.paragraph.werset {
+    text-indent: 0;
+    margin-bottom: 1em;
+}
 
 .motto {
     text-align: justify;
@@ -529,6 +533,9 @@ p.place-and-time {
 
 em.math, em.foreign-word, em.book-title, em.didaskalia {
     font-style: italic;
+}
+em.foreign-word.foreign-word-protected {
+    font-style: normal;
 }
 
 em.author-emphasis {
@@ -719,7 +726,11 @@ a.reference.interesting:after {
             font-size: 18px;
             font-style: normal;
             font-weight: 400;
-            line-height: 28px; /* 155.556% */ 
+            line-height: 28px; /* 155.556% */
+
+	    em.foreign-word.foreign-word-protected {
+		font-style: normal;
+	    }
         }
 
         #footnote-link {
