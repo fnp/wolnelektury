@@ -8,6 +8,7 @@ PLACE_DEFINITIONS = [
 #        ('centre', 'Środek ekranu'),
         ('upper', 'Górna połowa ekranu'),
     )),
+    ('crisis', 'Kryzysowa', False),
 ]
 
 PLACE_CHOICES = [p[:2] for p in PLACE_DEFINITIONS]

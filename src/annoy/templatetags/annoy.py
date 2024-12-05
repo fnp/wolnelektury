@@ -29,3 +29,12 @@ def annoy_banners(context, place):
         'banners': Banner.choice(place, request=context['request']),
         'closable': PLACES.get(place, False),
     }
+
+
+@register.inclusion_tag('annoy/banner_crisis.html', takes_context=True)
+def annoy_banner_crisis(context):
+    banners = Banner.choice('crisis', request=context['request'], exemptions=False)
+    return {
+        'banner': banners.first(),
+        'closable': True,
+    }

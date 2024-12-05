@@ -1,0 +1,60 @@
+{% load l10n %}
+{% load time_tags %}
+
+{% if banner %}
+<div class="annoy-banner_crisis-container">
+  <div class="
+              annoy-banner
+              annoy-banner_{{ banner.place }}
+              annoy-banner-style_{{ banner.style }}
+              {% if banner.image %}with-image{% endif %}
+              {% if banner.smallfont %}banner-smallfont{% endif %}
+              "
+        id="annoy-banner-{{ banner.id }}"
+	style="
+           {% if banner.text_color %}color: {{ banner.text_color }};{% endif %}
+           {% if banner.background_color %}background-color: {{ banner.background_color }};{% endif %}
+
+        ">
+    <div class="annoy-banner-inner">
+
+      <div class="image-box">
+	{% if banner.image %}
+	<img src="{{ banner.image.url }}">
+	{% endif %}
+      </div>
+
+      <div class="text-box">
+	<div class="text">
+          {{ banner.get_text|safe|linebreaks }}
+	</div>
+
+	<div class="state-box">
+	  <div class="progress-box">
+	    <div>
+	      <div class="l-checkout__support__bar">
+		<span data-label="{{ banner.progress_percent|floatformat:'0' }}%" style="width: {% localize off %}{{ banner.progress_percent }}%{% endlocalize %};"></span>
+	      </div>
+	    </div>
+	  </div>
+	  <div class="time-box">
+	    <strong class="countdown inline" data-until='{{ banner.until|date_to_utc:True|utc_for_js }}'></strong>
+	  </div>
+	  <div class="action-box">
+	    {% if banner.action_label %}
+            <a class="action" href="{{ banner.url }}">
+              {{ banner.action_label }}
+            </a>
+	    {% endif %}
+	  </div>
+	</div>
+      </div>
+
+
+
+    </div>
+  </div>
+  </div>
+
+{% endif %}
+

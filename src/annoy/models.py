@@ -33,6 +33,8 @@ class Banner(models.Model):
         help_text='Bannery z wyższym priorytetem mają pierwszeństwo.')
     since = models.DateTimeField('od', null=True, blank=True)
     until = models.DateTimeField('do', null=True, blank=True)
+    target = models.IntegerField('cel', null=True, blank=True)
+    progress = models.IntegerField('postęp', null=True, blank=True)
     show_members = models.BooleanField('widoczny dla członków klubu', default=False)
     staff_preview = models.BooleanField('podgląd tylko dla zespołu', default=False)
     only_authenticated = models.BooleanField('tylko dla zalogowanych', default=False)
@@ -49,10 +51,10 @@ class Banner(models.Model):
         return Template(self.text).render(Context())
 
     @classmethod
-    def choice(cls, place, request):
+    def choice(cls, place, request, exemptions=True):
         Membership = apps.get_model('club', 'Membership')
 
-        if hasattr(request, 'annoy_banner_exempt'):
+        if exemptions and hasattr(request, 'annoy_banner_exempt'):
             return cls.objects.none()
 
         if settings.DEBUG:
@@ -77,6 +79,29 @@ class Banner(models.Model):
             banners = banners.filter(show_members=True)
 
         return banners
+
+    @property
+    def progress_percent(self):
+        if not self.target:
+            return 0
+        return (self.progress or 0) / self.target * 100
+
+    def update_progress(self):
+        # Total of new payments during the action.
+        # This definition will need to change for longer timespans.
+        if not self.since or not self.until or not self.target:
+            return
+        Schedule = apps.get_model('club', 'Schedule')
+        self.progress = Schedule.objects.filter(
+            payed_at__gte=self.since,
+            payed_at__lte=self.until,
+        ).aggregate(c=models.Sum('amount'))['c']
+        self.save(update_fields=['progress'])
+
+    @classmethod
+    def update_all_progress(cls):
+        for obj in cls.objects.exclude(target=None):
+            obj.update_progress()
 
 
 class DynamicTextInsert(models.Model):
@@ -146,12 +171,3 @@ class MediaInsertText(models.Model):
 
     class Meta:
         ordering = ('ordering',)
-
-
-from django.db.models.signals import post_save, post_delete
-from django.dispatch import receiver
-
-@receiver(post_delete, sender=MediaInsertText)
-@receiver(post_save, sender=MediaInsertText)
-def update_etag(sender, instance, **kwargs):
-    instance.media_insert_set.update_etag()
