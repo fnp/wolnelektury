@@ -85,6 +85,10 @@ class Banner(models.Model):
             return 0
         return (self.progress or 0) / self.target * 100
 
+    @property
+    def progress_percent_pretty(self):
+        return int(self.progress_percent)
+
     def update_progress(self):
         # Total of new payments during the action.
         # This definition will need to change for longer timespans.
