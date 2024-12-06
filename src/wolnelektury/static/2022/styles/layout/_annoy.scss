@@ -116,7 +116,7 @@
 	    .image-box {
 		position: relative;
 		img {
-		    height: 160px;
+		    height: 159px;
 		    display: block;
 
 		    @media screen and (max-width: 700px) {
@@ -182,6 +182,24 @@
 		&:hover {
 		    background: #ffd430;
 		    text-decoration: none;
+		}
+	    }
+	}
+    }
+    &.annoy-banner-style_crisis_quiet {
+	background: black;
+	color: white;
+	.annoy-banner-inner {
+	    align-items: center;
+
+	    .text-box {
+		.text {
+		    background: none;
+		    padding: 0;
+		    border: none;
+		    a {
+			color: #ffd430;
+		    }
 		}
 	    }
 	}

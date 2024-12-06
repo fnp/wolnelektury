@@ -13,7 +13,6 @@ class Banner(models.Model):
     style = models.CharField(
         'styl', max_length=255, blank=True,
         choices=STYLES,
-        help_text='Dotyczy blackoutu.'
     )
     smallfont = models.BooleanField('mały font', default=False)
     text_color = models.CharField(max_length=10, blank=True)

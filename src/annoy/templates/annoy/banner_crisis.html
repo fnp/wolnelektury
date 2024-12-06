@@ -2,11 +2,13 @@
 {% load time_tags %}
 
 {% if banner %}
-<div class="annoy-banner_crisis-container">
+<div class="
+	    annoy-banner_crisis-container
+            annoy-banner-style_{{ banner.style }}
+	    ">
   <div class="
               annoy-banner
               annoy-banner_{{ banner.place }}
-              annoy-banner-style_{{ banner.style }}
               {% if banner.image %}with-image{% endif %}
               {% if banner.smallfont %}banner-smallfont{% endif %}
               "
