@@ -35,12 +35,12 @@
 	  <div class="progress-box">
 	    <div>
 	      <div class="l-checkout__support__bar">
-		<span data-label="{{ banner.progress_percent_pretty }}%" style="width: {% localize off %}{{ banner.progress_percent }}%{% endlocalize %};"></span>
+		<span data-label="{{ banner.progress_percent_pretty }}%" style="width: {{ banner.progress_percent|stringformat:".3f" }}%;"></span>
 	      </div>
 	    </div>
 	  </div>
 	  <div class="time-box">
-	    <strong class="countdown inline" data-until='{{ banner.until|date_to_utc:True|utc_for_js }}'></strong>
+	    <strong class="countdown inline" data-until='{{ banner.until|date_to_utc:True|utc_for_js }}'>&nbsp;</strong>
 	  </div>
 	  <div class="action-box">
 	    {% if banner.action_label %}

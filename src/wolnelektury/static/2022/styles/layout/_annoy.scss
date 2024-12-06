@@ -158,10 +158,15 @@
 			flex-grow: 1;
 
 			.l-checkout__support__bar span::after {
-			    right: auto;
-			    left: 5px;
 			    color: black;
 			}
+		    }
+		    .time-box {
+			width: 110px;
+			margin: auto;
+		    }
+		    .countdown {
+			margin: 0;
 		    }
 		}
 	    }
