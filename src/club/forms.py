@@ -73,7 +73,6 @@ class DonationStep2Form(forms.ModelForm, NewsletterForm):
 
         self.fields['first_name'].required = True
         self.fields['last_name'].required = True
-        self.fields['phone'].required = True
         
         self.consent = []
         for c in models.Consent.objects.filter(active=True).order_by('order'):
