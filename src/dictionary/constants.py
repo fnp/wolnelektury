@@ -9,4 +9,5 @@ FN_TYPES = {
     'pe': _("przypisy redaktorów Wolnych Lektur"),
     'pr': _("przypisy źródła"),
     'pt': _("przypisy tłumacza"),
+    'ptrad': _("przypisy tradycyjne"),
 }
