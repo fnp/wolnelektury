@@ -99,7 +99,7 @@ class JoinView(CreateView):
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
-        #kwargs['referer'] = self.request.META.get('HTTP_REFERER', '')
+        kwargs['referer'] = self.request.META.get('HTTP_REFERER', '')
         return kwargs
 
     def form_valid(self, form):

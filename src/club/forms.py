@@ -31,7 +31,8 @@ class DonationStep1Form(forms.ModelForm):
             'monthly'
             ]
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, referer=None, **kwargs):
+        self.referer = referer
         super().__init__(*args, **kwargs)
         club = models.Club.objects.first()
         if club is not None:
@@ -48,6 +49,9 @@ class DonationStep1Form(forms.ModelForm):
 
         return state
 
+    def save(self, *args, **kwargs):
+        self.instance.source = self.referer
+        return super().save(*args, **kwargs)
 
 
 class DonationStep2Form(forms.ModelForm, NewsletterForm):
@@ -64,8 +68,7 @@ class DonationStep2Form(forms.ModelForm, NewsletterForm):
             'monthly': forms.HiddenInput,
         }
     
-    def __init__(self, referer=None, **kwargs):
-        self.referer = referer
+    def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
         self.fields['first_name'].required = True
@@ -83,11 +86,8 @@ class DonationStep2Form(forms.ModelForm, NewsletterForm):
                 c, key, (lambda k: lambda: self[k])(key)
             ))
 
-
-
     def save(self, *args, **kwargs):
         NewsletterForm.save(self, *args, **kwargs)
-        self.instance.source = self.referer or ''
         instance = super().save(*args, **kwargs)
 
         consents = []
