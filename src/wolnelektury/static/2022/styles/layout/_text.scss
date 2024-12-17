@@ -482,6 +482,17 @@ p.paragraph.werset {
     margin: 1.5em 0 0;
 }
 
+.paragraph {
+    &.miejsce_data, &.pozdrowienie, &.podpis {
+	text-align: right;
+    }
+    &.naglowek_listu {
+	text-align: center;
+	margin: .5em 0;
+    }
+}
+
+
 p.motto_podpis {
     font-size: 0.875em;
     text-align: right;
