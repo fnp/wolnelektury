@@ -9,7 +9,15 @@ from stats.utils import piwik_track_view
 from . import views
 
 
+urlpatterns1 = [
+    path('login/', csrf_exempt(views.LoginView.as_view())),
+    path('', include('catalogue.api.urls2')),
+]
+
+
 urlpatterns = [
+    path('2/', include((urlpatterns1, 'api'), namespace="v2")),
+
     path('oauth/request_token/', csrf_exempt(views.OAuth1RequestTokenView.as_view())),
     path('oauth/authorize/', views.oauth_user_auth, name='oauth_user_auth'),
     path('oauth/access_token/', csrf_exempt(views.OAuth1AccessTokenView.as_view())),
@@ -37,4 +45,5 @@ urlpatterns = [
 
     path('', include('social.api.urls')),
     path('', include('catalogue.api.urls')),
+
 ]

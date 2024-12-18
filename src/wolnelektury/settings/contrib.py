@@ -31,7 +31,10 @@ REST_FRAMEWORK = {
         'api.drf_auth.WLTokenAuthentication',
         'api.drf_auth.PistonOAuthAuthentication',
         'rest_framework.authentication.SessionAuthentication',
-    )
+    ),
+    'DEFAULT_PAGINATION_CLASS': 'api.pagination.WLLimitOffsetPagination',
+    'PAGE_SIZE': 10,
+    'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.NamespaceVersioning',
 }
 
 

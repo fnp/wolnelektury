@@ -36,6 +36,7 @@ class LikeView(APIView):
 class ShelfView(ListAPIView):
     permission_classes = [IsAuthenticated]
     serializer_class = BookSerializer
+    pagination_class = None
 
     def get_queryset(self):
         state = self.kwargs['state']

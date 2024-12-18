@@ -3,7 +3,7 @@
 #
 from rest_framework import serializers
 from sorl.thumbnail import default
-from django.urls import reverse
+from rest_framework.reverse import reverse
 from club.models import Membership
 
 
@@ -20,13 +20,14 @@ class AbsoluteURLField(serializers.ReadOnlyField):
                 self.view_args[fields[0]] = fields[1] if len(fields) > 1 else fields[0]
 
     def to_representation(self, value):
+        request = self.context['request']
         if self.view_name is not None:
             kwargs = {
                 arg: getattr(value, field)
                 for (arg, field) in self.view_args.items()
             }
-            value = reverse(self.view_name, kwargs=kwargs)
-        return self.context['request'].build_absolute_uri(value)
+            return reverse(self.view_name, kwargs=kwargs, request=request)
+        return request.build_absolute_uri(value)
 
 
 class LegacyMixin:

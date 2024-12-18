@@ -44,6 +44,30 @@ class TranslatorSerializer(serializers.Serializer):
     name = serializers.CharField(source='*')
 
 
+class BookSerializer2(serializers.ModelSerializer):
+    url = AbsoluteURLField()
+    href = AbsoluteURLField(view_name='catalogue_api_book', view_args=['slug'])
+    xml = EmbargoURLField(source='xml_url')
+    html = EmbargoURLField(source='html_url')
+    txt = EmbargoURLField(source='txt_url')
+    fb2 = EmbargoURLField(source='fb2_url')
+    epub = EmbargoURLField(source='epub_url')
+    mobi = EmbargoURLField(source='mobi_url')
+    pdf = EmbargoURLField(source='pdf_url')
+
+    class Meta:
+        model = Book
+        fields = [
+            'full_sort_key', 'title',
+            'href', 'url', 'language',
+            #'epochs', 'genres', 'kinds', 'authors', 'translators',
+            #'children',
+            'parent', 'preview',
+            'epub', 'mobi', 'pdf', 'html', 'txt', 'fb2', 'xml',
+            'cover_thumb', 'cover',
+            'isbn_pdf', 'isbn_epub', 'isbn_mobi',
+        ]
+
 class BookSerializer(LegacyMixin, serializers.ModelSerializer):
     author = serializers.CharField(source='author_unicode')
     kind = serializers.CharField(source='kind_unicode')

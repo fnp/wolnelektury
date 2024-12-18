@@ -30,6 +30,10 @@ from . import serializers
 book_tag_categories = ['author', 'epoch', 'kind', 'genre']
 
 
+class LegacyListAPIView(ListAPIView):
+    pagination_class = None
+
+
 class CreateOnPutMixin:
     '''
     Creates a new model instance when PUTting a nonexistent resource.
@@ -47,7 +51,7 @@ class CreateOnPutMixin:
                 raise
 
 
-class CollectionList(ListAPIView):
+class CollectionList(LegacyListAPIView):
     queryset = Collection.objects.filter(listed=True)
     serializer_class = serializers.CollectionListSerializer
 
@@ -61,7 +65,7 @@ class CollectionDetail(CreateOnPutMixin, RetrieveUpdateAPIView):
 
 
 @vary_on_auth  # Because of 'liked'.
-class BookList(ListAPIView):
+class BookList(LegacyListAPIView):
     permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
     queryset = Book.objects.none()  # Required for DjangoModelPermissions
     serializer_class = serializers.BookListSerializer
@@ -179,11 +183,30 @@ class BookList(ListAPIView):
         return Response({}, status=status.HTTP_201_CREATED)
 
 
+class BookList2(ListAPIView):
+    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
+    queryset = Book.objects.none()  # Required for DjangoModelPermissions
+    serializer_class = serializers.BookSerializer2
+
+    def get_queryset(self):
+        books = Book.objects.all()
+        books = books.filter(findable=True)
+        books = order_books(books, True)
+
+        return books
+
+
 @vary_on_auth  # Because of 'liked'.
 class BookDetail(RetrieveAPIView):
     queryset = Book.objects.all()
     lookup_field = 'slug'
     serializer_class = serializers.BookDetailSerializer
+
+
+class BookDetail2(RetrieveAPIView):
+    queryset = Book.objects.all()
+    lookup_field = 'slug'
+    serializer_class = serializers.BookSerializer2
 
 
 @vary_on_auth  # Because of embargo links.
@@ -192,7 +215,7 @@ class EbookList(BookList):
 
 
 @method_decorator(never_cache, name='dispatch')
-class Preview(ListAPIView):
+class Preview(LegacyListAPIView):
     #queryset = Book.objects.filter(preview=True)
     serializer_class = serializers.BookPreviewSerializer
 
@@ -205,7 +228,7 @@ class Preview(ListAPIView):
 
 
 @vary_on_auth  # Because of 'liked'.
-class FilterBookList(ListAPIView):
+class FilterBookList(LegacyListAPIView):
     serializer_class = serializers.FilterBookListSerializer
 
     def parse_bool(self, s):
@@ -289,7 +312,7 @@ class EpubView(RetrieveAPIView):
         return HttpResponse(self.get_object().get_media('epub'))
 
 
-class TagCategoryView(ListAPIView):
+class TagCategoryView(LegacyListAPIView):
     serializer_class = serializers.TagSerializer
 
     def get_queryset(self):
@@ -373,7 +396,7 @@ class TagView(RetrieveAPIView):
 
 
 @vary_on_auth  # Because of 'liked'.
-class FragmentList(ListAPIView):
+class FragmentList(LegacyListAPIView):
     serializer_class = serializers.FragmentSerializer
 
     def get_queryset(self):
