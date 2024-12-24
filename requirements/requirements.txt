@@ -3,20 +3,20 @@
 # django
 Django==4.0.8
 fnpdjango==0.6
-docutils==0.16
+docutils==0.20
 
-django-pipeline==2.0.8
-libsasscompiler==0.1.9
+django-pipeline==3.1.0
+libsasscompiler==0.2.0
 jsmin==3.0.1
 
 fnp-django-pagination==2.2.5
-django-modeltranslation==0.18.4
+django-modeltranslation==0.18.12
 django-allauth==0.51
-django-extensions==3.2.1
-djangorestframework==3.13.1
+django-extensions==3.2.3
+djangorestframework==3.15.1
 djangorestframework-xml==2.0.0
-django-admin-ordering==0.16
-django-countries==7.3.2
+django-admin-ordering==0.18
+django-countries==7.6.1
 
 -e git+https://github.com/rczajka/django-forms-builder@270cc22f80ec4681735b4e01689562fbab79ceda#egg=django-forms-builder
 
@@ -26,36 +26,36 @@ oauthlib>=3.0.1,<3.1
 # contact
 pyyaml==5.4.1
 
-polib==1.1.1
+polib==1.2
 
-django-honeypot==1.0.3
+django-honeypot==1.2.1
 
 python-fb==0.2
 
-Feedparser==6.0.10
+Feedparser==6.0.11
 
-Pillow==9.2.0
-mutagen==1.45.1
-sorl-thumbnail==12.8.0
+Pillow==10.4
+mutagen==1.47
+sorl-thumbnail==12.10.0
 
 # home-brewed & dependencies
-librarian==24.5.4
+#librarian==24.5.4
 
 # celery tasks
-celery[redis]==5.2.7
+celery[redis]==5.4.0
 
 # OAI-PMH
 #pyoai==2.5.1
 -e git+https://github.com/infrae/pyoai@5ff2f15e869869e70d8139e4c37b7832854d7049#egg=pyoai
 
-sentry-sdk==0.10.2
+sentry-sdk==2.19.2
 
-requests
+requests==2.32.3
 
 paypalrestsdk
 
-python-slugify
+python-slugify==8.0.4
 
-firebase-admin
-Wikidata==0.7.0
+firebase-admin==6.6.0
+Wikidata==0.8.1
 

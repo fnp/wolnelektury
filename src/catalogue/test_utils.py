@@ -42,6 +42,9 @@ class BookInfoStub:
     # allow single definition for multiple-value fields
     _salias = {
         'authors': 'author',
+        'genres': 'genre',
+        'epochs': 'epoch',
+        'kinds': 'kind',
     }
 
     def __init__(self, **kwargs):
