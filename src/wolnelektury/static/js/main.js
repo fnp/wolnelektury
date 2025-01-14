@@ -545,8 +545,10 @@
 
     const crisis = document.querySelector(".annoy-banner_crisis-container");
     const crisisLink = document.querySelector('.annoy-banner_crisis-container a.action');
-    crisis.addEventListener("click", function() {
-	crisisLink.click();
-    });
+    if (crisis) {
+	crisis.addEventListener("click", function() {
+	    crisisLink.click();
+	});
+    }
 
 })();
