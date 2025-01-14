@@ -154,6 +154,38 @@ class LoginView(GenericAPIView):
         return Response({"access_token": key})
 
 
+class Login2View(GenericAPIView):
+    serializer_class = serializers.LoginSerializer
+
+    def post(self, request):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        d = serializer.validated_data
+        user = authenticate(username=d['username'], password=d['password'])
+        if user is None:
+            return Response({"detail": "Invalid credentials."})
+
+        access_token = generate_token()[:KEY_SIZE]
+        Token.objects.create(
+            key=access_token,
+            token_type=Token.ACCESS,
+            timestamp=time(),
+            user=user,
+        )
+        refresh_token = generate_token()[:KEY_SIZE]
+        Token.objects.create(
+            key=refresh_token,
+            token_type=Token.REFRESH,
+            timestamp=time(),
+            user=user,
+        )
+        return Response({
+            "access_token": access_token,
+            "refresh_token": refresh_token,
+            "expires": 3600,
+        })
+
+
 @vary_on_auth
 class UserView(RetrieveAPIView):
     permission_classes = [IsAuthenticated]
@@ -192,3 +224,64 @@ class BookUserDataView(RetrieveAPIView):
 class BlogView(APIView):
     def get(self, request):
         return Response([])
+
+
+
+class RegisterView(APIView):
+    serializer_class = serializers.RegisterSerializer
+
+    def get(self, request):
+        return Response({
+            "options": [
+                {
+                    "id": 1,
+                    "html": "Chcę otrzymywać newsletter Wolnych Lektur",
+                    "required": False
+                }
+            ],
+            "info": [
+                'Administratorem danych osobowych jest Fundacja Wolne Lektury (ul. Marszałkowska 84/92 lok. 125, 00-514 Warszawa). Podanie danych osobowych jest dobrowolne. Dane są przetwarzane w zakresie niezbędnym do prowadzenia serwisu, a także w celach prowadzenia statystyk, ewaluacji i sprawozdawczości. W przypadku wyrażenia dodatkowej zgody adres e-mail zostanie wykorzystany także w celu przesyłania newslettera Wolnych Lektur. Osobom, których dane są zbierane, przysługuje prawo dostępu do treści swoich danych oraz ich poprawiania. Więcej informacji w <a href="https://fundacja.wolnelektury.pl/prywatnosc/">polityce prywatności</a>.'
+            ]            
+        })
+
+    def post(self, request):
+        pass
+    
+
+class RefreshTokenView(APIView):
+    serializer_class = serializers.RefreshTokenSerializer
+
+    def post(self, request):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        d = serializer.validated_data
+        
+        t = Token.objects.get(
+            key=d['refresh_token'],
+            token_type=Token.REFRESH
+        )
+        user = t.user
+
+        access_token = generate_token()[:KEY_SIZE]
+        Token.objects.create(
+            key=access_token,
+            token_type=Token.ACCESS,
+            timestamp=time(),
+            user=user,
+        )
+        refresh_token = generate_token()[:KEY_SIZE]
+        Token.objects.create(
+            key=refresh_token,
+            token_type=Token.REFRESH,
+            timestamp=time(),
+            user=user,
+        )
+        return Response({
+            "access_token": access_token,
+            "refresh_token": refresh_token,
+            "expires": 3600,
+        })
+
+
+class RequestConfirmView(APIView):
+    pass

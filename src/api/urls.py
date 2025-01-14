@@ -10,7 +10,11 @@ from . import views
 
 
 urlpatterns1 = [
-    path('login/', csrf_exempt(views.LoginView.as_view())),
+    path('register/', csrf_exempt(views.RegisterView.as_view())),
+    path('refreshToken/', csrf_exempt(views.RefreshTokenView.as_view())),
+    path('requestConfirm/', csrf_exempt(views.RequestConfirmView.as_view())),
+    path('login/', csrf_exempt(views.Login2View.as_view())),
+    path('me/', views.UserView.as_view()),
     path('', include('catalogue.api.urls2')),
 ]
 

@@ -15,10 +15,11 @@ class PlainSerializer(serializers.ModelSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
     premium = UserPremiumField()
+    confirmed = serializers.BooleanField(source='is_active')
 
     class Meta:
         model = User
-        fields = ['username', 'premium']
+        fields = ['username', 'premium', 'confirmed']
 
 
 class BookUserDataSerializer(serializers.ModelSerializer):
@@ -30,3 +31,14 @@ class BookUserDataSerializer(serializers.ModelSerializer):
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField()
     password = serializers.CharField(style={'input_type': 'password'})
+
+
+
+class RegisterSerializer(serializers.Serializer):
+    email = serializers.CharField()
+    password = serializers.CharField(style={'input_type': 'password'})
+    options = serializers.ListField(child=serializers.IntegerField())
+
+
+class RefreshTokenSerializer(serializers.Serializer):
+    refresh_token = serializers.CharField(style={'input_type': 'password'})

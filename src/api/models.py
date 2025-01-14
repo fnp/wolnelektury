@@ -101,7 +101,12 @@ class Consumer(models.Model):
 class Token(models.Model):
     REQUEST = 1
     ACCESS = 2
-    TOKEN_TYPES = ((REQUEST, 'Request'), (ACCESS, 'Access'))
+    REFRESH = 3
+    TOKEN_TYPES = (
+        (REQUEST, 'Request'),
+        (ACCESS, 'Access'),
+        (REFRESH, 'Refresh')
+    )
 
     key = models.CharField(max_length=KEY_SIZE)
     secret = models.CharField(max_length=SECRET_SIZE)
