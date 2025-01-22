@@ -10,6 +10,7 @@ from django.utils.html import conditional_escape
 from django.utils.safestring import mark_safe
 from fnpdjango.actions import export_as_csv_action
 from modeltranslation.admin import TranslationAdmin
+import annoy.models
 from wolnelektury.utils import YesNoFilter
 from . import models
 
@@ -95,14 +96,35 @@ class SourceFilter(admin.SimpleListFilter):
             (m, m) for m in
             model_admin.model.objects.exclude(source='').values_list('source', flat=True).distinct()[:10]
         ]
-        print(lookups)
         return lookups
 
     def queryset(self, request, queryset):
         return queryset
     
-    #field_name = 'source' # name of the foreign key field
 
+class CrisisFilter(admin.SimpleListFilter):
+    title = 'czas zbiórki kryzysowej'
+    parameter_name = 'crisis'
+
+    def lookups(self, request, model_admin):
+        lookups = [
+            (b.id, '%s — %s' % (b.since, b.until)) for b in
+            annoy.models.Banner.objects.filter(place='crisis')
+        ]
+        return lookups
+
+    def queryset(self, request, queryset):
+        bid = self.value()
+        if not bid:
+            return
+        try:
+            b = annoy.models.Banner.objects.get(id=self.value())
+        except annoy.models.Banner.DoesNotExist:
+            return
+        return queryset.filter(
+            started_at__gte=b.since,
+            started_at__lte=b.until
+        )
 
 
 
@@ -118,7 +140,7 @@ class ScheduleAdmin(admin.ModelAdmin):
     list_filter = [
         'is_cancelled', 'monthly', 'yearly', 'method',
         PayedFilter, ActiveFilter, ExpiredFilter,
-        SourceFilter,
+        SourceFilter, CrisisFilter
     ]
     filter_horizontal = ['consent']
     date_hierarchy = 'started_at'
