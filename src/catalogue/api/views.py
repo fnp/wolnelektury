@@ -328,6 +328,42 @@ class TagCategoryView(LegacyListAPIView):
 
         return tags
 
+class AuthorList(ListAPIView):
+    serializer_class = serializers.AuthorSerializer
+    queryset = Tag.objects.filter(category='author')
+
+class AuthorView(RetrieveAPIView):
+    serializer_class = serializers.AuthorSerializer
+    queryset = Tag.objects.filter(category='author')
+    lookup_field = 'slug'
+
+class EpochList(ListAPIView):
+    serializer_class = serializers.EpochSerializer
+    queryset = Tag.objects.filter(category='epoch')
+
+class EpochView(RetrieveAPIView):
+    serializer_class = serializers.EpochSerializer
+    queryset = Tag.objects.filter(category='epoch')
+    lookup_field = 'slug'
+
+class GenreList(ListAPIView):
+    serializer_class = serializers.GenreSerializer
+    queryset = Tag.objects.filter(category='genre')
+
+class GenreView(RetrieveAPIView):
+    serializer_class = serializers.GenreSerializer
+    queryset = Tag.objects.filter(category='genre')
+    lookup_field = 'slug'
+
+class KindList(ListAPIView):
+    serializer_class = serializers.KindSerializer
+    queryset = Tag.objects.filter(category='kind')
+
+class KindView(RetrieveAPIView):
+    serializer_class = serializers.KindSerializer
+    queryset = Tag.objects.filter(category='kind')
+    lookup_field = 'slug'
+
 
 class TagView(RetrieveAPIView):
     permission_classes = [DjangoModelPermissionsOrAnonReadOnly]

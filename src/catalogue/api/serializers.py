@@ -40,6 +40,84 @@ class TagDetailSerializer(serializers.ModelSerializer):
         ]
 
 
+class AuthorItemSerializer(serializers.ModelSerializer):
+    url = AbsoluteURLField()
+    href = AbsoluteURLField(
+        view_name='catalogue_api_author',
+        view_args=('slug',)
+    )
+
+    class Meta:
+        model = Tag
+        fields = [
+            'url', 'href', 'name'
+        ]
+
+class AuthorSerializer(AuthorItemSerializer):
+    photo_thumb = ThumbnailField('139x193', source='photo')
+
+    class Meta:
+        model = Tag
+        fields = [
+            'url', 'href', 'name', 'slug', 'sort_key', 'description',
+            'genitive', 'photo', 'photo_thumb', 'photo_attribution',
+        ]
+
+class EpochItemSerializer(serializers.ModelSerializer):
+    url = AbsoluteURLField()
+    href = AbsoluteURLField(
+        view_name='catalogue_api_epoch',
+        view_args=('slug',)
+    )
+    class Meta:
+        model = Tag
+        fields = ['url', 'href', 'name']
+
+class EpochSerializer(EpochItemSerializer):
+    class Meta:
+        model = Tag
+        fields = [
+            'url', 'href', 'name', 'slug', 'sort_key', 'description',
+            'adjective_feminine_singular', 'adjective_nonmasculine_plural',
+        ]
+
+class GenreItemSerializer(serializers.ModelSerializer):
+    url = AbsoluteURLField()
+    href = AbsoluteURLField(
+        view_name='catalogue_api_genre',
+        view_args=('slug',)
+    )
+    class Meta:
+        model = Tag
+        fields = ['url', 'href', 'name']
+
+class GenreSerializer(GenreItemSerializer):
+    class Meta:
+        model = Tag
+        fields = [
+            'url', 'href', 'name', 'slug', 'sort_key', 'description',
+            'plural', 'genre_epoch_specific',
+        ]
+
+class KindItemSerializer(serializers.ModelSerializer):
+    url = AbsoluteURLField()
+    href = AbsoluteURLField(
+        view_name='catalogue_api_kind',
+        view_args=('slug',)
+    )
+    class Meta:
+        model = Tag
+        fields = ['url', 'href', 'name']
+
+class KindSerializer(KindItemSerializer):
+    class Meta:
+        model = Tag
+        fields = [
+            'url', 'href', 'name', 'slug', 'sort_key', 'description',
+            'collective_noun',
+        ]
+
+
 class TranslatorSerializer(serializers.Serializer):
     name = serializers.CharField(source='*')
 
@@ -55,12 +133,24 @@ class BookSerializer2(serializers.ModelSerializer):
     mobi = EmbargoURLField(source='mobi_url')
     pdf = EmbargoURLField(source='pdf_url')
 
+    authors = AuthorItemSerializer(many=True)
+    translators = AuthorItemSerializer(many=True)
+    epochs = EpochItemSerializer(many=True)
+    genres = GenreItemSerializer(many=True)
+    kinds = KindItemSerializer(many=True)
+    parent = serializers.HyperlinkedRelatedField(
+        read_only=True,
+        view_name='catalogue_api_book',
+        lookup_field='slug'
+    )
+
     class Meta:
         model = Book
         fields = [
-            'full_sort_key', 'title',
+            'slug', 'title', 'full_sort_key',
             'href', 'url', 'language',
-            #'epochs', 'genres', 'kinds', 'authors', 'translators',
+            'authors', 'translators',
+            'epochs', 'genres', 'kinds',
             #'children',
             'parent', 'preview',
             'epub', 'mobi', 'pdf', 'html', 'txt', 'fb2', 'xml',
