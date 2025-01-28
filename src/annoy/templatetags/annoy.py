@@ -22,6 +22,13 @@ def annoy_banner_blackout(context):
         'closable': True,
     }
 
+@register.inclusion_tag('annoy/banner_top.html', takes_context=True)
+def annoy_banner_top(context):
+    banners = Banner.choice('top', request=context['request'])
+    return {
+        'banner': banners.first(),
+        'closable': True,
+    }
 
 @register.inclusion_tag('annoy/banners.html', takes_context=True)
 def annoy_banners(context, place):

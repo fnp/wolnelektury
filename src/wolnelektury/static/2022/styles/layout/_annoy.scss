@@ -75,10 +75,10 @@
 }
 
 
-.annoy-banner_crisis-container {
+.annoy-banner_crisis-container,
+.annoy-banner_top-container {
     position: sticky;
     top: 0;
-    height: 160px;
     z-index: 10;
     box-shadow: 0 0 10px black;
     display: flex;
@@ -87,18 +87,27 @@
     align-items:center;
     cursor: pointer;
 
-    @media screen and (min-height: 480px) {
-	height: 33vh;
-	top: calc(-33vh + 160px);
+    &.annoy-banner_top-container {
+	padding: 16px 0;
+    }
+    &.annoy-banner_crisis-container {
+	height: 160px;
+    
+	@media screen and (min-height: 480px) {
+	    height: 33vh;
+	    top: calc(-33vh + 160px);
+	}
+
+	@media screen and (max-width: 940px) {
+	    padding: 10px 0;
+	    height: auto;
+	    top: 0;
+	}
     }
 
-    @media screen and (max-width: 940px) {
-	padding: 10px 0;
-	height: auto;
-	top: 0;
-    }
 
-    .annoy-banner_crisis {
+    .annoy-banner_crisis,
+    .annoy-banner_top {
 	position: sticky;
 	top: 0;
 	width: 100%;
@@ -116,11 +125,11 @@
 	    .image-box {
 		position: relative;
 		img {
-		    height: 159px;
+		    max-height: 159px;
 		    display: block;
 
 		    @media screen and (max-width: 700px) {
-			height: 120px;
+			max-height: 120px;
 		    }
 		}
 	    }
@@ -191,7 +200,8 @@
 	    }
 	}
     }
-    &.annoy-banner-style_crisis_quiet {
+    &.annoy-banner-style_crisis_quiet,
+    &.annoy-banner_top-container {
 	background: black;
 	color: white;
 	.annoy-banner-inner {
