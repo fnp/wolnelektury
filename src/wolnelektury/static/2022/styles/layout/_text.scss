@@ -294,6 +294,7 @@ h2 {
 h3, .subtitle2 {
     font-size: 1.5em;
     margin: 1.5em 0 1em 0;
+    padding-right: 48px;
     font-weight: normal;
     line-height: 1.5em;
 }
@@ -1043,4 +1044,98 @@ background: #fff;
             }
         }
     }
+}
+
+
+
+#sidebar {
+    position: absolute;
+    left: 0;
+    top: 20px;
+    width: 200px;
+
+    h2 {
+	font-size: 20px;
+	margin-bottom: 1em;
+    }
+    
+    .other-text-close {
+	display: none;
+    }
+
+    #other {
+	ul {
+	    list-style: none;
+	    margin: 0;
+	    padding: 0;
+
+	    .book-mini-box {
+		position: relative;
+		width: 137px;
+		.language {
+		    position: absolute;
+		    top: 163px;
+		    left: 10px;
+		    color: white;
+		    background: black;
+		    padding: 0 10px;
+		    border-radius: 10px;
+		    font-size: 14px;
+		    line-height: 20px;
+		    
+		}
+		.author, .title {
+		    display: block;
+		    font-size: 14px;
+		    line-height: 18px;
+		}
+	    }
+	}
+    }
+}
+.with-other-text {
+    #sidebar {
+	.other-text-close {
+	    display: block;
+	    background: red;
+	    padding: 10px;
+	    margin: 10px 0;
+	    border-radius: 10px;
+	    color: white;
+	    text-decoration: none;
+	}
+    }
+    #main-text {
+	#book-text {
+	    .other {
+		overflow: hidden;
+		margin: 10px 40px 10px 50px;
+		padding: 10px 20px 0 10px;
+		background: #eee;
+		border-left: 10px double #ddd;
+
+		h3 {
+		    margin: 0;
+		    padding: 0;
+		}
+
+		.paragraph {
+		    padding: 0;
+		}
+	    }
+	}
+    }
+}
+
+:lang(pl),
+:lang(en),
+:lang(de),
+:lang(fr),
+:lang(lt),
+:lang(uk)
+{
+    direction: ltr;
+}
+:lang(he) {
+    direction: rtl;
 }

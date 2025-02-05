@@ -94,33 +94,85 @@ $("#menu a").each(function() {
 $("#menu-other").show();
 
 
+    function insertOtherText(text) {
+	let tree = $(text);
+	let lang = tree.attr('lang') || 'pl';
+	
+	// toc?
+	// themes?
+
+	let cursor = $(".main-text-body #book-text").children().first();
+	// wstawiamy przed kursorem
+	lastTarget = '';
+	tree.children().each((i, e) => {
+	    let $e = $(e);
+
+	    if ($e.hasClass('anchor')) return;
+	    if ($e.hasClass('numeracja')) return;
+	    if ($e.attr('id') == 'toc') return;
+	    if ($e.attr('id') == 'nota_red') return;
+	    if ($e.attr('id') == 'themes') return;
+	    if ($e.attr('name') && $e.attr('name').startsWith('sec')) return;
+	    
+	    if ($e.hasClass('target')) {
+		let target = $e.attr('name');
+
+		while (lastTarget != target) {
+		    let nc = cursor.next();
+		    if (!nc.length) {
+			break;
+		    }
+		    cursor = nc;
+		    lastTarget = cursor.attr('name');
+		}
+
+		while (true) {
+		    let nc = cursor.next();
+		    if (!nc.length) {
+			break;
+		    }
+		    cursor = nc;
+		    lastTarget = cursor.attr('name');
+		    if (lastTarget) break;
+		}
+		
+	    } else {
+		let d = $('<div class="other">');
+		d.attr('lang', lang);
+		d.append(e);
+		d.insertBefore(cursor);
+	    }
+	});
+    }
+    
 /* Load other version of text. */
 $(".display-other").click(function(e) {
     e.preventDefault();
     release_menu();
 
-    $("#other-text").show();
+    $(".other").remove();
     $("body").addClass('with-other-text');
 
     $.ajax($(this).attr('data-other'), {
         success: function(text) {
-            $("#other-text-body").html(text);
+	    insertOtherText(text);
             $("#other-text-waiter").hide();
-            $("#other-text-body").show();
-            loaded_text($("#other-text-body"));
+            loaded_text($(".other"));
         }
     });
     _paq.push(['trackEvent', 'html', 'other-text']);
 });
 
 
+
+    
+
 /* Remove other version of text. */
 $(".other-text-close").click(function(e) {
     release_menu();
     e.preventDefault();
-    $("#other-text").hide();
+    $(".other").remove();
     $("body").removeClass('with-other-text');
-    $("#other-text-body").html("");
     _paq.push(['trackEvent', 'html', 'other-text-close']);
 });
 

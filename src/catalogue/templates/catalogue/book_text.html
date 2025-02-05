@@ -176,7 +176,29 @@
 
 
   <article id="main-text" {% if book.has_sync_file %}class="has-sync"{% endif %}>
-    {% with next=book.get_next_text prev=book.get_prev_text %}
+<div id="sidebar">
+      {% if book.other_versions.exists %}
+        <div class="box" id="other">
+          <h2>{% trans "Inne wersje tekstu" %}</h2>
+          <a class="other-text-close" href="#">{% trans "Zamknij drugą wersję" %}</a>
+          <ul>
+            {% spaceless %}
+              {% for other_version in book.other_versions %}
+                <li>
+                  <a class="display-other"
+                     data-other="{{ other_version.html_url }}"
+                     href="{% url 'book_text' other_version.slug %}">
+                    {{ other_version.mini_box_nolink }}
+                  </a>
+                </li>
+              {% endfor %}
+            {% endspaceless %}
+          </ul>
+        </div>
+      {% endif %}
+</div>
+
+{% with next=book.get_next_text prev=book.get_prev_text %}
       {% if next %}
         <a class="text_next-book" href="{% url 'book_text' next.slug %}">{{ next.title }}&nbsp;&rarr;</a>
       {% endif %}
@@ -281,27 +303,8 @@
             <div class="pointer pointer-top"></div>
         </div>
       </div>
+</div>
 
-
-      {% if book.other_versions.exists %}
-        <div class="box" id="other">
-          <h2>{% trans "Inne wersje utworu" %}</h2>
-          <a class="other-text-close" href="#">{% trans "Zamknij drugą wersję" %}</a>
-          <ul>
-            {% spaceless %}
-              {% for other_version in book.other_versions %}
-                <li>
-                  <a class="display-other"
-                     data-other="{{ other_version.html_url }}"
-                     href="{% url 'book_text' other_version.slug %}">
-                    {{ other_version.mini_box_nolink }}
-                  </a>
-                </li>
-              {% endfor %}
-            {% endspaceless %}
-          </ul>
-        </div>
-      {% endif %}
 
       <div id="annoy-stubs">
         {% annoy_banners 'book-text-intermission' %}
