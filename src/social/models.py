@@ -1,10 +1,13 @@
 # This file is part of Wolne Lektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Wolne Lektury. See NOTICE for more information.
 #
+from oauthlib.common import urlencode, generate_token
 from random import randint
 from django.db import models
 from django.conf import settings
+from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from django.core.mail import send_mail
 from django.urls import reverse
 from catalogue.models import Book
 from wolnelektury.utils import cached_render, clear_cached_renders
@@ -170,3 +173,30 @@ class CarouselItem(models.Model):
 
     def get_banner(self):
         return self.banner or self.banner_group.get_banner()
+
+
+class UserConfirmation(models.Model):
+    user = models.ForeignKey(User, models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    key = models.CharField(max_length=128, unique=True)
+
+    def send(self):
+        send_mail(
+            'Potwierdź konto w bibliotece Wolne Lektury',
+            f'https://beta.wolnelektury.pl/ludzie/potwierdz/{self.key}/',
+            settings.CONTACT_EMAIL,
+            [self.user.email]
+        )
+
+    def use(self):
+        user = self.user
+        user.is_active = True
+        user.save()
+        self.delete()
+    
+    @classmethod
+    def request(cls, user):
+        cls.objects.create(
+            user=user,
+            key=generate_token()
+        ).send()

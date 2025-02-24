@@ -37,8 +37,12 @@ class LoginSerializer(serializers.Serializer):
 class RegisterSerializer(serializers.Serializer):
     email = serializers.CharField()
     password = serializers.CharField(style={'input_type': 'password'})
-    options = serializers.ListField(child=serializers.IntegerField())
+    options = serializers.ListField(child=serializers.IntegerField(), required=False)
 
 
 class RefreshTokenSerializer(serializers.Serializer):
     refresh_token = serializers.CharField(style={'input_type': 'password'})
+
+
+class RequestConfirmSerializer(serializers.Serializer):
+    email = serializers.CharField()

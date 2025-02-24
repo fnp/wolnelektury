@@ -10,7 +10,7 @@ from django.views.generic.edit import FormView
 
 from catalogue.models import Book, Tag
 import catalogue.models.tag
-from social import forms
+from social import forms, models
 from wolnelektury.utils import is_ajax
 
 
@@ -125,3 +125,12 @@ def my_tags(request):
             t.name for t in tags
         ], safe=False
     )
+
+
+def confirm_user(request, key):
+    uc = get_object_or_404(models.UserConfirmation, key=key)
+    user = uc.user
+    uc.use()
+    return render(request, 'social/user_confirmation.html', {
+        'user': user,
+    })

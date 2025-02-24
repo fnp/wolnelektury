@@ -7,6 +7,7 @@ from . import views
 
 
 urlpatterns = [
+    path('potwierdz/<str:key>/', views.confirm_user, name='social_confirm_user'),
     path('lektura/<slug:slug>/lubie/', views.like_book, name='social_like_book'),
     path('dodaj-tag/', views.AddSetView.as_view(), name='social_add_set_tag'),
     path('usun-tag/', views.RemoveSetView.as_view(), name='social_remove_set_tag'),

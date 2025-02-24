@@ -1,0 +1,12 @@
+{% extends "base_simple.html" %}
+{% load i18n %}
+
+
+{% block body %}
+  <h1>{% trans "Konto potwierdzone" %}</h1>
+
+  <p class="normal-text">
+    {% blocktrans with user=user %}Konto <strong>{{ user }}</strong> zostało potwierdzone. Możesz się teraz zalogować.{% endblocktrans %}
+  </p>
+{% endblock body %}
+

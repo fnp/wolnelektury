@@ -4,6 +4,7 @@
 from time import time
 from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django import forms
 from django.http import HttpResponse
 from django.http import Http404
@@ -18,6 +19,7 @@ from rest_framework.views import APIView
 from rest_framework.generics import GenericAPIView, RetrieveAPIView, get_object_or_404
 from catalogue.models import Book
 from .models import BookUserData, KEY_SIZE, SECRET_SIZE, Token
+from social.models import UserConfirmation
 from . import serializers
 from .request_validator import PistonRequestValidator
 from .utils import oauthlib_request, oauthlib_response, vary_on_auth
@@ -227,7 +229,7 @@ class BlogView(APIView):
 
 
 
-class RegisterView(APIView):
+class RegisterView(GenericAPIView):
     serializer_class = serializers.RegisterSerializer
 
     def get(self, request):
@@ -245,8 +247,30 @@ class RegisterView(APIView):
         })
 
     def post(self, request):
-        pass
-    
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        d = serializer.validated_data
+
+        user = User(
+            username=d['email'],
+            email=d['email'],
+            is_active=False
+        )
+        user.set_password(d['password'])
+
+        try:
+            user.save()
+        except:
+            return Response(
+                {
+                    "detail": "Nie można utworzyć konta.",
+                },
+                status=400
+            )
+
+        UserConfirmation.request(user)
+        return Response({})
+
 
 class RefreshTokenView(APIView):
     serializer_class = serializers.RefreshTokenSerializer
@@ -284,4 +308,21 @@ class RefreshTokenView(APIView):
 
 
 class RequestConfirmView(APIView):
-    pass
+    serializer_class = serializers.RequestConfirmSerializer
+
+    def post(self, request):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        d = serializer.validated_data
+
+        try:
+            user = User.objects.get(
+                username=d['email'],
+                is_active=False
+            )
+        except User.DoesNotExist:
+            raise Http404
+
+        UserConfirmation.request(user)
+        return Response({})
+
