@@ -2,6 +2,7 @@
 # Copyright © Fundacja Wolne Lektury. See NOTICE for more information.
 #
 from time import time
+from django.conf import settings
 from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -247,6 +248,13 @@ class RegisterView(GenericAPIView):
         })
 
     def post(self, request):
+        if not settings.FEATURE_API_REGISTER:
+            return Response(
+                {
+                    "detail": "Rejestracja aktualnie niedostępna."
+                },
+                status=400
+            )
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         d = serializer.validated_data
