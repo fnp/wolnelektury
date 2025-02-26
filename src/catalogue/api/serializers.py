@@ -158,6 +158,37 @@ class BookSerializer2(serializers.ModelSerializer):
             'isbn_pdf', 'isbn_epub', 'isbn_mobi',
         ]
 
+class BookSerializer11Labs(serializers.ModelSerializer):
+    url = AbsoluteURLField()
+    href = AbsoluteURLField(view_name='catalogue_api_book', view_args=['slug'])
+    html = EmbargoURLField(source='html_nonotes_url')
+
+    authors = AuthorItemSerializer(many=True)
+    translators = AuthorItemSerializer(many=True)
+    epochs = EpochItemSerializer(many=True)
+    genres = GenreItemSerializer(many=True)
+    kinds = KindItemSerializer(many=True)
+    parent = serializers.HyperlinkedRelatedField(
+        read_only=True,
+        view_name='catalogue_api_book',
+        lookup_field='slug'
+    )
+
+    class Meta:
+        model = Book
+        fields = [
+            'slug', 'title', 'full_sort_key',
+            'href', 'url', 'language',
+            'authors', 'translators',
+            'epochs', 'genres', 'kinds',
+            #'children',
+            'parent', 'preview',
+            'html',
+            'cover_thumb', 'cover',
+            'isbn_pdf', 'isbn_epub', 'isbn_mobi',
+        ]
+
+
 class BookSerializer(LegacyMixin, serializers.ModelSerializer):
     author = serializers.CharField(source='author_unicode')
     kind = serializers.CharField(source='kind_unicode')

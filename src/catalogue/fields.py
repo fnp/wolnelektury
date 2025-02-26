@@ -398,6 +398,26 @@ class HtmlField(EbookField):
         return wldoc.as_html(gallery_path=gal_path, gallery_url=gal_url, base_url=absolute_url(gal_url))
 
 
+class HtmlNonotesField(EbookField):
+    ext = 'html'
+    for_parents = False
+    directory = 'html_nonotes'
+
+    @staticmethod
+    def transform(wldoc, book):
+        # ugly, but we can't use wldoc.book_info here
+        from librarian import DCNS
+        url_elem = wldoc.edoc.getroot().find('.//' + DCNS('identifier.url'))
+        if url_elem is None:
+            gal_url = ''
+            gal_path = ''
+        else:
+            slug = url_elem.text.rstrip('/').rsplit('/', 1)[1]
+            gal_url = gallery_url(slug=slug)
+            gal_path = gallery_path(slug=slug)
+        return wldoc.as_html(gallery_path=gal_path, gallery_url=gal_url, base_url=absolute_url(gal_url), flags=['nonotes'])
+
+
 class CoverField(EbookField):
     ext = 'jpg'
     directory = 'cover'

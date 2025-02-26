@@ -43,6 +43,7 @@ class Book(models.Model):
     common_slug = models.SlugField('wspólny slug', max_length=120, db_index=True)
     language = models.CharField('kod języka', max_length=3, db_index=True, default=app_settings.DEFAULT_LANGUAGE)
     description = models.TextField('opis', blank=True)
+    license = models.CharField('licencja', max_length=255, blank=True, db_index=True)
     abstract = models.TextField('abstrakt', blank=True)
     toc = models.TextField('spis treści', blank=True)
     created_at = models.DateTimeField('data utworzenia', auto_now_add=True, db_index=True)
@@ -62,6 +63,7 @@ class Book(models.Model):
     # files generated during publication
     xml_file = fields.XmlField(storage=bofh_storage, with_etag=False)
     html_file = fields.HtmlField(storage=bofh_storage)
+    html_nonotes_file = fields.HtmlNonotesField(storage=bofh_storage)
     fb2_file = fields.Fb2Field(storage=bofh_storage)
     txt_file = fields.TxtField(storage=bofh_storage)
     epub_file = fields.EpubField(storage=bofh_storage)
@@ -79,7 +81,7 @@ class Book(models.Model):
         'okładka dla Ebookpoint')
 
     ebook_formats = constants.EBOOK_FORMATS
-    formats = ebook_formats + ['html', 'xml']
+    formats = ebook_formats + ['html', 'xml', 'html_nonotes']
 
     parent = models.ForeignKey('self', models.CASCADE, blank=True, null=True, related_name='children')
     ancestor = models.ManyToManyField('self', blank=True, editable=False, related_name='descendant', symmetrical=False)
@@ -375,6 +377,9 @@ class Book(models.Model):
     def html_url(self):
         return self.media_url('html')
 
+    def html_nonotes_url(self):
+        return self.media_url('html_nonotes')
+
     def pdf_url(self):
         return self.media_url('pdf')
 
@@ -635,6 +640,7 @@ class Book(models.Model):
         book.findable = findable
         book.language = book_info.language
         book.title = book_info.title
+        book.license = book_info.license
         if book_info.variant_of:
             book.common_slug = book_info.variant_of.slug
         else:
@@ -704,6 +710,7 @@ class Book(models.Model):
         for format_ in constants.EBOOK_FORMATS_WITH_CHILDREN:
             if format_ not in dont_build:
                 getattr(book, '%s_file' % format_).build_delay()
+        book.html_nonotes_file.build_delay()
 
         if not settings.NO_SEARCH_INDEX and search_index and findable:
             tasks.index_book.delay(book.id)

@@ -196,6 +196,18 @@ class BookList2(ListAPIView):
         return books
 
 
+class BookList11Labs(BookList2):
+    serializer_class = serializers.BookSerializer11Labs
+
+    def get_queryset(self):
+        books = Book.objects.all()
+        books = books.filter(findable=True)
+        books = books.filter(license='')
+        books = order_books(books, True)
+
+        return books
+
+
 @vary_on_auth  # Because of 'liked'.
 class BookDetail(RetrieveAPIView):
     queryset = Book.objects.all()
