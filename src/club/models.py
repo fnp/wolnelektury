@@ -417,7 +417,8 @@ class PayUOrder(payu_models.Order):
         )            
 
     @classmethod
-    def send_receipt(cls, email, year, resend=False):
+    def generate_receipt(cls, email, year):
+        # TODO: abstract out
         Contact = apps.get_model('messaging', 'Contact')
         Funding = apps.get_model('funding', 'Funding')
         BillingAgreement = apps.get_model('paypal', 'BillingAgreement')
@@ -485,11 +486,8 @@ class PayUOrder(payu_models.Order):
         ctx = {
             "email": email,
             "year": year,
-            "next_year": year + 1,
             "total": sum(x['amount'] for x in payments),
             "payments": payments,
-            "optout": optout,
-            "resend": resend,
         }
         temp = tempfile.NamedTemporaryFile(prefix='receipt-', suffix='.pdf', delete=False)
         temp.close()
@@ -497,15 +495,32 @@ class PayUOrder(payu_models.Order):
             "wl.eps": os.path.join(settings.STATIC_ROOT, "img/wl.eps"),
             })
 
+        with open(temp.name, 'rb') as f:
+            content = f.read()
+        os.unlink(f.name)
+        return content, optout, payments
+
+    @classmethod
+    def send_receipt(cls, email, year, resend=False):
+        receipt = cls.generate_receipt(email, year)
+        if receipt:
+            content, optout, payments = receipt
+        ctx = {
+            "email": email,
+            "year": year,
+            "next_year": year + 1,
+            "total": sum(x['amount'] for x in payments),
+            "payments": payments,
+            "optout": optout,
+            "resend": resend,
+        }
         message = EmailMessage(
                 'Odlicz darowiznę na Wolne Lektury od podatku',
                 template.loader.render_to_string('club/receipt_email.txt', ctx),
                 settings.CLUB_CONTACT_EMAIL, [email]
             )
-        with open(temp.name, 'rb') as f:
-            message.attach('wolnelektury-darowizny.pdf', f.read(), 'application/pdf')
+        message.attach('wolnelektury-darowizny.pdf', content, 'application/pdf')
         message.send()
-        os.unlink(f.name)
 
 
 class PayUCardToken(payu_models.CardToken):

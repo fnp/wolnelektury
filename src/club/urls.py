@@ -28,4 +28,6 @@ urlpatterns = [
     path('notify/<int:pk>/', views.PayUNotifyView.as_view(), name='club_payu_notify'),
 
     path('weryfikacja/', views.member_verify, name='club_member_verify'),
+
+    path('potwierdzenie/', views.receipt, name='club_receipt'),
 ]

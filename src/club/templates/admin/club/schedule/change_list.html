@@ -2,6 +2,7 @@
 {% load club %}
 
 {% block content %}
+<div style="display: flex; gap:50px;">
   <table class="table">
     <tr>
       <td>Aktywne miesięczne wpłaty cykliczne:</td>
@@ -19,5 +20,15 @@
       <td>{% club_active_30day_sum %} zł.</td>
     </tr>
   </table>
+  <div>
+    <form method="post" action="{% url 'club_receipt' %}" style="display: flex; flex-direction: column;">
+      {% csrf_token %}
+      <span>Pobierz zestawienie roczne</span>
+      <input name="email" placeholder="email"></input>
+      <input name="year" type="number" min="2020" max="2024" placeholder="rok"></input>
+      <button>pobierz zestawienie</button>
+    </form>
+  </div>
+  </div>
   {{ block.super }}
 {% endblock content %}

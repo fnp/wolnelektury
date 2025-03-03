@@ -4,7 +4,7 @@
 from django.conf import settings
 from django.contrib.auth.decorators import login_required, permission_required
 from django.db.models import Sum
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.utils.decorators import method_decorator
@@ -249,3 +249,23 @@ def member_verify(request):
             'result': rows
         }
     )
+
+
+@permission_required('club.schedule_view')
+def receipt(request):
+    email = request.POST.get('email')
+    year = int(request.POST.get('year'))
+
+    receipt = models.PayUOrder.generate_receipt(email, year)
+    if receipt:
+        content, optout, payments = receipt
+    if not content:
+        return HttpResponse('no content')
+    return HttpResponse(
+        content,
+        headers={
+            "Content-Type": "application/pdf",
+            "Content-Disposition": f'attachment; filename="wolnelektury-{year}-{email}.pdf"',
+        }
+    )
+
