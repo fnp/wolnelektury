@@ -640,7 +640,7 @@ class Book(models.Model):
         book.findable = findable
         book.language = book_info.language
         book.title = book_info.title
-        book.license = book_info.license
+        book.license = book_info.license or ''
         if book_info.variant_of:
             book.common_slug = book_info.variant_of.slug
         else:
