@@ -262,7 +262,7 @@ def receipt(request):
     receipt = models.PayUOrder.generate_receipt(email, year)
     if receipt:
         content, optout, payments = receipt
-    if not content:
+    else:
         return HttpResponse('no content')
     return HttpResponse(
         content,
