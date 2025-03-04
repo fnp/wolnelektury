@@ -3,6 +3,9 @@ from rest_framework.response import Response
 
 
 class WLLimitOffsetPagination(LimitOffsetPagination):
+    def get_results(self, data):
+        return data['member']
+
     def get_paginated_response(self, data):
         return Response({
             "member": data,

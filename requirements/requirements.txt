@@ -14,6 +14,7 @@ django-modeltranslation==0.18.12
 django-allauth==0.51
 django-extensions==3.2.3
 djangorestframework==3.15.1
+django-filter==23.5
 djangorestframework-xml==2.0.0
 django-admin-ordering==0.18
 django-countries==7.6.1

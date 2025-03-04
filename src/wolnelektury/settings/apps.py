@@ -59,6 +59,7 @@ INSTALLED_APPS_CONTRIB = [
     'django.contrib.postgres',
     'admin_ordering',
     'rest_framework',
+    'django_filters',
     'fnp_django_pagination',
     'pipeline',
     'sorl.thumbnail',

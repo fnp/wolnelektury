@@ -9,6 +9,7 @@ from django.core.files.base import ContentFile
 from django.http import Http404, HttpResponse
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
+from django_filters import rest_framework as filters
 from rest_framework.generics import (ListAPIView, RetrieveAPIView,
                                      RetrieveUpdateAPIView, get_object_or_404)
 from rest_framework.permissions import DjangoModelPermissionsOrAnonReadOnly
@@ -183,10 +184,26 @@ class BookList(LegacyListAPIView):
         return Response({}, status=status.HTTP_201_CREATED)
 
 
+class BookFilter(filters.FilterSet):
+    sort = filters.OrderingFilter(
+        fields=(
+            ('sort_key_author', 'alpha'),
+            ('popularity', 'popularity'),
+        )
+    )
+    tag = filters.ModelMultipleChoiceFilter(
+        field_name='tag_relations__tag',
+        queryset=Tag.objects.filter(category__in=('author', 'epoch', 'genre', 'kind')),
+        conjoined=True,
+    )
+
+
 class BookList2(ListAPIView):
     permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
     queryset = Book.objects.none()  # Required for DjangoModelPermissions
     serializer_class = serializers.BookSerializer2
+    filter_backends = (filters.DjangoFilterBackend,)
+    filterset_class = BookFilter
 
     def get_queryset(self):
         books = Book.objects.all()
