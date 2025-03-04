@@ -24,8 +24,8 @@
     <form method="post" action="{% url 'club_receipt' %}" style="display: flex; flex-direction: column;">
       {% csrf_token %}
       <span>Pobierz zestawienie roczne</span>
-      <input name="email" placeholder="email"></input>
-      <input name="year" type="number" min="2020" max="2024" placeholder="rok"></input>
+      <input name="email" placeholder="email" required></input>
+      <input name="year" type="number" min="2013" max="2024" value="2024" placeholder="rok" required></input>
       <button>pobierz zestawienie</button>
     </form>
   </div>

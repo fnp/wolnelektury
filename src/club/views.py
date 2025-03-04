@@ -254,7 +254,10 @@ def member_verify(request):
 @permission_required('club.schedule_view')
 def receipt(request):
     email = request.POST.get('email')
-    year = int(request.POST.get('year'))
+    try:
+        year = int(request.POST.get('year'))
+    except:
+        return HttpResponse('no content')
 
     receipt = models.PayUOrder.generate_receipt(email, year)
     if receipt:
