@@ -40,16 +40,16 @@
               {% endblocktrans %}</p>
               <div class='countdown' data-until='{{ pd_counter|date_to_utc|utc_for_js }}'></div>
               <p>
-                {% blocktrans trimmed with url='https://domenapubliczna.org/co-to-jest-domena-publiczna/' %}
-                  <a href="{{ url }}">Dowiedz się</a>, dlaczego biblioteki internetowe nie mogą
+                {% blocktrans trimmed %}
+                  Biblioteki internetowe nie mogą
                   udostępniać tego utworu.
                 {% endblocktrans %}
               </p>
             {% else %}
               <p>
                 {% trans "Ten utwór objęty jest prawem autorskim." %}
-                {% blocktrans trimmed with url='https://domenapubliczna.org/co-to-jest-domena-publiczna/' %}
-                  <a href="{{ url }}">Dowiedz się</a>, dlaczego biblioteki internetowe nie mogą
+                {% blocktrans trimmed %}
+                  Biblioteki internetowe nie mogą
                   udostępniać tego utworu.
                 {% endblocktrans %}
               </p>
