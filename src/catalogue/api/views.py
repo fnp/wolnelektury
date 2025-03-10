@@ -19,6 +19,7 @@ from rest_framework import status
 from api.handlers import read_tags
 from api.utils import vary_on_auth
 from catalogue.forms import BookImportForm
+from catalogue.helpers import get_top_level_related_tags
 from catalogue.models import Book, Collection, Tag, Fragment, BookMedia
 from catalogue.models.tag import prefetch_relations
 from club.models import Membership
@@ -493,3 +494,13 @@ class FragmentView(RetrieveAPIView):
             book__slug=self.kwargs['book'],
             anchor=self.kwargs['anchor']
         )
+
+
+class SuggestedTags(ListAPIView):
+    serializer_class = serializers.FilterTagSerializer
+
+    def get_queryset(self):
+        tag_ids = self.request.GET.getlist('tag', [])
+        tags = [get_object_or_404(Tag, id=tid) for tid in tag_ids]
+        related_tags = list(t.id for t in get_top_level_related_tags(tags))
+        return Tag.objects.filter(id__in=related_tags)

@@ -20,6 +20,11 @@ urlpatterns = [
          name='catalogue_api_book'
          ),
 
+    path('suggested-tags/',
+         piwik_track_view(views.SuggestedTags.as_view()),
+         name='catalogue_api_suggested_tags'
+         ),
+
     path('authors/',
          piwik_track_view(views.AuthorList.as_view()),
          name="catalogue_api_author_list"),

@@ -350,3 +350,9 @@ class FragmentDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Fragment
         fields = ['book', 'anchor', 'text', 'url', 'themes']
+
+
+class FilterTagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tag
+        fields = ['id', 'category', 'name']
