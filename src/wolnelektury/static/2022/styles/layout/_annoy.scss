@@ -51,7 +51,7 @@
     .annoy-banner-off {
         font-size: 1.2rem !important;
     }
-    
+
     @include rwd($break-flow) {
         .annoy-banner-inner {
             padding: 0;
@@ -69,7 +69,7 @@
 
         }
         .annoy-banner-off {
-            
+
         }
     }
 }
@@ -89,10 +89,14 @@
 
     &.annoy-banner_top-container {
 	padding: 16px 0;
+
+	@media screen and (max-height: 700px) {
+	    padding: 5px 0;
+	}
     }
     &.annoy-banner_crisis-container {
 	height: 160px;
-    
+
 	@media screen and (min-height: 480px) {
 	    height: 33vh;
 	    top: calc(-33vh + 160px);
@@ -146,11 +150,29 @@
 		    }
 		}
 
+		@media screen and (max-height: 700px) {
+		    flex-direction: row;
+		    justify-content: space-between;
+		    p {
+			font-size: .9em;
+		    }
+		}
+
+
 		.text {
 		    background: #edc016;
 		    padding: 1em;
 		    border: 3px solid black;
 		}
+
+		@media screen and (max-height: 400px) {
+		    align-items: center;
+		    .text {
+			height: 1.2em;
+			overflow: hidden;
+		    }
+		}
+
 		a {
 		    color: #c32721;
 		}
@@ -192,6 +214,13 @@
 		border-radius: 10px;
 		display: block;
 		transition: background-color .2s;
+
+		@media screen and (max-height: 700px) {
+		    font-size: .9em;
+		}
+		@media screen and (max-height: 400px) {
+		    white-space: nowrap;
+		}
 
 		&:hover {
 		    background: #ffd430;
