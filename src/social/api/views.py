@@ -34,6 +34,25 @@ class LikeView(APIView):
 
 
 @vary_on_auth
+class LikeView2(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, slug):
+        book = get_object_or_404(Book, slug=slug)
+        return Response({"likes": likes(request.user, book)})
+
+    def put(self, request, slug):
+        book = get_object_or_404(Book, slug=slug)
+        book.like(request.user)
+        return Response({"likes": likes(request.user, book)})
+
+    def delete(self, request, slug):
+        book = get_object_or_404(Book, slug=slug)
+        book.unlike(request.user)
+        return Response({"likes": likes(request.user, book)})
+
+
+@vary_on_auth
 class LikesView(APIView):
     permission_classes = [IsAuthenticated]
 
