@@ -352,6 +352,15 @@ class FragmentDetailSerializer(serializers.ModelSerializer):
         fields = ['book', 'anchor', 'text', 'url', 'themes']
 
 
+class FragmentSerializer2(serializers.ModelSerializer):
+    url = AbsoluteURLField()
+    html = serializers.CharField(source='text')
+
+    class Meta:
+        model = Fragment
+        fields = ['anchor', 'html', 'url']
+
+
 class FilterTagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag

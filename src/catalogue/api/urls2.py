@@ -19,6 +19,10 @@ urlpatterns = [
          piwik_track_view(views.BookDetail2.as_view()),
          name='catalogue_api_book'
          ),
+    path('books/<slug:slug>/fragment/',
+         piwik_track_view(views.BookFragmentView.as_view()),
+         name='catalogue_api_book_fragment'
+         ),
 
     path('suggested-tags/',
          piwik_track_view(views.SuggestedTags.as_view()),

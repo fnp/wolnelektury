@@ -16,6 +16,7 @@ urlpatterns1 = [
     path('login/', csrf_exempt(views.Login2View.as_view())),
     path('me/', views.UserView.as_view()),
     path('', include('catalogue.api.urls2')),
+    path('', include('social.api.urls2')),
 ]
 
 

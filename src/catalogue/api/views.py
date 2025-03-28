@@ -501,6 +501,19 @@ class SuggestedTags(ListAPIView):
 
     def get_queryset(self):
         tag_ids = self.request.GET.getlist('tag', [])
+        search = self.request.GET.get('search')
         tags = [get_object_or_404(Tag, id=tid) for tid in tag_ids]
         related_tags = list(t.id for t in get_top_level_related_tags(tags))
-        return Tag.objects.filter(id__in=related_tags)
+        tags = Tag.objects.filter(id__in=related_tags)
+        if search:
+            tags = tags.filter(name__icontains=search)
+        return tags
+
+
+class BookFragmentView(RetrieveAPIView):
+    serializer_class = serializers.FragmentSerializer2
+
+    def get_object(self):
+        book = get_object_or_404(Book, slug=self.kwargs['slug'])
+        return book.choose_fragment()
+
