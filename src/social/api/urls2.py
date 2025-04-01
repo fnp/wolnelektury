@@ -11,6 +11,7 @@ urlpatterns = [
         piwik_track_view(views.LikeView2.as_view()),
         name='social_api_like'),
     path('likes/', views.LikesView.as_view()),
+    path('my-likes/', views.MyLikesView.as_view()),
 ]
 
 

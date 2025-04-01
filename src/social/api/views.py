@@ -11,6 +11,7 @@ from api.utils import vary_on_auth
 from catalogue.api.helpers import order_books, books_after
 from catalogue.api.serializers import BookSerializer
 from catalogue.models import Book
+import catalogue.models
 from social.utils import likes
 from social.views import get_sets_for_book_ids
 
@@ -64,7 +65,20 @@ class LikesView(APIView):
         res = get_sets_for_book_ids(ids, request.user)
         res = {books[bid]: v for bid, v in res.items()}
         return Response(res)
-        
+
+
+@vary_on_auth
+class MyLikesView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        ids = catalogue.models.tag.TagRelation.objects.filter(tag__user=request.user).values_list('object_id', flat=True).distinct()
+        books = Book.objects.filter(id__in=ids)
+        books = {b.id: b.slug for b in books}
+        res = get_sets_for_book_ids(ids, request.user)
+        res = {books[bid]: v for bid, v in res.items()}
+        return Response(res)
+
 
 
 @vary_on_auth
