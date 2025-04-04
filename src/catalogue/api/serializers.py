@@ -156,6 +156,7 @@ class BookSerializer2(serializers.ModelSerializer):
             'epub', 'mobi', 'pdf', 'html', 'txt', 'fb2', 'xml',
             'cover_thumb', 'cover',
             'isbn_pdf', 'isbn_epub', 'isbn_mobi',
+            'abstract',
         ]
 
 class BookSerializer11Labs(serializers.ModelSerializer):
