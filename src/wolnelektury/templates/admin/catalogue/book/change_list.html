@@ -4,7 +4,7 @@
   <form action="{% url 'import_book' %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <p>
-      <input type="file" id="id_book_xml_file" name="book_xml_file"/>
+      <input type="file" id="id_book_xml_file" name="book_xml_file" required/>
       <input type="submit" value="Import książki" />
     </p>
   </form>
