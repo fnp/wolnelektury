@@ -70,6 +70,8 @@ class BookMedia(models.Model):
         return f'{name}.{ext}'
 
     def save(self, parts_count=None, *args, **kwargs):
+        if self.type in ('daisy', 'audio.epub'):
+            return super().save(*args, **kwargs)
         from catalogue.utils import ExistingFile, remove_zip
 
         if not parts_count:
