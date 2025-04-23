@@ -171,6 +171,11 @@
                         </div>
                         <div class="c-media__btn">
                           {% if first_text %}
+                            <a href="https://elevenreader.io/app/reader/audiobooks/wolnelektury:{{ first_text.slug }}" target="_blank" class="l-button l-button--media"><img src="{% static 'img/elevenreader-21.png' %}" title="{% trans "Posłuchaj w ElevenReader" %}" alt="{% trans "Posłuchaj w ElevenReader" %}"></a>
+                          {% endif %}
+                        </div>
+                        <div class="c-media__btn">
+                          {% if first_text %}
                             <a href="{% url 'book_text' first_text.slug %}" class="l-button l-button--media l-button--media--full"><i class="icon icon-eye"></i> {% trans "czytaj online" %}</a>
                           {% endif %}
                         </div>
