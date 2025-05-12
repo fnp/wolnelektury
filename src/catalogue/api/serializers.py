@@ -157,6 +157,7 @@ class BookSerializer2(serializers.ModelSerializer):
             'cover_thumb', 'cover',
             'isbn_pdf', 'isbn_epub', 'isbn_mobi',
             'abstract',
+            'has_mp3_file',
         ]
 
 class BookSerializer11Labs(serializers.ModelSerializer):
@@ -188,6 +189,17 @@ class BookSerializer11Labs(serializers.ModelSerializer):
             'cover_thumb', 'cover',
             'isbn_pdf', 'isbn_epub', 'isbn_mobi',
         ]
+
+
+class MediaSerializer2(MediaSerializer):
+    size = serializers.SerializerMethodField()
+
+    class Meta:
+        model = BookMedia
+        fields = ['url', 'director', 'type', 'name', 'part_name', 'artist', 'duration', 'size']
+
+    def get_size(self, obj):
+        return obj.file.size
 
 
 class BookSerializer(LegacyMixin, serializers.ModelSerializer):

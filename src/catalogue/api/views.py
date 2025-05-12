@@ -517,3 +517,13 @@ class BookFragmentView(RetrieveAPIView):
         book = get_object_or_404(Book, slug=self.kwargs['slug'])
         return book.choose_fragment()
 
+
+class BookMediaView(ListAPIView):
+    serializer_class = serializers.MediaSerializer2
+    pagination_class = None
+
+    def get_queryset(self):
+        return BookMedia.objects.filter(
+            book__slug=self.kwargs['slug'],
+            type=self.kwargs['type']
+        ).order_by('index')
