@@ -191,17 +191,6 @@ class BookSerializer11Labs(serializers.ModelSerializer):
         ]
 
 
-class MediaSerializer2(MediaSerializer):
-    size = serializers.SerializerMethodField()
-
-    class Meta:
-        model = BookMedia
-        fields = ['url', 'director', 'type', 'name', 'part_name', 'artist', 'duration', 'size']
-
-    def get_size(self, obj):
-        return obj.file.size
-
-
 class BookSerializer(LegacyMixin, serializers.ModelSerializer):
     author = serializers.CharField(source='author_unicode')
     kind = serializers.CharField(source='kind_unicode')
@@ -248,6 +237,17 @@ class MediaSerializer(LegacyMixin, serializers.ModelSerializer):
         model = BookMedia
         fields = ['url', 'director', 'type', 'name', 'artist']
         legacy_non_null_fields = ['director', 'artist']
+
+
+class MediaSerializer2(MediaSerializer):
+    size = serializers.SerializerMethodField()
+
+    class Meta:
+        model = BookMedia
+        fields = ['url', 'director', 'type', 'name', 'part_name', 'artist', 'duration', 'size']
+
+    def get_size(self, obj):
+        return obj.file.size
 
 
 class BookDetailSerializer(LegacyMixin, serializers.ModelSerializer):
