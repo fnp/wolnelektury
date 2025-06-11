@@ -381,24 +381,27 @@
             $.post({
                 url: '/ludzie/lektura/' + $(this).attr('data-book-slug') + '/nie_lubie/',
                 data: {'csrfmiddlewaretoken': $('[name=csrfmiddlewaretoken]').val()},
+                dataType: 'json',
                 success: function() {
                     delete state.liked[$btn.attr('data-book')];
                     updateLiked($btn);
+                },
+                error: function() {
+                    window.location.href = $('#login-link').attr('href');
                 }
             })
         } else {
             $.post({
                 url: '/ludzie/lektura/' + $(this).attr('data-book-slug') + '/lubie/',
                 data: {'csrfmiddlewaretoken': $('[name=csrfmiddlewaretoken]').val()},
+                dataType: 'json',
                 success: function() {
                     state.liked[$btn.attr('data-book')] = [];
                     updateLiked($btn);
                 },
-                error: function(e) {
-                    if (e.status == 403) {
-                        window.location.href = $('#login-link').attr('href')
-                    }
-                },
+                error: function() {
+                    window.location.href = $('#login-link').attr('href')
+                }
             });
         }
     })
