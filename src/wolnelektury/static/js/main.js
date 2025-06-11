@@ -396,7 +396,7 @@
                 },
                 error: function(e) {
                     if (e.status == 403) {
-                        $('#login-link').click();
+                        window.location.href = $('#login-link').attr('href')
                     }
                 },
             });
