@@ -421,6 +421,67 @@ class Book(models.Model):
     def has_sync_file(self):
         return settings.FEATURE_SYNCHRO and self.has_media("sync")
 
+    def build_sync_file(self):
+        from lxml import html
+        from django.core.files.base import ContentFile
+        with self.html_file.open('rb') as f:
+            h = html.fragment_fromstring(f.read().decode('utf-8'))
+
+        durations = [
+            m['mp3'].duration
+            for m in self.get_audiobooks()[0]
+        ]
+        if settings.MOCK_DURATIONS:
+            durations = settings.MOCK_DURATIONS
+
+        sync = []
+        ts = None
+        sid = 1
+        dirty = False
+        for elem in h.iter():
+            if elem.get('data-audio-ts'):
+                part, ts = int(elem.get('data-audio-part')), float(elem.get('data-audio-ts'))
+                ts = str(round(sum(durations[:part - 1]) + ts, 3))
+                # check if inside verse
+                p = elem.getparent()
+                while p is not None:
+                    # Workaround for missing ids.
+                    if 'verse' in p.get('class', ''):
+                        if not p.get('id'):
+                            p.set('id', f'syn{sid}')
+                            dirty = True
+                            sid += 1
+                        sync.append((ts, p.get('id')))
+                        ts = None
+                        break
+                    p = p.getparent()
+            elif ts:
+                cls = elem.get('class', '')
+                # Workaround for missing ids.
+                if 'paragraph' in cls or 'verse' in cls or elem.tag in ('h1', 'h2', 'h3', 'h4'):
+                    if not elem.get('id'):
+                        elem.set('id', f'syn{sid}')
+                        dirty = True
+                        sid += 1
+                    sync.append((ts, elem.get('id')))
+                    ts = None
+        if dirty:
+            htext = html.tostring(h, encoding='utf-8')
+            with open(self.html_file.path, 'wb') as f:
+                f.write(htext)
+        try:
+            bm = self.media.get(type='sync')
+        except:
+            bm = BookMedia(book=self, type='sync')
+        sync = (
+            '27\n' + '\n'.join(
+                f'{s[0]}\t{sync[i+1][0]}\t{s[1]}' for i, s in enumerate(sync[:-1])
+            )).encode('latin1')
+        bm.file.save(
+            None, ContentFile(sync)
+            )
+
+    
     def get_sync(self):
         with self.get_media('sync').first().file.open('r') as f:
             sync = f.read().split('\n')
