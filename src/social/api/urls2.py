@@ -21,6 +21,8 @@ urlpatterns = [
     path('progress/<slug:slug>/', views.ProgressView.as_view()),
     path('progress/<slug:slug>/text/', views.TextProgressView.as_view()),
     path('progress/<slug:slug>/audio/', views.AudioProgressView.as_view()),
+
+    path('sync/', views.SyncView.as_view()),
 ]
 
 

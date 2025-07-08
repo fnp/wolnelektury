@@ -1,6 +1,8 @@
 # This file is part of Wolne Lektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Wolne Lektury. See NOTICE for more information.
 #
+from datetime import datetime
+from pytz import utc
 from django.http import Http404
 from rest_framework.generics import ListAPIView, ListCreateAPIView, RetrieveAPIView, RetrieveUpdateAPIView, RetrieveUpdateDestroyAPIView, DestroyAPIView, get_object_or_404
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
@@ -276,3 +278,61 @@ class AudioProgressView(ProgressMixin, RetrieveUpdateAPIView):
         serializer.instance.last_mode = 'audio'
         serializer.save()
 
+
+
+class SyncSerializer(serializers.Serializer):
+    timestamp = serializers.IntegerField()
+    type = serializers.CharField()
+    id = serializers.CharField()
+
+    def to_representation(self, instance):
+        rep = super().to_representation(instance)
+        rep['object'] = instance['object'].data
+        return rep
+
+    def to_internal_value(self, data):
+        ret = super().to_internal_value(data)
+        ret['object'] = data['object']
+        return ret
+
+
+class SyncView(ListAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = SyncSerializer
+
+    def get_queryset(self):
+        try:
+            timestamp = int(self.request.GET.get('ts'))
+        except:
+            timestamp = 0
+
+        timestamp = datetime.fromtimestamp(timestamp, tz=utc)
+        
+        data = []
+        for p in models.Progress.objects.filter(
+                user=self.request.user,
+                updated_at__gt=timestamp).order_by('updated_at'):
+            data.append({
+                'timestamp': p.updated_at.timestamp(),
+                'type': 'progress',
+                'id': p.book.slug,
+                'object': ProgressSerializer(
+                    p, context={'request': self.request}
+                ) if not p.deleted else None
+            })
+        return data
+
+    def post(self, request):
+        data = request.data
+        for item in data:
+            ser = SyncSerializer(data=item)
+            ser.is_valid(raise_exception=True)
+            d = ser.validated_data
+            if d['type'] == 'progress':
+                models.Progress.sync(
+                    user=request.user,
+                    slug=d['id'],
+                    ts=datetime.fromtimestamp(d['timestamp'], tz=utc),
+                    data=d['object']
+                )
+        return Response()

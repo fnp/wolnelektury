@@ -208,6 +208,7 @@ class Progress(models.Model):
     book = models.ForeignKey('catalogue.Book', models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    deleted = models.BooleanField(default=False)
     last_mode = models.CharField(max_length=64, choices=[
         ('text', 'text'),
         ('audio', 'audio'),
@@ -224,6 +225,18 @@ class Progress(models.Model):
     class Meta:
         unique_together = [('user', 'book')]
 
+    @classmethod
+    def sync(cls, user, slug, ts, data):
+        obj, _created = cls.objects.get_or_create(user=user, book__slug=slug)
+        if _created or obj.updated_at < ts:
+            if data is not None:
+                obj.deleted = False
+                for k, v in data.items():
+                    setattr(obj, k, v)
+            else:
+                obj.deleted = True
+            obj.save()
+        
     def save(self, *args, **kwargs):
         audio_l = self.book.get_audio_length()
         if self.text_anchor:
