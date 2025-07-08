@@ -79,6 +79,7 @@ def info_args(title, language=None):
         'url': WLURI(slug),
         'about': "http://wolnelektury.pl/example/URI/%s" % slug,
         'language': language,
+        'license': '',
     }
 
 

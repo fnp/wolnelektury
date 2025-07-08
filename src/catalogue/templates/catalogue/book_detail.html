@@ -7,6 +7,13 @@
 {% load likes_book from social_tags %}
 
 
+{% block settings %}
+{% load title %}
+{% title book.pretty_title %}
+{% set_global 'description' book.abstract|striptags|truncatewords:100|safe %}
+{% endblock %}
+
+
 {% block global-content %}
     <div class="l-container">
       <div class="l-breadcrumb">

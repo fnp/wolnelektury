@@ -14,13 +14,12 @@ deploy: src/wolnelektury/localsettings.py
 
 .ONESHELL:
 test:
-	cd src
-	python -Wall -m coverage run --branch --source='.' ./manage.py test; true
-	coverage html -d ../htmlcov.new
-	rm -rf ../htmlcov
-	mv ../htmlcov.new ../htmlcov
-	coverage report
-	rm .coverage
+	rm -r htmlcov &
+	docker-compose run --rm dev sh -c '\
+		python -Wall -m coverage run --branch --source='.' --data-file ../.coverage ./manage.py test; \
+		coverage html --data-file ../.coverage -d htmlcov; \
+		coverage report --data-file ../.coverage'
+	mv -f src/htmlcov .
 
 
 shell:
@@ -28,4 +27,4 @@ shell:
 
 
 build:
-	UID=$(UID) GID=$(GID) docker-compose build dev
+	UID=$(UID) GID=$(GID) docker-compose build dev --no-cache

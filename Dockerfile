@@ -45,7 +45,7 @@ WORKDIR /app/src
 
 FROM base AS dev
 
-#RUN pip install --no-cache-dir coverage
+RUN pip install --no-cache-dir coverage
 USER app
 
 

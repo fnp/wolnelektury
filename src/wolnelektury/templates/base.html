@@ -6,6 +6,7 @@
 {% load funding_tags %}
 {% load piwik_tags %}
 {% load title %}
+{% load fnp_common %}
 
 {% block settings %}
 {% endblock %}
@@ -13,7 +14,7 @@
 <html class="no-js">
   <head>
     <meta charset="utf-8">
-    <meta name="description" content="">
+    <meta name="description" content="{{ description }}">
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <title>{% if title %}{{ title }} | {% endif %}WolneLektury.pl</title>
     <link rel="icon" href="{% static 'img/favicon.png' %}" type="image/png"/>
@@ -21,6 +22,19 @@
           href="{% static 'opensearch.xml' %}"/>
     <link rel="manifest" href="/manifest.json">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ canonical_url|default:request.path|build_absolute_uri:request }}" />
+    <meta property="og:title" content="{{ title }}" />
+    <meta property="og:description" content="{{ description }}" />
+    <meta property="og:image" content="https://metatags.io/images/meta-tags.png" />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="{{ canonical_url|default:request.path|build_absolute_uri:request }}" />
+    <meta property="twitter:title" content="{{ title }}" />
+    <meta property="twitter:description" content="{{ description }}" />
+    <meta property="twitter:image" content="https://metatags.io/images/meta-tags.png" />
+    
     {% stylesheet 'main' %}
       {% tracking_code %}
       {% block extrahead %}{% endblock %}
