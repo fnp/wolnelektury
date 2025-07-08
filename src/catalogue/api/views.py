@@ -6,7 +6,7 @@ import os.path
 from urllib.request import urlopen
 from django.conf import settings
 from django.core.files.base import ContentFile
-from django.http import Http404, HttpResponse
+from django.http import Http404, HttpResponse, JsonResponse
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
 from django_filters import rest_framework as dfilters
@@ -196,6 +196,11 @@ class BookFilter(dfilters.FilterSet):
     tag = dfilters.ModelMultipleChoiceFilter(
         field_name='tag_relations__tag',
         queryset=Tag.objects.filter(category__in=('author', 'epoch', 'genre', 'kind')),
+        conjoined=True,
+    )
+    translator = dfilters.ModelMultipleChoiceFilter(
+        field_name='translators',
+        queryset=Tag.objects.filter(category='author'),
         conjoined=True,
     )
 
@@ -516,4 +521,22 @@ class BookFragmentView(RetrieveAPIView):
     def get_object(self):
         book = get_object_or_404(Book, slug=self.kwargs['slug'])
         return book.choose_fragment()
+
+
+class BookMediaView(ListAPIView):
+    serializer_class = serializers.MediaSerializer2
+    pagination_class = None
+
+    def get_queryset(self):
+        return BookMedia.objects.filter(book__slug=self.kwargs['slug'], type=self.kwargs['type']).order_by('index')
+
+
+from .tojson import conv
+from lxml import etree
+from rest_framework.views import APIView
+class BookJsonView(APIView):
+    def get(self, request, slug):
+        book = get_object_or_404(Book, slug=slug)
+        js = conv(etree.parse(book.xml_file.path))
+        return JsonResponse(js, json_dumps_params={'ensure_ascii': False})
 

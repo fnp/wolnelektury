@@ -92,7 +92,7 @@ class Book(models.Model):
     objects = models.Manager()
     tagged = managers.ModelTaggedItemManager(Tag)
     tags = managers.TagDescriptor(Tag)
-    tag_relations = GenericRelation(Tag.intermediary_table_model)
+    tag_relations = GenericRelation(Tag.intermediary_table_model, related_query_name='tagged_book')
     translators = models.ManyToManyField(Tag, blank=True)
 
     html_built = django.dispatch.Signal()

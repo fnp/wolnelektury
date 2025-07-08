@@ -200,3 +200,42 @@ class UserConfirmation(models.Model):
             user=user,
             key=generate_token()
         ).send()
+
+
+
+class Progress(models.Model):
+    user = models.ForeignKey(User, models.CASCADE)
+    book = models.ForeignKey('catalogue.Book', models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    last_mode = models.CharField(max_length=64, choices=[
+        ('text', 'text'),
+        ('audio', 'audio'),
+    ])
+    text_percent = models.FloatField(null=True, blank=True)
+    text_anchor = models.CharField(max_length=64, blank=True)
+    audio_percent = models.FloatField(null=True, blank=True)
+    audio_timestamp = models.FloatField(null=True, blank=True)
+    implicit_text_percent = models.FloatField(null=True, blank=True)
+    implicit_text_anchor = models.CharField(max_length=64, blank=True)
+    implicit_audio_percent = models.FloatField(null=True, blank=True)
+    implicit_audio_timestamp = models.FloatField(null=True, blank=True)
+
+    class Meta:
+        unique_together = [('user', 'book')]
+
+    def save(self, *args, **kwargs):
+        audio_l = self.book.get_audio_length()
+        if self.text_anchor:
+            self.text_percent = 33
+            if audio_l:
+                self.implicit_audio_percent = 40
+                self.implicit_audio_timestamp = audio_l * .4
+        if self.audio_timestamp:
+            if self.audio_timestamp > audio_l:
+                self.audio_timestamp = audio_l
+            if audio_l:
+                self.audio_percent = 100 * self.audio_timestamp / audio_l
+                self.implicit_text_percent = 60
+                self.implicit_text_anchor = 'f20'
+        return super().save(*args, **kwargs)

@@ -87,7 +87,7 @@ class BookMedia(models.Model):
         except BookMedia.DoesNotExist:
             old = None
 
-        super(BookMedia, self).save(*args, **kwargs)
+        #super(BookMedia, self).save(*args, **kwargs)
         
         # remove the zip package for book with modified media
         if old:

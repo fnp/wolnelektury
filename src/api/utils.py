@@ -5,6 +5,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.utils.decorators import method_decorator
 from django.utils.encoding import iri_to_uri
 from django.views.decorators.vary import vary_on_headers
+import django.views.decorators.cache
 
 
 def oauthlib_request(request):
@@ -36,6 +37,7 @@ def oauthlib_response(response_tuple):
 
 
 vary_on_auth = method_decorator(vary_on_headers('Authorization'), 'dispatch')
+never_cache = method_decorator(django.views.decorators.cache.never_cache, 'dispatch')
 
 
 class HttpResponseAppRedirect(HttpResponseRedirect):

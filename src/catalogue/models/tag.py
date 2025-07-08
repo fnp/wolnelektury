@@ -242,6 +242,11 @@ class Tag(models.Model):
                     meta_tags.append((tag, relationship))
         return meta_tags
 
+#    def get_books(self):
+#        """ Only useful for sets. """
+#        return 
+
+
 
 TagRelation.tag_model = Tag
 

@@ -50,7 +50,7 @@ class AuthorItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
         fields = [
-            'url', 'href', 'name'
+            'url', 'href', 'name', 'slug'
         ]
 
 class AuthorSerializer(AuthorItemSerializer):
@@ -59,7 +59,7 @@ class AuthorSerializer(AuthorItemSerializer):
     class Meta:
         model = Tag
         fields = [
-            'url', 'href', 'name', 'slug', 'sort_key', 'description',
+            'id', 'url', 'href', 'name', 'slug', 'sort_key', 'description',
             'genitive', 'photo', 'photo_thumb', 'photo_attribution',
         ]
 
@@ -71,7 +71,7 @@ class EpochItemSerializer(serializers.ModelSerializer):
     )
     class Meta:
         model = Tag
-        fields = ['url', 'href', 'name']
+        fields = ['url', 'href', 'name', 'slug']
 
 class EpochSerializer(EpochItemSerializer):
     class Meta:
@@ -89,7 +89,7 @@ class GenreItemSerializer(serializers.ModelSerializer):
     )
     class Meta:
         model = Tag
-        fields = ['url', 'href', 'name']
+        fields = ['url', 'href', 'name', 'slug']
 
 class GenreSerializer(GenreItemSerializer):
     class Meta:
@@ -107,7 +107,7 @@ class KindItemSerializer(serializers.ModelSerializer):
     )
     class Meta:
         model = Tag
-        fields = ['url', 'href', 'name']
+        fields = ['url', 'href', 'name', 'slug']
 
 class KindSerializer(KindItemSerializer):
     class Meta:
@@ -157,6 +157,7 @@ class BookSerializer2(serializers.ModelSerializer):
             'cover_thumb', 'cover',
             'isbn_pdf', 'isbn_epub', 'isbn_mobi',
             'abstract',
+            'has_mp3_file',
         ]
 
 class BookSerializer11Labs(serializers.ModelSerializer):
@@ -237,6 +238,16 @@ class MediaSerializer(LegacyMixin, serializers.ModelSerializer):
         fields = ['url', 'director', 'type', 'name', 'artist']
         legacy_non_null_fields = ['director', 'artist']
 
+
+class MediaSerializer2(MediaSerializer):
+    size = serializers.SerializerMethodField()
+
+    class Meta:
+        model = BookMedia
+        fields = ['url', 'director', 'type', 'name', 'part_name', 'artist', 'duration', 'size']
+
+    def get_size(self, obj):
+        return obj.file.size
 
 class BookDetailSerializer(LegacyMixin, serializers.ModelSerializer):
     url = AbsoluteURLField()
@@ -365,4 +376,4 @@ class FragmentSerializer2(serializers.ModelSerializer):
 class FilterTagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
-        fields = ['id', 'category', 'name']
+        fields = ['id', 'category', 'name', 'slug']

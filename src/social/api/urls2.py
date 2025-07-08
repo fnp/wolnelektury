@@ -12,6 +12,15 @@ urlpatterns = [
         name='social_api_like'),
     path('likes/', views.LikesView.as_view()),
     path('my-likes/', views.MyLikesView.as_view()),
+
+    path('lists/', views.ListsView.as_view()),
+    path('lists/<slug:slug>/', views.ListView.as_view()),
+    path('lists/<slug:slug>/<slug:book>/', views.ListItemView.as_view()),
+
+    path('progress/', views.ProgressListView.as_view()),
+    path('progress/<slug:slug>/', views.ProgressView.as_view()),
+    path('progress/<slug:slug>/text/', views.TextProgressView.as_view()),
+    path('progress/<slug:slug>/audio/', views.AudioProgressView.as_view()),
 ]
 
 
