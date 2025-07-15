@@ -3,16 +3,8 @@
 #
 from django import forms
 
-from catalogue.models import Book, Tag
-from social.utils import get_set
-
-
-class UserSetsForm(forms.Form):
-    def __init__(self, book, user, *args, **kwargs):
-        super(UserSetsForm, self).__init__(*args, **kwargs)
-        self.fields['set_ids'] = forms.ChoiceField(
-            choices=[(tag.id, tag.name) for tag in Tag.objects.filter(category='set', user=user).iterator()],
-        )
+from catalogue.models import Book
+from . import models
 
 
 class AddSetForm(forms.Form):
@@ -22,18 +14,18 @@ class AddSetForm(forms.Form):
     def save(self, user):
         name = self.cleaned_data['name'].strip()
         if not name: return
-        tag = get_set(user, name)
+        ul = models.UserList.get_by_name(user, name, create=True)
         try:
             book = Book.objects.get(id=self.cleaned_data['book'])
         except Book.DoesNotExist:
             return
 
         try:
-            book.tag_relations.create(tag=tag)
+            ul.append(book=book)
         except:
             pass
 
-        return book, tag
+        return book, ul
 
 
 class RemoveSetForm(forms.Form):
@@ -43,8 +35,8 @@ class RemoveSetForm(forms.Form):
     def save(self, user):
         slug = self.cleaned_data['slug']
         try:
-            tag = Tag.objects.get(user=user, slug=slug)
-        except Tag.DoesNotExist:
+            ul = models.UserList.objects.get(user=user, slug=slug)
+        except models.UserList.DoesNotExist:
             return
         try:
             book = Book.objects.get(id=self.cleaned_data['book'])
@@ -52,8 +44,8 @@ class RemoveSetForm(forms.Form):
             return
 
         try:
-            book.tag_relations.filter(tag=tag).delete()
+            ul.userlistitem_set.filter(book=book).delete()
         except:
             pass
 
-        return book, tag
+        return book, ul

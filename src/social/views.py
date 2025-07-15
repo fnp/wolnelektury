@@ -8,8 +8,7 @@ from django.views.decorators.cache import never_cache
 from django.views.decorators.http import require_POST
 from django.views.generic.edit import FormView
 
-from catalogue.models import Book, Tag
-import catalogue.models.tag
+from catalogue.models import Book
 from social import forms, models
 from wolnelektury.utils import is_ajax
 
@@ -25,7 +24,7 @@ def like_book(request, slug):
         return HttpResponseForbidden('Login required.')
     book = get_object_or_404(Book, slug=slug)
 
-    book.like(request.user)
+    models.UserList.like(request.user, book)
 
     if is_ajax(request):
         return JsonResponse({"success": True, "msg": "ok", "like": True})
@@ -56,7 +55,7 @@ def unlike_book(request, slug):
         return HttpResponseForbidden('Login required.')
     book = get_object_or_404(Book, slug=slug)
 
-    book.unlike(request.user)
+    models.UserList.unlike(request.user, book)
 
     if is_ajax(request):
         return JsonResponse({"success": True, "msg": "ok", "like": False})
@@ -67,32 +66,29 @@ def unlike_book(request, slug):
 @login_required
 def my_shelf(request):
     template_name = 'social/my_shelf.html'
-    tags = list(request.user.tag_set.all())
-    suggest = [t for t in tags if t.name]
-    print(suggest)
+    ulists = list(request.user.userlist_set.all())
+    suggest = [t for t in ulists if t.name]
         
     return render(request, template_name, {
-        'tags': tags,
-        'books': Book.tagged.with_any(tags),
+        'tags': ulists,
+        'books': Book.objects_filter(userlistitem__list__user=request.user),
         'suggest': suggest,
     })
 
 
 def get_sets_for_book_ids(book_ids, user):
     data = {}
-    tagged = catalogue.models.tag.TagRelation.objects.filter(
-        tag__user=user,
-        #content_type= # for books,
-        object_id__in=book_ids
-    ).order_by('tag__sort_key')
+    tagged = models.UserListItem.objects.filter(
+        list__user=user,
+        book_id__in=book_ids
+    ).order_by('list__name')
     for t in tagged:
-        # related?
-        item = data.setdefault(t.object_id, [])
-        if t.tag.name:
+        item = data.setdefault(t.book_id, [])
+        if t.list.name:
             item.append({
-                "slug": t.tag.slug,
-                "url": t.tag.get_absolute_url(),
-                "name": t.tag.name,
+                "slug": t.list.slug,
+                "url": t.list.get_absolute_url(),
+                "name": t.list.name,
             })
     for b in book_ids:
         if b not in data:
@@ -117,12 +113,12 @@ def my_liked(request):
 @login_required
 def my_tags(request):
     term = request.GET.get('term', '')
-    tags =             Tag.objects.filter(user=request.user).order_by('sort_key')
+    tags = models.UserList.objects.filter(user=request.user).order_by('name')
     if term:
-        tags = tags.filter(name__icontains=term)
+        ulists = tags.filter(name__icontains=term)
     return JsonResponse(
         [
-            t.name for t in tags
+            ul.name for ul in ulists
         ], safe=False
     )
 

@@ -6,13 +6,14 @@ from django.shortcuts import render, get_object_or_404
 from django.views.decorators import cache
 
 from catalogue.utils import get_random_hash
-from catalogue.models import Book, Tag
+from catalogue.models import Book
+from social.models import UserList
 from lesmianator.models import Poem, Continuations
 
 
 def main_page(request):
     last = Poem.objects.all().order_by('-created_at')[:10]
-    shelves = Tag.objects.filter(user__username='lesmianator')
+    shelves = UserList.objects.filter(user__username='lesmianator')
 
     return render(
         request,
@@ -50,10 +51,10 @@ def poem_from_book(request, slug):
 @cache.never_cache
 def poem_from_set(request, shelf):
     user = request.user if request.user.is_authenticated else None
-    tag = get_object_or_404(Tag, category='set', slug=shelf)
+    tag = get_object_or_404(UserList, slug=shelf)
     text = Poem.write(Continuations.get(tag))
     p = Poem(slug=get_random_hash(text), text=text, created_by=user)
-    books = Book.tagged.with_any((tag,))
+    books = tag.get_books()
     p.created_from = json.dumps([b.id for b in books])
     p.save()
 

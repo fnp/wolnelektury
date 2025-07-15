@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.core.mail import send_mail
 from django.urls import reverse
+from django.utils.timezone import now
 from catalogue.models import Book
 from wolnelektury.utils import cached_render, clear_cached_renders
 
@@ -252,3 +253,125 @@ class Progress(models.Model):
                 self.implicit_text_percent = 60
                 self.implicit_text_anchor = 'f20'
         return super().save(*args, **kwargs)
+
+
+class UserList(models.Model):
+    slug = models.SlugField(unique=True)
+    user = models.ForeignKey(User, models.CASCADE)
+    name = models.CharField(max_length=1024)
+    favorites = models.BooleanField(default=False)
+    public = models.BooleanField(default=False)
+    deleted = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField()
+
+    def get_absolute_url(self):
+        return reverse(
+            'tagged_object_list',
+            args=[f'polka/{self.slug}']
+        )
+
+    def __str__(self):
+        return self.name
+    
+    @property
+    def url_chunk(self):
+        return f'polka/{self.slug}'
+    
+    @classmethod
+    def create(cls, user, name):
+        return cls.objects.create(
+            user=user,
+            name=name,
+            slug=get_random_hash(name),
+            updated_at=now()
+        )
+
+    @classmethod
+    def get_by_name(cls, user, name, create=False):
+        l = cls.objects.filter(
+            user=user,
+            name=name
+        ).first()
+        if l is None and create:
+            l = cls.create(user, name)
+        return l
+        
+    @classmethod
+    def get_favorites_list(cls, user, create=False):
+        try:
+            return cls.objects.get(
+                user=user,
+                favorites=True
+            )
+        except cls.DoesNotExist:
+            if create:
+                return cls.objects.create(
+                    user=user,
+                    favorites=True,
+                    slug=get_random_hash(name),
+                    updated_at=now()
+                )
+            else:
+                return None
+        except cls.MultipleObjectsReturned:
+            # merge?
+            lists = list(cls.objects.filter(user=user, favorites=True))
+            for l in lists[1:]:
+                t.userlistitem_set.all().update(
+                    list=lists[0]
+                )
+                l.delete()
+            return lists[0]
+
+    @classmethod
+    def likes(cls, user, book):
+        ls = cls.get_favorites_list(user)
+        if ls is None:
+            return False
+        return ls.userlistitem_set.filter(deleted=False, book=book).exists()
+
+    def append(self, book):
+        # TODO: check for duplicates?
+        self.userlistitem_set.create(
+            book=book,
+            order=self.userlistitem_set.aggregate(m=models.Max('order'))['m'] + 1,
+            updated_at=now(),
+        )
+        book.update_popularity()
+
+    def remove(self, book):
+        self.userlistitem_set.filter(book=book).update(
+            deleted=True,
+            updated_at=now()
+        )
+        book.update_popularity()
+
+    @classmethod
+    def like(cls, user, book):
+        ul = cls.get_favorites_list(user, create=True)
+        ul.append(book)
+
+    @classmethod
+    def unlike(cls, user, book):
+        ul = cls.get_favorites_list(user)
+        if ul is not None:
+            ul.remove(book)
+
+    def get_books(self):
+        return [item.book for item in self.userlistitem_set.exclude(deleted=True).exclude(book=None)]
+            
+
+class UserListItem(models.Model):
+    list = models.ForeignKey(UserList, models.CASCADE)
+    order = models.IntegerField()
+    deleted = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField()
+
+    book = models.ForeignKey('catalogue.Book', models.SET_NULL, null=True, blank=True)
+    fragment = models.ForeignKey('catalogue.Fragment', models.SET_NULL, null=True, blank=True)
+    quote = models.ForeignKey('bookmarks.Quote', models.SET_NULL, null=True, blank=True)
+    bookmark = models.ForeignKey('bookmarks.Bookmark', models.SET_NULL, null=True, blank=True)
+
+    note = models.TextField(blank=True)

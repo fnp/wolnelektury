@@ -16,7 +16,8 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.conf import settings
 from django.urls import reverse
 
-from catalogue.models import Book, Tag
+from catalogue.models import Book
+from social.models import UserList
 
 
 class Poem(models.Model):
@@ -138,17 +139,16 @@ class Continuations(models.Model):
                       conts)
 
     @classmethod
-    def for_set(cls, tag):
-        books = Book.tagged_top_level([tag])
-        cont_tabs = (cls.get(b) for b in books.iterator())
+    def for_userlist(cls, ul):
+        cont_tabs = (cls.get(b) for b in ul.get_books())
         return reduce(cls.join_conts, cont_tabs)
 
     @classmethod
     def get(cls, sth):
         object_type = ContentType.objects.get_for_model(sth)
         should_keys = {sth.id}
-        if isinstance(sth, Tag):
-            should_keys = set(b.pk for b in Book.tagged.with_any((sth,)).iterator())
+        if isinstance(sth, UserList):
+            should_keys = set(b.pk for b in sth.get_books())
         try:
             obj = cls.objects.get(content_type=object_type, object_id=sth.id)
             if not obj.pickle:
@@ -162,8 +162,8 @@ class Continuations(models.Model):
         except cls.DoesNotExist:
             if isinstance(sth, Book):
                 conts = cls.for_book(sth)
-            elif isinstance(sth, Tag):
-                conts = cls.for_set(sth)
+            elif isinstance(sth, UserList):
+                conts = cls.for_userlist(sth)
             else:
                 raise NotImplementedError('Lesmianator continuations: only Book and Tag supported')
 

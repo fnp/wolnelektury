@@ -9,6 +9,7 @@ from sorl.thumbnail import get_thumbnail
 
 import catalogue.models
 import infopages.models
+import social.models
 from .forms import SearchFilters
 import re
 import json
@@ -53,8 +54,8 @@ def hint(request, mozhint=False, param='term'):
             for author in authors[:limit - len(data)]
         ])
     if request.user.is_authenticated and len(data) < limit:
-        tags = catalogue.models.Tag.objects.filter(
-            category='set', user=request.user, name_pl__iregex='\m' + prefix).only('name', 'id', 'slug', 'category')
+        tags = social.models.UserList.objects.filter(
+            user=request.user, name__iregex='\m' + prefix).only('name', 'id', 'slug')
         data.extend([
             {
                 'type': 'set',

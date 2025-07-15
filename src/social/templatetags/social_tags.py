@@ -3,7 +3,6 @@
 #
 import re
 from django import template
-from django.utils.functional import lazy
 from django.utils.cache import add_never_cache_headers
 from catalogue.models import Book, Fragment
 from social.utils import likes, get_or_choose_cite, choose_cite as cs
@@ -30,25 +29,6 @@ def choose_cites(number, book=None, author=None):
         return book.choose_fragments(number) # todo: cites?
     elif author is not None:
         return Fragment.tagged.with_all([author]).order_by('?')[:number]
-
-
-@register.simple_tag(takes_context=True)
-def book_shelf_tags(context, book_id):
-    request = context['request']
-    if not request.user.is_authenticated:
-        return ''
-    book = Book.objects.get(pk=book_id)
-    lks = likes(request.user, book, request)
-
-    def get_value():
-        if not lks:
-            return ''
-        tags = book.tags.filter(category='set', user=request.user).exclude(name='')
-        if not tags:
-            return ''
-        ctx = {'tags': tags}
-        return template.loader.render_to_string('social/shelf_tags.html', ctx)
-    return lazy(get_value, str)()
 
 
 @register.inclusion_tag('social/carousel.html', takes_context=True)

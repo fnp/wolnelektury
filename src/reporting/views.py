@@ -60,7 +60,7 @@ def stats_page(request):
         ]
         etags.append(d)
 
-    unused_tags = Tag.objects.exclude(category='set').filter(items=None, book=None)
+    unused_tags = Tag.objects.filter(items=None, book=None)
         
     return render(request, 'reporting/main.html', {
         'media_types': media_types,

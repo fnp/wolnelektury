@@ -4,7 +4,8 @@
 from datetime import datetime
 from pytz import utc
 from django.http import Http404
-from rest_framework.generics import ListAPIView, ListCreateAPIView, RetrieveAPIView, RetrieveUpdateAPIView, RetrieveUpdateDestroyAPIView, DestroyAPIView, get_object_or_404
+from django.utils.timezone import now
+from rest_framework.generics import ListAPIView, ListCreateAPIView, RetrieveAPIView, RetrieveUpdateAPIView, RetrieveUpdateDestroyAPIView, get_object_or_404
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 from rest_framework import serializers
@@ -15,7 +16,6 @@ from catalogue.api.helpers import order_books, books_after
 from catalogue.api.serializers import BookSerializer
 from catalogue.models import Book
 import catalogue.models
-from social.utils import likes, get_set
 from social.views import get_sets_for_book_ids
 from social import models
 
@@ -32,9 +32,9 @@ class LikeView(APIView):
         book = get_object_or_404(Book, slug=slug)
         action = request.query_params.get('action', 'like')
         if action == 'like':
-            book.like(request.user)
+            models.UserList.like(request.user, book)
         elif action == 'unlike':
-            book.unlike(request.user)
+            models.UserList.unlike(request.user, book)
         return Response({})
 
 
@@ -48,12 +48,12 @@ class LikeView2(APIView):
 
     def put(self, request, slug):
         book = get_object_or_404(Book, slug=slug)
-        book.like(request.user)
+        models.UserList.like(request.user, book)
         return Response({"likes": likes(request.user, book)})
 
     def delete(self, request, slug):
         book = get_object_or_404(Book, slug=slug)
-        book.unlike(request.user)
+        models.UserList.unlike(request.user, book)
         return Response({"likes": likes(request.user, book)})
 
 
@@ -77,49 +77,50 @@ class MyLikesView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        ids = catalogue.models.tag.TagRelation.objects.filter(tag__user=request.user).values_list('object_id', flat=True).distinct()
-        books = Book.objects.filter(id__in=ids)
-        books = {b.id: b.slug for b in books}
-        res = get_sets_for_book_ids(ids, request.user)
-        res = {books[bid]: v for bid, v in res.items()}
-
-        res = list(books.values())
-        res.sort()
-        return Response(res)
+        ul = models.UserList.get_favorites_list(request.user)
+        if ul is None:
+            return Response([])
+        return Response(
+            ul.userlistitem_set.exclude(deleted=True).exclude(book=None).values_list('book__slug', flat=True)
+        )
 
 
-class TaggedBooksField(serializers.Field):
+class UserListItemsField(serializers.Field):
     def to_representation(self, value):
-        return catalogue.models.Book.tagged.with_all([value]).values_list('slug', flat=True)
+        return value.userlistitem_set.exclude(deleted=True).exclude(book=None).values_list('book__slug', flat=True)
 
     def to_internal_value(self, value):
         return {'books': catalogue.models.Book.objects.filter(slug__in=value)}
 
 
 class UserListSerializer(serializers.ModelSerializer):
-    books = TaggedBooksField(source='*')
+    books = UserListItemsField(source='*')
 
     class Meta:
-        model = catalogue.models.Tag
+        model = models.UserList
         fields = ['name', 'slug', 'books']
         read_only_fields = ['slug']
 
     def create(self, validated_data):
-        instance = get_set(validated_data['user'], validated_data['name'])
-        catalogue.models.tag.TagRelation.objects.filter(tag=instance).delete()
+        instance = models.UserList.get_by_name(
+            validated_data['user'],
+            validated_data['name'],
+            create=True
+        )
+        instance.userlistitem_set.all().delete()
         for book in validated_data['books']:
-            catalogue.models.Tag.objects.add_tag(book, instance)
+            instance.append(book)
         return instance
 
     def update(self, instance, validated_data):
-        catalogue.models.tag.TagRelation.objects.filter(tag=instance).delete()
+        instance.userlistitem_set.all().delete()
         for book in validated_data['books']:
-            catalogue.models.Tag.objects.add_tag(book, instance)
+            instance.append(instance)
         return instance
 
 class UserListBooksSerializer(UserListSerializer):
     class Meta:
-        model = catalogue.models.Tag
+        model = models.UserList
         fields = ['books']
 
 
@@ -130,7 +131,11 @@ class ListsView(ListCreateAPIView):
     serializer_class = UserListSerializer
 
     def get_queryset(self):
-        return catalogue.models.Tag.objects.filter(user=self.request.user).exclude(name='')
+        return models.UserList.objects.filter(
+            user=self.request.user,
+            favorites=False,
+            deleted=False
+        )
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
@@ -143,7 +148,10 @@ class ListView(RetrieveUpdateDestroyAPIView):
     serializer_class = UserListSerializer
 
     def get_object(self):
-        return get_object_or_404(catalogue.models.Tag, slug=self.kwargs['slug'], user=self.request.user)
+        return get_object_or_404(
+            models.UserList,
+            slug=self.kwargs['slug'],
+            user=self.request.user)
 
     def perform_update(self, serializer):
         serializer.save(user=self.request.user)
@@ -153,8 +161,14 @@ class ListView(RetrieveUpdateDestroyAPIView):
         serializer.is_valid(raise_exception=True)
         instance = self.get_object()
         for book in serializer.validated_data['books']:
-            catalogue.models.Tag.objects.add_tag(book, instance)
+            instance.append(book)
         return Response(self.get_serializer(instance).data)
+
+    def perform_destroy(self, instance):
+        instance.update(
+            deleted=True,
+            updated_at=now()
+        )
 
 
 @never_cache
@@ -162,9 +176,10 @@ class ListItemView(APIView):
     permission_classes = [IsAuthenticated]
 
     def delete(self, request, slug, book):
-        instance = get_object_or_404(catalogue.models.Tag, slug=slug, user=self.request.user)
+        instance = get_object_or_404(
+            models.UserList, slug=slug, user=self.request.user)
         book = get_object_or_404(catalogue.models.Book, slug=book)
-        catalogue.models.Tag.objects.remove_tag(book, instance)
+        instance.remove(book=book)
         return Response(UserListSerializer(instance).data)
 
 
@@ -182,7 +197,7 @@ class ShelfView(ListAPIView):
         after = self.request.query_params.get('after')
         count = int(self.request.query_params.get('count', 50))
         if state == 'likes':
-            books = Book.tagged.with_any(self.request.user.tag_set.all())
+            books = Book.objects.filter(userlistitem__list__user=self.request.user)
         else:
             ids = BookUserData.objects.filter(user=self.request.user, complete=state == 'complete')\
                 .values_list('book_id', flat=True)

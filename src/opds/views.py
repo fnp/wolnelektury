@@ -17,6 +17,7 @@ from django.utils.functional import lazy
 from basicauth import logged_in_or_basicauth, factory_decorator
 from catalogue.models import Book, Tag
 from search.utils import UnaccentSearchQuery, UnaccentSearchVector
+from social.models import UserList
 
 import operator
 import logging
@@ -318,7 +319,7 @@ class UserFeed(Feed):
         return "Półki użytkownika %s" % user.username
 
     def items(self, user):
-        return Tag.objects.filter(category='set', user=user).exclude(items=None)
+        return UserList.objects.filter(user=user, deleted=False)
 
     def item_title(self, item):
         return item.name
@@ -343,10 +344,10 @@ class UserSetFeed(AcquisitionFeed):
         return "Spis utworów na stronie http://WolneLektury.pl"
 
     def get_object(self, request, slug):
-        return get_object_or_404(Tag, category='set', slug=slug, user=request.user)
+        return get_object_or_404(UserList, deleted=False, slug=slug, user=request.user)
 
     def items(self, tag):
-        return Book.tagged.with_any([tag])
+        return tag.get_books()
 
 
 @piwik_track

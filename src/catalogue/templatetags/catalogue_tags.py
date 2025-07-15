@@ -17,6 +17,7 @@ from catalogue.helpers import get_audiobook_tags
 from catalogue.models import Book, BookMedia, Fragment, Tag, Source
 from catalogue.constants import LICENSES
 from club.models import Membership
+from social.models import UserList
 
 register = template.Library()
 
@@ -73,7 +74,10 @@ def nice_title_from_tags(tags, related_tags):
     def split_tags(tags):
         result = {}
         for tag in tags:
-            result.setdefault(tag.category, []).append(tag)
+            if isinstance(tag, UserList):
+                result.setdefault('userlist', []).append(tag)
+            else:
+                result.setdefault(tag.category, []).append(tag)
         return result
 
     self = split_tags(tags)

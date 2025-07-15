@@ -6,7 +6,7 @@ from django.forms import ModelForm
 from django.forms.widgets import TextInput
 from admin_ordering.admin import OrderableAdmin
 from social.models import Cite, BannerGroup, Carousel, CarouselItem
-
+from social import models
 
 class CiteForm(ModelForm):
     class Meta:
@@ -79,3 +79,5 @@ class CarouselAdmin(admin.ModelAdmin):
 
 admin.site.register(Carousel, CarouselAdmin)
 
+
+admin.site.register(models.UserList)

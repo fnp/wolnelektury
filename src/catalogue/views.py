@@ -23,6 +23,7 @@ from club.forms import DonationStep1Form
 from club.models import Club
 from annoy.models import DynamicTextInsert
 from pdcounter import views as pdcounter_views
+from social.models import UserList
 from wolnelektury.utils import is_ajax
 from catalogue import constants
 from catalogue import forms
@@ -211,25 +212,42 @@ class AudiobooksView(LiteratureView):
 class TaggedObjectList(BookList):
     def analyse(self):
         super().analyse()
+
         self.ctx['tags'] = analyse_tags(self.request, self.kwargs['tags'])
-        self.ctx['fragment_tags'] = [t for t in self.ctx['tags'] if t.category in ('theme', 'object')]
-        self.ctx['work_tags'] = [t for t in self.ctx['tags'] if t not in self.ctx['fragment_tags']]
+        self.ctx.update({
+            'fragment_tags': [],
+            'work_tags': [],
+            'user_lists': [],
+        })
+        for tag in self.ctx['tags']:
+            if isinstance(tag, UserList):
+                self.ctx['user_lists'].append(tag)
+            elif tag.category == 'theme':
+                self.ctx['fragment_tags'].append(tag)
+            else:
+                self.ctx['work_tags'].append(tag)
+
         self.is_themed = self.ctx['has_theme'] = bool(self.ctx['fragment_tags'])
         if self.is_themed:
             self.ctx['main_tag'] = self.ctx['fragment_tags'][0]
-        elif self.ctx['tags']:
-            self.ctx['main_tag'] = self.ctx['tags'][0]
+        elif self.ctx['work_tags']:
+            self.ctx['main_tag'] = self.ctx['work_tags'][0]
         else:
             self.ctx['main_tag'] = None
         self.ctx['filtering_tags'] = [
             t for t in self.ctx['tags']
             if t is not self.ctx['main_tag']
         ]
-        if len(self.ctx['tags']) == 1 and self.ctx['main_tag'].category == 'author':
+        if len(self.ctx['tags']) == 1 and self.ctx['main_tag'] is not None and self.ctx['main_tag'].category == 'author':
             self.ctx['translation_list'] = self.ctx['main_tag'].book_set.all()
 
     def get_queryset(self):
-        qs = Book.tagged.with_all(self.ctx['work_tags']).filter(findable=True)
+        if self.ctx['work_tags']:
+            qs = Book.tagged.with_all(self.ctx['work_tags']).filter(findable=True)
+        else:
+            qs = Book.objects.filter(findable=True)
+        for ul in self.ctx['user_lists']:
+            qs = qs.filter(id__in=[i.id for i in ul.get_books()])
         qs = qs.exclude(ancestor__in=qs)
         if self.is_themed:
             fqs = Fragment.tagged.with_all(self.ctx['fragment_tags'])
@@ -241,6 +259,9 @@ class TaggedObjectList(BookList):
         return qs
 
     def get_suggested_tags(self, queryset):
+        if self.ctx['user_lists']:
+            # TODO
+            return []
         tag_ids = [t.id for t in self.ctx['tags']]
         if self.is_themed:
             related_tags = []
@@ -252,6 +273,7 @@ class TaggedObjectList(BookList):
                     containing_books,
                 ).exclude(category='set').exclude(pk__in=tag_ids)
             ))
+            ### FIXME: These won't be tags
             if self.request.user.is_authenticated:
                 related_tags.extend(list(
                     Tag.objects.usage_for_queryset(
@@ -292,6 +314,7 @@ def object_list(request, objects, list_type='books'):
             Tag.objects.usage_for_queryset(
                 objects, counts=True
             ).exclude(category='set'))
+        ### FIXME: these won't be tags
         if request.user.is_authenticated:
             related_tag_lists.append(
                 Tag.objects.usage_for_queryset(
@@ -309,7 +332,7 @@ def object_list(request, objects, list_type='books'):
             .only('name', 'sort_key', 'category', 'slug'))
         if isinstance(objects, QuerySet):
             objects = prefetch_relations(objects, 'author')
-    
+
     categories = split_tags(*related_tag_lists)
     suggest = []
     for c in ['set', 'author', 'epoch', 'kind', 'genre']:
@@ -324,7 +347,7 @@ def object_list(request, objects, list_type='books'):
     }
 
     template = 'catalogue/author_detail.html'
-        
+
     return render(
         request, template, result,
     )

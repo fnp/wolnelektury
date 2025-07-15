@@ -161,6 +161,8 @@ class Tag(models.Model):
 
     @staticmethod
     def get_tag_list(tag_str):
+        from social.models import UserList
+
         if not tag_str:
             return []
         tags = []
@@ -170,7 +172,10 @@ class Tag(models.Model):
         tags_splitted = tag_str.split('/')
         for name in tags_splitted:
             if category:
-                tags.append(Tag.objects.get(slug=name, category=category))
+                if category == 'set':
+                    tags.append(UserList.objects.get(slug=name, deleted=False))
+                else:
+                    tags.append(Tag.objects.get(slug=name, category=category))
                 category = None
             elif name in Tag.categories_rev:
                 category = Tag.categories_rev[name]
