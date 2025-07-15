@@ -311,6 +311,7 @@ class SyncSerializer(serializers.Serializer):
         return ret
 
 
+@never_cache
 class SyncView(ListAPIView):
     permission_classes = [IsAuthenticated]
     serializer_class = SyncSerializer
@@ -335,6 +336,20 @@ class SyncView(ListAPIView):
                     p, context={'request': self.request}
                 ) if not p.deleted else None
             })
+
+        for p in models.UserList.objects.filter(
+                user=self.request.user,
+                updated_at__gt=timestamp).order_by('updated_at'):
+            data.append({
+                'timestamp': p.updated_at.timestamp(),
+                'type': 'user-list',
+                'id': p.slug,
+                'object': UserListSerializer(
+                    p, context={'request': self.request}
+                ) if not p.deleted else None
+            })
+
+        data.sort(key=lambda x: x['timestamp'])
         return data
 
     def post(self, request):
@@ -344,6 +359,9 @@ class SyncView(ListAPIView):
             ser.is_valid(raise_exception=True)
             d = ser.validated_data
             if d['type'] == 'progress':
+                if d['object'] is not None:
+                    objser = ProgressSerializer(data=d['object'])
+                    objser.is_valid(raise_exception=True)
                 models.Progress.sync(
                     user=request.user,
                     slug=d['id'],
