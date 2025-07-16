@@ -41,7 +41,11 @@
     }
 
     $("#paginator").on('click', 'a', function() {
-        get_page_by_url(url=$(this).attr('href'));
+        get_page_by_url(url=$(this).attr('href'), () => {
+            $("html").animate({
+                scrollTop: $("#book-list").offset().top - 50
+            });
+        });
         return false;
     });
 
