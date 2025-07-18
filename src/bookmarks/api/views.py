@@ -20,7 +20,8 @@ class BookmarkSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = models.Bookmark
-        fields = ['book', 'anchor', 'note', 'href']
+        fields = ['book', 'anchor', 'note', 'href', 'uuid']
+        read_only_fields = ['uuid']
 
 
 
