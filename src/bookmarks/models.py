@@ -12,6 +12,9 @@ class Bookmark(models.Model):
 
     def __str__(self):
         return str(self.uuid)
+
+    def location(self):
+        return f'{self.book.slug}/{self.anchor}'
     
     def get_for_json(self):
         return {
