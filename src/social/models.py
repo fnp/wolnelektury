@@ -1,7 +1,10 @@
 # This file is part of Wolne Lektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Wolne Lektury. See NOTICE for more information.
 #
+from datetime import datetime
+import uuid
 from oauthlib.common import urlencode, generate_token
+from pytz import utc
 from random import randint
 from django.db import models
 from django.conf import settings
@@ -11,6 +14,7 @@ from django.core.mail import send_mail
 from django.urls import reverse
 from django.utils.timezone import now
 from catalogue.models import Book
+from catalogue.utils import get_random_hash
 from wolnelektury.utils import cached_render, clear_cached_renders
 
 
@@ -204,11 +208,49 @@ class UserConfirmation(models.Model):
 
 
 
-class Progress(models.Model):
+class Syncable:
+    @classmethod
+    def sync(cls, user, instance, data):
+        ts = data.get('timestamp')
+        if ts is None:
+            ts = now()
+        else:
+            ts = datetime.fromtimestamp(ts, tz=utc)
+
+        if instance is not None:
+            if ts and ts < instance.reported_timestamp:
+                return
+
+        if instance is None:
+            if data.get('deleted'):
+                return
+            instance = cls.create_from_data(user, data)
+            if instance is None:
+                return
+
+        instance.reported_timestamp = ts
+        for f in cls.syncable_fields:
+            if f in data:
+                setattr(instance, f, data[f])
+        
+        instance.save()
+        return instance
+
+    @property
+    def timestamp(self):
+        return self.updated_at.timestamp()
+    
+    @classmethod
+    def create_from_data(cls, user, data):
+        raise NotImplementedError
+
+
+class Progress(Syncable, models.Model):
     user = models.ForeignKey(User, models.CASCADE)
     book = models.ForeignKey('catalogue.Book', models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    reported_timestamp = models.DateTimeField()
     deleted = models.BooleanField(default=False)
     last_mode = models.CharField(max_length=64, choices=[
         ('text', 'text'),
@@ -223,23 +265,30 @@ class Progress(models.Model):
     implicit_audio_percent = models.FloatField(null=True, blank=True)
     implicit_audio_timestamp = models.FloatField(null=True, blank=True)
 
+    syncable_fields = [
+        'deleted',
+        'last_mode', 'text_anchor', 'audio_timestamp'
+    ]
+    
     class Meta:
         unique_together = [('user', 'book')]
 
+    @property
+    def timestamp(self):
+        return self.updated_at.timestamp()
+
     @classmethod
-    def sync(cls, user, slug, ts, data):
-        obj, _created = cls.objects.get_or_create(user=user, book__slug=slug)
-        if _created or obj.updated_at < ts:
-            if data is not None:
-                obj.deleted = False
-                for k, v in data.items():
-                    setattr(obj, k, v)
-            else:
-                obj.deleted = True
-            obj.save()
+    def create_from_data(cls, user, data):
+        return cls.objects.create(
+            user=user,
+            book=data['book']
+        )
         
     def save(self, *args, **kwargs):
-        audio_l = self.book.get_audio_length()
+        try:
+            audio_l = self.book.get_audio_length()
+        except:
+            audio_l = 60
         if self.text_anchor:
             self.text_percent = 33
             if audio_l:
@@ -255,7 +304,7 @@ class Progress(models.Model):
         return super().save(*args, **kwargs)
 
 
-class UserList(models.Model):
+class UserList(Syncable, models.Model):
     slug = models.SlugField(unique=True)
     user = models.ForeignKey(User, models.CASCADE)
     name = models.CharField(max_length=1024)
@@ -263,8 +312,11 @@ class UserList(models.Model):
     public = models.BooleanField(default=False)
     deleted = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField()
+    updated_at = models.DateTimeField(auto_now=True)
+    reported_timestamp = models.DateTimeField()
 
+    syncable_fields = ['name', 'public', 'deleted']
+    
     def get_absolute_url(self):
         return reverse(
             'tagged_object_list',
@@ -273,18 +325,24 @@ class UserList(models.Model):
 
     def __str__(self):
         return self.name
-    
+
     @property
     def url_chunk(self):
         return f'polka/{self.slug}'
     
     @classmethod
+    def create_from_data(cls, user, data):
+        return cls.create(user, data['name'])
+
+    @classmethod
     def create(cls, user, name):
+        n = now()
         return cls.objects.create(
             user=user,
             name=name,
             slug=get_random_hash(name),
-            updated_at=now()
+            updated_at=n,
+            reported_timestamp=n,
         )
 
     @classmethod
@@ -333,12 +391,15 @@ class UserList(models.Model):
 
     def append(self, book):
         # TODO: check for duplicates?
-        self.userlistitem_set.create(
+        n = now()
+        item = self.userlistitem_set.create(
             book=book,
-            order=self.userlistitem_set.aggregate(m=models.Max('order'))['m'] + 1,
-            updated_at=now(),
+            order=(self.userlistitem_set.aggregate(m=models.Max('order'))['m'] or 0) + 1,
+            updated_at=n,
+            reported_timestamp=n,
         )
         book.update_popularity()
+        return item
 
     def remove(self, book):
         self.userlistitem_set.filter(book=book).update(
@@ -362,12 +423,14 @@ class UserList(models.Model):
         return [item.book for item in self.userlistitem_set.exclude(deleted=True).exclude(book=None)]
             
 
-class UserListItem(models.Model):
+class UserListItem(Syncable, models.Model):
     list = models.ForeignKey(UserList, models.CASCADE)
+    uuid = models.UUIDField(unique=True, default=uuid.uuid4, editable=False, blank=True)
     order = models.IntegerField()
     deleted = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField()
+    updated_at = models.DateTimeField(auto_now=True)
+    reported_timestamp = models.DateTimeField()
 
     book = models.ForeignKey('catalogue.Book', models.SET_NULL, null=True, blank=True)
     fragment = models.ForeignKey('catalogue.Fragment', models.SET_NULL, null=True, blank=True)
@@ -375,3 +438,21 @@ class UserListItem(models.Model):
     bookmark = models.ForeignKey('bookmarks.Bookmark', models.SET_NULL, null=True, blank=True)
 
     note = models.TextField(blank=True)
+    
+    syncable_fields = ['order', 'deleted', 'book', 'fragment', 'quote', 'bookmark', 'note']
+
+    @classmethod
+    def create_from_data(cls, user, data):
+        if data.get('favorites'):
+            l = UserList.get_favorites_list(user, create=True)
+        else:
+            l = data['list']
+            try:
+                assert l.user == user
+            except AssertionError:
+                return
+        return l.append(book=data['book'])
+
+    @property
+    def favorites(self):
+        return self.list.favorites

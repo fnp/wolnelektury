@@ -13,6 +13,10 @@ class Bookmark(models.Model):
     def __str__(self):
         return str(self.uuid)
 
+    @property
+    def timestamp(self):
+        return self.created_at.timestamp()
+    
     def location(self):
         return f'{self.book.slug}/{self.anchor}'
     

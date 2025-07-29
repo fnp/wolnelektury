@@ -22,7 +22,10 @@ urlpatterns = [
     path('progress/<slug:slug>/text/', views.TextProgressView.as_view()),
     path('progress/<slug:slug>/audio/', views.AudioProgressView.as_view()),
 
-    path('sync/', views.SyncView.as_view()),
+    path('sync/progress/', views.ProgressSyncView.as_view()),
+    path('sync/userlist/', views.UserListSyncView.as_view()),
+    path('sync/userlistitem/', views.UserListItemSyncView.as_view()),
+    path('sync/bookmark/', views.BookmarkSyncView.as_view()),
 ]
 
 

@@ -17,10 +17,11 @@ from api.fields import AbsoluteURLField
 class BookmarkSerializer(serializers.ModelSerializer):
     book = serializers.SlugRelatedField(queryset=catalogue.models.Book.objects.all(), slug_field='slug')
     href = AbsoluteURLField(view_name='api_bookmark', view_args=['uuid'])
+    timestamp = serializers.IntegerField()
     
     class Meta:
         model = models.Bookmark
-        fields = ['book', 'anchor', 'note', 'href', 'uuid', 'location']
+        fields = ['book', 'anchor', 'note', 'href', 'uuid', 'location', 'timestamp']
         read_only_fields = ['uuid']
 
 

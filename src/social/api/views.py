@@ -18,6 +18,8 @@ from catalogue.models import Book
 import catalogue.models
 from social.views import get_sets_for_book_ids
 from social import models
+import bookmarks.models
+from bookmarks.api.views import BookmarkSerializer
 
 
 @never_cache
@@ -94,12 +96,27 @@ class UserListItemsField(serializers.Field):
 
 
 class UserListSerializer(serializers.ModelSerializer):
-    books = UserListItemsField(source='*')
+    client_id = serializers.CharField(write_only=True, required=False)
+    books = UserListItemsField(source='*', required=False)
+    timestamp = serializers.IntegerField(required=False)
 
     class Meta:
         model = models.UserList
-        fields = ['name', 'slug', 'books']
-        read_only_fields = ['slug']
+        fields = [
+            'timestamp',
+            'client_id',
+            'name',
+            'slug',
+            'favorites',
+            'deleted',
+            'books',
+        ]
+        read_only_fields = ['favorites']
+        extra_kwargs = {
+            'slug': {
+                'required': False
+            }
+        }
 
     def create(self, validated_data):
         instance = models.UserList.get_by_name(
@@ -122,6 +139,47 @@ class UserListBooksSerializer(UserListSerializer):
     class Meta:
         model = models.UserList
         fields = ['books']
+
+
+class UserListItemSerializer(serializers.ModelSerializer):
+    client_id = serializers.CharField(write_only=True, required=False)
+    favorites = serializers.BooleanField(required=False)
+    list_slug = serializers.SlugRelatedField(
+        queryset=models.UserList.objects.all(),
+        source='list',
+        slug_field='slug',
+        required=False,
+    )
+    timestamp = serializers.IntegerField(required=False)
+    book_slug = serializers.SlugRelatedField(
+        queryset=Book.objects.all(),
+        source='book',
+        slug_field='slug',
+        required=False
+    )
+
+    class Meta:
+        model = models.UserListItem
+        fields = [
+            'client_id',
+            'uuid',
+            'order',
+            'list_slug',
+            'timestamp',
+            'favorites',
+            'deleted',
+
+            'book_slug',
+            'fragment',
+            'quote',
+            'bookmark',
+            'note',
+        ]
+        extra_kwargs = {
+            'order': {
+                'required': False
+            }
+        }
 
 
 @never_cache
@@ -218,19 +276,31 @@ class ProgressSerializer(serializers.ModelSerializer):
         view_name='catalogue_api_book',
         lookup_field='slug'
     )
-    book_slug = serializers.SlugRelatedField(source='book', read_only=True, slug_field='slug')
+    book_slug = serializers.SlugRelatedField(
+        queryset=Book.objects.all(),
+        source='book',
+        slug_field='slug')
+    timestamp = serializers.IntegerField(required=False)
 
     class Meta:
         model = models.Progress
-        fields = ['book', 'book_slug', 'last_mode', 'text_percent',
-    'text_anchor',
-    'audio_percent',
-    'audio_timestamp',
-    'implicit_text_percent',
-    'implicit_text_anchor',
-    'implicit_audio_percent',
-    'implicit_audio_timestamp',
-    ]
+        fields = [
+            'timestamp',
+            'book', 'book_slug', 'last_mode', 'text_percent',
+            'text_anchor',
+            'audio_percent',
+            'audio_timestamp',
+            'implicit_text_percent',
+            'implicit_text_anchor',
+            'implicit_audio_percent',
+            'implicit_audio_timestamp',
+        ]
+        extra_kwargs = {
+            'last_mode': {
+                'required': False,
+                'default': 'text',
+            }
+        }
 
 
 class TextProgressSerializer(serializers.ModelSerializer):
@@ -295,26 +365,12 @@ class AudioProgressView(ProgressMixin, RetrieveUpdateAPIView):
 
 
 
-class SyncSerializer(serializers.Serializer):
-    timestamp = serializers.IntegerField()
-    type = serializers.CharField()
-    id = serializers.CharField()
-
-    def to_representation(self, instance):
-        rep = super().to_representation(instance)
-        rep['object'] = instance['object'].data
-        return rep
-
-    def to_internal_value(self, data):
-        ret = super().to_internal_value(data)
-        ret['object'] = data['object']
-        return ret
-
-
 @never_cache
 class SyncView(ListAPIView):
     permission_classes = [IsAuthenticated]
-    serializer_class = SyncSerializer
+    sync_id_field = 'slug'
+    sync_id_serializer_field = 'slug'
+    sync_user_field = 'user'
 
     def get_queryset(self):
         try:
@@ -325,47 +381,90 @@ class SyncView(ListAPIView):
         timestamp = datetime.fromtimestamp(timestamp, tz=utc)
         
         data = []
-        for p in models.Progress.objects.filter(
-                user=self.request.user,
-                updated_at__gt=timestamp).order_by('updated_at'):
-            data.append({
-                'timestamp': p.updated_at.timestamp(),
-                'type': 'progress',
-                'id': p.book.slug,
-                'object': ProgressSerializer(
-                    p, context={'request': self.request}
-                ) if not p.deleted else None
-            })
+        return self.get_queryset_for_ts(timestamp)
 
-        for p in models.UserList.objects.filter(
-                user=self.request.user,
-                updated_at__gt=timestamp).order_by('updated_at'):
-            data.append({
-                'timestamp': p.updated_at.timestamp(),
-                'type': 'user-list',
-                'id': p.slug,
-                'object': UserListSerializer(
-                    p, context={'request': self.request}
-                ) if not p.deleted else None
-            })
+    def get_queryset_for_ts(self, timestamp):
+        return self.model.objects.filter(
+            updated_at__gt=timestamp,
+            **{
+                self.sync_user_field: self.request.user
+            }
+        ).order_by('updated_at')
 
-        data.sort(key=lambda x: x['timestamp'])
-        return data
+    def get_instance(self, user, data):
+        sync_id = data.get(self.sync_id_serializer_field)
+        if not sync_id:
+            return None
+        return self.model.objects.filter(**{
+            self.sync_user_field: user,
+            self.sync_id_field: sync_id
+        }).first()
 
     def post(self, request):
+        new_ids = []
         data = request.data
         for item in data:
-            ser = SyncSerializer(data=item)
+            instance = self.get_instance(request.user, item)
+            ser = self.get_serializer(
+                instance=instance,
+                data=item
+            )
             ser.is_valid(raise_exception=True)
-            d = ser.validated_data
-            if d['type'] == 'progress':
-                if d['object'] is not None:
-                    objser = ProgressSerializer(data=d['object'])
-                    objser.is_valid(raise_exception=True)
-                models.Progress.sync(
-                    user=request.user,
-                    slug=d['id'],
-                    ts=datetime.fromtimestamp(d['timestamp'], tz=utc),
-                    data=d['object']
-                )
-        return Response()
+            synced_instance = self.model.sync(
+                request.user,
+                instance,
+                ser.validated_data
+            )
+            if instance is None and 'client_id' in ser.validated_data and synced_instance is not None:
+                new_ids.append({
+                    'client_id': ser.validated_data['client_id'],
+                    self.sync_id_serializer_field: getattr(synced_instance, self.sync_id_field),
+                })
+        return Response(new_ids)
+
+
+class ProgressSyncView(SyncView):
+    model = models.Progress
+    serializer_class = ProgressSerializer
+    
+    sync_id_field = 'book__slug'
+    sync_id_serializer_field = 'book_slug'
+
+
+class UserListSyncView(SyncView):
+    model = models.UserList
+    serializer_class = UserListSerializer
+
+
+class UserListItemSyncView(SyncView):
+    model = models.UserListItem
+    serializer_class = UserListItemSerializer
+
+    sync_id_field = 'uuid'
+    sync_id_serializer_field = 'uuid'
+    sync_user_field = 'list__user'
+
+    def get_queryset_for_ts(self, timestamp):
+        qs = self.model.objects.filter(
+            updated_at__gt=timestamp,
+            **{
+                self.sync_user_field: self.request.user
+            }
+        )
+        if self.request.query_params.get('favorites'):
+            qs = qs.filter(list__favorites=True)
+        return qs.order_by('updated_at')
+
+
+class BookmarkSyncView(SyncView):
+    model = bookmarks.models.Bookmark
+    serializer_class = BookmarkSerializer
+
+    sync_id_field = 'uuid'
+    sync_id_serializer_field = 'uuid'
+
+    def get_queryset_for_ts(self, timestamp):
+        return self.model.objects.filter(
+            user=self.request.user,
+            created_at__gt=timestamp
+        ).order_by('created_at')
