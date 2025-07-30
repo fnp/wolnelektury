@@ -17,6 +17,7 @@ from catalogue.api.serializers import BookSerializer
 from catalogue.models import Book
 import catalogue.models
 from social.views import get_sets_for_book_ids
+from social.utils import likes
 from social import models
 import bookmarks.models
 from bookmarks.api.views import BookmarkSerializer
