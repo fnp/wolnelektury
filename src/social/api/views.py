@@ -464,8 +464,9 @@ class BookmarkSyncView(SyncView):
     sync_id_field = 'uuid'
     sync_id_serializer_field = 'uuid'
 
-    def get_queryset_for_ts(self, timestamp):
-        return self.model.objects.filter(
-            user=self.request.user,
-            created_at__gt=timestamp
-        ).order_by('created_at')
+    def get_instance(self, user, data):
+        ret = super().get_instance(user, data)
+        if ret is None:
+            if data.get('location'):
+                ret = self.model.get_by_location(user, data['location'])
+        return ret
