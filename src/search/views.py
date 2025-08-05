@@ -24,22 +24,8 @@ def remove_query_syntax_chars(query, replace=' '):
     return query_syntax_chars.sub(replace, query)
 
 
-@cache.never_cache
-def hint(request, mozhint=False, param='term'):
-    prefix = request.GET.get(param, '')
-    if len(prefix) < 2:
-        return JsonResponse([], safe=False)
-
-    prefix = re_escape(' '.join(remove_query_syntax_chars(prefix).split()))
-
-    try:
-        limit = int(request.GET.get('max', ''))
-    except ValueError:
-        limit = 20
-    else:
-        if limit < 1:
-            limit = 20
-
+def get_hints(prefix, user=None, limit=10):
+    if not prefix: return []
     data = []
     if len(data) < limit:
         authors = catalogue.models.Tag.objects.filter(
@@ -53,9 +39,10 @@ def hint(request, mozhint=False, param='term'):
             }
             for author in authors[:limit - len(data)]
         ])
-    if request.user.is_authenticated and len(data) < limit:
+    
+    if user is not None and user.is_authenticated and len(data) < limit:
         tags = social.models.UserList.objects.filter(
-            user=request.user, name__iregex='\m' + prefix).only('name', 'id', 'slug')
+            user=user, name__iregex='\m' + prefix).only('name', 'id', 'slug')
         data.extend([
             {
                 'type': 'set',
@@ -114,6 +101,30 @@ def hint(request, mozhint=False, param='term'):
             }
             for info in infos[:limit - len(data)]
         ])
+    return data
+
+
+@cache.never_cache
+def hint(request, mozhint=False, param='term'):
+    prefix = request.GET.get(param, '')
+    if len(prefix) < 2:
+        return JsonResponse([], safe=False)
+
+    prefix = re_escape(' '.join(remove_query_syntax_chars(prefix).split()))
+
+    try:
+        limit = int(request.GET.get('max', ''))
+    except ValueError:
+        limit = 20
+    else:
+        if limit < 1:
+            limit = 20
+
+    data = get_hints(
+        prefix,
+        user=request.user if request.user.is_authenticated else None,
+        limit=limit
+    )
 
     if mozhint:
         data = [
