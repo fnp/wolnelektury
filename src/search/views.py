@@ -45,7 +45,7 @@ def get_hints(prefix, user=None, limit=10):
             user=user, name__iregex='\m' + prefix).only('name', 'id', 'slug')
         data.extend([
             {
-                'type': 'set',
+                'type': 'userlist',
                 'label': tag.name,
                 'url': tag.get_absolute_url(),
             }
