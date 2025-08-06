@@ -37,6 +37,7 @@ def get_hints(prefix, user=None, limit=10):
                 'url': author.get_absolute_url(),
                 'img': get_thumbnail(author.photo, '72x72', crop='top').url if author.photo else '',
                 'slug': author.slug,
+                'id': author.id,
             }
             for author in authors[:limit - len(data)]
         ])
@@ -62,6 +63,7 @@ def get_hints(prefix, user=None, limit=10):
                 'label': tag.name,
                 'url': tag.get_absolute_url(),
                 'slug': tag.slug,
+                'id': tag.id,
             }
             for tag in tags[:limit - len(data)]
         ])
