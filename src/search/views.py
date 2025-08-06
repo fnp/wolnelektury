@@ -90,7 +90,7 @@ def get_hints(prefix, user=None, limit=10):
                     'author': author_str,
                     'url': b.get_absolute_url(),
                     'img': get_thumbnail(b.cover_clean, '72x72').url if b.cover_clean else '',
-                    'slug': book.slug,
+                    'slug': b.slug,
                 }
             )
     if len(data) < limit:
