@@ -36,6 +36,7 @@ def get_hints(prefix, user=None, limit=10):
                 'label': author.name,
                 'url': author.get_absolute_url(),
                 'img': get_thumbnail(author.photo, '72x72', crop='top').url if author.photo else '',
+                'slug': author.slug,
             }
             for author in authors[:limit - len(data)]
         ])
@@ -48,6 +49,7 @@ def get_hints(prefix, user=None, limit=10):
                 'type': 'userlist',
                 'label': tag.name,
                 'url': tag.get_absolute_url(),
+                'slug': tag.slug,
             }
             for tag in tags[:limit - len(data)]
         ])
@@ -59,6 +61,7 @@ def get_hints(prefix, user=None, limit=10):
                 'type': tag.category,
                 'label': tag.name,
                 'url': tag.get_absolute_url(),
+                'slug': tag.slug,
             }
             for tag in tags[:limit - len(data)]
         ])
@@ -70,6 +73,7 @@ def get_hints(prefix, user=None, limit=10):
                 'type': 'collection',
                 'label': collection.title,
                 'url': collection.get_absolute_url(),
+                'slug': collection.slug,
             }
             for collection in collections[:limit - len(data)]
         ])
@@ -86,6 +90,7 @@ def get_hints(prefix, user=None, limit=10):
                     'author': author_str,
                     'url': b.get_absolute_url(),
                     'img': get_thumbnail(b.cover_clean, '72x72').url if b.cover_clean else '',
+                    'slug': book.slug,
                 }
             )
     if len(data) < limit:
@@ -98,6 +103,7 @@ def get_hints(prefix, user=None, limit=10):
                 'type': 'info',
                 'label': info.title,
                 'url': info.get_absolute_url(),
+                'slug': info.slug,
             }
             for info in infos[:limit - len(data)]
         ])
