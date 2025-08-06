@@ -56,4 +56,10 @@ urlpatterns = [
     path('genres/<slug:slug>/',
          piwik_track_view(views.GenreView.as_view()),
          name='catalogue_api_genre'),
+    path('themes/',
+         piwik_track_view(views.ThemeList.as_view()),
+         name="catalogue_api_theme_list"),
+    path('themes/<slug:slug>/',
+         piwik_track_view(views.ThemeView.as_view()),
+         name='catalogue_api_theme'),
 ]

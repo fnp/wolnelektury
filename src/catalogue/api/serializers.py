@@ -117,6 +117,18 @@ class KindSerializer(KindItemSerializer):
             'collective_noun',
         ]
 
+class ThemeSerializer(serializers.ModelSerializer):
+    url = AbsoluteURLField()
+    href = AbsoluteURLField(
+        view_name='catalogue_api_theme',
+        view_args=('slug',)
+    )
+    class Meta:
+        model = Tag
+        fields = [
+            'url', 'href', 'name', 'slug', 'sort_key', 'description',
+        ]
+
 
 class TranslatorSerializer(serializers.Serializer):
     name = serializers.CharField(source='*')

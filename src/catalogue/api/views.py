@@ -406,6 +406,15 @@ class KindView(RetrieveAPIView):
     queryset = Tag.objects.filter(category='kind')
     lookup_field = 'slug'
 
+class ThemeList(ListAPIView):
+    serializer_class = serializers.ThemeSerializer
+    queryset = Tag.objects.filter(category='theme')
+
+class ThemeView(RetrieveAPIView):
+    serializer_class = serializers.ThemeSerializer
+    queryset = Tag.objects.filter(category='theme')
+    lookup_field = 'slug'
+
 
 class TagView(RetrieveAPIView):
     permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
