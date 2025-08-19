@@ -46,3 +46,30 @@ class RefreshTokenSerializer(serializers.Serializer):
 
 class RequestConfirmSerializer(serializers.Serializer):
     email = serializers.CharField()
+
+
+class DeleteAccountSerializer(serializers.Serializer):
+    password =serializers.CharField(
+        style={'input_type': 'password'}
+    )
+
+    def validate_password(self, value):
+        u = self.context['user']
+        if not u.check_password(value):
+            raise serializers.ValidationError("Password incorrect.")
+        return value
+
+
+class PasswordSerializer(serializers.Serializer):
+    old_password = serializers.CharField(
+        style={'input_type': 'password'}
+    )
+    new_password = serializers.CharField(
+        style={'input_type': 'password'}
+    )
+
+    def validate_old_password(self, value):
+        u = self.context['user']
+        if not u.check_password(value):
+            raise serializers.ValidationError("Password incorrect.")
+        return value

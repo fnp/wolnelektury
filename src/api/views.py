@@ -334,3 +334,36 @@ class RequestConfirmView(APIView):
         UserConfirmation.request(user)
         return Response({})
 
+
+class DeleteAccountView(GenericAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = serializers.DeleteAccountSerializer
+
+    def post(self, request):
+        u = request.user
+        serializer = self.get_serializer(
+            data=request.data,
+            context={'user': u}
+        )
+        serializer.is_valid(raise_exception=True)
+        d = serializer.validated_data
+        u.is_active = False
+        u.save()
+        return Response({})
+
+
+class PasswordView(GenericAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = serializers.PasswordSerializer
+
+    def post(self, request):
+        u = request.user
+        serializer = self.get_serializer(
+            data=request.data,
+            context={'user': u}
+        )
+        serializer.is_valid(raise_exception=True)
+        d = serializer.validated_data
+        u.set_password(d['new_password'])
+        u.save()
+        return Response({})
