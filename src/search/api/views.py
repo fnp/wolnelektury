@@ -49,7 +49,7 @@ class SearchView(APIView):
 
 
 class BookSearchView(ListAPIView):
-    serializer_class = catalogue.api.serializers.BookSerializer
+    serializer_class = catalogue.api.serializers.BookSerializer2
 
     def get_queryset(self):
         term = self.request.query_params.get('q')
@@ -71,7 +71,7 @@ class SnippetSerializer(serializers.ModelSerializer):
 
 
 class BookSnippetsSerializer(serializers.Serializer):
-    book = catalogue.api.serializers.BookSerializer()
+    book = catalogue.api.serializers.BookSerializer2()
     snippets = SnippetSerializer(many=True)
 
 
