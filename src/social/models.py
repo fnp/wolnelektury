@@ -244,7 +244,8 @@ class Progress(Syncable, models.Model):
     def create_from_data(cls, user, data):
         return cls.objects.create(
             user=user,
-            book=data['book']
+            book=data['book'],
+            reported_timestamp=now(),
         )
         
     def save(self, *args, **kwargs):
