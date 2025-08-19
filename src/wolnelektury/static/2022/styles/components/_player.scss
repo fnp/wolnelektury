@@ -296,6 +296,15 @@
           display: inline;
       }
     }
+    div.title {
+      font-size: 12px;
+      line-height: 140%;
+      letter-spacing: 0.05em;
+      list-style-type: decimal;
+      margin: 5px 0;
+      color: white;
+      cursor: pointer;
+    }
   }
 }
 

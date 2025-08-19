@@ -101,7 +101,9 @@ class BookMedia(models.Model):
         self.extra_info = json.dumps(extra_info)
         self.source_sha1 = self.read_source_sha1(self.file.path, self.type)
         self.duration = self.read_duration()
-        return super(BookMedia, self).save(*args, **kwargs)
+        super(BookMedia, self).save(*args, **kwargs)
+        self.book.update_narrators()
+        self.book.update_has_audio()
 
     def read_duration(self):
         try:

@@ -227,6 +227,7 @@ class TaggedObjectList(BookList):
         ]
         if len(self.ctx['tags']) == 1 and self.ctx['main_tag'].category == 'author':
             self.ctx['translation_list'] = self.ctx['main_tag'].book_set.all()
+            self.ctx['narrated'] = self.ctx['main_tag'].narrated.all()
 
     def get_queryset(self):
         qs = Book.tagged.with_all(self.ctx['work_tags']).filter(findable=True)

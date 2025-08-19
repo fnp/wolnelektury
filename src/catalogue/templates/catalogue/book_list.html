@@ -129,6 +129,17 @@
     </div>
   {% endif %}
 
+  {% if narrated %}
+    <div class="l-section l-section--col">
+      <h2 class="header">Audiobooki</h2>
+      <div class="l-books__grid" id="book-list">
+        {% for book in narrated %}
+          {% include "catalogue/book_box.html" %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+
   {% if main_tag %}
     <section class="l-section">
       <div class="l-author">

@@ -162,7 +162,7 @@
                       </div>
                       <div class="c-media__actions lay-col lay-l-row">
                         <div class="c-media__btn">
-                          {% if book.has_mp3_file %}
+                          {% if book.has_audio %}
                             <button class="l-button l-button--media" id="audiobook"><i class="icon icon-audio"></i> {% trans "pobierz audiobook" %}</button>
                           {% endif %}
                         </div>
@@ -184,19 +184,9 @@
                   </div>
 
 
-
-                  {% if book.has_mp3_file %}
+                  {% if book.has_audio %}
                     {% include 'catalogue/snippets/jplayer.html' %}
-                  {% else %}
-                    {% with ch=book.get_child_audiobook %}
-                      {% if ch %}
-                        {% include 'catalogue/snippets/jplayer_link.html' with book=ch %}
-                      {% endif %}
-                    {% endwith %}
-
                   {% endif %}
-
-
 
 
                   <div class="c-media__popup" data-popup="ebook">
