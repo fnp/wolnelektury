@@ -10,6 +10,11 @@ class Bookmark(Syncable, models.Model):
     user = models.ForeignKey('auth.User', models.CASCADE)
     book = models.ForeignKey('catalogue.Book', models.CASCADE)
     anchor = models.CharField(max_length=100, blank=True)
+    audio_timestamp = models.IntegerField(null=True, blank=True)
+    mode = models.CharField(max_length=64, choices=[
+        ('text', 'text'),
+        ('audio', 'audio'),
+    ], default='text')
     created_at = models.DateTimeField(auto_now_add=True)
     note = models.TextField(blank=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -23,32 +28,73 @@ class Bookmark(Syncable, models.Model):
     def __str__(self):
         return str(self.uuid)
 
+    def save(self, *args, **kwargs):
+        # TODO: placeholder.
+        try:
+            audio_l = self.book.get_audio_length()
+        except:
+            audio_l = 60
+        if self.anchor:
+            self.mode = 'text'
+            if audio_l:
+                self.audio_timestamp = audio_l * .4
+        if self.audio_timestamp:
+            self.mode = 'audio'
+            if self.audio_timestamp > audio_l:
+                self.audio_timestamp = audio_l
+            if audio_l:
+                self.anchor = 'f20'
+        return super().save(*args, **kwargs)
+
     @classmethod
     def create_from_data(cls, user, data):
         if data.get('location'):
             return cls.get_by_location(user, data['location'], create=True)
         elif data.get('book') and data.get('anchor'):
             return cls.objects.create(user=user, book=data['book'], anchor=data['anchor'])
+        elif data.get('book') and data.get('audio_timestamp'):
+            return cls.objects.create(user=user, book=data['book'], audio_timestamp=data['audio_timestamp'])
     
     @property
     def timestamp(self):
         return self.updated_at.timestamp()
     
     def location(self):
-        return f'{self.book.slug}/{self.anchor}'
+        if self.mode == 'text':
+            return f'{self.book.slug}/{self.anchor}'
+        else:
+            return f'{self.book.slug}/audio/{self.audio_timestamp}'
 
     @classmethod
     def get_by_location(cls, user, location, create=False):
         Book = apps.get_model('catalogue', 'Book')
         try:
-            slug, anchor = location.split('/')
+            slug, anchor = location.split('/', 1)
         except:
             return None
-        instance = cls.objects.filter(
-            user=user,
-            book__slug=slug,
-            anchor=anchor
-        ).first()
+        if '/' in anchor:
+            try:
+                mode, audio_timestamp = anchor.split('/', 1)
+                assert mode == 'audio'
+                audio_timestamp = int(audio_timestamp)
+            except:
+                return None
+            anchor = ''
+            instance = cls.objects.filter(
+                user=user,
+                book__slug=slug,
+                mode=mode,
+                audio_timestamp=audio_timestamp,
+            ).first()
+        else:
+            mode = 'text'
+            audio_timestamp = None
+            instance = cls.objects.filter(
+                user=user,
+                book__slug=slug,
+                mode='text',
+                anchor=anchor,
+            ).first()
         if instance is None and create:
             try:
                 book = Book.objects.get(slug=slug)
@@ -57,7 +103,9 @@ class Bookmark(Syncable, models.Model):
             instance = cls.objects.create(
                 user=user,
                 book=book,
-                anchor=anchor
+                mode=mode,
+                anchor=anchor,
+                audio_timestamp=audio_timestamp,
             )
         return instance
     

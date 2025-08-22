@@ -418,6 +418,8 @@ class SyncView(ListAPIView):
     def post(self, request):
         new_ids = []
         data = request.data
+        if not isinstance(data, list):
+            raise serializers.ValidationError('Payload should be a list')
         for item in data:
             instance = self.get_instance(request.user, item)
             ser = self.get_serializer(
