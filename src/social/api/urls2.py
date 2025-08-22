@@ -7,6 +7,8 @@ from . import views
 
 
 urlpatterns = [
+    path('settings/', views.SettingsView.as_view()),
+    
     path('like/<slug:slug>/',
         piwik_track_view(views.LikeView2.as_view()),
         name='social_api_like'),

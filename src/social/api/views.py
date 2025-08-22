@@ -23,6 +23,20 @@ import bookmarks.models
 from bookmarks.api.views import BookmarkSerializer
 
 
+class SettingsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.UserProfile
+        fields = ['notifications']
+
+
+class SettingsView(RetrieveUpdateAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = SettingsSerializer
+
+    def get_object(self):
+        return models.UserProfile.get_for(self.request.user)
+
+
 @never_cache
 class LikeView(APIView):
     permission_classes = [IsAuthenticated]

@@ -181,6 +181,16 @@ class CarouselItem(models.Model):
         return self.banner or self.banner_group.get_banner()
 
 
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, models.CASCADE)
+    notifications = models.BooleanField(default=False)
+
+    @classmethod
+    def get_for(cls, user):
+        obj, created = cls.objects.get_or_create(user=user)
+        return obj
+
+
 class UserConfirmation(models.Model):
     user = models.ForeignKey(User, models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
