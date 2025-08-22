@@ -337,12 +337,14 @@ class UserList(Syncable, models.Model):
                 favorites=True
             )
         except cls.DoesNotExist:
+            n = now()
             if create:
                 return cls.objects.create(
                     user=user,
                     favorites=True,
-                    slug=get_random_hash(name),
-                    updated_at=now()
+                    slug=get_random_hash('favorites'),
+                    updated_at=n,
+                    reported_timestamp=n,
                 )
             else:
                 return None
