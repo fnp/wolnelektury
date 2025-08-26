@@ -16,3 +16,13 @@ class Notification(models.Model):
 
     def __str__(self):
         return '%s: %s' % (self.timestamp, self.title)
+
+
+class DeviceToken(models.Model):
+    user = models.ForeignKey('auth.User', models.CASCADE)
+    token = models.CharField(max_length=1024)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ('-updated_at',)
