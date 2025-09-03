@@ -20,7 +20,7 @@ class Notification(models.Model):
 
 class DeviceToken(models.Model):
     user = models.ForeignKey('auth.User', models.CASCADE)
-    token = models.CharField(max_length=1024)
+    token = models.CharField(max_length=1024, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

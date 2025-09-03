@@ -21,10 +21,11 @@ class DeviceTokenSerializer(serializers.ModelSerializer):
             return self.create(self.validated_data)
 
     def create(self, validated_data):
-        return models.DeviceToken.objects.create(
+        obj, created = models.DeviceToken.objects.get_or_create(
             user=self.context['request'].user,
             token=validated_data['token'],
         )
+        return obj
 
     def destroy(self, validated_data):
         models.DeviceToken.objects.filter(
