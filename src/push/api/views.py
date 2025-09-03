@@ -8,6 +8,8 @@ from push import models
 
 class DeviceTokenSerializer(serializers.ModelSerializer):
     deleted = serializers.BooleanField(default=False, write_only=True)
+    # Explicit definition to disable unique validator.
+    token = serializers.CharField()
 
     class Meta:
         model = models.DeviceToken
