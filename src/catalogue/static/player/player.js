@@ -116,6 +116,7 @@
 
                 doesUpdateSynchro = false;
                 if (!$currentMedia || $currentMedia[0] != elem[0]) {
+                    player.jPlayer("setMedia", media);
                     player.jPlayer("option", "playbackRate", speed);
                 }
                 doesUpdateSynchro = true;
