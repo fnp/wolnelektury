@@ -25,6 +25,8 @@ LATEST_BLOG_POSTS = "https://fundacja.wolnelektury.pl/feed/?cat=-135"
 CATALOGUE_COUNTERS_FILE = os.path.join(VAR_DIR, 'counters/catalogue_counters.p')
 LESMIANATOR_PICKLE = os.path.join(VAR_DIR, 'counters/lesmianator.p')
 
+NO_SEARCH_INDEX = False
+
 CATALOGUE_MIN_INITIALS = 60
 
 PICTURE_PAGE_SIZE = 20
