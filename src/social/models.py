@@ -4,7 +4,6 @@
 from datetime import datetime
 import uuid
 from oauthlib.common import urlencode, generate_token
-from pytz import utc
 from random import randint
 from django.db import models
 from django.conf import settings
@@ -12,7 +11,7 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.core.mail import send_mail
 from django.urls import reverse
-from django.utils.timezone import now
+from django.utils.timezone import now, utc
 from catalogue.models import Book
 from catalogue.utils import get_random_hash
 from wolnelektury.utils import cached_render, clear_cached_renders

@@ -2,9 +2,8 @@
 # Copyright © Fundacja Wolne Lektury. See NOTICE for more information.
 #
 from datetime import datetime
-from pytz import utc
 from django.http import Http404
-from django.utils.timezone import now
+from django.utils.timezone import now, utc
 from rest_framework.generics import ListAPIView, ListCreateAPIView, RetrieveAPIView, RetrieveUpdateAPIView, RetrieveUpdateDestroyAPIView, get_object_or_404
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework.response import Response

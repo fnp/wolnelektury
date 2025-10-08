@@ -1,7 +1,5 @@
 from datetime import datetime
-from django.utils.timezone import now
-from pytz import utc
-
+from django.utils.timezone import now, utc
 
 
 class Syncable:
