@@ -43,13 +43,6 @@ DEBUG_TOOLBAR_CONFIG = {
 }
 
 
-HAYSTACK_CONNECTIONS = {
-    'default': {
-        'ENGINE': 'haystack.backends.simple_backend.SimpleEngine',
-    },
-}
-
-
 FORMS_BUILDER_USE_SITES = False
 FORMS_BUILDER_EDITABLE_FIELD_MAX_LENGTH = True
 FORMS_BUILDER_EDITABLE_SLUGS = True

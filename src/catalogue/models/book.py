@@ -7,6 +7,8 @@ from datetime import date, timedelta
 from random import randint
 import os.path
 import re
+from slugify import slugify
+from sortify import sortify
 from urllib.request import urlretrieve
 from django.apps import apps
 from django.conf import settings
@@ -94,6 +96,8 @@ class Book(models.Model):
     tags = managers.TagDescriptor(Tag)
     tag_relations = GenericRelation(Tag.intermediary_table_model, related_query_name='tagged_book')
     translators = models.ManyToManyField(Tag, blank=True)
+    narrators = models.ManyToManyField(Tag, blank=True, related_name='narrated')
+    has_audio = models.BooleanField(default=False)
 
     html_built = django.dispatch.Signal()
     published = django.dispatch.Signal()
@@ -266,17 +270,6 @@ class Book(models.Model):
             return sibling.get_first_text()
         return self.parent.get_next_text(inside=False)
 
-    def get_child_audiobook(self):
-        BookMedia = apps.get_model('catalogue', 'BookMedia')
-        if not BookMedia.objects.filter(book__ancestor=self).exists():
-            return None
-        for child in self.children.order_by('parent_number').all():
-            if child.has_mp3_file():
-                return child
-            child_sub = child.get_child_audiobook()
-            if child_sub is not None:
-                return child_sub
-
     def get_siblings(self):
         if not self.parent:
             return []
@@ -336,9 +329,6 @@ class Book(models.Model):
             return bool(getattr(self, "%s_file" % type_))
         else:
             return self.media.filter(type=type_).exists()
-
-    def has_audio(self):
-        return self.has_media('mp3')
 
     def get_media(self, type_):
         if self.has_media(type_):
@@ -421,6 +411,67 @@ class Book(models.Model):
     def has_sync_file(self):
         return settings.FEATURE_SYNCHRO and self.has_media("sync")
 
+    def build_sync_file(self):
+        from lxml import html
+        from django.core.files.base import ContentFile
+        with self.html_file.open('rb') as f:
+            h = html.fragment_fromstring(f.read().decode('utf-8'))
+
+        durations = [
+            m['mp3'].duration
+            for m in self.get_audiobooks()[0]
+        ]
+        if settings.MOCK_DURATIONS:
+            durations = settings.MOCK_DURATIONS
+
+        sync = []
+        ts = None
+        sid = 1
+        dirty = False
+        for elem in h.iter():
+            if elem.get('data-audio-ts'):
+                part, ts = int(elem.get('data-audio-part')), float(elem.get('data-audio-ts'))
+                ts = str(round(sum(durations[:part - 1]) + ts, 3))
+                # check if inside verse
+                p = elem.getparent()
+                while p is not None:
+                    # Workaround for missing ids.
+                    if 'verse' in p.get('class', ''):
+                        if not p.get('id'):
+                            p.set('id', f'syn{sid}')
+                            dirty = True
+                            sid += 1
+                        sync.append((ts, p.get('id')))
+                        ts = None
+                        break
+                    p = p.getparent()
+            elif ts:
+                cls = elem.get('class', '')
+                # Workaround for missing ids.
+                if 'paragraph' in cls or 'verse' in cls or elem.tag in ('h1', 'h2', 'h3', 'h4'):
+                    if not elem.get('id'):
+                        elem.set('id', f'syn{sid}')
+                        dirty = True
+                        sid += 1
+                    sync.append((ts, elem.get('id')))
+                    ts = None
+        if dirty:
+            htext = html.tostring(h, encoding='utf-8')
+            with open(self.html_file.path, 'wb') as f:
+                f.write(htext)
+        try:
+            bm = self.media.get(type='sync')
+        except:
+            bm = BookMedia(book=self, type='sync')
+        sync = (
+            '27\n' + '\n'.join(
+                f'{s[0]}\t{sync[i+1][0]}\t{s[1]}' for i, s in enumerate(sync[:-1])
+            )).encode('latin1')
+        bm.file.save(
+            None, ContentFile(sync)
+            )
+
+    
     def get_sync(self):
         with self.get_media('sync').first().file.open('r') as f:
             sync = f.read().split('\n')
@@ -444,7 +495,7 @@ class Book(models.Model):
     def media_audio_epub(self):
         return self.get_media('audio.epub')
 
-    def get_audiobooks(self):
+    def get_audiobooks(self, with_children=False, processing=False):
         ogg_files = {}
         for m in self.media.filter(type='ogg').order_by().iterator():
             ogg_files[m.name] = m
@@ -470,13 +521,27 @@ class Book(models.Model):
                 media['ogg'] = ogg
             audiobooks.append(media)
 
-        projects = sorted(projects)
-        total_duration = '%d:%02d' % (
-            total_duration // 60,
-            total_duration % 60
-        )
+        if with_children:
+            for child in self.get_children():
+                ch_audiobooks, ch_projects, ch_duration = child.get_audiobooks(
+                    with_children=True, processing=True)
+                audiobooks.append({'part': child})
+                audiobooks += ch_audiobooks
+                projects.update(ch_projects)
+                total_duration += ch_duration
+
+        if not processing:
+            projects = sorted(projects)
+            total_duration = '%d:%02d' % (
+                total_duration // 60,
+                total_duration % 60
+            )
+
         return audiobooks, projects, total_duration
 
+    def get_audiobooks_with_children(self):
+        return self.get_audiobooks(with_children=True)
+    
     def wldocument(self, parse_dublincore=True, inherit=True):
         from catalogue.import_utils import ORMDocProvider
         from librarian.parser import WLDocument
@@ -768,6 +833,42 @@ class Book(models.Model):
     @property
     def references(self):
         return self.reference_set.all().select_related('entity')
+
+    def update_has_audio(self):
+        self.has_audio = False
+        if self.media.filter(type='mp3').exists():
+            self.has_audio = True
+        if self.descendant.filter(has_audio=True).exists():
+            self.has_audio = True
+        self.save(update_fields=['has_audio'])
+        if self.parent is not None:
+            self.parent.update_has_audio()
+
+    def update_narrators(self):
+        narrator_names = set()
+        for bm in self.media.filter(type='mp3'):
+            narrator_names.update(set(
+                a.strip() for a in re.split(r',|\si\s', bm.artist)
+            ))
+        narrators = []
+
+        for name in narrator_names:
+            if not name: continue
+            slug = slugify(name)
+            try:
+                t = Tag.objects.get(category='author', slug=slug)
+            except Tag.DoesNotExist:
+                sort_key = sortify(
+                    ' '.join(name.rsplit(' ', 1)[::-1]).lower()
+                )
+                t = Tag.objects.create(
+                    category='author',
+                    name_pl=name,
+                    slug=slug,
+                    sort_key=sort_key,
+                )
+            narrators.append(t)
+        self.narrators.set(narrators)
 
     @classmethod
     @transaction.atomic

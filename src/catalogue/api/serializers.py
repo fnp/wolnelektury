@@ -261,6 +261,7 @@ class MediaSerializer2(MediaSerializer):
     def get_size(self, obj):
         return obj.file.size
 
+
 class BookDetailSerializer(LegacyMixin, serializers.ModelSerializer):
     url = AbsoluteURLField()
 

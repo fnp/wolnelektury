@@ -18,11 +18,12 @@ from wolnelektury.utils import is_ajax
 # ====================
 
 
-@require_POST
+@login_required
 def like_book(request, slug):
-    if not request.user.is_authenticated:
-        return HttpResponseForbidden('Login required.')
     book = get_object_or_404(Book, slug=slug)
+
+    if request.method != 'POST':
+        return redirect(book)
 
     models.UserList.like(request.user, book)
 
@@ -49,11 +50,12 @@ class RemoveSetView(AddSetView):
     form_class = forms.RemoveSetForm
 
 
-@require_POST
+@login_required
 def unlike_book(request, slug):
-    if not request.user.is_authenticated:
-        return HttpResponseForbidden('Login required.')
     book = get_object_or_404(Book, slug=slug)
+
+    if request.method != 'POST':
+        return redirect(book)
 
     models.UserList.unlike(request.user, book)
 

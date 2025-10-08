@@ -22,7 +22,10 @@ LIBRARIAN_PDF_MOREFLOATS = None
 
 LATEST_BLOG_POSTS = "https://fundacja.wolnelektury.pl/feed/?cat=-135"
 
-CATALOGUE_COUNTERS_FILE = os.path.join(VAR_DIR, 'catalogue_counters.p')
+CATALOGUE_COUNTERS_FILE = os.path.join(VAR_DIR, 'counters/catalogue_counters.p')
+LESMIANATOR_PICKLE = os.path.join(VAR_DIR, 'counters/lesmianator.p')
+
+NO_SEARCH_INDEX = False
 
 CATALOGUE_MIN_INITIALS = 60
 
@@ -54,8 +57,6 @@ NEWSLETTER_PHPLIST_SUBSCRIBE_URL = None
 
 VARIANTS = {
 }
-
-EPUB_FUNDRAISING = []
 
 CIVICRM_BASE = None
 CIVICRM_KEY = None

@@ -1064,6 +1064,10 @@ background: #fff;
     }
 
     #other {
+        display: none;
+        @include rwd($break-wide) {
+            display: block;
+        }
 	ul {
 	    list-style: none;
 	    margin: 0;

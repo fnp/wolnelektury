@@ -1,4 +1,8 @@
-.PHONY: deploy test
+.PHONY: deploy test shell
+
+
+UID != id -u
+GID != id -g
 
 
 deploy: src/wolnelektury/localsettings.py
@@ -17,3 +21,11 @@ test:
 	mv ../htmlcov.new ../htmlcov
 	coverage report
 	rm .coverage
+
+
+shell:
+	UID=$(UID) GID=$(GID) docker-compose run --rm dev bash
+
+
+build:
+	UID=$(UID) GID=$(GID) docker-compose build dev

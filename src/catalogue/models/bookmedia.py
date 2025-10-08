@@ -70,6 +70,8 @@ class BookMedia(models.Model):
         return f'{name}.{ext}'
 
     def save(self, parts_count=None, *args, **kwargs):
+        if self.type in ('daisy', 'audio.epub'):
+            return super().save(*args, **kwargs)
         from catalogue.utils import ExistingFile, remove_zip
 
         if not parts_count:
@@ -99,7 +101,9 @@ class BookMedia(models.Model):
         self.extra_info = json.dumps(extra_info)
         self.source_sha1 = self.read_source_sha1(self.file.path, self.type)
         self.duration = self.read_duration()
-        return super(BookMedia, self).save(*args, **kwargs)
+        super(BookMedia, self).save(*args, **kwargs)
+        self.book.update_narrators()
+        self.book.update_has_audio()
 
     def read_duration(self):
         try:

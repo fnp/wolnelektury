@@ -27,12 +27,12 @@ class CiviCRM:
         d = response.json()
         return d
 
-    def create_or_update_contact(self, email, key=None):
+    def create_or_update_contact(self, email, fields=None):
         contact_id = self.get_contact_id(email)
         if contact_id is None:
-            contact_id = self.create_contact(email, key)
-        elif key:
-            self.update_contact(contact_id, key)
+            contact_id = self.create_contact(email, fields)
+        elif fields:
+            self.update_contact(contact_id, fields)
         return contact_id
 
     def get_contact_id(self, email):
@@ -49,7 +49,7 @@ class CiviCRM:
         if result:
             return result[0]['id']
 
-    def create_contact(self, email, key=None):
+    def create_contact(self, email, fields):
         data = {
             'values': {},
             'chain': {
@@ -65,19 +65,22 @@ class CiviCRM:
                 ]
             }
         }
-        if key:
-            data['values']['WL.TPWL_key'] =  key
+        if fields:
+            data['values'].update(fields)
         result = self.request('Contact', 'create', data)
         return result['values'][0]['id']
-    
-    def update_contact(self, contact_id, key):
+
+    def update_phone(self, contact_id, phone):
+        if self.request('Phone', 'get', {'where': [['phone', "=", phone], ['contact_id', "=",  contact_id]]})['count']:
+            return
+        self.request('Phone', 'create', {'values': {'phone': phone, 'contact_id': contact_id}})
+
+    def update_contact(self, contact_id, fields):
         return self.request(
             'Contact',
             'update',
             {
-                'values': {
-                    'WL.TPWL_key': key,
-                },
+                'values': fields,
                 'where': [
                     ['id', '=', contact_id]
                 ]
@@ -89,7 +92,8 @@ class CiviCRM:
         if not self.enabled:
             return
 
-        contact_id = self.create_or_update_contact(email, tpwl_key)
+        fields = {'WL.TPWL_key': tpwl_key}
+        contact_id = self.create_or_update_contact(email, fields)
 
         activity_id = self.get_activity_id(key)
         if activity_id is None:

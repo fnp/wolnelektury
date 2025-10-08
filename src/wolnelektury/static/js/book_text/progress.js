@@ -4,6 +4,8 @@
 
     function upd_t() {
         $text = $('#main-text #book-text');
+        if (!$text.length) return;
+
         texttop = $text.offset().top;
 
         $footnotes = $('#footnotes', $text);

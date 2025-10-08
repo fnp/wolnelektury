@@ -537,7 +537,10 @@ class BookMediaView(ListAPIView):
     pagination_class = None
 
     def get_queryset(self):
-        return BookMedia.objects.filter(book__slug=self.kwargs['slug'], type=self.kwargs['type']).order_by('index')
+        return BookMedia.objects.filter(
+            book__slug=self.kwargs['slug'],
+            type=self.kwargs['type']
+        ).order_by('index')
 
 
 from .tojson import conv
@@ -548,4 +551,3 @@ class BookJsonView(APIView):
         book = get_object_or_404(Book, slug=slug)
         js = conv(etree.parse(book.xml_file.path))
         return JsonResponse(js, json_dumps_params={'ensure_ascii': False})
-

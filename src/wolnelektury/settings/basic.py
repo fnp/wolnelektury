@@ -1,8 +1,7 @@
 # This file is part of Wolne Lektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Wolne Lektury. See NOTICE for more information.
 #
-from os import path
-from .paths import PROJECT_DIR
+import os
 
 DEBUG = True
 
@@ -14,15 +13,17 @@ MANAGERS = ADMINS
 
 CONTACT_EMAIL = 'fundacja@wolnelektury.pl'
 
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split()
+
 CACHE_MIDDLEWARE_SECONDS = 3 * 60
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',  # 'postgresql_psycopg2'
-        'NAME': path.join(PROJECT_DIR, 'dev.db'),
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.postgresql',
+        'HOST': 'db',
+        'USER': os.environ.get('POSTGRES_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+        'NAME': os.environ.get('POSTGRES_USER'),
     }
 }
 

@@ -31,6 +31,9 @@ class Entity(models.Model):
 
     def populate_from_wikidata(self, wikidata_id):
         client = Client()
+        client.opener.addheaders = [(
+            'User-Agent', 'Wolne Lektury / https://wolnelektury.pl / Python-wikidata'
+        )]
         entity = client.get(wikidata_id)
 
         self.label = entity.label.get('pl', entity.label) or ''

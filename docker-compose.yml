@@ -1,0 +1,22 @@
+services:
+  dev:
+    build:
+      context: .
+      target: dev
+      args:
+        - "UID=${UID}"
+        - "GID=${GID}"
+    volumes:
+      - ./src:/app/src
+      - ./var/media:/app/var/media
+      - ./var/static:/app/var/static
+      - ./var/counters/:/app/var/counters
+    depends_on:
+      - db
+  db:
+    image: postgres
+    container_name: db
+    env_file:
+      - .env
+    volumes:
+      - ./var/postgresql-data/:/var/lib/postgresql/data/

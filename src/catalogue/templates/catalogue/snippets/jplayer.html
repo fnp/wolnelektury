@@ -1,6 +1,6 @@
 {% load i18n l10n catalogue_tags %}
 
-{% with audiobooks=book.get_audiobooks %}
+{% with audiobooks=book.get_audiobooks_with_children %}
   <div class="c-media__player" id="jp_container_{{ book.pk }}" data-book-slug="{{ book.slug }}">
     <div class="jp-jplayer" data-player="jp_container_{{ book.pk }}"
          data-supplied="oga,mp3"></div>
@@ -38,6 +38,9 @@
           <ul class="jp-playlist">
             {% localize off %}
             {% for i in audiobooks.0 %}
+            {% if i.part %}
+              <div class="title"><strong>{{ i.part.title }}</strong></div>
+            {% else %}
               <li
                   data-mp3='{{ i.mp3.file.url }}'
                   data-ogg='{{ i.ogg.file.url }}'
@@ -67,6 +70,7 @@
                   </span>
 	        {% endwith %}
               </li>
+              {% endif %}
             {% endfor %}
             {% endlocalize %}
           </ul>

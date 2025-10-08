@@ -114,31 +114,29 @@
                 $(".c-media__caption .license", $root).html($(".license", elem).html());
                 $(".c-media__caption .project-logo", $root).html($(".project-icon", elem).html());
 
-                console.log('sm 1');
                 doesUpdateSynchro = false;
                 if (!$currentMedia || $currentMedia[0] != elem[0]) {
-                    console.log('set', player.jPlayer("setMedia", media))
+                    player.jPlayer("setMedia", media);
                     player.jPlayer("option", "playbackRate", speed);
                 }
                 doesUpdateSynchro = true;
                 player.jPlayer(cmd, time);
 
                 $currentMedia = elem;
-                $(".play-next", $root).prop("disabled", !elem.next().length);
+                $(".play-next", $root).prop("disabled", !elem.nextAll('li').length);
 
                 let du = parseFloat(elem.data('duration'));
                 currentDuration = du;
-                elem.nextAll().each(function() {
+                elem.nextAll('li').each(function() {
                     du += parseFloat($(this).data('duration'));
                 });
                 totalDurationLeft = du;
 
                 let pdu = 0;
-                elem.prevAll().each(function() {
+                elem.prevAll('li').each(function() {
                     pdu += parseFloat($(this).data('duration'));
                 });
                 totalDurationBefore = pdu;
-                console.log('sm 3', du, pdu);
 
                 return player;
             };
@@ -166,7 +164,6 @@
                     // TODO: if snap then roll
                     locator.removeClass('up').removeClass('down');
                     if (locator.hasClass('snap')) {
-                        console.log('SCROLL!');
                         scrollTo();
                     } else {
                         if (y < miny) {
@@ -212,14 +209,14 @@
                 });
 
                 $('.play-next', $root).click(function() {
-                    let p = $currentMedia.next();
+                    let p = $currentMedia.nextAll('li').first();
                     if (p.length) {
                         setMedia(p).jPlayer("play");
                         _paq.push(['trackEvent', 'audiobook', 'next']);
                     }
                 });
                 $('.play-prev', $root).click(function() {
-                    let p = $currentMedia.prev();
+                    let p = $currentMedia.prevAll('li').first();
                     if (p.length) {
                         setMedia(p).jPlayer("play");
                         _paq.push(['trackEvent', 'audiobook', 'prev']);
@@ -236,10 +233,8 @@
                     _paq.push(['trackEvent', 'audiobook', 'chapter']);
                 });
 
-                console.log('READY 3!');
                 var initialElem = $('.jp-playlist li', $root).first();
                 var initialTime = 0;
-                console.log('READY 4!');
                 if (true || Modernizr.localstorage) {
                     try {
                         let speedStr = localStorage['audiobook-speed'];
@@ -266,9 +261,7 @@
                         initialTime = last[2];
                     }
                 }
-                console.log('READY 5!', initialElem, initialTime);
                 setMedia($(initialElem), initialTime);
-                console.log('READY 6!');
             },
 
             timeupdate: function(event) {
@@ -310,7 +303,7 @@
 
 
             ended: function(event) {
-                let p = $currentMedia.next();
+                let p = $currentMedia.nextAll('li');
                 if (p.length) {
                     setMedia(p).jPlayer("play");
                 }

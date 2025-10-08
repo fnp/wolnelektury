@@ -10,10 +10,12 @@
     }
 
     var map_enabled = false;
-    var marker = L.circleMarker([0,0]);
+    var marker = null;
     var map = null;
 
     function enable_map() {
+        if (!$("#reference-map").length) return;
+
         $("#reference-map").show('slow');
 
         if (map_enabled) return;
@@ -22,6 +24,7 @@
         L.tileLayer('https://tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=a8a97f0ae5134403ac38c1a075b03e15', {
             attribution: 'Maps © <a href="http://www.thunderforest.com">Thunderforest</a>, Data © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>'
         }).addTo(map);
+        marker = L.circleMarker([0,0]);
 
         map_enabled = true;
     }
