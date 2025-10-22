@@ -35,6 +35,8 @@ def likes(user, work, request=None):
                 ids = tuple(likes_t[0])
                 likes_t[0].clear()
                 ls = models.UserList.get_favorites_list(user)
+                if ls is None:
+                    return False
                 likes_t[2].update(
                     ls.userlistitem_set.filter(deleted=False).filter(
                         book_id__in=ids).values_list('book_id', flat=True))
