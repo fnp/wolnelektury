@@ -5,6 +5,8 @@ Django==4.0.8
 fnpdjango==0.6
 docutils==0.20
 
+python-memcached==1.59
+
 django-pipeline==3.1.0
 libsasscompiler==0.2.0
 jsmin==3.0.1
