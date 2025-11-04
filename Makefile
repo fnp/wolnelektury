@@ -24,8 +24,8 @@ test:
 
 
 shell:
-	UID=$(UID) GID=$(GID) docker-compose run --rm dev bash
+	UID=$(UID) GID=$(GID) docker compose run --rm dev bash
 
 
 build:
-	UID=$(UID) GID=$(GID) docker-compose build dev
+	docker compose build dev
