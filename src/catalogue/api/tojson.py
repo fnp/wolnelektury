@@ -1,3 +1,4 @@
+from collections import defaultdict
 import json
 import re
 from sys import argv
@@ -90,6 +91,14 @@ tags = {
     'ptrad': ('a', True, {'class': 'footnote footnote-ptrad'}, None, False),
 }
 
+id_prefixes = {
+    'pa': 'fn',
+    'pe': 'fn',
+    'pr': 'fn',
+    'pt': 'fn',
+    'ptrad': 'fn',
+    }
+
 
 #tree = etree.parse(argv[1])
 
@@ -124,6 +133,9 @@ def toj(elem, S):
             if 'dlugi_cytat' not in S['stack'] and 'poezja_cyt' not in S['stack']:
                 S['vindex'] += 1
                 output['visibleNumber'] = S['vindex']
+        id_prefix = id_prefixes.get(tag, 'i')
+        S['id'][id_prefix] += 1
+        output['id'] = id_prefix + str(S['id'][id_prefix])
         if attrs:
             output['attr'] = attrs.copy()
         if attr_map:
@@ -184,6 +196,7 @@ def conv(tree):
     S = {
         'index': 0,
         'vindex': 0,
+        'id': defaultdict(lambda: 0),
         'stack': [],
         'front1': [],
         'front2': [],
