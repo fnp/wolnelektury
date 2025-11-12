@@ -121,7 +121,7 @@ front2 = set(['autor_utworu'])
 
 
 def norm(text):
-    text = text.replace('---', '—').replace('--', '–').replace('...', '…').replace(',,', '„').replace('"', '”')
+    text = text.replace('---', '—').replace('--', '–').replace('...', '…').replace(',,', '„').replace('"', '”').replace('\n', ' ')
     return text
 
 
