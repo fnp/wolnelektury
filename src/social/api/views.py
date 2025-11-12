@@ -237,10 +237,9 @@ class ListView(RetrieveUpdateDestroyAPIView):
         return Response(self.get_serializer(instance).data)
 
     def perform_destroy(self, instance):
-        instance.update(
-            deleted=True,
-            updated_at=now()
-        )
+        instance.deleted = True
+        instance.updated_at = now()
+        instance.save()
 
 
 @never_cache
