@@ -257,7 +257,10 @@ class BookSyncView(RetrieveAPIView):
 
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
-        return Response(json.loads(instance.get_sync()))
+        return Response([
+            {"id": i, "timestamp": ts}
+            for (i, ts) in json.loads(instance.get_sync())
+        ])
 
     
 @vary_on_auth  # Because of embargo links.
