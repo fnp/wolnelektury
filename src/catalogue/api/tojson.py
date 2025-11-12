@@ -82,7 +82,7 @@ tags = {
 
     'begin': ('_ignore', True, {'class': 'reference'}, {'data-uri': 'href'}, False),
     'end': ('_ignore', True, {'class': 'reference'}, {'data-uri': 'href'}, False),
-    'motyw': ('a', True, {'class': 'theme'}, None, False),
+    'motyw': ('_ignore', True, {'class': 'theme'}, None, False),
 
     'pa': ('a', True, {'class': 'footnote footnote-pa'}, None, False),
     'pe': ('a', True, {'class': 'footnote footnote-pe'}, None, False),
