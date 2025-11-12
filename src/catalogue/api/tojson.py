@@ -97,7 +97,17 @@ id_prefixes = {
     'pr': 'fn',
     'pt': 'fn',
     'ptrad': 'fn',
-    }
+    'wers': 'f',
+    'wers_wciety': 'f',
+    'wers_cd': 'f',
+    'wers_akap': 'f',
+    'zastepnik_wersu': 'f',
+    'wers_do_prawej': 'f',
+    'wers_srodek': 'f',
+    'akap': 'f',
+    'akap_cd': 'f',
+    'akap_dialog': 'f',
+}
 
 
 #tree = etree.parse(argv[1])
@@ -133,7 +143,7 @@ def toj(elem, S):
             if 'dlugi_cytat' not in S['stack'] and 'poezja_cyt' not in S['stack']:
                 S['vindex'] += 1
                 output['visibleNumber'] = S['vindex']
-        id_prefix = id_prefixes.get(tag, 'i')
+        id_prefix = id_prefixes.get(elem.tag, 'i')
         S['id'][id_prefix] += 1
         output['id'] = id_prefix + str(S['id'][id_prefix])
         if attrs:
