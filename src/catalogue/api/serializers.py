@@ -169,7 +169,7 @@ class BookSerializer2(serializers.ModelSerializer):
             'cover_thumb', 'cover',
             'isbn_pdf', 'isbn_epub', 'isbn_mobi',
             'abstract',
-            'has_mp3_file',
+            'has_mp3_file', 'has_sync_file',
         ]
 
 class BookSerializer11Labs(serializers.ModelSerializer):

@@ -251,6 +251,15 @@ class BookDetail2(RetrieveAPIView):
     serializer_class = serializers.BookSerializer2
 
 
+class BookSyncView(RetrieveAPIView):
+    queryset = Book.objects.all()
+    lookup_field = 'slug'
+
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        return Response(json.loads(instance.get_sync()))
+
+    
 @vary_on_auth  # Because of embargo links.
 class EbookList(BookList):
     serializer_class = serializers.EbookSerializer
@@ -546,6 +555,7 @@ class BookMediaView(ListAPIView):
 from .tojson import conv
 from lxml import etree
 from rest_framework.views import APIView
+
 class BookJsonView(APIView):
     def get(self, request, slug):
         book = get_object_or_404(Book, slug=slug)

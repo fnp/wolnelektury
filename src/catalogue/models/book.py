@@ -473,6 +473,8 @@ class Book(models.Model):
 
     
     def get_sync(self):
+        if not self.has_sync_file():
+            return '[]'
         with self.get_media('sync').first().file.open('r') as f:
             sync = f.read().split('\n')
         offset = float(sync[0])
