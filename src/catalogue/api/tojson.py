@@ -146,6 +146,8 @@ def toj(elem, S):
         id_prefix = id_prefixes.get(elem.tag, 'i')
         S['id'][id_prefix] += 1
         output['id'] = id_prefix + str(S['id'][id_prefix])
+        if elem.attrib.get('id'):
+            output['id'] = 'wl-' + elem.attrib.get('id')
         if attrs:
             output['attr'] = attrs.copy()
         if attr_map:
