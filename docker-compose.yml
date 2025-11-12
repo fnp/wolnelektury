@@ -3,9 +3,7 @@ services:
     build:
       context: .
       target: dev
-      args:
-        - "UID=${UID}"
-        - "GID=${GID}"
+    user: "${UID}:${GID}"
     volumes:
       - ./src:/app/src
       - ./var/media:/app/var/media

@@ -8,7 +8,7 @@ then
     [ -z "$PORT" ] && PORT=8000
     EXPOSED=127.0.0.1:"$PORT"
     echo "expose as: $EXPOSED"
-    exec docker-compose run --rm -p "$EXPOSED":"$PORT" dev python $PYARGS manage.py runserver 0.0.0.0:"$PORT"
+    exec docker compose run --rm -p "$EXPOSED":"$PORT" dev python $PYARGS manage.py runserver 0.0.0.0:"$PORT"
 else
-    exec docker-compose run --rm dev python $PYARGS manage.py "$@"
+    exec docker compose run --rm dev python $PYARGS manage.py "$@"
 fi
