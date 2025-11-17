@@ -5,9 +5,14 @@
 {% load choose_cites from social_tags %}
 {% load catalogue_tags %}
 {% load likes_book from social_tags %}
+{% load annoy %}
 
 
 {% block global-content %}
+<div class="l-container">
+  {% annoy_banner 'book-page' %}
+  </div>
+
     <div class="l-container">
       <div class="l-breadcrumb">
         <a href="/"><span>{% trans "Strona główna" %}</span></a>
