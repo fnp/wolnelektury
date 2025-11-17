@@ -2,10 +2,11 @@
 # Copyright © Fundacja Wolne Lektury. See NOTICE for more information.
 #
 from datetime import datetime
+from django.db.models import Q
 from django.http import Http404
 from django.utils.timezone import now, utc
 from rest_framework.generics import ListAPIView, ListCreateAPIView, RetrieveAPIView, RetrieveUpdateAPIView, RetrieveUpdateDestroyAPIView, get_object_or_404
-from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
+from rest_framework.permissions import SAFE_METHODS, IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 from rest_framework import serializers
 from rest_framework.views import APIView
@@ -216,14 +217,24 @@ class ListsView(ListCreateAPIView):
 @never_cache
 class ListView(RetrieveUpdateDestroyAPIView):
     # TODO: check if can modify
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticatedOrReadOnly]
     serializer_class = UserListSerializer
 
     def get_object(self):
-        return get_object_or_404(
-            models.UserList,
-            slug=self.kwargs['slug'],
-            user=self.request.user)
+        if self.request.method in SAFE_METHODS:
+            q = Q(deleted=False)
+            if self.request.user.is_authenticated:
+                q |= Q(user=self.request.user)
+            return get_object_or_404(
+                models.UserList,
+                q,
+                slug=self.kwargs['slug'],
+            )
+        else:
+            return get_object_or_404(
+                models.UserList,
+                slug=self.kwargs['slug'],
+                user=self.request.user)
 
     def perform_update(self, serializer):
         serializer.save(user=self.request.user)

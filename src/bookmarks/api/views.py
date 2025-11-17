@@ -1,5 +1,6 @@
 from api.utils import never_cache
 
+from django.db.models import Q
 from django.http import Http404, JsonResponse
 from django.shortcuts import render, get_object_or_404
 from django.views.decorators import cache
@@ -10,7 +11,7 @@ from lxml import html
 import re
 from rest_framework.generics import ListAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework import serializers
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import SAFE_METHODS, IsAuthenticated, IsAuthenticatedOrReadOnly
 from api.fields import AbsoluteURLField
 
 
@@ -54,9 +55,15 @@ class BookBookmarksView(ListAPIView):
 
 @never_cache
 class BookmarkView(RetrieveUpdateDestroyAPIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticatedOrReadOnly]
     serializer_class = BookmarkSerializer
     lookup_field = 'uuid'
 
     def get_queryset(self):
-        return self.request.user.bookmark_set.all()
+        if self.request.method in SAFE_METHODS:
+            q = Q(deleted=False)
+            if self.request.user.is_authenticated:
+                q |= Q(user=self.request.user)
+            return models.Bookmark.objects.filter(q)
+        else:
+            return self.request.user.bookmark_set.all()
