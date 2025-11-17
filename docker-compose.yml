@@ -11,10 +11,12 @@ services:
       - ./var/counters/:/app/var/counters
     depends_on:
       - db
+    env_file:
+      - .env
   db:
-    image: postgres
+    image: postgres:18.0
     container_name: db
     env_file:
       - .env
     volumes:
-      - ./var/postgresql-data/:/var/lib/postgresql/data/
+      - ./var/postgresql-data/:/var/lib/postgresql/
