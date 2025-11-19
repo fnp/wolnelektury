@@ -1,12 +1,14 @@
 # This file is part of Wolne Lektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Wolne Lektury. See NOTICE for more information.
 #
+from datetime import timedelta
+import uuid
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.db.models.signals import pre_delete
-
+from django.utils import timezone
 from catalogue.models import Book, Tag
 
 
@@ -121,3 +123,26 @@ class Token(models.Model):
 
     def __str__(self):
         return "%s Token %s for %s" % (self.get_token_type_display(), self.key, self.consumer)
+
+
+class SessionTransferToken(models.Model):
+    token = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    expires_at = models.DateTimeField()
+    used = models.BooleanField(default=False)
+
+    @classmethod
+    def create_for_user(cls, user, lifetime_seconds=30):
+        return cls.objects.create(
+            user=user,
+            expires_at=timezone.now() + timedelta(seconds=lifetime_seconds)
+        )
+
+    def is_valid(self):
+        if self.used:
+            return False
+        if timezone.now() > self.expires_at:
+            return False
+        return True

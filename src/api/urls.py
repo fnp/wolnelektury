@@ -18,6 +18,8 @@ urlpatterns1 = [
     path('deleteAccount/', views.DeleteAccountView.as_view()),
     path('password/', views.PasswordView.as_view()),
     path('password-reset/', views.ResetPasswordView.as_view()),
+    path("session-transfer/", views.SessionTransferTokenView.as_view()),
+    path("session-transfer/continue/", views.ConsumeSessionTransferTokenView.as_view(), name="api-session-continue"),
 
     path('', include('catalogue.api.urls2')),
     path('', include('social.api.urls2')),

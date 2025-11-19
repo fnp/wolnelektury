@@ -4,13 +4,13 @@
 from time import time
 from allauth.account.forms import ResetPasswordForm
 from django.conf import settings
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django import forms
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseForbidden
 from django.http import Http404
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.views.generic.base import View
 from oauthlib.common import urlencode, generate_token
 from oauthlib.oauth1 import RequestTokenEndpoint, AccessTokenEndpoint
@@ -20,7 +20,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.generics import GenericAPIView, RetrieveAPIView, get_object_or_404
 from catalogue.models import Book
-from .models import BookUserData, KEY_SIZE, SECRET_SIZE, Token
+from .models import BookUserData, KEY_SIZE, SECRET_SIZE, Token, SessionTransferToken
 from social.models import UserConfirmation
 from . import serializers
 from .request_validator import PistonRequestValidator
@@ -380,3 +380,39 @@ class ResetPasswordView(GenericAPIView):
         form.is_valid()
         form.save(request)
         return Response({})
+
+
+class SessionTransferTokenView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        ott = SessionTransferToken.create_for_user(request.user)
+        return Response({
+            "token": str(ott.token)
+        })
+
+
+class ConsumeSessionTransferTokenView(View):
+    def get(self, request):
+        token_str = request.GET.get("token")
+        next_url = request.GET.get("next", "/") #TODO: validate
+
+        if not token_str:
+            return HttpResponseBadRequest("Missing token")
+
+        try:
+            ott = SessionTransferToken.objects.get(token=token_str)
+        except SessionTransferToken.DoesNotExist:
+            return HttpResponseBadRequest("Invalid token")
+
+        if not ott.is_valid():
+            return HttpResponseForbidden("Token expired or already used")
+
+        # Mark token as used
+        ott.used = True
+        ott.save(update_fields=["used"])
+
+        # Log in the user via Django session
+        login(request, ott.user)
+
+        return redirect(next_url)
