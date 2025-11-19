@@ -73,3 +73,7 @@ class PasswordSerializer(serializers.Serializer):
         if not u.check_password(value):
             raise serializers.ValidationError("Password incorrect.")
         return value
+
+
+class ResetPasswordSerializer(serializers.Serializer):
+    email = serializers.EmailField()

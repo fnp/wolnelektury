@@ -17,6 +17,7 @@ urlpatterns1 = [
     path('me/', views.UserView.as_view()),
     path('deleteAccount/', views.DeleteAccountView.as_view()),
     path('password/', views.PasswordView.as_view()),
+    path('password-reset/', views.ResetPasswordView.as_view()),
 
     path('', include('catalogue.api.urls2')),
     path('', include('social.api.urls2')),

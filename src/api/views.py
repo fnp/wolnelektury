@@ -2,6 +2,7 @@
 # Copyright © Fundacja Wolne Lektury. See NOTICE for more information.
 #
 from time import time
+from allauth.account.forms import ResetPasswordForm
 from django.conf import settings
 from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
@@ -366,4 +367,16 @@ class PasswordView(GenericAPIView):
         d = serializer.validated_data
         u.set_password(d['new_password'])
         u.save()
+        return Response({})
+
+
+class ResetPasswordView(GenericAPIView):
+    serializer_class = serializers.ResetPasswordSerializer
+
+    def post(self, request):
+        serializer = serializers.ResetPasswordSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        form = ResetPasswordForm({"email": serializer.validated_data['email']})
+        form.is_valid()
+        form.save(request)
         return Response({})
