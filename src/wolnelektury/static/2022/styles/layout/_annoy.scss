@@ -295,8 +295,10 @@
     .annoy-banner-inner {
 	display: flex;
 	gap: 15px;
+	align-items: center;
+
 	img {
-	    max-width: 200px;
+	    width: 150px;
 	}
 	p {
 	    margin: 0;
