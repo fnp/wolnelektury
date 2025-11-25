@@ -349,20 +349,7 @@
               <button class="l-article__read-more" aria-label="{% trans 'Kliknij aby rozwinąć' %}" data-label="{% trans 'Czytaj więcej' %}" data-action="{% trans 'Zwiń tekst' %}">{% trans 'Czytaj więcej' %}</button>
             </article>
             {% if accessible %}
-            <div class="c-support">
-              <div>
-                <h2>
-                  {% blocktrans trimmed %}
-                    Ta książka jest dostępna dla tysięcy dzieciaków dzięki
-                    <span>darowiznom</span> od osób takich jak <span>Ty</span>!
-                  {% endblocktrans %}
-                </h2>
-                <a href="{% url 'club_join' %}?pk_campaign=layout">{% trans "Dorzuć się!" %}</a>
-              </div>
-              <div class="bg">
-                <!-- img src="{% static '2022/images/dziecko.jpeg' %}" alt="Dorzuć się!" -->
-              </div>
-            </div>
+	    {% annoy_banner 'book-page-center' book=book %}
             {% endif %}
           </div>
         {% endwith %}

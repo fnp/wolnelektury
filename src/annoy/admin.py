@@ -5,6 +5,9 @@ from modeltranslation.admin import TranslationAdmin
 from . import models
 
 
+admin.site.register(models.Campaign)
+
+
 class BannerAdmin(TranslationAdmin):
     list_display = [
             'place', 'text',

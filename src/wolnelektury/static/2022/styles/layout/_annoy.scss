@@ -283,3 +283,23 @@
 	}
     }
 }
+
+.annoy-banner_book-page-center {
+    background: white;
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #018189;
+    border-radius: 15px;
+    color:#018189;
+
+    .annoy-banner-inner {
+	display: flex;
+	gap: 15px;
+	img {
+	    max-width: 200px;
+	}
+	p {
+	    margin: 0;
+	}
+    }
+}
