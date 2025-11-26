@@ -155,6 +155,7 @@ class BookSerializer2(serializers.ModelSerializer):
         view_name='catalogue_api_book',
         lookup_field='slug'
     )
+    audiences = serializers.ListField(source='audiences_pl')
 
     class Meta:
         model = Book
@@ -170,6 +171,7 @@ class BookSerializer2(serializers.ModelSerializer):
             'isbn_pdf', 'isbn_epub', 'isbn_mobi',
             'abstract',
             'has_mp3_file', 'has_sync_file',
+            'elevenreader_link', 'content_warnings', 'audiences',
         ]
 
 class BookSerializer11Labs(serializers.ModelSerializer):

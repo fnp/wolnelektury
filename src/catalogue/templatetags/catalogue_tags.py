@@ -424,16 +424,8 @@ def status(book, user):
 
 @register.inclusion_tag('catalogue/snippets/content_warning.html')
 def content_warning(book):
-    warnings_def = {
-        'wulgaryzmy': _('wulgaryzmy'),
-    }
-    warnings = book.get_extra_info_json().get('content_warnings', [])
-    warnings = sorted(
-        warnings_def.get(w, w)
-        for w in warnings
-    )
     return {
-        "warnings": warnings
+        "warnings": book.content_warnings(),
     }
 
 

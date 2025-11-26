@@ -1107,6 +1107,21 @@ class Book(models.Model):
     def ridero_link(self):
         return 'https://ridero.eu/%s/books/wl_%s/' % (get_language(), self.slug.replace('-', '_'))
 
+    def elevenreader_link(self):
+        return 'https://elevenreader.io/audiobooks/wolnelektury:' + self.get_first_text().slug
+
+    def content_warnings(self):
+        warnings_def = {
+            'wulgaryzmy': _('wulgaryzmy'),
+        }
+        warnings = self.get_extra_info_json().get('content_warnings', [])
+        warnings = [
+            warnings_def.get(w, w)
+            for w in warnings
+        ]
+        warnings.sort()
+        return warnings
+
     def full_sort_key(self):
         return self.SORT_KEY_SEP.join((self.sort_key_author, self.sort_key, str(self.id)))
 
