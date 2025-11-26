@@ -1108,7 +1108,10 @@ class Book(models.Model):
         return 'https://ridero.eu/%s/books/wl_%s/' % (get_language(), self.slug.replace('-', '_'))
 
     def elevenreader_link(self):
-        return 'https://elevenreader.io/audiobooks/wolnelektury:' + self.get_first_text().slug
+        first_text = self.get_first_text()
+        if first_text is None:
+            return None
+        return 'https://elevenreader.io/audiobooks/wolnelektury:' + first_text.slug
 
     def content_warnings(self):
         warnings_def = {
