@@ -365,14 +365,23 @@ class UserList(Syncable, models.Model):
         return ls.userlistitem_set.filter(deleted=False, book=book).exists()
 
     def append(self, book):
-        # TODO: check for duplicates?
         n = now()
-        item = self.userlistitem_set.create(
+        items = self.userlistitem_set.filter(
             book=book,
-            order=(self.userlistitem_set.aggregate(m=models.Max('order'))['m'] or 0) + 1,
-            updated_at=n,
-            reported_timestamp=n,
         )
+        if items.exists():
+            items.update(
+                deleted=False,
+                reported_timestamp=n,
+            )
+            item = items.first()
+        else:
+            item = self.userlistitem_set.create(
+                book=book,
+                order=(self.userlistitem_set.aggregate(m=models.Max('order'))['m'] or 0) + 1,
+                updated_at=n,
+                reported_timestamp=n,
+            )
         book.update_popularity()
         return item
 
