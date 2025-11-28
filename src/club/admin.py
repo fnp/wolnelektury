@@ -11,6 +11,7 @@ from django.utils.safestring import mark_safe
 from fnpdjango.actions import export_as_csv_action
 from modeltranslation.admin import TranslationAdmin
 import annoy.models
+from messaging.models import Contact, Level
 from wolnelektury.utils import YesNoFilter
 from . import models
 
@@ -127,6 +128,11 @@ class CrisisFilter(admin.SimpleListFilter):
         )
 
 
+class OptOutFilter(YesNoFilter):
+    title = 'opt out'
+    parameter_name = 'optout'
+    q = Q(email__in=Contact.objects.filter(level=Level.OPT_OUT).values_list('email', flat=True))
+
 
 class ScheduleAdmin(admin.ModelAdmin):
     form = ScheduleForm
@@ -139,6 +145,7 @@ class ScheduleAdmin(admin.ModelAdmin):
     search_fields = ['email', 'source']
     list_filter = [
         'is_cancelled', 'monthly', 'yearly', 'method',
+        'consent', OptOutFilter,
         PayedFilter, ActiveFilter, ExpiredFilter,
         SourceFilter, CrisisFilter
     ]
