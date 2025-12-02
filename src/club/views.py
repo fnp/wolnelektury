@@ -30,6 +30,7 @@ class ClubView(TemplateView):
 
 
 
+@method_decorator(never_cache, name='dispatch')
 class DonationStep1(UpdateView):
     queryset = models.Schedule.objects.filter(payed_at=None)
     form_class = forms.DonationStep1Form
@@ -46,6 +47,7 @@ class DonationStep1(UpdateView):
         return reverse('donation_step2', args=[self.object.key])
 
 
+@method_decorator(never_cache, name='dispatch')
 class DonationStep2(UpdateView):
     queryset = models.Schedule.objects.filter(payed_at=None)
     form_class = forms.DonationStep2Form
