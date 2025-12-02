@@ -18,6 +18,7 @@ urlpatterns = [
     path('plan/<key>/zestawienie/<int:year>/', banner_exempt(views.YearSummaryView.as_view()), name='club_year_summary'),
     path('plan/<key>/rodzaj/', banner_exempt(views.DonationStep1.as_view()), name='donation_step1'),
     path('plan/<key>/dane/', banner_exempt(views.DonationStep2.as_view()), name='donation_step2'),
+    path('plan/<key>/ustaw-miesiecznie/', views.set_monthly, name='donation_set_monthly'),
 
     path('przylacz/<key>/', views.claim, name='club_claim'),
     path('anuluj/<key>/', views.cancel, name='club_cancel'),

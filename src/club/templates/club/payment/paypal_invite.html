@@ -1,5 +1,11 @@
 {% load i18n static %}
-<h3>{% trans "Wolisz wpłacić przez PayPal?" %}</h3>
+<h3>
+  {% if schedule.monthly %}
+  {% trans "Wolisz ustawić comiesięczną darowiznę przez PayPal?" %}
+  {% else %}
+  {% trans "Wolisz wpłacić przez PayPal?" %}
+  {% endif %}
+</h3>
 <a href="{% url 'paypal_init' schedule.key %}">
   <div class="iframe">
     <img src="{% static 'club/paypal.png' %}" alt="PayPal">

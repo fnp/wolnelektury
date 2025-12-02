@@ -8,26 +8,26 @@
 
 {% block donation-step-content %}
 
-  <div class="l-checkout__cols">
+  <div class="l-checkout__cols q-is-monthly {% if schedule.monthly %}is-monthly{% endif %}">
     <div class="l-checkout__col">
       <div class="l-checkout__payments__box is-active">
         <h3>
           {{ schedule.amount|floatformat }} zł
-          {% if schedule.monthly %}
-            <span>{% trans "/mies." context "kwota na miesiąc" %}</span>
-          {% endif %}
+          <span class="if-monthly">{% trans "/mies." context "kwota na miesiąc" %}</span>
         </h3>
         <img src="{% static '2022/images/checkout-img-3.jpg' %}" alt="">
+	{% if schedule.get_description %}
         <p>{{ schedule.get_description }}</p>
+	{% endif %}
       </div>
     </div>
     <div class="l-checkout__col">
 
+      {% include "club/donation_infobox.html" %}
+      
       <form method='post'>
         {% csrf_token %}
         {{ form.errors }}
-        {{ form.amount }}
-        {{ form.monthly }}
         <div class="l-checkout__form">
           <div class="l-checkout__form__row">
             <div class="l-checkout__input">

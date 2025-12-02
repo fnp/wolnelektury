@@ -35,6 +35,8 @@ class DonationStep1Form(forms.ModelForm):
         self.referer = referer
         super().__init__(*args, **kwargs)
         club = models.Club.objects.first()
+        if self.instance.is_custom_amount():
+            self.fields['custom_amount'].initial = int(self.instance.amount)
         if club is not None:
             self.fields['custom_amount'].widget.attrs['min'] = club.min_amount
 
@@ -50,7 +52,8 @@ class DonationStep1Form(forms.ModelForm):
         return state
 
     def save(self, *args, **kwargs):
-        self.instance.source = self.referer
+        if self.referer is not None:
+            self.instance.source = self.referer
         return super().save(*args, **kwargs)
 
 

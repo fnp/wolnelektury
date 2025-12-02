@@ -4,7 +4,7 @@
 from django.conf import settings
 from django.contrib.auth.decorators import login_required, permission_required
 from django.db.models import Sum
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.utils.decorators import method_decorator
@@ -58,6 +58,17 @@ class DonationStep2(UpdateView):
         c['club'] = models.Club.objects.first()
         return c
 
+
+def set_monthly(request, key):
+    schedule = get_object_or_404(models.Schedule, payed_at=None, key=key)
+    if request.POST:
+        schedule.monthly = True
+        schedule.save(update_fields=['monthly'])
+    return JsonResponse({
+        "amount": schedule.amount,
+        "monthly": schedule.monthly,
+    })
+    
 
 class JoinView(CreateView):
     form_class = forms.DonationStep1Form

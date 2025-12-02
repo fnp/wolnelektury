@@ -161,6 +161,15 @@ class Schedule(models.Model):
         club = Club.objects.first()
         return club.get_description_for_amount(self.amount, self.monthly)
 
+    def is_custom_amount(self):
+        club = Club.objects.first()
+        if not self.amount:
+            return False
+        if self.monthly:
+            return not club.monthlyamount_set.filter(amount=self.amount).exists()
+        else:
+            return not club.singleamount_set.filter(amount=self.amount).exists()
+
     def initiate_payment(self, request):
         return self.get_payment_method().initiate(request, self)
 

@@ -1,0 +1,8 @@
+<div class="checkout-infobar" style="background: yellow; padding:20px; border: 1px solid yellow; border-radius: 10px; margin: 0 0 20px;">
+  <div class="if-monthly">
+    Dziękujemy za wybranie comiesięcznej wpłaty.
+  </div>
+  <div class="if-not-monthly">
+    Czy na pewno nie comiesięczna? <a class="donation-mod-monthly" data-url="{% url 'donation_set_monthly' schedule.key %}" href="{% url 'donation_step1' schedule.key %}">Zmień na comiesięczną wpłatę.</a>
+  </div>
+</div>
