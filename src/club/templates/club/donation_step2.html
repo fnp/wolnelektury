@@ -13,7 +13,8 @@
       <div class="l-checkout__payments__box is-active">
         <h3>
           {{ schedule.amount|floatformat }} zł
-          <span class="if-monthly">{% trans "/mies." context "kwota na miesiąc" %}</span>
+          <span class="if-monthly">{% trans "miesięcznie" %}</span>
+          <span class="if-not-monthly">{% trans "jednorazowo" %}</span>
         </h3>
         <img src="{% static '2022/images/checkout-img-3.jpg' %}" alt="">
 	{% if schedule.get_description %}

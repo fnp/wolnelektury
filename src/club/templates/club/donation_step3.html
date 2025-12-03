@@ -14,7 +14,9 @@
         <h3>
           {{ schedule.amount|floatformat }} zł
           {% if schedule.monthly %}
-            <span>{% trans "/mies." context "kwota na miesiąc" %}</span>
+          <span>{% trans "miesięcznie" %}</span>
+	  {% else %}
+	  <span>{% trans "jednorazowo" %}</span>
           {% endif %}</h3>
           <img src="{% static '2022/images/checkout-img-3.jpg' %}" alt="">
       </div>
