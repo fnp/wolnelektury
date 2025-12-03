@@ -64,7 +64,7 @@ class DonationStep2(UpdateView):
 def set_monthly(request, key):
     schedule = get_object_or_404(models.Schedule, payed_at=None, key=key)
     if request.POST:
-        schedule.monthly = True
+        schedule.monthly = request.POST.get('monthly') == 'true'
         schedule.save(update_fields=['monthly'])
     return JsonResponse({
         "amount": schedule.amount,

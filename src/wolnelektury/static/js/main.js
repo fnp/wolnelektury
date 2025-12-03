@@ -354,6 +354,7 @@
 	    method: 'POST',
 	    data: {
 		csrfmiddlewaretoken: $("[name=csrfmiddlewaretoken]").val(),
+		monthly: $(this).data('monthly'),
 	    },
 	    url: $(this).data('url'),
 	    success: function(data) {
