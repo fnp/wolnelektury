@@ -21,7 +21,7 @@
   {% with amounts=club.get_amounts %}
     <div class="l-checkout__payments payments-once wide-spot-{{ amounts.single_wide_spot }}">
       {% for amount in amounts.single %}
-        <div class="l-checkout__payments__box once{% if not schedule.monthly and schedule.amount == amount.amount or not schedule and club.default_single_amount == amount.amount %} is-active{% endif %}{% if amount.wide %} l-checkout__payments__box--special{% endif %} l-checkout__payments__box--{{ amount.box_variant }}">
+        <div class="l-checkout__payments__box once{% if not schedule.monthly and schedule.amount == amount.amount or not schedule and club.default_single_amount == amount.amount %} is-active initial-active{% endif %}{% if amount.wide %} l-checkout__payments__box--special{% endif %} l-checkout__payments__box--{{ amount.box_variant }}">
 
           <div class="l-checkout__payments__box__btn-wrp">
             {% if amount.description %}
@@ -40,7 +40,7 @@
 
     <div class="l-checkout__payments payments-recurring wide-spot-{{ amounts.monthly_wide_spot }}">
     {% for amount in amounts.monthly %}
-      <div class="l-checkout__payments__box{% if schedule.monthly and schedule.amount == amount.amount or not schedule and amount.amount == club.default_monthly_amount %} is-active{% endif %}{% if amount.wide %} l-checkout__payments__box--special{% endif %} l-checkout__payments__box--{{ amount.box_variant }}">
+      <div class="l-checkout__payments__box{% if schedule.monthly and schedule.amount == amount.amount or not schedule and amount.amount == club.default_monthly_amount %} is-active initial-active{% endif %}{% if amount.wide %} l-checkout__payments__box--special{% endif %} l-checkout__payments__box--{{ amount.box_variant }}">
         <div class="l-checkout__payments__box__btn-wrp">
           {% if amount.description %}
             <p>{{ amount.description|safe }}</p>

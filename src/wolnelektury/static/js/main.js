@@ -341,6 +341,14 @@
         $('#id_custom_amount').val('');
     });
 
+    $('#id_custom_amount').on('input', function() {
+	if ($(this).val() > 0) {
+	    $('.l-checkout__payments__box.is-active').removeClass('is-active');
+	} else {
+	    $('.l-checkout__payments__box.initial-active').addClass('is-active');
+	}
+    });
+
     $('.donation-mod-monthly').on('click', function() {
 	$.ajax({
 	    method: 'POST',
