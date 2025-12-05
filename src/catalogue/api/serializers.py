@@ -50,7 +50,7 @@ class AuthorItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
         fields = [
-            'url', 'href', 'name', 'slug'
+            'id', 'url', 'href', 'name', 'slug'
         ]
 
 class AuthorSerializer(AuthorItemSerializer):
@@ -71,7 +71,7 @@ class EpochItemSerializer(serializers.ModelSerializer):
     )
     class Meta:
         model = Tag
-        fields = ['url', 'href', 'name', 'slug']
+        fields = ['id', 'url', 'href', 'name', 'slug']
 
 class EpochSerializer(EpochItemSerializer):
     class Meta:
@@ -89,7 +89,7 @@ class GenreItemSerializer(serializers.ModelSerializer):
     )
     class Meta:
         model = Tag
-        fields = ['url', 'href', 'name', 'slug']
+        fields = ['id', 'url', 'href', 'name', 'slug']
 
 class GenreSerializer(GenreItemSerializer):
     class Meta:
@@ -107,7 +107,7 @@ class KindItemSerializer(serializers.ModelSerializer):
     )
     class Meta:
         model = Tag
-        fields = ['url', 'href', 'name', 'slug']
+        fields = ['id', 'url', 'href', 'name', 'slug']
 
 class KindSerializer(KindItemSerializer):
     class Meta:
