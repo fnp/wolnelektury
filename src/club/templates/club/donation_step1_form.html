@@ -24,9 +24,6 @@
         <div class="l-checkout__payments__box once{% if not schedule.monthly and schedule.amount == amount.amount or not schedule and club.default_single_amount == amount.amount %} is-active initial-active{% endif %}{% if amount.wide %} l-checkout__payments__box--special{% endif %} l-checkout__payments__box--{{ amount.box_variant }}">
 
           <div class="l-checkout__payments__box__btn-wrp">
-            {% if amount.description %}
-              <p>{{ amount.description|safe }}</p>
-            {% endif %}
             <button name="single_amount" value="{{ amount.amount }}">{{ amount.amount }} zł</button>
           </div>
         </div>
@@ -42,9 +39,6 @@
     {% for amount in amounts.monthly %}
       <div class="l-checkout__payments__box{% if schedule.monthly and schedule.amount == amount.amount or not schedule and amount.amount == club.default_monthly_amount %} is-active initial-active{% endif %}{% if amount.wide %} l-checkout__payments__box--special{% endif %} l-checkout__payments__box--{{ amount.box_variant }}">
         <div class="l-checkout__payments__box__btn-wrp">
-          {% if amount.description %}
-            <p>{{ amount.description|safe }}</p>
-          {% endif %}
           <button name="monthly_amount" value="{{ amount.amount }}">{{ amount.amount }} zł <span> /mies.</span></button>
         </div>
       </div>
