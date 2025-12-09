@@ -20,7 +20,9 @@
            {% if banner.background_color %}background-color: {{ banner.background_color }};{% endif %}
         ">
     {% if not banner.action_label %}
-      <a href="{{ banner.url }}">
+    <a
+      {% if banner.is_external %}target="_blank"{% endif %}
+      href="{{ banner.url }}">
     {% endif %}
     <div class="annoy-banner-inner">
 
@@ -34,7 +36,9 @@
       </div>
 
       {% if banner.action_label %}
-        <a class="action" href="{{ banner.url }}">
+      <a class="action"
+	 {% if banner.is_external %}target="_blank"{% endif %}
+	 href="{{ banner.url }}">
           {{ banner.action_label }}
         </a>
       {% endif %}

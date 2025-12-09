@@ -66,7 +66,13 @@ class Banner(models.Model):
             return self.campaign.image
         else:
             return self.image
-    
+
+    def is_external(self):
+        return (self.url and
+                not self.url.startswith('/') and
+                not self.url.startswith('https://wolnelektury.pl/')
+                )
+
     @classmethod
     def choice(cls, place, request, exemptions=True, book=None):
         Membership = apps.get_model('club', 'Membership')
