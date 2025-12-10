@@ -471,10 +471,9 @@ class Book(models.Model):
             None, ContentFile(sync)
             )
 
-    
     def get_sync(self):
         if not self.has_sync_file():
-            return '[]'
+            return []
         with self.get_media('sync').first().file.open('r') as f:
             sync = f.read().split('\n')
         offset = float(sync[0])
@@ -484,8 +483,22 @@ class Book(models.Model):
                 continue
             start, end, elid = line.split()
             items.append([elid, float(start) + offset])
-        return json.dumps(items)
-    
+        return items
+
+    def sync_ts(self, ts):
+        elid = None
+        for cur_id, t in self.get_sync():
+            if ts >= t:
+                elid = cur_id
+            else:
+                break
+        return elid
+
+    def sync_elid(self, elid):
+        for cur_id, t in self.get_sync():
+            if cur_id == elid:
+                return t
+
     def has_audio_epub_file(self):
         return self.has_media("audio.epub")
 

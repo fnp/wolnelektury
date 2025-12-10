@@ -259,7 +259,7 @@ class BookSyncView(RetrieveAPIView):
         instance = self.get_object()
         return Response([
             {"id": i, "timestamp": ts}
-            for (i, ts) in json.loads(instance.get_sync())
+            for (i, ts) in instance.get_sync()
         ])
 
     

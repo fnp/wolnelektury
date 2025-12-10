@@ -322,9 +322,7 @@
     <div id="player-bar">
       {% include 'catalogue/snippets/jplayer_reader.html' %}
     </div>
-    <script type="application/json" id="smil">
-     {{ book.get_sync|safe }}
-    </script>
+    {{ book.get_sync|json_script:"smil" }}
   {% endif %}
 
 
