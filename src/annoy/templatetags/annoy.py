@@ -7,8 +7,8 @@ register = template.Library()
 
 
 @register.inclusion_tag('annoy/banner.html', takes_context=True)
-def annoy_banner(context, place):
-    banners = Banner.choice(place, request=context['request'])
+def annoy_banner(context, place, **kwargs):
+    banners = Banner.choice(place, request=context['request'], **kwargs)
     return {
         'banner': banners.first(),
         'closable': PLACES.get(place, False),

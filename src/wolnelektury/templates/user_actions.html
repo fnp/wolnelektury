@@ -23,14 +23,14 @@
     </ul>
   </div>
   <a href="{% url 'user_settings' %}" class="user">
-    {% if request.user.is_staffs %}
+    {% if request.user.is_staff %}
       <img src="{% static '2022/images/icons/user-staff.svg' %}">
     {% elif request.user.membership %}
       <img src="{% static '2022/images/icons/user-vip.svg' %}">
     {% else %}
       <img src="{% static '2022/images/icons/user.svg' %}">
     {% endif %}
-  </a>
+ </a>
 {% else %}
   <div class="l-navigation__login">
     <a id="login-link" href='{% url 'login' %}?next={{ request.path }}'>{% trans "Zaloguj się" %}</a>
@@ -38,3 +38,6 @@
     <a href='{% url 'register' %}?next={{ request.path }}'>{% trans "Załóż konto" %}</a>
   </div>
 {% endif %}
+
+<a href="/pomagam/?pk_campaign=menubar" class="menubar-donate">Wspieram!</a>
+

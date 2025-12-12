@@ -1,6 +1,7 @@
 PLACE_DEFINITIONS = [
     ('top', 'U góry wszystkich stron', True),
     ('book-page', 'Strona książki', False),
+    ('book-page-center', 'Strona książki, środek', False),
     ('book-text-intermission', 'Przerwa w treści książki', False),
     ('book-fragment-list', 'Obok listy fragmentów książki', False),
     ('blackout', 'Blackout', True, (

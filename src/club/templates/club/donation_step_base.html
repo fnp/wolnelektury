@@ -31,9 +31,7 @@
       <div class="l-checkout__box__header">
         <img src="{% block donation-jumbo-image %}{% static '2022/images/checkout-img-1.jpg' %}{% endblock %}" alt="Wspieraj Wolne Lektury">
         <div class="l-checkout__box__header__content">
-          <h1>{% trans "Wspieraj Wolne Lektury" %}</h1>
-          <p>{% trans "Dziękujemy, że chcesz razem z nami uwalniać książki!" %}</p>
-          <p>{% trans "Wspieraj Wolne Lektury stałą wpłatą – nawet niewielka ma wielką moc! Możesz też wesprzeć Wolne Lektury jednorazowo." %}</p>
+          {% chunk "donate-top" %}
         </div>
       </div>
       <div class="l-checkout__steps">
@@ -43,7 +41,7 @@
         {% endif %}
         <div class="{% if view.step == 1 %}is-current{% else %}is-completed{% endif %}">
           <span>1</span>
-          <p>{% trans "Rodzaj wsparcia" %}</p>
+          <p>{% trans "Kwota wsparcia" %}</p>
         </div>
         {% if view.step > 1 and view.step != 4 %}
           </a>
@@ -84,6 +82,8 @@
 
     <div class="l-checkout__footer">
       <div class="l-checkout__footer__content">
+        {% chunk 'donate-bottom' %}
+
         <div class="l-checkout__footer__content__item">
           <h3>{% trans "Transparentność jest dla nas bardzo ważna." %}</h3>
           <div>

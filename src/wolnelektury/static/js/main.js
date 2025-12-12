@@ -338,8 +338,34 @@
         $('input', container).val($(this).val());
         $('.is-active', container).removeClass('is-active');
         $(this).closest('.l-checkout__payments__box').addClass('is-active');
-        $('#kwota').val('');
-        return false;
+        $('#id_custom_amount').val('');
+    });
+
+    $('#id_custom_amount').on('input', function() {
+	if ($(this).val() > 0) {
+	    $('.l-checkout__payments__box.is-active').removeClass('is-active');
+	} else {
+	    $('.l-checkout__payments__box.initial-active').addClass('is-active');
+	}
+    });
+
+    $('.donation-mod-monthly').on('click', function() {
+	$.ajax({
+	    method: 'POST',
+	    data: {
+		csrfmiddlewaretoken: $("[name=csrfmiddlewaretoken]").val(),
+		monthly: $(this).data('monthly'),
+	    },
+	    url: $(this).data('url'),
+	    success: function(data) {
+		if ($(".q-reload-is-monthly").length) {
+		    window.location.reload()
+		} else {
+		    $(".q-is-monthly").toggleClass('is-monthly', data.monthly);
+		}
+	    }
+	});
+	return false;
     });
     
 })();

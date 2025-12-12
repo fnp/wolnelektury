@@ -11,7 +11,7 @@
               annoy-banner
               annoy-banner_{{ banner.place }}
               annoy-banner-style_{{ banner.style }}
-              {% if banner.image %}with-image{% endif %}
+              {% if banner.get_image %}with-image{% endif %}
               {% if banner.smallfont %}banner-smallfont{% endif %}
               "
         id="annoy-banner-{{ banner.id }}"
@@ -20,19 +20,25 @@
            {% if banner.background_color %}background-color: {{ banner.background_color }};{% endif %}
         ">
     {% if not banner.action_label %}
-      <a href="{{ banner.url }}">
+    <a
+      {% if banner.is_external %}target="_blank"{% endif %}
+      href="{{ banner.url }}">
     {% endif %}
     <div class="annoy-banner-inner">
 
-      {% if banner.image %}
-        <img src="{{ banner.image.url }}">
+      {% if banner.get_image %}
+      <div>
+        <img src="{{ banner.get_image.url }}">
+	</div>
       {% endif %}
       <div class="text">
         {{ banner.get_text|safe|linebreaks }}
       </div>
 
       {% if banner.action_label %}
-        <a class="action" href="{{ banner.url }}">
+      <a class="action"
+	 {% if banner.is_external %}target="_blank"{% endif %}
+	 href="{{ banner.url }}">
           {{ banner.action_label }}
         </a>
       {% endif %}

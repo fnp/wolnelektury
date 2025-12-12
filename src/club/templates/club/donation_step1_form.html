@@ -1,7 +1,7 @@
 {% load static %}
 {% load i18n %}
 
-<form method="post" action="{% url 'club_join' %}">
+<form method="post" action="{% if schedule %}{% url 'donation_step1' key=schedule.key %}{% else %}{% url 'club_join' %}{% endif %}">
   {% csrf_token %}
   {{ form.errors }}
   <input type="radio" name="switch" id="switch-once" value="single" class="toggle-input" {% if schedule and not schedule.monthly %}checked{% endif %}>
@@ -21,14 +21,10 @@
   {% with amounts=club.get_amounts %}
     <div class="l-checkout__payments payments-once wide-spot-{{ amounts.single_wide_spot }}">
       {% for amount in amounts.single %}
-        <div class="l-checkout__payments__box once{% if not schedule.monthly and schedule.amount == amount.amount or not schedule and club.default_single_amount == amount.amount %} is-active{% endif %}{% if amount.wide %} l-checkout__payments__box--special{% endif %} l-checkout__payments__box--{{ amount.box_variant }}">
+        <div class="l-checkout__payments__box once{% if not schedule.monthly and schedule.amount == amount.amount or not schedule and club.default_single_amount == amount.amount %} is-active initial-active{% endif %}{% if amount.wide %} l-checkout__payments__box--special{% endif %} l-checkout__payments__box--{{ amount.box_variant }}">
 
-          <h3>{{ amount.amount }} zł</h3>
           <div class="l-checkout__payments__box__btn-wrp">
-            {% if amount.description %}
-              <p>{{ amount.description|safe }}</p>
-            {% endif %}
-            <button name="single_amount" value="{{ amount.amount }}">{% trans "Wybierz" %}</button>
+            <button name="single_amount" value="{{ amount.amount }}">{{ amount.amount }} zł</button>
           </div>
         </div>
       {% endfor %}
@@ -41,13 +37,9 @@
 
     <div class="l-checkout__payments payments-recurring wide-spot-{{ amounts.monthly_wide_spot }}">
     {% for amount in amounts.monthly %}
-      <div class="l-checkout__payments__box{% if schedule.monthly and schedule.amount == amount.amount or not schedule and amount.amount == club.default_monthly_amount %} is-active{% endif %}{% if amount.wide %} l-checkout__payments__box--special{% endif %} l-checkout__payments__box--{{ amount.box_variant }}">
-        <h3>{{ amount.amount }} zł <span>{% trans "/mies." context "kwota na miesiąc" %}</span></h3>
+      <div class="l-checkout__payments__box{% if schedule.monthly and schedule.amount == amount.amount or not schedule and amount.amount == club.default_monthly_amount %} is-active initial-active{% endif %}{% if amount.wide %} l-checkout__payments__box--special{% endif %} l-checkout__payments__box--{{ amount.box_variant }}">
         <div class="l-checkout__payments__box__btn-wrp">
-          {% if amount.description %}
-            <p>{{ amount.description|safe }}</p>
-          {% endif %}
-          <button name="monthly_amount" value="{{ amount.amount }}">{% trans "Wybierz" %}</button>
+          <button name="monthly_amount" value="{{ amount.amount }}">{{ amount.amount }} zł <span> /mies.</span></button>
         </div>
       </div>
     {% endfor %}
@@ -58,7 +50,7 @@
 
   <div class="l-checkout__amount">
     <div class="l-checkout__input">
-      <label for="kwota">{% trans "Inna kwota" %}</label>
+      <label for="id_custom_amount">{% trans "Inna kwota" %}</label>
       {{ form.custom_amount }}
     </div>
     <button>{% trans "Dalej" %}</button>

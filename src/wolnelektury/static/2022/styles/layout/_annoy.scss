@@ -249,3 +249,59 @@
 	}
     }
 }
+
+
+
+.annoy-banner_book-page {
+    background-color: #ffd430;
+    color: #083F4D;
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin-top: 20px;
+
+    .annoy-banner-inner {
+	display: flex;
+	flex-direction: row;
+	gap: 20px;
+	align-items: flex-start;
+	justify-content: space-between;
+
+	p {
+	    margin: 0;
+	}
+	a {
+	    line-height: 1.35;
+	    color: #c32721;
+	    white-space: nowrap;
+	    border: solid #c32721;
+	    border-width: 0 0 1px;
+
+	    &:hover {
+		text-decoration: none;
+		border-bottom-width: 2px;
+	    }
+	}
+    }
+}
+
+.annoy-banner_book-page-center {
+    background: white;
+    margin-top: 50px;
+    padding: 20px;
+    border: 1px solid #018189;
+    border-radius: 15px;
+    color:#018189;
+
+    .annoy-banner-inner {
+	display: flex;
+	gap: 15px;
+	align-items: center;
+
+	img {
+	    width: 150px;
+	}
+	p {
+	    margin: 0;
+	}
+    }
+}

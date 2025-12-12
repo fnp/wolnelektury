@@ -8,8 +8,18 @@ from django.utils.timezone import now
 from .places import PLACES, PLACE_CHOICES, STYLES
 
 
+class Campaign(models.Model):
+    name = models.CharField(max_length=255, help_text='Dla zespołu')
+    image = models.FileField('obraz', upload_to='annoy/banners/', blank=True)
+
+    def __str__(self):
+        return self.name
+
+
 class Banner(models.Model):
     place = models.SlugField('miejsce', choices=PLACE_CHOICES)
+    campaign = models.ForeignKey(Campaign, models.PROTECT, null=True, blank=True)
+
     style = models.CharField(
         'styl', max_length=255, blank=True,
         choices=STYLES,
@@ -32,6 +42,8 @@ class Banner(models.Model):
         help_text='Bannery z wyższym priorytetem mają pierwszeństwo.')
     since = models.DateTimeField('od', null=True, blank=True)
     until = models.DateTimeField('do', null=True, blank=True)
+    books = models.ManyToManyField('catalogue.Book', blank=True)
+
     target = models.IntegerField('cel', null=True, blank=True)
     progress = models.IntegerField('postęp', null=True, blank=True)
     show_members = models.BooleanField('widoczny dla członków klubu', default=False)
@@ -49,8 +61,20 @@ class Banner(models.Model):
     def get_text(self):
         return Template(self.text).render(Context())
 
+    def get_image(self):
+        if self.campaign and self.campaign.image:
+            return self.campaign.image
+        else:
+            return self.image
+
+    def is_external(self):
+        return (self.url and
+                not self.url.startswith('/') and
+                not self.url.startswith('https://wolnelektury.pl/')
+                )
+
     @classmethod
-    def choice(cls, place, request, exemptions=True):
+    def choice(cls, place, request, exemptions=True, book=None):
         Membership = apps.get_model('club', 'Membership')
 
         if exemptions and hasattr(request, 'annoy_banner_exempt'):
@@ -68,6 +92,12 @@ class Banner(models.Model):
             until__lt=n
         ).order_by('-priority', '?')
 
+        if book is None:
+            banners = banners.filter(books=None)
+        else:
+            banners = banners.filter(models.Q(books=None) | models.Q(books=book))
+            
+        
         if not request.user.is_authenticated:
             banners = banners.filter(only_authenticated=False)
 
