@@ -29,7 +29,9 @@
 
     <div class="l-checkout__box">
       <div class="l-checkout__box__header">
-        <img src="{% block donation-jumbo-image %}{% static '2022/images/checkout-img-1.jpg' %}{% endblock %}" alt="Wspieraj Wolne Lektury">
+        <div class="l-checkout__box__header__img"
+             style="background-image: url({% block donation-jumbo-image %}{% static '2022/images/checkout-img-1.jpg' %}{% endblock %}">
+          </div>
         <div class="l-checkout__box__header__content">
           {% chunk "donate-top" %}
         </div>

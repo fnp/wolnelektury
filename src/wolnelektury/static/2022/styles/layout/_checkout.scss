@@ -67,10 +67,13 @@
   display: flex;
   background: #083F4D;
 
-  img {
+  .l-checkout__box__header__img {
       display: none;
+      background-position: center;
+      background-size: cover;
       @include rwd($break-flow) {
           display: block;
+          width: 50%;
       }
   }
 }
@@ -330,12 +333,9 @@
     }
   }
   .l-checkout__payments__box__btn-wrp {
-    padding: 0 20px 20px 20px;
+      padding: 20px;
     margin-bottom: 0;
     margin-top: auto;
-    @include rwd($break-flow) {
-        padding-top: 20px;
-    }
   }
   p {
     margin-top: 0;
@@ -353,7 +353,6 @@
       font-family: "Source Sans Pro",sans-serif;
     font-weight: bold;
     font-size: 44px;
-    line-height: 130%;
     letter-spacing: -0.01em;
     height: 90px;
     display: flex;
@@ -370,10 +369,15 @@
     text-align: center;
     color: #083F4D;
 
+    flex-direction: column;
+    @include rwd($break-flow) {
+        flex-direction: row;
+        line-height: 130%;
+    }
+
     span {
       font-weight: 600;
       font-size: 25px;
-      line-height: 200%;
       letter-spacing: -0.01em;
       color: #92BD39;
       margin-left: 10px;
