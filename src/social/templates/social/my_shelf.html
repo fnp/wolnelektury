@@ -10,9 +10,10 @@
 {% endblock %}
 
 {% block main %}
+{% for list in favs %}
   <div class="l-section">
     <div class="l-author__header">
-      <h1>{% trans "Półka" %}</h1>
+      <h1>{% trans "Ulubione" %}</h1>
     </div>
   </div>
 
@@ -20,45 +21,50 @@
     <div class="l-books__header">
       <div class="l-books__input">
         <i class="icon icon-filter"></i>
-        <input type="text" placeholder="{% trans 'filtry, tytuł' %}" class="quick-filter" data-for="book-list" data-filters="with-filter">
-      </div>
-      <div class="l-books__sorting">
-        <span>{% trans "Sortuj:" %}</span>
-        <div>
-          <button data-order="data-pop">{% trans "najpopularniejsze" %}</button>
-          <button class="is-active">{% trans "alfabetycznie" %}</button>
-          <!--button>chronologicznie</button-->
-        </div>
+        <input type="text" placeholder="{% trans 'filtry, tytuł' %}" class="quick-filter" data-for="book-list-l{{ list.id }}" data-filters="with-filter">
       </div>
     </div>
   </div>
-
-  <div class="with-filter">
-
-    <div class="row">
-      <h2 class="header">&nbsp;</h2>
-      {% if suggest %}
-        <div class="filter-container">
-          {% with list_type='book' %}
-            {% for tag in suggest %}
-              <span class="filter filter-category-{{ tag.category }}">
-                <a href="{% catalogue_url list_type tag %}">{{ tag }}</a>
-              </span>
-            {% endfor %}
-          {% endwith %}
-        </div>
-      {% endif %}
-    </div>
-  </div>
-
-
-
   <div class="l-section l-section--col">
-    <div class="l-books__grid" id="book-list">
-      {% for book in books %}
-        {% include "catalogue/book_box.html" %}
+    <div class="l-books__grid" id="book-list-l{{ list.id }}">
+      {% for item in list.userlistitem_set.all %}
+      {% with book=item.book %}
+      {% if book %}
+      {% include "catalogue/book_box.html" %}
+      {% endif %}
+      {% endwith %}
       {% endfor %}
     </div>
   </div>
+{% endfor %}
+
+
+{% for list in others %}
+  <div class="l-section" style="margin-top:60px;">
+    <div class="l-author__header">
+      <h1>{{ list.name }}</h1>
+    </div>
+  </div>
+
+  <div class="l-section">
+    <div class="l-books__header">
+      <div class="l-books__input">
+        <i class="icon icon-filter"></i>
+        <input type="text" placeholder="{% trans 'filtry, tytuł' %}" class="quick-filter" data-for="book-list-l{{ list.id }}" data-filters="with-filter">
+      </div>
+    </div>
+  </div>
+  <div class="l-section l-section--col">
+    <div class="l-books__grid" id="book-list-l{{ list.id }}">
+      {% for item in list.userlistitem_set.all %}
+      {% with book=item.book %}
+      {% if book %}
+      {% include "catalogue/book_box.html" %}
+      {% endif %}
+      {% endwith %}
+      {% endfor %}
+    </div>
+  </div>
+{% endfor %}
 
 {% endblock %}

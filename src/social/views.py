@@ -68,13 +68,15 @@ def unlike_book(request, slug):
 @login_required
 def my_shelf(request):
     template_name = 'social/my_shelf.html'
+    favs = request.user.userlist_set.filter(favorites=True)
+    others = request.user.userlist_set.filter(favorites=False)
     ulists = list(request.user.userlist_set.all())
     suggest = [t for t in ulists if t.name]
         
     return render(request, template_name, {
-        'tags': ulists,
-        'books': Book.objects_filter(userlistitem__list__user=request.user),
-        'suggest': suggest,
+        'favs': favs,
+        'others': others,
+        #'books': Book.objects.filter(userlistitem__list__user=request.user),
     })
 
 
