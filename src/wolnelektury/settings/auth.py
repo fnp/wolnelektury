@@ -2,10 +2,13 @@
 # Copyright © Fundacja Wolne Lektury. See NOTICE for more information.
 #
 AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-    # 'allauth.account.auth_backends.AuthenticationBackend',
+    #'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
 ]
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 2
+ACCOUNT_AUTHENTICATION_METHOD = "username_email"
+FEATURE_CONFIRM_USER = False
+
 LOGIN_URL = '/uzytkownik/login/'
 
 LOGIN_REDIRECT_URL = '/'

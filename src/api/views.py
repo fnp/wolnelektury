@@ -3,6 +3,7 @@
 #
 from time import time
 from allauth.account.forms import ResetPasswordForm
+from allauth.account.utils import filter_users_by_email
 from django.conf import settings
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
@@ -260,14 +261,20 @@ class RegisterView(GenericAPIView):
         serializer.is_valid(raise_exception=True)
         d = serializer.validated_data
 
+        email = d['email']
+
         user = User(
-            username=d['email'],
-            email=d['email'],
-            is_active=False
+            username=email,
+            email=email,
+            is_active=True
         )
         user.set_password(d['password'])
 
+        if settings.FEATURE_CONFIRM_USER:
+            user.is_active = False
+
         try:
+            assert not filter_users_by_email(email)
             user.save()
         except:
             return Response(
@@ -277,7 +284,8 @@ class RegisterView(GenericAPIView):
                 status=400
             )
 
-        UserConfirmation.request(user)
+        if settings.FEATURE_CONFIRM_USER:
+            UserConfirmation.request(user)
         return Response({})
 
 
