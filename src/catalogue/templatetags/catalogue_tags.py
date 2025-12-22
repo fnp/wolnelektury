@@ -309,16 +309,8 @@ def plain_list(context, object_list, with_initials=True, by_author=False, choice
 
 
 @register.simple_tag
-def related_books_2022(book=None, limit=4, taken=0):
-    limit -= taken
-    max_books = limit
-
-    books_qs = Book.objects.filter(findable=True)
-    if book is not None:
-        books_qs = books_qs.exclude(common_slug=book.common_slug).exclude(ancestor=book)
-    books = Book.tagged.related_to(book, books_qs)[:max_books]
-
-    return books
+def related_books(book, limit=4, taken=0):
+    return book.recommended(limit=limit - taken)
 
 
 @register.simple_tag

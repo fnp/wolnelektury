@@ -1001,6 +1001,12 @@ class Book(models.Model):
         elif isinstance(publisher, list):
             return ', '.join(publisher)
 
+    def recommended(self, limit=4):
+        books_qs = type(self).objects.filter(findable=True)
+        books_qs = books_qs.exclude(common_slug=self.common_slug).exclude(ancestor=self)
+        books = type(self).tagged.related_to(self, books_qs)[:limit]
+        return books
+
     @classmethod
     def tagged_top_level(cls, tags):
         """ Returns top-level books tagged with `tags`.

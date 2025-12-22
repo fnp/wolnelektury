@@ -31,6 +31,9 @@ urlpatterns = [
     path('books/<slug:slug>/sync/',
          views.BookSyncView.as_view()
          ),
+    path('books/<slug:slug>/recommended/',
+         views.BookRecommendationsView.as_view()
+         ),
 
     path('suggested-tags/',
          piwik_track_view(views.SuggestedTags.as_view()),
