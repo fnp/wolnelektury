@@ -140,7 +140,8 @@ class Continuations(models.Model):
 
     @classmethod
     def for_userlist(cls, ul):
-        cont_tabs = (cls.get(b) for b in ul.get_books())
+        cont_tabs = [cls.get(b) for b in ul.get_books()]
+        if not cont_tabs: return {}
         return reduce(cls.join_conts, cont_tabs)
 
     @classmethod

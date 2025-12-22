@@ -286,7 +286,9 @@ class RegisterView(GenericAPIView):
 
         if settings.FEATURE_CONFIRM_USER:
             UserConfirmation.request(user)
-        return Response({})
+        return Response({
+            'emailConfirmationRequired': settings.FEATURE_CONFIRM_USER,
+        })
 
 
 class RefreshTokenView(APIView):

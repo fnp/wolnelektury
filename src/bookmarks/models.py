@@ -40,7 +40,7 @@ class Bookmark(Syncable, models.Model):
             self.audio_timestamp = self.book.sync_elid(self.anchor)
         if self.audio_timestamp:
             self.mode = 'audio'
-            self.anchor = self.book.sync_ts(self.audio_timestamp)
+            self.anchor = self.book.sync_ts(self.audio_timestamp) or ''
         return super().save(*args, **kwargs)
 
     @classmethod

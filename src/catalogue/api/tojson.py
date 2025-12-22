@@ -89,6 +89,11 @@ tags = {
     'pr': ('a', True, {'class': 'footnote footnote-pr'}, None, False),
     'pt': ('a', True, {'class': 'footnote footnote-pt'}, None, False),
     'ptrad': ('a', True, {'class': 'footnote footnote-ptrad'}, None, False),
+
+    'werset': ('p', True, {'class': 'werset'}, None, True),
+    'br': ('br', False, None, None, None),
+    'indeks_dolny': ('em', True, {'class': 'indeks_dolny'}, None, False),
+    'mat': ('span', True, {'class': 'mat'}, None, False),
 }
 
 id_prefixes = {

@@ -62,6 +62,8 @@ def bookmark_delete(request, uuid):
 
 @cache.never_cache
 def quotes(request):
+    if not request.user.is_authenticated:
+        return JsonResponse({})
     try:
         slug = request.headers['Referer'].rsplit('.', 1)[0].rsplit('/', 1)[-1]
     except:

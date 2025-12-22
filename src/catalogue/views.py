@@ -214,6 +214,8 @@ class TaggedObjectList(BookList):
         super().analyse()
 
         self.ctx['tags'] = analyse_tags(self.request, self.kwargs['tags'])
+        if len(self.ctx['tags']) > 4:
+            raise Http404
         self.ctx.update({
             'fragment_tags': [],
             'work_tags': [],
