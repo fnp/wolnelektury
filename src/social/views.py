@@ -65,6 +65,7 @@ def unlike_book(request, slug):
         return redirect(book)
 
 
+@never_cache
 @login_required
 def my_shelf(request):
     template_name = 'social/my_shelf.html'
