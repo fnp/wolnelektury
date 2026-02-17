@@ -422,7 +422,7 @@
                 data: {'csrfmiddlewaretoken': $('[name=csrfmiddlewaretoken]').val()},
                 dataType: 'json',
                 success: function() {
-                    state.liked[$btn.attr('data-book')] = [];
+                    state.liked[$btn.attr('data-book')] = [{'favorites': true}];
                     updateLiked($btn);
                 },
                 error: function() {
@@ -502,21 +502,27 @@
 
     function updateLiked(e) {
         let bookId = $(e).attr('data-book');
-        let liked = bookId in state.liked;
-        $(e).toggleClass('icon-liked', liked);
+        let liked = false;
+ 
         let $bookContainer = $('.book-container-' + bookId);
-        $bookContainer.toggleClass('book-liked', liked);
         let $sets = $(".sets", $bookContainer);
         $sets.empty();
         $.each(state.liked[bookId], (i,e) => {
-            let $set = $("<span>");
-            $set.attr("data-set", e.slug);
-            let $setA = $("<a>").appendTo($set);
-            $setA.attr("href", e.url);
-            $setA.text(e.name);
-            let $setX = $("<a class='close'></a>").appendTo($set);
-            $sets.append($set);
+            if (e.favorites) {
+                liked = true;
+            } else {
+                let $set = $("<span>");
+                $set.attr("data-set", e.slug);
+                let $setA = $("<a>").appendTo($set);
+                $setA.attr("href", e.url);
+                $setA.text(e.name);
+                let $setX = $("<a class='close'></a>").appendTo($set);
+                $sets.append($set);
+            }
         });
+
+        $(e).toggleClass('icon-liked', liked);
+        $bookContainer.toggleClass('book-liked', liked);
     }
     
 })();

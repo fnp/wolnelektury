@@ -68,9 +68,9 @@ def unlike_book(request, slug):
 @login_required
 def my_shelf(request):
     template_name = 'social/my_shelf.html'
-    favs = request.user.userlist_set.filter(favorites=True)
-    others = request.user.userlist_set.filter(favorites=False)
-    ulists = list(request.user.userlist_set.all())
+    favs = request.user.userlist_set.filter(deleted=False, favorites=True)
+    others = request.user.userlist_set.filter(deleted=False, favorites=False)
+    ulists = list(request.user.userlist_set.filter(deleted=False))
     suggest = [t for t in ulists if t.name]
         
     return render(request, template_name, {
@@ -84,16 +84,18 @@ def get_sets_for_book_ids(book_ids, user):
     data = {}
     tagged = models.UserListItem.objects.filter(
         list__user=user,
-        book_id__in=book_ids
+        book_id__in=book_ids,
+        deleted=False,
+        list__deleted=False
     ).order_by('list__name')
     for t in tagged:
         item = data.setdefault(t.book_id, [])
-        if t.list.name:
-            item.append({
-                "slug": t.list.slug,
-                "url": t.list.get_absolute_url(),
-                "name": t.list.name,
-            })
+        item.append({
+            "slug": t.list.slug,
+            "url": t.list.get_absolute_url(),
+            "name": t.list.name,
+            "favorites": t.list.favorites,
+        })
     for b in book_ids:
         if b not in data:
             data[b] = None

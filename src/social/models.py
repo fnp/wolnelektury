@@ -433,6 +433,9 @@ class UserListItem(Syncable, models.Model):
     
     syncable_fields = ['order', 'deleted', 'book', 'fragment', 'quote', 'bookmark', 'note']
 
+    objects = ActiveManager()
+    all_objects = models.Manager()
+
     @classmethod
     def create_from_data(cls, user, data):
         if data.get('favorites'):
