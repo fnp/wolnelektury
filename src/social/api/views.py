@@ -139,15 +139,17 @@ class UserListSerializer(serializers.ModelSerializer):
             validated_data['name'],
             create=True
         )
-        instance.userlistitem_set.all().delete()
-        for book in validated_data['books']:
-            instance.append(book)
+        if 'books' in validated_data:
+            instance.userlistitem_set.all().delete()
+            for book in validated_data['books']:
+                instance.append(book)
         return instance
 
     def update(self, instance, validated_data):
-        instance.userlistitem_set.all().delete()
-        for book in validated_data['books']:
-            instance.append(instance)
+        if 'books' in validated_data:
+            instance.userlistitem_set.all().delete()
+            for book in validated_data['books']:
+                instance.append(instance)
         return instance
 
 class UserListBooksSerializer(UserListSerializer):
@@ -232,7 +234,7 @@ class ListView(RetrieveUpdateDestroyAPIView):
             )
         else:
             return get_object_or_404(
-                models.UserList,
+                models.UserList.all_objects.all(),
                 slug=self.kwargs['slug'],
                 user=self.request.user)
 

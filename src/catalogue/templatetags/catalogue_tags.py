@@ -310,7 +310,7 @@ def plain_list(context, object_list, with_initials=True, by_author=False, choice
 
 @register.simple_tag
 def related_books(book, limit=4, taken=0):
-    return book.recommended(limit=limit - taken)
+    return book.get_recommended(limit=limit - taken)
 
 
 @register.simple_tag

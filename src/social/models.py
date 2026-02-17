@@ -277,6 +277,11 @@ class Progress(Syncable, models.Model):
         return super().save(*args, **kwargs)
 
 
+class ActiveManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(deleted=False)
+
+
 class UserList(Syncable, models.Model):
     slug = models.SlugField(unique=True)
     user = models.ForeignKey(User, models.CASCADE)
@@ -289,7 +294,10 @@ class UserList(Syncable, models.Model):
     reported_timestamp = models.DateTimeField()
 
     syncable_fields = ['name', 'public', 'deleted']
-    
+
+    objects = ActiveManager()
+    all_objects = models.Manager()
+
     def get_absolute_url(self):
         return reverse(
             'tagged_object_list',
@@ -351,7 +359,7 @@ class UserList(Syncable, models.Model):
             # merge?
             lists = list(cls.objects.filter(user=user, favorites=True))
             for l in lists[1:]:
-                t.userlistitem_set.all().update(
+                l.userlistitem_set.all().update(
                     list=lists[0]
                 )
                 l.delete()

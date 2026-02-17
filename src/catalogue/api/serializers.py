@@ -155,6 +155,7 @@ class BookSerializer2(serializers.ModelSerializer):
         view_name='catalogue_api_book',
         lookup_field='slug'
     )
+    children = serializers.SerializerMethodField()
     audiences = serializers.ListField(source='audiences_pl')
 
     class Meta:
@@ -164,7 +165,7 @@ class BookSerializer2(serializers.ModelSerializer):
             'href', 'url', 'language',
             'authors', 'translators',
             'epochs', 'genres', 'kinds',
-            #'children',
+            'children',
             'parent', 'preview',
             'epub', 'mobi', 'pdf', 'html', 'txt', 'fb2', 'xml',
             'cover_thumb', 'cover',
@@ -172,7 +173,11 @@ class BookSerializer2(serializers.ModelSerializer):
             'abstract',
             'has_mp3_file', 'has_sync_file',
             'elevenreader_link', 'content_warnings', 'audiences',
+            'changed_at', 'read_time', 'pages', 'redakcja'
         ]
+
+    def get_children(self, obj):
+        return list(obj.get_children().values('slug', 'title'))
 
 class BookSerializer11Labs(serializers.ModelSerializer):
     url = AbsoluteURLField()

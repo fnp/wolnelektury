@@ -514,6 +514,8 @@ class PayUOrder(payu_models.Order):
         receipt = cls.generate_receipt(email, year)
         if receipt:
             content, optout, payments = receipt
+        else:
+            return
         ctx = {
             "email": email,
             "year": year,

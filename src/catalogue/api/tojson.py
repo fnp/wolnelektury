@@ -54,7 +54,7 @@ tags = {
     'osoba': ('em', True, {'class': 'osoba'}, None, None),
     'didaskalia': ('div', True, {'class': 'didaskalia'}, None, None),
     'kwestia': ('div', False, {'class': 'kwestia'}, None, None),
-    'didask_tekst': ('em', False, {'class': 'didask_tekst'}, None, None),
+    'didask_tekst': ('em', True, {'class': 'didask_tekst'}, None, None),
     
     'naglowek_czesc': ('h2', True, None, None, None),
     'naglowek_akt': ('h2', True, None, None, None),
@@ -94,6 +94,38 @@ tags = {
     'br': ('br', False, None, None, None),
     'indeks_dolny': ('em', True, {'class': 'indeks_dolny'}, None, False),
     'mat': ('span', True, {'class': 'mat'}, None, False),
+
+    'mfenced': ('math_mfenced', True, None, None, False),
+    'mfrac': ('math_mfrac', True, None, None, False),
+    'mrow': ('math_mrow', True, None, None, False),
+    'mi': ('math_mi', True, None, None, False),
+    'mn': ('math_mn', True, None, None, False),
+    'mo': ('math_mo', True, None, None, False),
+    'msup': ('math_msup', True, None, None, False),
+
+    'list': ('blockquote', False, {'class': 'list'}, None, None),
+    'wywiad_pyt': ('blockquote', False, {'class': 'wywiad_pyt'}, None, None),
+    'wywiad_odp': ('blockquote', False, {'class': 'wywiad_odp'}, None, None),
+    'rownolegle': ('blockquote', False, {'class': 'rownolegle'}, None, None),
+    'animacja': ('div', False, {'class': 'animacja'}, None, None),
+    'data': ('div', True, {'class': 'data'}, None, None),
+    'podpis': ('div', True, {'class': 'podpis'}, None, None),
+    'naglowek_listu': ('div', True, {'class': 'naglowek_listu'}, None, None),
+    'pozdrowienie': ('div', True, {'class': 'pozdrowienie'}, None, None),
+    'adresat': ('div', True, {'class': 'adresat'}, None, None),
+    'tytul_oryg': ('div', True, {'class': 'tytul_oryg'}, None, None),
+    'miejsce_data': ('div', True, {'class': 'miejsce_data'}, None, None),
+    'audio': ('_ignore', False, None, None, None),
+    'www': ('a', True, {'class': 'www'}, {'href': '.text'}, False),
+
+    'tabela': ('table', False, None, None, None),
+    'tabelka': ('table', False, None, None, None),
+    'wiersz': ('tr', False, None, None, None),
+    'kol': ('td', True, None, None, None),
+
+    'ilustr': ('img', False, None, {'src': 'src'}, False),
+    'tab': ('span', False, {'class': 'tab'}, {'szer': 'szer'}, False),
+    
 }
 
 id_prefixes = {
@@ -158,7 +190,11 @@ def toj(elem, S):
         if attr_map:
             output.setdefault('attr', {})
             for k, v in attr_map.items():
-                output['attr'][k] = elem.attrib[v]
+                if v == '.text':
+                    val = elem.text
+                else:
+                    val = elem.attrib[v]
+                output['attr'][k] = val
         output['contents'] = contents
         output = [output]
     if elem.tag == 'strofa':

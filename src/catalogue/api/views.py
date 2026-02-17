@@ -235,7 +235,7 @@ class BookRecommendationsView(ListAPIView):
             Book,
             slug=self.kwargs['slug']
         )
-        return book.recommended(limit=3)
+        return book.get_recommended(limit=3)
 
 
 class BookList11Labs(BookList2):
@@ -554,6 +554,15 @@ class BookFragmentView(RetrieveAPIView):
     def get_object(self):
         book = get_object_or_404(Book, slug=self.kwargs['slug'])
         return book.choose_fragment()
+
+
+class BookChildrenView(ListAPIView):
+    serializer_class = serializers.BookSerializer2
+    pagination_class = None
+
+    def get_queryset(self):
+        book = get_object_or_404(Book, slug=self.kwargs['slug'])
+        return book.get_children()
 
 
 class BookMediaView(ListAPIView):

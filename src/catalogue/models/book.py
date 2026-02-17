@@ -98,7 +98,9 @@ class Book(models.Model):
     translators = models.ManyToManyField(Tag, blank=True)
     narrators = models.ManyToManyField(Tag, blank=True, related_name='narrated')
     has_audio = models.BooleanField(default=False)
-
+    read_time = models.FloatField(blank=True, null=True)
+    pages = models.FloatField(blank=True, null=True)
+    
     html_built = django.dispatch.Signal()
     published = django.dispatch.Signal()
 
@@ -187,6 +189,10 @@ class Book(models.Model):
     def isbn_mobi(self):
         return self.get_extra_info_json().get('isbn_mobi')
 
+    @property
+    def redakcja(self):
+        return self.get_extra_info_json().get('about')
+    
     def is_accessible_to(self, user):
         if not self.preview:
             return True
@@ -737,6 +743,8 @@ class Book(models.Model):
         book.load_toc()
         book.save()
 
+        book.update_stats()
+        
         meta_tags = Tag.tags_from_info(book_info)
 
         just_tags = [t for (t, rel) in meta_tags if not rel]
@@ -803,6 +811,16 @@ class Book(models.Model):
 
         cls.published.send(sender=cls, instance=book)
         return book
+
+    def update_stats(self):
+        stats = self.wldocument2().get_statistics()['total']
+        self.pages = (
+            stats['verses_with_fn'] / 30 +
+            stats['chars_out_verse_with_fn'] / 1800)
+        self.read_time = self.get_time()
+        self.save(update_fields=['pages', 'read_time'])
+        if self.parent is not None:
+            self.parent.update_stats()
 
     def update_references(self):
         Entity = apps.get_model('references', 'Entity')
@@ -1001,7 +1019,7 @@ class Book(models.Model):
         elif isinstance(publisher, list):
             return ', '.join(publisher)
 
-    def recommended(self, limit=4):
+    def get_recommended(self, limit=4):
         books_qs = type(self).objects.filter(findable=True)
         books_qs = books_qs.exclude(common_slug=self.common_slug).exclude(ancestor=self)
         books = type(self).tagged.related_to(self, books_qs)[:limit]
