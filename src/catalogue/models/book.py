@@ -815,8 +815,8 @@ class Book(models.Model):
     def update_stats(self):
         stats = self.wldocument2().get_statistics()['total']
         self.pages = round(
-            stats['verses_with_fn'] / 30 +
-            stats['chars_out_verse_with_fn'] / 1800)
+            stats.get('verses_with_fn', 0) / 30 +
+            stats.get('chars_out_verse_with_fn', 0) / 1800)
         self.read_time = round(self.get_time())
         self.save(update_fields=['pages', 'read_time'])
         if self.parent is not None:
