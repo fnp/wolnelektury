@@ -98,8 +98,8 @@ class Book(models.Model):
     translators = models.ManyToManyField(Tag, blank=True)
     narrators = models.ManyToManyField(Tag, blank=True, related_name='narrated')
     has_audio = models.BooleanField(default=False)
-    read_time = models.FloatField(blank=True, null=True)
-    pages = models.FloatField(blank=True, null=True)
+    read_time = models.IntegerField(blank=True, null=True)
+    pages = models.IntegerField(blank=True, null=True)
     
     html_built = django.dispatch.Signal()
     published = django.dispatch.Signal()
@@ -814,10 +814,10 @@ class Book(models.Model):
 
     def update_stats(self):
         stats = self.wldocument2().get_statistics()['total']
-        self.pages = (
+        self.pages = round(
             stats['verses_with_fn'] / 30 +
             stats['chars_out_verse_with_fn'] / 1800)
-        self.read_time = self.get_time()
+        self.read_time = round(self.get_time())
         self.save(update_fields=['pages', 'read_time'])
         if self.parent is not None:
             self.parent.update_stats()
