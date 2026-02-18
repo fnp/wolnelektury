@@ -38,9 +38,9 @@ bofh_storage = BofhFileSystemStorage()
 class Book(models.Model):
     """Represents a book imported from WL-XML."""
     title = models.CharField('tytuł', max_length=32767)
-    sort_key = models.CharField('klucz sortowania', max_length=120, db_index=True, editable=False)
+    sort_key = models.CharField('klucz sortowania', max_length=120, db_index=True, db_collation='C', editable=False)
     sort_key_author = models.CharField(
-        'klucz sortowania wg autora', max_length=120, db_index=True, editable=False, default='')
+        'klucz sortowania wg autora', max_length=120, db_index=True, db_collation='C', editable=False, default='')
     slug = models.SlugField('slug', max_length=120, db_index=True, unique=True)
     common_slug = models.SlugField('wspólny slug', max_length=120, db_index=True)
     language = models.CharField('kod języka', max_length=3, db_index=True, default=app_settings.DEFAULT_LANGUAGE)

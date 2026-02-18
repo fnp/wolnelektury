@@ -52,7 +52,7 @@ class Tag(models.Model):
     fragment themes (motifs) and some book hierarchy related kludges."""
     name = models.CharField('nazwa', max_length=120, db_index=True)
     slug = models.SlugField('slug', max_length=120, db_index=True)
-    sort_key = models.CharField('klucz sortowania', max_length=120, db_index=True)
+    sort_key = models.CharField('klucz sortowania', max_length=120, db_index=True, db_collation='C')
     category = models.CharField(
         'kategoria', max_length=50, blank=False, null=False, db_index=True, choices=TAG_CATEGORIES)
     description = models.TextField('opis', blank=True)

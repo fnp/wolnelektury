@@ -25,7 +25,7 @@ class Qualifier(models.Model):
 class Note(models.Model):
     """Represents a single annotation from a book."""
     html = models.TextField()
-    sort_key = models.CharField(max_length=128, db_index=True)
+    sort_key = models.CharField(max_length=128, db_index=True, db_collation='C')
     fn_type = models.CharField(max_length=10, db_index=True)
     qualifiers = models.ManyToManyField(Qualifier)
     language = models.CharField(max_length=10, db_index=True)

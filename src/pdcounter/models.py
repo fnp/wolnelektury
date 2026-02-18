@@ -13,7 +13,7 @@ from search.utils import UnaccentSearchVector
 class Author(models.Model):
     name = models.CharField('imię i nazwisko', max_length=50, db_index=True)
     slug = models.SlugField('slug', max_length=120, db_index=True, unique=True)
-    sort_key = models.CharField('klucz sortowania', max_length=120, db_index=True)
+    sort_key = models.CharField('klucz sortowania', max_length=120, db_index=True, db_collation='C')
     description = models.TextField('opis', blank=True)
     death = models.IntegerField('rok śmierci', blank=True, null=True)
     gazeta_link = models.CharField(blank=True, max_length=240)
