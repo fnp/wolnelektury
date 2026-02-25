@@ -203,6 +203,7 @@ class BookFilter(dfilters.FilterSet):
         queryset=Tag.objects.filter(category='author'),
         conjoined=True,
     )
+    has_audio = dfilters.BooleanFilter()
 
 
 class BookList2(ListAPIView):

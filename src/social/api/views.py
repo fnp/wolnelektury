@@ -126,7 +126,10 @@ class UserListSerializer(serializers.ModelSerializer):
             'deleted',
             'books',
         ]
-        read_only_fields = ['favorites']
+        read_only_fields = [
+            'favorites',
+            'slug',
+        ]
         extra_kwargs = {
             'slug': {
                 'required': False
@@ -146,11 +149,13 @@ class UserListSerializer(serializers.ModelSerializer):
         return instance
 
     def update(self, instance, validated_data):
+        super().update(instance, validated_data)
         if 'books' in validated_data:
             instance.userlistitem_set.all().delete()
             for book in validated_data['books']:
                 instance.append(instance)
         return instance
+
 
 class UserListBooksSerializer(UserListSerializer):
     class Meta:
@@ -473,7 +478,7 @@ class UserListItemSyncView(SyncView):
     sync_user_field = 'list__user'
 
     def get_queryset_for_ts(self, timestamp):
-        qs = self.model.objects.filter(
+        qs = self.model.all_objects.filter(
             updated_at__gt=timestamp,
             **{
                 self.sync_user_field: self.request.user
