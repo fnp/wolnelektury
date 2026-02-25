@@ -24,6 +24,11 @@ class Sponsor(models.Model):
     def __str__(self):
         return self.name
 
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        for page in SponsorPage.objects.all():
+            page.save()
+
     def description(self):
         if len(self._description):
             return self._description
