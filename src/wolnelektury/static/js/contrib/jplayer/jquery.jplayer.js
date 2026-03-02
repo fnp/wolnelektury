@@ -16,6 +16,10 @@
  * Search terms: "jQuery Switch" and "Zepto Switch"
  */
 
+/* WL changes:
+   support times > 24h
+*/
+
 (function (root, factory) {
 	if (typeof define === 'function' && define.amd) {
 		// AMD. Register as an anonymous module.
@@ -208,7 +212,7 @@
 			s = (s && typeof s === 'number') ? s : 0;
 
 			var myTime = new Date(s * 1000),
-				hour = myTime.getUTCHours(),
+				hour = myTime.getUTCHours() + (myTime.getDate() - 1) * 24,
 				min = this.options.timeFormat.showHour ? myTime.getUTCMinutes() : myTime.getUTCMinutes() + hour * 60,
 				sec = this.options.timeFormat.showMin ? myTime.getUTCSeconds() : myTime.getUTCSeconds() + min * 60,
 				strHour = (this.options.timeFormat.padHour && hour < 10) ? "0" + hour : hour,
