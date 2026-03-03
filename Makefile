@@ -1,8 +1,8 @@
-.PHONY: deploy test shell
+.PHONY: deploy test up down build shell logs restart
 
 
-UID != id -u
-GID != id -g
+UID := $(shell id -u)
+GID := $(shell id -g)
 
 
 deploy: src/wolnelektury/localsettings.py
@@ -23,9 +23,20 @@ test:
 	rm .coverage
 
 
-shell:
-	UID=$(UID) GID=$(GID) docker compose run --rm dev bash
+up:
+	UID=$(UID) GID=$(GID) docker compose up --build -d
 
+down:
+	docker compose down
 
 build:
-	docker compose build dev
+	UID=$(UID) GID=$(GID) docker compose build
+
+shell:
+	UID=$(UID) GID=$(GID) docker compose run --rm web bash
+
+logs:
+	docker compose logs -f
+
+restart:
+	docker compose restart

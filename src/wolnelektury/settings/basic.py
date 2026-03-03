@@ -17,6 +17,23 @@ ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split()
 
 CACHE_MIDDLEWARE_SECONDS = 3 * 60
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'TIMEOUT': 180,
+        'LOCATION': [
+            'memcached:11211',
+        ],
+    },
+    'template_fragments': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'TIMEOUT': 86400,
+        'LOCATION': [
+            'memcached:11211',
+        ],
+    },
+}
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',

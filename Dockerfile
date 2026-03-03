@@ -1,24 +1,12 @@
-FROM python:3.8 AS base
+FROM python:3.9-trixie AS base
+
+ARG UID=1000
+ARG GID=1000
 
 RUN     apt-get update && apt-get install -y \
 	git \
 	calibre \
 	texlive-xetex texlive-lang-polish \
-	libespeak-dev
-
-COPY requirements/requirements.txt requirements.txt
-
-# numpy -> aeneas
-RUN pip install numpy
-RUN pip install aeneas
-
-RUN pip install --no-cache-dir -r requirements.txt
-RUN pip install --no-cache-dir \
-    psycopg2-binary \
-    django-debug-toolbar==3.2.2 \
-    python-bidi
-
-RUN     apt-get install -y \
 	texlive-extra-utils \
 	texlive-lang-greek \
 	texlive-lang-other \
@@ -28,12 +16,26 @@ RUN     apt-get install -y \
 	fonts-noto-core fonts-noto-extra
 
 
+COPY requirements/requirements.txt requirements.txt
+
+RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir \
+    psycopg2-binary \
+    django-debug-toolbar==3.2.2
+
+RUN addgroup --gid $GID app && \
+    adduser --gid $GID --home /app --uid $UID app
+
+
 # fonts
-RUN cp -a /usr/local/lib/python*/site-packages/librarian/fonts /usr/local/share/fonts
+RUN cp -a /usr/local/lib/python*/site-packages/librarian/fonts /usr/share/fonts
 RUN fc-cache
+
+USER app
 
 WORKDIR /app/src
 
+RUN mkdir /app/.ipython
 
 FROM base AS dev
 

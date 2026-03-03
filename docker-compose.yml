@@ -1,22 +1,48 @@
+x-app-base: &app-base
+  build:
+    context: .
+    target: dev
+    args:
+      UID: ${UID:-1000}
+      GID: ${GID:-1000}
+  env_file:
+   - .env
+  volumes:
+   - ./src:/app/src
+   - ./var/media:/app/var/media
+   - ./var/static:/app/var/static
+   - ./var/counters/:/app/var/counters
+   - ipython:/app/.ipython
+  depends_on:
+   - db
+   - redis
+   - memcached
+
 services:
-  dev:
-    build:
-      context: .
-      target: dev
-    user: "${UID}:${GID}"
-    volumes:
-      - ./src:/app/src
-      - ./var/media:/app/var/media
-      - ./var/static:/app/var/static
-      - ./var/counters/:/app/var/counters
-    depends_on:
-      - db
-    env_file:
-      - .env
+  web:
+    <<: *app-base
+    ports:
+     - "8000:8000"
+    command: ./manage.py runserver 0.0.0.0:8000
+
+  celery:
+    <<: *app-base
+    command: celery -A wolnelektury worker -l info
+
   db:
-    image: postgres:18.0
+    image: postgres:18
     container_name: db
     env_file:
       - .env
     volumes:
       - ./var/postgresql-data/:/var/lib/postgresql/
+
+  redis:
+    image: redis:8-alpine
+
+  memcached:
+    image: memcached:1.6-alpine
+
+
+volumes:
+  ipython:

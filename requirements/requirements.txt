@@ -42,7 +42,7 @@ mutagen==1.47
 sorl-thumbnail==12.10.0
 
 # home-brewed & dependencies
-librarian==25.12
+librarian==26.2
 
 # celery tasks
 celery[redis]==5.4.0
@@ -62,3 +62,4 @@ python-slugify==8.0.4
 firebase-admin==6.6.0
 Wikidata==0.8.1
 
+ipython
