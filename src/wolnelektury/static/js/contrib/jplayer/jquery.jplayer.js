@@ -212,7 +212,7 @@
 			s = (s && typeof s === 'number') ? s : 0;
 
 			var myTime = new Date(s * 1000),
-				hour = myTime.getUTCHours() + (myTime.getDate() - 1) * 24,
+				hour = myTime.getUTCHours() + (myTime.getUTCDate() - 1) * 24,
 				min = this.options.timeFormat.showHour ? myTime.getUTCMinutes() : myTime.getUTCMinutes() + hour * 60,
 				sec = this.options.timeFormat.showMin ? myTime.getUTCSeconds() : myTime.getUTCSeconds() + min * 60,
 				strHour = (this.options.timeFormat.padHour && hour < 10) ? "0" + hour : hour,
