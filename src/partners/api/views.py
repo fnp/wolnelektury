@@ -4,18 +4,34 @@ from rest_framework.generics import (ListAPIView, get_object_or_404)
 from rest_framework import serializers
 from api.fields import AbsoluteURLField
 from catalogue.models import Book
+from catalogue.api.fields import EmbargoURLField
+from catalogue.api.serializers import BookSerializer2
 from partners import models
 
 
 
 
-class PartnerBookSerializer(serializers.ModelSerializer):
-    url = AbsoluteURLField(view_name='catalogue_api_book', view_args=['slug'])
+class PartnerBookSerializer(BookSerializer2):
     price = serializers.SerializerMethodField()
 
     class Meta:
         model = Book
-        fields = ['url', 'epub_url', 'price']
+        fields = [
+            'slug', 'title', 'full_sort_key',
+            'href', 'url', 'language',
+            'authors', 'translators',
+            'epochs', 'genres', 'kinds',
+            'children',
+            'parent', 'preview',
+            'epub', 'mobi', 'pdf', 'html', 'txt', 'fb2', 'xml',
+            'cover_thumb', 'cover',
+            'isbn_pdf', 'isbn_epub', 'isbn_mobi',
+            'abstract',
+            'has_mp3_file', 'has_sync_file',
+            'elevenreader_link', 'content_warnings', 'audiences',
+            'changed_at', 'read_time', 'pages', 'redakcja',
+            'price',
+        ]
 
     def get_price(self, obj):
         if obj.pages is None:
