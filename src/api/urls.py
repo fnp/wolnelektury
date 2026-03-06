@@ -26,6 +26,8 @@ urlpatterns1 = [
     path('', include('bookmarks.api.urls')),
     path('', include('search.api.urls')),
     path('', include('push.api.urls')),
+
+    path('partners/', include('partners.api.urls')),
 ]
 
 

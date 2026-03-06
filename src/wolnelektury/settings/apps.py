@@ -41,6 +41,7 @@ INSTALLED_APPS_OUR = [
     'push',
     'club',
     'redirects',
+    'partners',
 ]
 
 INSTALLED_APPS_CONTRIB = [
