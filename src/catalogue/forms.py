@@ -20,6 +20,7 @@ class BookImportForm(forms.Form):
     logo = forms.CharField(required=False)
     logo_mono = forms.CharField(required=False)
     logo_alt = forms.CharField(required=False)
+    can_sell = forms.BooleanField(required=False)
 
     def clean(self):
         from django.core.files.base import ContentFile
@@ -40,6 +41,7 @@ class BookImportForm(forms.Form):
                                   logo=self.cleaned_data['logo'],
                                   logo_mono=self.cleaned_data['logo_mono'],
                                   logo_alt=self.cleaned_data['logo_alt'],
+                                  can_sell=self.cleaned_data['can_sell'],
                                   **kwargs)
 
 

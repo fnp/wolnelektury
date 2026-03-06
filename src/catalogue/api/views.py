@@ -190,7 +190,7 @@ class BookFilter(dfilters.FilterSet):
     sort = dfilters.OrderingFilter(
         fields=(
             ('sort_key_author', 'alpha'),
-            ('popularity', 'popularity'),
+            ('popularity__count', 'popularity'),
         )
     )
     tag = dfilters.ModelMultipleChoiceFilter(
