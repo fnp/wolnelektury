@@ -20,7 +20,7 @@ class Partner(models.Model):
 class PriceLevel(models.Model):
     partner = models.ForeignKey(Partner, models.CASCADE)
     min_pages = models.IntegerField(null=True, blank=True)
-    price = models.IntegerField()
+    price = models.DecimalField(max_digits=10, decimal_places=2)
 
     class Meta:
         ordering = ('price',)
