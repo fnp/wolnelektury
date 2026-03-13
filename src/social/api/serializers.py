@@ -14,7 +14,7 @@ class SettingsSerializer(serializers.ModelSerializer):
 
 class UserListBooksField(serializers.Field):
     def to_representation(self, value):
-        return value.userlistitem_set.exclude(deleted=True).exclude(book=None).values_list('book__slug', flat=True)
+        return list(value.userlistitem_set.exclude(deleted=True).exclude(book=None).values_list('book__slug', flat=True))
 
     def to_internal_value(self, value):
         return {'books': catalogue.models.Book.objects.filter(slug__in=value)}
