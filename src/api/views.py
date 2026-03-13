@@ -426,3 +426,9 @@ class ConsumeSessionTransferTokenView(View):
         login(request, ott.user)
 
         return redirect(next_url)
+
+
+class Unsupported(APIView):
+    get = post = put = delete = lambda self, request, path: Response({
+        "error": "unsupported-api",
+    }, status=410)

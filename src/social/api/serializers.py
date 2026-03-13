@@ -12,7 +12,7 @@ class SettingsSerializer(serializers.ModelSerializer):
         fields = ['notifications']
 
 
-class UserListItemsField(serializers.Field):
+class UserListBooksField(serializers.Field):
     def to_representation(self, value):
         return value.userlistitem_set.exclude(deleted=True).exclude(book=None).values_list('book__slug', flat=True)
 
@@ -20,9 +20,9 @@ class UserListItemsField(serializers.Field):
         return {'books': catalogue.models.Book.objects.filter(slug__in=value)}
 
 
-class UserListSerializer(serializers.ModelSerializer):
+class UserListSerializerV2(serializers.ModelSerializer):
     client_id = serializers.CharField(write_only=True, required=False)
-    books = UserListItemsField(source='*', required=False)
+    books = UserListBooksField(source='*', required=False)
     timestamp = serializers.IntegerField(required=False)
 
     class Meta:
@@ -67,7 +67,7 @@ class UserListSerializer(serializers.ModelSerializer):
         return instance
 
 
-class UserListBooksSerializer(UserListSerializer):
+class UserListBooksSerializer(UserListSerializerV2):
     class Meta:
         model = models.UserList
         fields = ['books']
@@ -112,6 +112,39 @@ class UserListItemSerializer(serializers.ModelSerializer):
                 'required': False
             }
         }
+
+
+class UserListSerializerV3(serializers.ModelSerializer):
+    client_id = serializers.CharField(write_only=True, required=False)
+    timestamp = serializers.IntegerField(required=False)
+
+    class Meta:
+        model = models.UserList
+        fields = [
+            'timestamp',
+            'client_id',
+            'name',
+            'slug',
+            'favorites',
+            'deleted',
+        ]
+        read_only_fields = [
+            'favorites',
+            'slug',
+        ]
+        extra_kwargs = {
+            'slug': {
+                'required': False
+            }
+        }
+
+    def create(self, validated_data):
+        instance = models.UserList.get_by_name(
+            validated_data['user'],
+            validated_data['name'],
+            create=True
+        )
+        return instance
 
 
 class ProgressSerializer(serializers.ModelSerializer):

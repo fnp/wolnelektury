@@ -5,6 +5,7 @@ from datetime import datetime
 from django.db.models import Q
 from django.http import Http404
 from django.utils.timezone import now, utc
+from rest_framework.exceptions import MethodNotAllowed
 from rest_framework.generics import ListAPIView, ListCreateAPIView, RetrieveAPIView, RetrieveUpdateAPIView, RetrieveUpdateDestroyAPIView, get_object_or_404
 from rest_framework.permissions import SAFE_METHODS, IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
@@ -101,7 +102,11 @@ class MyLikesView(APIView):
 class ListsView(ListCreateAPIView):
     permission_classes = [IsAuthenticated]
     #pagination_class = None
-    serializer_class = serializers.UserListSerializer
+
+    def get_serializer_class(self):
+        if self.request.version == 'v2':
+            return serializers.UserListSerializerV2
+        return serializers.UserListSerializerV3
 
     def get_queryset(self):
         return models.UserList.objects.filter(
@@ -114,38 +119,51 @@ class ListsView(ListCreateAPIView):
         serializer.save(user=self.request.user)
 
 
+def get_userlist(slug, request):
+    if request.method in SAFE_METHODS:
+        q = Q(deleted=False)
+        if request.user.is_authenticated:
+            q |= Q(user=request.user)
+        return get_object_or_404(
+            models.UserList,
+            q,
+            slug=slug,
+        )
+    else:
+        return get_object_or_404(
+            models.UserList.all_objects.all(),
+            slug=slug,
+            user=request.user
+        )
+
+
 @never_cache
 class ListView(RetrieveUpdateDestroyAPIView):
     # TODO: check if can modify
     permission_classes = [IsAuthenticatedOrReadOnly]
-    serializer_class = serializers.UserListSerializer
+
+    def get_serializer_class(self):
+        if self.request.version == 'v2':
+            return serializers.UserListSerializerV2
+        return serializers.UserListSerializerV3
 
     def get_object(self):
-        if self.request.method in SAFE_METHODS:
-            q = Q(deleted=False)
-            if self.request.user.is_authenticated:
-                q |= Q(user=self.request.user)
-            return get_object_or_404(
-                models.UserList,
-                q,
-                slug=self.kwargs['slug'],
-            )
-        else:
-            return get_object_or_404(
-                models.UserList.all_objects.all(),
-                slug=self.kwargs['slug'],
-                user=self.request.user)
+        return get_userlist(self.kwargs['slug'], self.request)
 
     def perform_update(self, serializer):
         serializer.save(user=self.request.user)
 
     def post(self, request, slug):
-        serializer = serializers.UserListBooksSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        instance = self.get_object()
-        for book in serializer.validated_data['books']:
-            instance.append(book)
-        return Response(self.get_serializer(instance).data)
+        if request.version == 'v2':
+            # Accept posting a list of books here.
+            serializer = serializers.UserListBooksSerializer(data=request.data)
+            serializer.is_valid(raise_exception=True)
+            instance = self.get_object()
+            for book in serializer.validated_data['books']:
+                instance.append(book)
+            return Response(self.get_serializer(instance).data)
+        else:
+            raise MethodNotAllowed(method=request.method)
 
     def perform_destroy(self, instance):
         instance.deleted = True
@@ -154,7 +172,8 @@ class ListView(RetrieveUpdateDestroyAPIView):
 
 
 @never_cache
-class ListItemView(APIView):
+class ListItemViewV2(APIView):
+    """v2 only"""
     permission_classes = [IsAuthenticated]
 
     def delete(self, request, slug, book):
@@ -162,7 +181,29 @@ class ListItemView(APIView):
             models.UserList, slug=slug, user=self.request.user)
         book = get_object_or_404(catalogue.models.Book, slug=book)
         instance.remove(book=book)
-        return Response(UserListSerializer(instance).data)
+        return Response(serializers.UserListSerializerV2(instance).data)
+
+
+@never_cache
+class ListItemListViewV3(ListCreateAPIView):
+    permission_classes = [IsAuthenticatedOrReadOnly]
+    serializer_class = serializers.UserListItemSerializer
+
+    def get_queryset(self):
+        lst = get_userlist(self.kwargs['slug'], self.request)
+        return lst.userlistitem_set.all()
+
+
+@never_cache
+class ListItemViewV3(RetrieveUpdateDestroyAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = serializers.UserListItemSerializer
+    lookup_field = 'uuid'
+
+    def get_queryset(self):
+        return models.UserListItem.objects.filter(
+            list__user=self.request.user
+        )
 
 
 @vary_on_auth
@@ -309,7 +350,11 @@ class ProgressSyncView(SyncView):
 
 class UserListSyncView(SyncView):
     model = models.UserList
-    serializer_class = serializers.UserListSerializer
+
+    def get_serializer_class(self):
+        if self.request.version == 'v2':
+            return serializers.UserListSerializerV2
+        return serializers.UserListSerializerV3
 
 
 class UserListItemSyncView(SyncView):
