@@ -6,4 +6,5 @@ Disallow: /lesmianator/wiersz/$
 Disallow: /szukaj/
 Disallow: /uzytkownik/
 Disallow: /zegar/
+Disallow: /katalog/custompdf/
 
