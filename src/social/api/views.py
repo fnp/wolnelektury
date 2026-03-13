@@ -265,6 +265,7 @@ class TextProgressView(ProgressMixin, RetrieveUpdateAPIView):
     serializer_class = serializers.TextProgressSerializer
 
     def perform_update(self, serializer):
+        serializer.instance.reported_timestamp = now()
         serializer.instance.last_mode = 'text'
         serializer.save()
 
@@ -275,6 +276,7 @@ class AudioProgressView(ProgressMixin, RetrieveUpdateAPIView):
     serializer_class = serializers.AudioProgressSerializer
 
     def perform_update(self, serializer):
+        serializer.instance.reported_timestamp = now()
         serializer.instance.last_mode = 'audio'
         serializer.save()
 
