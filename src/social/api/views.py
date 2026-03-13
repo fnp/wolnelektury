@@ -8,7 +8,6 @@ from django.utils.timezone import now, utc
 from rest_framework.generics import ListAPIView, ListCreateAPIView, RetrieveAPIView, RetrieveUpdateAPIView, RetrieveUpdateDestroyAPIView, get_object_or_404
 from rest_framework.permissions import SAFE_METHODS, IsAuthenticated, IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
-from rest_framework import serializers
 from rest_framework.views import APIView
 from api.models import BookUserData
 from api.utils import vary_on_auth, never_cache
@@ -20,18 +19,14 @@ from social.views import get_sets_for_book_ids
 from social.utils import likes
 from social import models
 import bookmarks.models
+from . import serializers
 from bookmarks.api.views import BookmarkSerializer
 
-
-class SettingsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.UserProfile
-        fields = ['notifications']
 
 
 class SettingsView(RetrieveUpdateAPIView):
     permission_classes = [IsAuthenticated]
-    serializer_class = SettingsSerializer
+    serializer_class = serializers.SettingsSerializer
 
     def get_object(self):
         return models.UserProfile.get_for(self.request.user)
@@ -102,113 +97,11 @@ class MyLikesView(APIView):
         )
 
 
-class UserListItemsField(serializers.Field):
-    def to_representation(self, value):
-        return value.userlistitem_set.exclude(deleted=True).exclude(book=None).values_list('book__slug', flat=True)
-
-    def to_internal_value(self, value):
-        return {'books': catalogue.models.Book.objects.filter(slug__in=value)}
-
-
-class UserListSerializer(serializers.ModelSerializer):
-    client_id = serializers.CharField(write_only=True, required=False)
-    books = UserListItemsField(source='*', required=False)
-    timestamp = serializers.IntegerField(required=False)
-
-    class Meta:
-        model = models.UserList
-        fields = [
-            'timestamp',
-            'client_id',
-            'name',
-            'slug',
-            'favorites',
-            'deleted',
-            'books',
-        ]
-        read_only_fields = [
-            'favorites',
-            'slug',
-        ]
-        extra_kwargs = {
-            'slug': {
-                'required': False
-            }
-        }
-
-    def create(self, validated_data):
-        instance = models.UserList.get_by_name(
-            validated_data['user'],
-            validated_data['name'],
-            create=True
-        )
-        if 'books' in validated_data:
-            instance.userlistitem_set.all().delete()
-            for book in validated_data['books']:
-                instance.append(book)
-        return instance
-
-    def update(self, instance, validated_data):
-        super().update(instance, validated_data)
-        if 'books' in validated_data:
-            instance.userlistitem_set.all().delete()
-            for book in validated_data['books']:
-                instance.append(instance)
-        return instance
-
-
-class UserListBooksSerializer(UserListSerializer):
-    class Meta:
-        model = models.UserList
-        fields = ['books']
-
-
-class UserListItemSerializer(serializers.ModelSerializer):
-    client_id = serializers.CharField(write_only=True, required=False)
-    favorites = serializers.BooleanField(required=False)
-    list_slug = serializers.SlugRelatedField(
-        queryset=models.UserList.objects.all(),
-        source='list',
-        slug_field='slug',
-        required=False,
-    )
-    timestamp = serializers.IntegerField(required=False)
-    book_slug = serializers.SlugRelatedField(
-        queryset=Book.objects.all(),
-        source='book',
-        slug_field='slug',
-        required=False
-    )
-
-    class Meta:
-        model = models.UserListItem
-        fields = [
-            'client_id',
-            'uuid',
-            'order',
-            'list_slug',
-            'timestamp',
-            'favorites',
-            'deleted',
-
-            'book_slug',
-            'fragment',
-            'quote',
-            'bookmark',
-            'note',
-        ]
-        extra_kwargs = {
-            'order': {
-                'required': False
-            }
-        }
-
-
 @never_cache
 class ListsView(ListCreateAPIView):
     permission_classes = [IsAuthenticated]
     #pagination_class = None
-    serializer_class = UserListSerializer
+    serializer_class = serializers.UserListSerializer
 
     def get_queryset(self):
         return models.UserList.objects.filter(
@@ -225,7 +118,7 @@ class ListsView(ListCreateAPIView):
 class ListView(RetrieveUpdateDestroyAPIView):
     # TODO: check if can modify
     permission_classes = [IsAuthenticatedOrReadOnly]
-    serializer_class = UserListSerializer
+    serializer_class = serializers.UserListSerializer
 
     def get_object(self):
         if self.request.method in SAFE_METHODS:
@@ -247,7 +140,7 @@ class ListView(RetrieveUpdateDestroyAPIView):
         serializer.save(user=self.request.user)
 
     def post(self, request, slug):
-        serializer = UserListBooksSerializer(data=request.data)
+        serializer = serializers.UserListBooksSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         instance = self.get_object()
         for book in serializer.validated_data['books']:
@@ -300,60 +193,10 @@ class ShelfView(ListAPIView):
         return books
 
 
-
-class ProgressSerializer(serializers.ModelSerializer):
-    book = serializers.HyperlinkedRelatedField(
-        read_only=True,
-        view_name='catalogue_api_book',
-        lookup_field='slug'
-    )
-    book_slug = serializers.SlugRelatedField(
-        queryset=Book.objects.all(),
-        source='book',
-        slug_field='slug')
-    timestamp = serializers.IntegerField(required=False)
-
-    class Meta:
-        model = models.Progress
-        fields = [
-            'timestamp',
-            'book', 'book_slug', 'last_mode', 'text_percent',
-            'text_anchor',
-            'audio_percent',
-            'audio_timestamp',
-            'implicit_text_percent',
-            'implicit_text_anchor',
-            'implicit_audio_percent',
-            'implicit_audio_timestamp',
-        ]
-        extra_kwargs = {
-            'last_mode': {
-                'required': False,
-                'default': 'text',
-            }
-        }
-
-
-class TextProgressSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.Progress
-        fields = [
-                'text_percent',
-                'text_anchor',
-                ]
-        read_only_fields = ['text_percent']
-
-class AudioProgressSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = models.Progress
-        fields = ['audio_percent', 'audio_timestamp']
-        read_only_fields = ['audio_percent']
-
-
 @never_cache
 class ProgressListView(ListAPIView):
     permission_classes = [IsAuthenticated]
-    serializer_class = ProgressSerializer
+    serializer_class = serializers.ProgressSerializer
 
     def get_queryset(self):
         return models.Progress.objects.filter(user=self.request.user).order_by('-updated_at')
@@ -372,13 +215,13 @@ class ProgressMixin:
 @never_cache
 class ProgressView(ProgressMixin, RetrieveAPIView):
     permission_classes = [IsAuthenticated]
-    serializer_class = ProgressSerializer
+    serializer_class = serializers.ProgressSerializer
 
 
 @never_cache
 class TextProgressView(ProgressMixin, RetrieveUpdateAPIView):
     permission_classes = [IsAuthenticated]
-    serializer_class = TextProgressSerializer
+    serializer_class = serializers.TextProgressSerializer
 
     def perform_update(self, serializer):
         serializer.instance.last_mode = 'text'
@@ -388,7 +231,7 @@ class TextProgressView(ProgressMixin, RetrieveUpdateAPIView):
 @never_cache
 class AudioProgressView(ProgressMixin, RetrieveUpdateAPIView):
     permission_classes = [IsAuthenticated]
-    serializer_class = AudioProgressSerializer
+    serializer_class = serializers.AudioProgressSerializer
 
     def perform_update(self, serializer):
         serializer.instance.last_mode = 'audio'
@@ -458,7 +301,7 @@ class SyncView(ListAPIView):
 
 class ProgressSyncView(SyncView):
     model = models.Progress
-    serializer_class = ProgressSerializer
+    serializer_class = serializers.ProgressSerializer
     
     sync_id_field = 'book__slug'
     sync_id_serializer_field = 'book_slug'
@@ -466,12 +309,12 @@ class ProgressSyncView(SyncView):
 
 class UserListSyncView(SyncView):
     model = models.UserList
-    serializer_class = UserListSerializer
+    serializer_class = serializers.UserListSerializer
 
 
 class UserListItemSyncView(SyncView):
     model = models.UserListItem
-    serializer_class = UserListItemSerializer
+    serializer_class = serializers.UserListItemSerializer
 
     sync_id_field = 'uuid'
     sync_id_serializer_field = 'uuid'
