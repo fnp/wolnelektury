@@ -75,7 +75,7 @@ class UserListBooksSerializer(UserListSerializerV2):
 
 class UserListItemSerializer(serializers.ModelSerializer):
     client_id = serializers.CharField(write_only=True, required=False)
-    favorites = serializers.BooleanField(required=False)
+    favorites = serializers.BooleanField(read_only=True)
     list_slug = serializers.SlugRelatedField(
         queryset=models.UserList.objects.all(),
         source='list',
