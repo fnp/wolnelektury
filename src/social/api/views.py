@@ -191,7 +191,20 @@ class ListItemListViewV3(ListCreateAPIView):
 
     def get_queryset(self):
         lst = get_userlist(self.kwargs['slug'], self.request)
-        return lst.userlistitem_set.all()
+        return lst.userlistitem_set.all().order_by('order')
+
+    def get_serializer(self, *args, **kwargs):
+        serializer_class = self.get_serializer_class()
+        kwargs.setdefault('context', self.get_serializer_context())
+
+        if isinstance(self.request.data, list):
+            kwargs['many'] = True
+
+        return serializer_class(*args, **kwargs)
+
+    def perform_create(self, serializer):
+        lst = get_userlist(self.kwargs['slug'], self.request)
+        serializer.save(list=lst)
 
 
 @never_cache

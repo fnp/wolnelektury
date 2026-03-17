@@ -418,11 +418,11 @@ class UserList(Syncable, models.Model):
 class UserListItem(Syncable, models.Model):
     list = models.ForeignKey(UserList, models.CASCADE)
     uuid = models.UUIDField(unique=True, default=uuid.uuid4, editable=False, blank=True)
-    order = models.IntegerField()
+    order = models.IntegerField(default=0)
     deleted = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    reported_timestamp = models.DateTimeField()
+    reported_timestamp = models.DateTimeField(default=now)
 
     book = models.ForeignKey('catalogue.Book', models.SET_NULL, null=True, blank=True)
     fragment = models.ForeignKey('catalogue.Fragment', models.SET_NULL, null=True, blank=True)
@@ -435,6 +435,11 @@ class UserListItem(Syncable, models.Model):
 
     objects = ActiveManager()
     all_objects = models.Manager()
+
+    def save(self, *args, **kwargs):
+        if not self.order:
+            self.order = self.list.userlistitem_set.all().count() + 1
+        super().save(*args, **kwargs)
 
     @classmethod
     def create_from_data(cls, user, data):
