@@ -45,3 +45,11 @@ def annoy_banner_crisis(context):
         'banner': banners.first(),
         'closable': True,
     }
+
+@register.inclusion_tag('annoy/banner_seasonal.html', takes_context=True)
+def annoy_banner_seasonal(context):
+    banners = Banner.choice('seasonal', request=context['request'], exemptions=False)
+    return {
+        'banner': banners.first(),
+        'closable': False,
+    }

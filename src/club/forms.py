@@ -62,9 +62,7 @@ class DonationStep2Form(forms.ModelForm, NewsletterForm):
         model = models.Schedule
         fields = [
             'first_name', 'last_name',
-            'email', 'phone',
-            'postal',
-            'postal_code', 'postal_town', 'postal_country',
+            'email',
             ]
         widgets = {
             'amount': forms.HiddenInput,
@@ -74,16 +72,14 @@ class DonationStep2Form(forms.ModelForm, NewsletterForm):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        self.fields['first_name'].required = True
-        self.fields['last_name'].required = True
-        
         self.consent = []
         for c in models.Consent.objects.filter(active=True).order_by('order'):
             key = f'consent{c.id}'
-            self.fields[key] = forms.BooleanField(
-                label=c.text,
-                required=c.required
-            )
+            if not c.required:
+                self.fields[key] = forms.BooleanField(
+                    label=c.text,
+                    required=c.required
+                )
             self.consent.append((
                 c, key, (lambda k: lambda: self[k])(key)
             ))

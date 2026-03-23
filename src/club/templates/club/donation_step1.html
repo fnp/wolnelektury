@@ -1,5 +1,13 @@
 {% extends 'club/donation_step_base.html' %}
+{% load chunks %}
 
 {% block donation-step-content %}
   {% include "club/donation_step1_form.html" %}
+{% endblock %}
+
+{% block donate-bottom %}
+<a name="wiecej"></a>
+<div class="donation-more">
+  {% chunk "donate-bottom" %}
+</div>
 {% endblock %}

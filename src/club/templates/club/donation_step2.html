@@ -30,70 +30,46 @@
         {% csrf_token %}
         {{ form.errors }}
         <div class="l-checkout__form">
-          <div class="l-checkout__form__row">
-            <div class="l-checkout__input">
-              <label for="id_first_name"><span>*</span> {% trans "Imię" %}</label>
-              {{ form.first_name }}
-              {{ form.first_name.errors }}
-            </div>
-            <div class="l-checkout__input">
-              <label for="id_last_name"><span>*</span> {% trans "Nazwisko" %}</label>
-              {{ form.last_name }}
-              {{ form.last_name.errors }}
-            </div>
-          </div>
-          <div class="l-checkout__form__row">
-            <div class="l-checkout__input">
+          <div class="l-checkout__form__row full">
+            <div class="l-checkout__input" lang="pl">
               <label for="id_email"><span>*</span> {% trans "E-mail" %}</label>
               {{ form.email }}
               {{ form.email.errors }}
             </div>
-            <div class="l-checkout__input">
-              <label for="id_phone">{% trans "Telefon" %}</label>
-              {{ form.phone }}
-              {{ form.phone.errors }}
-            </div>
-          </div>
-          <div class="l-checkout__form__row full">
-            <div class="l-checkout__input">
-              <label for="id_postal">{% trans "Adres pocztowy" %}</label>
-              {{ form.postal }}
-              {{ form.postal.errors }}
-            </div>
           </div>
           <div class="l-checkout__form__row">
             <div class="l-checkout__input">
-              <label for="id_postal_code">{% trans "Kod pocztowy" %}</label>
-              {{ form.postal_code }}
-              {{ form.postal_code.errors }}
+              <label for="id_first_name">{% trans "Imię / pseudonim (opcjonalnie)" %}</label>
+              {{ form.first_name }}
+              {{ form.first_name.errors }}
             </div>
             <div class="l-checkout__input">
-              <label for="id_postal_town">{% trans "Miejscowość" %}</label>
-              {{ form.postal_town }}
-              {{ form.postal_town.errors }}
+              <label for="id_last_name">{% trans "Nazwisko (opcjonalnie)" %}</label>
+              {{ form.last_name }}
+              {{ form.last_name.errors }}
             </div>
           </div>
-          <div class="l-checkout__form__row full">
-            <div class="l-checkout__input">
-              <label for="id_postal_country">{% trans "Kraj" %}</label>
-              {{ form.postal_country }}
-              {{ form.postal_country.errors }}
-            </div>
-          </div>
+          
           <div class="l-checkout__form__row full">
             {% for consent, key, field in form.consent %}
-              {{ field.errors }}
+            {% if not consent.required %}
+            {{ field.errors }}
+            {% endif %}
               <div class="c-checkbox">
+                {% if consent.required %}
+                <label><p class="scroll">{{ consent.text|safe }}</p></label>
+                {% else %}
                 {{ field }}
                 <label for="id_{{ key }}">
-                  <p>{% if field.field.required %}<span>*</span> {% endif %}{{ field.label }}</p>
+                  <p>{% if field.field.required %}<span>*</span> {% endif %}{{ field.label|safe }}</p>
                 </label>
+                {% endif %}
               </div>
             {% endfor %}
             <div class="c-checkbox">
               {{ form.agree_newsletter }}
               <label for="id_agree_newsletter">
-                <p>{% trans "Zapisuję się na newsletter." %}</p>
+                <p>{% trans "Chcę dostawać newsletter o działalności Wolnych Lektur" %}</p>
               </label>
             </div>
           </div>

@@ -284,6 +284,7 @@
     }
 }
 
+
 .annoy-banner_book-page-center {
     background: white;
     margin-top: 50px;
@@ -304,4 +305,60 @@
 	    margin: 0;
 	}
     }
+}
+
+
+
+
+
+.annoy-banner_seasonal {
+    background-color: #ffd430;
+    color: #083F4D;
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+
+    .annoy-banner-inner {
+	display: flex;
+	flex-direction: row;
+	gap: 20px;
+	align-items: flex-start;
+	justify-content: space-between;
+
+	p {
+	    margin: 0;
+	}
+	a {
+	    line-height: 1.35;
+	    color: #c32721;
+	    white-space: nowrap;
+	    border: solid #c32721;
+	    border-width: 0 0 1px;
+
+	    &:hover {
+		text-decoration: none;
+		border-bottom-width: 2px;
+	    }
+	}
+        a.action { 
+            color: #fff;
+            background: #c92834;
+            padding: 9px 20px;
+            font-weight: 600;
+            border-radius: 15px;
+	    border-width: 0;
+	    &:hover {
+		border-bottom-width: 0;
+            }
+        }
+
+    }
+        .state-box {
+            margin-top: 15px;
+        }
+        .bar-status-box {
+            display: flex;
+            justify-content: space-between;
+        }
 }

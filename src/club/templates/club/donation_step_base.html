@@ -84,8 +84,9 @@
 
     <div class="l-checkout__footer">
       <div class="l-checkout__footer__content">
-        {% chunk 'donate-bottom' %}
+        {% block donate-bottom %}{% endblock %}
 
+        <a name="informacje"></a>
         <div class="l-checkout__footer__content__item">
           <h3>{% trans "Transparentność jest dla nas bardzo ważna." %}</h3>
           <div>

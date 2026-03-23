@@ -201,6 +201,20 @@ class Schedule(models.Model):
     def is_recurring(self):
         return self.monthly or self.yearly
 
+    def n_paypal_payments(self, since, until):
+        # TODO: pull BA payments.
+        t = self.payed_at
+        if t is None: return 0
+        c = 0
+        until = min(until, now())
+        t += timedelta(days=1)
+        while t < until:
+            if t >= since:
+                c += 1
+            m = datetime(t.year, t.month, 1)
+            t += ((m + timedelta(days=31)).replace(day=1)) - m
+        return c
+
     def set_payed(self):
         since = self.expires_at
         n = now()

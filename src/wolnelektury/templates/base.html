@@ -6,11 +6,12 @@
 {% load funding_tags %}
 {% load piwik_tags %}
 {% load title %}
+{% load annoy %}
 
 {% block settings %}
 {% endblock %}
 
-<html class="no-js">
+<html class="no-js" lang="{{ LANGUAGE_CODE }}">
   <head>
     <meta charset="utf-8">
     <meta name="description" content="">
@@ -38,6 +39,8 @@
       </div>
     {% endif %}
 
+    {% annoy_banner_seasonal %}
+      
     {% block global-content %}
       <div class="l-container l-breadcrumb-container">
         <div class="l-breadcrumb">

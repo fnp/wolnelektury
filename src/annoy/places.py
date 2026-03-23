@@ -13,6 +13,7 @@ PLACE_DEFINITIONS = [
         ('quiet', 'Spokojny'),
         ('loud', 'Ostry'),
     )),
+    ('seasonal', 'Sezonowa', False),
 ]
 
 PLACE_CHOICES = [p[:2] for p in PLACE_DEFINITIONS]

@@ -701,13 +701,6 @@
       flex-direction: row;
   }
   
-  &:nth-child(4) {
-    .l-checkout__input {
-      &:nth-child(1) { width: 172px; }
-      &:nth-child(2) { width: calc(100% - 172px); }
-    }
-  }
-
   &.full {
     flex-direction: column;
     @include rwd($break-flow) {
@@ -1081,4 +1074,9 @@
     border-radius: 10px;
     border: 1px solid #edc016;
     background: #edc016;
+}
+
+
+.donation-more {
+    margin-bottom:40px;
 }

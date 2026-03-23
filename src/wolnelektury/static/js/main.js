@@ -578,12 +578,10 @@
         $(".c-media__settings").toggleClass('active');
     });
 
-    const crisis = document.querySelector(".annoy-banner_crisis-container");
-    const crisisLink = document.querySelector('.annoy-banner_crisis-container a.action');
-    if (crisis) {
-	crisis.addEventListener("click", function() {
-	    crisisLink.click();
-	});
-    }
+    $(".annoy-banner-clickable").each(function() {
+        $(this).click(() => {
+            $("a.action", this).click();
+        });
+    });
 
 })();

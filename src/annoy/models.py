@@ -120,20 +120,26 @@ class Banner(models.Model):
         return int(self.progress_percent)
 
     def update_progress(self):
-        # Total of new payments during the action.
-        # This definition will need to change for longer timespans.
         if not self.since or not self.until or not self.target:
             return
         Schedule = apps.get_model('club', 'Schedule')
-        self.progress = Schedule.objects.filter(
-            payed_at__gte=self.since,
-            payed_at__lte=self.until,
-        ).aggregate(c=models.Sum('amount'))['c']
+        PayUOrder = apps.get_model('club', 'PayUOrder')
+        progress = PayUOrder.objects.filter(
+            completed_at__gte=self.since,
+            completed_at__lte=self.until,
+        ).aggregate(c=models.Sum('schedule__amount'))['c']
+
+        for schedule in Schedule.objects.filter(
+                method='paypal',
+                expires_at__gt=self.since
+        ):
+            progress += schedule.n_paypal_payments(self.since, self.until) * schedule.amount
+        self.progress = progress
         self.save(update_fields=['progress'])
 
     @classmethod
     def update_all_progress(cls):
-        for obj in cls.objects.exclude(target=None):
+        for obj in cls.objects.exclude(target=None).exclude(until__lt=now()):
             obj.update_progress()
 
 

@@ -662,14 +662,15 @@
                         history.pushState({}, '', anchor);
                     },
                 });
+                return true;
             }
         }
     }
     scrollToAnchor(window.location.hash)
-    $('#toc, #themes, #book-text, #annotation').on('click', 'a', function(event) {
-        event.preventDefault();
-        scrollToAnchor($(this).attr('href'));
+    $('#toc, #themes, #book-text, #annotation, .scroll').on('click', 'a', function(event) {
+        if (scrollToAnchor($(this).attr('href'))) {
+            event.preventDefault();
+        }
     });
-
     
 })})(jQuery);
