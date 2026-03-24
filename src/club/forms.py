@@ -90,7 +90,7 @@ class DonationStep2Form(forms.ModelForm, NewsletterForm):
 
         consents = []
         for consent, key, consent_field in self.consent:
-            if self.cleaned_data[key]:
+            if consent.required or self.cleaned_data[key]:
                 instance.consent.add(consent)
 
         return instance

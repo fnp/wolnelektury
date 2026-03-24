@@ -127,7 +127,7 @@ class Banner(models.Model):
         progress = PayUOrder.objects.filter(
             completed_at__gte=self.since,
             completed_at__lte=self.until,
-        ).aggregate(c=models.Sum('schedule__amount'))['c']
+        ).aggregate(c=models.Sum('schedule__amount'))['c'] or 0
 
         for schedule in Schedule.objects.filter(
                 method='paypal',
