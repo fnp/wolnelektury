@@ -51,7 +51,7 @@
 	  <div class="progress-box">
 	    <div>
 	      <div class="l-checkout__support__bar">
-		<span class="{% if banner.progress_percent < 15 %}little-progress{% endif %}" data-label="{{ banner.progress_percent|floatformat:"2" }}%" style="width: {{ banner.progress_percent|stringformat:".3f" }}%;"></span>
+		<span class="{% if banner.progress_percent < 15 %}little-progress{% endif %}" data-label="{{ banner.progress_percent|floatformat:"2" }}% ({{ banner.progress|floatformat:"g" }} zł)" style="width: {{ banner.progress_percent|stringformat:".3f" }}%;"></span>
 	      </div>
 	    </div>
 	  </div>
