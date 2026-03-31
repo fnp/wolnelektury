@@ -1,7 +1,7 @@
 {% if banner %}
   {% if closable %}
     <a class='annoy-banner-on annoy-banner-on_{{ banner.place }}'
-       href="{{ banner.url }}"
+       href="{{ banner.get_url }}"
        data-target="#annoy-banner-{{ banner.id }}"
     >
     </a>
@@ -23,7 +23,7 @@
       <div class="text">
         {{ banner.get_text|safe|linebreaks }}
         <div class="annoy-banner_actions">
-          <a class="action l-button l-button--default l-button--default--dark" href="{{ banner.url }}">
+          <a class="action l-button l-button--default l-button--default--dark" href="{{ banner.get_url }}">
             {{ banner.action_label }}
           </a>
           <a class='annoy-banner-off annoy-banner-off_{{ banner.place }}  l-button l-button--default'>{{ banner.close_label|default:"x" }}</a>

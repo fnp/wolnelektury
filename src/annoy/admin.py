@@ -1,19 +1,38 @@
+from django.db.models import Q
 from django.contrib import admin
 from django import forms
+from django.utils.timezone import now
 from admin_ordering.admin import OrderableAdmin
 from modeltranslation.admin import TranslationAdmin
+from wolnelektury.utils import YesNoFilter
 from . import models
+
 
 
 admin.site.register(models.Campaign)
 
 
+class IsCurrentFilter(YesNoFilter):
+    title = 'Aktualny'
+    parameter_name = 'current'
+
+    @property
+    def q(self):
+        n = now()
+        return ~(Q(since__gt=n) | Q(until__lt=n) | Q(campaign__start__gt=n) | Q(campaign__end__lt=n))
+
+
 class BannerAdmin(TranslationAdmin):
     list_display = [
             'place', 'text',
-            'text_color', 'background_color',
-            'priority', 'since', 'until',
+            'campaign',
+            'since', 'until',
             'show_members', 'staff_preview', 'only_authenticated']
+    list_filter = [
+        'campaign',
+        IsCurrentFilter,
+    ]
+    autocomplete_fields = ['books']
 
 
 admin.site.register(models.Banner, BannerAdmin)

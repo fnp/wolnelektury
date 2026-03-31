@@ -19,7 +19,7 @@
     {% if not banner.action_label %}
     <a
       {% if banner.is_external %}target="_blank"{% endif %}
-      href="{{ banner.url }}">
+      href="{{ banner.get_url }}">
     {% endif %}
     <div class="annoy-banner-inner">
 
@@ -38,7 +38,7 @@
       {% if banner.action_label %}
       <a class="action"
 	 {% if banner.is_external %}target="_blank"{% endif %}
-	 href="{{ banner.url }}">
+	 href="{{ banner.get_url }}">
           {{ banner.action_label }}
         </a>
       {% endif %}
@@ -47,23 +47,23 @@
       </a>
     {% endif %}
 
+    {% if banner.campaign.has_progress %}
 	<div class="state-box">
 	  <div class="progress-box">
 	    <div>
 	      <div class="l-checkout__support__bar">
-		<span class="{% if banner.progress_percent < 15 %}little-progress{% endif %}" data-label="{{ banner.progress_percent|floatformat:"2" }}% ({{ banner.progress|floatformat:"g" }} zł)" style="width: {{ banner.progress_percent|stringformat:".3f" }}%;"></span>
+		<span class="{% if banner.campaign.progress_percent < 15 %}little-progress{% endif %}" data-label="{{ banner.campaign.progress_percent|floatformat:"2" }}% ({{ banner.campaign.progress|floatformat:"g" }} zł)" style="width: {{ banner.campaign.progress_percent|stringformat:".3f" }}%;"></span>
 	      </div>
 	    </div>
 	  </div>
           <div class="bar-status-box">
 	  <div class="time-box">
-	    <strong class="countdown inline" data-until='{{ banner.until|date_to_utc:True|utc_for_js }}'>&nbsp;</strong>
+	    <strong class="countdown inline" data-until='{{ banner.campaign.end|date_to_utc:True|utc_for_js }}'>&nbsp;</strong>
 	  </div>
-          {% if banner.target %}
-          <strong>{{ banner.target|floatformat:"g" }} zł</strong>
-          {% endif %}
+          <strong>{{ banner.campaign.target|floatformat:"g" }} zł</strong>
           </div>
 	</div>
+    {% endif %}
 
 
   </div>

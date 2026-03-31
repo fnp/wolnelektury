@@ -579,8 +579,11 @@
     });
 
     $(".annoy-banner-clickable").each(function() {
-        $(this).click(() => {
-            $("a.action", this).click();
+        let btn = $("a.action", this)[0];
+        $(this).click((e) => {
+            if (e.target !== btn) {
+                btn.click();
+            }
         });
     });
 

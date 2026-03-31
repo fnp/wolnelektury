@@ -31,25 +31,27 @@
           {{ banner.get_text|safe|linebreaks }}
 	</div>
 
+        {% if banner.campaign.has_progress %}
 	<div class="state-box">
 	  <div class="progress-box">
 	    <div>
 	      <div class="l-checkout__support__bar">
-		<span data-label="{{ banner.progress_percent_pretty }}%" style="width: {{ banner.progress_percent|stringformat:".3f" }}%;"></span>
+		<span data-label="{{ banner.campaign.progress_percent_pretty }}%" style="width: {{ banner.campaign.progress_percent|stringformat:".3f" }}%;"></span>
 	      </div>
 	    </div>
 	  </div>
 	  <div class="time-box">
-	    <strong class="countdown inline" data-until='{{ banner.until|date_to_utc:True|utc_for_js }}'>&nbsp;</strong>
+	    <strong class="countdown inline" data-until='{{ banner.campaign.end|date_to_utc:True|utc_for_js }}'>&nbsp;</strong>
 	  </div>
 	  <div class="action-box">
 	    {% if banner.action_label %}
-            <a class="action" href="{{ banner.url }}">
+            <a class="action" href="{{ banner.get_url }}">
               {{ banner.action_label }}
             </a>
 	    {% endif %}
 	  </div>
 	</div>
+        {% endif %}
       </div>
 
 

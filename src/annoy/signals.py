@@ -13,6 +13,6 @@ def update_etag(sender, instance, **kwargs):
 @receiver(post_save, sender=club.models.Schedule)
 def update_progress(sender, instance, **kwargs):
     try:
-        models.Banner.update_all_progress()
+        models.Campaign.update_all_progress()
     except:
         pass

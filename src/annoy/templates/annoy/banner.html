@@ -1,7 +1,7 @@
 {% if banner %}
   {% if closable %}
     <a class='annoy-banner-on annoy-banner-on_{{ banner.place }}'
-       href="{{ banner.url }}"
+       href="{{ banner.get_url }}"
        data-target="#annoy-banner-{{ banner.id }}"
     >
       {{ banner.open_label }}
@@ -22,7 +22,7 @@
     {% if not banner.action_label %}
     <a
       {% if banner.is_external %}target="_blank"{% endif %}
-      href="{{ banner.url }}">
+      href="{{ banner.get_url }}">
     {% endif %}
     <div class="annoy-banner-inner">
 
@@ -38,7 +38,7 @@
       {% if banner.action_label %}
       <a class="action"
 	 {% if banner.is_external %}target="_blank"{% endif %}
-	 href="{{ banner.url }}">
+	 href="{{ banner.get_url }}">
           {{ banner.action_label }}
         </a>
       {% endif %}

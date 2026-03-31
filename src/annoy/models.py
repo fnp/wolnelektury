@@ -9,11 +9,61 @@ from .places import PLACES, PLACE_CHOICES, STYLES
 
 
 class Campaign(models.Model):
-    name = models.CharField(max_length=255, help_text='Dla zespołu')
+    name = models.CharField(max_length=255, help_text='Wewnętrzna nazwa kampanii')
     image = models.FileField('obraz', upload_to='annoy/banners/', blank=True)
+    start = models.DateTimeField(null=True, blank=True)
+    end = models.DateTimeField(null=True, blank=True)
+    landing = models.CharField(blank=True, max_length=1024)
+    target = models.IntegerField('cel', null=True, blank=True)
+    progress = models.IntegerField('postęp', null=True, blank=True)
+    priority = models.PositiveSmallIntegerField(
+        'priorytet', default=0,
+        help_text='Kampanie z wyższym priorytetem mają pierwszeństwo.')
 
     def __str__(self):
         return self.name
+
+    @classmethod
+    def get_active(cls):
+        n = now()
+        return cls.objects.exclude(start__gt=n).exclude(end__lt=n)
+
+    def has_progress(self):
+        return self.target is not None and self.start is not None and self.end is not None
+
+    @property
+    def progress_percent(self):
+        if not self.target:
+            return 0
+        return (self.progress or 0) / self.target * 100
+
+    @property
+    def progress_percent_pretty(self):
+        return int(self.progress_percent)
+
+    def update_progress(self):
+        if not self.start or not self.end or not self.target:
+            return
+        Schedule = apps.get_model('club', 'Schedule')
+        PayUOrder = apps.get_model('club', 'PayUOrder')
+        progress = PayUOrder.objects.filter(
+            completed_at__gte=self.start,
+            completed_at__lte=self.end,
+        ).aggregate(c=models.Sum('schedule__amount'))['c'] or 0
+
+        for schedule in Schedule.objects.filter(
+                method='paypal',
+                expires_at__gt=self.start
+        ):
+            progress += schedule.n_paypal_payments(self.start, self.end) * schedule.amount
+        self.progress = progress
+        self.save(update_fields=['progress'])
+
+    @classmethod
+    def update_all_progress(cls):
+        n = now()
+        for obj in cls.get_active().exclude(target=None):
+            obj.update_progress()
 
 
 class Banner(models.Model):
@@ -44,8 +94,6 @@ class Banner(models.Model):
     until = models.DateTimeField('do', null=True, blank=True)
     books = models.ManyToManyField('catalogue.Book', blank=True)
 
-    target = models.IntegerField('cel', null=True, blank=True)
-    progress = models.IntegerField('postęp', null=True, blank=True)
     show_members = models.BooleanField('widoczny dla członków klubu', default=False)
     staff_preview = models.BooleanField('podgląd tylko dla zespołu', default=False)
     only_authenticated = models.BooleanField('tylko dla zalogowanych', default=False)
@@ -67,6 +115,12 @@ class Banner(models.Model):
         else:
             return self.image
 
+    def get_url(self):
+        if self.url:
+            return self.url
+        if self.campaign:
+            return self.campaign.landing
+
     def is_external(self):
         return (self.url and
                 not self.url.startswith('/') and
@@ -87,10 +141,14 @@ class Banner(models.Model):
         banners = cls.objects.filter(
             place=place
         ).exclude(
+            campaign__start__gt=n
+        ).exclude(
+            campaign__end__lt=n
+        ).exclude(
             since__gt=n
         ).exclude(
             until__lt=n
-        ).order_by('-priority', '?')
+        ).order_by('-campaign__priority', '-priority', '?')
 
         if book is None:
             banners = banners.filter(books=None)
@@ -109,38 +167,6 @@ class Banner(models.Model):
 
         return banners
 
-    @property
-    def progress_percent(self):
-        if not self.target:
-            return 0
-        return (self.progress or 0) / self.target * 100
-
-    @property
-    def progress_percent_pretty(self):
-        return int(self.progress_percent)
-
-    def update_progress(self):
-        if not self.since or not self.until or not self.target:
-            return
-        Schedule = apps.get_model('club', 'Schedule')
-        PayUOrder = apps.get_model('club', 'PayUOrder')
-        progress = PayUOrder.objects.filter(
-            completed_at__gte=self.since,
-            completed_at__lte=self.until,
-        ).aggregate(c=models.Sum('schedule__amount'))['c'] or 0
-
-        for schedule in Schedule.objects.filter(
-                method='paypal',
-                expires_at__gt=self.since
-        ):
-            progress += schedule.n_paypal_payments(self.since, self.until) * schedule.amount
-        self.progress = progress
-        self.save(update_fields=['progress'])
-
-    @classmethod
-    def update_all_progress(cls):
-        for obj in cls.objects.exclude(target=None).exclude(until__lt=now()):
-            obj.update_progress()
 
 
 class DynamicTextInsert(models.Model):

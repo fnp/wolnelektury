@@ -33,7 +33,7 @@
 	<div class="state-box">
 	  <div class="action-box">
 	    {% if banner.action_label %}
-            <a class="action" href="{{ banner.url }}">
+            <a class="action" href="{{ banner.get_url }}">
               {{ banner.action_label }}
             </a>
 	    {% endif %}
