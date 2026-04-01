@@ -136,6 +136,7 @@ def get_donations(agreement_id, year):
             continue
         assert transaction['amount']['currency'] == 'PLN'
         transactions.append({
+            'transation_id': transaction['transaction_id'],
             'timestamp': dt,
             'amount': Decimal(transaction['amount']['value'])
         })
