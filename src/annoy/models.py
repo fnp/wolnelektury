@@ -5,6 +5,7 @@ from django.conf import settings
 from django.db import models
 from django.template import Context, Template
 from django.utils.timezone import now
+from lxml import etree, html
 from .places import PLACES, PLACE_CHOICES, STYLES
 
 
@@ -215,7 +216,10 @@ class MediaInsertSet(models.Model):
         self.save(update_fields=['etag'])
 
     def get_texts(self):
-        return [t.text for t in self.mediainserttext_set.all()]
+        return [
+            etree.tostring(html.fromstring(t.text), encoding='unicode')
+            for t in self.mediainserttext_set.all()
+        ]
 
     @classmethod
     def get_for_format(cls, file_format):
