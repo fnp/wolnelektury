@@ -1,6 +1,7 @@
 # This file is part of Wolne Lektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Wolne Lektury. See NOTICE for more information.
 #
+from datetime import date, timedelta
 from django.conf import settings
 from django.contrib.auth.decorators import login_required, permission_required
 from django.db.models import Sum
@@ -285,3 +286,27 @@ def receipt(request):
         }
     )
 
+
+@permission_required('club.schedule_view')
+def stats(request):
+    acq = {}
+    today = date.today()
+    start = today - timedelta(365)
+    for schedule in models.Schedule.objects.filter(
+        payed_at__gte=start,
+    ):
+        d = schedule.payed_at.date()
+        m = schedule.method.replace('-', '_')
+        acq.setdefault(d, {})
+        acq[d].setdefault(m, 0)
+        acq[d][m] += schedule.amount
+        
+    days = []
+    d = today
+    while d >= start:
+        days.append((d.isoformat(), acq.get(d, {})))
+        d -= timedelta(1)
+
+    return render(request, 'club/stats.html',
+                  {'days': days})
+        

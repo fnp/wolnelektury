@@ -31,4 +31,5 @@ urlpatterns = [
     path('weryfikacja/', views.member_verify, name='club_member_verify'),
 
     path('potwierdzenie/', views.receipt, name='club_receipt'),
+    path('stats/', views.stats),
 ]

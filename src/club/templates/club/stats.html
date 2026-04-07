@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+
+<table style="width: 100%;">
+  <thead>
+    <tr>
+      <th></th>
+      <th>PayU</th>
+      <th>PayU cykliczne</th>
+      <th>PayPal</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for day, acq in days %}
+  <tr>
+    <td>{{ day }}</td>
+    <td>{{ acq.payu }}</td>
+    <td>{{ acq.payu_re }}</td>
+    <td>{{ acq.paypal }}</td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
