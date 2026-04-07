@@ -289,6 +289,7 @@ def receipt(request):
 
 @permission_required('club.schedule_view')
 def stats(request):
+    maxes = {}
     acq = {}
     today = date.today()
     start = today - timedelta(365)
@@ -300,11 +301,20 @@ def stats(request):
         acq.setdefault(d, {})
         acq[d].setdefault(m, 0)
         acq[d][m] += schedule.amount
-        
+
+    for a in acq.values():
+        for m, v in a.items():
+            maxes.setdefault(m, 0)
+            if v > maxes[m]:
+                maxes[m] = v
+
     days = []
     d = today
     while d >= start:
-        days.append((d.isoformat(), acq.get(d, {})))
+        a = acq.get(d, {})
+        for k, v in a.items():
+            a[k] = (v, 100 * v/(maxes[k] or 1))
+        days.append((d.isoformat(), a))
         d -= timedelta(1)
 
     return render(request, 'club/stats.html',

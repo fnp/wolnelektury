@@ -3,22 +3,31 @@
 {% block main %}
 
 
-<table style="width: 100%;">
+<table style="" border="1">
   <thead>
     <tr>
-      <th></th>
-      <th>PayU</th>
-      <th>PayU cykliczne</th>
-      <th>PayPal</th>
+      <th style="width: 200px;"></th>
+      <th style="width: 200px;">PayU</th>
+      <th style="width: 200px;">PayU cykliczne</th>
+      <th style="width: 200px;">PayPal</th>
     </tr>
   </thead>
   <tbody>
   {% for day, acq in days %}
   <tr>
     <td>{{ day }}</td>
-    <td>{{ acq.payu }}</td>
-    <td>{{ acq.payu_re }}</td>
-    <td>{{ acq.paypal }}</td>
+    <td style="position: relative">
+      <span style="z-index: 0; background: #92BD39; position: absolute;left:0; top:0; bottom: 0; width: {{ acq.payu.1 }}%;"></span>
+      <span style="z-index: 1; position: relative;">{{ acq.payu.0 }}</span>
+    </td>
+    <td style="position: relative">
+      <span style="z-index: 0; background: #92BD39; position: absolute;left:0; top:0; bottom: 0; width: {{ acq.payu_re.1 }}%;"></span>
+      <span style="z-index: 1; position: relative;">{{ acq.payu_re.0 }}</span>
+    </td>
+    <td style="position: relative">
+      <span style="z-index: 0; background: #92BD39; position: absolute;left:0; top:0; bottom: 0; width: {{ acq.paypal.1 }}%;"></span>
+      <span style="z-index: 1; position: relative;">{{ acq.paypal.0 }}</span>
+    </td>
   </tr>
   {% endfor %}
   </tbody>
