@@ -2,6 +2,7 @@
 # Copyright © Fundacja Wolne Lektury. See NOTICE for more information.
 #
 from rest_framework import serializers
+import bookmarks.models
 import catalogue.models
 from social import models
 
@@ -87,7 +88,20 @@ class UserListItemSerializer(serializers.ModelSerializer):
         queryset=catalogue.models.Book.objects.all(),
         source='book',
         slug_field='slug',
-        required=False
+        required=False,
+        allow_null=True
+    )
+    bookmark = serializers.SlugRelatedField(
+        queryset=bookmarks.models.Bookmark.objects.all(),
+        slug_field='uuid',
+        required=False,
+        allow_null=True
+    )
+    quote = serializers.SlugRelatedField(
+        queryset=bookmarks.models.Quote.objects.all(),
+        slug_field='uuid',
+        required=False,
+        allow_null=True
     )
 
     class Meta:
