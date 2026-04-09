@@ -17,15 +17,15 @@
   <tr>
     <td>{{ day }}</td>
     <td style="position: relative">
-      <span style="z-index: 0; background: #92BD39; position: absolute;left:0; top:0; bottom: 0; width: {{ acq.payu.1 }}%;"></span>
+      <span style="z-index: 0; background: #92BD39; position: absolute;left:0; top:0; bottom: 0; width: {{ acq.payu.1|floatformat:"3u" }}%;"></span>
       <span style="z-index: 1; position: relative;">{{ acq.payu.0 }}</span>
     </td>
     <td style="position: relative">
-      <span style="z-index: 0; background: #92BD39; position: absolute;left:0; top:0; bottom: 0; width: {{ acq.payu_re.1 }}%;"></span>
+      <span style="z-index: 0; background: #92BD39; position: absolute;left:0; top:0; bottom: 0; width: {{ acq.payu_re.1|floatformat:"3u" }}%;"></span>
       <span style="z-index: 1; position: relative;">{{ acq.payu_re.0 }}</span>
     </td>
     <td style="position: relative">
-      <span style="z-index: 0; background: #92BD39; position: absolute;left:0; top:0; bottom: 0; width: {{ acq.paypal.1 }}%;"></span>
+      <span style="z-index: 0; background: #92BD39; position: absolute;left:0; top:0; bottom: 0; width: {{ acq.paypal.1|floatformat:"3u" }}%;"></span>
       <span style="z-index: 1; position: relative;">{{ acq.paypal.0 }}</span>
     </td>
   </tr>
