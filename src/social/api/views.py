@@ -187,12 +187,17 @@ class ListItemViewV2(APIView):
 @never_cache
 class ListItemListViewV3(ListCreateAPIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
-    serializer_class = serializers.UserListItemSerializer
 
     def get_queryset(self):
         lst = get_userlist(self.kwargs['slug'], self.request)
         return lst.userlistitem_set.all().order_by('order')
 
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return serializers.UserListItemReadSerializer
+        else:
+            return serializers.UserListItemSerializer
+    
     def get_serializer(self, *args, **kwargs):
         serializer_class = self.get_serializer_class()
         kwargs.setdefault('context', self.get_serializer_context())
@@ -210,13 +215,18 @@ class ListItemListViewV3(ListCreateAPIView):
 @never_cache
 class ListItemViewV3(RetrieveUpdateDestroyAPIView):
     permission_classes = [IsAuthenticated]
-    serializer_class = serializers.UserListItemSerializer
     lookup_field = 'uuid'
 
     def get_queryset(self):
         return models.UserListItem.objects.filter(
             list__user=self.request.user
         )
+
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return serializers.UserListItemReadSerializer
+        else:
+            return serializers.UserListItemSerializer
 
 
 @vary_on_auth

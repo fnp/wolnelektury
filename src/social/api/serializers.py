@@ -2,7 +2,9 @@
 # Copyright © Fundacja Wolne Lektury. See NOTICE for more information.
 #
 from rest_framework import serializers
+import bookmarks.api.views
 import bookmarks.models
+import catalogue.api.serializers
 import catalogue.models
 from social import models
 
@@ -126,6 +128,28 @@ class UserListItemSerializer(serializers.ModelSerializer):
                 'required': False
             }
         }
+
+
+class UserListItemReadSerializer(UserListItemSerializer):
+    book = catalogue.api.serializers.BookSerializer2()
+    bookmark = bookmarks.api.views.BookmarkSerializer()
+    class Meta:
+        model = models.UserListItem
+        fields = [
+            'client_id',
+            'uuid',
+            'order',
+            'list_slug',
+            'timestamp',
+            'favorites',
+            'deleted',
+
+            'book',
+            'fragment',
+            'quote',
+            'bookmark',
+            'note',
+        ]
 
 
 class UserListSerializerV3(serializers.ModelSerializer):
