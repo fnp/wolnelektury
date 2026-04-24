@@ -7,4 +7,4 @@ Disallow: /szukaj/
 Disallow: /uzytkownik/
 Disallow: /zegar/
 Disallow: /katalog/custompdf/
-
+Disallow: /przypisy/
