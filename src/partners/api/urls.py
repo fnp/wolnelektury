@@ -8,4 +8,6 @@ from . import views
 urlpatterns = [
     path('<slug:key>/books/',
         views.PartnerBooksView.as_view()),
+    path('<slug:key>/audiobooks/',
+        views.PartnerAudiobooksView.as_view()),
 ]

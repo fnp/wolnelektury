@@ -39,6 +39,52 @@ class PartnerBookSerializer(BookSerializer2):
         return self.context['partner'].get_price(obj.pages)
 
 
+class PartnerAudiobookSerializer(BookSerializer2):
+    price = serializers.SerializerMethodField()
+    duration = serializers.SerializerMethodField()
+    files = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Book
+        fields = [
+            'slug', 'title',
+            'href', 'url', 'language',
+            'authors', 'translators',
+            'epochs', 'genres', 'kinds',
+            'files',
+            'cover',
+            'isbn_mp3',
+            'abstract',
+            'content_warnings', 'audiences',
+            'changed_at', 'duration',
+            'price',
+        ]
+
+    def get_duration(self, obj):
+        return obj.get_audiobooks(True)[2]
+
+    def get_files(self, obj):
+        def get_for_single(b):
+            fs = []
+            for m in b.media.filter(type='mp3'):
+                fs.append({
+                    "name": m.name,
+                    "part_name": m.part_name,
+                    "url": 'https://wolnelektury.pl' + m.file.url,
+                })
+            for c in b.get_children():
+                fs.extend(get_for_single(c))
+            return fs
+        return get_for_single(b)
+
+    def get_price(self, obj):
+        duration = obj.get_audiobooks(True)[2]
+        if not duration:
+            return None
+        duration /= 60
+        return self.context['partner'].get_audio_price(obj.pages)
+
+
 @method_decorator(never_cache, name='dispatch')
 class PartnerBooksView(ListAPIView):
     serializer_class = PartnerBookSerializer
@@ -50,3 +96,16 @@ class PartnerBooksView(ListAPIView):
 
     def get_queryset(self):
         return Book.objects.filter(parent=None).filter(can_sell=True).exclude(pages=None)
+
+
+@method_decorator(never_cache, name='dispatch')
+class PartnerAudiobooksView(ListAPIView):
+    serializer_class = PartnerAudiobookSerializer
+
+    def get_serializer_context(self):
+        ctx = super().get_serializer_context()
+        ctx['partner'] = get_object_or_404(models.Partner, key=self.kwargs['key'])
+        return ctx
+
+    def get_queryset(self):
+        return Book.objects.exclude(isbn_mp3='')

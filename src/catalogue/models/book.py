@@ -62,6 +62,7 @@ class Book(models.Model):
     preview_key = models.CharField(max_length=32, blank=True, null=True)
     findable = models.BooleanField('wyszukiwalna', default=True, db_index=True)
     can_sell = models.BooleanField('do sprzedaży', default=True)
+    isbn_mp3 = models.CharField('ISBN audiobooka', max_length=32, blank=True)
 
     # files generated during publication
     xml_file = fields.XmlField(storage=bofh_storage, with_etag=False)
@@ -684,7 +685,7 @@ class Book(models.Model):
 
     @classmethod
     def from_text_and_meta(cls, raw_file, book_info, overwrite=False, dont_build=None, search_index=True,
-                           remote_gallery_url=None, days=0, findable=True, logo=None, logo_mono=None, logo_alt=None, can_sell=None):
+                           remote_gallery_url=None, days=0, findable=True, logo=None, logo_mono=None, logo_alt=None, can_sell=None, isbn_mp3=None):
         from catalogue import tasks
 
         if dont_build is None:
@@ -741,6 +742,8 @@ class Book(models.Model):
             extra['logo_alt'] = logo_alt
         if can_sell is not None:
             book.can_sell = can_sell
+        if isbn_mp3 is not None:
+            book.isbn_mp3 = isbn_mp3
         book.extra_info = json.dumps(extra)
         book.load_abstract()
         book.load_toc()

@@ -16,10 +16,27 @@ class Partner(models.Model):
             return None
         return price_obj.price
 
+    def get_audio_price(self, minutes):
+        price_obj = self.audiopricelevel_set.exclude(
+            min_minutes__gt=minutes
+        ).order_by('-price').first()
+        if price_obj is None:
+            return None
+        return price_obj.price
+        
 
 class PriceLevel(models.Model):
     partner = models.ForeignKey(Partner, models.CASCADE)
     min_pages = models.IntegerField(null=True, blank=True)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+
+    class Meta:
+        ordering = ('price',)
+
+
+class AudioPriceLevel(models.Model):
+    partner = models.ForeignKey(Partner, models.CASCADE)
+    min_minutes = models.IntegerField(null=True, blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
 
     class Meta:
