@@ -7,6 +7,7 @@ from datetime import date, timedelta
 from random import randint
 import os.path
 import re
+import requests
 from slugify import slugify
 from sortify import sortify
 from urllib.request import urlretrieve
@@ -62,6 +63,7 @@ class Book(models.Model):
     preview_key = models.CharField(max_length=32, blank=True, null=True)
     findable = models.BooleanField('wyszukiwalna', default=True, db_index=True)
     can_sell = models.BooleanField('do sprzedaży', default=True)
+    can_sell_mp3 = models.BooleanField('do sprzedaży mp3', default=True)
     isbn_mp3 = models.CharField('ISBN audiobooka', max_length=32, blank=True)
 
     # files generated during publication
@@ -908,6 +910,18 @@ class Book(models.Model):
                 )
             narrators.append(t)
         self.narrators.set(narrators)
+
+    def update_can_sell_mp3(self):
+        ret = True
+        for child in self.get_children():
+            child.update_can_sell_mp3()
+            if not child.can_sell_mp3:
+                ret = False
+        if self.has_mp3_file():
+            audio_items = requests.get(f'https://audio.wolnelektury.pl/archive/book/{self.slug}.json').json()['items']
+            if not all(x['project']['can_sell'] for x in audio_items):
+                ret = False
+        self.can_sell_audio = ret
 
     @classmethod
     @transaction.atomic

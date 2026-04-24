@@ -75,10 +75,10 @@ class PartnerAudiobookSerializer(BookSerializer2):
             for c in b.get_children():
                 fs.extend(get_for_single(c))
             return fs
-        return get_for_single(b)
+        return get_for_single(obj)
 
     def get_price(self, obj):
-        duration = obj.get_audiobooks(True)[2]
+        duration = obj.get_audiobooks(True, True)[2]
         if not duration:
             return None
         duration /= 60
@@ -108,4 +108,4 @@ class PartnerAudiobooksView(ListAPIView):
         return ctx
 
     def get_queryset(self):
-        return Book.objects.exclude(isbn_mp3='')
+        return Book.objects.filter(parent=None, can_sell_mp3=True).exclude(isbn_mp3='')
