@@ -212,6 +212,19 @@ class ListItemListViewV3(ListCreateAPIView):
         serializer.save(list=lst)
 
 
+class ListItemsView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def delete(self, request):
+        if not isinstance(self.request.data, list):
+            return Response({"error": "no data"}, status=400)
+        models.UserListItem.objects.filter(
+            list__user=self.request.user,
+            uuid__in=self.request.data
+        ).delete()
+        return Response({})
+
+
 @never_cache
 class ListItemViewV3(RetrieveUpdateDestroyAPIView):
     permission_classes = [IsAuthenticated]

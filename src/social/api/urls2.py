@@ -18,6 +18,7 @@ urlpatterns = [
     path('lists/', views.ListsView.as_view()),
     path('lists/<slug:slug>/', views.ListView.as_view()),
     path('lists/<slug:slug>/items/', views.ListItemListViewV3.as_view()),
+    path('list-items/', views.ListItemsView.as_view()),
     path('list-items/<uuid:uuid>/', views.ListItemViewV3.as_view()),
     path('lists/<slug:slug>/<slug:book>/', views.ListItemViewV2.as_view()),
 
