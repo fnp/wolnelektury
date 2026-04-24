@@ -63,7 +63,7 @@ class Book(models.Model):
     preview_key = models.CharField(max_length=32, blank=True, null=True)
     findable = models.BooleanField('wyszukiwalna', default=True, db_index=True)
     can_sell = models.BooleanField('do sprzedaży', default=True)
-    can_sell_mp3 = models.BooleanField('do sprzedaży mp3', default=True)
+    can_sell_mp3 = models.BooleanField('do sprzedaży mp3', default=False)
     isbn_mp3 = models.CharField('ISBN audiobooka', max_length=32, blank=True)
 
     # files generated during publication
@@ -921,7 +921,8 @@ class Book(models.Model):
             audio_items = requests.get(f'https://audio.wolnelektury.pl/archive/book/{self.slug}.json').json()['items']
             if not all(x['project']['can_sell'] for x in audio_items):
                 ret = False
-        self.can_sell_audio = ret
+        self.can_sell_mp3 = ret
+        self.save(update_fields=['can_sell_mp3'])
 
     @classmethod
     @transaction.atomic
