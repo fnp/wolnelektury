@@ -212,6 +212,19 @@ class ListItemListViewV3(ListCreateAPIView):
         serializer.save(list=lst)
 
 
+@never_cache
+class ListItemsForBook(ListAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = serializers.UserListItemReadSerializer
+
+    def get_queryset(self):
+        book = get_object_or_404(catalogue.models.Book, slug=self.kwargs['book'])
+        return models.UserListItem.objects.filter(
+            list__user=self.request.user,
+            book=book,
+        )
+
+
 class ListItemsView(APIView):
     permission_classes = [IsAuthenticated]
 
