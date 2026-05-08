@@ -1,0 +1,9 @@
+
+<div class="l-checkout__box__header__img l-checkout__box__header__real">
+  {% if banner.video %}
+  <video src="{{ banner.video.url }}" controls></video>
+  {% endif %}
+</div>
+<div class="l-checkout__box__header__content">
+  {{ banner.text|safe }}
+</div>

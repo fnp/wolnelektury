@@ -14,6 +14,7 @@ PLACE_DEFINITIONS = [
         ('loud', 'Ostry'),
     )),
     ('seasonal', 'Sezonowa', False),
+    ('seasonal-overlay', 'Sezonowa-overlay', True),
 ]
 
 PLACE_CHOICES = [p[:2] for p in PLACE_DEFINITIONS]

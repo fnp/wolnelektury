@@ -1,5 +1,15 @@
 {% extends 'club/donation_step_base.html' %}
+{% load annoy %}
 {% load chunks %}
+
+{% block donation-form-header %}
+{% seasonal_overlay_exists as e %}
+{% if e %}
+{% annoy_checkout_header %}
+{% else %}
+{{ block.super }}
+{% endif %}
+{% endblock %}
 
 {% block donation-step-content %}
   {% include "club/donation_step1_form.html" %}

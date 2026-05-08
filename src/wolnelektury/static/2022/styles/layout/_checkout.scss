@@ -64,51 +64,71 @@
 }
 
 .l-checkout__box__header {
-  display: flex;
+    display: flex;
+    flex-direction: column;
   background: #083F4D;
+
+  @include rwd($break-flow) {
+      flex-direction: row;
+  }
 
   .l-checkout__box__header__img {
       display: none;
+      background: black;
       background-position: center;
       background-size: cover;
       @include rwd($break-flow) {
           display: block;
           width: 50%;
       }
+
+      &.l-checkout__box__header__real {
+          display: block;
+          width: auto;
+
+          video {
+              height: 200px;
+              width: 100%;
+              display: block;
+              @include rwd($break-flow) {
+                  height: 360px;
+                  width: auto;
+              }
+          }
+      }
   }
 }
 
-.l-checkout__box__header__content h1 {
-  font-style: italic;
-  font-weight: 300;
-  font-size: 48px;
-  line-height: 55px;
-  letter-spacing: -0.02em;
-  color: #92BD39;
-  margin: 0;
-}
-
-.l-checkout__box__header__content p:first-of-type {
-  font-style: normal;
-  font-weight: 600;
-  font-size: 21.5px;
-  line-height: 140%;
-  letter-spacing: -0.01em;
-  color: #FFFFFF;
-  margin-top: 23px;
-}
-
-.l-checkout__box__header__content p {
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 150%;
-  color: #FFFFFF;
-  margin-top: 8px;
-}
-
 .l-checkout__box__header__content {
-  padding: 32px 45px;
+    color: white;
+    padding: 32px 45px;
+
+    h1 {
+        font-style: italic;
+        font-weight: 300;
+        font-size: 48px;
+        line-height: 55px;
+        letter-spacing: -0.02em;
+        color: #92BD39;
+        margin: 0;
+    }
+
+    p {
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 150%;
+        margin-top: 8px;
+
+        &:first-of-type {
+            font-weight: 600;
+            font-size: 21.5px;
+            line-height: 140%;
+            letter-spacing: -0.01em;
+            margin-top: 23px;
+        }
+    }
 }
+
 
 //Steps
 .l-checkout__steps {

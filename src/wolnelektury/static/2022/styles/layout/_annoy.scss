@@ -362,3 +362,85 @@
             justify-content: space-between;
         }
 }
+
+
+.t-relative {
+    position: relative;
+}
+.annoy-banner_seasonal-overlay {
+    display: none;
+    
+    background-color: #ffd430;
+    color: #083F4D;
+    border-radius: 0 0 10px 10px;
+    position: absolute;
+    z-index: 1000;
+    left: 16px;
+    right: 16px;
+    padding: 15px 20px;
+    margin-top: -10px;
+
+    &:before {
+        background: rgba(0,0,0,0);
+        height: 10px;
+        display: block;
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border-radius: 0 0 10px 10px;
+        box-shadow: 0px 10px 10px black;
+        z-index: 999;
+    }  
+    
+    .annoy-banner-inner {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	align-items: flex-start;
+	justify-content: space-between;
+
+        @include rwd($break-flow) {
+            flex-direction: row;
+        }
+        
+        .annoy-banner-off {
+            background: none;
+            border-color: transparent;
+
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            padding: 12px 4px;
+        }
+        
+        video {
+            height: 240px;
+            width: 100%;
+            @include rwd($break-flow) {
+                height: 360px;
+                width: auto;
+            }
+        }
+
+        .text {
+            margin-right: 60px;
+            h1 {
+                font-size: 1.5em;
+                margin: 0 0 1em;
+                font-weight: bold;
+            }
+        
+	    p {
+	        margin: 1em 0;
+	    }
+            .l-button {
+                display: inline-block;
+                margin-top: 1em;
+                padding: 12px 20px;
+            }
+        }
+        
+    }
+}

@@ -53,3 +53,23 @@ def annoy_banner_seasonal(context):
         'banner': banners.first(),
         'closable': False,
     }
+
+@register.inclusion_tag('annoy/banner_seasonal_overlay.html', takes_context=True)
+def annoy_banner_seasonal_overlay(context):
+    banners = Banner.choice('seasonal-overlay', request=context['request'])
+    return {
+        'banner': banners.first(),
+    }
+
+
+@register.simple_tag(takes_context=True)
+def seasonal_overlay_exists(context):
+    return Banner.choice('seasonal-overlay', request=context['request'], exemptions=False).exists()
+
+
+@register.inclusion_tag('annoy/checkout_header.html', takes_context=True)
+def annoy_checkout_header(context):
+    banners = Banner.choice('seasonal-overlay', request=context['request'], exemptions=False)
+    return {
+        'banner': banners.first(),
+    }

@@ -87,6 +87,7 @@ class Banner(models.Model):
     close_label = models.CharField('etykieta zamykania', max_length=255, blank=True)
     text = models.TextField('tekst')
     image = models.FileField('obraz', upload_to='annoy/banners/', blank=True)
+    video = models.FileField('video', upload_to='annoy/banners/', blank=True)
     url = models.CharField('URL', max_length=1024)
     priority = models.PositiveSmallIntegerField(
         'priorytet', default=0,
