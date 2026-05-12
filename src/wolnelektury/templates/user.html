@@ -20,7 +20,6 @@
     {% if request.user.membership %}
       <p><a href="{% url 'club_join' %}">{% trans "Wspierasz Wolne Lektury, dziękujemy!" %}</a></p>
     {% endif %}
-    <p><a href="{% url 'socialaccount_connections' %}">{% trans "Zewnętrzne konta" %}</a></p>
     <p><a href="{% url 'logout' %}">{% trans "Wyloguj się" %}</a>
   </div>
 {% endblock %}
