@@ -26,7 +26,7 @@
       {% endif %}
       <div class="text">
         {{ banner.get_text|safe }}
-        <a class="l-button l-button--default">{{ banner.action_label }}</a>
+        <a class="l-button l-button--default" href="{{ banner.url }}">{{ banner.action_label }}</a>
       </div>
 
       
