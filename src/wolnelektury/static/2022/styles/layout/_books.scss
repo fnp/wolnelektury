@@ -108,9 +108,6 @@
 
   img {
       width: 100%;
-      @include rwd($break3) {
-          width: 173px;
-      }
   }
 }
 
