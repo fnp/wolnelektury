@@ -37,13 +37,37 @@ WORKDIR /app/src
 
 RUN mkdir /app/.ipython
 
+
+
+
 FROM base AS dev
 
 #RUN pip install --no-cache-dir coverage
 
 
+
+
 FROM base AS prod
+
+USER root
 
 RUN pip install --no-cache-dir gunicorn
 
+USER app
+
 COPY src /app/src
+
+
+
+
+FROM prod AS static-builder
+
+RUN python manage.py collectstatic --noinput
+
+
+
+FROM nginx:alpine AS nginx
+
+# COPY nginx.conf conf.d/...
+
+COPY --from=static-builder /app/var/static /app/var/static

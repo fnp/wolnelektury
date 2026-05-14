@@ -3,7 +3,7 @@
 #
 import os
 
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', '')
 
 ADMINS = [
     # ('Your Name', 'your_email@domain.com'),

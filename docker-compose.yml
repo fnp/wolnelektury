@@ -7,16 +7,21 @@ x-app-base: &app-base
       GID: ${GID:-1000}
   env_file:
    - .env
+  environment:
+    DEBUG: "True"
   volumes:
    - ./src:/app/src
+   - ./scripts:/app/scripts
    - ./var/media:/app/var/media
    - ./var/static:/app/var/static
    - ./var/counters/:/app/var/counters
+   - ${LIBRARIAN:-/nonexistent}:/${LIBRARIAN:+edita}ble/librarian
    - ipython:/app/.ipython
   depends_on:
    - db
    - redis
    - memcached
+  entrypoint: /app/scripts/entrypoint.sh
 
 services:
   web:
@@ -31,7 +36,6 @@ services:
 
   db:
     image: postgres:18
-    container_name: db
     env_file:
       - .env
     volumes:

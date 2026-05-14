@@ -33,7 +33,7 @@ build:
 	UID=$(UID) GID=$(GID) docker compose build
 
 shell:
-	UID=$(UID) GID=$(GID) docker compose run --rm web bash
+	UID=$(UID) GID=$(GID) docker compose exec web bash
 
 logs:
 	docker compose logs -f
