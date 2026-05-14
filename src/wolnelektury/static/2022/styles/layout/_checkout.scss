@@ -111,20 +111,21 @@
         letter-spacing: -0.02em;
         color: #92BD39;
         margin: 0;
+        margin-bottom: 23px;
     }
 
     p {
         font-weight: normal;
         font-size: 18px;
         line-height: 150%;
-        margin-top: 8px;
+        margin-top: 0;
+        margin-bottom: 8px;
 
         &:first-of-type {
             font-weight: 600;
             font-size: 21.5px;
             line-height: 140%;
             letter-spacing: -0.01em;
-            margin-top: 23px;
         }
     }
 }
