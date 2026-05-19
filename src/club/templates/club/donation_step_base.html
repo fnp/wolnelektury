@@ -38,7 +38,7 @@
         </div>
         {% endblock %}
       </div>
-      <div class="l-checkout__steps">
+      <div class="l-checkout__steps" id="form-start">
 
         {% if view.step > 1 and view.step != 4 %}
           <a href="{% url 'donation_step1' schedule.key %}">
