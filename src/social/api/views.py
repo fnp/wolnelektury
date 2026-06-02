@@ -194,7 +194,10 @@ class ListItemListViewV3(ListCreateAPIView):
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
-            return serializers.UserListItemReadSerializer
+            if self.request.version < 'v4':
+                return serializers.UserListItemReadSerializerV3
+            else:
+                return serializers.UserListItemReadSerializer
         else:
             return serializers.UserListItemSerializer
     
@@ -215,7 +218,12 @@ class ListItemListViewV3(ListCreateAPIView):
 @never_cache
 class ListItemsForBook(ListAPIView):
     permission_classes = [IsAuthenticated]
-    serializer_class = serializers.UserListItemReadSerializer
+
+    def get_serializer_class(self):
+        if self.request.version < 'v4':
+            return serializers.UserListItemReadSerializerV3
+        else:
+            return serializers.UserListItemReadSerializer
 
     def get_queryset(self):
         book = get_object_or_404(catalogue.models.Book, slug=self.kwargs['book'])
@@ -250,7 +258,10 @@ class ListItemViewV3(RetrieveUpdateDestroyAPIView):
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
-            return serializers.UserListItemReadSerializer
+            if self.request.version < 'v4':
+                return serializers.UserListItemReadSerializerV3
+            else:
+                return serializers.UserListItemReadSerializer
         else:
             return serializers.UserListItemSerializer
 

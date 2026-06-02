@@ -13,9 +13,11 @@ from rest_framework.generics import ListAPIView, ListCreateAPIView, RetrieveUpda
 from rest_framework import serializers
 from rest_framework.permissions import SAFE_METHODS, IsAuthenticated, IsAuthenticatedOrReadOnly
 from api.fields import AbsoluteURLField
+from catalogue.api.serializers import BookSerializer2
 
 
-class BookmarkSerializer(serializers.ModelSerializer):
+class BookmarkSerializerV3(serializers.ModelSerializer):
+    """Replaced in API v4."""
     book = serializers.SlugRelatedField(
         queryset=catalogue.models.Book.objects.all(), slug_field='slug',
         required=False
@@ -30,12 +32,33 @@ class BookmarkSerializer(serializers.ModelSerializer):
         read_only_fields = ['uuid', 'mode']
 
 
+class BookmarkSerializer(serializers.ModelSerializer):
+    book_slug = serializers.SlugRelatedField(
+        queryset=catalogue.models.Book.objects.all(), slug_field='slug',
+        write_only=True,
+        required=False
+    )
+    book = BookSerializer2(read_only=True)
+    href = AbsoluteURLField(view_name='api_bookmark', view_args=['uuid'])
+    timestamp = serializers.IntegerField(required=False)
+    location = serializers.CharField(required=False)
+    
+    class Meta:
+        model = models.Bookmark
+        fields = ['book_slug', 'book', 'anchor', 'audio_timestamp', 'mode', 'note', 'href', 'uuid', 'location', 'timestamp', 'deleted']
+        read_only_fields = ['uuid', 'mode']
+
 
 @never_cache
 class BookmarksView(ListCreateAPIView):
     permission_classes = [IsAuthenticated]
-    serializer_class = BookmarkSerializer
 
+    def get_serializer_class(self):
+        if self.request.version < 'v4':
+            return BookmarkSerializerV3
+        else:
+            return BookmarkSerializer
+    
     def get_queryset(self):
         return self.request.user.bookmark_set.all()
 
@@ -46,9 +69,14 @@ class BookmarksView(ListCreateAPIView):
 @never_cache
 class BookBookmarksView(ListAPIView):
     permission_classes = [IsAuthenticated]
-    serializer_class = BookmarkSerializer
     pagination_class = None
 
+    def get_serializer_class(self):
+        if self.request.version < 'v4':
+            return BookmarkSerializerV3
+        else:
+            return BookmarkSerializer
+    
     def get_queryset(self):
         return self.request.user.bookmark_set.filter(book__slug=self.kwargs['book'])
 
@@ -56,9 +84,14 @@ class BookBookmarksView(ListAPIView):
 @never_cache
 class BookmarkView(RetrieveUpdateDestroyAPIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
-    serializer_class = BookmarkSerializer
     lookup_field = 'uuid'
 
+    def get_serializer_class(self):
+        if self.request.version < 'v4':
+            return BookmarkSerializerV3
+        else:
+            return BookmarkSerializer
+    
     def get_queryset(self):
         if self.request.method in SAFE_METHODS:
             q = Q(deleted=False)

@@ -130,6 +130,27 @@ class UserListItemSerializer(serializers.ModelSerializer):
         }
 
 
+class UserListItemReadSerializerV3(UserListItemSerializer):
+    book = catalogue.api.serializers.BookSerializer2()
+    bookmark = bookmarks.api.views.BookmarkSerializerV3()
+    class Meta:
+        model = models.UserListItem
+        fields = [
+            'client_id',
+            'uuid',
+            'order',
+            'list_slug',
+            'timestamp',
+            'favorites',
+            'deleted',
+
+            'book',
+            'fragment',
+            'quote',
+            'bookmark',
+            'note',
+        ]
+
 class UserListItemReadSerializer(UserListItemSerializer):
     book = catalogue.api.serializers.BookSerializer2()
     bookmark = bookmarks.api.views.BookmarkSerializer()

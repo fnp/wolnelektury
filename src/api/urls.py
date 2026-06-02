@@ -34,6 +34,7 @@ urlpatterns1 = [
 urlpatterns = [
     path('2/', include((urlpatterns1, 'api'), namespace="v2")),
     path('3/', include((urlpatterns1, 'api'), namespace="v3")),
+    path('4/', include((urlpatterns1, 'api'), namespace="v4")),
     path('1/<path:path>', views.Unsupported.as_view()),
 
     path('oauth/request_token/', csrf_exempt(views.OAuth1RequestTokenView.as_view())),
