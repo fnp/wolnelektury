@@ -610,6 +610,7 @@
     $('a.anchor').on('click', function(e) {
         // Workaround for bad TOC markers.
         if ($(this).closest('#toc').length) return;
+        if ($(this).closest('.toc').length) return;
         if ($(this).closest('#wltoc').length) return;
         e.preventDefault();
 

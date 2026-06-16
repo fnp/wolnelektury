@@ -30,10 +30,11 @@
     list-style: none;
     margin-top: 0.25rem;
     margin-bottom: 0;
-    li {
+    margin-left: 1em;
       font-size: 18px;
-      line-height: 150%;
       font-weight: normal;
+    li {
+      line-height: 150%;
 
     }
 
