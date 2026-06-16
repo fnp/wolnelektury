@@ -526,6 +526,7 @@ def stream_zip(request, media_format=None, slug=None):
         for bm in book.media.filter(type=media_format).order_by('index'):
             yield (
                 bm.file.path,
+                bm.get_extra_info_json().get('license'),
                 names + (slugify(bm.part_name),) if bm.part_name else names
             )
         for child in book.get_children():
@@ -533,12 +534,22 @@ def stream_zip(request, media_format=None, slug=None):
 
     zs = ZipStream()
 
-    for i, (file_path, names) in enumerate(iterate_audiobooks(book, ())):
+    licenses = set()
+    for i, (file_path, lic, names) in enumerate(iterate_audiobooks(book, ())):
         index = i + 1
         part_name = '_'.join(names)
         ext = file_path.rsplit('.', 1)[-1]
         zip_name = f'{book.slug}_{index:03d}_{part_name}'[:240] + '.' + ext
         zs.add_path(file_path, zip_name)
+
+        lic_name = constants.LICENSES.get(lic, {}).get('locative')
+        if lic_name:
+            licenses.add(lic_name)
+
+    readme = render_to_string('catalogue/audiobook_zip_readme.txt', {
+        'licenses': licenses,
+    })
+    zs.add(readme, 'informacje.txt')
 
     response = StreamingHttpResponse(zs, content_type='application/zip')
     response['Content-Disposition'] = f'attachment; filename={slug}_{media_format}.zip'

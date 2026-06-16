@@ -50,9 +50,8 @@ urlpatterns = [
     path('zip/pdf.zip', views.download_zip, {'file_format': 'pdf', 'slug': None}, 'download_zip_pdf'),
     path('zip/epub.zip', views.download_zip, {'file_format': 'epub', 'slug': None}, 'download_zip_epub'),
     path('zip/mobi.zip', views.download_zip, {'file_format': 'mobi', 'slug': None}, 'download_zip_mobi'),
-    path('zip/mp3/<slug:slug>.zip', views.download_zip, {'media_format': 'mp3'}, 'download_zip_mp3'),
-    path('zip/<slug:slug>_mp3.zip', views.stream_zip, {'media_format': 'mp3'}),
-    path('zip/ogg/<slug:slug>.zip', views.download_zip, {'media_format': 'ogg'}, 'download_zip_ogg'),
+    path('zip/<slug:slug>_mp3.zip', views.stream_zip, {'media_format': 'mp3'}, 'download_zip_mp3'),
+    path('zip/<slug:slug>_ogg.zip', views.stream_zip, {'media_format': 'ogg'}, 'download_zip_ogg'),
 
     # Public interface. Do not change this URLs.
     path('lektura/<slug:slug>.html', views.book_text, name='book_text'),
