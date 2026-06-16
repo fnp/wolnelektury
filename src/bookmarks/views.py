@@ -1,5 +1,6 @@
 from django.http import Http404, JsonResponse
 from django.shortcuts import render, get_object_or_404
+from django.utils.timezone import now
 from django.views.decorators import cache
 import catalogue.models
 from wolnelektury.utils import is_ajax
@@ -41,6 +42,7 @@ def bookmarks(request):
             for bm in models.Bookmark.objects.filter(
                     user=request.user,
                     book=book,
+                    deleted=False
             )
         })
 
@@ -54,7 +56,10 @@ def bookmark(request, uuid):
 
 
 def bookmark_delete(request, uuid):
-    models.Bookmark.objects.filter(user=request.user, uuid=uuid).delete()
+    models.Bookmark.objects.filter(user=request.user, uuid=uuid).update(
+        deleted=True,
+        updated_at=now()
+    )
     return JsonResponse({})
 
 

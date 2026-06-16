@@ -3,6 +3,7 @@ from api.utils import never_cache
 from django.db.models import Q
 from django.http import Http404, JsonResponse
 from django.shortcuts import render, get_object_or_404
+from django.utils.timezone import now
 from django.views.decorators import cache
 import catalogue.models
 from wolnelektury.utils import is_ajax
@@ -111,3 +112,8 @@ class BookmarkView(RetrieveUpdateDestroyAPIView):
             return models.Bookmark.objects.filter(q)
         else:
             return self.request.user.bookmark_set.all()
+
+    def perform_destroy(self, instance):
+        instance.deleted = True
+        instance.updated_at = now()
+        instance.save()
