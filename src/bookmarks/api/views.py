@@ -48,6 +48,17 @@ class BookmarkSerializer(serializers.ModelSerializer):
         fields = ['book_slug', 'book', 'anchor', 'audio_timestamp', 'mode', 'note', 'href', 'uuid', 'location', 'timestamp', 'deleted']
         read_only_fields = ['uuid', 'mode']
 
+    def create(self, validated_data):
+        book = validated_data.pop('book_slug', None)
+        if book is not None:
+            validated_data['book'] = book
+        return super().create(validated_data)
+
+    def update(self, instance, validated_data):
+        book = validated_data.pop('book_slug', None)
+        if book is not None:
+            validated_data['book'] = book
+        return super().update(instance, validated_data)
 
 @never_cache
 class BookmarksView(ListCreateAPIView):
