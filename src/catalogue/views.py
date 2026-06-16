@@ -534,12 +534,19 @@ def stream_zip(request, media_format=None, slug=None):
 
     zs = ZipStream()
 
+    audiobook_list = list(iterate_audiobooks(book, ()))
+    
     licenses = set()
-    for i, (file_path, lic, names) in enumerate(iterate_audiobooks(book, ())):
+    for i, (file_path, lic, names) in enumerate(audiobook_list):
         index = i + 1
         part_name = '_'.join(names)
+        if part_name:
+            part_name = '_' + part_name
         ext = file_path.rsplit('.', 1)[-1]
-        zip_name = f'{book.slug}_{index:03d}_{part_name}'[:240] + '.' + ext
+        if len(audiobook_list) > 1:
+            zip_name = f'{book.slug}_{index:03d}{part_name}'[:240] + '.' + ext
+        else:
+            zip_name = book.slug[:240] + '.' + ext
         zs.add_path(file_path, zip_name)
 
         lic_name = constants.LICENSES.get(lic, {}).get('locative')

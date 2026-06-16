@@ -263,7 +263,7 @@
                       </button>
                     </div>
                   </div>
-                  {% if book.has_mp3_file %}
+                  {% if book.has_audio %}
                     <div class="c-media__popup" data-popup="audiobook">
                       <div class="c-media__popup__box">
                         <div class="c-media__popup__box__lead">
@@ -280,17 +280,15 @@
                               <a href="{% url 'download_zip_mp3' book.slug %}" class="l-button l-button--media l-button--media--full">.mp3</a>
                             </div>
                           </div>
-                          {% if book.has_ogg_file %}
-                            <div class="c-media__popup__box__item">
-                              <div>
-                                <h3>OggVorbis</h3>
-                                <p>{% trans "Otwarty format plików audio, oferujący wysokiej jakości nagranie." %}</p>
-                              </div>
-                              <div>
-                                <a href="{% url 'download_zip_ogg' book.slug %}" class="l-button l-button--media l-button--media--full">.ogg</a>
-                              </div>
+                          <div class="c-media__popup__box__item">
+                            <div>
+                              <h3>OggVorbis</h3>
+                              <p>{% trans "Otwarty format plików audio, oferujący wysokiej jakości nagranie." %}</p>
                             </div>
-                          {% endif %}
+                            <div>
+                              <a href="{% url 'download_zip_ogg' book.slug %}" class="l-button l-button--media l-button--media--full">.ogg</a>
+                            </div>
+                          </div>
                           {% if book.has_daisy_file %}
                             <div class="c-media__popup__box__item">
                               <div>
