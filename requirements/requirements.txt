@@ -41,6 +41,8 @@ Pillow==9.5.0
 mutagen==1.47
 sorl-thumbnail==12.10.0
 
+zipstream-ng==1.9.2
+
 # home-brewed & dependencies
 librarian==26.5
 

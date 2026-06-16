@@ -5,11 +5,13 @@ from collections import OrderedDict
 import random
 import re
 from urllib.parse import quote_plus
+from slugify import slugify
+from zipstream import ZipStream
 
 from django.conf import settings
 from django.template.loader import render_to_string
 from django.shortcuts import get_object_or_404, render, redirect
-from django.http import HttpResponse, HttpResponseRedirect, Http404, HttpResponsePermanentRedirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404, HttpResponsePermanentRedirect, StreamingHttpResponse
 from django.urls import reverse
 from django.db.models import Q, QuerySet
 from django.contrib.auth.decorators import login_required, user_passes_test
@@ -516,6 +518,31 @@ def download_zip(request, file_format=None, media_format=None, slug=None):
     else:
         raise Http404('No format specified for zip package')
     return HttpResponseRedirect(quote_plus(settings.MEDIA_URL + url, safe='/?='))
+
+
+def stream_zip(request, media_format=None, slug=None):
+    book = get_object_or_404(Book, slug=slug)
+    def iterate_audiobooks(book, names):
+        for bm in book.media.filter(type=media_format).order_by('index'):
+            yield (
+                bm.file.path,
+                names + (slugify(bm.part_name),) if bm.part_name else names
+            )
+        for child in book.get_children():
+            yield from iterate_audiobooks(child, names + (slugify(child.title),))
+
+    zs = ZipStream()
+
+    for i, (file_path, names) in enumerate(iterate_audiobooks(book, ())):
+        index = i + 1
+        part_name = '_'.join(names)
+        ext = file_path.rsplit('.', 1)[-1]
+        zip_name = f'{book.slug}_{index:03d}_{part_name}'[:240] + '.' + ext
+        zs.add_path(file_path, zip_name)
+
+    response = StreamingHttpResponse(zs, content_type='application/zip')
+    response['Content-Disposition'] = f'attachment; filename={slug}_{media_format}.zip'
+    return response
 
 
 class CustomPDFFormView(AjaxableFormView):
