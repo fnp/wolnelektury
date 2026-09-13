@@ -45,7 +45,7 @@ Pomóż w tłumaczeniu serwisu
 
 Tłumaczenie interfejsu serwisu na inne języki jest przydatne zwłaszcza
 dla osób uczących się polskiego, imigrantów i dzieci polonijnych — możesz
-pomóc uzupełnić te tlumaczenia. Odbywa się to
+pomóc uzupełnić te tłumaczenia. Odbywa się to
 [w serwisie Weblate](https://hosted.weblate.org/engage/wolnelektury/).
 
 <a href="https://hosted.weblate.org/engage/wolnelektury/">
@@ -72,7 +72,7 @@ Prawa i autorzy
 ===============
 
 Oprogramowanie jest dostępne na wolnej licencji GNU AGPL — dokładniejsze
-informacje znajdziesz w plikach NOTICE i LICENSE. Utrzymaniem oprogoramowania
+informacje znajdziesz w plikach NOTICE i LICENSE. Utrzymaniem oprogramowania
 w ramach Fundacji Wolne Lektury zajmuje się Radek Czajka.
 
 Pełna lista dotychczasowych autorów:
