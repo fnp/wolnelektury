@@ -100,6 +100,13 @@
     gap:7mm;
     margin-bottom:6mm;
   }
+
+
+  @media print {
+      .leaflet-control {
+          display: none;
+      }
+  }
   /* gdy nie ma mapy: zdjęcia zajmują całą szerokość */
   .page.no-map .visuals{
     grid-template-columns:1fr;
@@ -314,9 +321,8 @@
     const lat = parseFloat(mapEl.dataset.lat);
     const lon = parseFloat(mapEl.dataset.lon);
     const map = L.map(mapEl, {
-      zoomControl:false, attributionControl:false,
-      dragging:false, scrollWheelZoom:false
-    }).setView([lat, lon], 6);
+        attributionControl:false,
+    }).setView([lat, lon], 11);
     L.tileLayer('https://tile.thunderforest.com/cycle/{z}/{x}/{y}@2x.png?apikey=a8a97f0ae5134403ac38c1a075b03e15').addTo(map);
     L.marker([lat, lon]).addTo(map);
     setTimeout(() => map.invalidateSize(), 200);
