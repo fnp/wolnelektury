@@ -13,20 +13,21 @@
     var marker = null;
     var map = null;
 
-    function enable_map() {
+    function enable_map(callback) {
         if (!$("#reference-map").length) return;
 
-        $("#reference-map").show('slow');
-
-        if (map_enabled) return;
-
-        map = L.map('reference-map').setView([0, 0], 11);
-        L.tileLayer('https://tile.thunderforest.com/neighbourhood/{z}/{x}/{y}.png?apikey=a8a97f0ae5134403ac38c1a075b03e15', {
-            attribution: 'Maps © <a href="http://www.thunderforest.com">Thunderforest</a>, Data © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>'
-        }).addTo(map);
-        marker = L.circleMarker([0,0]);
-
-        map_enabled = true;
+        if (!map_enabled) {
+            map = L.map('reference-map').setView([0, 0], 11);
+            L.tileLayer('https://tile.thunderforest.com/neighbourhood/{z}/{x}/{y}.png?apikey=a8a97f0ae5134403ac38c1a075b03e15', {
+                attribution: 'Maps © <a href="http://www.thunderforest.com">Thunderforest</a>, Data © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>'
+            }).addTo(map);
+            marker = L.circleMarker([0,0]);
+            map_enabled = true;
+        }
+        $("#reference-map").show('slow', () => {
+            map.invalidateSize();
+            callback();
+        });
     }
     function disable_map() {
         $("#reference-map").hide('slow');
@@ -69,7 +70,7 @@
         ref = interestingReferences[uri];
 
         if (ref.location) {
-            enable_map();
+            enable_map(() => {
 
             let newLoc = [
                 ref.location[0],
@@ -85,6 +86,7 @@
             map.panTo(newLoc, {
                 animate: true,
                 duration: 1,
+            });
             });
         } else {
             disable_map();
