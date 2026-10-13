@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+{% load l10n %}
+
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Karta obiektu — {{ entity.label }}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  *{ box-sizing:border-box; }
+
+  html,body{
+    margin:0; padding:0;
+    background:#fff;
+    font-family:'Newsreader', serif;
+    color:#000;
+  }
+
+  /* ---------- PAGE / PRINT ---------- */
+  @page{ size:A4; margin:0; }
+
+  .page{
+    width:210mm;
+    margin:0 auto;
+    background:#fff;
+    padding:16mm 16mm 12mm 16mm;
+    position:relative;
+  }
+
+  /* ---------- HEADER ---------- */
+  .header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    border-bottom:1.5px solid #000;
+    padding-bottom:5mm;
+    margin-bottom:6mm;
+    gap:8mm;
+  }
+
+  .title-block .kicker{
+    font-family:'Courier Prime', monospace;
+    font-size:10px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:#000;
+    margin-bottom:2mm;
+  }
+  .title-block h1{
+    margin:0;
+    font-size:40px;
+    line-height:1;
+    font-weight:600;
+  }
+
+  /* pieczęć z kodem QR do Wikipedii — obrazek dostarczony przez serwer */
+  .stamp{
+    flex:0 0 auto;
+    width:28mm;
+    text-align:center;
+  }
+  .stamp .seal-ring{
+    width:26mm; height:26mm;
+    border-radius:50%;
+    border:1.4px solid #000;
+    outline:1px dashed #000;
+    outline-offset:2px;
+    display:flex; align-items:center; justify-content:center;
+    padding:2mm;
+  }
+  .stamp .seal-ring img{
+    width:100%; height:100%;
+    display:block;
+  }
+  .qr img{
+    position:relative;
+    z-index:1;
+  }
+  .stamp .cap{
+    margin-top:1.5mm;
+    font-family:'Courier Prime', monospace;
+    font-size:8.5px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:#000;
+  }
+
+  /* ---------- MAPA + ZDJĘCIA ---------- */
+  .visuals{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:7mm;
+    margin-bottom:6mm;
+  }
+  /* gdy nie ma mapy: zdjęcia zajmują całą szerokość */
+  .page.no-map .visuals{
+    grid-template-columns:1fr;
+  }
+  .page.no-map .illustrations{
+    column-count:4;
+  }
+
+  .map-frame .label,
+  .illustrations .label{
+    font-family:'Courier Prime', monospace;
+    font-size:9px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:#000;
+    margin-bottom:4mm;
+    column-span:all;
+  }
+  #map{
+    width:100%;
+    height:62mm;
+    border:1px solid #000;
+  }
+  .coords{
+    margin-top:1.5mm;
+    font-family:'Courier Prime', monospace;
+    font-size:9px;
+    color:#000;
+  }
+
+  /* zdjęcia "przyklejone", dowolne proporcje — CSS columns robi
+     naturalny układ pod różne wysokości (portrait/landscape mix) */
+  .illustrations{
+    column-count:2;
+    column-gap:4mm;
+  }
+  .illu{
+    break-inside:avoid;
+    margin-bottom:5mm;
+    position:relative;
+    background:#fff;
+    padding:2mm 2mm 5mm 2mm;
+    box-shadow:0 2px 6px rgba(0,0,0,.22);
+    border:1px solid #000;
+  }
+  .illu:nth-child(odd){ transform:rotate(-2deg); }
+  .illu:nth-child(even){ transform:rotate(1.6deg); }
+  .illu .tape{
+    position:absolute; top:-2mm; left:50%; transform:translateX(-50%) rotate(-2deg);
+    width:14mm; height:5mm;
+    background:rgba(0,0,0,.35);
+    border:1px solid rgba(0,0,0,.5);
+  }
+  .illu img{
+    width:100%; height:auto; display:block; /* naturalne proporcje, bez cropu */
+  }
+  .illu .cap{
+    margin-top:1.5mm;
+    font-family:'Courier Prime', monospace;
+    font-size:7px;
+    color:#000;
+    text-align:center;
+  }
+
+  /* ---------- PRZERWA ---------- */
+  .tear{
+    display:flex; align-items:center; gap:2mm;
+    margin:0 0 6mm 0;
+  }
+  .tear .dots{ flex:1; border-top:2px dashed #000; }
+  .tear .txt{
+    font-family:'Courier Prime', monospace;
+    font-size:8.5px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:#000;
+  }
+
+  /* ---------- FRAGMENTY (bilety) ---------- */
+  .fragment{
+    display:grid;
+    grid-template-columns:16mm 1fr 22mm;
+    gap:4mm;
+    align-items:center;
+    padding:3mm 0;
+    border-bottom:1px dotted #000;
+    break-inside:avoid;
+  }
+  .fragment:last-child{ border-bottom:none; }
+
+  .cover{
+    width:16mm; height:22mm;
+    border:1px solid #000;
+    box-shadow:0 2px 5px rgba(0,0,0,.28);
+    overflow:hidden;
+  }
+  .cover img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+  .frag-text .book{
+    font-family:'Courier Prime', monospace;
+    font-size:9.5px;
+    color:#000;
+    margin-bottom:.8mm;
+  }
+  .frag-text .book b{ color:#000; font-weight:700; }
+  .frag-text .quote{
+    font-style:italic;
+    font-size:13px;
+    line-height:1.35;
+  }
+  .frag-text .where{
+    margin-top:1mm;
+    font-family:'Courier Prime', monospace;
+    font-size:8px;
+    color:#000;
+  }
+
+  .qr-mini{ width:22mm; text-align:center; }
+  .qr-mini .box{
+    width:20mm; height:20mm;
+    margin:0 auto;
+  }
+  .qr-mini .box img{ width:100%; height:100%; display:block; }
+  .qr-mini .cap{
+    margin-top:1mm;
+    font-family:'Courier Prime', monospace;
+    font-size:6.5px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:#000;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="page {% if not entity.lat %}no-map{% endif %}" id="page">
+  <div class="header">
+    <div class="title-block">
+      <div class="kicker">Mapa Wolnych Lektur</div>
+      <h1>{{ entity.label }}</h1>
+    </div>
+    <div class="stamp">
+      <div class="seal-ring qr" data-qr="{{ entity.wikipedia_link }}">
+      </div>
+      <div class="cap">Wikipedia →</div>
+    </div>
+  </div>
+
+  <div class="visuals">
+
+    {% if entity.lon %}
+    <div class="map-frame">
+      <div class="label">Lokalizacja</div>
+      {% localize off %}
+      <div id="map" data-lat="{{ entity.lat }}" data-lon="{{ entity.lon }}"></div>
+      {% endlocalize %}
+      <div class="coords">{{ coords_label }}</div>
+    </div>
+    {% endif %}
+
+    <div class="illustrations">
+      <div class="label">Ilustracje</div>
+      {% for illu in entity.get_images|slice:":4" %}
+      <div class="illu">
+        <div class="tape"></div>
+        <img src="{{ illu.url }}">
+        <div class="cap">{{ illu.caption }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="tear"><div class="dots"></div><div class="txt">fragmenty tekstu</div><div class="dots"></div></div>
+
+  <div class="fragments">
+    {% for ref in entity.reference_set.all|slice:":3" %}
+    <div class="fragment">
+      <div class="cover">
+        <img src="{{ ref.book.cover_clean.url }}" alt="Okładka: {{ ref.book.pretty_title }}">
+      </div>
+      <div class="frag-text">
+        <div class="book"><b>
+            {% for author in ref.book.authors %}
+            {{ author.name }}{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+          </b> — {{ ref.book.title }}</div>
+        {% for occ in ref.occurence_set.all|slice:":3" %}
+        <div class="quote">{{ occ.html|safe }}</div>
+        {% endfor %}
+      </div>
+      {% with occ=ref.occurence_set.all.first %}
+      <div class="qr-mini">
+        <div class="box qr" data-qr="https://wolnelektury.pl/katalog/lektura/{{ ref.book.slug }}.html#sec{{ occ.section }}">
+        </div>
+        <div class="cap">zobacz w treści</div>
+      </div>
+      {% endwith %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+  // Jedyny JS w tym pliku: inicjalizacja mapy, jeśli jest obecna.
+  const mapEl = document.getElementById('map');
+  if (mapEl) {
+    const lat = parseFloat(mapEl.dataset.lat);
+    const lon = parseFloat(mapEl.dataset.lon);
+    const map = L.map(mapEl, {
+      zoomControl:false, attributionControl:false,
+      dragging:false, scrollWheelZoom:false
+    }).setView([lat, lon], 6);
+    L.tileLayer('https://tile.thunderforest.com/cycle/{z}/{x}/{y}@2x.png?apikey=a8a97f0ae5134403ac38c1a075b03e15').addTo(map);
+    L.marker([lat, lon]).addTo(map);
+    setTimeout(() => map.invalidateSize(), 200);
+  }
+
+
+  for (let e of document.getElementsByClassName('qr')) {
+      new QRCode(e, {
+          text: e.dataset.qr,
+          width: 160, height: 160,
+          colorDark: "#000000", colorLight: "#ffffff",
+          correctLevel: QRCode.CorrectLevel.M
+      });
+  }
+
+
+</script>
+
+</body>
+</html>

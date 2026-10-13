@@ -33,3 +33,11 @@ def popup(request, pk):
         'entity': e,
     })
     
+
+def onepager(request, pk):
+    e = get_object_or_404(models.Entity, pk=pk)
+    return render(request, 'references/onepager.html', {
+        'entity': e,
+        'coords_label': e.get_pretty_coords(),
+    })
+    

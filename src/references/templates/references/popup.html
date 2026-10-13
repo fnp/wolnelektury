@@ -1,7 +1,15 @@
 {% load thumbnail %}
 <h2 class="header">
+  {% if entity.wikipedia_link %}
   <a href="{{ entity.wikipedia_link }}" target="_blank">
+  {% endif %}
     {{ entity.label }}
+  {% if entity.wikipedia_link %}
+  </a>
+  {% endif %}
+
+  <a href="{% url 'references_onepager' entity.id %}" target="_blank">
+    🖨️
   </a>
 </h2>
 
@@ -32,6 +40,5 @@
         {{ occ.html|safe }}
       </a>
     {% endfor %}
-      </a>
   </div>
 {% endfor %}

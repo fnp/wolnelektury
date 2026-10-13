@@ -75,6 +75,40 @@ class Entity(models.Model):
 
         self.images = json.dumps(image_data_list)
 
+    def get_images(self):
+        return json.loads(self.images)
+
+    def get_pretty_coords(self):
+        def to_minutes(n):
+            coo = []
+            coo.append(int(n))
+            n -= coo[-1]
+            n *= 60
+            coo.append(int(n))
+            n -= coo[-1]
+            n *= 60
+            coo.append(n)
+            return coo
+
+        if not self.lat or not self.lon:
+            return ''
+
+        lat, latm, lon, lonm = self.lat, 'N', self.lon, 'E'
+        if lat < 0:
+            latm = 'S'
+            lat = -lat
+        if lon < 0:
+            lonm = 'W'
+            lon = -lon
+        
+        return '%d°%d\'%d"%s %d°%d\'%d"%s' % (
+            *to_minutes(lat),
+            latm,
+            *to_minutes(lon),
+            lonm,
+        )
+        
+    
 
 class Reference(models.Model):
     book = models.ForeignKey('catalogue.Book', models.CASCADE)

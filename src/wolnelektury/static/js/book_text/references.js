@@ -49,8 +49,12 @@
             $this.addClass('interesting');
             ref = interestingReferences[uri];
 
-            $this.attr('href', ref.wikipedia_link);
-            $this.attr('target', '_blank');
+            if (ref.wikipedia_link) {
+                $this.attr('href', ref.wikipedia_link);
+                $this.attr('target', '_blank');
+            } else {
+                $this.removeAttr('href')
+            }
         }
     });
 
@@ -104,8 +108,14 @@
         }
 
         $("#reference-link").text(ref.label);
-        $("#reference-link").attr('href', ref.wikipedia_link);
+        if (ref.wikipedia_link) {
+            $("#reference-link").attr('href', ref.wikipedia_link);
+        } else {
+            $('#reference-link').removeAttr('href');
+        }
 
+        $("#reference-print").attr('href', '/mapa/ulotka/' + ref.id);
+        
         _paq.push(['trackEvent', 'html', 'reference']);
     });
 
