@@ -36,8 +36,8 @@ class Entity(models.Model):
         )]
         entity = client.get(wikidata_id)
 
-        self.label = entity.label.get('pl', entity.label) or ''
-        self.description = entity.description.get('pl', entity.description) or ''
+        self.label = entity.label.get('pl', entity.label.get('mul', entity.label)) or ''
+        self.description = entity.description.get('pl', entity.description.get('mul', entity.description)) or ''
         sitelinks = entity.attributes.get('sitelinks', {})
         self.wikipedia_link = sitelinks.get('plwiki', sitelinks.get('enwiki', {})).get('url') or ''
 
