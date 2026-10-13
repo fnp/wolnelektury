@@ -60,14 +60,17 @@
    {% cache 60 references-map %}
    {% localize off %}
    {% for e in entities %}
+   {% if e.lat and e.lon %}
+   edata = {{ e.get_json|safe }};
    L.marker(
-       [{{ e.lat }}, {{ e.lon }}],
+       [edata.location[0], edata.location[1]],
        {
-           title: "{{ e.label }}",
-           alt: "{{ e.label }}",
-           mid: {{ e.pk }},
+           title: edata.label,
+           alt: edata.label,
+           mid: edata.id,
        }
    ).on('click', showMarker).addTo(markers);
+   {% endif %}
    {% endfor %}
    {% endlocalize %}
    {% endcache %}
