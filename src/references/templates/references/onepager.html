@@ -323,7 +323,7 @@
     const map = L.map(mapEl, {
         attributionControl:false,
     }).setView([lat, lon], 11);
-    L.tileLayer('https://tile.thunderforest.com/atlas/{z}/{x}/{y}@2x.png?apikey=a8a97f0ae5134403ac38c1a075b03e15').addTo(map);
+    L.tileLayer('https://tile.thunderforest.com/neighbourhood/{z}/{x}/{y}@2x.png?apikey=a8a97f0ae5134403ac38c1a075b03e15').addTo(map);
     L.marker([lat, lon]).addTo(map);
     setTimeout(() => map.invalidateSize(), 200);
   }

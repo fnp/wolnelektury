@@ -21,7 +21,7 @@
         if (map_enabled) return;
 
         map = L.map('reference-map').setView([0, 0], 11);
-        L.tileLayer('https://tile.thunderforest.com/atlas/{z}/{x}/{y}.png?apikey=a8a97f0ae5134403ac38c1a075b03e15', {
+        L.tileLayer('https://tile.thunderforest.com/neighbourhood/{z}/{x}/{y}.png?apikey=a8a97f0ae5134403ac38c1a075b03e15', {
             attribution: 'Maps © <a href="http://www.thunderforest.com">Thunderforest</a>, Data © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>'
         }).addTo(map);
         marker = L.circleMarker([0,0]);
