@@ -338,16 +338,7 @@
    {
        {% for ref in book.references %}
        {% if ref.entity.is_interesting %}
-       "{{ ref.entity.uri }}": {
-           "id": {{ ref.entity.id }},
-           {% if ref.entity.lat and ref.entity.lon %}
-           "location": [{{ ref.entity.lat }}, {{ ref.entity.lon }}],
-           {% endif %}
-           "images": {{ ref.entity.images|safe }},
-           "label": "{{ ref.entity.label }}",
-           "description": "{{ ref.entity.description }}",
-           "wikipedia_link": "{{ ref.entity.wikipedia_link }}"
-       },
+       "{{ ref.entity.uri }}": {{ ref.entity.get_json|safe }},
        {% endif %}
        {% endfor %}
        "": null

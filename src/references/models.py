@@ -107,7 +107,18 @@ class Entity(models.Model):
             *to_minutes(lon),
             lonm,
         )
-        
+
+    def get_json(self):
+        data = {
+            "id": self.id,
+            "images": self.get_images(),
+            "label": self.label,
+            "description": self.description,
+            "wikipedia_link": self.wikipedia_link,
+        }
+        if self.lat and self.lon:
+            data['location'] = [self.lat, self.lon]
+        return json.dumps(data)
     
 
 class Reference(models.Model):
