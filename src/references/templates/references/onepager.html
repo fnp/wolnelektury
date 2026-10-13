@@ -263,6 +263,7 @@
     </div>
     {% endif %}
 
+    {% if entity.get_images %}
     <div class="illustrations">
       <div class="label">Ilustracje</div>
       {% for illu in entity.get_images|slice:":4" %}
@@ -273,6 +274,7 @@
       </div>
       {% endfor %}
     </div>
+    {% endif %}
   </div>
 
   <div class="tear"><div class="dots"></div><div class="txt">fragmenty tekstu</div><div class="dots"></div></div>
