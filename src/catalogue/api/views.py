@@ -584,5 +584,5 @@ from rest_framework.views import APIView
 class BookJsonView(APIView):
     def get(self, request, slug):
         book = get_object_or_404(Book, slug=slug)
-        js = conv(etree.parse(book.xml_file.path))
+        js = conv(etree.parse(book.xml_file.path), slug)
         return JsonResponse(js, json_dumps_params={'ensure_ascii': False})

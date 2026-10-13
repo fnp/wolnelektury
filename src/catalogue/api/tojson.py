@@ -3,6 +3,7 @@ import json
 import re
 from sys import argv
 from lxml import etree
+from catalogue.utils import absolute_url, gallery_url
 
 tags = {
     'utwor': ('_pass', False, None, None, None),
@@ -123,7 +124,9 @@ tags = {
     'wiersz': ('tr', False, None, None, None),
     'kol': ('td', True, None, None, None),
 
-    'ilustr': ('img', False, None, {'src': 'src'}, False),
+    'ilustr': ('img', False, None, {
+        'src': lambda e, S: absolute_url(gallery_url(S['slug'])) + e.attrib['src'].rsplit('/', 1)[-1],
+    }, False),
     'tab': ('span', False, {'class': 'tab'}, {'szer': 'szer'}, False),
     
 }
@@ -192,6 +195,8 @@ def toj(elem, S):
             for k, v in attr_map.items():
                 if v == '.text':
                     val = elem.text
+                elif callable(v):
+                    val = v(elem, S)
                 else:
                     val = elem.attrib[v]
                 output['attr'][k] = val
@@ -245,7 +250,7 @@ def toj(elem, S):
         return []
     return output
 
-def conv(tree):
+def conv(tree, slug):
     S = {
         'index': 0,
         'vindex': 0,
@@ -253,6 +258,7 @@ def conv(tree):
         'stack': [],
         'front1': [],
         'front2': [],
+        'slug': slug,
     }
     output = toj(tree.getroot(), S)
     if not len(output): return {}
