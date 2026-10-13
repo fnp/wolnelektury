@@ -242,11 +242,13 @@
       <div class="kicker">Mapa Wolnych Lektur</div>
       <h1>{{ entity.label }}</h1>
     </div>
+    {% if entity.wikipedia_link %}
     <div class="stamp">
       <div class="seal-ring qr" data-qr="{{ entity.wikipedia_link }}">
       </div>
       <div class="cap">Wikipedia →</div>
     </div>
+    {% endif %}
   </div>
 
   <div class="visuals">
