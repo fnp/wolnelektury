@@ -44,7 +44,7 @@ sorl-thumbnail==12.10.0
 zipstream-ng==1.9.2
 
 # home-brewed & dependencies
-librarian==26.5
+librarian==26.5.1
 
 # celery tasks
 celery[redis]==5.4.0
