@@ -117,3 +117,66 @@ class BookmarkView(RetrieveUpdateDestroyAPIView):
         instance.deleted = True
         instance.updated_at = now()
         instance.save()
+
+
+
+class QuoteSerializer(serializers.ModelSerializer):
+    book_slug = serializers.SlugRelatedField(
+        queryset=catalogue.models.Book.objects.all(), slug_field='slug',
+        write_only=True,
+        required=False
+    )
+    book = BookSerializer2(read_only=True)
+    href = AbsoluteURLField(view_name='api_quote', view_args=['uuid'])
+    timestamp = serializers.IntegerField(required=False)
+    
+    class Meta:
+        model = models.Quote
+        fields = ['book_slug', 'book',
+                  'start_elem', 'start_offset', 'end_elem', 'end_offset',
+                  'href', 'uuid', 'timestamp', 'deleted']
+        read_only_fields = ['uuid', 'mode']
+
+    def create(self, validated_data):
+        book = validated_data.pop('book_slug', None)
+        if book is not None:
+            validated_data['book'] = book
+        return super().create(validated_data)
+
+    def update(self, instance, validated_data):
+        book = validated_data.pop('book_slug', None)
+        if book is not None:
+            validated_data['book'] = book
+        return super().update(instance, validated_data)
+
+
+@never_cache
+class QuotesView(ListCreateAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = QuoteSerializer
+    
+    def get_queryset(self):
+        return self.request.user.quote_set.all()
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+
+class QuoteView(RetrieveUpdateDestroyAPIView):
+    permission_classes = [IsAuthenticatedOrReadOnly]
+    serializer_class = QuoteSerializer
+    lookup_field = 'uuid'
+
+    def get_queryset(self):
+        if self.request.method in SAFE_METHODS:
+            q = Q(deleted=False)
+            if self.request.user.is_authenticated:
+                q |= Q(user=self.request.user)
+            return models.Quote.objects.filter(q)
+        else:
+            return self.request.user.quote_set.all()
+
+    def perform_destroy(self, instance):
+        instance.deleted = True
+        instance.updated_at = now()
+        instance.save()

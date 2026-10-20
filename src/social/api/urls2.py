@@ -32,6 +32,7 @@ urlpatterns = [
     path('sync/userlist/', views.UserListSyncView.as_view()),
     path('sync/userlistitem/', views.UserListItemSyncView.as_view()),
     path('sync/bookmark/', views.BookmarkSyncView.as_view()),
+    path('sync/quote/', views.QuoteSyncView.as_view()),
 ]
 
 

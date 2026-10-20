@@ -115,7 +115,7 @@ class Bookmark(Syncable, models.Model):
         }
 
 
-class Quote(models.Model):
+class Quote(Syncable, models.Model):
     uuid = models.UUIDField(unique=True, default=uuid.uuid4, editable=False)
     user = models.ForeignKey('auth.User', models.CASCADE)
     book = models.ForeignKey('catalogue.Book', models.CASCADE)
@@ -125,9 +125,20 @@ class Quote(models.Model):
     start_offset = models.IntegerField(null=True, blank=True)
     end_offset = models.IntegerField(null=True, blank=True)
     text = models.TextField(blank=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    reported_timestamp = models.DateTimeField(default=now)
+    deleted = models.BooleanField(default=False)
+
+    syncable_fields = [
+        'deleted',
+    ]
 
     def __str__(self):
         return str(self.uuid)
+
+    @property
+    def timestamp(self):
+        return self.updated_at.timestamp()
 
     def get_for_json(self):
         return {
@@ -151,6 +162,3 @@ def from_path(elem, path):
         n = path.pop(0)
         elem = list(child_nodes(elem))[n]
     return elem
-            
-            
-                

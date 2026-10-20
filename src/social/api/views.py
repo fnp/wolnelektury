@@ -21,7 +21,7 @@ from social.utils import likes
 from social import models
 import bookmarks.models
 from . import serializers
-from bookmarks.api.views import BookmarkSerializer
+from bookmarks.api.views import BookmarkSerializer, QuoteSerializer
 
 
 
@@ -452,3 +452,11 @@ class BookmarkSyncView(SyncView):
             if data.get('location'):
                 ret = self.model.get_by_location(user, data['location'])
         return ret
+
+
+class QuoteSyncView(SyncView):
+    model = bookmarks.models.Quote
+    serializer_class = QuoteSerializer
+
+    sync_id_field = 'uuid'
+    sync_id_serializer_field = 'uuid'
