@@ -70,8 +70,12 @@ class MenuItem(models.Model):
         ordering = ('order',)
 
     @property
+    def is_separator(self):
+        return self.name == '-'
+
+    @property
     def final_name(self):
-        if self.name == '-':
+        if self.is_separator:
             return mark_safe('<hr>')
         if self.name:
             return self.name

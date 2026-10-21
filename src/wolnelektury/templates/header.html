@@ -11,7 +11,7 @@
 
 {% annoy_banner_blackout %}
 
-<nav class="l-navigation">
+<nav class="l-navigation" aria-label="Główna">
   <div class="l-container">
     <a href="/" class="l-navigation__logo">
       <img src="{% static "2022/images/logo.svg" %}" alt="WolneLektury.pl">
@@ -25,22 +25,41 @@
       <div class="l-navigation__user-actions">
         {% include 'user_actions.html' %}
       </div>
-      <button class="l-navigation__button js-menu" aria-label="Menu">
+      <button class="l-navigation__button js-menu"
+              aria-label="Menu" aria-haspopup="dialog" aria-controls="main-menu"
+              >
         <span class="c-hamburger">
           <span class="bar"></span>
         </span>
       </button>
     </div>
-    {% include 'lang-switcher.html' %}
+  </div>
 
-    <div class="l-navigation__menu">
+  <dialog id="main-menu" class="l-navigation__menu" aria-label="Menu">
+    <div class="l-navigation__menu__top">
+      <div class="l-container">
+        <a href="/" class="l-navigation__logo">
+          <img src="{% static "2022/images/logo.svg" %}" alt="WolneLektury.pl">
+        </a>
+        {% include 'lang-switcher.html' with list_id="lang-desktop" %}
+        <button class="l-navigation__button js-menu-close"
+                aria-label="Zamknij menu"
+                >
+          <span class="c-hamburger">
+            <span class="bar"></span>
+          </span>
+        </button>
+      </div>
+    </div>
+
+      
       <div class="scrollable">
         <div class="l-container">
 
           <div class="l-navigation__user-bar">
             <div class="l-navigation__user-actions">
-              {% include 'lang-switcher.html' %}
-              {% include 'user_actions.html' %}
+              {% include 'lang-switcher.html' with list_id="lang-mobile" %}
+              {% include 'user_actions.html' with hide_menu=True %}
             </div>
           </div>
 
@@ -81,25 +100,25 @@
                 <ul>
                   <li>
                     <a href="https://www.facebook.com/wolnelektury/"
-                       title="Facebook" tabindex="-1" target="_blank">
+                       title="Facebook" target="_blank">
                       <i class="icon icon-fb" aria-hidden="true"></i>
                     </a>
                   </li>
                   <li>
                     <a href="https://www.youtube.com/c/WolneLekturyYT/"
-                       title="YouTube" tabindex="-1" target="_blank">
+                       title="YouTube" target="_blank">
                       <i class="icon icon-yt" aria-hidden="true"></i>
                     </a>
                   </li>
                   <li>
                     <a href="https://www.instagram.com/wolnelektury/"
-                       title="Instagram" tabindex="-1" target="_blank">
+                       title="Instagram" target="_blank">
                       <i class="icon icon-ig" aria-hidden="true"></i>
                     </a>
                   </li>
                   <li>
                     <a href="https://twitter.com/wolnelektury"
-                       title="Twitter" tabindex="-1" target="_blank">
+                       title="Twitter" target="_blank">
                       <i class="icon icon-tt" aria-hidden="true"></i>
                     </a>
               </li>
@@ -109,8 +128,7 @@
         </div>
         </div>
       </div>
-    </div>
-  </div>
+    </dialog>
 </nav>
 
 {% block under-menu %}{% endblock %}

@@ -1,24 +1,5 @@
 @import "styles/utils/mixins";
 
-body.is-open {
-    height: 100%;
-    overflow-y: hidden;
-}
-
-.l-navigation__menu {
-    .scrollable {
-        height: 100%;
-        overflow-y: scroll;
-        padding-bottom: 30px;
-    }
-}
-
-.l-navigation__menu__links ul li a em {
-    font-style: normal;
-    color: #FFA500;
-    font-weight: 600;
-}
-
 .l-collections .l-books {
     width: 100%;
 }
@@ -148,30 +129,25 @@ body.is-open {
 
 
 #user-menu {
-    //display: none;
-
+    --focus-ring: #083F4D;
+    position-area: bottom span-right;
     position:absolute;
-    top: 60px;
-    z-index: 50;
-
-    position: absolute;
     width: 186px;
-    top: 48px;
-    right: 45px;
+    top: 8px;
 
     /* yellow 900 */
     background: #F7BA00;
+    border: none;
     box-shadow: 0px 0px 20px rgba(1, 129, 137, 0.2);
     border-radius: 10px;
     overflow: hidden;
 
     opacity:0;
-    pointer-events: none;
-    transition: 200ms opacity;
+    transition: all 350ms cubic-bezier(.0, 0, .2, 1), // $ease-out
+              display 350ms allow-discrete,
+              overlay 350ms allow-discrete;
     
-    &.is-open {
-        //display: block;
-        pointer-events: all;
+    &:popover-open {
         opacity: 100%;
     }
 
@@ -197,6 +173,13 @@ body.is-open {
             }
         }
     }
+}
+
+@starting-style {
+  #user-menu:popover-open {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
 }
 
 

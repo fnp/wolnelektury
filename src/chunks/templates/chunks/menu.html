@@ -1,7 +1,7 @@
 {% for item in menu.menuitem_set.all %}
-  <li>
+  <li {% if item.is_separator %}aria-hidden="true"{% endif %}>
     {% if item.has_link %}
-      <a href="{{ item.final_link }}" tabindex="-1">
+      <a href="{{ item.final_link }}">
     {% endif %}
     {% if item.highlight %}
       <em>

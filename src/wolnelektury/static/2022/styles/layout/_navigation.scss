@@ -3,6 +3,8 @@ body {
 }
 
 .l-navigation {
+  --focus-ring: #fff;
+    
   max-width: 100%;
   margin: 0 auto;
   background-color: #083F4D;
@@ -41,14 +43,8 @@ body {
 
     .l-navigation__menu {
       opacity: 1;
-      pointer-events: all;
-    }
-
-    .c-lang {
-      opacity: 1;
-      .c-lang__button {
-        pointer-events: all;
-      }
+      visibility: visible;
+      pointer-events: auto;
     }
   }
 }
@@ -87,19 +83,8 @@ body {
   background: 0;
   padding: 0;
   margin: 0;
-  outline: 0;
   position: relative;
 }
-
-.is-open {
-    .l-navigation__logo {
-        z-index: $master-layer + 1;
-    }
-    .l-navigation__button {
-        z-index: $master-layer + 1;
-    }
-}
-
 
 .l-naviagion__search {
     width: 60%;
@@ -123,7 +108,6 @@ body {
     border-radius: 52px;
     width: 100%;
     max-width: 580px;
-    outline: 0;
 
     @include rwd($break-menu) {
         font-size: 18px;
@@ -138,9 +122,10 @@ body {
     position: relative;
     height: 44px;
 
-  .icon-liked {
+  .user-liked {
     color: #85C7CC;
     font-size: 30px;
+    line-height: 30px;
     margin-right: 25px;
   }
 
@@ -174,6 +159,9 @@ body {
 
     .user {
         margin-right: 25px;
+        background: none;
+        border: none;
+        padding: 0;
     }
 
 }
@@ -226,24 +214,51 @@ body {
 }
 
 .l-navigation__menu {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background-color: #083F4D;
-  z-index: $master-layer;
-  padding-top: 50px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 350ms $ease-out;
-
-  @include rwd($break-menu) {
-      padding-top: 93px;
-  }
-  
-  .l-container {
-    display: flex;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    max-width: none;
+    max-height: none;
+    width: 100%;
+    height: 100%;
     flex-direction: column;
-  }
+    background-color: #083F4D;
+    opacity: 0;
+    transition: opacity 350ms $ease-out;
+    // Gdy
+    // https://caniuse.com/wf-display-animation, https://caniuse.com/wf-overlay
+    //   display 350ms allow-discrete,
+    //   overlay 350ms allow-discrete;
+
+    &[open] {
+        display: flex;
+        opacity: 1;
+    }
+    &:not([open]) {
+        pointer-events: none;
+    }
+    // https://caniuse.com/wf-display-animation, https://caniuse.com/wf-overlay
+    &.is-closing {
+        opacity: 0;
+        pointer-events: none;
+    }
+  
+    .l-navigation__menu__top {
+        padding: 3px 0;
+        @include rwd($break-menu) {
+            padding: 12px 0;
+        }
+    }
+    .scrollable {
+        height: 100%;
+        overflow-y: auto;
+        padding-bottom: 30px;
+
+        .l-container {
+            display: flex;
+            flex-direction: column;
+        }
+    }
 
   .l-navigation__user-bar {
       width: 100%;
@@ -284,6 +299,18 @@ body {
   }
 }
 
+body:has(dialog[open]) {
+    overflow: hidden;
+}
+
+@starting-style {
+    .l-navigation__menu[open] {
+        opacity: 0;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+  .l-navigation__menu { transition: none; }
+}
 
 .l-navigation__menu__blocks {
     position: relative;
@@ -351,6 +378,12 @@ body {
         color: $color-white;
         &:hover {
           text-decoration: underline;
+        }
+
+        em {
+            font-style: normal;
+            color: #FFA500;
+            font-weight: 600;
         }
       }
 

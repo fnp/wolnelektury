@@ -1,17 +1,19 @@
-
 {% load i18n %}
+
 <div class="c-lang">
-  <div class="c-lang__button">
-    <i class="icon icon-lang"></i>
+  <button type="button" class="c-lang__button"
+          popovertarget="{{ list_id }}">
+    <i class="icon icon-lang" aria-label="{% trans "Język:" %}"></i>
     {{ LANGUAGE_CODE|language_name_local }}
-    <i class="icon icon-arrow-down"></i>
-  </div>
+    <i class="icon icon-arrow-down" aria-hidden="true"></i>
+  </button>
   <form method="post" action="{% url 'set_language' %}">
     {% csrf_token %}
-    <div class="c-lang__list">
+    <div class="c-lang__list" id="{{ list_id }}" popover>
       {% for lang in LANGUAGES %}
         <button type="submit" lang="{{ lang.0 }}"
-                name="language" value="{{ lang.0 }}" tabindex="121"
+                name="language" value="{{ lang.0 }}"
+                {% if lang.0 == LANGUAGE_CODE %}aria-current="true"{% endif %}
                 class="{% if lang.0 == LANGUAGE_CODE %}is-active{% endif %}">{{ lang.1 }}</button>
       {% endfor %}
     </div>
