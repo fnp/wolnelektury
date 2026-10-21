@@ -8,6 +8,12 @@
 {% load annoy %}
 
 
+{% block settings %}
+{% load title %}
+{% title book.pretty_title %}
+{% endblock %}
+
+
 {% block global-content %}
 <div class="l-container">
   {% annoy_banner 'book-page' %}
@@ -168,11 +174,11 @@
                       <div class="c-media__actions lay-col lay-l-row">
                         <div class="c-media__btn">
                           {% if book.has_audio %}
-                            <button class="l-button l-button--media" id="audiobook"><i class="icon icon-audio"></i> {% trans "pobierz audiobook" %}</button>
+                            <button class="l-button l-button--media l-button--dialog" id="audiobook"><i class="icon icon-audio"></i> {% trans "pobierz audiobook" %}</button>
                           {% endif %}
                         </div>
                         <div class="c-media__btn">
-                          <button class="l-button l-button--media" id="ebook"><i class="icon icon-book"></i> {% trans "pobierz książkę" %}</button>
+                          <button class="l-button l-button--media l-button--dialog" id="ebook"><i class="icon icon-book"></i> {% trans "pobierz książkę" %}</button>
                         </div>
                         <div class="c-media__btn">
                           {% if first_text %}
@@ -194,10 +200,9 @@
                   {% endif %}
 
 
-                  <div class="c-media__popup" data-popup="ebook">
-                    <div class="c-media__popup__box">
+                    <dialog class="c-media__popup__box" data-popup="ebook" closedby="any" aria-labelledby="popup-dl-ebook-title">
                       <div class="c-media__popup__box__lead">
-                        <h2>{% trans "Pobieranie e-booka" %}</h2>
+                        <h2 id="popup-dl-ebook-title">{% trans "Pobieranie e-booka" %}</h2>
                         <p>{% trans "Wybierz wersję dla siebie" %}:</p>
                       </div>
                       <div class="c-media__popup__box__items">
@@ -261,13 +266,11 @@
                       <button class="c-media__popup__close">
                         <img src="{% static '2022/images/close.svg' %}" alt="{% trans 'Zamknij' %}">
                       </button>
-                    </div>
-                  </div>
+                  </dialog>
                   {% if book.has_audio %}
-                    <div class="c-media__popup" data-popup="audiobook">
-                      <div class="c-media__popup__box">
+                    <dialog class="c-media__popup__box" data-popup="audiobook" closedby="any" aria-labelledby="popup-dl-audio-title">
                         <div class="c-media__popup__box__lead">
-                          <h2>{% trans "Pobieranie audiobooka" %}</h2>
+                          <h2 id="popup-dl-audio-title">{% trans "Pobieranie audiobooka" %}</h2>
                           <p>{% trans "Wybierz wersję dla siebie" %}:</p>
                         </div>
                         <div class="c-media__popup__box__items">
@@ -319,8 +322,7 @@
                         <button class="c-media__popup__close">
                           <img src="{% static '2022/images/close.svg' %}" alt="{% trans 'Zamknij' %}">
                         </button>
-                      </div>
-                    </div>
+                    </dialog>
                   {% endif %}
                 </div>
               {% else %}

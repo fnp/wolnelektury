@@ -10,11 +10,11 @@
               aria-label="{% trans "Menu konta" %}">
     {% endif %}
     {% if request.user.is_staff %}
-      <img src="{% static '2022/images/icons/user-staff.svg' %}">
+      <img src="{% static '2022/images/icons/user-staff.svg' %}" alt="Użytkownik">
     {% elif request.user.membership %}
-      <img src="{% static '2022/images/icons/user-vip.svg' %}">
+      <img src="{% static '2022/images/icons/user-vip.svg' %}" alt="Użytkownik">
     {% else %}
-      <img src="{% static '2022/images/icons/user.svg' %}">
+      <img src="{% static '2022/images/icons/user.svg' %}" alt="Użytkownik">
       {% endif %}
   {% if hide_menu %}
     </a>
@@ -45,7 +45,7 @@
   {% endif %}
 {% else %}
   <div class="l-navigation__login">
-    <a id="login-link" href='{% url 'login' %}?next={{ request.path }}'>{% trans "Zaloguj się" %}</a>
+    <a class="login-link" href='{% url 'login' %}?next={{ request.path }}'>{% trans "Zaloguj się" %}</a>
     /
     <a href='{% url 'register' %}?next={{ request.path }}'>{% trans "Załóż konto" %}</a>
   </div>

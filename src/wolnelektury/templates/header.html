@@ -17,8 +17,8 @@
       <img src="{% static "2022/images/logo.svg" %}" alt="WolneLektury.pl">
     </a>
     <div class="l-naviagion__search">
-      <form action="/szukaj/">
-        <input id="search" name="q" type="text" placeholder="szukaj tytułu, autora, motywów…" autocomplete="off" data-source="/szukaj/hint/?max=10">
+      <form action="/szukaj/" role="search">
+        <input id="search" name="q" type="text" placeholder="szukaj tytułu, autora, motywów…" autocomplete="off" data-source="/szukaj/hint/?max=10" aria-label="szukaj">
       </form>
     </div>
     <div class="l-navigation__actions">
@@ -66,27 +66,37 @@
           <div class="l-navigation__menu__blocks">
             <div class="l-navigation__menu__links">
               {% cache 30 menu LANGUAGE_CODE %}
-                <ul>
-                  <li><strong>{% trans "Katalog" %}</strong></li>
+              <div class="l-navigation__menu__group">
+                <h2 id="menu-group-1">{% trans "Katalog" %}</h2>
+                <ul aria-labelledby="menu-group-1">
                   {% menu 'Katalog' %}
                 </ul>
-                <ul>
-                  <li><strong>{% trans "Włącz się" %}</strong></li>
+              </div>
+              <div class="l-navigation__menu__group">
+                <h2 id="menu-group-2">{% trans "Włącz się" %}</h2>
+                <ul aria-labelledby="menu-group-2">
                   {% menu 'Włącz się' %}
                 </ul>
-                <ul>
-                  <li><strong>{% trans "Aktualności" %}</strong></li>
+              </div>
+              <div class="l-navigation__menu__group">
+                <h2 id="menu-group-3">{% trans "Aktualności" %}</h2>
+                <ul aria-labelledby="menu-group-3">
                   {% latest_blog_posts %}
                   {% menu 'Aktualności' %}
                 </ul>
-                <ul>
-                  <li><strong>{% trans "Narzędzia" %}</strong></li>
+              </div>
+              <div class="l-navigation__menu__group">
+                <h2 id="menu-group-4">{% trans "Narzędzia" %}</h2>
+                <ul aria-labelledby="menu-group-4">
                   {% menu 'Narzędzia' %}
                 </ul>
-                <ul>
-                  <li><strong>{% trans "O nas" %}</strong></li>
+              </div>
+              <div class="l-navigation__menu__group">
+                <h2 id="menu-group-5">{% trans "O nas" %}</h2>
+                <ul aria-labelledby="menu-group-5">
                   {% menu 'O nas' %}
                 </ul>
+              </div>
               {% endcache %}
             </div>
 
@@ -97,7 +107,7 @@
               </div>
 
               <div class="l-navigation__menu__social">
-                <ul>
+                <ul aria-label="{% trans "Media społecznościowe" %}">
                   <li>
                     <a href="https://www.facebook.com/wolnelektury/"
                        title="Facebook" target="_blank">

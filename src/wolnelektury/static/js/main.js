@@ -34,33 +34,25 @@
 
 // Ebook/Audiobook Btns
 (function() {
-  let button = $('.c-media__btn button:not(.l-button--media--full)');
-  let popupLayer = $('.c-media__popup');
-  let closeButton = $('.c-media__popup__close');
+    let dialogs = $(".l-button--dialog");
+    dialogs.on('click', function () {
+        let target = $(this).attr('id');
+        $('[data-popup=' + target)[0].showModal();
+    });
+
+    $('.c-media__popup__close').on('click', function() {
+        $(this).closest('dialog')[0].close();
+    });
+})();
+
+
+// Player
+(function() {
   let playButton = $('.c-player__btn--md');
   let chaptersButton = $('.c-player__chapters span');
   let select = $('.c-select');
   let selectItem = $('.c-select li');
   let volumeButton = $('.icon-volume');
-
-  button.on('click', function () {
-    let target = $(this).attr('id');
-    $('[data-popup=' + target).addClass('is-open');
-    $('body').addClass('popup-open');
-  });
-
-  closeButton.on('click', function() {
-    $(this).closest('.c-media__popup').removeClass('is-open');
-    $('body').removeClass('popup-open');
-  });
-
-  popupLayer.on('click', function(e) {
-    let _this = $(this);
-    if($(e.target).is(popupLayer)) {
-      _this.removeClass('is-open');
-      $('body').removeClass('popup-open');
-    }
-  });
 
   chaptersButton.on('click', function() {
     $(this).parent().toggleClass('is-active');
@@ -73,12 +65,6 @@
   selectItem.on('click', function() {
     selectItem.removeClass('is-active');
     $(this).addClass('is-active');
-  });
-
-  $(document).keyup(function(e) {
-    if (e.keyCode === 27) {
-      $('.c-media__popup').removeClass('is-open');
-    }
   });
 })();
 
@@ -383,7 +369,7 @@
                     updateLiked($btn);
                 },
                 error: function() {
-                    window.location.href = $('#login-link').attr('href');
+                    window.location.href = $('.login-link').attr('href');
                 }
             })
         } else {
@@ -396,7 +382,7 @@
                     updateLiked($btn);
                 },
                 error: function() {
-                    window.location.href = $('#login-link').attr('href')
+                    window.location.href = $('.login-link').attr('href')
                 }
             });
         }

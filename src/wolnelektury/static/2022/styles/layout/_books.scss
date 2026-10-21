@@ -28,16 +28,11 @@
   padding: 21px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0);
   transition: all $ease-dynamic 350ms;
-  outline: 0;
   margin: 5px;
 
   &.l-books__item--placeholder {
     opacity: 0;
     visibility: hidden;
-  }
-
-  & * {
-    outline: 0;
   }
 
   &:hover {
@@ -55,6 +50,7 @@
     line-height: 140%;
     letter-spacing: -0.01em;
     color: #FFFFFF;
+    --focus-ring: #fff;
 
     display: flex;
     flex-direction: column;
@@ -106,8 +102,11 @@
   font-size: 0;
   margin: 0 0 11px;
 
-  img {
-      width: 100%;
+  a {
+      display: block;
+      img {
+          width: 100%;
+      }
   }
 }
 
@@ -181,7 +180,6 @@
     border-radius: 52px;
     border: 1px solid #D9D9D9;
     width: 100%;
-    outline: 0;
     transition: border $ease-out 350ms;
 
     @input rwd($break-flow) {
@@ -229,7 +227,6 @@
       padding: 0;
       margin: 0 0 0 30px;
       background-color: transparent;
-      outline: 0;
       font-weight: $regular;
       @include font-size(18px);
       line-height: 150%;

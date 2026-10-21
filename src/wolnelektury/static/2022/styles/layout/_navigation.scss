@@ -29,24 +29,6 @@ body {
     align-items: center;
     justify-content: space-between;
   }
-
-  &.is-open {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%;
-    z-index: $master-layer;
-
-    .l-navigation__logo {
-        width: unset;
-        overflow: unset;
-    }
-
-    .l-navigation__menu {
-      opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
-    }
-  }
 }
 
 .l-navigation__logo {
@@ -342,12 +324,8 @@ body:has(dialog[open]) {
       gap: 3%;
   }
 
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    //max-width: 212px;
-    width: 45%;
+  .l-navigation__menu__group {
+      width: 45%;
 
     @include rwd($break-menu) {
       width: 100%;
@@ -355,6 +333,19 @@ body:has(dialog[open]) {
       margin-bottom: 20px;
     }
 
+    h2 {
+        margin: 16px 0 0 0;
+        color: #92BD39;
+        font-weight: $semibold;
+        @include font-size(21px);
+        line-height: 140%;
+        letter-spacing: -0.01em;
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
     li {
       font-weight: $regular;
       font-size: 16px;
@@ -364,14 +355,6 @@ body:has(dialog[open]) {
       @include rwd($break-menu) {
           font-size: 18px;
           line-height: 115%;
-      }
-
-      strong {
-        color: #92BD39;
-        font-weight: $semibold;
-        @include font-size(21px);
-        line-height: 140%;
-        letter-spacing: -0.01em;
       }
 
       a {
@@ -394,6 +377,7 @@ body:has(dialog[open]) {
         margin-left: 0;
         border: 0;
       }
+    }
     }
   }
 }

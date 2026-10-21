@@ -9,7 +9,10 @@
 {% load annoy %}
 
 
-{% block title %}{{ book.pretty_title }}{% endblock %}
+{% block settings %}
+{% load title %}
+{% title book.pretty_title %}
+{% endblock %}
 
 
 {% block extrahead %}
