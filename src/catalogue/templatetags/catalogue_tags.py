@@ -164,7 +164,7 @@ def book_tree_texml(book_list, books_by_parent, depth=1):
             %(children)s
             """ % {
                 "depth": depth,
-                "title": book.title,
+                "title": book.title.replace('&', '&amp;').replace('<', '&lt;'),
                 "audiences": ", ".join(book.audiences_pl()),
                 "audiobook": "audiobook" if book.has_media('mp3') else "",
                 "children": book_tree_texml(books_by_parent.get(book.id, ()), books_by_parent, depth + 1)
