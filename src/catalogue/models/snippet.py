@@ -26,4 +26,4 @@ class Snippet(models.Model):
 
     @classmethod
     def update_all(cls):
-        cls.objects.all().update(search_vector = build_search_vector('text'))
+        cls.objects.all().update(search_vector=UnaccentSearchVector('text'))
