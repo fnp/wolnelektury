@@ -1,7 +1,7 @@
 x-app-base: &app-base
   build:
     context: .
-    target: dev
+    target: deps
     args:
       UID: ${UID:-1000}
       GID: ${GID:-1000}
@@ -27,6 +27,9 @@ services:
   web:
     <<: *app-base
     command: ./manage.py runserver 0.0.0.0:8000
+    ports:
+      # Dev: use http://localhost:8000/ directly
+      - "127.0.0.1:8000:8000"
 
   celery:
     <<: *app-base
@@ -48,6 +51,9 @@ services:
     image: memcached:1.6-alpine
 
   nginx:
+    # Just for testing production-like environment.
+    # docker compose --profile nginx up
+    profiles: ["nginx"]
     build:
       context: .
       target: nginx

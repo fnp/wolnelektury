@@ -4,6 +4,7 @@
 import os
 
 DEBUG = os.environ.get('DEBUG', '')
+SECRET_KEY = os.environ.get('SECRET_KEY', None)
 
 ADMINS = [
     # ('Your Name', 'your_email@domain.com'),

@@ -29,7 +29,7 @@ def get_hints(prefix, user=None, limit=10):
     data = []
     if len(data) < limit:
         authors = catalogue.models.Tag.objects.filter(
-            category='author', name_pl__iregex='\m' + prefix).only('name', 'id', 'slug', 'category')
+            category='author', name_pl__iregex=r'\m' + prefix).only('name', 'id', 'slug', 'category')
         data.extend([
             {
                 'type': 'author',
@@ -44,7 +44,7 @@ def get_hints(prefix, user=None, limit=10):
     
     if user is not None and user.is_authenticated and len(data) < limit:
         tags = social.models.UserList.objects.filter(
-            user=user, name__iregex='\m' + prefix).only('name', 'id', 'slug')
+            user=user, name__iregex=r'\m' + prefix).only('name', 'id', 'slug')
         data.extend([
             {
                 'type': 'userlist',
@@ -56,7 +56,7 @@ def get_hints(prefix, user=None, limit=10):
         ])
     if len(data) < limit:
         tags = catalogue.models.Tag.objects.filter(
-            category__in=('theme', 'genre', 'epoch', 'kind'), name_pl__iregex='\m' + prefix).only('name', 'id', 'slug', 'category')
+            category__in=('theme', 'genre', 'epoch', 'kind'), name_pl__iregex=r'\m' + prefix).only('name', 'id', 'slug', 'category')
         data.extend([
             {
                 'type': tag.category,
@@ -69,7 +69,7 @@ def get_hints(prefix, user=None, limit=10):
         ])
     if len(data) < limit:
         collections = catalogue.models.Collection.objects.filter(
-            title_pl__iregex='\m' + prefix).only('title', 'slug')
+            title_pl__iregex=r'\m' + prefix).only('title', 'slug')
         data.extend([
             {
                 'type': 'collection',
@@ -80,7 +80,7 @@ def get_hints(prefix, user=None, limit=10):
             for collection in collections[:limit - len(data)]
         ])
     if len(data) < limit:
-        for b in catalogue.models.Book.objects.filter(findable=True, title__iregex='\m' + prefix)[:limit-len(data)]:
+        for b in catalogue.models.Book.objects.filter(findable=True, title__iregex=r'\m' + prefix)[:limit-len(data)]:
             author_str = b.author_unicode()
             translator = b.translator()
             if translator:
@@ -99,7 +99,7 @@ def get_hints(prefix, user=None, limit=10):
         infos = infopages.models.InfoPage.objects.filter(
             published=True,
             findable=True,
-            title_pl__iregex='\m' + prefix).only('title', 'id', 'slug')
+            title_pl__iregex=r'\m' + prefix).only('title', 'id', 'slug')
         data.extend([
             {
                 'type': 'info',

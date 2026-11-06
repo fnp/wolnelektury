@@ -1,9 +1,32 @@
-# Base system and requirements.
+# Wolne Lektury images.
+#
+# Stages marked with ##### are build targets:
+#   deps      dev image (docker-compose.yml, code mounted)
+#   test      docker-compose.test.yml
+#   prod      production app image (default, last stage)
+#   nginx     production nginx with static files
+#   postgres  Postgres with Polish dictionary
+# Stages marked with ===== are intermediate.
 
-FROM python:3.9-trixie AS base
 
+# Global build arguments. Stages using UID/GID must redeclare them
+# (bare `ARG UID`) to bring them into scope; the defaults are set here.
+
+ARG PYTHON_IMAGE=python:3.9-trixie
 ARG UID=8100
 ARG GID=8100
+
+
+##########
+#  deps  #############################################################
+#
+#  Base system and requirements.
+#  Used directly as the dev image, with code mounted.
+#
+FROM ${PYTHON_IMAGE} AS deps
+
+ARG UID
+ARG GID
 
 RUN     apt-get update && apt-get install -y \
 	git \
@@ -40,19 +63,13 @@ WORKDIR /app/src
 RUN mkdir /app/.ipython
 
 
-
-# dev
-# Assumes code will be mounted.
-
-FROM base AS dev
-
-#RUN pip install --no-cache-dir coverage
-
-
-# prod-base
-# Installs code and production requirements.
-
-FROM base AS prod-base
+#=======#
+#  app  #=============================================================
+#
+#  Code and production requirements. Not production yet: needs
+#  staticfiles.json manifest from static-builder.
+#
+FROM deps AS app
 
 USER root
 
@@ -63,22 +80,27 @@ USER app
 COPY src /app/src
 
 
-# static-builder
-# Static files are collected here. Statics are then copied into an Nginx image,
-# and staticfiles.json manifest file is copied back into production image.
-
-FROM prod-base AS static-builder
+#==================#
+#  static-builder  #==================================================
+#
+#  Static files are collected here. Statics are then copied into
+#  the nginx image, and staticfiles.json manifest is copied back
+#  into the test and prod images.
+#
+FROM app AS static-builder
 
 RUN python manage.py collectstatic --noinput
 
 
-# nginx
-# Contains static files and nginx config.
-
+###########
+#  nginx  ############################################################
+#
+#  Static files for production nginx. Config is mounted.
+#
 FROM nginx:alpine AS nginx
 
-ARG UID=8100
-ARG GID=8100
+ARG UID
+ARG GID
 
 # COPY nginx.conf conf.d/...
 
@@ -86,13 +108,13 @@ RUN addgroup -g $GID app && addgroup nginx app
 COPY --from=static-builder /app/var/static /app/var/static
 
 
-
-
-# Postgres with Polish hunspell dictionary withoud diacritics
-# to allow full text search without diacritics.
-
-# --- Stage 1: prepare dictionary files ---
-FROM python:3.13-slim-trixie AS polish-dict
+#===============#
+#  polish-dict  #=====================================================
+#
+#  Polish hunspell dictionary without diacritics, to allow
+#  full text search without diacritics.
+#
+FROM ${PYTHON_IMAGE} AS polish-dict
 
 RUN apt-get update \
  && apt-get install -y --no-install-recommends hunspell-pl \
@@ -109,7 +131,12 @@ RUN set -eu; \
         /out/polish.dict /out/polish.affix; \
     dpkg-query -W -f='hunspell-pl ${Version}\n' hunspell-pl > /out/polish.version
 
-# --- Stage 2: actual Postgres image with the dictionary ---
+
+##############
+#  postgres  #########################################################
+#
+#  Postgres with the dictionary from polish-dict.
+#
 FROM postgres:18 AS postgres
 
 COPY --from=polish-dict /out/ /tmp/polish-dict/
@@ -119,10 +146,28 @@ RUN mv /tmp/polish-dict/* "/usr/share/postgresql/$PG_MAJOR/tsearch_data/" \
 COPY scripts/postgres-polish.sql /docker-entrypoint-initdb.d/10-postgres-polish.sql
 
 
+##########
+#  test  #############################################################
+#
+#  Production image plus test requirements. Defined before `prod`,
+#  so that `prod` stays the default (last) stage.
+#
+FROM app AS test
 
-# prod
-# That's the production image with staticfiles.json manifest file added.
+USER root
+COPY requirements/requirements-test.txt /tmp/
+RUN pip install --no-cache-dir -r /tmp/requirements-test.txt
+USER app
+RUN mkdir -p /app/var/counters
+COPY --from=static-builder /app/var/static/staticfiles.json /app/var/static/staticfiles.json
+CMD ["./manage.py", "test"]
 
-FROM prod-base AS prod
+
+##########
+#  prod  #############################################################
+#
+#  Production image: app + staticfiles.json manifest.
+#
+FROM app AS prod
 
 COPY --from=static-builder /app/var/static/staticfiles.json /app/var/static/staticfiles.json

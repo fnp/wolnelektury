@@ -1,4 +1,5 @@
 localsettings.py
+.env
 dev.sqlite
 *.db
 *.db-journal

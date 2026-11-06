@@ -23,7 +23,7 @@ class VisitsBase(models.Model):
         data = urlopen(url).read().decode('utf-16')
         lines = data.split('\n')[1:]
         for line in lines:
-            m = re.match('^/katalog/lektura/([^,]+)\.html,', line)
+            m = re.match(r'^/katalog/lektura/([^,]+)\.html,', line)
             if m is not None:
                 slug = m.group(1)
                 _url, uviews, views, _rest = line.split(',', 3)

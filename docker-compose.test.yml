@@ -1,0 +1,31 @@
+#   make test
+#   make test ARGS=catalogue
+
+name: wolnelektury-test
+
+x-env: &env
+  POSTGRES_USER: wl
+  POSTGRES_PASSWORD: wl
+
+services:
+  test:
+    build:
+      context: .
+      target: test
+      args:
+        UID: ${UID:-1000}
+        GID: ${GID:-1000}
+    environment:
+      <<: *env
+      SECRET_KEY: test
+      ALLOWED_HOSTS: "*"
+      COVERAGE_FILE: /tmp/.coverage
+    volumes:
+      - ./htmlcov:/app/htmlcov
+    depends_on: [db]
+
+  db:
+    build: {context: ., target: postgres}
+    environment: *env
+    tmpfs: [/var/lib/postgresql]
+

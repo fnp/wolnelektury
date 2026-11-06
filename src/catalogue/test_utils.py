@@ -38,7 +38,7 @@ class PersonStub:
 
 
 class BookInfoStub:
-    _empty_fields = ['cover_url', 'variant_of']
+    _empty_fields = ['cover_url', 'variant_of', 'license']
     # allow single definition for multiple-value fields
     _salias = {
         'authors': 'author',

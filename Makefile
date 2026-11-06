@@ -12,15 +12,14 @@ deploy: src/wolnelektury/localsettings.py
 	src/manage.py collectstatic --noinput
 
 
-.ONESHELL:
+TEST_COMPOSE := docker compose -f docker-compose.test.yml
+
 test:
-	cd src
-	python -Wall -m coverage run --branch --source='.' ./manage.py test; true
-	coverage html -d ../htmlcov.new
-	rm -rf ../htmlcov
-	mv ../htmlcov.new ../htmlcov
-	coverage report
-	rm .coverage
+	mkdir -p htmlcov
+	UID=$(UID) GID=$(GID) $(TEST_COMPOSE) run --rm --build test sh -c '\
+	  python -Wall -m coverage run --branch --source=. ./manage.py test $(ARGS); s=$$?; \
+	  coverage report --skip-covered; coverage html -d /app/htmlcov; exit $$s'; \
+	status=$$?; $(TEST_COMPOSE) down; exit $$status
 
 
 up:

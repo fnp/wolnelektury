@@ -10,3 +10,11 @@ MEDIA_URL = '/media/'
 SEARCH_CONFIG = 'english'
 SEARCH_CONFIG_SIMPLE = 'simple'
 SEARCH_USE_UNACCENT = False
+
+# Infrastructure: tests don't need Redis or Memcached.
+CELERY_BROKER_URL = 'memory://'
+CELERY_TASK_ALWAYS_EAGER = True
+CACHES = {
+    'default': {'BACKEND': 'django.core.cache.backends.dummy.DummyCache'},
+    'template_fragments': {'BACKEND': 'django.core.cache.backends.dummy.DummyCache'},
+}
