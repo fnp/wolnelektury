@@ -154,6 +154,8 @@ class UserListItemReadSerializerV3(UserListItemSerializer):
 class UserListItemReadSerializer(UserListItemSerializer):
     book = catalogue.api.serializers.BookSerializer2()
     bookmark = bookmarks.api.views.BookmarkSerializer()
+    quote = bookmarks.api.views.QuoteSerializer()
+
     class Meta:
         model = models.UserListItem
         fields = [
