@@ -26,7 +26,7 @@ x-app-base: &app-base
 services:
   web:
     <<: *app-base
-    command: ./manage.py runserver 0.0.0.0:8000
+    command: python -Wall ./manage.py runserver 0.0.0.0:8000
     ports:
       # Dev: use http://localhost:8000/ directly
       - "127.0.0.1:8000:8000"

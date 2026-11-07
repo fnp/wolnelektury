@@ -4,6 +4,7 @@
 from django.core.files.base import ContentFile
 from catalogue.test_utils import *
 from catalogue.models import Book
+from django.contrib.auth.models import User
 
 
 class DictionaryTests(WLTestCase):
@@ -17,6 +18,9 @@ class DictionaryTests(WLTestCase):
             epoch="X-Epoch",
             **info_args("Default Book")
         )
+        self.user = User.objects.create(username='test')
+        self.user.set_password('test')
+        self.user.save()
 
     def test_book_with_footnote(self):
         book_text = b"""<utwor>
@@ -28,6 +32,7 @@ class DictionaryTests(WLTestCase):
         """
 
         book = Book.from_text_and_meta(ContentFile(book_text), self.book_info)
+        self.client.login(username='test', password='test')
 
         self.assertEqual(
             len(self.client.get('/przypisy/').context['object_list']),

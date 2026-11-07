@@ -5,6 +5,7 @@ from rest_framework import serializers
 from api.fields import AbsoluteURLField
 from catalogue.models import Book
 from club.models import Membership
+from social.models import UserList
 
 
 class BookLiked(serializers.ReadOnlyField):
@@ -15,9 +16,11 @@ class BookLiked(serializers.ReadOnlyField):
         request = self.context['request']
         if not hasattr(request, 'liked_books'):
             if request.user.is_authenticated:
-                request.liked_books = set(
-                    Book.tagged.with_any(request.user.tag_set.all()).values_list('id', flat=True)
-                )
+                like_list = UserList.get_favorites_list(user=request.user)
+                if like_list is not None:
+                    request.liked_books = [b.id for b in like_list.get_books()]
+                else:
+                    request.liked_books = []
             else:
                 request.liked_books = None
         if request.liked_books is not None:

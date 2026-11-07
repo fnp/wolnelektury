@@ -806,7 +806,8 @@ class Book(models.Model):
         for format_ in constants.EBOOK_FORMATS_WITH_CHILDREN:
             if format_ not in dont_build:
                 getattr(book, '%s_file' % format_).build_delay()
-        book.html_nonotes_file.build_delay()
+        if 'html_nonotes' not in dont_build:
+            book.html_nonotes_file.build_delay()
 
         if not settings.NO_SEARCH_INDEX and search_index and findable:
             tasks.index_book.delay(book.id)
@@ -815,7 +816,8 @@ class Book(models.Model):
             child.parent_cover_changed()
 
         book.update_popularity()
-        tasks.update_references.delay(book.id)
+        if 'references' not in dont_build:
+            tasks.update_references.delay(book.id)
 
         cls.published.send(sender=cls, instance=book)
         return book

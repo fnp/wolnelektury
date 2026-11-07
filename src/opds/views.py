@@ -444,8 +444,10 @@ class SearchFeed(AcquisitionFeed):
             ).filter(search_vector=UnaccentSearchQuery(criteria['categories'], config=settings.SEARCH_CONFIG))
             books = books.filter(tag_relations__tag__in=tags)
         if criteria['translator']:
-            # TODO
-            pass
+            authors = Tag.objects.filter(category='author').annotate(
+                search_vector=UnaccentSearchVector('name_pl')
+            ).filter(search_vector=UnaccentSearchQuery(criteria['translator'], config=settings.SEARCH_CONFIG))
+            books = books.filter(translators__in=authors)
         if criteria['title']:
             books = books.filter(
                 search_vector=UnaccentSearchQuery(criteria['title'], config=settings.SEARCH_CONFIG)

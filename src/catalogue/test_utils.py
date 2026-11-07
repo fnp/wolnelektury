@@ -13,7 +13,7 @@ from librarian import WLURI
 
 @override_settings(
     MEDIA_ROOT=tempfile.mkdtemp(prefix='djangotest_'),
-    CATALOGUE_DONT_BUILD={'pdf', 'mobi', 'epub', 'txt', 'fb2', 'cover'},
+    CATALOGUE_DONT_BUILD={'pdf', 'mobi', 'epub', 'txt', 'fb2', 'cover', 'html_nonotes', 'references'},
     NO_SEARCH_INDEX=True,
     CELERY_TASK_ALWAYS_EAGER=True,
     CACHES={

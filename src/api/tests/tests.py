@@ -416,7 +416,7 @@ class AuthorizedTests(ApiTest):
         self.assert_slugs('/api/preview/', ['grandchild'])
         self.assertEqual(
             self.signed_json('/api/username/'),
-            {"username": "test", "premium": False})
+            {"username": "test", "confirmed": True, "premium": False})
         self.assertEqual(
             self.signed('/api/epub/grandchild/').status_code,
             403)
@@ -424,7 +424,7 @@ class AuthorizedTests(ApiTest):
         with patch('club.models.Membership.is_active_for', return_value=True):
             self.assertEqual(
                 self.signed_json('/api/username/'),
-                {"username": "test", "premium": True})
+                {"username": "test", "confirmed": True, "premium": True})
             with patch('django.core.files.storage.Storage.open',
                        return_value=BytesIO(b"<epub>")):
                 self.assertEqual(
