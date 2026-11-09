@@ -3,7 +3,6 @@
 #
 import datetime
 from django.db import migrations, models
-from django.utils.timezone import utc
 
 
 class Migration(migrations.Migration):
@@ -16,7 +15,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='bookuserdata',
             name='last_changed',
-            field=models.DateTimeField(default=datetime.datetime(2018, 11, 28, 14, 41, 2, 673054, tzinfo=utc), auto_now=True),
+            field=models.DateTimeField(default=datetime.datetime(2018, 11, 28, 14, 41, 2, 673054, tzinfo=datetime.timezone.utc), auto_now=True),
             preserve_default=False,
         ),
     ]

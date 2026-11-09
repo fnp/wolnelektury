@@ -1,7 +1,7 @@
 # This file is part of Wolne Lektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Wolne Lektury. See NOTICE for more information.
 #
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from decimal import Decimal
 import os
 import tempfile
@@ -12,7 +12,7 @@ from django.core.mail import send_mail, EmailMessage
 from django.urls import reverse
 from django.db import models
 from django import template
-from django.utils.timezone import now, utc
+from django.utils.timezone import now
 from django.utils.translation import get_language
 from django_countries.fields import CountryField
 from catalogue.utils import get_random_hash
@@ -314,7 +314,7 @@ class Membership(models.Model):
 
         Contact = apps.get_model('messaging', 'Contact')
         if self.manual:
-            Contact.update(email, Level.MANUAL_MEMBER, datetime.combine(self.updated_at, datetime.min.time(), utc))
+            Contact.update(email, Level.MANUAL_MEMBER, datetime.combine(self.updated_at, datetime.min.time(), timezone.utc))
         else:
             Contact.reset(email)
 
@@ -497,7 +497,7 @@ class PayUOrder(payu_models.Order):
                 booking_date__year=year
         ):
             payments.append({
-                'timestamp': datetime(pa.booking_date.year, pa.booking_date.month, pa.booking_date.day, tzinfo=utc),
+                'timestamp': datetime(pa.booking_date.year, pa.booking_date.month, pa.booking_date.day, tzinfo=timezone.utc),
                 'amount': Decimal(str(pa.debit.amount) + '.00')
             })
 

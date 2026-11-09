@@ -11,7 +11,7 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.core.mail import send_mail
 from django.urls import reverse
-from django.utils.timezone import now, utc
+from django.utils.timezone import now
 from catalogue.models import Book
 from catalogue.utils import get_random_hash
 from wolnelektury.utils import cached_render, clear_cached_renders

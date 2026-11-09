@@ -29,18 +29,14 @@ class Bookmark(Syncable, models.Model):
         return str(self.uuid)
 
     def save(self, *args, **kwargs):
-        # TODO: placeholder.
-        try:
-            audio_l = self.book.get_audio_length()
-        except:
-            audio_l = 60
-
-        if self.anchor:
-            self.mode = 'text'
-            self.audio_timestamp = self.book.sync_elid(self.anchor)
-        if self.audio_timestamp:
-            self.mode = 'audio'
-            self.anchor = self.book.sync_ts(self.audio_timestamp) or ''
+        audio_l = self.book.get_audio_length()
+        if audio_l:
+            if self.anchor and self.audio_timestamp is None:
+                self.mode = 'text'
+                self.audio_timestamp = self.book.sync_elid(self.anchor)
+            elif not self.anchor and self.audio_timestamp is not None:
+                self.mode = 'audio'
+                self.anchor = self.book.sync_ts(self.audio_timestamp) or ''
         return super().save(*args, **kwargs)
 
     @classmethod

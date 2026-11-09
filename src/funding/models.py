@@ -1,7 +1,7 @@
 # This file is part of Wolne Lektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Wolne Lektury. See NOTICE for more information.
 #
-from datetime import date, datetime
+from datetime import date
 from urllib.parse import urlencode
 from django.conf import settings
 from django.contrib.sites.models import Site
@@ -11,7 +11,7 @@ from django.dispatch import receiver
 from django.template.loader import render_to_string
 from django.urls import reverse
 from django.utils.html import mark_safe
-from django.utils.timezone import utc
+from django.utils.timezone import now
 from django.utils.translation import gettext_lazy as _, override
 from catalogue.models import Book
 from catalogue.utils import get_random_hash
@@ -161,7 +161,7 @@ class Offer(models.Model):
                 'remaining': self.remaining(),
                 'current': self.current(),
             })
-        self.notified_end = datetime.utcnow().replace(tzinfo=utc)
+        self.notified_end = now()
         self.save()
 
     def notify_near(self, force=False):
@@ -179,7 +179,7 @@ class Offer(models.Model):
                 'sum': sum_,
                 'need': need,
             })
-        self.notified_near = datetime.utcnow().replace(tzinfo=utc)
+        self.notified_near = now()
         self.save()
 
     def notify_published(self):

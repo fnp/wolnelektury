@@ -1,10 +1,10 @@
 # This file is part of Wolne Lektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Wolne Lektury. See NOTICE for more information.
 #
-from datetime import datetime
+from datetime import datetime, timezone
 from django.db.models import Q
 from django.http import Http404
-from django.utils.timezone import now, utc
+from django.utils.timezone import now
 from rest_framework.exceptions import MethodNotAllowed
 from rest_framework.generics import ListAPIView, ListCreateAPIView, RetrieveAPIView, RetrieveUpdateAPIView, RetrieveUpdateDestroyAPIView, get_object_or_404
 from rest_framework.permissions import SAFE_METHODS, IsAuthenticated, IsAuthenticatedOrReadOnly
@@ -355,7 +355,7 @@ class SyncView(ListAPIView):
         except:
             timestamp = 0
 
-        timestamp = datetime.fromtimestamp(timestamp, tz=utc)
+        timestamp = datetime.fromtimestamp(timestamp, tz=timezone.utc)
         
         data = []
         return self.get_queryset_for_ts(timestamp)

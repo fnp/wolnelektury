@@ -1,5 +1,5 @@
-from datetime import datetime
-from django.utils.timezone import now, utc
+from datetime import datetime, timezone
+from django.utils.timezone import now
 
 
 class Syncable:
@@ -9,7 +9,7 @@ class Syncable:
         if ts is None:
             ts = now()
         else:
-            ts = datetime.fromtimestamp(ts, tz=utc)
+            ts = datetime.fromtimestamp(ts, tz=timezone.utc)
 
         if instance is not None:
             if ts and ts < instance.reported_timestamp:
