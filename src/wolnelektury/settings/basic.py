@@ -118,6 +118,7 @@ MIDDLEWARE = [
     'fnpdjango.middleware.SetRemoteAddrFromXRealIP',
     'django.middleware.cache.FetchFromCacheMiddleware',
     'experiments.middleware.experiments_middleware',
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = 'wolnelektury.urls'
