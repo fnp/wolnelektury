@@ -7,7 +7,7 @@ docutils==0.23
 
 pymemcache==4.0.0
 
-django-pipeline==3.1.0
+django-pipeline==4.1.0
 jsmin==3.0.1
 
 fnp-django-pagination==2.2.12
