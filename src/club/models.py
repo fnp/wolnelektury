@@ -515,7 +515,7 @@ class PayUOrder(payu_models.Order):
         temp = tempfile.NamedTemporaryFile(prefix='receipt-', suffix='.pdf', delete=False)
         temp.close()
         render_to_pdf(temp.name, 'club/receipt.texml', ctx, {
-            "wl.eps": os.path.join(settings.STATIC_ROOT, "img/wl.eps"),
+            "wl.eps": os.path.join(settings.PROJECT_DIR, "static/img/wl.eps"),
             })
 
         with open(temp.name, 'rb') as f:

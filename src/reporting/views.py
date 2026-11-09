@@ -79,7 +79,7 @@ def catalogue_pdf(path):
         'orphans': orphans,
         'books_by_parent': books_by_parent,
     }, {
-        "wl-logo.png": os.path.join(settings.STATIC_ROOT, "img/logo-big.png"),
+        "wl-logo.png": os.path.join(settings.PROJECT_DIR, "static/img/logo-big.png"),
     })
 
 
