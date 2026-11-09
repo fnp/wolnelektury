@@ -134,17 +134,17 @@ PIPELINE = {
             'output_filename': 'js/widget.min.js',
         },
     },
-    'CSS_COMPRESSOR': None,
     'JS_COMPRESSOR': 'pipeline.compressors.jsmin.JSMinCompressor',
-    'COMPILERS': (
-        'libsasscompiler.LibSassCompiler',
-    )
+    'COMPILERS': ('pipeline.compilers.sass.SASSCompiler',),
+    'SASS_BINARY': '/opt/dart-sass/sass',
+    'SASS_ARGUMENTS': '--embed-source-map --embed-sources',
+    # Compress CSSwith a second run of dart-sass.
+    'CSS_COMPRESSOR': 'pipeline.compressors.cssmin.CSSMinCompressor',
+    'CSSMIN_BINARY': '/opt/dart-sass/sass',
+    'CSSMIN_ARGUMENTS': '--stdin --style=compressed --no-source-map',
 }
 
 STATICFILES_STORAGE = 'fnpdjango.pipeline_storage.GzipPipelineManifestStorage'
-
-# PIPELINE_PYSCSS_BINARY = '/usr/bin/env pyscss'
-# PIPELINE_PYSCSS_ARGUMENTS = ''
 
 
 STATICFILES_FINDERS = [

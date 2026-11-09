@@ -40,6 +40,11 @@ RUN     apt-get update && apt-get install -y \
 	texlive-fonts-extra-links \
 	fonts-noto-core fonts-noto-extra
 
+# Install dart-sass for compiling SCSS.
+ARG DART_SASS_VERSION=1.108.1
+RUN arch=$(dpkg --print-architecture | sed 's/amd64/x64/') && \
+    curl -fsSL "https://github.com/sass/dart-sass/releases/download/${DART_SASS_VERSION}/dart-sass-${DART_SASS_VERSION}-linux-${arch}.tar.gz" \
+    | tar xz -C /opt
 
 COPY requirements/requirements.txt requirements.txt
 
