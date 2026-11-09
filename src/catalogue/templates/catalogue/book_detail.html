@@ -250,7 +250,6 @@
                             </div>
                           </div>
                         {% endif %}
-                        {% if book.txt_file or book.fb2_file %}
                           <div class="c-media__popup__box__item">
                             <div>
                               <h3>{% trans "inne formaty" %}</h3>
@@ -261,7 +260,6 @@
                               </ul>
                             </div>
                           </div>
-                        {% endif %}
                       </div>
                       <button class="c-media__popup__close">
                         <img src="{% static '2022/images/close.svg' %}" alt="{% trans 'Zamknij' %}">
