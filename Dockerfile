@@ -12,7 +12,7 @@
 # Global build arguments. Stages using UID/GID must redeclare them
 # (bare `ARG UID`) to bring them into scope; the defaults are set here.
 
-ARG PYTHON_IMAGE=python:3.9-trixie
+ARG PYTHON_IMAGE=python:3.10-trixie
 ARG UID=8100
 ARG GID=8100
 
@@ -43,8 +43,10 @@ RUN     apt-get update && apt-get install -y \
 
 COPY requirements/requirements.txt requirements.txt
 
-RUN pip install --no-cache-dir -r requirements.txt
-RUN pip install --no-cache-dir \
+RUN --mount=type=cache,target=/root/.cache/pip \
+    pip install -r requirements.txt
+RUN --mount=type=cache,target=/root/.cache/pip \
+    pip install \
     psycopg2-binary \
     django-debug-toolbar==3.2.2
 
@@ -73,7 +75,8 @@ FROM deps AS app
 
 USER root
 
-RUN pip install --no-cache-dir gunicorn
+RUN --mount=type=cache,target=/root/.cache/pip \
+    pip install gunicorn
 
 USER app
 
@@ -156,7 +159,8 @@ FROM app AS test
 
 USER root
 COPY requirements/requirements-test.txt /tmp/
-RUN pip install --no-cache-dir -r /tmp/requirements-test.txt
+RUN --mount=type=cache,target=/root/.cache/pip \
+    pip install -r /tmp/requirements-test.txt
 USER app
 RUN mkdir -p /app/var/counters
 COPY --from=static-builder /app/var/static/staticfiles.json /app/var/static/staticfiles.json

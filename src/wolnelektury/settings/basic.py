@@ -38,18 +38,30 @@ CACHE_MIDDLEWARE_SECONDS = 3 * 60
 
 CACHES = {
     'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'BACKEND': 'django.core.cache.backends.memcached.PyMemcacheCache',
         'TIMEOUT': 180,
         'LOCATION': [
             'memcached:11211',
         ],
+        'OPTIONS': {
+            "no_delay": True,
+            "ignore_exc": True,       # treat memcached errors as cache misses
+            "max_pool_size": 4,
+            "use_pooling": True,
+        },
     },
     'template_fragments': {
-        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'BACKEND': 'django.core.cache.backends.memcached.PyMemcacheCache',
         'TIMEOUT': 86400,
         'LOCATION': [
             'memcached:11211',
         ],
+        'OPTIONS': {
+            "no_delay": True,
+            "ignore_exc": True,       # treat memcached errors as cache misses
+            "max_pool_size": 4,
+            "use_pooling": True,
+        },
     },
 }
 

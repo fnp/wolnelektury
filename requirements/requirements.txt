@@ -3,17 +3,17 @@
 # django
 Django==4.0.8
 fnpdjango==0.6
-docutils==0.20
+docutils==0.23
 
-python-memcached==1.59
+pymemcache==4.0.0
 
 django-pipeline==3.1.0
-libsasscompiler==0.2.0
+libsasscompiler==0.2.1
 jsmin==3.0.1
 
-fnp-django-pagination==2.2.5
+fnp-django-pagination==2.2.12
 django-modeltranslation==0.18.12
-django-allauth==0.51
+django-allauth==0.54
 django-extensions==3.2.3
 djangorestframework==3.15.1
 django-filter==23.5
@@ -21,10 +21,9 @@ djangorestframework-xml==2.0.0
 django-admin-ordering==0.18
 django-countries==7.6.1
 
--e git+https://github.com/rczajka/django-forms-builder@6533f9442f004d44ed362202b6bdab82b73dd5e9#egg=django-forms-builder
+django-forms-builder @ git+https://github.com/rczajka/django-forms-builder@6533f9442f004d44ed362202b6bdab82b73dd5e9
 
-
-oauthlib>=3.0.1,<3.1
+oauthlib==4.0.1
 
 # contact
 pyyaml==6.0.3
@@ -33,35 +32,32 @@ polib==1.2
 
 django-honeypot==1.2.1
 
-python-fb==0.2
+Feedparser==6.0.14
 
-Feedparser==6.0.11
-
-Pillow==9.5.0
-mutagen==1.47
+Pillow==12.3.0
+mutagen==1.48.1
 sorl-thumbnail==12.10.0
 
-zipstream-ng==1.9.2
+zipstream-ng==1.9.3
 
 # home-brewed & dependencies
-librarian==26.5.1
+
+librarian==26.11
 
 # celery tasks
-celery[redis]==5.4.0
+celery[redis]==5.6.2
 
-# OAI-PMH
-#pyoai==2.5.1
--e git+https://github.com/infrae/pyoai@5ff2f15e869869e70d8139e4c37b7832854d7049#egg=pyoai
+oaipmh==3.2.1
 
-sentry-sdk==2.19.2
+sentry-sdk==2.74.0
 
-requests==2.32.3
+requests==2.34.2
 
 paypalrestsdk
 
-python-slugify==8.0.4
+python-slugify==9.1.3
 
-firebase-admin==6.6.0
+firebase-admin==7.7.0
 Wikidata==0.9.0
 
 ipython

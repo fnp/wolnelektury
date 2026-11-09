@@ -76,7 +76,7 @@ class SponsorPage(models.Model):
                     min(THUMB_HEIGHT,
                         round(simg.size[1] * THUMB_WIDTH / simg.size[0]))
                 )
-                simg = simg.resize(size, Image.ANTIALIAS)
+                simg = simg.resize(size, Image.Resampling.LANCZOS)
             sprite.paste(simg, (
                     round((THUMB_WIDTH - simg.size[0]) / 2),
                     round(i * THUMB_HEIGHT + (THUMB_HEIGHT - simg.size[1]) / 2),
