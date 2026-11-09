@@ -97,6 +97,11 @@ COPY src /app/src
 #
 FROM app AS static-builder
 
+# django-pipeline compiler creates temp dirs in place. Let it.
+USER root
+RUN find /app/src/*/static -type d -exec chown app {} +
+USER app
+
 RUN python manage.py collectstatic --noinput
 
 
