@@ -6,7 +6,7 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 2
-ACCOUNT_AUTHENTICATION_METHOD = "username_email"
+ACCOUNT_LOGIN_METHODS = {'email', 'username'}
 FEATURE_CONFIRM_USER = False
 
 LOGIN_URL = '/uzytkownik/login/'

@@ -12,7 +12,7 @@
 # Global build arguments. Stages using UID/GID must redeclare them
 # (bare `ARG UID`) to bring them into scope; the defaults are set here.
 
-ARG PYTHON_IMAGE=python:3.10-trixie
+ARG PYTHON_IMAGE=python:3.11-trixie
 ARG UID=8100
 ARG GID=8100
 

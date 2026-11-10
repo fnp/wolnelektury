@@ -17,6 +17,7 @@ x-app-base: &app-base
    - ./var/counters/:/app/var/counters
    - ${LIBRARIAN:-/nonexistent}:/${LIBRARIAN:+edita}ble/librarian
    - ipython:/app/.ipython
+   - ./var/.bash_history:/app/.bash_history
   depends_on:
    - db
    - redis

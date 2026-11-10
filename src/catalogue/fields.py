@@ -1,9 +1,9 @@
 # This file is part of Wolne Lektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Wolne Lektury. See NOTICE for more information.
 #
+from importlib.metadata import version
 import io
 import os
-import pkg_resources
 import random
 import time
 from urllib.request import urlopen
@@ -151,7 +151,7 @@ class EbookField(models.FileField):
 
     def get_current_etag(self):
         MediaInsertSet = apps.get_model('annoy', 'MediaInsertSet')
-        librarian_version = pkg_resources.get_distribution("librarian").version
+        librarian_version = version("librarian")
         etag = librarian_version
         mis = MediaInsertSet.get_for_format(self.ext)
         if mis is not None:

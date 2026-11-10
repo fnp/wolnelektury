@@ -144,7 +144,14 @@ PIPELINE = {
     'CSSMIN_ARGUMENTS': '--stdin --style=compressed --no-source-map',
 }
 
-STATICFILES_STORAGE = 'fnpdjango.pipeline_storage.GzipPipelineManifestStorage'
+STORAGES = {
+    'default': {
+        'BACKEND': 'django.core.files.storage.FileSystemStorage'
+    },
+    'staticfiles': {
+        'BACKEND': 'fnpdjango.pipeline_storage.GzipPipelineManifestStorage'
+    },
+}
 
 
 STATICFILES_FINDERS = [

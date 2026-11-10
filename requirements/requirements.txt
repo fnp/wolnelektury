@@ -11,13 +11,13 @@ django-pipeline==4.1.0
 jsmin==3.0.1
 
 fnp-django-pagination==2.2.12
-django-modeltranslation==0.18.12
-django-allauth[socialaccount,openid]==0.63.6
-django-extensions==3.2.3
-djangorestframework==3.15.1
-django-filter==23.5
+django-modeltranslation==0.19.17
+django-allauth[socialaccount,openid]==65.21.1
+django-extensions==4.1
+djangorestframework==3.17.2
+django-filter==25.1
 djangorestframework-xml==2.0.0
-django-admin-ordering==0.18
+django-admin-ordering==0.22
 django-countries==7.6.1
 
 django-forms-builder @ git+https://github.com/rczajka/django-forms-builder@6533f9442f004d44ed362202b6bdab82b73dd5e9
@@ -33,9 +33,9 @@ django-honeypot==1.2.1
 
 Feedparser==6.0.14
 
-Pillow==12.3.0
+Pillow==13.0.0
 mutagen==1.48.1
-sorl-thumbnail==12.10.0
+sorl-thumbnail==13.0.0
 
 zipstream-ng==1.9.3
 
@@ -46,11 +46,12 @@ librarian==26.11
 # celery tasks
 celery[redis]==5.6.2
 
-oaipmh==3.2.1
+oaipmh==4.0.0
 
 sentry-sdk==2.74.0
 
 requests==2.34.2
+requests_oauthlib==2.0.0
 
 paypalrestsdk
 
