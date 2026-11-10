@@ -132,7 +132,7 @@ class QuoteSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = models.Quote
-        fields = ['book_slug', 'book',
+        fields = ['book_slug', 'book', 'text',
                   'start_elem', 'start_offset', 'end_elem', 'end_offset',
                   'href', 'uuid', 'timestamp', 'deleted']
         read_only_fields = ['uuid', 'mode']

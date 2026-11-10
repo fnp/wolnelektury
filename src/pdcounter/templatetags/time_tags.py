@@ -21,7 +21,7 @@ def date_to_utc(date, day_end=False):
         date += datetime.timedelta(1)
 
     localtime = datetime.datetime.combine(date, datetime.time(0, 0), timezone.get_current_timezone())
-    return timezone.localtime(localtime, timezone.utc)
+    return timezone.localtime(localtime, datetime.timezone.utc)
 
 
 @register.filter
