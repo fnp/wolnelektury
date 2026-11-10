@@ -228,7 +228,8 @@ class Book(models.Model):
         if self.preview and not self.preview_key:
             self.preview_key = get_random_hash(self.slug)[:32]
 
-        ret = super(Book, self).save(force_insert, force_update, **kwargs)
+        ret = super(Book, self).save(
+            force_insert=force_insert, force_update=force_update, **kwargs)
 
         return ret
 

@@ -50,10 +50,6 @@ COPY requirements/requirements.txt requirements.txt
 
 RUN --mount=type=cache,target=/root/.cache/pip \
     pip install -r requirements.txt
-RUN --mount=type=cache,target=/root/.cache/pip \
-    pip install \
-    psycopg2-binary \
-    django-debug-toolbar==3.2.2
 
 RUN addgroup --gid $GID app && \
     adduser --gid $GID --home /app --uid $UID app

@@ -1,13 +1,13 @@
 # This file is part of Wolne Lektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Wolne Lektury. See NOTICE for more information.
 #
-from datetime import datetime
+from datetime import datetime, timezone
 from lxml import etree
 
 from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.sites.models import Site
-from django.utils import timezone
+from django.utils.timezone import localtime, make_aware
 from oaipmh import server, common, metadata, error
 
 from api.handlers import WL_BASE
@@ -17,7 +17,7 @@ from librarian import WLURI
 
 
 def make_time_naive(d):
-    return timezone.localtime(d).replace(tzinfo=None)
+    return localtime(d).replace(tzinfo=None)
 
 WL_DC_READER_XPATH = '(.|*)/rdf:RDF/rdf:Description/%s/text()'
 wl_dc_reader = metadata.MetadataReader(
@@ -65,7 +65,7 @@ class Catalogue(common.ResumptionOAIPMH):
         self.oai_id = "oai:" + Site.objects.get_current().domain + ":%s"
 
         # earliest change
-        year_zero = timezone.make_aware(datetime(1990, 1, 1, 0, 0, 0), timezone.utc)
+        year_zero = make_aware(datetime(1990, 1, 1, 0, 0, 0), timezone.utc)
 
         try:
             earliest_change = Book.objects.filter(findable=True, preview=False).order_by('changed_at')[0].changed_at
