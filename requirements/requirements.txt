@@ -2,7 +2,7 @@
 
 # django
 Django==4.2.30
-fnpdjango==0.7
+fnpdjango==0.8
 docutils==0.23
 
 pymemcache==4.0.0
@@ -10,7 +10,7 @@ pymemcache==4.0.0
 django-pipeline==4.1.0
 jsmin==3.0.1
 
-fnp-django-pagination==2.2.12
+fnp-django-pagination==2.2.13
 django-modeltranslation==0.19.17
 django-allauth[socialaccount,openid]==65.21.1
 django-extensions==4.1
