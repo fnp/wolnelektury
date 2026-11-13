@@ -23,7 +23,7 @@ django-admin-ordering==0.22
 django-countries==9.1.0
 
 
-django-forms-builder @ git+https://github.com/rczajka/django-forms-builder@6533f9442f004d44ed362202b6bdab82b73dd5e9
+django-forms-builder @ git+https://github.com/rczajka/django-forms-builder@8364d3d1d460e015b045705cfbc87019e8d8a620
 
 oauthlib==4.0.1
 
