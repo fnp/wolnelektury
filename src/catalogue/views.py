@@ -73,7 +73,7 @@ def differentiate_tags(request, tags, ambiguous_slugs):
     )
 
 
-from django.db.models import FilteredRelation, Q
+from django.db.models import Q
 from django.views.decorators.cache import cache_control
 from django.views.decorators.vary import vary_on_headers
 from django.utils.decorators import method_decorator
@@ -187,10 +187,8 @@ class BookList(ObjectListView):
                     Q(text__icontains=term)
                 ).distinct()
             else:
-                qs = qs.annotate(
-                    meta=FilteredRelation('tag_relations', condition=Q(tag_relations__in=meta_rels))
-                )
-                qs = qs.filter(Q(title__icontains=term) | Q(meta__tag__name_pl__icontains=term)).distinct()
+                rels = meta_rels.filter(tag__name_pl__icontains=term)
+                qs = qs.filter(Q(title__icontains=term) | Q(tag_relations__in=rels)).distinct()
         return qs
 
 
