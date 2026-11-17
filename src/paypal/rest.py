@@ -1,12 +1,12 @@
 # This file is part of Wolne Lektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Wolne Lektury. See NOTICE for more information.
 #
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timedelta, timezone
 from decimal import Decimal
 import paypalrestsdk
 from django.contrib.sites.models import Site
 from django.urls import reverse
-from django.utils import timezone
+from django.utils.timezone import now
 from django.conf import settings
 from .models import BillingPlan, BillingAgreement
 
@@ -69,7 +69,7 @@ def create_agreement(amount, key, app=False):
         plan_id = create_plan(amount)
     else:
         plan_id = plan.plan_id
-    start = (timezone.now() + timedelta(0, 3600*24)).astimezone(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
+    start = (now() + timedelta(0, 3600*24)).astimezone(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
     billing_agreement = paypalrestsdk.BillingAgreement({
         "name": "Subskrypcja klubu WL",
         "description": "Stałe wsparcie Wolnych Lektur kwotą %s złotych" % amount,
