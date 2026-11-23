@@ -1,0 +1,14 @@
+[
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app",
+            "package_name": "pl.app.wolnelektury",
+            "sha256_cert_fingerprints": [
+                "4F:5E:3E:70:18:02:00:AF:7F:91:93:65:DC:55:B1:2D:81:C8:DF:62:9C:22:00:C3:D8:52:33:DF:41:E5:2C:BF"
+            ]
+        }
+    }
+]

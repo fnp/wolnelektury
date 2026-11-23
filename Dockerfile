@@ -111,7 +111,8 @@ FROM nginx:alpine AS nginx
 ARG UID
 ARG GID
 
-# COPY nginx.conf conf.d/...
+COPY scripts/nginx/nginx.conf /etc/nginx/conf.d/default.conf
+COPY scripts/nginx/well-known /app/.well-known
 
 RUN addgroup -g $GID app && addgroup nginx app
 COPY --from=static-builder /app/var/static /app/var/static
@@ -129,7 +130,7 @@ RUN apt-get update \
  && apt-get install -y --no-install-recommends hunspell-pl \
  && rm -rf /var/lib/apt/lists/*
 
-COPY scripts/fold_hunspell.py /usr/local/bin/fold_hunspell.py
+COPY scripts/postgres/fold_hunspell.py /usr/local/bin/fold_hunspell.py
 
 RUN set -eu; \
     mkdir /out; cd /tmp; \
@@ -152,7 +153,7 @@ COPY --from=polish-dict /out/ /tmp/polish-dict/
 RUN mv /tmp/polish-dict/* "/usr/share/postgresql/$PG_MAJOR/tsearch_data/" \
  && rmdir /tmp/polish-dict
 
-COPY scripts/postgres-polish.sql /docker-entrypoint-initdb.d/10-postgres-polish.sql
+COPY scripts/postgres/postgres-polish.sql /docker-entrypoint-initdb.d/10-postgres-polish.sql
 
 
 ##########
