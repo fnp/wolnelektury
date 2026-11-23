@@ -112,7 +112,7 @@ ARG UID
 ARG GID
 
 COPY scripts/nginx/nginx.conf /etc/nginx/conf.d/default.conf
-COPY scripts/nginx/well-known /app/.well-known
+COPY scripts/nginx/well-known /app/var/.well-known
 
 RUN addgroup -g $GID app && addgroup nginx app
 COPY --from=static-builder /app/var/static /app/var/static
