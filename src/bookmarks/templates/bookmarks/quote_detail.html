@@ -16,7 +16,7 @@
         <aside class="l-aside">
           <figure class="only-l">
             <a href="{{ book.get_absolute_url }}">
-              <img src="{% if book.cover_clean %}{{ book.cover_clean.url }}{% endif %}" alt="{{ book.pretty_title }}" width="240">
+              <img src="{% if book.cover %}{{ book.cover.url }}{% endif %}" alt="{{ book.pretty_title }}" width="240">
             </a>
           </figure>
           </ul>
@@ -49,7 +49,7 @@
               <div class="lay-row lay-l-block lay-spread">
                 <figure class="only-s book-cover-small">
                   <a href="{{ book.get_absolute_url }}">
-                    <img src="{% if book.cover_clean %}{{ book.cover_clean.url }}{% endif %}" alt="{{ book.pretty_title }}">
+                    <img src="{% if book.cover %}{{ book.cover.url }}{% endif %}" alt="{{ book.pretty_title }}">
                   </a>
                 </figure>
               </div>

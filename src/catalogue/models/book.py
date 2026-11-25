@@ -16,10 +16,10 @@ from django.conf import settings
 from django.db import connection, models, transaction
 import django.dispatch
 from django.contrib.contenttypes.fields import GenericRelation
+from django.core.files.storage import storages
 from django.template.loader import render_to_string
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _, get_language
-from fnpdjango.storage import BofhFileSystemStorage
 from lxml import html
 from librarian.cover import WLCover
 from librarian.html import transform_abstrakt
@@ -33,7 +33,9 @@ from catalogue.models.tag import prefetched_relations
 from catalogue import app_settings
 from wolnelektury.utils import makedirs, cached_render, clear_cached_renders
 
-bofh_storage = BofhFileSystemStorage()
+
+def get_storage():
+    return storages['book']
 
 
 class Book(models.Model):
@@ -67,24 +69,15 @@ class Book(models.Model):
     isbn_mp3 = models.CharField('ISBN audiobooka', max_length=32, blank=True)
 
     # files generated during publication
-    xml_file = fields.XmlField(storage=bofh_storage, with_etag=False)
-    html_file = fields.HtmlField(storage=bofh_storage)
-    html_nonotes_file = fields.HtmlNonotesField(storage=bofh_storage)
-    fb2_file = fields.Fb2Field(storage=bofh_storage)
-    txt_file = fields.TxtField(storage=bofh_storage)
-    epub_file = fields.EpubField(storage=bofh_storage)
-    mobi_file = fields.MobiField(storage=bofh_storage)
-    pdf_file = fields.PdfField(storage=bofh_storage)
-
-    cover = fields.CoverField('okładka', storage=bofh_storage)
-    # Cleaner version of cover for thumbs
-    cover_clean = fields.CoverCleanField('czysta okładka')
-    cover_thumb = fields.CoverThumbField('miniatura okładki')
-    cover_api_thumb = fields.CoverApiThumbField(
-        'mniaturka okładki dla aplikacji')
-    simple_cover = fields.SimpleCoverField('okładka dla aplikacji')
-    cover_ebookpoint = fields.CoverEbookpointField(
-        'okładka dla Ebookpoint')
+    xml_file = fields.XmlField(storage=get_storage, with_etag=False)
+    html_file = fields.HtmlField(storage=get_storage)
+    html_nonotes_file = fields.HtmlNonotesField(storage=get_storage)
+    fb2_file = fields.Fb2Field(storage=get_storage)
+    txt_file = fields.TxtField(storage=get_storage)
+    epub_file = fields.EpubField(storage=get_storage)
+    mobi_file = fields.MobiField(storage=get_storage)
+    pdf_file = fields.PdfField(storage=get_storage)
+    cover = fields.CoverField('okładka', storage=get_storage)
 
     ebook_formats = constants.EBOOK_FORMATS
     formats = ebook_formats + ['html', 'xml', 'html_nonotes']
@@ -639,7 +632,7 @@ class Book(models.Model):
             for filename in os.listdir(gallery_path):
                 file_path = os.path.join(gallery_path, filename)
                 os.unlink(file_path)
-        ilustr_elements = list(self.wldocument().edoc.findall('//ilustr'))
+        ilustr_elements = list(self.wldocument().edoc.findall('.//ilustr'))
         if ilustr_elements:
             makedirs(gallery_path)
             for ilustr in ilustr_elements:
@@ -661,7 +654,7 @@ class Book(models.Model):
         if self.html_file:
             parser = html.HTMLParser(encoding='utf-8')
             tree = html.parse(self.html_file.path, parser=parser)
-            toc = tree.find('//div[@id="toc"]/ol')
+            toc = tree.find('.//div[@id="toc"]/ol')
             if toc is None or not len(toc):
                 return
             html_link = reverse('book_text', args=[self.slug])
@@ -792,11 +785,6 @@ class Book(models.Model):
         # Build cover.
         if 'cover' not in dont_build:
             book.cover.build_delay()
-            book.cover_clean.build_delay()
-            book.cover_thumb.build_delay()
-            book.cover_api_thumb.build_delay()
-            book.simple_cover.build_delay()
-            book.cover_ebookpoint.build_delay()
 
         # Build HTML and ebooks.
         book.html_file.build_delay()
@@ -1002,11 +990,6 @@ class Book(models.Model):
         if not self.cover_info(inherit=False):
             if 'cover' not in app_settings.DONT_BUILD:
                 self.cover.build_delay()
-                self.cover_clean.build_delay()
-                self.cover_thumb.build_delay()
-                self.cover_api_thumb.build_delay()
-                self.simple_cover.build_delay()
-                self.cover_ebookpoint.build_delay()
             for format_ in constants.EBOOK_FORMATS_WITH_COVERS:
                 if format_ not in app_settings.DONT_BUILD:
                     getattr(self, '%s_file' % format_).build_delay()

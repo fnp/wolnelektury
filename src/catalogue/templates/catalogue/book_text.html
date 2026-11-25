@@ -29,7 +29,7 @@
   <li>
     <a href="{{ book.get_absolute_url }}" id="menu-book" data-box="book-short">
       <span class="label">{% trans "Kliknij, by pobrać" %}:</span>
-      <img src="{% if book.cover_clean %}{% thumbnail book.cover_clean '240x332' as thumb %}{{ thumb.url }}{% empty %}{{ book.cover_clean.url }}{% endthumbnail %}{% endif %}"
+      <img src="{% if book.cover %}{% thumbnail book.cover '240x332' as thumb %}{{ thumb.url }}{% empty %}{{ book.cover.url }}{% endthumbnail %}{% endif %}"
            width="120" height="166"
            alt="{{ book.pretty_title }}"
            title="{{ book.pretty_title }}">
@@ -148,7 +148,7 @@
   </div>
 
   <header class="l-text_header">
-    <img class="l-text_header_cover" src="{% if book.cover_clean %}{{ book.cover_clean.url }}{% endif %}" alt="{{ book.pretty_title }}">
+    <img class="l-text_header_cover" src="{% if book.cover %}{{ book.cover.url }}{% endif %}" alt="{{ book.pretty_title }}">
 
     <div class="l-text_header__content">
       <p class="l-text_header_author">{% for author in book.authors %}<a href="{{ author.get_absolute_url }}">{{ author.name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}

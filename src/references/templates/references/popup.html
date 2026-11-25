@@ -18,7 +18,7 @@
   <div class="c-search-result-fragment">
     <div class="l-popup-book-header">
       <div>
-        {% thumbnail ref.book.cover_clean '150x150' as th %}
+        {% thumbnail ref.book.cover '150x150' as th %}
         <a href="{{ ref.book.get_absolute_url }}" target="_blank">
           <img src="{{ th.url }}" alt="{{ ref.book.pretty_title }}" title="{{ ref.book.pretty_title }}">
         {% endthumbnail %}

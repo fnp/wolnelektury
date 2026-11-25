@@ -145,6 +145,8 @@ class BookSerializer2(serializers.ModelSerializer):
     mobi = EmbargoURLField(source='mobi_url')
     pdf = EmbargoURLField(source='pdf_url')
 
+    cover_thumb = ThumbnailField('139x193', source='cover')
+
     authors = AuthorItemSerializer(many=True)
     translators = AuthorItemSerializer(many=True)
     epochs = EpochItemSerializer(many=True)
@@ -217,9 +219,9 @@ class BookSerializer(LegacyMixin, serializers.ModelSerializer):
     genre = serializers.CharField(source='genre_unicode')
     liked = BookLiked()
 
-    simple_thumb = serializers.FileField(source='cover_api_thumb')
     href = AbsoluteURLField(view_name='catalogue_api_book', view_args=['slug'])
     url = AbsoluteURLField()
+    simple_thumb = ThumbnailField('139x193', source='cover')
     cover_thumb = ThumbnailField('139x193', source='cover')
 
     class Meta:
@@ -235,7 +237,7 @@ class BookSerializer(LegacyMixin, serializers.ModelSerializer):
 
 class BookListSerializer(BookSerializer):
     cover = serializers.CharField()
-    cover_thumb = serializers.CharField()
+    cover_thumb = serializers.CharField(source='cover')
 
     Meta = BookSerializer.Meta
 
@@ -290,8 +292,9 @@ class BookDetailSerializer(LegacyMixin, serializers.ModelSerializer):
     mobi = EmbargoURLField(source='mobi_url')
     pdf = EmbargoURLField(source='pdf_url')
     media = MediaSerializer(many=True)
+    simple_cover = serializers.FileField(source='cover')
     cover_thumb = ThumbnailField('139x193', source='cover')
-    simple_thumb = serializers.FileField(source='cover_api_thumb')
+    simple_thumb = ThumbnailField('139x193', source='cover')
 
     class Meta:
         model = Book

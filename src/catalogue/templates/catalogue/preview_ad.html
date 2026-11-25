@@ -16,9 +16,9 @@
   </div>
   <div class="l-navigation__menu__book__info">
     <h3>
-      {% if book.cover_clean %}
+      {% if book.cover %}
         <a href="{{ book.get_absolute_url }}" tabindex="-1">
-          <img src="{{ book.cover_clean.url }}" alt="{{ book.pretty_title }}">
+          <img src="{{ book.cover.url }}" alt="{{ book.pretty_title }}">
         </a>
       {% endif %}
       <a href="{{ book.get_absolute_url }}" tabindex="-1">

@@ -68,7 +68,7 @@
     "language": "pol",
     "parent": null, 
     "cover_color": "#a6820a", 
-    "simple_cover": "http://testserver/media/simple_cover/parent.jpg",
+    "simple_cover": "http://testserver/media/cover/parent.jpg",
     "authors": [
         {
             "url": "http://testserver/katalog/autor/john-doe/",
@@ -85,7 +85,7 @@
     "url": "http://testserver/katalog/lektura/parent/",
     "cover": "http://testserver/media/cover/parent.jpg",
     "pdf": "http://testserver/media/pdf/parent.pdf",
-    "simple_thumb": "http://testserver/media/cover_api_thumb/parent.jpg",
+    "simple_thumb": "http://testserver/media/cover/parent.jpg-139x193",
     "isbn_epub": null,
     "isbn_mobi": null,
     "isbn_pdf": null

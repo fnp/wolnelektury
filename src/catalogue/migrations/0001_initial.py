@@ -3,7 +3,6 @@
 #
 from django.db import models, migrations
 import django.db.models.deletion
-import fnpdjango.storage
 import catalogue.fields
 import catalogue.models.bookmedia
 from django.conf import settings
@@ -35,16 +34,16 @@ class Migration(migrations.Migration):
                 ('extra_info', models.TextField(default='{}', verbose_name='Additional information')),
                 ('gazeta_link', models.CharField(max_length=240, blank=True)),
                 ('wiki_link', models.CharField(max_length=240, blank=True)),
-                ('cover', models.FileField(storage=fnpdjango.storage.BofhFileSystemStorage(), max_length=255, blank=True, null=True, verbose_name='cover')),
+                ('cover', models.FileField(storage=catalogue.models.book.get_storage, max_length=255, blank=True, null=True, verbose_name='cover')),
                 ('cover_thumb', models.FileField(max_length=255, null=True, verbose_name='cover thumbnail', blank=True)),
                 ('_related_info', models.TextField(null=True, editable=False, blank=True)),
-                ('txt_file', models.FileField(default='', storage=fnpdjango.storage.BofhFileSystemStorage(), max_length=255, blank=True, verbose_name='TXT file')),
-                ('fb2_file', models.FileField(default='', storage=fnpdjango.storage.BofhFileSystemStorage(), max_length=255, blank=True, verbose_name='FB2 file')),
-                ('pdf_file', models.FileField(default='', storage=fnpdjango.storage.BofhFileSystemStorage(), max_length=255, blank=True, verbose_name='PDF file')),
-                ('epub_file', models.FileField(default='', storage=fnpdjango.storage.BofhFileSystemStorage(), max_length=255, blank=True, verbose_name='EPUB file')),
-                ('mobi_file', models.FileField(default='', storage=fnpdjango.storage.BofhFileSystemStorage(), max_length=255, blank=True, verbose_name='MOBI file')),
-                ('html_file', models.FileField(default='', storage=fnpdjango.storage.BofhFileSystemStorage(), max_length=255, blank=True, verbose_name='HTML file')),
-                ('xml_file', models.FileField(default='', storage=fnpdjango.storage.BofhFileSystemStorage(), max_length=255, blank=True, verbose_name='XML file')),
+                ('txt_file', models.FileField(default='', storage=catalogue.models.book.get_storage, max_length=255, blank=True, verbose_name='TXT file')),
+                ('fb2_file', models.FileField(default='', storage=catalogue.models.book.get_storage, max_length=255, blank=True, verbose_name='FB2 file')),
+                ('pdf_file', models.FileField(default='', storage=catalogue.models.book.get_storage, max_length=255, blank=True, verbose_name='PDF file')),
+                ('epub_file', models.FileField(default='', storage=catalogue.models.book.get_storage, max_length=255, blank=True, verbose_name='EPUB file')),
+                ('mobi_file', models.FileField(default='', storage=catalogue.models.book.get_storage, max_length=255, blank=True, verbose_name='MOBI file')),
+                ('html_file', models.FileField(default='', storage=catalogue.models.book.get_storage, max_length=255, blank=True, verbose_name='HTML file')),
+                ('xml_file', models.FileField(default='', storage=catalogue.models.book.get_storage, max_length=255, blank=True, verbose_name='XML file')),
                 ('parent', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='children', blank=True, to='catalogue.Book', null=True)),
             ],
             options={

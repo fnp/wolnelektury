@@ -2,8 +2,8 @@
 <article class="l-books__item">
   <figure class="l-books__item__img">
     <a href="{{ fragment.get_absolute_url }}">
-      {% if fragment.book.cover_clean %}
-        <img src="{{ fragment.book.cover_clean.url }}" alt="{{ fragment.book.title }}">
+      {% if fragment.book.cover %}
+        <img src="{{ fragment.book.cover.url }}" alt="{{ fragment.book.title }}">
       {% endif %}
     </a>
     <div class="l-books__item__actions">

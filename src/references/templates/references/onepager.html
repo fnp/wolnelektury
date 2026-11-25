@@ -290,7 +290,7 @@
     {% for ref in entity.reference_set.all|slice:":3" %}
     <div class="fragment">
       <div class="cover">
-        <img src="{{ ref.book.cover_clean.url }}" alt="Okładka: {{ ref.book.pretty_title }}">
+        <img src="{{ ref.book.cover.url }}" alt="Okładka: {{ ref.book.pretty_title }}">
       </div>
       <div class="frag-text">
         <div class="book"><b>

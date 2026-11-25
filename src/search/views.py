@@ -91,7 +91,7 @@ def get_hints(prefix, user=None, limit=10):
                     'label': b.title,
                     'author': author_str,
                     'url': b.get_absolute_url(),
-                    'img': get_thumbnail(b.cover_clean, '72x72').url if b.cover_clean else '',
+                    'img': get_thumbnail(b.cover, '72x72').url if b.cover else '',
                     'slug': b.slug,
                 }
             )

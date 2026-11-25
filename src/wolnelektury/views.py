@@ -31,7 +31,7 @@ def main_page(request):
         request.EXPERIMENTS['layout'].override(True)
 
     ctx = {}
-    ctx['last_published'] = Book.objects.exclude(cover_clean='').filter(findable=True, parent=None).order_by('-created_at')[:10]
+    ctx['last_published'] = Book.objects.exclude(cover='').filter(findable=True, parent=None).order_by('-created_at')[:10]
     ctx['recommended_collection'] = Collection.objects.filter(listed=True, role='recommend').order_by('?').first()
     ctx['ambassadors'] = club.models.Ambassador.objects.all().order_by('?')
     ctx['widget'] = settings.WIDGETS.get(request.GET.get('w'))

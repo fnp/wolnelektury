@@ -1,13 +1,13 @@
 # This file is part of Wolne Lektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Wolne Lektury. See NOTICE for more information.
 #
-from os import path
+import os
 from .paths import VAR_DIR
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = path.join(VAR_DIR, 'media/')
-STATIC_ROOT = path.join(VAR_DIR, 'static/')
+MEDIA_ROOT = os.path.join(VAR_DIR, 'media/')
+STATIC_ROOT = os.path.join(VAR_DIR, 'static/')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
@@ -144,14 +144,55 @@ PIPELINE = {
     'CSSMIN_ARGUMENTS': '--stdin --style=compressed --no-source-map',
 }
 
+
 STORAGES = {
     'default': {
         'BACKEND': 'django.core.files.storage.FileSystemStorage'
+    },
+    'book': {
+        'BACKEND': 'django.core.files.storage.FileSystemStorage',
+        'OPTIONS': {
+            'allow_overwrite': True,
+        },
+    },
+    'bookmedia': {
+        'BACKEND': 'django.core.files.storage.FileSystemStorage',
+        'OPTIONS': {
+            'allow_overwrite': True,
+        },
     },
     'staticfiles': {
         'BACKEND': 'fnpdjango.pipeline_storage.GzipPipelineManifestStorage'
     },
 }
+
+
+# Switch bookmedia to s3 if set.
+WL_BOOKMEDIA_STORAGE_MODE = os.environ.get(
+    "WL_BOOKMEDIA_STORAGE_MODE", "local") # or s3
+
+if WL_BOOKMEDIA_STORAGE_MODE == "s3":
+    AWS_S3_REGION_NAME = os.environ.get("WL_S3_REGION", "waw")
+    AWS_S3_ENDPOINT_URL = os.environ.get(
+        "WL_S3_ENDPOINT", f"https://s3.{AWS_S3_REGION_NAME}.io.cloud.ovh.net"
+    )
+    WL_S3_BUCKET = os.environ.get("WL_S3_BUCKET")
+    STORAGES['bookmedia'] = {
+        "BACKEND": "storages.backends.s3.S3Storage",
+        "OPTIONS": {
+            "bucket_name": WL_S3_BUCKET,
+            "access_key": os.environ.get("WL_S3_ACCESS_KEY"),
+            "secret_key": os.environ.get("WL_S3_SECRET_KEY"),
+            "custom_domain": os.environ.get(
+                "WL_S3_CUSTOM_DOMAIN",
+                f"{WL_S3_BUCKET}.s3.{AWS_S3_REGION_NAME}.io.cloud.ovh.net"
+            ),
+            "default_acl": "public-read",
+            "querystring_auth": False,
+            "file_overwrite": True,
+        }
+    }
+
 
 
 STATICFILES_FINDERS = [

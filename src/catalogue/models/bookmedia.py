@@ -4,11 +4,11 @@
 from collections import OrderedDict
 import json
 from collections import namedtuple
+from django.core.files.storage import storages
 from django.db import models
 from slugify import slugify
 import mutagen
 from mutagen import id3
-from fnpdjango.storage import BofhFileSystemStorage
 
 
 def _file_upload_to(i, _n):
@@ -19,6 +19,10 @@ def _file_upload_to(i, _n):
         name += f'_' + slugify(i.part_name)
     ext = i.ext()
     return f'book/{ext}/{name}.{ext}'
+
+
+def get_storage():
+    return storages['bookmedia']
 
 
 class BookMedia(models.Model):
@@ -37,7 +41,7 @@ class BookMedia(models.Model):
     name = models.CharField('nazwa', max_length=512)
     part_name = models.CharField('nazwa części', default='', blank=True, max_length=512)
     index = models.IntegerField('indeks', default=0)
-    file = models.FileField('plik', max_length=600, upload_to=_file_upload_to, storage=BofhFileSystemStorage())
+    file = models.FileField('plik', max_length=600, upload_to=_file_upload_to, storage=get_storage)
     duration = models.FloatField(null=True, blank=True)
     uploaded_at = models.DateTimeField('data utworzenia', auto_now_add=True, editable=False, db_index=True)
     project_description = models.CharField(max_length=2048, blank=True)

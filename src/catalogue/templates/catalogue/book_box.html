@@ -13,8 +13,8 @@
           {% endthumbnail %}
         {% endif %}
       {% else %}
-        {% if book.cover_clean %}
-          <img src="{{ book.cover_clean.url }}" alt="{{ book.title }}">
+        {% if book.cover %}
+          <img src="{{ book.cover.url }}" alt="{{ book.title }}">
         {% endif %}
       {% endif %}
     </a>

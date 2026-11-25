@@ -334,3 +334,20 @@ def set_file_permissions(self, fieldfile):
     if fieldfile.instance.preview:
         fieldfile.set_readable(False)
 
+
+CHUNK_SIZE = 1024 * 1024  # 1 MB
+
+def iter_file(field_file, chunk_size=CHUNK_SIZE):
+    storage = field_file.storage
+    if hasattr(storage, "bucket"):
+        # If through S3Storage, chunk directly from
+        # boto interface to avoid loading the whole thing.
+        key = storage._normalize_name(field_file.name)
+        body = storage.bucket.Object(key).get()["Body"]
+        try:
+            yield from body.iter_chunks(chunk_size)
+        finally:
+            body.close()
+    else:
+        with field_file.open("rb") as f:
+            yield from f.chunks(chunk_size)

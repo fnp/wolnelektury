@@ -49,8 +49,8 @@
         "href": "http://testserver/api/books/parent/",
         "key": "book$parent", 
         "genre": "Sonet", 
-        "simple_thumb": "http://testserver/media/cover_api_thumb/parent.jpg",
+        "simple_thumb": "http://testserver/media/cover/parent.jpg-139x193",
         "slug": "parent", 
-        "cover_thumb": "cover_thumb/parent.jpg"
+        "cover_thumb": "cover/parent.jpg"
     }
 ]

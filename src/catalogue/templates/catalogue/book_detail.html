@@ -38,7 +38,7 @@
               {% if accessible and first_text %}
                 <a href="{% url 'book_text' first_text.slug %}">
               {% endif %}
-              <img src="{% if book.cover_clean %}{{ book.cover_clean.url }}{% endif %}" alt="{{ book.pretty_title }}" width="240">
+              <img src="{% if book.cover %}{{ book.cover.url }}{% endif %}" alt="{{ book.pretty_title }}" width="240">
               {% if accessible and first_text %}
                 </a>
               {% endif %}
@@ -148,7 +148,7 @@
                       {% if accessible and first_text %}
                         <a href="{% url 'book_text' first_text.slug %}">
                       {% endif %}
-                      <img src="{% if book.cover_clean %}{{ book.cover_clean.url }}{% endif %}" alt="{{ book.pretty_title }}">
+                      <img src="{% if book.cover %}{{ book.cover.url }}{% endif %}" alt="{{ book.pretty_title }}">
                       {% if accessible and first_text %}
                         </a>
                       {% endif %}
@@ -428,7 +428,7 @@
                 <article class="l-books__item">
                   <figure class="l-books__item__img">
                     <a href="{{ rel.get_absolute_url }}">
-                      <img src="{% if rel.cover_clean %}{{ rel.cover_clean.url }}{% endif %}" alt="{{ rel.pretty_title }}">
+                      <img src="{% if rel.cover %}{{ rel.cover.url }}{% endif %}" alt="{{ rel.pretty_title }}">
                     </a>
                   </figure>
                   <h3>
@@ -447,7 +447,7 @@
               <article class="l-books__item">
                 <figure class="l-books__item__img">
                   <a href="{{ rel.get_absolute_url }}">
-                    <img src="{% if rel.cover_clean %}{{ rel.cover_clean.url }}{% endif %}" alt="{{ rel.pretty_title }}">
+                    <img src="{% if rel.cover %}{{ rel.cover.url }}{% endif %}" alt="{{ rel.pretty_title }}">
                   </a>
                 </figure>
                 <h3>

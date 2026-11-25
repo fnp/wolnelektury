@@ -523,7 +523,7 @@ def stream_zip(request, media_format=None, slug=None):
     def iterate_audiobooks(book, names):
         for bm in book.media.filter(type=media_format).order_by('index'):
             yield (
-                bm.file.path,
+                bm.file,
                 bm.get_extra_info_json().get('license'),
                 names + (slugify(bm.part_name),) if bm.part_name else names
             )
@@ -535,17 +535,17 @@ def stream_zip(request, media_format=None, slug=None):
     audiobook_list = list(iterate_audiobooks(book, ()))
     
     licenses = set()
-    for i, (file_path, lic, names) in enumerate(audiobook_list):
+    for i, (bmfile, lic, names) in enumerate(audiobook_list):
         index = i + 1
         part_name = '_'.join(names)
         if part_name:
             part_name = '_' + part_name
-        ext = file_path.rsplit('.', 1)[-1]
+        ext = bmfile.name.rsplit('.', 1)[-1]
         if len(audiobook_list) > 1:
             zip_name = f'{book.slug}_{index:03d}{part_name}'[:240] + '.' + ext
         else:
             zip_name = book.slug[:240] + '.' + ext
-        zs.add_path(file_path, zip_name)
+        zs.add(iter_file(bmfile), zip_name)
 
         lic_name = constants.LICENSES.get(lic, {}).get('locative')
         if lic_name:

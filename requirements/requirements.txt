@@ -6,6 +6,7 @@ fnpdjango==0.8
 docutils==0.23
 django-debug-toolbar==8.0.0
 psycopg2-binary==2.9.13
+django-storages[s3]==1.14.6
 
 pymemcache==4.0.0
 

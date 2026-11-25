@@ -4,10 +4,10 @@
     <h3>{% trans "Prapremiera" %}</h3>
     <div class="p-homepage-prapremiera__box">
       <div class="p-homepage-prapremiera__box__item">
-        {% if book.cover_clean %}
+        {% if book.cover %}
         <figure>
           <a href="{{ book.get_absolute_url }}">
-            <img src="{{ book.cover_clean.url }}" alt="{{ book.pretty_title }}">
+            <img src="{{ book.cover.url }}" alt="{{ book.pretty_title }}">
           </a>
         </figure>
         {% endif %}
