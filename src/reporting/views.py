@@ -16,7 +16,7 @@ from reporting.utils import render_to_pdf, render_to_csv, generated_file_view
 def stats_page(request):
     media_types = BookMedia.objects.values('type').annotate(count=Count('type')).order_by('type')
     for mt in media_types:
-        mt['size'] = sum(b.file.size for b in BookMedia.objects.filter(type=mt['type']).iterator())
+        mt['size'] = sum(b.file_size for b in BookMedia.objects.filter(type=mt['type']).iterator())
         if mt['type'] in ('mp3', 'ogg'):
             deprecated = BookMedia.objects.filter(type=mt['type'], source_sha1=None)
             mt['deprecated'] = deprecated.count()

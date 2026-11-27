@@ -17,7 +17,6 @@ from zipfile import ZipFile
 from django.apps import apps
 from django.conf import settings
 from django.core.files.storage import DefaultStorage
-from django.core.files.uploadedfile import UploadedFile
 from django.http import HttpResponse
 from django.utils.encoding import force_str
 
@@ -59,19 +58,6 @@ def split_tags(*tag_lists):
         for k, v in result.items():
             result[k] = sorted(v.values(), key=lambda tag: tag.sort_key)
     return result
-
-
-class ExistingFile(UploadedFile):
-
-    def __init__(self, path, *args, **kwargs):
-        self.path = path
-        super(ExistingFile, self).__init__(*args, **kwargs)
-
-    def temporary_file_path(self):
-        return self.path
-
-    def close(self):
-        pass
 
 
 class LockFile(object):
@@ -323,11 +309,6 @@ def absolute_url(url):
         site.domain
     )
     return urljoin(base_url, url)
-
-
-def get_mp3_length(path):
-    from mutagen.mp3 import MP3
-    return int(MP3(path).info.length)
 
 
 def set_file_permissions(self, fieldfile):

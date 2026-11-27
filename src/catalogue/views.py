@@ -32,7 +32,7 @@ from catalogue import forms
 from catalogue.helpers import get_top_level_related_tags
 from catalogue.models import Book, Collection, Tag, Fragment
 from catalogue.models.tag import TagRelation
-from catalogue.utils import split_tags
+from catalogue.utils import split_tags, iter_file
 from catalogue.models.tag import prefetch_relations
 
 staff_required = user_passes_test(lambda user: user.is_staff)
@@ -507,14 +507,8 @@ def embargo_link(request, key, format_, slug):
     return HttpResponse(media_file, content_type=constants.EBOOK_CONTENT_TYPES[format_])
 
 
-def download_zip(request, file_format=None, media_format=None, slug=None):
-    if file_format:
-        url = Book.zip_format(file_format)
-    elif media_format and slug is not None:
-        book = get_object_or_404(Book, slug=slug)
-        url = book.zip_audiobooks(media_format)
-    else:
-        raise Http404('No format specified for zip package')
+def download_zip(request, file_format):
+    url = Book.zip_format(file_format)
     return HttpResponseRedirect(quote_plus(settings.MEDIA_URL + url, safe='/?='))
 
 
@@ -523,7 +517,7 @@ def stream_zip(request, media_format=None, slug=None):
     def iterate_audiobooks(book, names):
         for bm in book.media.filter(type=media_format).order_by('index'):
             yield (
-                bm.file,
+                bm,
                 bm.get_extra_info_json().get('license'),
                 names + (slugify(bm.part_name),) if bm.part_name else names
             )
@@ -535,17 +529,17 @@ def stream_zip(request, media_format=None, slug=None):
     audiobook_list = list(iterate_audiobooks(book, ()))
     
     licenses = set()
-    for i, (bmfile, lic, names) in enumerate(audiobook_list):
+    for i, (bm, lic, names) in enumerate(audiobook_list):
         index = i + 1
         part_name = '_'.join(names)
         if part_name:
             part_name = '_' + part_name
-        ext = bmfile.name.rsplit('.', 1)[-1]
+        ext = bm.file.name.rsplit('.', 1)[-1]
         if len(audiobook_list) > 1:
             zip_name = f'{book.slug}_{index:03d}{part_name}'[:240] + '.' + ext
         else:
             zip_name = book.slug[:240] + '.' + ext
-        zs.add(iter_file(bmfile), zip_name)
+        zs.add(iter_file(bm.file), zip_name, size=bm.file_size)
 
         lic_name = constants.LICENSES.get(lic, {}).get('locative')
         if lic_name:

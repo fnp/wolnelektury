@@ -49,7 +49,7 @@
         "href": "http://testserver/api/books/parent/",
         "key": "book$parent", 
         "genre": "Sonet", 
-        "simple_thumb": "http://testserver/media/cover/parent.jpg-139x193",
+        "simple_thumb": "cover/parent.jpg",
         "slug": "parent", 
         "cover_thumb": "cover/parent.jpg"
     }

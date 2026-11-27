@@ -238,6 +238,7 @@ class BookSerializer(LegacyMixin, serializers.ModelSerializer):
 class BookListSerializer(BookSerializer):
     cover = serializers.CharField()
     cover_thumb = serializers.CharField(source='cover')
+    simple_thumb = serializers.CharField(source='cover')
 
     Meta = BookSerializer.Meta
 
@@ -268,7 +269,7 @@ class MediaSerializer2(MediaSerializer):
         fields = ['url', 'director', 'type', 'name', 'part_name', 'artist', 'duration', 'size']
 
     def get_size(self, obj):
-        return obj.file.size
+        return obj.file_size
 
 
 class BookDetailSerializer(LegacyMixin, serializers.ModelSerializer):

@@ -75,7 +75,7 @@ class AudiobookFeed(Feed):
         return absolute_url(item.file.url)
 
     def item_enclosure_length(self, item):
-        return item.file.size
+        return item.file_size
 
     def item_enclosure_mime_type(self, item):
         return self.mime_types[item.type]

@@ -49,21 +49,3 @@ class BookMediaTests(WLTestCase):
 
         utils.remove_zip('test-zip-slug')
         self.assertFalse(exists(join(settings.MEDIA_ROOT, url)))
-
-    def test_remove_zip_on_media_change(self):
-        bm = models.BookMedia(book=self.book, type='ogg', name="Title")
-        self.set_title(bm.name)
-        bm.file.save(None, self.file)
-        bm.save()
-
-        zip_url = self.book.zip_audiobooks('ogg')
-        self.assertEqual('zip/'+self.book.slug+'_ogg.zip', zip_url)
-        self.assertTrue(exists(join(settings.MEDIA_ROOT, zip_url)))
-
-        bm2 = models.BookMedia(book=self.book, type='ogg', name="Other title")
-        self.set_title(bm2.name)
-        bm2.file.save(None, self.file2)
-        self.set_title("Title")
-        bm2.save()
-        # was the audiobook zip deleted?
-        self.assertFalse(exists(join(settings.MEDIA_ROOT, zip_url)))

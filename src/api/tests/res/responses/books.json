@@ -46,7 +46,7 @@
         "epoch": "Barok", 
         "href": "http://testserver/api/books/parent/",
         "genre": "Sonet", 
-        "simple_thumb": "http://testserver/media/cover/parent.jpg-139x193",
+        "simple_thumb": "cover/parent.jpg",
         "slug": "parent", 
         "cover_thumb": "cover/parent.jpg"
     }

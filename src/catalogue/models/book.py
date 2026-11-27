@@ -17,7 +17,6 @@ from django.db import connection, models, transaction
 import django.dispatch
 from django.contrib.contenttypes.fields import GenericRelation
 from django.core.files.storage import storages
-from django.template.loader import render_to_string
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _, get_language
 from lxml import html
@@ -320,10 +319,9 @@ class Book(models.Model):
             return '%d:%02d:%02d' % (hours, minutes, seconds)
 
     def get_audio_length(self):
-        total = 0
-        for media in self.get_mp3() or ():
-            total += app_settings.GET_MP3_LENGTH(media.file.path)
-        return int(total)
+        total = self.media.filter(type='mp3').aggregate(
+            models.Sum('duration'))['duration__sum']
+        return int(total or 0)
 
     def get_time(self):
         return round(self.xml_file.size / 1000 * 40)
@@ -601,22 +599,6 @@ class Book(models.Model):
         paths = [(pretty_file_name(b), getattr(b, field_name).path) for b in books.iterator()]
         return create_zip(paths, field.ZIP)
 
-    def zip_audiobooks(self, format_):
-        bm = BookMedia.objects.filter(book=self, type=format_)
-        paths = map(lambda bm: (bm.get_nice_filename(), bm.file.path), bm)
-        licenses = set()
-        for m in bm:
-            license = constants.LICENSES.get(
-                m.get_extra_info_json().get('license'), {}
-            ).get('locative')
-            if license:
-                licenses.add(license)
-        readme = render_to_string('catalogue/audiobook_zip_readme.txt', {
-            'licenses': licenses,
-            'meta': self.wldocument2().meta,
-        })
-        return create_zip(paths, "%s_%s" % (self.slug, format_), {'informacje.txt': readme})
-
     def search_index(self, index=None):
         if not self.findable:
             return
@@ -879,9 +861,11 @@ class Book(models.Model):
     def update_narrators(self):
         narrator_names = set()
         for bm in self.media.filter(type='mp3'):
-            narrator_names.update(set(
-                a.strip() for a in re.split(r',|\si\s', bm.artist)
-            ))
+            artist = bm.artist
+            if artist:
+                narrator_names.update(set(
+                    a.strip() for a in re.split(r',|\si\s', artist)
+                ))
         narrators = []
 
         for name in narrator_names:

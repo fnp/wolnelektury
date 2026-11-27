@@ -1,8 +1,7 @@
 # This file is part of Wolne Lektury, licensed under GNU Affero GPLv3 or later.
 # Copyright © Fundacja Wolne Lektury. See NOTICE for more information.
 #
-from random import randint, random
-from urllib.parse import urlparse
+from random import randint
 from django.contrib.contenttypes.models import ContentType
 
 from django.conf import settings
@@ -14,7 +13,7 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import gettext as _
 
 from catalogue.helpers import get_audiobook_tags
-from catalogue.models import Book, BookMedia, Fragment, Tag, Source
+from catalogue.models import Book, BookMedia, Fragment, Tag
 from catalogue.constants import LICENSES
 from club.models import Membership
 from social.models import UserList
@@ -355,31 +354,6 @@ def license_icon(license_url):
 @register.simple_tag
 def license_locative(license_url, default):
     return LICENSES.get(license_url, {}).get('locative', default)
-
-
-@register.simple_tag
-def source_name(url):
-    url = url.lstrip()
-    netloc = urlparse(url).netloc
-    if not netloc:
-        netloc = urlparse('http://' + url).netloc
-    if not netloc:
-        return ''
-    source, created = Source.objects.get_or_create(netloc=netloc)
-    return source.name or netloc
-
-
-@register.simple_tag
-def catalogue_random_book(exclude_ids):
-    from .. import app_settings
-    if random() < app_settings.RELATED_RANDOM_PICTURE_CHANCE:
-        return None
-    queryset = Book.objects.filter(findable=True).exclude(pk__in=exclude_ids)
-    count = queryset.count()
-    if count:
-        return queryset[randint(0, count - 1)]
-    else:
-        return None
 
 
 @register.simple_tag

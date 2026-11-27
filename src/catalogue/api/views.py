@@ -180,8 +180,7 @@ class BookList(LegacyListAPIView):
         bm.index = index
         bm.project_description = project_description
         bm.project_icon = project_icon
-        bm.file.save(None, request.data['file'], save=False)
-        bm.save(parts_count=parts_count)
+        bm.set_file(request.data['file'], parts_count=parts_count)
 
         return Response({}, status=status.HTTP_201_CREATED)
 

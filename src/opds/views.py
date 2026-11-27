@@ -220,7 +220,7 @@ class AcquisitionFeed(Feed):
         if book.has_mp3_file():
             e = Enclosure(
                 url=full_url(reverse('download_zip_mp3', args=[book.slug])),
-                length=sum(bm.file.size for bm in book.get_media('mp3')),
+                length=sum(bm.file_size for bm in book.get_media('mp3')),
                 mime_type="application/zip"
             )
             e.indirect = 'audio/mpeg'
