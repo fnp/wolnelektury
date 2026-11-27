@@ -207,7 +207,7 @@ class BookSerializer11Labs(serializers.ModelSerializer):
             #'children',
             'parent', 'preview',
             'html',
-            'cover_thumb', 'cover',
+            'cover',
             'isbn_pdf', 'isbn_epub', 'isbn_mobi',
         ]
 
